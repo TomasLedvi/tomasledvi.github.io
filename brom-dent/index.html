@@ -728,7 +728,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
     d.scanO=0;d.scanY=0;d.scan=()=>[d.scanO,d.scanY];d.idle=!calm;return d;
   }
   function toothFallback(){
-    const el=document.getElementById("toothFallback"),sc=document.getElementById("fbScan");el.hidden=false;let P=-1,so=0,sy=0;
+    const el=document.getElementById("toothFallback"),sc=document.getElementById("fbScan");el.removeAttribute("hidden");let P=-1,so=0,sy=0;
     return{kind:"2d",set(p){if(Math.abs(p-P)<1e-4)return;P=p;el.style.setProperty("--p",p.toFixed(4));so=cl((p-.58)/.14)*(1-cl((p-.9)/.1));sy=cl((p-.58)/.32);sc.setAttribute("opacity",so.toFixed(2));sc.setAttribute("y",(40+sy*130).toFixed(1))},
       frame(){},scan(){return[so,sy]},once(p){this.set(p)},size(){},destroy(){}};
   }
@@ -830,7 +830,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
     d.idle=false;return d;
   }
   function chairFallback(){
-    const el=document.getElementById("chairFallback");el.hidden=false;let P=-1;
+    const el=document.getElementById("chairFallback");el.removeAttribute("hidden");let P=-1;
     const o={kind:"2d",lamp:{fx:.78,fy:.27,hx:.83,hy:.46,on:0,k:0},set(p){if(Math.abs(p-P)<1e-4)return;P=p;el.style.setProperty("--dw",cl(p/.45).toFixed(3));el.style.setProperty("--beam",cl((p-.4)/.15).toFixed(3));o.lamp.on=cl((p-.4)/.15);o.lamp.k=sm(.58,.8,p)},frame(){},once(p){this.set(p)},size(){},destroy(){}};return o;
   }
 
