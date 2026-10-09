@@ -1,0 +1,82 @@
+{
+ "slug": "interier-plzen",
+ "name": "Interiér Plzeň",
+ "logo": "Interiér Plzeň",
+ "logo_sub": "Zakázkové truhlářství · Plzeň",
+ "map_nav": "Showroom",
+ "hero_eyebrow": "Zakázkové truhlářství · <b>Plzeň-Litice</b>",
+ "hero_p": "Kuchyně na zakázku, šatní skříně, kancelářský nábytek i vybavení restaurací a hotelů. Kompletní kuchyně si můžete prohlédnout v našem showroomu.",
+ "steps": [
+  ["01 · Showroom", "Přijďte se podívat.", "Kompletní kuchyně včetně funkčních spotřebičů."],
+  ["02 · Návrh", "Kuchyně pro každý rozpočet.", "Vyrábíme v několika cenových kategoriích."],
+  ["03 · Výroba", "Vlastní výroba v Plzni.", "Včetně CNC zpracování."],
+  ["04 · Montáž", "Výroba i montáž na zakázku.", "Kuchyně, skříně i celé provozovny."],
+  ["05 · Hotovo", "Kuchyň, která sedí na milimetr.", "Kování BLUM, Hettich, Kesseböhmer a Grass."]
+ ],
+ "price": {
+  "eyebrow": "Ceny",
+  "h": "Kuchyně <em>pro každý rozpočet.</em>",
+  "lead": "Kuchyně na míru vyrábíme v několika cenových kategoriích dostupných pro všechny. Nabízíme i ekonomičtější provedení běžně používané v komerčních objektech, vždy v dobrém poměru cena – výkon.",
+  "stamps": [
+   ["Showroom", "Kompletní kuchyně", "s funkčními spotřebiči"],
+   ["Naživo", "Deska Technistone", "i masivní deska"],
+   ["Servis", "Záruční i pozáruční", "servis"],
+   ["Vlastní", "CNC zpracování", "přímo v dílně"]
+  ],
+  "note": "Kvalitu nabízíme za rozumnou cenu, včetně záručního i pozáručního servisu."
+ },
+ "conf_spec": "Kuchyně vybavujeme kováním BLUM, Hettich, Kesseböhmer a Grass. V showroomu uvidíte kamennou desku Technistone i masivní pracovní desku naživo.",
+ "svc_h": "Od kuchyně <em>po celý hotel.</em>",
+ "svc_lead": "Vyrábíme kuchyně, šatní skříně a kancelářský nábytek a zařizujeme restaurace, kavárny, hotely a ubytovny. Klikněte pro podrobnosti.",
+ "brands": ["BLUM", "Hettich", "Kesseböhmer", "Grass", "Technistone"],
+ "map": {
+  "eyebrow": "Showroom",
+  "h": "Showroom <em>v Liticích.</em>",
+  "lead": "Rádi vás přivítáme v našem showroomu na Klatovské v Plzni-Liticích. Uvidíte kompletní kuchyně tak, jak je pro vás vyrábíme, dokončené včetně funkčních spotřebičů a prvků výbavy.",
+  "cities": [["Litice (showroom)", 13.36, 49.70, 1], ["Rokycany", 13.59, 49.74], ["Stříbro", 13.00, 49.75], ["Přeštice", 13.33, 49.57], ["Klatovy", 13.30, 49.40], ["Domažlice", 12.93, 49.44], ["Nepomuk", 13.58, 49.49]],
+  "lo": [12.75, 13.85], "la": [49.30, 49.88]
+ },
+ "contact": {"label": "Firma", "who": "Interiér Plzeň s.r.o.", "addr": "Klatovská 701/175A, 321 00 Plzeň – Litice", "tel": "608 888 060", "mail": "info@interierplzen.cz"},
+ "form": {"p": "Pošlete nám pár údajů a ozveme se vám. Nebo se zastavte rovnou v showroomu.", "chips": ["Kuchyně", "Šatní skříň", "Kancelář", "Restaurace / hotel", "Jiný nábytek"], "city": "Plzeň"},
+ "marquee": ["Kuchyně na zakázku", "Šatní skříně", "Restaurace a hotely", "Kancelářský nábytek", "CNC zpracování", "BLUM", "Hettich", "Kesseböhmer", "Grass", "Technistone"],
+ "photos": [
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2019/06/kuchyne01.jpg", "Kuchyň na zakázku"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2019/06/kuchyne03.jpg", "Kuchyň na zakázku"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2019/06/kuchyne02.jpg", "Kuchyň na zakázku"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2021/01/IMG-20190717-WA0002-1599x900.jpg", "Realizace kuchyně"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2021/01/CG0A1919-1600x900.jpg", "Realizace kuchyně"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2021/01/CG0A1970-1600x900.jpg", "Realizace kuchyně"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2021/01/20200221_123157-1600x900.jpg", "Realizace kuchyně"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2021/01/20200211_144142-1600x900.jpg", "Realizace kuchyně"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2021/01/20191219_164323-1600x900.jpg", "Realizace kuchyně"],
+  ["kuchyne", "https://www.interierplzen.cz/wp-content/uploads/2021/01/20200714_150641-1600x900.jpg", "Realizace kuchyně"],
+  ["showroom", "https://www.interierplzen.cz/wp-content/uploads/2021/04/CG0A1944-1600x900.jpg", "Showroom Litice"],
+  ["showroom", "https://www.interierplzen.cz/wp-content/uploads/2021/04/CG0A1957-1600x900.jpg", "Showroom Litice"],
+  ["showroom", "https://www.interierplzen.cz/wp-content/uploads/2021/04/20210405_184414-1600x900.jpg", "Showroom Litice"],
+  ["showroom", "https://www.interierplzen.cz/wp-content/uploads/2021/04/20210405_183952-1600x900.jpg", "Showroom Litice"],
+  ["showroom", "https://www.interierplzen.cz/wp-content/uploads/2021/04/CG0A1982-1600x900.jpg", "Showroom Litice"],
+  ["showroom", "https://www.interierplzen.cz/wp-content/uploads/2021/04/CG0A2034-1600x900.jpg", "Showroom Litice"],
+  ["gastro", "https://www.interierplzen.cz/wp-content/uploads/2019/06/hotel03.jpg", "Restaurace a hotely"],
+  ["gastro", "https://www.interierplzen.cz/wp-content/uploads/2019/06/hotel02.jpg", "Restaurace a hotely"],
+  ["gastro", "https://www.interierplzen.cz/wp-content/uploads/2019/06/hotel01.jpg", "Restaurace a hotely"],
+  ["skrine", "https://www.interierplzen.cz/wp-content/uploads/2019/06/skrine01.jpg", "Šatní skříň"],
+  ["skrine", "https://www.interierplzen.cz/wp-content/uploads/2019/06/skrine03.jpg", "Šatní skříň"],
+  ["skrine", "https://www.interierplzen.cz/wp-content/uploads/2019/06/skrine02.jpg", "Šatní skříň"]
+ ],
+ "feat": [4, 10, 5, 16, 11, 0, 19, 14],
+ "cat": {"vse": "Vše", "kuchyne": "Kuchyně", "showroom": "Showroom", "gastro": "Restaurace a hotely", "skrine": "Šatní skříně"},
+ "svc": [
+  {"id": "kuchyne", "t": "Kuchyně na zakázku", "s": "V několika cenových kategoriích.", "img": 4,
+   "intro": "Zabýváme se výrobou a montáží kuchyňských linek na zakázku. Kuchyně na míru vyrábíme v několika cenových kategoriích dostupných pro všechny.",
+   "spec": [["Kování", "BLUM, Hettich, Kesseböhmer, Grass"], ["Pracovní desky", "Mimo jiné kámen Technistone nebo masiv, obojí uvidíte naživo v showroomu"], ["Provedení", "Od prémiových kuchyní po ekonomičtější provedení v dobrém poměru cena – výkon"]]},
+  {"id": "gastro", "t": "Restaurace a hotely", "s": "Zařízení provozoven na klíč.", "img": 16,
+   "intro": "Specializujeme se mimo jiné na realizaci zařízení restaurací, kaváren, hotelů a ubytoven. Spolupracujeme s firmami zaměřenými na gastronomii, chlazení, výčepní a jiná zařízení potřebná pro jejich provoz.",
+   "spec": [["Pro koho", "Restaurace, kavárny, hotely, ubytovny"], ["Spolupráce", "Gastronomie, chlazení, výčepní zařízení"]]},
+  {"id": "skrine", "t": "Šatní skříně", "s": "Posuvné i otevírací dveře.", "img": 19,
+   "intro": "Naše truhlářství vyrábí a dodává vestavěné skříně s posuvnými i otevíracími dveřmi, vestavěné šatní skříně (šatny) a nábytek dle přání zákazníka. Nabízíme kvalitu za rozumnou cenu, včetně záručního i pozáručního servisu.",
+   "spec": [["Dveře", "Posuvné i otevírací"], ["Dále", "Šatny a nábytek dle přání zákazníka"], ["Servis", "Záruční i pozáruční"]]},
+  {"id": "showroom", "t": "Showroom", "s": "Kuchyně naživo, se spotřebiči.", "img": 10,
+   "intro": "V showroomu máte možnost vidět kompletní kuchyně tak, jak je pro vás vyrábíme. Kuchyně jsou dokončené včetně funkčních spotřebičů a funkčních prvků výbavy.",
+   "spec": [["Adresa", "Klatovská 701/175A, Plzeň – Litice"], ["Uvidíte", "Kamennou desku Technistone, masivní pracovní desku, kování BLUM, Hettich, Kesseböhmer a Grass"]]}
+ ]
+}

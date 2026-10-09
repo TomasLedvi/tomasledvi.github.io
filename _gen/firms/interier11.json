@@ -1,0 +1,76 @@
+{
+ "slug": "interier11",
+ "name": "INTERIER11",
+ "logo": "INTERIER11",
+ "logo_sub": "Nábytek na míru · Volyně",
+ "map_nav": "Reference",
+ "accent": ["#e39a6c", "#f4bf98"],
+ "hero_eyebrow": "Zakázkové truhlářství · <b>Volyně</b>",
+ "hero_p": "Kuchyně, vestavěné skříně, šatny, postele i atypický nábytek z dílny ve Volyni. Od roku 2009.",
+ "steps": [
+  ["01 · Konzultace", "Lidský přístup především.", "Probereme, co od nábytku čekáte."],
+  ["02 · Návrh", "Každý centimetr využitý.", "I podkroví a šikminy."],
+  ["03 · Výroba", "LTD 18 mm, hrany ABS 2 mm.", "Stovky dekorů Kronospan, Egger a DDL."],
+  ["04 · Montáž", "Montujeme sami.", "Podle aktuálního rozpisu montáží."],
+  ["05 · Hotovo", "Ručíme svým jménem.", "Kování BLUM, Hettich a Strong."]
+ ],
+ "price": {
+  "eyebrow": "Proč my",
+  "h": "Ručíme <em>svým jménem.</em>",
+  "lead": "Výrobě nábytku a návrhům interiérů se věnuji od ukončení studia a od roku 2009 jsme tu pro vás. Lidský přístup k zákazníkovi je pro nás tím nejdůležitějším.",
+  "stamps": [
+   ["Od 2009", "Vlastní dílna", "ve Volyni"],
+   ["5 let", "Záruka", "na posuvný systém INDECO"],
+   ["−5 %", "Matrace a rošty", "PROFESO Bambásek k posteli"],
+   ["Unicef", "Přátelé dětí", "jsme zapojeni do projektu"]
+  ],
+  "note": "Za kvalitu ručíme kromě záručních listů hlavně svým jménem."
+ },
+ "conf_spec": "Korpusy z LTD 18 mm ve stovkách dekorů Kronospan, Egger a DDL, hrany ABS 2 mm, kování BLUM, Hettich a Strong.",
+ "svc_h": "Od kuchyně <em>po podkroví.</em>",
+ "svc_lead": "Kuchyně, vestavěné skříně, šatny, postele, dětské pokoje i vybavení penzionů, salonů, ordinací a škol. Klikněte pro podrobnosti.",
+ "brands": ["Kronospan", "Egger", "DDL", "BLUM", "Hettich", "Strong", "INDECO"],
+ "map": {
+  "eyebrow": "Reference",
+  "h": "Kde už jsme <em>montovali.</em>",
+  "lead": "Dílnu máme ve Volyni. Podle ohlasů zákazníků jsme montovali třeba ve Strakonicích, v Písku, Zlivi, Frymburku, Kdyni i v Praze.",
+  "cities": [["Volyně (dílna)", 13.89, 49.17, 1], ["Strakonice", 13.90, 49.26], ["Písek", 14.15, 49.31], ["Zliv", 14.37, 49.07], ["Frymburk", 14.17, 48.66], ["Kdyně", 13.04, 49.39]],
+  "lo": [12.85, 14.6], "la": [48.55, 49.45]
+ },
+ "contact": {"label": "Truhlářství", "who": "Marek Lepšík, DiS. · INTERIER11", "addr": "Karla Čapka 573, 387 01 Volyně", "tel": "775 444 400", "mail": "interier11@interier11.cz"},
+ "form": {"p": "Pošlete nám pár údajů a ozveme se vám.", "chips": ["Kuchyně", "Vestavěná skříň", "Šatna / podkroví", "Postel", "Jiný nábytek"], "city": "Strakonice"},
+ "marquee": ["Kuchyně", "Vestavěné skříně", "Šatny", "Podkroví", "Postele", "Dětské pokoje", "Kronospan", "Egger", "BLUM", "Hettich", "INDECO"],
+ "photos": [
+  ["kuchyne", "https://interier11.cz/wp-content/uploads/2020/02/uvod-15.jpg", "Kuchyň na míru"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/03/skrhjptr-3.jpg", "Skříňky a komody"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/03/str2.jpg", "Skříňky a komody"],
+  ["skrine", "https://interier11.cz/wp-content/uploads/2020/02/juraloznice-7.jpg", "Vestavěná skříň s posuvnými dveřmi"],
+  ["skrine", "https://interier11.cz/wp-content/uploads/2020/03/CIMG3514.jpg", "Vestavěná skříň s otevíracími dveřmi"],
+  ["skrine", "https://interier11.cz/wp-content/uploads/2020/03/c1.png", "Šatna"],
+  ["skrine", "https://interier11.cz/wp-content/uploads/2020/03/a1.png", "Podkroví"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/03/kocky1-3.jpg", "Atypický nábytek"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/02/WP_20171025_09_43_31_Pro.jpg", "Knihovna"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/03/PSX_20191119_143045.jpg", "Dětský pokoj"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/02/CIMG3374.jpg", "Psací stůl"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/03/DSC_0802.jpg", "Přebalovací pult"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/03/kancbur-2.jpg", "Domácí pracovna"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2021/04/170235772_4063231270394189_257270512182536678_n.jpg", "Obývací pokoj"],
+  ["nabytek", "https://interier11.cz/wp-content/uploads/2020/03/tv1.jpg", "TV stolek"]
+ ],
+ "feat": [0, 3, 9, 6, 13, 8, 12, 7],
+ "cat": {"vse": "Vše", "kuchyne": "Kuchyně", "skrine": "Skříně a šatny", "nabytek": "Nábytek na míru"},
+ "svc": [
+  {"id": "kuchyne", "t": "Kuchyně", "s": "Nová kuchyň, která nezklame.", "img": 0,
+   "intro": "Kuchyně vyrábíme z LTD 18 mm ve stovkách dekorů a montujeme je sami.",
+   "spec": [["Korpusy", "LTD 18 mm, dekory Kronospan, Egger a DDL"], ["Hrany", "ABS 2 mm"], ["Kování", "BLUM, Hettich, Strong"]]},
+  {"id": "skrine", "t": "Vestavěné skříně a šatny", "s": "Posuvné i otevírací dveře.", "img": 3,
+   "intro": "Vestavěné skříně s posuvnými nebo otevíracími dveřmi, šatny i využití podkroví a šikmin. Z nevyužitého místa uděláme šatnu.",
+   "spec": [["Výplně posuvných dveří", "LTD, zrcadlo, barevné sklo Lacobel"], ["Záruka", "5 let na posuvný systém INDECO"], ["Kde", "Ložnice, předsíně, podkroví, šikminy"]]},
+  {"id": "postele", "t": "Postele a dětské pokoje", "s": "Klasické, sklápěcí i patrové.", "img": 9,
+   "intro": "Postele klasické, atypické, sklápěcí i patrové z lamina, dětské pokoje, psací stoly a přebalovací pulty.",
+   "spec": [["Postele", "S pevným nebo lamelovým roštem, s úložnými šuplíky nebo výklopným roštem"], ["Matrace a rošty", "K posteli od PROFESO Bambásek o 5 % levněji než v e-shopu či prodejně"]]},
+  {"id": "firmy", "t": "Interiéry pro firmy", "s": "Penziony, salony, ordinace, školy.", "img": 12,
+   "intro": "Vybavujeme i veřejné interiéry: penziony, kosmetické salony, masáže, veterinární a praktické ordinace, obchody, školy, internáty a jídelny.",
+   "spec": [["Pro koho", "Penziony, salony, ordinace, obchody, školy, internáty, jídelny"], ["Co nevyrábíme", "Nábytek z masivu, dveře, okna a podlahy"]]}
+ ]
+}
