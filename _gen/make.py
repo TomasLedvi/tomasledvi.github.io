@@ -110,6 +110,12 @@ def main(cfg_path):
     block('  const B1="https://webmium', "  /* ================= OBSAH STRÁNKY", data)
     rep('const words=["Kuchyně","Vestavěné skříně","Šatny","Interiérové dveře","Egger","Kronospan","Blum","Hettich","Häfele","Masiv","Umělý kámen"]', "const words=" + js(c["marquee"]))
 
+    # firmy bez webu / údaje z katalogu
+    if c.get("new_site"):
+        rep("NEOFICIÁLNÍ NÁVRH REDESIGNU · nejde o oficiální web", "NEOFICIÁLNÍ NÁVRH WEBU · nejde o oficiální web")
+    if c.get("source_note"):
+        rep("Fotografie a údaje převzaty ze současného webu truhlářství.", c["source_note"])
+
     # barva akcentu (volitelně)
     if c.get("accent"):
         a, a2 = c["accent"]

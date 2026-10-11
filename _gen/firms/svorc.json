@@ -1,0 +1,324 @@
+{
+ "new_site": true,
+ "source_note": "Fotografie a údaje převzaty z firemního profilu v katalogu ČESKÉSTAVBY.cz.",
+ "slug": "svorc",
+ "name": "Interiér Švorc",
+ "logo": "Interiér Švorc",
+ "logo_sub": "Nábytek na míru · Dvůr Králové",
+ "map_nav": "Dílna",
+ "hero_eyebrow": "Zakázková výroba nábytku · <b>Dvůr Králové nad Labem</b>",
+ "hero_p": "Kuchyňské linky ve vysoké estetické kvalitě, vestavěné skříně, dětské pokoje a kancelářský nábytek. 3D návrh a konzultace zdarma.",
+ "steps": [
+  [
+   "01 · Konzultace",
+   "Konzultace zdarma.",
+   "Probereme vaše představy i prostor."
+  ],
+  [
+   "02 · 3D návrh",
+   "3D návrh zdarma.",
+   "Uvidíte kuchyň dřív, než vznikne."
+  ],
+  [
+   "03 · Výroba",
+   "Precizní provedení.",
+   "Ve vysoké estetické kvalitě."
+  ],
+  [
+   "04 · Montáž",
+   "Spotřebiče dodáme.",
+   "Prodej spotřebičů, dřezů a baterií."
+  ],
+  [
+   "05 · Hotovo",
+   "Kuchyň, která sedí na milimetr.",
+   "Z dílny ve Dvoře Králové nad Labem."
+  ]
+ ],
+ "price": {
+  "eyebrow": "V ceně",
+  "h": "Návrh <em>zdarma.</em>",
+  "lead": "Kuchyňské linky vyrábíme ve vysoké estetické kvalitě a s precizním provedením. Samozřejmostí je i dodání elektrospotřebičů. 3D návrh a konzultace jsou zdarma.",
+  "stamps": [
+   [
+    "Zdarma",
+    "3D návrh",
+    "kuchyně i nábytku"
+   ],
+   [
+    "Zdarma",
+    "Konzultace",
+    "nad vaším prostorem"
+   ],
+   [
+    "Dodáme",
+    "Spotřebiče",
+    "dřezy a baterie"
+   ],
+   [
+    "Renovace",
+    "Dveře a zárubně",
+    "jako nové, a levněji"
+   ]
+  ],
+  "note": "Renovace dveří je celkově levnější než pořízení nových dveří."
+ },
+ "conf_spec": "Kuchyňské linky ve vysoké estetické kvalitě s precizním provedením, včetně dodání elektrospotřebičů, dřezů a baterií. 3D návrh a konzultace zdarma.",
+ "svc_h": "Od kuchyně <em>po renovaci dveří.</em>",
+ "svc_lead": "Kuchyňské linky, vestavěné skříně, kancelářský nábytek, nábytek na míru i renovace dveří a zárubní. Klikněte pro podrobnosti.",
+ "brands": [
+  "3D návrh zdarma",
+  "Kuchyňské linky",
+  "Vestavěné skříně",
+  "Renovace dveří"
+ ],
+ "map": {
+  "eyebrow": "Dílna",
+  "h": "Dílna <em>ve Dvoře Králové.</em>",
+  "lead": "Najdete nás na ulici Spojených národů ve Dvoře Králové nad Labem, otevřeno v pracovní dny od 7 do 15 hodin.",
+  "cities": [
+   [
+    "Dvůr Králové (dílna)",
+    15.81,
+    50.43,
+    1
+   ],
+   [
+    "Trutnov",
+    15.91,
+    50.56
+   ],
+   [
+    "Jaroměř",
+    15.92,
+    50.36
+   ],
+   [
+    "Hořice",
+    15.63,
+    50.37
+   ],
+   [
+    "Hradec Králové",
+    15.83,
+    50.21
+   ],
+   [
+    "Vrchlabí",
+    15.61,
+    50.63
+   ],
+   [
+    "Náchod",
+    16.16,
+    50.42
+   ]
+  ],
+  "lo": [
+   15.45,
+   16.3
+  ],
+  "la": [
+   50.12,
+   50.7
+  ]
+ },
+ "contact": {
+  "label": "Firma",
+  "who": "Interiér Švorc",
+  "addr": "Spojených národů 231, 544 01 Dvůr Králové nad Labem",
+  "tel": "604 413 420",
+  "mail": "svorcm@email.cz"
+ },
+ "form": {
+  "p": "Pošlete nám pár údajů a ozveme se vám. 3D návrh i konzultace jsou zdarma.",
+  "chips": [
+   "Kuchyně",
+   "Vestavěná skříň",
+   "Kancelář",
+   "Renovace dveří",
+   "Jiný nábytek"
+  ],
+  "city": "Dvůr Králové"
+ },
+ "marquee": [
+  "Kuchyňské linky",
+  "Vestavěné skříně",
+  "Dětské pokoje",
+  "Kancelářský nábytek",
+  "3D návrh zdarma",
+  "Renovace dveří",
+  "Spotřebiče"
+ ],
+ "photos": [
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/5646379b6024f.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564637a6d7d8e.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/56463786a8eb6.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564637911c3ca.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564637b74bc87.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564637c62e8cc.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564637d05d778.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/5646376caa9e5.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/5646375c04de6.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564637070f757.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/56463716ae9d7.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/56463739aa984.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564637d9874d7.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564636f4e53da.jpg",
+   "Vestavěná skříň"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/56463721bb9c9.jpg",
+   "Vestavěná skříň"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/5646372d036c8.jpg",
+   "Vestavěná skříň"
+  ],
+  [
+   "dvere",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/564636ea81911.jpg",
+   "Dveře"
+  ],
+  [
+   "dvere",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/5646374675b63.jpg",
+   "Dveře"
+  ],
+  [
+   "dvere",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5030464/5646375183e37.jpg",
+   "Dveře"
+  ]
+ ],
+ "cat": {
+  "vse": "Vše",
+  "kuchyne": "Kuchyně",
+  "skrine": "Skříně",
+  "dvere": "Dveře"
+ },
+ "feat": [
+  0,
+  1,
+  2,
+  3,
+  13,
+  4,
+  6,
+  8
+ ],
+ "svc": [
+  {
+   "id": "kuchyne",
+   "t": "Kuchyňské linky",
+   "s": "3D návrh a konzultace zdarma.",
+   "img": 0,
+   "intro": "Vyrábíme kuchyňské linky ve vysoké estetické kvalitě a s precizním provedením. Samozřejmostí je i dodání elektrospotřebičů.",
+   "spec": [
+    [
+     "Zdarma",
+     "3D návrh a konzultace"
+    ],
+    [
+     "Dodáme",
+     "Spotřebiče, dřezy a baterie"
+    ]
+   ]
+  },
+  {
+   "id": "skrine",
+   "t": "Vestavěné skříně",
+   "s": "Ušetří prostor, zmodernizují byt.",
+   "img": 13,
+   "intro": "Vyrábíme kvalitní a praktické vestavěné skříně, které vám nejen ušetří prostor, ale i zmodernizují byt.",
+   "spec": [
+    [
+     "Pro",
+     "Ložnice, předsíně, dětské pokoje"
+    ]
+   ]
+  },
+  {
+   "id": "nabytek",
+   "t": "Nábytek na míru",
+   "s": "Originalita i exkluzivní materiály.",
+   "img": 11,
+   "intro": "Máte požadavky na originalitu provedení či exkluzivitu použitých materiálů? Vyrobíme nábytek přesně podle vašich představ. Vyrábíme i kancelářský nábytek s vysokou spolehlivostí a funkčností.",
+   "spec": [
+    [
+     "Vyrábíme",
+     "Nábytek na míru, dětské pokoje, kancelářský nábytek"
+    ]
+   ]
+  },
+  {
+   "id": "dvere",
+   "t": "Renovace dveří a zárubní",
+   "s": "Ze dne na den jako nové.",
+   "img": 17,
+   "intro": "Renovace dveří je celkově levnější než pořízení nových dveří a díky použitým postupům a materiálům se vaše dveře ze dne na den promění na nové.",
+   "spec": [
+    [
+     "Služba",
+     "Renovace dveří a zárubní"
+    ]
+   ]
+  }
+ ]
+}

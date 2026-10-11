@@ -1,0 +1,330 @@
+{
+ "new_site": true,
+ "source_note": "Fotografie a údaje převzaty z firemního profilu v katalogu ČESKÉSTAVBY.cz.",
+ "slug": "slavicek",
+ "name": "Truhlářství Josef Slavíček",
+ "logo": "Josef Slavíček",
+ "logo_sub": "Truhlářství · Chrudim",
+ "map_nav": "Dílna",
+ "hero_eyebrow": "Truhlářství · <b>Chrudim</b>",
+ "hero_p": "Kuchyňské linky, vestavěné skříně, obývací stěny i kancelářský nábytek. Atypická zakázková výroba z lamina.",
+ "steps": [
+  [
+   "01 · Konzultace",
+   "Probereme vaše představy.",
+   "Poradíme s dekory, deskami i dvířky."
+  ],
+  [
+   "02 · Návrh",
+   "Atypická zakázková výroba.",
+   "Každý kus přesně pro váš prostor."
+  ],
+  [
+   "03 · Výroba",
+   "Výroba z lamina na zakázku.",
+   "Široká nabídka dekorů lamin a HPL laminátů."
+  ],
+  [
+   "04 · Montáž",
+   "Dřezy, spotřebiče i kování.",
+   "Dodáme různé značky podle vašeho výběru."
+  ],
+  [
+   "05 · Hotovo",
+   "Kuchyň, která sedí na milimetr.",
+   "Z dílny v Chrudimi."
+  ]
+ ],
+ "price": {
+  "eyebrow": "Proč my",
+  "h": "Na míru <em>do posledního dvířka.</em>",
+  "lead": "Kuchyňské linky, vestavěné skříně, obývací stěny, kancelářský nábytek, počítačové a jídelní stoly, předsíňové skříně i obložení stěn. Atypická zakázková výroba z lamina.",
+  "stamps": [
+   [
+    "Dekory",
+    "Široká nabídka",
+    "lamin a HPL laminátů"
+   ],
+   [
+    "Desky",
+    "Pracovní desky",
+    "i kuchyňská dvířka"
+   ],
+   [
+    "Dodáme",
+    "Dřezy a spotřebiče",
+    "různých značek, včetně kování"
+   ],
+   [
+    "Renovace",
+    "Starší nábytek",
+    "umíme i renovovat"
+   ]
+  ],
+  "note": "Nabízíme i moderní materiály a atypická řešení."
+ },
+ "conf_spec": "Široká nabídka dekorů lamin, HPL laminátů, pracovních desek a kuchyňských dvířek. Dodáme i dřezy, spotřebiče a kování různých značek.",
+ "svc_h": "Od kuchyně <em>po obývací stěnu.</em>",
+ "svc_lead": "Kuchyně, vestavěné a šatní skříně, postele, komody, předsíňové a obývací stěny, stoly i renovace. Klikněte pro podrobnosti.",
+ "brands": [
+  "Lamino",
+  "HPL lamináty",
+  "Pracovní desky",
+  "Kuchyňská dvířka"
+ ],
+ "map": {
+  "eyebrow": "Dílna",
+  "h": "Dílna <em>v Chrudimi.</em>",
+  "lead": "Najdete nás na adrese Strojařů 1225 v Chrudimi. Zavolejte nebo napište a domluvíme se.",
+  "cities": [
+   [
+    "Chrudim (dílna)",
+    15.79,
+    49.95,
+    1
+   ],
+   [
+    "Pardubice",
+    15.78,
+    50.04
+   ],
+   [
+    "Heřmanův Městec",
+    15.66,
+    49.95
+   ],
+   [
+    "Hlinsko",
+    15.91,
+    49.76
+   ],
+   [
+    "Skuteč",
+    16.0,
+    49.84
+   ],
+   [
+    "Vysoké Mýto",
+    16.16,
+    49.95
+   ],
+   [
+    "Holice",
+    15.99,
+    50.07
+   ]
+  ],
+  "lo": [
+   15.45,
+   16.3
+  ],
+  "la": [
+   49.65,
+   50.15
+  ]
+ },
+ "contact": {
+  "label": "Truhlářství",
+  "who": "Josef Slavíček",
+  "addr": "Strojařů 1225, 537 01 Chrudim",
+  "tel": "777 017 701",
+  "mail": "jos.slavicek@volny.cz"
+ },
+ "form": {
+  "p": "Pošlete nám pár údajů a ozveme se vám.",
+  "chips": [
+   "Kuchyně",
+   "Vestavěná skříň",
+   "Obývací stěna",
+   "Stoly",
+   "Jiný nábytek"
+  ],
+  "city": "Chrudim"
+ },
+ "marquee": [
+  "Kuchyňské linky",
+  "Vestavěné skříně",
+  "Obývací stěny",
+  "Šatní skříně",
+  "Komody",
+  "Jídelní stoly",
+  "Lamino",
+  "HPL lamináty",
+  "Renovace"
+ ],
+ "photos": [
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/59d246267b066.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/59d2461bb4da7.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/567171ad398f8.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/567171b726ee1.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/567171bb0798a.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/5345041e57f6d.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/dd5b67.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/53450410e1f2e.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/59d24617732f9.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/59d24616a22ce.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/567171bf3d45d.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/567171b10f9be.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/567171b28e9cf.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/567171ab0c483.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/534504184d904.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/53450427ee733.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/53450422ecbaf.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/53450414d04f2.jpg",
+   "Vestavěná skříň"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/5345041b691dd.jpg",
+   "Výsuvy a vnitřní vybavení"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/28170/53450420e39ab.jpg",
+   "Vnitřní vybavení zásuvek"
+  ]
+ ],
+ "cat": {
+  "vse": "Vše",
+  "kuchyne": "Kuchyně",
+  "skrine": "Skříně"
+ },
+ "feat": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "svc": [
+  {
+   "id": "kuchyne",
+   "t": "Kuchyňské linky",
+   "s": "Z lamina, přesně na míru.",
+   "img": 0,
+   "intro": "Kuchyňské linky vyrábíme na zakázku z lamina. Nabízíme širokou nabídku dekorů lamin, HPL laminátů, pracovních desek a kuchyňských dvířek.",
+   "spec": [
+    [
+     "Materiály",
+     "Lamino, HPL lamináty, pracovní desky, kuchyňská dvířka"
+    ],
+    [
+     "Dodáme",
+     "Dřezy, spotřebiče a kování různých značek"
+    ]
+   ]
+  },
+  {
+   "id": "skrine",
+   "t": "Vestavěné a šatní skříně",
+   "s": "Úložné prostory na míru.",
+   "img": 17,
+   "intro": "Vestavěné a šatní skříně, předsíňové stěny, úložné prostory a peřináče přesně do vašeho prostoru.",
+   "spec": [
+    [
+     "Vyrábíme",
+     "Vestavěné a šatní skříně, předsíňové stěny, úložné prostory, peřináče"
+    ]
+   ]
+  },
+  {
+   "id": "nabytek",
+   "t": "Nábytek na zakázku",
+   "s": "Stoly, stěny, postele.",
+   "img": 8,
+   "intro": "Obývací stěny, kancelářský nábytek, počítačové, psací i jídelní stoly, postele a válendy, komody a obložení stěn.",
+   "spec": [
+    [
+     "Vyrábíme",
+     "Obývací stěny, kancelářský nábytek, stoly, postele, komody, obložení stěn"
+    ]
+   ]
+  },
+  {
+   "id": "renovace",
+   "t": "Renovace",
+   "s": "Nový vzhled starého nábytku.",
+   "img": 18,
+   "intro": "Kromě nové výroby nabízíme i renovace a moderní materiály.",
+   "spec": [
+    [
+     "Služba",
+     "Renovace nábytku"
+    ]
+   ]
+  }
+ ]
+}

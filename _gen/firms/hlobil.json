@@ -1,0 +1,386 @@
+{
+ "new_site": true,
+ "source_note": "Fotografie a údaje převzaty z firemního profilu v katalogu ČESKÉSTAVBY.cz.",
+ "slug": "hlobil",
+ "name": "Truhlářství Jiří Hlobil",
+ "logo": "Jiří Hlobil",
+ "logo_sub": "Truhlářství · Olomouc",
+ "map_nav": "Dílna",
+ "hero_eyebrow": "Truhlářství · <b>Olomouc-Holice</b>",
+ "hero_p": "Kuchyňské linky, vestavěné skříně, interiérový i venkovní nábytek, okna, dveře, schodiště a pergoly. Od zaměření po montáž.",
+ "steps": [
+  [
+   "01 · Zaměření",
+   "Přijedeme a změříme.",
+   "Komplexní služby od zaměření po montáž."
+  ],
+  [
+   "02 · Návrh",
+   "Poradíme s materiálem.",
+   "Povrchová úprava, kování i doplňky."
+  ],
+  [
+   "03 · Výroba",
+   "Podle vašich představ.",
+   "Dbáme na kvalitu práce i materiálů."
+  ],
+  [
+   "04 · Montáž",
+   "Výroba i montáž.",
+   "Kuchyně, skříně i celé interiéry."
+  ],
+  [
+   "05 · Hotovo",
+   "Spotřebiče za výhodné ceny.",
+   "Vestavné spotřebiče ke kuchyňským linkám."
+  ]
+ ],
+ "price": {
+  "eyebrow": "Proč my",
+  "h": "Od zaměření <em>po montáž.</em>",
+  "lead": "Poskytujeme komplexní služby od zaměření, návrhu a cenové kalkulace po výrobu a montáž. Ochotně vám poradíme s výběrem vhodného materiálu, povrchové úpravy, kování a doplňků.",
+  "stamps": [
+   [
+    "Komplet",
+    "Zaměření, návrh",
+    "i cenová kalkulace"
+   ],
+   [
+    "Výhodně",
+    "Vestavné spotřebiče",
+    "ke kuchyňským linkám"
+   ],
+   [
+    "Okna",
+    "Eurookna DOMINO 68",
+    "i venkovní dveře"
+   ],
+   [
+    "Venku",
+    "Pergoly a altány",
+    "i zahradní nábytek"
+   ]
+  ],
+  "note": "Při výrobě vycházíme z konkrétních představ našich zákazníků."
+ },
+ "conf_spec": "Kuchyňské linky vyrábíme na zakázku. Poradíme s výběrem materiálu, povrchové úpravy, kování a doplňků a dodáme vestavné spotřebiče za výhodné ceny.",
+ "svc_h": "Od kuchyně <em>po pergolu.</em>",
+ "svc_lead": "Kuchyňské linky, vestavěné skříně, kancelářský nábytek, dětské pokoje, okna, dveře, schodiště i pergoly. Klikněte pro podrobnosti.",
+ "brands": [
+  "Kuchyňské linky",
+  "Eurookna DOMINO 68",
+  "Venkovní dveře",
+  "Pergoly a altány"
+ ],
+ "map": {
+  "eyebrow": "Dílna",
+  "h": "Dílna <em>v Olomouci-Holici.</em>",
+  "lead": "Najdete nás na Návsi Svobody v Olomouci-Holici. Zavolejte nebo napište a domluvíme se.",
+  "cities": [
+   [
+    "Holice (dílna)",
+    17.29,
+    49.58,
+    1
+   ],
+   [
+    "Prostějov",
+    17.11,
+    49.47
+   ],
+   [
+    "Přerov",
+    17.45,
+    49.46
+   ],
+   [
+    "Šternberk",
+    17.3,
+    49.73
+   ],
+   [
+    "Litovel",
+    17.08,
+    49.7
+   ],
+   [
+    "Uničov",
+    17.12,
+    49.77
+   ],
+   [
+    "Hranice",
+    17.73,
+    49.55
+   ]
+  ],
+  "lo": [
+   16.9,
+   17.85
+  ],
+  "la": [
+   49.35,
+   49.85
+  ]
+ },
+ "contact": {
+  "label": "Truhlářství",
+  "who": "Jiří Hlobil",
+  "addr": "Náves Svobody 26/52, 779 00 Olomouc-Holice",
+  "tel": "603 521 060",
+  "mail": "jiri.hlobil@email.cz"
+ },
+ "form": {
+  "p": "Pošlete nám pár údajů a ozveme se vám.",
+  "chips": [
+   "Kuchyně",
+   "Vestavěná skříň",
+   "Okna a dveře",
+   "Pergola",
+   "Jiný nábytek"
+  ],
+  "city": "Olomouc"
+ },
+ "marquee": [
+  "Kuchyňské linky",
+  "Vestavěné skříně",
+  "Dětské pokoje",
+  "Kancelářský nábytek",
+  "Eurookna",
+  "Venkovní dveře",
+  "Schodiště",
+  "Pergoly",
+  "Altány"
+ ],
+ "photos": [
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d21810ecddc.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2180fc8c90.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d21842997b3.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2180e4091c.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2181533527.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d21818288fe.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2183c76429.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d21839d4d63.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2183e78023.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217bcde2c5.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217b9e47bc.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217e1c0e74.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217bebdf8a.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217c0ca9aa.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217a0c0112.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217c9d0b82.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217ce79201.jpg",
+   "Kuchyňská linka na zakázku"
+  ],
+  [
+   "okna",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2180a40a87.jpg",
+   "Okna a dveře"
+  ],
+  [
+   "okna",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d21806314b0.jpg",
+   "Okna a dveře"
+  ],
+  [
+   "okna",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d218008b2ec.jpg",
+   "Okna a dveře"
+  ],
+  [
+   "okna",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217fd8bc5f.jpg",
+   "Okna a dveře"
+  ],
+  [
+   "venku",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217f248486.jpg",
+   "Pergoly a přístřešky"
+  ],
+  [
+   "venku",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217b00e1c2.jpg",
+   "Pergoly a přístřešky"
+  ],
+  [
+   "venku",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217abc92da.jpg",
+   "Pergoly a přístřešky"
+  ],
+  [
+   "venku",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217a79ff1d.jpg",
+   "Pergoly a přístřešky"
+  ],
+  [
+   "venku",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d217a370817.jpg",
+   "Pergoly a přístřešky"
+  ],
+  [
+   "venku",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2179e81740.jpg",
+   "Pergoly a přístřešky"
+  ],
+  [
+   "venku",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2179a7b7bf.jpg",
+   "Pergoly a přístřešky"
+  ],
+  [
+   "schody",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d218494e781.jpg",
+   "Schodiště"
+  ],
+  [
+   "schody",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/66638/53d2180c0bb31.jpg",
+   "Schodiště"
+  ]
+ ],
+ "cat": {
+  "vse": "Vše",
+  "kuchyne": "Kuchyně",
+  "okna": "Okna a dveře",
+  "venku": "Pergoly",
+  "schody": "Schodiště"
+ },
+ "feat": [
+  0,
+  1,
+  2,
+  17,
+  21,
+  3,
+  28,
+  5
+ ],
+ "svc": [
+  {
+   "id": "kuchyne",
+   "t": "Kuchyňské linky",
+   "s": "Spotřebiče za výhodné ceny.",
+   "img": 0,
+   "intro": "Kuchyňské linky vyrábíme na zakázku podle konkrétních představ zákazníka. Při realizaci nabízíme dodání vestavných kuchyňských spotřebičů za výhodné ceny.",
+   "spec": [
+    [
+     "Služby",
+     "Zaměření, návrh, cenová kalkulace, výroba a montáž"
+    ],
+    [
+     "Spotřebiče",
+     "Vestavné spotřebiče za výhodné ceny"
+    ]
+   ]
+  },
+  {
+   "id": "interier",
+   "t": "Nábytek a interiéry",
+   "s": "Skříně, dětské pokoje, kanceláře.",
+   "img": 2,
+   "intro": "Specializujeme se na výrobu a montáž zakázkového nábytku, kancelářského nábytku, dětských pokojů a veškerých interiérů.",
+   "spec": [
+    [
+     "Vyrábíme",
+     "Vestavěné skříně, kancelářský nábytek, dětské pokoje, posuvné a shrnovací dveře"
+    ]
+   ]
+  },
+  {
+   "id": "okna",
+   "t": "Okna, dveře, schodiště",
+   "s": "Eurookna DOMINO 68.",
+   "img": 17,
+   "intro": "Vyrábíme a montujeme eurookna typu DOMINO 68, okna kastlová a zdvojená, venkovní dveře, schodiště a podlahy.",
+   "spec": [
+    [
+     "Okna",
+     "Eurookna DOMINO 68, kastlová, zdvojená"
+    ],
+    [
+     "Dále",
+     "Venkovní dveře, schodiště, podlahy"
+    ]
+   ]
+  },
+  {
+   "id": "venku",
+   "t": "Pergoly a zahrada",
+   "s": "Pergoly, altány, přístřešky.",
+   "img": 21,
+   "intro": "Vyrábíme zahradní pergoly, altány, přístřešky i zahradní nábytek.",
+   "spec": [
+    [
+     "Vyrábíme",
+     "Pergoly, altány, přístřešky, zahradní nábytek"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,343 @@
+{
+ "new_site": true,
+ "source_note": "Fotografie a údaje převzaty z firemního profilu v katalogu ČESKÉSTAVBY.cz.",
+ "slug": "sykora",
+ "name": "Truhlářství Sýkora",
+ "logo": "Truhlářství Sýkora",
+ "logo_sub": "Nábytek na míru · Ostrava",
+ "map_nav": "Dílna",
+ "hero_eyebrow": "Truhlářství · <b>Ostrava</b>",
+ "hero_p": "Výroba a montáž nábytku, kuchyňských linek, vestavěných skříní, ložnic, kancelářského nábytku, dveří, schodišť a zábradlí.",
+ "steps": [
+  [
+   "01 · Představa",
+   "Ukažte nám svou představu.",
+   "Fotka, obrázek nebo vlastní nákres stačí."
+  ],
+  [
+   "02 · Návrh",
+   "Čím konkrétnější, tím rychleji.",
+   "Schválení návrhu se tím výrazně zkrátí."
+  ],
+  [
+   "03 · Výroba",
+   "Jeden kus i celá místnost.",
+   "Vyrobíme vše na zakázku."
+  ],
+  [
+   "04 · Montáž",
+   "Doprava a montáž u vás.",
+   "Nedílná součást každé zakázky."
+  ],
+  [
+   "05 · Hotovo",
+   "Nábytek, který sedí na milimetr.",
+   "Z dílny v Ostravě."
+  ]
+ ],
+ "price": {
+  "eyebrow": "Jak postupujeme",
+  "h": "Vaše představa, <em>naše řemeslo.</em>",
+  "lead": "U nás si na zakázku můžete nechat vyrobit jeden kus nábytku i zařízení celé místnosti. Pro představu stačí fotografie, obrázek nebo vlastní nákres. Čím konkrétnější vaše představa bude, tím snáze a rychleji se dohodneme.",
+  "stamps": [
+   [
+    "V ceně",
+    "Doprava a montáž",
+    "přímo u zákazníka"
+   ],
+   [
+    "Na míru",
+    "Jeden kus",
+    "i celá místnost"
+   ],
+   [
+    "Uvnitř",
+    "Kuchyně, skříně",
+    "ložnice, kanceláře"
+   ],
+   [
+    "Řemeslo",
+    "Dveře a schodiště",
+    "i zábradlí"
+   ]
+  ],
+  "note": "Doprava na místo a následná montáž přímo u zákazníka je nedílnou součástí každé zakázky."
+ },
+ "conf_spec": "Kuchyňské linky i další nábytek vyrábíme na zakázku. Pro představu stačí fotografie, obrázek nebo vlastní nákres, doprava a montáž jsou součástí každé zakázky.",
+ "svc_h": "Od kuchyně <em>po schodiště.</em>",
+ "svc_lead": "Kuchyňské linky, vestavěné skříně, ložnice, kancelářský nábytek, dveře, schodiště a zábradlí. Klikněte pro podrobnosti.",
+ "brands": [
+  "Kuchyně",
+  "Vestavěné skříně",
+  "Schodiště",
+  "Dveře a zábradlí"
+ ],
+ "map": {
+  "eyebrow": "Dílna",
+  "h": "Dílna <em>v Ostravě.</em>",
+  "lead": "Najdete nás na Blanické ulici v Ostravě. Zavolejte nebo napište a domluvíme se.",
+  "cities": [
+   [
+    "Ostrava (dílna)",
+    18.25,
+    49.83,
+    1
+   ],
+   [
+    "Opava",
+    17.9,
+    49.94
+   ],
+   [
+    "Havířov",
+    18.43,
+    49.78
+   ],
+   [
+    "Karviná",
+    18.54,
+    49.85
+   ],
+   [
+    "Frýdek-Místek",
+    18.35,
+    49.68
+   ],
+   [
+    "Bohumín",
+    18.36,
+    49.9
+   ],
+   [
+    "Nový Jičín",
+    18.01,
+    49.59
+   ]
+  ],
+  "lo": [
+   17.8,
+   18.7
+  ],
+  "la": [
+   49.5,
+   50.02
+  ]
+ },
+ "contact": {
+  "label": "Truhlářství",
+  "who": "Truhlářství Sýkora",
+  "addr": "Blanická, 700 30 Ostrava",
+  "tel": "737 777 739",
+  "mail": "truhlarstvi-sykora@seznam.cz"
+ },
+ "form": {
+  "p": "Pošlete nám pár údajů, klidně i s fotkou nebo nákresem, a ozveme se vám.",
+  "chips": [
+   "Kuchyně",
+   "Vestavěná skříň",
+   "Schodiště",
+   "Dveře",
+   "Jiný nábytek"
+  ],
+  "city": "Ostrava"
+ },
+ "marquee": [
+  "Kuchyňské linky",
+  "Vestavěné skříně",
+  "Ložnice",
+  "Kancelářský nábytek",
+  "Dveře",
+  "Schodiště",
+  "Zábradlí",
+  "Doprava a montáž"
+ ],
+ "photos": [
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c6a3a6dc.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c6867135.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "kuchyne",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c66339fe.jpg",
+   "Kuchyňská linka"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c8b471de.jpg",
+   "Vestavěná skříň"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c896cc32.jpg",
+   "Vestavěná skříň"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c874ddc3.jpg",
+   "Vestavěná skříň pod šikminou"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c8483283.jpg",
+   "Vestavěná skříň"
+  ],
+  [
+   "skrine",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c7f52402.jpg",
+   "Vestavěná skříň"
+  ],
+  [
+   "schody",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c9702ee4.jpg",
+   "Schodiště"
+  ],
+  [
+   "schody",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c91242a9.jpg",
+   "Schodiště"
+  ],
+  [
+   "schody",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c8c8a26c.jpg",
+   "Schodiště"
+  ],
+  [
+   "dvere",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c9db5d4e.jpg",
+   "Dveře"
+  ],
+  [
+   "dvere",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c9be534d.jpg",
+   "Dveře"
+  ],
+  [
+   "dvere",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c63c9fd8.jpg",
+   "Dveře"
+  ],
+  [
+   "dvere",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c6115295.jpg",
+   "Dveře"
+  ],
+  [
+   "nabytek",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c7ccf3e3.jpg",
+   "Kancelářský nábytek"
+  ],
+  [
+   "nabytek",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c7a11290.jpg",
+   "Nábytek na zakázku"
+  ],
+  [
+   "nabytek",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c77e6995.jpg",
+   "Obývací pokoj"
+  ],
+  [
+   "nabytek",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c76e2add.jpg",
+   "Nábytek na zakázku"
+  ],
+  [
+   "nabytek",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c7684e0b.jpg",
+   "Police"
+  ],
+  [
+   "nabytek",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c72ae71e.jpg",
+   "Dětský pokoj"
+  ],
+  [
+   "nabytek",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c6c8c79d.jpg",
+   "Ložnice"
+  ],
+  [
+   "nabytek",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5009651/50224c5d84877.jpg",
+   "Jídelní stůl"
+  ]
+ ],
+ "cat": {
+  "vse": "Vše",
+  "kuchyne": "Kuchyně",
+  "skrine": "Skříně",
+  "schody": "Schodiště",
+  "dvere": "Dveře",
+  "nabytek": "Nábytek"
+ },
+ "feat": [
+  0,
+  3,
+  8,
+  1,
+  15,
+  5,
+  9,
+  21
+ ],
+ "svc": [
+  {
+   "id": "kuchyne",
+   "t": "Kuchyňské linky",
+   "s": "Na zakázku, s montáží.",
+   "img": 0,
+   "intro": "Vyrábíme a montujeme kuchyňské linky na zakázku. Doprava na místo a montáž jsou součástí každé zakázky.",
+   "spec": [
+    [
+     "V ceně",
+     "Doprava a montáž přímo u zákazníka"
+    ]
+   ]
+  },
+  {
+   "id": "skrine",
+   "t": "Vestavěné skříně",
+   "s": "I pod šikminou.",
+   "img": 3,
+   "intro": "Vestavěné skříně, ložnice a úložné prostory na míru, i do podkroví a pod šikmé stropy.",
+   "spec": [
+    [
+     "Vyrábíme",
+     "Vestavěné skříně, ložnice"
+    ]
+   ]
+  },
+  {
+   "id": "schody",
+   "t": "Schodiště a zábradlí",
+   "s": "Dřevěná schodiště na míru.",
+   "img": 8,
+   "intro": "Vyrábíme a montujeme dřevěná schodiště a zábradlí.",
+   "spec": [
+    [
+     "Vyrábíme",
+     "Schodiště, zábradlí"
+    ]
+   ]
+  },
+  {
+   "id": "dvere",
+   "t": "Dveře a nábytek",
+   "s": "Kanceláře, pokoje, ložnice.",
+   "img": 11,
+   "intro": "Dveře, kancelářský nábytek, dětské pokoje, ložnice a další nábytek na zakázku. Jeden kus i zařízení celé místnosti.",
+   "spec": [
+    [
+     "Vyrábíme",
+     "Dveře, kancelářský nábytek, dětské pokoje, ložnice, stoly"
+    ]
+   ]
+  }
+ ]
+}
