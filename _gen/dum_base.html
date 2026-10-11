@@ -345,6 +345,16 @@ body{counter-reset:list}
 .cgrid div:nth-child(2n){border-right:0}.cgrid div:nth-last-child(-n+2){border-bottom:0}
 @media (max-width:600px){.cgrid{grid-template-columns:1fr}.cgrid div{border-right:0}.cgrid div:nth-last-child(2){border-bottom:1px solid var(--line)}}
 .bigword{font-weight:500;letter-spacing:-.05em}
+
+.xpl{position:relative;height:260vh;background:var(--bg);background-image:linear-gradient(#9fd3ff0e 1px,transparent 1px),linear-gradient(90deg,#9fd3ff0e 1px,transparent 1px);background-size:40px 40px}
+.xpl-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#xplCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.xpl-head{position:absolute;z-index:2;left:0;top:clamp(80px,14vh,140px);max-width:560px;display:grid;gap:14px}
+.xl{position:absolute;z-index:2;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;transform:translate(10px,-50%);padding-left:46px;opacity:0;pointer-events:none}
+.xl::before{content:"";position:absolute;left:0;top:50%;width:38px;height:1px;background:currentColor}
+.xl::after{content:"";position:absolute;left:-3px;top:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:currentColor}
+@media (max-width:900px){.xpl-head{top:auto;bottom:6vh}.xl{font-size:.6rem;padding-left:30px}.xl::before{width:24px}}
+.sunr{width:100%;accent-color:var(--oak)}
 </style>
 </head>
 <body>
@@ -425,6 +435,14 @@ body{counter-reset:list}
   </div>
 </section>
 
+<section class="xpl" id="skladba">
+  <div class="xpl-stick">
+    <canvas id="xplCanvas" aria-hidden="true"></canvas>
+    <div class="xpl-head gut"><div class="eyebrow bar-rv"><span><b>—</b> Skladba domu</span></div><h2 class="h" data-split>Dům <em>vrstvu po vrstvě.</em></h2><p class="lead rv">Od základové desky po hřeben střechy. Posouvejte stránkou a dům se rozloží.</p></div>
+    <span class="xl" data-xl="0">Základová deska</span><span class="xl" data-xl="1">Obvodové zdi a okna</span><span class="xl" data-xl="2">Strop</span><span class="xl" data-xl="3">Krov a střecha</span>
+  </div>
+</section>
+
 <section class="conf gut" id="konfigurator">
   <div class="wrap">
     <div class="s-head"><div class="eyebrow bar-rv"><span><b>—</b> Vyzkoušejte si to</span></div><h2 class="h" data-split>Váš dům, <em>vaše materiály.</em></h2><p class="lead rv">Vyberte fasádu, střechu a barvu oken a podívejte se na dům ve dne i večer. Je to jen ilustrace, skutečný návrh připravíme přesně pro váš pozemek.</p></div>
@@ -447,6 +465,7 @@ body{counter-reset:list}
         <div class="opt"><h3>Střecha <b id="lbTop"></b></h3><div class="sw" id="swTop"></div></div>
         <div class="opt"><h3>Okenní rámy</h3><div class="seg" id="swHandle"></div></div>
         <div class="opt"><h3>Atmosféra</h3><div class="seg" id="swMood"></div></div>
+        <div class="opt"><h3>Slunce a stíny <b id="lbSun"></b></h3><input class="sunr" id="sunR" type="range" min="5" max="21" step=".25" value="14" aria-label="Čas dne"><div class="seg" id="swSeason" style="margin-top:10px"></div></div>
         <p class="spec">Korpusy z lamina 18 mm (Egger, Kronospan), hrany ABS 0,5 až 2 mm. Pracovní desky z laminátu, masivu nebo umělého kamene. Závěsy a zásuvky s tlumením od výrobců Blum, Hettich, Häfele a Mivokor s doživotní garancí plné funkčnosti.</p>
         <div class="h-ctas" style="margin-top:16px"><button class="btn fill" type="button" data-open="poptavka">Chci podobný dům <span class="arr">→</span></button></div>
       </div>
@@ -856,8 +875,8 @@ body{counter-reset:list}
     add(new THREE.BoxGeometry(Wg.x1-Wg.x0+.24,.1,Wg.z1-Wg.z0+.24),M.flat,flatRoof,(Wg.x0+Wg.x1)/2,.08+Wg.h+.05,(Wg.z0+Wg.z1)/2);
     // okna (rám ve 3 provedeních: antracit / bílá / dřevo)
     const frameM={bar:new THREE.MeshStandardMaterial({color:0x2c2e31,roughness:.45,metalness:.3}),steel:new THREE.MeshStandardMaterial({color:0xf4f4f2,roughness:.4}),none:new THREE.MeshStandardMaterial({map:tex("wood:frame",()=>woodCanvas("#9c6a40","#5a3a1e","#c08a5a",37),[1,1]),roughness:.5})};
-    const winPanes=[];
-    function win(x,y,z,w,h,sideways){const grp=new THREE.Group();grp.position.set(x,y,z);if(sideways)grp.rotation.y=-Math.PI/2;root.add(grp);
+    const winPanes=[],winGroups=[];
+    function win(x,y,z,w,h,sideways){const grp=new THREE.Group();winGroups.push(grp);grp.position.set(x,y,z);if(sideways)grp.rotation.y=-Math.PI/2;root.add(grp);
       const gl=add(new THREE.PlaneGeometry(w-.06,h-.06),M.winGlass,grp,0,0,.012,false,false);winPanes.push(gl);
       const set={x};["bar","steel","none"].forEach(k=>{const f=new THREE.Group();grp.add(f);const fm=frameM[k],t=.045;
         add(new THREE.BoxGeometry(w,t,.05),fm,f,0,h/2-t/2,.02);add(new THREE.BoxGeometry(w,t,.05),fm,f,0,-h/2+t/2,.02);
@@ -883,6 +902,10 @@ body{counter-reset:list}
     arr.push({node:gR,home:gR.position.clone(),from:new THREE.Vector3(0,2.2,0),t0:.44,t1:.53});
     arr.push({node:flatRoof,home:flatRoof.position.clone(),from:new THREE.Vector3(0,2.2,0),t0:.47,t1:.57});
 
+    // strop (jen pro rozložený dům)
+    const ceiling=new THREE.Group();ceiling.visible=false;root.add(ceiling);
+    add(new THREE.BoxGeometry(H.x1-H.x0,.09,H.z1-H.z0),M.slab,ceiling,(H.x0+H.x1)/2,.08+H.h+.045,(H.z0+H.z1)/2);
+    add(new THREE.BoxGeometry(Wg.x1-Wg.x0,.09,Wg.z1-Wg.z0),M.slab,ceiling,(Wg.x0+Wg.x1)/2,.08+Wg.h+.045,(Wg.z0+Wg.z1)/2);
     /* --- pozemek --- */
     const ground=add(new THREE.PlaneGeometry(16,12).rotateX(-Math.PI/2),M.grass,root,-.2,0,2.4,false,true);
     const path=add(new THREE.BoxGeometry(.6,.02,1.6),M.paving,root,-.95,.01,3.95,false,true);
@@ -1005,6 +1028,18 @@ body{counter-reset:list}
         const led=L.led||0;M.winGlass.color.lerpColors(cA.setHex(day>.5?0x7f97ab:0x0c1520),cB.setHex(0xffcf8a),led*(1-day*.6));spill.forEach(m=>m.material.opacity=led*(1-day)*.55);
         const hd=L.hood||0;scon.forEach(s=>{s.b.material.color.lerpColors(cA.setHex(0x2c2822),cB.setHex(0xfff2dc),hd);s.wash.material.opacity=hd*.5});porchPool.material.opacity=hd*.6*(1-day*.7);porchL.intensity=hd*1.6;
         const pv=L.pend||[0,0,0];pend.forEach((p,i)=>{const v=pv[i]||0;p.bulb.material.color.lerpColors(cA.setHex(0x2c2822),cB.setHex(0xfff0d6),v);p.spr.material.opacity=v*.9;p.pool.material.opacity=v*.45*(1-day*.7);if(p.L)p.L.intensity=v*(MOBILE?1.6:1.1)})},
+      xplAnchors:[new THREE.Vector3(),new THREE.Vector3(),new THREE.Vector3(),new THREE.Vector3()],
+      setExplode(e){ground.visible=false;path.visible=false;deck.visible=false;plan.visible=false;pops.forEach(p=>p.node.visible=false);spill.forEach(m=>m.material.opacity=0);porchPool.material.opacity=0;slabs.visible=true;ceiling.visible=e>.01;
+        const up=[walls,doorPivot,entry,...winGroups],tops=[roof,gL,gR,flatRoof],L1=e*1.15,L2=e*2.2,L3=e*3.3;
+        up.concat(tops).forEach(n=>{if(n.userData.by===undefined)n.userData.by=n.position.y});
+        up.forEach(n=>n.position.y=n.userData.by+L1);tops.forEach(n=>n.position.y=n.userData.by+L3);ceiling.position.y=L2;
+        const ax=Wg.x1+.35,az=(Wg.z0+Wg.z1)/2,A=this.xplAnchors;A[0].set(ax,.06,az);A[1].set(ax,.08+Wg.h*.5+L1,az);A[2].set(ax,.08+Wg.h+.05+L2,az);A[3].set(ax,.08+H.h+H.ridge*.45+L3,az)},
+      setSun(h,season,f){const sum=season!=="zima",rise=sum?5:7.8,set=sum?21:16.2,maxEl=(sum?63:17)*Math.PI/180,azMax=(sum?125:53)*Math.PI/180;
+        const k=cl((h-rise)/(set-rise)),up=h>rise&&h<set,el=up?Math.sin(Math.PI*k)*maxEl:0,phi=lerp(-azMax,azMax,k),R=10;
+        key.position.set(-.2-Math.sin(phi)*Math.cos(el)*R,.8+Math.max(.15,Math.sin(el)*R),1.8+Math.cos(phi)*Math.cos(el)*R);
+        const s=Math.sin(el)/Math.sin(63*Math.PI/180);
+        key.intensity=lerp(.22,up?lerp(.35,1.6,s):0,f);key.color.lerpColors(cA.setHex(0xffa860),cB.setHex(0xfff6ea),cl(el/(.45)));
+        hemi.intensity=lerp(.16,up?lerp(.42,.85,s):.2,f)},
       finished(){this.setElev(0);this.setPlan(0,0);this.setGhost(1,0);this.setCarcass(99);this.setRoom(1);this.setArrive(1);this.setPop(1);this.setOpen(0);this.setLaser(0,"cut",0,0)}
     };
     return K;
@@ -1057,12 +1092,12 @@ body{counter-reset:list}
 
   /* ================= KONFIGURÁTOR ================= */
   const VIEWS=[["celek","Celek",{tx:-.1,ty:1.0,tz:2.1,pol:1.18,az:.38,r:11.2}],["terasa","Terasa",{tx:1.4,ty:.6,tz:3.6,pol:1.12,az:-.4,r:4.6}],["okno","Detail okna",{tx:-1.9,ty:.75,tz:3.1,pol:1.3,az:.12,r:3.1}]];
-  const conf={front:"bila",top:"antracit",handle:"bar",mood:"den",view:"celek"};
+  const conf={front:"bila",top:"antracit",handle:"bar",mood:"den",view:"celek",sun:14,season:"leto"};
   function createConf(onFail){
     const cv=document.getElementById("confCanvas"),R=makeRenderer(cv,!MOBILE);if(!R)return null;
     const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(32,1,.05,80);S.environment=studioEnv();S.fog=new THREE.Fog(0x1a2a3a,13,32);
     const K=buildKitchen({blueprint:false,shadows:!MOBILE});S.add(K.root);K.finished();
-    let cur={front:conf.front,top:conf.top,handle:conf.handle},next=cur,sweep=1,lastT=0;
+    let cur={front:conf.front,top:conf.top,handle:conf.handle},next=cur,sweep=1,lastT=0,sunH=14,sunS="leto";
     let mood=conf.mood==="den"?1:0,tMood=mood;
     let cam=Object.assign({},VIEWS[0][2]),tCam=Object.assign({},cam),yaw=0,tYaw=0,pitch=0,tPitch=0,dragging=false;
     const d=sceneDriver(cv,R,(P,t,aspect)=>{
@@ -1073,7 +1108,7 @@ body{counter-reset:list}
       K.setSkin(cur,next,sx);K.setLaser(sx,"finish",sweep<1?Math.sin(Math.PI*k):0,t);
       if(sweep>=1&&cur!==next){cur=next;K.setSkin(cur,cur,99)}
       if(Math.abs(tMood-mood)>.002){mood+=(tMood-mood)*Math.min(1,dt/180);anim=true}else mood=tMood;
-      const ev=1-mood;K.setLights({day:mood,led:ev,hood:ev,pend:[ev,ev,ev]});R.toneMappingExposure=lerp(1.08,1.0,mood);
+      const ev=1-mood;K.setLights({day:mood,led:ev,hood:ev,pend:[ev,ev,ev]});R.toneMappingExposure=lerp(1.08,1.0,mood);K.setSun(sunH,sunS,mood);
       for(const n in cam){const dd=tCam[n]-cam[n];if(Math.abs(dd)>.0005){cam[n]+=dd*Math.min(1,dt/220);anim=true}}
       if(Math.abs(tYaw-yaw)>.0005||Math.abs(tPitch-pitch)>.0005){yaw+=(tYaw-yaw)*Math.min(1,dt/120);pitch+=(tPitch-pitch)*Math.min(1,dt/120);anim=true}
       const o=Object.assign({},cam);o.az+=yaw+(FINE&&!dragging?Math.sin(t/5200)*.04:0);o.pol=Math.max(.6,Math.min(1.38,o.pol+pitch));if(aspect<1)o.r*=1.25;
@@ -1085,7 +1120,7 @@ body{counter-reset:list}
           try{K.setSkin({front:F[i],top:T[i%T.length],handle:H[i%3]},{front:F[(i+1)%F.length],top:T[(i+1)%T.length],handle:H[(i+1)%3]},0);R.render(S,C)}catch(e){i=F.length}
           i++;K.setSkin(cur,cur,99);setTimeout(step,90)};step()},
       apply(){const n={front:conf.front,top:conf.top,handle:conf.handle};if(sweep<1)cur=next;next=n;sweep=0;lastT=0;d.poke()},
-      setMood(m){tMood=m==="den"?1:0;d.poke()},
+      setMood(m){tMood=m==="den"?1:0;d.poke()},setSun(h,s){sunH=h;sunS=s;d.poke()},
       setView(id){const vw=VIEWS.find(x=>x[0]===id);if(vw){tCam=Object.assign({},vw[2]);tYaw=0;tPitch=0;d.poke()}},
       drag(dx,dy){tYaw=Math.max(-1.1,Math.min(1.1,tYaw-dx*.006));tPitch=Math.max(-.4,Math.min(.25,tPitch-dy*.003));d.poke()},
       setDrag(v){dragging=v}});
@@ -1105,6 +1140,20 @@ body{counter-reset:list}
   }
   boot("hero",createHero,heroFallback,"kitchen");
   boot("conf",createConf,confFallback,"confCanvas");
+  /* ================= ROZLOŽENÝ DŮM ================= */
+  {const sec=document.getElementById("skladba"),cv=document.getElementById("xplCanvas");
+   const R=makeRenderer(cv,!MOBILE);
+   if(!R){sec.style.display="none"}else{
+    const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(32,1,.05,90);S.environment=studioEnv();
+    const K=buildKitchen({blueprint:false,shadows:!MOBILE});S.add(K.root);K.finished();K.setSkin(FIN,FIN,99);K.setLights({day:1,led:0,hood:0,pend:[0,0,0]});K.setSun(15,"leto",1);
+    const labs=[...sec.querySelectorAll("[data-xl]")],v=new THREE.Vector3();
+    const d=sceneDriver(cv,R,(P,t,aspect)=>{const W=d.W,H=d.H;C.aspect=aspect;C.fov=aspect<1?44:30;
+       if(aspect>=1)C.setViewOffset(W,H,-W*.13,-H*.03,W,H);else C.setViewOffset(W,H,W*.09,H*.1,W,H);C.updateProjectionMatrix();
+       const E=ease(sm(.08,.62,P));K.setExplode(E);
+       camSet(C,{tx:-.1,ty:1.0+E*1.55,tz:2.0,pol:lerp(1.16,1.06,E),az:lerp(.85,.2,P),r:(aspect<1?21:13.5)+E*(aspect<1?7:5.5)});R.render(S,C);C.updateMatrixWorld();
+       labs.forEach((el,i)=>{v.copy(K.xplAnchors[i]).project(C);el.style.left=Math.min((v.x+1)/2*W,W-el.offsetWidth-24).toFixed(0)+"px";el.style.top=((1-v.y)/2*H).toFixed(0)+"px";el.style.opacity=(sm(.3+i*.07,.4+i*.07,P)*(1-sm(.93,.99,P))).toFixed(3)})},()=>{sec.style.display="none"});
+    d.idleAt=()=>false;
+    (function tick(t){const r=sec.getBoundingClientRect(),vh=innerHeight,on=r.bottom>0&&r.top<vh;d.set(cl(-r.top/Math.max(1,r.height-vh)),on);d.frame(t||0,false);requestAnimationFrame(tick)})()}}
   addEventListener("load",()=>{setTimeout(()=>{const c=()=>{scenes.conf.warm&&scenes.conf.warm()};scenes.hero.warm?scenes.hero.warm(c):c()},300)});
 
   /* ovládání konfigurátoru */
@@ -1118,6 +1167,11 @@ body{counter-reset:list}
    segs(swH,Object.entries(HANDLES),"handle",()=>scenes.conf.apply());
    segs(swM,[["den","Den"],["vecer","Večer"]],"mood",m=>scenes.conf.setMood(m));
    segs(vw,VIEWS.map(v=>[v[0],v[1]]),"view",id=>scenes.conf.setView(id));
+   {const sr=document.getElementById("sunR"),lb=document.getElementById("lbSun"),ss=document.getElementById("swSeason");
+    const fmt=h=>{const H=Math.floor(h),m=Math.round((h-H)*60);return H+":"+String(m).padStart(2,"0")};
+    const upd=()=>{lb.textContent=fmt(conf.sun)+" · "+(conf.season==="leto"?"léto":"zima");scenes.conf.setSun&&scenes.conf.setSun(conf.sun,conf.season)};
+    sr.addEventListener("input",()=>{conf.sun=+sr.value;if(conf.mood!=="den"){conf.mood="den";[...swM.children].forEach(x=>x.setAttribute("aria-pressed",x.textContent==="Den"));scenes.conf.setMood("den")}upd()});
+    segs(ss,[["leto","Léto"],["zima","Zima"]],"season",()=>upd());upd()}
    scenes.conf.kind==="2d"&&(scenes.conf.apply(),scenes.conf.setMood(conf.mood));
    const v=document.getElementById("confView");let px=null,py=null;
    v.addEventListener("pointerdown",e=>{if(e.target.closest("button"))return;px=e.clientX;py=e.clientY;scenes.conf.setDrag(true);v.setPointerCapture&&v.setPointerCapture(e.pointerId)});

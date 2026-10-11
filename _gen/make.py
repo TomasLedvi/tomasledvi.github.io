@@ -68,7 +68,7 @@ def main(cfg_path):
       </div>
       <p class="price-note rv">{p["note"]}</p>
 '''
-    block('      <div class="eyebrow bar-rv"><span><b>—</b> Naše ceny</span></div>', "    </div>\n  </div>\n</section>\n\n<section class=\"conf", price_html)
+    block('      <div class="eyebrow bar-rv"><span><b>—</b> Naše ceny</span></div>', "    </div>\n  </div>\n</section>\n\n<section class=\"", price_html)
 
     # konfigurátor, služby, značky
     rep("Korpusy z lamina 18 mm (Egger, Kronospan), hrany ABS 0,5 až 2 mm. Pracovní desky z laminátu, masivu nebo umělého kamene. Závěsy a zásuvky s tlumením od výrobců Blum, Hettich, Häfele a Mivokor s doživotní garancí plné funkčnosti.", c["conf_spec"])

@@ -135,5 +135,57 @@ rep('<div class="scroll-hint" aria-hidden="true">Scrollujte</div>', '<div class=
 rep("Zavolejte nebo napište. Domluvíme konzultaci, přijedeme zaměřit a připravíme cenu přesně na míru.", "Zavolejte nebo napište. Domluvíme konzultaci nad vaším pozemkem nebo domem a připravíme nabídku.")
 rep('<span class="o">Na míru.</span><span class="f">Na míru.</span>', '<span class="o">Projekt.</span><span class="f">Projekt.</span>')
 
+
+# ===== slunce a stíny v konfigurátoru =====
+rep('const conf={front:"bila",top:"antracit",handle:"bar",mood:"den",view:"celek"};', 'const conf={front:"bila",top:"antracit",handle:"bar",mood:"den",view:"celek",sun:14,season:"leto"};')
+rep('<div class="opt"><h3>Atmosféra</h3><div class="seg" id="swMood"></div></div>', '<div class="opt"><h3>Atmosféra</h3><div class="seg" id="swMood"></div></div>\n        <div class="opt"><h3>Slunce a stíny <b id="lbSun"></b></h3><input class="sunr" id="sunR" type="range" min="5" max="21" step=".25" value="14" aria-label="Čas dne"><div class="seg" id="swSeason" style="margin-top:10px"></div></div>')
+rep('let cur={front:conf.front,top:conf.top,handle:conf.handle},next=cur,sweep=1,lastT=0;', 'let cur={front:conf.front,top:conf.top,handle:conf.handle},next=cur,sweep=1,lastT=0,sunH=14,sunS="leto";')
+rep('K.setLights({day:mood,led:ev,hood:ev,pend:[ev,ev,ev]});R.toneMappingExposure=lerp(1.08,1.0,mood);', 'K.setLights({day:mood,led:ev,hood:ev,pend:[ev,ev,ev]});R.toneMappingExposure=lerp(1.08,1.0,mood);K.setSun(sunH,sunS,mood);')
+rep('setMood(m){tMood=m==="den"?1:0;d.poke()},', 'setMood(m){tMood=m==="den"?1:0;d.poke()},setSun(h,s){sunH=h;sunS=s;d.poke()},')
+rep('segs(vw,VIEWS.map(v=>[v[0],v[1]]),"view",id=>scenes.conf.setView(id));', r"""segs(vw,VIEWS.map(v=>[v[0],v[1]]),"view",id=>scenes.conf.setView(id));
+   {const sr=document.getElementById("sunR"),lb=document.getElementById("lbSun"),ss=document.getElementById("swSeason");
+    const fmt=h=>{const H=Math.floor(h),m=Math.round((h-H)*60);return H+":"+String(m).padStart(2,"0")};
+    const upd=()=>{lb.textContent=fmt(conf.sun)+" · "+(conf.season==="leto"?"léto":"zima");scenes.conf.setSun&&scenes.conf.setSun(conf.sun,conf.season)};
+    sr.addEventListener("input",()=>{conf.sun=+sr.value;if(conf.mood!=="den"){conf.mood="den";[...swM.children].forEach(x=>x.setAttribute("aria-pressed",x.textContent==="Den"));scenes.conf.setMood("den")}upd()});
+    segs(ss,[["leto","Léto"],["zima","Zima"]],"season",()=>upd());upd()}""")
+
+# ===== rozložený dům (nová sekce) =====
+rep('<section class="conf gut" id="konfigurator">', """<section class="xpl" id="skladba">
+  <div class="xpl-stick">
+    <canvas id="xplCanvas" aria-hidden="true"></canvas>
+    <div class="xpl-head gut"><div class="eyebrow bar-rv"><span><b>—</b> Skladba domu</span></div><h2 class="h" data-split>Dům <em>vrstvu po vrstvě.</em></h2><p class="lead rv">Od základové desky po hřeben střechy. Posouvejte stránkou a dům se rozloží.</p></div>
+    <span class="xl" data-xl="0">Základová deska</span><span class="xl" data-xl="1">Obvodové zdi a okna</span><span class="xl" data-xl="2">Strop</span><span class="xl" data-xl="3">Krov a střecha</span>
+  </div>
+</section>
+
+<section class="conf gut" id="konfigurator">""")
+CSS2 = """
+.xpl{position:relative;height:260vh;background:var(--bg);background-image:linear-gradient(#9fd3ff0e 1px,transparent 1px),linear-gradient(90deg,#9fd3ff0e 1px,transparent 1px);background-size:40px 40px}
+.xpl-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#xplCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.xpl-head{position:absolute;z-index:2;left:0;top:clamp(80px,14vh,140px);max-width:560px;display:grid;gap:14px}
+.xl{position:absolute;z-index:2;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;transform:translate(10px,-50%);padding-left:46px;opacity:0;pointer-events:none}
+.xl::before{content:"";position:absolute;left:0;top:50%;width:38px;height:1px;background:currentColor}
+.xl::after{content:"";position:absolute;left:-3px;top:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:currentColor}
+@media (max-width:900px){.xpl-head{top:auto;bottom:6vh}.xl{font-size:.6rem;padding-left:30px}.xl::before{width:24px}}
+.sunr{width:100%;accent-color:var(--oak)}
+"""
+rep("</style>", CSS2 + "</style>")
+rep('  boot("conf",createConf,confFallback,"confCanvas");', r"""  boot("conf",createConf,confFallback,"confCanvas");
+  /* ================= ROZLOŽENÝ DŮM ================= */
+  {const sec=document.getElementById("skladba"),cv=document.getElementById("xplCanvas");
+   const R=makeRenderer(cv,!MOBILE);
+   if(!R){sec.style.display="none"}else{
+    const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(32,1,.05,90);S.environment=studioEnv();
+    const K=buildKitchen({blueprint:false,shadows:!MOBILE});S.add(K.root);K.finished();K.setSkin(FIN,FIN,99);K.setLights({day:1,led:0,hood:0,pend:[0,0,0]});K.setSun(15,"leto",1);
+    const labs=[...sec.querySelectorAll("[data-xl]")],v=new THREE.Vector3();
+    const d=sceneDriver(cv,R,(P,t,aspect)=>{const W=d.W,H=d.H;C.aspect=aspect;C.fov=aspect<1?44:30;
+       if(aspect>=1)C.setViewOffset(W,H,-W*.13,-H*.03,W,H);else C.setViewOffset(W,H,W*.09,H*.1,W,H);C.updateProjectionMatrix();
+       const E=ease(sm(.08,.62,P));K.setExplode(E);
+       camSet(C,{tx:-.1,ty:1.0+E*1.55,tz:2.0,pol:lerp(1.16,1.06,E),az:lerp(.85,.2,P),r:(aspect<1?21:13.5)+E*(aspect<1?7:5.5)});R.render(S,C);C.updateMatrixWorld();
+       labs.forEach((el,i)=>{v.copy(K.xplAnchors[i]).project(C);el.style.left=Math.min((v.x+1)/2*W,W-el.offsetWidth-24).toFixed(0)+"px";el.style.top=((1-v.y)/2*H).toFixed(0)+"px";el.style.opacity=(sm(.3+i*.07,.4+i*.07,P)*(1-sm(.93,.99,P))).toFixed(3)})},()=>{sec.style.display="none"});
+    d.idleAt=()=>false;
+    (function tick(t){const r=sec.getBoundingClientRect(),vh=innerHeight,on=r.bottom>0&&r.top<vh;d.set(cl(-r.top/Math.max(1,r.height-vh)),on);d.frame(t||0,false);requestAnimationFrame(tick)})()}}""")
+
 (ROOT / "_gen" / "dum_base.html").write_text(s, encoding="utf-8")
 print("hotovo: _gen/dum_base.html")

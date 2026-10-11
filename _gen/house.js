@@ -113,8 +113,8 @@
     add(new THREE.BoxGeometry(Wg.x1-Wg.x0+.24,.1,Wg.z1-Wg.z0+.24),M.flat,flatRoof,(Wg.x0+Wg.x1)/2,.08+Wg.h+.05,(Wg.z0+Wg.z1)/2);
     // okna (rám ve 3 provedeních: antracit / bílá / dřevo)
     const frameM={bar:new THREE.MeshStandardMaterial({color:0x2c2e31,roughness:.45,metalness:.3}),steel:new THREE.MeshStandardMaterial({color:0xf4f4f2,roughness:.4}),none:new THREE.MeshStandardMaterial({map:tex("wood:frame",()=>woodCanvas("#9c6a40","#5a3a1e","#c08a5a",37),[1,1]),roughness:.5})};
-    const winPanes=[];
-    function win(x,y,z,w,h,sideways){const grp=new THREE.Group();grp.position.set(x,y,z);if(sideways)grp.rotation.y=-Math.PI/2;root.add(grp);
+    const winPanes=[],winGroups=[];
+    function win(x,y,z,w,h,sideways){const grp=new THREE.Group();winGroups.push(grp);grp.position.set(x,y,z);if(sideways)grp.rotation.y=-Math.PI/2;root.add(grp);
       const gl=add(new THREE.PlaneGeometry(w-.06,h-.06),M.winGlass,grp,0,0,.012,false,false);winPanes.push(gl);
       const set={x};["bar","steel","none"].forEach(k=>{const f=new THREE.Group();grp.add(f);const fm=frameM[k],t=.045;
         add(new THREE.BoxGeometry(w,t,.05),fm,f,0,h/2-t/2,.02);add(new THREE.BoxGeometry(w,t,.05),fm,f,0,-h/2+t/2,.02);
@@ -140,6 +140,10 @@
     arr.push({node:gR,home:gR.position.clone(),from:new THREE.Vector3(0,2.2,0),t0:.44,t1:.53});
     arr.push({node:flatRoof,home:flatRoof.position.clone(),from:new THREE.Vector3(0,2.2,0),t0:.47,t1:.57});
 
+    // strop (jen pro rozložený dům)
+    const ceiling=new THREE.Group();ceiling.visible=false;root.add(ceiling);
+    add(new THREE.BoxGeometry(H.x1-H.x0,.09,H.z1-H.z0),M.slab,ceiling,(H.x0+H.x1)/2,.08+H.h+.045,(H.z0+H.z1)/2);
+    add(new THREE.BoxGeometry(Wg.x1-Wg.x0,.09,Wg.z1-Wg.z0),M.slab,ceiling,(Wg.x0+Wg.x1)/2,.08+Wg.h+.045,(Wg.z0+Wg.z1)/2);
     /* --- pozemek --- */
     const ground=add(new THREE.PlaneGeometry(16,12).rotateX(-Math.PI/2),M.grass,root,-.2,0,2.4,false,true);
     const path=add(new THREE.BoxGeometry(.6,.02,1.6),M.paving,root,-.95,.01,3.95,false,true);
@@ -262,6 +266,18 @@
         const led=L.led||0;M.winGlass.color.lerpColors(cA.setHex(day>.5?0x7f97ab:0x0c1520),cB.setHex(0xffcf8a),led*(1-day*.6));spill.forEach(m=>m.material.opacity=led*(1-day)*.55);
         const hd=L.hood||0;scon.forEach(s=>{s.b.material.color.lerpColors(cA.setHex(0x2c2822),cB.setHex(0xfff2dc),hd);s.wash.material.opacity=hd*.5});porchPool.material.opacity=hd*.6*(1-day*.7);porchL.intensity=hd*1.6;
         const pv=L.pend||[0,0,0];pend.forEach((p,i)=>{const v=pv[i]||0;p.bulb.material.color.lerpColors(cA.setHex(0x2c2822),cB.setHex(0xfff0d6),v);p.spr.material.opacity=v*.9;p.pool.material.opacity=v*.45*(1-day*.7);if(p.L)p.L.intensity=v*(MOBILE?1.6:1.1)})},
+      xplAnchors:[new THREE.Vector3(),new THREE.Vector3(),new THREE.Vector3(),new THREE.Vector3()],
+      setExplode(e){ground.visible=false;path.visible=false;deck.visible=false;plan.visible=false;pops.forEach(p=>p.node.visible=false);spill.forEach(m=>m.material.opacity=0);porchPool.material.opacity=0;slabs.visible=true;ceiling.visible=e>.01;
+        const up=[walls,doorPivot,entry,...winGroups],tops=[roof,gL,gR,flatRoof],L1=e*1.15,L2=e*2.2,L3=e*3.3;
+        up.concat(tops).forEach(n=>{if(n.userData.by===undefined)n.userData.by=n.position.y});
+        up.forEach(n=>n.position.y=n.userData.by+L1);tops.forEach(n=>n.position.y=n.userData.by+L3);ceiling.position.y=L2;
+        const ax=Wg.x1+.35,az=(Wg.z0+Wg.z1)/2,A=this.xplAnchors;A[0].set(ax,.06,az);A[1].set(ax,.08+Wg.h*.5+L1,az);A[2].set(ax,.08+Wg.h+.05+L2,az);A[3].set(ax,.08+H.h+H.ridge*.45+L3,az)},
+      setSun(h,season,f){const sum=season!=="zima",rise=sum?5:7.8,set=sum?21:16.2,maxEl=(sum?63:17)*Math.PI/180,azMax=(sum?125:53)*Math.PI/180;
+        const k=cl((h-rise)/(set-rise)),up=h>rise&&h<set,el=up?Math.sin(Math.PI*k)*maxEl:0,phi=lerp(-azMax,azMax,k),R=10;
+        key.position.set(-.2-Math.sin(phi)*Math.cos(el)*R,.8+Math.max(.15,Math.sin(el)*R),1.8+Math.cos(phi)*Math.cos(el)*R);
+        const s=Math.sin(el)/Math.sin(63*Math.PI/180);
+        key.intensity=lerp(.22,up?lerp(.35,1.6,s):0,f);key.color.lerpColors(cA.setHex(0xffa860),cB.setHex(0xfff6ea),cl(el/(.45)));
+        hemi.intensity=lerp(.16,up?lerp(.42,.85,s):.2,f)},
       finished(){this.setElev(0);this.setPlan(0,0);this.setGhost(1,0);this.setCarcass(99);this.setRoom(1);this.setArrive(1);this.setPop(1);this.setOpen(0);this.setLaser(0,"cut",0,0)}
     };
     return K;
