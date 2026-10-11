@@ -1,0 +1,389 @@
+{
+ "template": "dum",
+ "slug": "vrtal",
+ "name": "Architekt Josef Vrtal",
+ "logo": "Josef Vrtal",
+ "logo_sub": "Architekt · Kroměříž",
+ "map_nav": "Ateliér",
+ "source_note": "Fotografie a údaje převzaty ze současného webu architekta.",
+ "hero_eyebrow": "Architekt · <b>Kroměříž</b>",
+ "hero_p": "Návrhy a projekty rodinných domů. Novostavby, rekonstrukce, přístavby, nástavby i půdní vestavby.",
+ "steps": [
+  [
+   "01 · Konzultace",
+   "Probereme vaše představy.",
+   "Novostavba, rekonstrukce i přístavba."
+  ],
+  [
+   "02 · Návrh",
+   "Dům uvidíte dřív, než vznikne.",
+   "Návrhy doplňujeme 3D vizualizacemi."
+  ],
+  [
+   "03 · Projekt",
+   "Projekt pro stavbu.",
+   "Či rekonstrukci rodinného domu."
+  ],
+  [
+   "04 · Stavba",
+   "Dům roste podle výkresu.",
+   "Každý detail je promyšlený předem."
+  ],
+  [
+   "05 · Hotovo",
+   "Dům, který sedí na milimetr.",
+   "Architekt Josef Vrtal, Kroměříž."
+  ]
+ ],
+ "price": {
+  "eyebrow": "Co navrhujeme",
+  "h": "Návrh i projekt <em>z jedné ruky.</em>",
+  "lead": "Projekty rodinných domů, novostavby, rekonstrukce, přístavby, nástavby, půdní vestavby a stavební úpravy. Navrhujeme i zateplení rodinných domů pro získání dotace z programu Nová zelená úsporám.",
+  "stamps": [
+   [
+    "Novostavby",
+    "Rodinné domy",
+    "od návrhu po projekt"
+   ],
+   [
+    "Úpravy",
+    "Přístavby a nástavby",
+    "i stavební úpravy"
+   ],
+   [
+    "Podkroví",
+    "Půdní vestavby",
+    "pro víc prostoru"
+   ],
+   [
+    "Dotace",
+    "Zateplení",
+    "pro Novou zelenou úsporám"
+   ]
+  ],
+  "note": "Architekt Josef Vrtal, Kroměříž. Návrhy a projekty pro stavbu či rekonstrukci rodinných domů."
+ },
+ "conf_spec": "Fasádu, střechu i okna navrhneme podle vás a podle pozemku. Návrhy doplňujeme 3D vizualizacemi, jako jsou ty v galerii.",
+ "svc_h": "Od první čáry <em>po klíče.</em>",
+ "svc_lead": "Novostavby, rekonstrukce, přístavby a nástavby, půdní vestavby i projekty zateplení. Klikněte pro podrobnosti.",
+ "brands": [
+  "Novostavby",
+  "Rekonstrukce",
+  "Půdní vestavby",
+  "Nová zelená úsporám"
+ ],
+ "map": {
+  "eyebrow": "Ateliér",
+  "h": "Ateliér <em>v Kroměříži.</em>",
+  "lead": "Najdete nás na Kotojedské ulici v Kroměříži. Zavolejte nebo napište a domluvíme se.",
+  "cities": [
+   [
+    "Kroměříž (ateliér)",
+    17.39,
+    49.3,
+    1
+   ],
+   [
+    "Hulín",
+    17.46,
+    49.32
+   ],
+   [
+    "Holešov",
+    17.58,
+    49.33
+   ],
+   [
+    "Chropyně",
+    17.36,
+    49.36
+   ],
+   [
+    "Zdounky",
+    17.32,
+    49.23
+   ],
+   [
+    "Bystřice p. H.",
+    17.67,
+    49.4
+   ],
+   [
+    "Zlín",
+    17.67,
+    49.23
+   ],
+   [
+    "Přerov",
+    17.45,
+    49.46
+   ]
+  ],
+  "lo": [
+   17.1,
+   17.85
+  ],
+  "la": [
+   49.12,
+   49.55
+  ]
+ },
+ "contact": {
+  "label": "Architekt",
+  "who": "Ing. arch. Josef Vrtal",
+  "addr": "Kotojedská 1064/78, 767 01 Kroměříž",
+  "tel": "608 836 415",
+  "mail": "josefvrtal@centrum.cz"
+ },
+ "form": {
+  "p": "Pošlete nám pár údajů o pozemku nebo domě a ozveme se vám.",
+  "chips": [
+   "Novostavba",
+   "Rekonstrukce",
+   "Přístavba / nástavba",
+   "Půdní vestavba",
+   "Zateplení"
+  ],
+  "city": "Kroměříž"
+ },
+ "marquee": [
+  "Projekty rodinných domů",
+  "Novostavby",
+  "Rekonstrukce",
+  "Přístavby",
+  "Nástavby",
+  "Půdní vestavby",
+  "3D vizualizace",
+  "Nová zelená úsporám"
+ ],
+ "photos": [
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/3D-4-OBR-NOVY-STAV.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/FRANEK-3D-OBR-ZLEVA-OK.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/Kojecky-3D-celni-jpg.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/005.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/03/3D-MIKUL%C3%81%C5%A0.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/3D-ZEP%C5%98EDU-OK-TISK-OBR.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/9.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/10.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/17.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/18.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/21.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/36.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/33.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/32.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/24.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/22.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/010.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "vizualizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/014.jpg",
+   "Vizualizace rodinného domu"
+  ],
+  [
+   "realizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/001.jpg",
+   "Realizace"
+  ],
+  [
+   "realizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/03/4.jpg",
+   "Realizace"
+  ],
+  [
+   "realizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/03/11.jpg",
+   "Realizace"
+  ],
+  [
+   "realizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/03/31.jpg",
+   "Realizace"
+  ],
+  [
+   "realizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/03/21.jpg",
+   "Realizace"
+  ],
+  [
+   "realizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/002.jpg",
+   "Realizace"
+  ],
+  [
+   "realizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/003.jpg",
+   "Realizace"
+  ],
+  [
+   "realizace",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/004.jpg",
+   "Realizace"
+  ],
+  [
+   "vykresy",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/019.jpg",
+   "Výkres"
+  ],
+  [
+   "vykresy",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/008.jpg",
+   "Výkres"
+  ],
+  [
+   "vykresy",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/017.jpg",
+   "Výkres"
+  ],
+  [
+   "vykresy",
+   "https://www.architekt-kromeriz.com/wp-content/uploads/2015/02/39.jpg",
+   "Výkres"
+  ]
+ ],
+ "feat": [
+  0,
+  1,
+  2,
+  3,
+  18,
+  4,
+  6,
+  19
+ ],
+ "cat": {
+  "vse": "Vše",
+  "vizualizace": "Vizualizace",
+  "realizace": "Realizace",
+  "vykresy": "Výkresy"
+ },
+ "svc": [
+  {
+   "id": "novostavby",
+   "t": "Novostavby",
+   "s": "Rodinné domy na míru.",
+   "img": 0,
+   "intro": "Návrhy a projekty novostaveb rodinných domů, doplněné 3D vizualizacemi.",
+   "spec": [
+    [
+     "Navrhujeme",
+     "Rodinné domy na míru pozemku i rodině"
+    ],
+    [
+     "Součást návrhu",
+     "3D vizualizace domu"
+    ]
+   ]
+  },
+  {
+   "id": "rekonstrukce",
+   "t": "Rekonstrukce",
+   "s": "Přístavby, nástavby, úpravy.",
+   "img": 5,
+   "intro": "Projekty pro rekonstrukce, přístavby, nástavby a stavební úpravy rodinných domů.",
+   "spec": [
+    [
+     "Projektujeme",
+     "Rekonstrukce, přístavby, nástavby, stavební úpravy"
+    ]
+   ]
+  },
+  {
+   "id": "podkrovi",
+   "t": "Půdní vestavby",
+   "s": "Víc místa pod střechou.",
+   "img": 11,
+   "intro": "Návrhy a projekty půdních vestaveb, které využijí prostor pod střechou.",
+   "spec": [
+    [
+     "Projektujeme",
+     "Půdní vestavby a podkroví"
+    ]
+   ]
+  },
+  {
+   "id": "zatepleni",
+   "t": "Zateplení a dotace",
+   "s": "Nová zelená úsporám.",
+   "img": 16,
+   "intro": "Projekty zateplení rodinných domů pro získání dotace z programu Nová zelená úsporám.",
+   "spec": [
+    [
+     "Program",
+     "Nová zelená úsporám"
+    ],
+    [
+     "Projekt",
+     "Zateplení rodinného domu"
+    ]
+   ]
+  }
+ ]
+}

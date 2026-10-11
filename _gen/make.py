@@ -19,7 +19,7 @@ def js(v):
 
 def main(cfg_path):
     c = json.loads(pathlib.Path(cfg_path).read_text(encoding="utf-8"))
-    s = TPL
+    s = (ROOT / "_gen" / "dum_base.html").read_text(encoding="utf-8") if c.get("template") == "dum" else TPL
     n = c["name"]
 
     def rep(old, new, count=1):
