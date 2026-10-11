@@ -51,9 +51,9 @@
     "přímo u vás"
    ],
    [
-    "Až −40 %",
+    "Dodáme",
     "Vestavěné spotřebiče",
-    "Baumatic, Whirlpool, Ariston, Fagor, Karma"
+    "ke kuchyni na míru"
    ],
    [
     "2–5 let",
@@ -63,15 +63,14 @@
   ],
   "note": "Otevřeno v pracovní dny od 7 do 16 hodin."
  },
- "conf_spec": "Kuchyně na míru včetně vestavěných spotřebičů Baumatic, Whirlpool, Ariston, Fagor a Karma se slevou až 40 %. Návrh 3D projektu a měření zdarma.",
+ "conf_spec": "Kuchyně na míru včetně dodání vestavěných spotřebičů. Návrh 3D projektu a měření zdarma, záruční servis 2–5 let.",
  "svc_h": "Od kuchyně <em>po dřevěný domek.</em>",
  "svc_lead": "Kuchyně a nábytek, interiéry na klíč, pergoly, zahradní besídky a dřevěné domky na klíč. Klikněte pro podrobnosti.",
  "brands": [
-  "Baumatic",
-  "Whirlpool",
-  "Ariston",
-  "Fagor",
-  "Karma"
+  "Kuchyně na míru",
+  "Interiéry na klíč",
+  "Pergoly",
+  "Dřevěné domky"
  ],
  "map": {
   "eyebrow": "Dílna",
@@ -295,17 +294,17 @@
   {
    "id": "kuchyne",
    "t": "Kuchyně na míru",
-   "s": "Spotřebiče až o 40 % levněji.",
+   "s": "Návrh 3D projektu zdarma.",
    "img": 0,
-   "intro": "Kuchyně na míru s návrhem 3D projektu a měřením zdarma. K vestavěným spotřebičům Baumatic, Whirlpool, Ariston, Fagor a Karma nabízíme slevu až 40 %.",
+   "intro": "Kuchyně na míru s návrhem 3D projektu a měřením zdarma, včetně dodání vestavěných spotřebičů.",
    "spec": [
     [
      "Zdarma",
      "Návrh 3D projektu, měření"
     ],
     [
-     "Spotřebiče",
-     "Baumatic, Whirlpool, Ariston, Fagor, Karma – sleva až 40 %"
+     "Dodáme",
+     "Vestavěné spotřebiče"
     ],
     [
      "Záruka",
