@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316120f'/%3E%3Crect x='7' y='9' width='18' height='14' rx='1.5' fill='none' stroke='%23e3ab6e' stroke-width='2'/%3E%3Cpath d='M16 9v14M7 16h9' stroke='%23e3ab6e' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Neoficiální koncept redesignu pro Architekt Josef Vrtal.
    Layout: „dílna po setmění“. Hero = filmová 3D scéna: půdorys → kóty → výroba (laserová linka) → montáž → povrchová úprava (swipe) → světla.
@@ -166,8 +166,8 @@ h2.h em{color:var(--oak)}
 @media (max-width:900px){.conf-grid{grid-template-columns:1fr}.conf-view{height:52vh}}
 
 /* ================= SVĚTLÉ SEKCE ================= */
-.light{background:var(--paper);color:var(--pink);--line:var(--pline);--line-2:#14223140;--muted:var(--pmuted);--dim:#8a7a69}
-.light .eyebrow b,.light h2.h em{color:#b07a45}
+.light{background:var(--paper);color:var(--pink);--line:var(--pline);--line-2:#14223140;--muted:var(--pmuted);--dim:#6c7d8d}
+.light .eyebrow b,.light h2.h em{color:#2c6f9e}
 .light .btn:hover{color:#0d1620}
 .sec{padding-block:clamp(80px,10vw,140px)}
 .svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
@@ -178,7 +178,7 @@ h2.h em{color:var(--oak)}
 .card:hover .ph img{transform:scale(1.06)}
 .card h3{margin:6px 18px 0;font-family:var(--f-display);font-weight:400;font-size:1.75rem;line-height:1.05}
 .card p{margin:0 18px;color:var(--muted);font-size:.93rem}
-.card .more{margin:4px 18px 0;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#b07a45}
+.card .more{margin:4px 18px 0;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#2c6f9e}
 @media (max-width:980px){.svc{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.svc{grid-template-columns:1fr}}
 .brands{display:flex;gap:28px;flex-wrap:wrap;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
@@ -191,7 +191,7 @@ h2.h em{color:var(--oak)}
 .arrows button{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line-2);background:transparent;cursor:pointer;font-size:1.1rem;transition:background .3s,color .3s}
 .arrows button:hover{background:var(--pink);color:var(--paper)}
 .rail-prog{width:min(220px,40vw);height:2px;background:var(--line-2);position:relative;margin-right:8px}
-.rail-prog::after{content:"";position:absolute;inset:0;background:#b07a45;transform-origin:left;transform:scaleX(var(--rp,0))}
+.rail-prog::after{content:"";position:absolute;inset:0;background:#2c6f9e;transform-origin:left;transform:scaleX(var(--rp,0))}
 .rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(16px,5vw) 10px;cursor:grab;overscroll-behavior-x:contain}
 .rail::-webkit-scrollbar{display:none}
 .rail.drag{scroll-snap-type:none;cursor:grabbing}
@@ -260,8 +260,8 @@ h2.h em{color:var(--oak)}
 .cgrid a{text-decoration:none}
 @media (max-width:900px){.contact{grid-template-columns:1fr}}
 .bigword{position:relative;margin:clamp(60px,9vw,110px) auto 0;max-width:1240px;font-family:var(--f-display);font-size:clamp(4.8rem,19vw,17rem);line-height:.85;letter-spacing:-.03em;white-space:nowrap;user-select:none}
-.bigword .o{color:transparent;-webkit-text-stroke:1.2px #b07a45}
-.bigword .f{position:absolute;inset:0;color:#b07a45;clip-path:inset(calc((1 - var(--f,0)) * 100%) 0 0 0)}
+.bigword .o{color:transparent;-webkit-text-stroke:1.2px #2c6f9e}
+.bigword .f{position:absolute;inset:0;color:#2c6f9e;clip-path:inset(calc((1 - var(--f,0)) * 100%) 0 0 0)}
 footer{padding-block:34px 110px;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:35;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;background:linear-gradient(to top,var(--bg) 55%,transparent);transition:transform .5s var(--ease)}
@@ -316,12 +316,41 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
 .js .hero .stage{position:sticky;top:0;height:100vh;height:100svh}
 .js .map .route{--r:0}
 @media (prefers-reduced-motion:reduce){.sc>*,.win-card,.win-bg,.btn::before{transition:none}.map .ring{animation:none;opacity:0}.scroll-hint::after{animation:none}}
+
+/* ===== PROJEKČNÍ STYL ===== */
+:root{--f-display:"Space Grotesk",system-ui,sans-serif}
+.h,.h-copy h1{font-weight:500;letter-spacing:-.035em;line-height:1.02}
+.h-copy h1{font-size:clamp(2.6rem,6vw,5.4rem)}
+.h{font-size:clamp(2.2rem,5vw,4.2rem)}
+h2.h em,.h-copy h1 em{font-style:normal}
+.mq span{font-family:var(--f-mono);text-transform:uppercase;font-size:clamp(1.2rem,2.8vw,2.2rem);letter-spacing:.08em}
+.mq i{color:var(--blue)!important}
+.btn{border-radius:3px}
+.card,.stamp,.fc,.tile,.conf-view,.win-card,.map,.ph{border-radius:4px!important}
+.stamp .st{font-family:var(--f-mono);font-size:clamp(.95rem,1.8vw,1.25rem);letter-spacing:.1em;text-transform:uppercase;border-radius:2px;border-width:1.5px;border-color:var(--blue);color:var(--blue)}
+.light{background-image:linear-gradient(#14223112 1px,transparent 1px),linear-gradient(90deg,#14223112 1px,transparent 1px),linear-gradient(#14223109 1px,transparent 1px),linear-gradient(90deg,#14223109 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px}
+.price,.conf,.map-sec,.marq{background-image:linear-gradient(#9fd3ff0e 1px,transparent 1px),linear-gradient(90deg,#9fd3ff0e 1px,transparent 1px);background-size:40px 40px}
+.s-head .h::after,.price .h::after,.map-sec .h::after,.contact .h::after{content:"";display:block;width:min(260px,60%);height:10px;margin-top:18px;background:linear-gradient(currentColor,currentColor) 0 50%/100% 1px no-repeat,linear-gradient(currentColor,currentColor) 0 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 100% 0/1px 100% no-repeat;opacity:.35}
+body{counter-reset:list}
+.eyebrow.bar-rv>span::before{counter-increment:list;content:"List " counter(list,decimal-leading-zero);color:var(--blue);margin-right:.9em}
+.light .eyebrow.bar-rv>span::before{color:#2c6f9e}
+.tile::before,.fc::before{content:"";position:absolute;inset:9px;z-index:2;pointer-events:none;--c:#ffffffd0;background:linear-gradient(var(--c),var(--c)) 0 0/14px 1.5px,linear-gradient(var(--c),var(--c)) 0 0/1.5px 14px,linear-gradient(var(--c),var(--c)) 100% 0/14px 1.5px,linear-gradient(var(--c),var(--c)) 100% 0/1.5px 14px,linear-gradient(var(--c),var(--c)) 0 100%/14px 1.5px,linear-gradient(var(--c),var(--c)) 0 100%/1.5px 14px,linear-gradient(var(--c),var(--c)) 100% 100%/14px 1.5px,linear-gradient(var(--c),var(--c)) 100% 100%/1.5px 14px;background-repeat:no-repeat}
+.tblock{position:absolute;z-index:3;right:max(16px,3vw);bottom:clamp(96px,14vh,140px);display:grid;grid-template-columns:auto auto;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border:1px solid #9fd3ff55;background:#0d1620cc;pointer-events:none}
+.tblock span{padding:5px 10px;border-right:1px solid #9fd3ff2a;border-bottom:1px solid #9fd3ff2a}
+.tblock span:nth-child(2n){border-right:0}.tblock span:nth-last-child(-n+2){border-bottom:0}
+.tblock b{font-weight:500;color:var(--ink)}
+@media (max-width:900px){.tblock{display:none}}
+.cgrid{border:1.5px solid var(--line-2);gap:0;grid-template-columns:1fr 1fr}
+.cgrid div{padding:12px 14px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.cgrid div:nth-child(2n){border-right:0}.cgrid div:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:600px){.cgrid{grid-template-columns:1fr}.cgrid div{border-right:0}.cgrid div:nth-last-child(2){border-bottom:1px solid var(--line)}}
+.bigword{font-weight:500;letter-spacing:-.05em}
 </style>
 </head>
 <body>
 <div class="concept-bar" id="conceptBar">NEOFICIÁLNÍ NÁVRH REDESIGNU · nejde o oficiální web Architekt Josef Vrtal</div>
 <header class="nav" id="nav">
-  <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="18" rx="2" fill="none" stroke="#e3ab6e" stroke-width="1.8"/><path d="M16 7v18M5 16h11M20 12h3M20 20h3" stroke="#e3ab6e" stroke-width="1.8" stroke-linecap="round"/></svg><span>Josef Vrtal<small>Architekt · Kroměříž</small></span></a>
+  <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 15.5L16 7l10 8.5V25H6z" fill="none" stroke="#e3ab6e" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 29h20M6 27.5v3M26 27.5v3M13.5 25v-6h5v6" fill="none" stroke="#9fd3ff" stroke-width="1.3" stroke-linecap="round"/></svg><span>Josef Vrtal<small>Architekt · Kroměříž</small></span></a>
   <nav class="links"><a href="#postup">Postup</a><a href="#konfigurator">Konfigurátor</a><a href="#realizace">Realizace</a><a href="#oblast">Ateliér</a><a href="#kontakt">Kontakt</a><button class="btn fill" type="button" data-open="poptavka">Poptávka <span class="arr">→</span></button></nav>
   <div class="prog" aria-hidden="true"></div>
 </header>
@@ -361,6 +390,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
       <div class="h-ctas rv" style="--d:.65s"><button class="btn fill" type="button" data-open="poptavka">Poptat projekt <span class="arr">→</span></button><a class="btn" href="#realizace">Naše realizace</a></div>
     </div>
     <div class="scroll-hint" aria-hidden="true">Scrollujte</div>
+    <div class="tblock" aria-hidden="true"><span>Výkres</span><span><b>Půdorys 1.NP</b></span><span>Měřítko</span><span><b>1 : 100</b></span><span>Formát</span><span><b>A1</b></span><span>List</span><span><b>01</b></span></div>
     <div class="steps gut">
       <div class="step-cap" aria-live="polite">
         <div class="sc on"><small>01 · Konzultace</small><b>Probereme vaše představy.</b><span>Novostavba, rekonstrukce i přístavba.</span></div>
@@ -426,7 +456,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
 
 <section class="sec gut light" id="sluzby">
   <div class="wrap">
-    <div class="s-head"><div class="eyebrow bar-rv"><span><b>—</b> Co navrhujeme</span></div><h2 class="h" data-split>Od první čáry <em>po klíče.</em></h2><p class="lead rv">Novostavby, rekonstrukce, přístavby a nástavby, půdní vestavby i projekty zateplení. Klikněte pro podrobnosti.</p></div>
+    <div class="s-head"><div class="eyebrow bar-rv"><span><b>—</b> Služby</span></div><h2 class="h" data-split>Od první čáry <em>po klíče.</em></h2><p class="lead rv">Novostavby, rekonstrukce, přístavby a nástavby, půdní vestavby i projekty zateplení. Klikněte pro podrobnosti.</p></div>
     <div class="svc" id="svc"></div>
     <div class="brands rv"><span>Navrhujeme</span><b>Novostavby</b><b>Rekonstrukce</b><b>Půdní vestavby</b><b>Nová zelená úsporám</b></div>
   </div>
@@ -469,7 +499,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
     <div style="display:grid;gap:16px">
       <div class="eyebrow bar-rv"><span><b>—</b> Kontakt</span></div>
       <h2 class="h" data-split>Ozvěte se, <em>zbytek vyřešíme.</em></h2>
-      <p class="lead rv">Zavolejte nebo napište. Domluvíme konzultaci, přijedeme zaměřit a připravíme cenu přesně na míru.</p>
+      <p class="lead rv">Zavolejte nebo napište. Domluvíme konzultaci nad vaším pozemkem nebo domem a připravíme nabídku.</p>
       <div class="h-ctas rv"><button class="btn fill" type="button" data-open="poptavka">Poslat poptávku <span class="arr">→</span></button></div>
     </div>
     <div class="cgrid rv">
@@ -479,7 +509,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
       <div><small>E-mail</small><a href="mailto:josefvrtal@centrum.cz">josefvrtal@centrum.cz</a></div>
     </div>
   </div>
-  <div class="bigword" id="bigword" aria-hidden="true"><span class="o">Na míru.</span><span class="f">Na míru.</span></div>
+  <div class="bigword" id="bigword" aria-hidden="true"><span class="o">Projekt.</span><span class="f">Projekt.</span></div>
 </section>
 </main>
 <footer class="gut light"><div class="wrap"><span>Neoficiální návrh nového webu pro Architekt Josef Vrtal. Nejde o oficiální stránky. © 2026 Tomáš Ledvina – koncept, použití jen po dohodě s autorem.</span><span>Fotografie a údaje převzaty ze současného webu architekta. 3D dům je ilustrační.</span></div></footer>
@@ -560,9 +590,9 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
   document.addEventListener("keydown",e=>{if(win.hidden)return;if(e.key==="Escape")closeWin();else if(onKey)onKey(e);
     if(e.key==="Tab"){const f=[...winCard.querySelectorAll("button,a[href],input,textarea")];if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
   function openSvc(id){const s=SVC.find(x=>x.id===id);if(!s)return;
-    openWin(`<div class="eyebrow" style="margin-bottom:10px"><b>—</b> Co navrhujeme</div><h3 id="winTitle">${s.t}</h3><p>${s.intro}</p><div class="spec-list">${s.spec.map(([a,b])=>`<div><b>${a}</b><span>${b}</span></div>`).join("")}</div>
+    openWin(`<div class="eyebrow" style="margin-bottom:10px"><b>—</b> Služby</div><h3 id="winTitle">${s.t}</h3><p>${s.intro}</p><div class="spec-list">${s.spec.map(([a,b])=>`<div><b>${a}</b><span>${b}</span></div>`).join("")}</div>
       <div class="h-ctas"><button class="btn fill" type="button" data-open="poptavka">Poptávka <span class="arr">→</span></button></div>`)}
-  let pType="Kuchyně";
+  let pType="Novostavba";
   function openPoptavka(){
     openWin(`<div class="eyebrow" style="margin-bottom:10px"><b>—</b> Poptávka</div><h3 id="winTitle">Co pro vás můžeme vyrobit?</h3>
       <p>Pošlete nám pár údajů o pozemku nebo domě a ozveme se vám.</p>

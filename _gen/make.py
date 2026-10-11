@@ -98,6 +98,7 @@ def main(cfg_path):
     f = c["form"]
     rep('<p>Pošlete nám pár údajů a ozveme se s termínem konzultace. Návrh i zaměření jsou v ceně.</p>', f'<p>{f["p"]}</p>')
     rep('${["Kuchyně","Vestavěná skříň","Šatna","Jiný nábytek","Dveře"]', "${" + js(f["chips"]))
+    rep('let pType="Kuchyně";', 'let pType=' + js(f["chips"][0]) + ';')
     rep('placeholder="např. Kladno"', f'placeholder="např. {f["city"]}"')
     rep("na skutečném webu přijde poptávka rovnou do e-mailu truhlářství.", "na skutečném webu přijde poptávka rovnou do vašeho e-mailu.")
 

@@ -91,10 +91,49 @@ rep('<span class="dim" data-dim="0">13 500</span><span class="dim" data-dim="1">
     "".join(f'<span class="dim" data-dim="{i}">{t}</span>' for i,t in enumerate(labels)))
 # styl výkresu: modrošedé pozadí, světle modré linky, pískový akcent
 for a,b in [("#16120f","#0d1620"),("0x16120f","0x0d1620"),("#1e1814","#122030"),("#2a221b","#1a2a3a"),("0x2a221b","0x1a2a3a"),("#f4ede3","#eef3f7"),("#c7b9a7","#a9b9c7"),("#9c8c79","#7f91a2"),
-            ("#f3ece1","#edf1f4"),("#e9e0d2","#dde4ea"),("#2b2219","#142231"),("#6e5f50","#526476"),("#3a2a1c88","#1b2d4088"),("#9a6634","#b07a45"),("#fffaf2","#f7f9fb"),("Co vyrábíme","Co navrhujeme"),
+            ("#f3ece1","#edf1f4"),("#e9e0d2","#dde4ea"),("#2b2219","#142231"),("#6e5f50","#526476"),("#3a2a1c88","#1b2d4088"),("#9a6634","#b07a45"),("#fffaf2","#f7f9fb"),("#b07a45","#2c6f9e"),("#8a7a69","#6c7d8d"),("Co vyrábíme","Služby"),
             ("#d9a66a","#e3ab6e"),("%23d9a66a","%23e3ab6e"),("#efc48f","#f3c896"),("#8cc4ea","#9fd3ff"),("0x8cc4ea","0x9fd3ff")]:
     s_count=s
     s=s.replace(a,b)
+
+
+# ===== projekční prostředí (typografie, papír, listy, razítko) =====
+rep("family=Instrument+Serif:ital@0;1&", "family=Space+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&")
+CSS = """
+/* ===== PROJEKČNÍ STYL ===== */
+:root{--f-display:"Space Grotesk",system-ui,sans-serif}
+.h,.h-copy h1{font-weight:500;letter-spacing:-.035em;line-height:1.02}
+.h-copy h1{font-size:clamp(2.6rem,6vw,5.4rem)}
+.h{font-size:clamp(2.2rem,5vw,4.2rem)}
+h2.h em,.h-copy h1 em{font-style:normal}
+.mq span{font-family:var(--f-mono);text-transform:uppercase;font-size:clamp(1.2rem,2.8vw,2.2rem);letter-spacing:.08em}
+.mq i{color:var(--blue)!important}
+.btn{border-radius:3px}
+.card,.stamp,.fc,.tile,.conf-view,.win-card,.map,.ph{border-radius:4px!important}
+.stamp .st{font-family:var(--f-mono);font-size:clamp(.95rem,1.8vw,1.25rem);letter-spacing:.1em;text-transform:uppercase;border-radius:2px;border-width:1.5px;border-color:var(--blue);color:var(--blue)}
+.light{background-image:linear-gradient(#14223112 1px,transparent 1px),linear-gradient(90deg,#14223112 1px,transparent 1px),linear-gradient(#14223109 1px,transparent 1px),linear-gradient(90deg,#14223109 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px}
+.price,.conf,.map-sec,.marq{background-image:linear-gradient(#9fd3ff0e 1px,transparent 1px),linear-gradient(90deg,#9fd3ff0e 1px,transparent 1px);background-size:40px 40px}
+.s-head .h::after,.price .h::after,.map-sec .h::after,.contact .h::after{content:"";display:block;width:min(260px,60%);height:10px;margin-top:18px;background:linear-gradient(currentColor,currentColor) 0 50%/100% 1px no-repeat,linear-gradient(currentColor,currentColor) 0 0/1px 100% no-repeat,linear-gradient(currentColor,currentColor) 100% 0/1px 100% no-repeat;opacity:.35}
+body{counter-reset:list}
+.eyebrow.bar-rv>span::before{counter-increment:list;content:"List " counter(list,decimal-leading-zero);color:var(--blue);margin-right:.9em}
+.light .eyebrow.bar-rv>span::before{color:#2c6f9e}
+.tile::before,.fc::before{content:"";position:absolute;inset:9px;z-index:2;pointer-events:none;--c:#ffffffd0;background:linear-gradient(var(--c),var(--c)) 0 0/14px 1.5px,linear-gradient(var(--c),var(--c)) 0 0/1.5px 14px,linear-gradient(var(--c),var(--c)) 100% 0/14px 1.5px,linear-gradient(var(--c),var(--c)) 100% 0/1.5px 14px,linear-gradient(var(--c),var(--c)) 0 100%/14px 1.5px,linear-gradient(var(--c),var(--c)) 0 100%/1.5px 14px,linear-gradient(var(--c),var(--c)) 100% 100%/14px 1.5px,linear-gradient(var(--c),var(--c)) 100% 100%/1.5px 14px;background-repeat:no-repeat}
+.tblock{position:absolute;z-index:3;right:max(16px,3vw);bottom:clamp(96px,14vh,140px);display:grid;grid-template-columns:auto auto;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border:1px solid #9fd3ff55;background:#0d1620cc;pointer-events:none}
+.tblock span{padding:5px 10px;border-right:1px solid #9fd3ff2a;border-bottom:1px solid #9fd3ff2a}
+.tblock span:nth-child(2n){border-right:0}.tblock span:nth-last-child(-n+2){border-bottom:0}
+.tblock b{font-weight:500;color:var(--ink)}
+@media (max-width:900px){.tblock{display:none}}
+.cgrid{border:1.5px solid var(--line-2);gap:0;grid-template-columns:1fr 1fr}
+.cgrid div{padding:12px 14px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.cgrid div:nth-child(2n){border-right:0}.cgrid div:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:600px){.cgrid{grid-template-columns:1fr}.cgrid div{border-right:0}.cgrid div:nth-last-child(2){border-bottom:1px solid var(--line)}}
+.bigword{font-weight:500;letter-spacing:-.05em}
+"""
+rep("</style>", CSS + "</style>")
+block('<a class="logo" href="#top"><svg', '<span>', '<a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 15.5L16 7l10 8.5V25H6z" fill="none" stroke="#e3ab6e" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 29h20M6 27.5v3M26 27.5v3M13.5 25v-6h5v6" fill="none" stroke="#9fd3ff" stroke-width="1.3" stroke-linecap="round"/></svg>')
+rep('<div class="scroll-hint" aria-hidden="true">Scrollujte</div>', '<div class="scroll-hint" aria-hidden="true">Scrollujte</div>\n    <div class="tblock" aria-hidden="true"><span>Výkres</span><span><b>Půdorys 1.NP</b></span><span>Měřítko</span><span><b>1 : 100</b></span><span>Formát</span><span><b>A1</b></span><span>List</span><span><b>01</b></span></div>')
+rep("Zavolejte nebo napište. Domluvíme konzultaci, přijedeme zaměřit a připravíme cenu přesně na míru.", "Zavolejte nebo napište. Domluvíme konzultaci nad vaším pozemkem nebo domem a připravíme nabídku.")
+rep('<span class="o">Na míru.</span><span class="f">Na míru.</span>', '<span class="o">Projekt.</span><span class="f">Projekt.</span>')
 
 (ROOT / "_gen" / "dum_base.html").write_text(s, encoding="utf-8")
 print("hotovo: _gen/dum_base.html")
