@@ -1,0 +1,383 @@
+{
+ "template": "dum",
+ "slug": "babicek",
+ "name": "Projekce Ing. Dalibor Bábíček",
+ "logo": "Dalibor Bábíček",
+ "logo_sub": "Projekce · Vacenovice",
+ "map_nav": "Kancelář",
+ "source_note": "Fotografie a údaje převzaty ze současného webu projekční kanceláře.",
+ "hero_eyebrow": "Architektura a projekty staveb · <b>Vacenovice</b>",
+ "hero_p": "Rodinné domy, bytové domy i veřejné stavby. Od první studie s vizualizací po projekt pro stavbu a dozor až do kolaudace. Od roku 1992.",
+ "steps": [
+  [
+   "01 · Zadání",
+   "Probereme, co potřebujete.",
+   "Rozsah i cenu každé fáze domluvíme předem."
+  ],
+  [
+   "02 · Studie",
+   "Dům uvidíte v barvě.",
+   "Studie s barevnými vizualizacemi."
+  ],
+  [
+   "03 · Povolení",
+   "Projekt pro úřady.",
+   "Dokumentace k územnímu a stavebnímu řízení."
+  ],
+  [
+   "04 · Stavba",
+   "Stavíme podle výkresu.",
+   "Prováděcí dokumentace se všemi profesemi."
+  ],
+  [
+   "05 · Kolaudace",
+   "Dozor až do konce.",
+   "Projekce Ing. Dalibor Bábíček, Vacenovice."
+  ]
+ ],
+ "price": {
+  "eyebrow": "Co projektujeme",
+  "h": "Celá cesta <em>z jedné kanceláře.</em>",
+  "lead": "Architektonické návrhy a projektová dokumentace pro rodinné a bytové domy, veřejné stavby i provozovny. Dokumentaci zpracovávají autorizované osoby.",
+  "stamps": [
+   [
+    "Od 1992",
+    "Vlastní kancelář",
+    "ve Vacenovicích"
+   ],
+   [
+    "Studie",
+    "Barevné vizualizace",
+    "ještě před projektem"
+   ],
+   [
+    "Povolení",
+    "Územní i stavební",
+    "řízení vyřídíme"
+   ],
+   [
+    "Dozor",
+    "Autorský dozor",
+    "až do kolaudace"
+   ]
+  ],
+  "note": "Rozsah a cenu jednotlivých fází vždy dohodneme předem."
+ },
+ "conf_spec": "Fasádu, střechu i okna navrhneme podle vás a podle pozemku. Studie doplňujeme barevnými vizualizacemi, jako jsou ty v galerii.",
+ "svc_h": "Od studie <em>po kolaudaci.</em>",
+ "svc_lead": "Individuální i typové rodinné domy, bytové domy, veřejné stavby a inženýrská činnost. Klikněte pro podrobnosti.",
+ "brands": [
+  "Rodinné domy",
+  "Typové domy",
+  "Bytové domy",
+  "Veřejné stavby",
+  "Nízkoenergetické stavby"
+ ],
+ "map": {
+  "eyebrow": "Kancelář",
+  "h": "Kancelář <em>ve Vacenovicích.</em>",
+  "lead": "Najdete nás ve Vacenovicích u Kyjova. Projektujeme po celém Slovácku i dál. Zavolejte nebo napište a domluvíme se.",
+  "cities": [
+   [
+    "Vacenovice (kancelář)",
+    17.17,
+    48.94,
+    1
+   ],
+   [
+    "Kyjov",
+    17.12,
+    49.01
+   ],
+   [
+    "Hodonín",
+    17.13,
+    48.85
+   ],
+   [
+    "Veselí n. M.",
+    17.38,
+    48.95
+   ],
+   [
+    "Uherské Hradiště",
+    17.46,
+    49.07
+   ],
+   [
+    "Bzenec",
+    17.27,
+    48.98
+   ],
+   [
+    "Mutěnice",
+    17.03,
+    48.9
+   ],
+   [
+    "Strážnice",
+    17.32,
+    48.9
+   ]
+  ],
+  "lo": [
+   16.95,
+   17.55
+  ],
+  "la": [
+   48.8,
+   49.12
+  ]
+ },
+ "contact": {
+  "label": "Projekce",
+  "who": "Ing. Dalibor Bábíček",
+  "addr": "Vacenovice 700, 696 06 Vacenovice",
+  "tel": "608 855 794",
+  "mail": "dalibor.babicek@tiscali.cz"
+ },
+ "form": {
+  "p": "Pošlete nám pár údajů o pozemku nebo domě a ozveme se vám.",
+  "chips": [
+   "Rodinný dům",
+   "Typový dům",
+   "Rekonstrukce",
+   "Bytový dům",
+   "Jiná stavba"
+  ],
+  "city": "Kyjov"
+ },
+ "marquee": [
+  "Rodinné domy",
+  "Typové domy",
+  "Bungalovy",
+  "Bytové domy",
+  "Veřejné stavby",
+  "Barevné vizualizace",
+  "Stavební povolení",
+  "Autorský dozor"
+ ],
+ "photos": [
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2024/10/RD-V%C5%99esovice.jpg",
+   "RD Vřesovice"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2024/10/RD-Doln%C3%AD-Bojanovice-R%C3%BDnsk%C3%A1_2.jpg",
+   "RD Dolní Bojanovice"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2024/10/RD-Hru%C5%A1ovany-u-Brna.jpg",
+   "RD Hrušovany u Brna"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2023/01/RD-Dambo%C5%99ice_Za-mlaty.jpg",
+   "RD Dambořice"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2023/09/RD-Janov.jpg",
+   "RD Janov u Litomyšle"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2022/06/RD-Doln%C3%AD-Bojanovice-R%C3%BDnsk%C3%A1.jpg",
+   "RD Dolní Bojanovice, Rýnská"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2021/07/RD-Milotice-Z%C3%A1humn%C3%AD.jpg",
+   "RD Milotice"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2021/04/RD-Bukovany.jpg",
+   "RD Bukovany"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2021/03/Rodin%C3%BD-d%C5%AFm-Pole%C5%A1ovice-1.jpg",
+   "RD Polešovice"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2021/03/Zahradn%C3%AD-d%C5%AFm-Vacenovice.jpg",
+   "Zahradní dům Vacenovice"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2021/03/RD-Tvaro%C5%BEn%C3%A1-Lhota.jpg",
+   "RD Tvarožná Lhota"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2021/03/RD-Str%C3%A1n%C3%AD-2.jpg",
+   "RD Strání"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2020/04/RD-V%C4%9Bte%C5%99ov.jpg",
+   "RD Věteřov"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2019/10/RD-Dambo%C5%99ice-III.jpg",
+   "RD Dambořice III"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2019/10/RD-Dambo%C5%99ice-II.jpg",
+   "RD Dambořice II"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2018/11/RD-Vacenovice-Pod-Po%C5%A1tou.jpg",
+   "RD Vacenovice"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2018/11/RD-Doln%C3%AD-Bojanovice-Sadov%C3%A1.jpg",
+   "RD Dolní Bojanovice, Sadová"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2018/11/RD-Opatovice-Na-N%C3%A1vsi.jpg",
+   "RD Opatovice"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2018/11/RD-Pru%C5%A1%C3%A1nky-Hlavn%C3%AD.jpg",
+   "RD Prušánky"
+  ],
+  [
+   "rd",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2018/11/RD-Blu%C4%8Dina-Komensk%C3%A9ho.jpg",
+   "RD Blučina"
+  ],
+  [
+   "typove",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2016/03/sablona-podsekce-1.jpg",
+   "Typový dům B-08"
+  ],
+  [
+   "typove",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2016/03/sablona-podsekce-2.jpg",
+   "Typový dům B-09"
+  ],
+  [
+   "typove",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2016/03/sablona-podsekce-4.jpg",
+   "Bungalov 03"
+  ],
+  [
+   "typove",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2016/03/sablona-podsekce-5.jpg",
+   "Bungalov 04"
+  ],
+  [
+   "typove",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2016/03/sablona-podsekce-6.jpg",
+   "Bungalov 05"
+  ],
+  [
+   "typove",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2016/03/sablona-podsekce-7.jpg",
+   "Bungalov 06"
+  ],
+  [
+   "typove",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2016/03/sablona-podsekce-8.jpg",
+   "Bungalov 07"
+  ],
+  [
+   "typove",
+   "https://www.projekce-babicek.cz/wp-content/uploads/2016/03/sablona-podsekce-9.jpg",
+   "Typový dům Funky 01"
+  ]
+ ],
+ "feat": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  20,
+  6,
+  9
+ ],
+ "cat": {
+  "vse": "Vše",
+  "rd": "Rodinné domy",
+  "typove": "Typové domy"
+ },
+ "svc": [
+  {
+   "id": "rd",
+   "t": "Rodinné domy",
+   "s": "Individuální návrh na míru.",
+   "img": 0,
+   "intro": "Moderní rodinné domy klasické i funkcionalistické, navržené pro konkrétní pozemek a rodinu. Čistá architektura a praktické dispozice.",
+   "spec": [
+    [
+     "Navrhujeme",
+     "Novostavby i rekonstrukce"
+    ],
+    [
+     "Součást studie",
+     "Barevné vizualizace"
+    ]
+   ]
+  },
+  {
+   "id": "typove",
+   "t": "Typové domy",
+   "s": "Bungalovy a hotové projekty.",
+   "img": 21,
+   "intro": "Ověřené typové projekty bungalovů a rodinných domů, které upravíme na váš pozemek.",
+   "spec": [
+    [
+     "Nabízíme",
+     "Bungalovy a typové domy"
+    ]
+   ]
+  },
+  {
+   "id": "dokumentace",
+   "t": "Projektová dokumentace",
+   "s": "Pro úřady i pro stavbu.",
+   "img": 3,
+   "intro": "Dokumentace k územnímu a stavebnímu řízení i prováděcí dokumentace se všemi potřebnými profesemi.",
+   "spec": [
+    [
+     "Zpracujeme",
+     "Územní a stavební řízení"
+    ],
+    [
+     "Pro stavbu",
+     "Prováděcí dokumentace"
+    ]
+   ]
+  },
+  {
+   "id": "inzenyring",
+   "t": "Inženýrská činnost",
+   "s": "Povolení i dozor za vás.",
+   "img": 12,
+   "intro": "Zajistíme povolení a průzkumy (geologický, geodetický, statický, radonový) a autorský dozor až do kolaudace.",
+   "spec": [
+    [
+     "Zajistíme",
+     "Povolení a průzkumy"
+    ],
+    [
+     "Dozor",
+     "Až do kolaudace"
+    ]
+   ]
+  }
+ ]
+}

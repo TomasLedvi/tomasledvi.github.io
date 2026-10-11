@@ -1,0 +1,270 @@
+{
+ "template": "dum",
+ "slug": "vesely",
+ "name": "Projektant Ing. Jaromír Veselý",
+ "logo": "Jaromír Veselý",
+ "logo_sub": "Projektant · Sedlčany",
+ "map_nav": "Kancelář",
+ "source_note": "Fotografie a údaje převzaty z katalogu ČESKÉSTAVBY.cz.",
+ "hero_eyebrow": "Autorizovaný inženýr · <b>Sedlčany</b>",
+ "hero_p": "Projekty pozemních staveb od roku 1991. Přes 500 stavebních projektů z kanceláře v Sedlčanech a ateliéru PROKON v Příbrami.",
+ "steps": [
+  [
+   "01 · Konzultace",
+   "Probereme vaše představy.",
+   "Novostavba, rekonstrukce i přístavba."
+  ],
+  [
+   "02 · Návrh",
+   "Dům dostane tvar.",
+   "Dispozice podle vás a pozemku."
+  ],
+  [
+   "03 · Projekt",
+   "Projekt pro stavbu.",
+   "Včetně stavebně konstrukční části."
+  ],
+  [
+   "04 · Stavba",
+   "Dům roste podle výkresu.",
+   "Každý detail je promyšlený předem."
+  ],
+  [
+   "05 · Hotovo",
+   "Přes 500 staveb.",
+   "Ing. Jaromír Veselý, Sedlčany."
+  ]
+ ],
+ "price": {
+  "eyebrow": "Co projektujeme",
+  "h": "Zkušenost <em>z 500 staveb.</em>",
+  "lead": "Autorizovaný inženýr pro pozemní stavby. Projekty navrhuje samostatně i jako hlavní inženýr projektu a autor stavebně konstrukční části v ateliéru PROKON Příbram.",
+  "stamps": [
+   [
+    "Od 1991",
+    "Projektant",
+    "pozemních staveb"
+   ],
+   [
+    "500+",
+    "Projektů",
+    "dotažených do stavby"
+   ],
+   [
+    "Autorizace",
+    "Autorizovaný inženýr",
+    "pro pozemní stavby"
+   ],
+   [
+    "Statika",
+    "Konstrukční část",
+    "v jednom projektu"
+   ]
+  ],
+  "note": "Kancelář v Sedlčanech, spolupráce s ateliérem PROKON Příbram."
+ },
+ "conf_spec": "Fasádu, střechu i okna navrhneme podle vás a podle pozemku. Projekt připravíme včetně stavebně konstrukční části.",
+ "svc_h": "Od první čáry <em>po stavbu.</em>",
+ "svc_lead": "Rodinné domy, rekonstrukce, občanské i průmyslové stavby. Klikněte pro podrobnosti.",
+ "brands": [
+  "Rodinné domy",
+  "Rekonstrukce",
+  "Pozemní stavby",
+  "Konstrukční část"
+ ],
+ "map": {
+  "eyebrow": "Kancelář",
+  "h": "Kancelář <em>v Sedlčanech.</em>",
+  "lead": "Najdete nás v ulici Na Potůčku v Sedlčanech. Projektujeme na Sedlčansku, Příbramsku i Benešovsku.",
+  "cities": [
+   [
+    "Sedlčany (kancelář)",
+    14.43,
+    49.66,
+    1
+   ],
+   [
+    "Příbram",
+    14.01,
+    49.69
+   ],
+   [
+    "Benešov",
+    14.69,
+    49.78
+   ],
+   [
+    "Votice",
+    14.64,
+    49.64
+   ],
+   [
+    "Sedlec-Prčice",
+    14.53,
+    49.57
+   ],
+   [
+    "Petrovice",
+    14.34,
+    49.56
+   ],
+   [
+    "Dobříš",
+    14.17,
+    49.78
+   ],
+   [
+    "Krásná Hora",
+    14.28,
+    49.6
+   ]
+  ],
+  "lo": [
+   13.9,
+   14.8
+  ],
+  "la": [
+   49.48,
+   49.86
+  ]
+ },
+ "contact": {
+  "label": "Projektant",
+  "who": "Ing. Jaromír Veselý",
+  "addr": "Na Potůčku 657, 264 01 Sedlčany",
+  "tel": "605 214 638",
+  "mail": "prokon-vesely@volny.cz"
+ },
+ "form": {
+  "p": "Pošlete nám pár údajů o pozemku nebo domě a ozveme se vám.",
+  "chips": [
+   "Rodinný dům",
+   "Rekonstrukce",
+   "Přístavba / nástavba",
+   "Provozovna",
+   "Jiná stavba"
+  ],
+  "city": "Sedlčany"
+ },
+ "marquee": [
+  "Projekty rodinných domů",
+  "Pozemní stavby",
+  "Rekonstrukce",
+  "Přístavby",
+  "Statika",
+  "Stavební povolení",
+  "Od roku 1991",
+  "500+ staveb"
+ ],
+ "photos": [
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45871154.jpg",
+   "Projekt Ing. Jaromíra Veselého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45796be9.jpg",
+   "Projekt Ing. Jaromíra Veselého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45407dfe.jpg",
+   "Projekt Ing. Jaromíra Veselého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a455ce134.jpg",
+   "Projekt Ing. Jaromíra Veselého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a454e70d2.jpg",
+   "Projekt Ing. Jaromíra Veselého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a4478c3c4.jpg",
+   "Projekt Ing. Jaromíra Veselého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a450b022e.jpg",
+   "Projekt Ing. Jaromíra Veselého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a44d8dc64.jpg",
+   "Projekt Ing. Jaromíra Veselého"
+  ]
+ ],
+ "feat": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "cat": {
+  "vse": "Vše",
+  "projekty": "Projekty"
+ },
+ "svc": [
+  {
+   "id": "rd",
+   "t": "Rodinné domy",
+   "s": "Novostavby na míru.",
+   "img": 0,
+   "intro": "Projekty novostaveb rodinných domů od návrhu po dokumentaci pro stavbu.",
+   "spec": [
+    [
+     "Projektujeme",
+     "Rodinné domy"
+    ]
+   ]
+  },
+  {
+   "id": "rekonstrukce",
+   "t": "Rekonstrukce",
+   "s": "Přístavby, nástavby, úpravy.",
+   "img": 2,
+   "intro": "Projekty rekonstrukcí, přístaveb, nástaveb a stavebních úprav.",
+   "spec": [
+    [
+     "Projektujeme",
+     "Rekonstrukce a stavební úpravy"
+    ]
+   ]
+  },
+  {
+   "id": "stavby",
+   "t": "Pozemní stavby",
+   "s": "Občanské i provozní budovy.",
+   "img": 4,
+   "intro": "Projekty pozemních staveb, samostatně i jako hlavní inženýr projektu v ateliéru PROKON Příbram.",
+   "spec": [
+    [
+     "Autorizace",
+     "Autorizovaný inženýr pro pozemní stavby"
+    ]
+   ]
+  },
+  {
+   "id": "statika",
+   "t": "Konstrukční část",
+   "s": "Statika v jednom projektu.",
+   "img": 6,
+   "intro": "Stavebně konstrukční část projektu zpracujeme v rámci jedné zakázky.",
+   "spec": [
+    [
+     "Zpracujeme",
+     "Stavebně konstrukční část"
+    ]
+   ]
+  }
+ ],
+ "new_site": true
+}

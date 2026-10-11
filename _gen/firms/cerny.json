@@ -1,0 +1,265 @@
+{
+ "template": "dum",
+ "slug": "cerny",
+ "name": "Projekční kancelář Ing. Petr Černý",
+ "logo": "Petr Černý",
+ "logo_sub": "Projekční kancelář · Milevsko",
+ "map_nav": "Kancelář",
+ "source_note": "Fotografie a údaje převzaty z katalogu ČESKÉSTAVBY.cz.",
+ "hero_eyebrow": "Projekční kancelář · <b>Milevsko</b>",
+ "hero_p": "Projektování pozemních staveb. Rodinné a bytové domy, rekonstrukce, provozovny i průmyslové haly. Dokumentace pro Novou zelenou úsporám.",
+ "steps": [
+  [
+   "01 · Konzultace",
+   "Probereme vaše představy.",
+   "Novostavba, rekonstrukce i modernizace."
+  ],
+  [
+   "02 · Návrh",
+   "Dům dostane tvar.",
+   "Dispozice podle vás a pozemku."
+  ],
+  [
+   "03 · Projekt",
+   "Projekt pro stavbu.",
+   "Včetně inženýrské činnosti."
+  ],
+  [
+   "04 · Stavba",
+   "Dům roste podle výkresu.",
+   "Každý detail je promyšlený předem."
+  ],
+  [
+   "05 · Hotovo",
+   "Stavba podle plánu.",
+   "Ing. Petr Černý, Milevsko."
+  ]
+ ],
+ "price": {
+  "eyebrow": "Co projektujeme",
+  "h": "Projekty pro každou <em>pozemní stavbu.</em>",
+  "lead": "Rodinné a bytové domy, rekonstrukce a modernizace, občanské i průmyslové stavby. Zajistíme i inženýrskou činnost a dokumentaci pro dotace.",
+  "stamps": [
+   [
+    "Domy",
+    "Rodinné a bytové",
+    "novostavby na míru"
+   ],
+   [
+    "Úpravy",
+    "Rekonstrukce",
+    "a modernizace"
+   ],
+   [
+    "Provoz",
+    "Provozovny a haly",
+    "občanské i průmyslové"
+   ],
+   [
+    "Dotace",
+    "Nová zelená úsporám",
+    "dokumentace k žádosti"
+   ]
+  ],
+  "note": "Projekční kancelář Ing. Petr Černý, Sažinova 763, Milevsko."
+ },
+ "conf_spec": "Fasádu, střechu i okna navrhneme podle vás a podle pozemku. Připravíme i dokumentaci k programu Nová zelená úsporám.",
+ "svc_h": "Od první čáry <em>po stavbu.</em>",
+ "svc_lead": "Rodinné a bytové domy, rekonstrukce, provozovny a průmyslové stavby. Klikněte pro podrobnosti.",
+ "brands": [
+  "Rodinné domy",
+  "Bytové domy",
+  "Rekonstrukce",
+  "Průmyslové stavby",
+  "Nová zelená úsporám"
+ ],
+ "map": {
+  "eyebrow": "Kancelář",
+  "h": "Kancelář <em>v Milevsku.</em>",
+  "lead": "Najdete nás v Sažinově ulici v Milevsku. Projektujeme na Milevsku, Písecku i Táborsku.",
+  "cities": [
+   [
+    "Milevsko (kancelář)",
+    14.36,
+    49.45,
+    1
+   ],
+   [
+    "Tábor",
+    14.68,
+    49.41
+   ],
+   [
+    "Písek",
+    14.15,
+    49.31
+   ],
+   [
+    "Bechyně",
+    14.47,
+    49.3
+   ],
+   [
+    "Orlík n. V.",
+    14.17,
+    49.51
+   ],
+   [
+    "Mladá Vožice",
+    14.81,
+    49.53
+   ]
+  ],
+  "lo": [
+   13.95,
+   14.9
+  ],
+  "la": [
+   49.25,
+   49.6
+  ]
+ },
+ "contact": {
+  "label": "Projekční kancelář",
+  "who": "Ing. Petr Černý",
+  "addr": "Sažinova 763, 399 01 Milevsko",
+  "tel": "728 202 036",
+  "mail": "cerny_projekce@volny.cz"
+ },
+ "form": {
+  "p": "Pošlete nám pár údajů o pozemku nebo domě a ozveme se vám.",
+  "chips": [
+   "Rodinný dům",
+   "Rekonstrukce",
+   "Bytový dům",
+   "Provozovna / hala",
+   "Nová zelená úsporám"
+  ],
+  "city": "Milevsko"
+ },
+ "marquee": [
+  "Projekty rodinných domů",
+  "Bytové domy",
+  "Rekonstrukce",
+  "Modernizace",
+  "Provozovny",
+  "Průmyslové haly",
+  "Inženýrská činnost",
+  "Nová zelená úsporám"
+ ],
+ "photos": [
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/487/4e37e4ad65696.jpg",
+   "Projekt kanceláře Ing. Černého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/487/4e37e4ac2bfe3.jpg",
+   "Projekt kanceláře Ing. Černého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/487/124029968815.jpg",
+   "Projekt kanceláře Ing. Černého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/487/124029965715.jpg",
+   "Projekt kanceláře Ing. Černého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/487/119641745312.jpg",
+   "Projekt kanceláře Ing. Černého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/487/113888261312.jpg",
+   "Projekt kanceláře Ing. Černého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/487/119641804212.jpg",
+   "Projekt kanceláře Ing. Černého"
+  ],
+  [
+   "projekty",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/487/119641802112.jpg",
+   "Projekt kanceláře Ing. Černého"
+  ]
+ ],
+ "feat": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "cat": {
+  "vse": "Vše",
+  "projekty": "Projekty"
+ },
+ "svc": [
+  {
+   "id": "rd",
+   "t": "Rodinné a bytové domy",
+   "s": "Novostavby na míru.",
+   "img": 0,
+   "intro": "Projekty rodinných a bytových domů od návrhu po dokumentaci pro stavbu.",
+   "spec": [
+    [
+     "Projektujeme",
+     "Rodinné a bytové domy"
+    ]
+   ]
+  },
+  {
+   "id": "rekonstrukce",
+   "t": "Rekonstrukce",
+   "s": "Rekonstrukce a modernizace.",
+   "img": 2,
+   "intro": "Projekty rekonstrukcí a modernizací stávajících staveb.",
+   "spec": [
+    [
+     "Projektujeme",
+     "Rekonstrukce a modernizace"
+    ]
+   ]
+  },
+  {
+   "id": "prumysl",
+   "t": "Provozovny a haly",
+   "s": "Občanské i průmyslové.",
+   "img": 4,
+   "intro": "Provozovny, občanské stavby, průmyslové objekty a haly. Zajistíme i inženýrskou činnost.",
+   "spec": [
+    [
+     "Projektujeme",
+     "Provozovny, občanské a průmyslové stavby"
+    ],
+    [
+     "Zajistíme",
+     "Inženýrskou činnost"
+    ]
+   ]
+  },
+  {
+   "id": "nzu",
+   "t": "Nová zelená úsporám",
+   "s": "Dokumentace pro dotaci.",
+   "img": 6,
+   "intro": "Vypracujeme dokumentaci k programu Nová zelená úsporám.",
+   "spec": [
+    [
+     "Program",
+     "Nová zelená úsporám"
+    ]
+   ]
+  }
+ ],
+ "new_site": true
+}
