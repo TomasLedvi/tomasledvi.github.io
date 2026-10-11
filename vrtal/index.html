@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Architekt Josef Vrtal · návrh nového webu</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#16120f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316120f'/%3E%3Crect x='7' y='9' width='18' height='14' rx='1.5' fill='none' stroke='%23d9a66a' stroke-width='2'/%3E%3Cpath d='M16 9v14M7 16h9' stroke='%23d9a66a' stroke-width='2'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0d1620">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316120f'/%3E%3Crect x='7' y='9' width='18' height='14' rx='1.5' fill='none' stroke='%23e3ab6e' stroke-width='2'/%3E%3Cpath d='M16 9v14M7 16h9' stroke='%23e3ab6e' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -15,10 +15,10 @@
    Layout: „dílna po setmění“. Hero = filmová 3D scéna: půdorys → kóty → výroba (laserová linka) → montáž → povrchová úprava (swipe) → světla.
    Pod tím: razítka „V ceně“, realistický konfigurátor (den/večer), služby v oknech, swipovací pás realizací, galerie s filtrem, mapa s trasami, kontakt. */
 :root{
-  --bg:#16120f; --bg-2:#1e1814; --panel:#2a221b; --line:#ffffff1c; --line-2:#ffffff33;
-  --ink:#f4ede3; --muted:#c7b9a7; --dim:#9c8c79;
-  --paper:#f3ece1; --paper-2:#e9e0d2; --pink:#2b2219; --pmuted:#6e5f50; --pline:#2b22191f;
-  --oak:#d9a66a; --oak-2:#efc48f; --blue:#8cc4ea;
+  --bg:#0d1620; --bg-2:#122030; --panel:#1a2a3a; --line:#ffffff1c; --line-2:#ffffff33;
+  --ink:#eef3f7; --muted:#a9b9c7; --dim:#7f91a2;
+  --paper:#edf1f4; --paper-2:#dde4ea; --pink:#142231; --pmuted:#526476; --pline:#1422311f;
+  --oak:#e3ab6e; --oak-2:#f3c896; --blue:#9fd3ff;
   --f-display:"Instrument Serif",Georgia,serif;
   --f-body:"Manrope",system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,monospace;
@@ -45,16 +45,16 @@ h2.h em{color:var(--oak)}
 .btn{position:relative;display:inline-flex;align-items:center;gap:10px;font:600 .95rem var(--f-body);padding:14px 22px;border-radius:999px;border:1.5px solid var(--line-2);background:transparent;color:inherit;text-decoration:none;cursor:pointer;overflow:hidden;isolation:isolate;transition:border-color .3s,color .4s}
 .btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--oak);transform:translateX(-101%);transition:transform .55s var(--ease-io)}
 .btn:hover::before{transform:none}
-.btn:hover{border-color:var(--oak);color:#16120f}
-.btn.fill{background:var(--oak);border-color:var(--oak);color:#16120f}
+.btn:hover{border-color:var(--oak);color:#0d1620}
+.btn.fill{background:var(--oak);border-color:var(--oak);color:#0d1620}
 .btn.fill::before{background:var(--oak-2)}
 .btn .arr{transition:transform .4s var(--ease)}
 .btn:hover .arr{transform:translateX(4px)}
 
 /* lišta + navigace */
-.concept-bar{position:fixed;top:0;left:0;right:0;z-index:45;padding:calc(6px + env(safe-area-inset-top,0px)) 16px 6px;background:var(--oak);color:#16120f;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-align:center;line-height:1.35}
+.concept-bar{position:fixed;top:0;left:0;right:0;z-index:45;padding:calc(6px + env(safe-area-inset-top,0px)) 16px 6px;background:var(--oak);color:#0d1620;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-align:center;line-height:1.35}
 .nav{position:fixed;inset:0 0 auto 0;z-index:40;margin-top:var(--barH,26px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px max(16px,5vw);transition:background .35s,box-shadow .35s,transform .5s var(--ease)}
-.nav.solid{background:#16120ff0;box-shadow:0 1px 0 var(--line)}
+.nav.solid{background:#0d1620f0;box-shadow:0 1px 0 var(--line)}
 .nav.hide{transform:translateY(-140%)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-size:1.45rem;line-height:1}
 .logo svg{width:28px;height:28px}
@@ -70,21 +70,21 @@ h2.h em{color:var(--oak)}
 
 /* ================= HERO ================= */
 .hero .stage{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:grid;align-items:center;
-  background:radial-gradient(70% 60% at 68% 48%,#26252c 0%,#16120f 72%)}
-.hero .warm{position:absolute;inset:0;pointer-events:none;opacity:var(--warm,0);background:radial-gradient(55% 55% at 66% 58%,#d9a66a33,transparent 72%),radial-gradient(80% 40% at 60% 100%,#3a2a1c88,transparent 70%)}
+  background:radial-gradient(70% 60% at 68% 48%,#26252c 0%,#0d1620 72%)}
+.hero .warm{position:absolute;inset:0;pointer-events:none;opacity:var(--warm,0);background:radial-gradient(55% 55% at 66% 58%,#e3ab6e33,transparent 72%),radial-gradient(80% 40% at 60% 100%,#1b2d4088,transparent 70%)}
 .grid-bg{position:absolute;inset:0;pointer-events:none;opacity:var(--grid,1);
-  background-image:linear-gradient(#8cc4ea18 1px,transparent 1px),linear-gradient(90deg,#8cc4ea18 1px,transparent 1px),linear-gradient(#8cc4ea0b 1px,transparent 1px),linear-gradient(90deg,#8cc4ea0b 1px,transparent 1px);
+  background-image:linear-gradient(#9fd3ff18 1px,transparent 1px),linear-gradient(90deg,#9fd3ff18 1px,transparent 1px),linear-gradient(#9fd3ff0b 1px,transparent 1px),linear-gradient(90deg,#9fd3ff0b 1px,transparent 1px);
   background-size:120px 120px,120px 120px,24px 24px,24px 24px;-webkit-mask-image:radial-gradient(75% 75% at 65% 50%,#000,transparent);mask-image:radial-gradient(75% 75% at 65% 50%,#000,transparent)}
 #kitchen{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
 .hero .stage::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(90deg,#16120ff5 0%,#16120fd9 24%,#16120f66 42%,#16120f00 58%),linear-gradient(0deg,#16120fd9 0%,#16120f00 24%),radial-gradient(120% 90% at 65% 50%,transparent 55%,#16120fb3 100%)}
+  background:linear-gradient(90deg,#0d1620f5 0%,#0d1620d9 24%,#0d162066 42%,#0d162000 58%),linear-gradient(0deg,#0d1620d9 0%,#0d162000 24%),radial-gradient(120% 90% at 65% 50%,transparent 55%,#0d1620b3 100%)}
 .hero .stage::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.06;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
 #kitchenFallback{position:absolute;z-index:1;right:3vw;top:54%;width:min(56vw,720px);transform:translateY(-50%)}
 #kitchenFallback .ln{fill:none;stroke:var(--blue);stroke-width:1.3;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--dl,1))}
 #kitchenFallback .fl{opacity:var(--fo,1)}
 #kitchenFallback .lt{opacity:var(--lt,1)}
-.dim{position:absolute;z-index:3;pointer-events:none;font-family:var(--f-mono);font-size:.72rem;color:var(--blue);background:#16120fd9;padding:2px 7px;border:1px solid #8cc4ea66;border-radius:4px;transform:translate(-50%,-50%);opacity:0;white-space:nowrap}
+.dim{position:absolute;z-index:3;pointer-events:none;font-family:var(--f-mono);font-size:.72rem;color:var(--blue);background:#0d1620d9;padding:2px 7px;border:1px solid #9fd3ff66;border-radius:4px;transform:translate(-50%,-50%);opacity:0;white-space:nowrap}
 .h-copy{position:relative;z-index:3;display:grid;gap:20px;max-width:600px;padding-block:130px 110px;transform:translate3d(0,calc(var(--p,0) * -6vh),0)}
 .h-copy h1{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(3rem,7.4vw,6.6rem);line-height:.95;letter-spacing:-.02em}
 .h-copy h1 em{color:var(--oak)}
@@ -107,7 +107,7 @@ h2.h em{color:var(--oak)}
 @keyframes drip{0%{transform:scaleY(0)}55%{transform:scaleY(1);opacity:1}100%{opacity:0}}
 @media (max-width:900px){
   .h-copy{align-self:start;padding-block:118px 0}
-  .hero .stage::after{background:linear-gradient(180deg,#16120ff5 0%,#16120fd9 34%,#16120f00 56%),linear-gradient(0deg,#16120fe6 0%,#16120f00 24%)}
+  .hero .stage::after{background:linear-gradient(180deg,#0d1620f5 0%,#0d1620d9 34%,#0d162000 56%),linear-gradient(0deg,#0d1620e6 0%,#0d162000 24%)}
   .scroll-hint{display:none}
   #kitchenFallback{right:50%;top:68%;width:min(94vw,560px);transform:translate(50%,-50%)}
 }
@@ -130,7 +130,7 @@ h2.h em{color:var(--oak)}
 .stamp span b{color:var(--ink);font-weight:600}
 .js .stamp .st{opacity:0;transform:scale(1.9) rotate(-16deg)}
 .js .stamp.in .st{animation:stamp .55s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d,0s)}
-.js .stamp.in::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 25% 30%,#d9a66a40,transparent 70%);opacity:0;animation:flash .9s ease-out forwards;animation-delay:calc(var(--d,0s) + .25s);pointer-events:none}
+.js .stamp.in::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 25% 30%,#e3ab6e40,transparent 70%);opacity:0;animation:flash .9s ease-out forwards;animation-delay:calc(var(--d,0s) + .25s);pointer-events:none}
 @keyframes stamp{0%{opacity:0;transform:scale(1.9) rotate(-16deg)}60%{opacity:1}100%{opacity:1;transform:scale(1) rotate(-5deg)}}
 @keyframes flash{0%{opacity:0}20%{opacity:1}100%{opacity:0}}
 .price-note{margin-top:16px;color:var(--dim);font-size:.9rem}
@@ -147,10 +147,10 @@ h2.h em{color:var(--oak)}
 #confFallback{position:absolute;inset:6%;width:88%;height:88%}
 .cv-bar{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;pointer-events:none}
 .cv-bar>*{pointer-events:auto}
-.views{display:flex;gap:6px;background:#16120fb3;padding:5px;border-radius:999px;border:1px solid var(--line)}
+.views{display:flex;gap:6px;background:#0d1620b3;padding:5px;border-radius:999px;border:1px solid var(--line)}
 .views button{border:0;background:transparent;border-radius:999px;padding:7px 12px;font-size:.82rem;cursor:pointer;color:var(--muted)}
-.views button[aria-pressed="true"]{background:var(--oak);color:#16120f}
-.drag-hint{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#f4ede3aa;background:#16120fb3;padding:7px 10px;border-radius:999px}
+.views button[aria-pressed="true"]{background:var(--oak);color:#0d1620}
+.drag-hint{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#eef3f7aa;background:#0d1620b3;padding:7px 10px;border-radius:999px}
 .opt{display:grid;gap:10px;margin-bottom:20px}
 .opt h3{margin:0;font-family:var(--f-mono);font-weight:400;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);display:flex;justify-content:space-between;gap:8px}
 .opt h3 b{color:var(--ink);font-family:var(--f-body);font-weight:600;letter-spacing:0;text-transform:none;font-size:.85rem}
@@ -161,24 +161,24 @@ h2.h em{color:var(--oak)}
 .sw button[aria-pressed="true"]{border-color:var(--oak)}
 .seg{display:flex;gap:6px;flex-wrap:wrap}
 .seg button{border:1.5px solid var(--line-2);background:transparent;border-radius:999px;padding:8px 14px;cursor:pointer;font-size:.88rem;transition:background .3s,border-color .3s,color .3s}
-.seg button[aria-pressed="true"]{background:var(--oak);border-color:var(--oak);color:#16120f}
+.seg button[aria-pressed="true"]{background:var(--oak);border-color:var(--oak);color:#0d1620}
 .spec{font-size:.86rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin:6px 0 0}
 @media (max-width:900px){.conf-grid{grid-template-columns:1fr}.conf-view{height:52vh}}
 
 /* ================= SVĚTLÉ SEKCE ================= */
-.light{background:var(--paper);color:var(--pink);--line:var(--pline);--line-2:#2b221940;--muted:var(--pmuted);--dim:#8a7a69}
-.light .eyebrow b,.light h2.h em{color:#9a6634}
-.light .btn:hover{color:#16120f}
+.light{background:var(--paper);color:var(--pink);--line:var(--pline);--line-2:#14223140;--muted:var(--pmuted);--dim:#8a7a69}
+.light .eyebrow b,.light h2.h em{color:#b07a45}
+.light .btn:hover{color:#0d1620}
 .sec{padding-block:clamp(80px,10vw,140px)}
 .svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.card{text-align:left;cursor:pointer;background:#fffaf2;border:1px solid var(--line);border-radius:20px;padding:0 0 20px;overflow:hidden;display:grid;gap:8px;align-content:start;transition:box-shadow .4s,transform .5s var(--ease)}
-.card:hover{box-shadow:0 22px 50px #2b221926;transform:translateY(-4px)}
+.card{text-align:left;cursor:pointer;background:#f7f9fb;border:1px solid var(--line);border-radius:20px;padding:0 0 20px;overflow:hidden;display:grid;gap:8px;align-content:start;transition:box-shadow .4s,transform .5s var(--ease)}
+.card:hover{box-shadow:0 22px 50px #14223126;transform:translateY(-4px)}
 .card .ph{aspect-ratio:4/3;overflow:hidden;background:var(--paper-2);position:relative}
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .card:hover .ph img{transform:scale(1.06)}
 .card h3{margin:6px 18px 0;font-family:var(--f-display);font-weight:400;font-size:1.75rem;line-height:1.05}
 .card p{margin:0 18px;color:var(--muted);font-size:.93rem}
-.card .more{margin:4px 18px 0;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#9a6634}
+.card .more{margin:4px 18px 0;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#b07a45}
 @media (max-width:980px){.svc{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.svc{grid-template-columns:1fr}}
 .brands{display:flex;gap:28px;flex-wrap:wrap;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
@@ -191,18 +191,18 @@ h2.h em{color:var(--oak)}
 .arrows button{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line-2);background:transparent;cursor:pointer;font-size:1.1rem;transition:background .3s,color .3s}
 .arrows button:hover{background:var(--pink);color:var(--paper)}
 .rail-prog{width:min(220px,40vw);height:2px;background:var(--line-2);position:relative;margin-right:8px}
-.rail-prog::after{content:"";position:absolute;inset:0;background:#9a6634;transform-origin:left;transform:scaleX(var(--rp,0))}
+.rail-prog::after{content:"";position:absolute;inset:0;background:#b07a45;transform-origin:left;transform:scaleX(var(--rp,0))}
 .rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(16px,5vw) 10px;cursor:grab;overscroll-behavior-x:contain}
 .rail::-webkit-scrollbar{display:none}
 .rail.drag{scroll-snap-type:none;cursor:grabbing}
 .rail.drag *{pointer-events:none}
 .fc{flex:0 0 min(78vw,620px);scroll-snap-align:start;scroll-margin-left:max(16px,5vw);margin:0;position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:var(--paper-2);border:0;padding:0;cursor:pointer;text-align:left}
 .fc img{position:absolute;top:0;left:-10%;width:120%;height:100%;object-fit:cover;transform:translate3d(var(--px,0%),0,0) scale(1.02);will-change:transform}
-.fc::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#16120fcc 0%,#16120f00 45%)}
-.fc figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:18px;color:#f4ede3;display:grid;gap:2px}
+.fc::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#0d1620cc 0%,#0d162000 45%)}
+.fc figcaption{position:absolute;z-index:2;left:20px;right:20px;bottom:18px;color:#eef3f7;display:grid;gap:2px}
 .fc figcaption small{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oak-2)}
 .fc figcaption b{font-family:var(--f-display);font-weight:400;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.05}
-.fc .num{position:absolute;z-index:2;top:16px;left:20px;font-family:var(--f-mono);font-size:.7rem;color:#f4ede3cc}
+.fc .num{position:absolute;z-index:2;top:16px;left:20px;font-family:var(--f-mono);font-size:.7rem;color:#eef3f7cc}
 .js .fc{opacity:0;transform:translateX(18vw)}
 .js .rail.in .fc{opacity:1;transform:none;transition:transform 1.2s var(--ease),opacity .8s;transition-delay:calc(var(--i) * 90ms)}
 
@@ -214,7 +214,7 @@ h2.h em{color:var(--oak)}
 .tile{break-inside:avoid;margin:0 0 12px;position:relative;border-radius:14px;overflow:hidden;cursor:pointer;background:var(--paper-2);display:block;width:100%;padding:0;border:0}
 .tile img{width:100%;height:auto;transition:transform 1.3s var(--ease),filter .4s}
 .tile:hover img{transform:scale(1.04)}
-.tile .tg{position:absolute;left:10px;bottom:10px;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;background:#16120fc4;color:#f4ede3;padding:4px 8px;border-radius:999px}
+.tile .tg{position:absolute;left:10px;bottom:10px;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;background:#0d1620c4;color:#eef3f7;padding:4px 8px;border-radius:999px}
 .tile.miss{min-height:180px}.tile.miss img{display:none}
 .tile.miss::after{content:"Fotografie realizace";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:.72rem;color:var(--pmuted)}
 .tile.hide{display:none}
@@ -249,7 +249,7 @@ h2.h em{color:var(--oak)}
 .map .ring.b{animation-delay:1.6s}
 @keyframes ring{0%{transform:scale(.2);opacity:.9}100%{transform:scale(3.4);opacity:0}}
 .map text{font-family:var(--f-body);font-size:13px;fill:var(--ink)}
-.map .truck{fill:var(--oak-2);filter:drop-shadow(0 0 6px #d9a66a)}
+.map .truck{fill:var(--oak-2);filter:drop-shadow(0 0 6px #e3ab6e)}
 @media (max-width:900px){.map-grid{grid-template-columns:1fr}}
 
 /* ================= KONTAKT + PATIČKA ================= */
@@ -260,8 +260,8 @@ h2.h em{color:var(--oak)}
 .cgrid a{text-decoration:none}
 @media (max-width:900px){.contact{grid-template-columns:1fr}}
 .bigword{position:relative;margin:clamp(60px,9vw,110px) auto 0;max-width:1240px;font-family:var(--f-display);font-size:clamp(4.8rem,19vw,17rem);line-height:.85;letter-spacing:-.03em;white-space:nowrap;user-select:none}
-.bigword .o{color:transparent;-webkit-text-stroke:1.2px #9a6634}
-.bigword .f{position:absolute;inset:0;color:#9a6634;clip-path:inset(calc((1 - var(--f,0)) * 100%) 0 0 0)}
+.bigword .o{color:transparent;-webkit-text-stroke:1.2px #b07a45}
+.bigword .f{position:absolute;inset:0;color:#b07a45;clip-path:inset(calc((1 - var(--f,0)) * 100%) 0 0 0)}
 footer{padding-block:34px 110px;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:35;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;background:linear-gradient(to top,var(--bg) 55%,transparent);transition:transform .5s var(--ease)}
@@ -271,8 +271,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
 /* kurzor */
 .cur{position:fixed;left:0;top:0;z-index:70;pointer-events:none;opacity:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--oak);mix-blend-mode:difference;display:none;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease)}
-.cur span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#16120f;opacity:0;transition:opacity .25s}
-.cur.big{width:84px;height:84px;margin:-42px 0 0 -42px;mix-blend-mode:normal;background:#efc48fe6}
+.cur span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#0d1620;opacity:0;transition:opacity .25s}
+.cur.big{width:84px;height:84px;margin:-42px 0 0 -42px;mix-blend-mode:normal;background:#f3c896e6}
 .cur.big span{opacity:1}
 .cur.link{width:40px;height:40px;margin:-20px 0 0 -20px}
 @media (hover:hover) and (pointer:fine){.js .cur{display:block}}
@@ -285,7 +285,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
   padding:clamp(22px,4vw,40px);box-shadow:0 40px 120px #000c;clip-path:inset(0 0 100% 0 round 26px);transition:clip-path .6s var(--ease-io)}
 .win.show .win-bg{opacity:1}
 .win.show .win-card{clip-path:inset(0 0 0 0 round 26px)}
-.win-x{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);background:#16120f99;cursor:pointer;font-size:1.3rem;line-height:1;display:grid;place-items:center}
+.win-x{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line-2);background:#0d162099;cursor:pointer;font-size:1.3rem;line-height:1;display:grid;place-items:center}
 .win h3{margin:0 0 10px;font-family:var(--f-display);font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.02;padding-right:48px}
 .win p{color:var(--muted);margin:0 0 14px}
 .spec-list{display:grid;margin:0 0 18px}
@@ -295,12 +295,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 @media (max-width:560px){.spec-list div{grid-template-columns:1fr;gap:2px}}
 form{display:grid;gap:12px}
 label{display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
-input,textarea{font:inherit;color:var(--ink);background:#16120f;border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;width:100%}
+input,textarea{font:inherit;color:var(--ink);background:#0d1620;border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;width:100%}
 textarea{min-height:90px;resize:vertical}
 input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips button{border:1.5px solid var(--line-2);background:transparent;border-radius:999px;padding:8px 14px;cursor:pointer;font-size:.88rem}
-.chips button[aria-pressed="true"]{background:var(--oak);border-color:var(--oak);color:#16120f}
+.chips button[aria-pressed="true"]{background:var(--oak);border-color:var(--oak);color:#0d1620}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media (max-width:560px){.row2{grid-template-columns:1fr}}
 .small{font-size:.8rem;color:var(--dim)}
@@ -321,7 +321,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
 <body>
 <div class="concept-bar" id="conceptBar">NEOFICIÁLNÍ NÁVRH REDESIGNU · nejde o oficiální web Architekt Josef Vrtal</div>
 <header class="nav" id="nav">
-  <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="18" rx="2" fill="none" stroke="#d9a66a" stroke-width="1.8"/><path d="M16 7v18M5 16h11M20 12h3M20 20h3" stroke="#d9a66a" stroke-width="1.8" stroke-linecap="round"/></svg><span>Josef Vrtal<small>Architekt · Kroměříž</small></span></a>
+  <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="18" rx="2" fill="none" stroke="#e3ab6e" stroke-width="1.8"/><path d="M16 7v18M5 16h11M20 12h3M20 20h3" stroke="#e3ab6e" stroke-width="1.8" stroke-linecap="round"/></svg><span>Josef Vrtal<small>Architekt · Kroměříž</small></span></a>
   <nav class="links"><a href="#postup">Postup</a><a href="#konfigurator">Konfigurátor</a><a href="#realizace">Realizace</a><a href="#oblast">Ateliér</a><a href="#kontakt">Kontakt</a><button class="btn fill" type="button" data-open="poptavka">Poptávka <span class="arr">→</span></button></nav>
   <div class="prog" aria-hidden="true"></div>
 </header>
@@ -353,7 +353,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
         <path class="ln" pathLength="1" d="M0 240h480 M50 262h370 M50 256v12 M420 256v12"/>
       </g>
     </svg>
-    <span class="dim" data-dim="0">13 500</span><span class="dim" data-dim="1">7 500</span><span class="dim" data-dim="2">4 500</span><span class="dim" data-dim="3">7 500</span>
+    <span class="dim" data-dim="0">2 500</span><span class="dim" data-dim="1">3 250</span><span class="dim" data-dim="2">3 250</span><span class="dim" data-dim="3">4 500</span><span class="dim" data-dim="4">13 500</span><span class="dim" data-dim="5">4 500</span><span class="dim" data-dim="6">3 000</span><span class="dim" data-dim="7">7 500</span><span class="dim" data-dim="8">±0,000</span><span class="dim" data-dim="9">+3,830</span><span class="dim" data-dim="10">+6,450</span>
     <div class="h-copy">
       <div class="eyebrow">Architekt · <b>Kroměříž</b></div>
       <h1 data-split>Váš dům. <em>Od první čáry.</em></h1>
@@ -426,9 +426,9 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
 
 <section class="sec gut light" id="sluzby">
   <div class="wrap">
-    <div class="s-head"><div class="eyebrow bar-rv"><span><b>—</b> Co vyrábíme</span></div><h2 class="h" data-split>Od první čáry <em>po klíče.</em></h2><p class="lead rv">Novostavby, rekonstrukce, přístavby a nástavby, půdní vestavby i projekty zateplení. Klikněte pro podrobnosti.</p></div>
+    <div class="s-head"><div class="eyebrow bar-rv"><span><b>—</b> Co navrhujeme</span></div><h2 class="h" data-split>Od první čáry <em>po klíče.</em></h2><p class="lead rv">Novostavby, rekonstrukce, přístavby a nástavby, půdní vestavby i projekty zateplení. Klikněte pro podrobnosti.</p></div>
     <div class="svc" id="svc"></div>
-    <div class="brands rv"><span>Pracujeme s</span><b>Novostavby</b><b>Rekonstrukce</b><b>Půdní vestavby</b><b>Nová zelená úsporám</b></div>
+    <div class="brands rv"><span>Navrhujeme</span><b>Novostavby</b><b>Rekonstrukce</b><b>Půdní vestavby</b><b>Nová zelená úsporám</b></div>
   </div>
 </section>
 
@@ -456,7 +456,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
     </div>
     <div class="map" id="map">
       <svg viewBox="0 0 520 380" aria-label="Schematická mapa oblasti působnosti">
-        <defs><radialGradient id="area" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#d9a66a" stop-opacity=".22"/><stop offset="1" stop-color="#d9a66a" stop-opacity="0"/></radialGradient></defs>
+        <defs><radialGradient id="area" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e3ab6e" stop-opacity=".22"/><stop offset="1" stop-color="#e3ab6e" stop-opacity="0"/></radialGradient></defs>
         <ellipse cx="250" cy="200" rx="250" ry="175" fill="url(#area)"/>
         <g id="routes"></g><g id="trucks"></g><g id="cities"></g>
       </svg>
@@ -546,8 +546,8 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
     CITIES.forEach(([n,lo,la,main])=>{const [x,y]=prj(lo,la);
       if(!main&&n!=="Slaný"){r+=`<path class="route" pathLength="1" d="M${ox.toFixed(1)} ${oy.toFixed(1)} Q ${((ox+x)/2+(y-oy)*.18).toFixed(1)} ${((oy+y)/2-(x-ox)*.18).toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)}"/>`;t+=`<circle class="truck" r="3.6" cx="${ox}" cy="${oy}" opacity="0"/>`}
       if(n==="Slaný")return;
-      c+=main?`<g><circle class="ring" cx="${x}" cy="${y}" r="10" stroke-width="1.5"/><circle class="ring b" cx="${x}" cy="${y}" r="10" stroke-width="1.5"/><circle cx="${x}" cy="${y}" r="7" fill="#d9a66a"/><text x="${x+14}" y="${y+5}" style="font-weight:700;font-size:14px">${n}</text></g>`
-            :`<g><circle cx="${x}" cy="${y}" r="4.5" fill="#f4ede3"/><text x="${x+10}" y="${y+4}">${n}</text></g>`});
+      c+=main?`<g><circle class="ring" cx="${x}" cy="${y}" r="10" stroke-width="1.5"/><circle class="ring b" cx="${x}" cy="${y}" r="10" stroke-width="1.5"/><circle cx="${x}" cy="${y}" r="7" fill="#e3ab6e"/><text x="${x+14}" y="${y+5}" style="font-weight:700;font-size:14px">${n}</text></g>`
+            :`<g><circle cx="${x}" cy="${y}" r="4.5" fill="#eef3f7"/><text x="${x+10}" y="${y+4}">${n}</text></g>`});
     ro.innerHTML=r;ci.innerHTML=c;tr.innerHTML=t}
 
   /* ================= OKNA ================= */
@@ -560,7 +560,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
   document.addEventListener("keydown",e=>{if(win.hidden)return;if(e.key==="Escape")closeWin();else if(onKey)onKey(e);
     if(e.key==="Tab"){const f=[...winCard.querySelectorAll("button,a[href],input,textarea")];if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
   function openSvc(id){const s=SVC.find(x=>x.id===id);if(!s)return;
-    openWin(`<div class="eyebrow" style="margin-bottom:10px"><b>—</b> Co vyrábíme</div><h3 id="winTitle">${s.t}</h3><p>${s.intro}</p><div class="spec-list">${s.spec.map(([a,b])=>`<div><b>${a}</b><span>${b}</span></div>`).join("")}</div>
+    openWin(`<div class="eyebrow" style="margin-bottom:10px"><b>—</b> Co navrhujeme</div><h3 id="winTitle">${s.t}</h3><p>${s.intro}</p><div class="spec-list">${s.spec.map(([a,b])=>`<div><b>${a}</b><span>${b}</span></div>`).join("")}</div>
       <div class="h-ctas"><button class="btn fill" type="button" data-open="poptavka">Poptávka <span class="arr">→</span></button></div>`)}
   let pType="Kuchyně";
   function openPoptavka(){
@@ -665,7 +665,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
     if(TEXC.env)return TEXC.env;
     const N=128,face=draw=>{const [c,g]=cnv(N,N);g.fillStyle="#3a3129";g.fillRect(0,0,N,N);draw(g);return c};
     const blob=(g,cx,cy,r,col)=>{const gr=g.createRadialGradient(cx,cy,0,cx,cy,r);gr.addColorStop(0,col);gr.addColorStop(1,"rgba(0,0,0,0)");g.fillStyle=gr;g.fillRect(0,0,N,N)};
-    const t=new THREE.CubeTexture([face(g=>blob(g,64,60,64,"rgba(255,226,180,.85)")),face(g=>{g.fillStyle="#f4f8fb";g.fillRect(30,24,68,80)}),face(g=>{g.fillStyle="#fffaf2";g.fillRect(10,24,108,80)}),face(g=>blob(g,64,64,60,"rgba(120,90,60,.6)")),face(g=>blob(g,64,56,64,"rgba(255,248,236,.95)")),face(g=>blob(g,64,64,50,"rgba(160,190,214,.4)"))]);
+    const t=new THREE.CubeTexture([face(g=>blob(g,64,60,64,"rgba(255,226,180,.85)")),face(g=>{g.fillStyle="#f4f8fb";g.fillRect(30,24,68,80)}),face(g=>{g.fillStyle="#f7f9fb";g.fillRect(10,24,108,80)}),face(g=>blob(g,64,64,60,"rgba(120,90,60,.6)")),face(g=>blob(g,64,56,64,"rgba(255,248,236,.95)")),face(g=>blob(g,64,64,50,"rgba(160,190,214,.4)"))]);
     t.encoding=THREE.sRGBEncoding;t.needsUpdate=true;return TEXC.env=t;
   }
 
@@ -802,7 +802,9 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
     const doorPivot=new THREE.Group();doorPivot.position.set(-.95+.24,.08,fz);root.add(doorPivot);
     add(new THREE.BoxGeometry(.48,.98,.04),M.door,doorPivot,-.24,.49,.02);add(new THREE.BoxGeometry(.03,.22,.03),M.steel,doorPivot,-.42,.5,.06);
     arr.push({node:doorPivot,home:doorPivot.position.clone(),from:new THREE.Vector3(0,0,1.4),t0:.52,t1:.6});
-    add(new THREE.BoxGeometry(.7,.04,.4),M.flat,root,-.95,.08+1.12,fz+.2);   // stříška nad vstupem
+    const entry=new THREE.Group();root.add(entry);
+    add(new THREE.BoxGeometry(.7,.04,.4),M.flat,entry,-.95,.08+1.12,fz+.2);   // stříška nad vstupem
+    arr.push({node:entry,home:entry.position.clone(),from:new THREE.Vector3(0,1.6,0),t0:.55,t1:.62});
     // příchody střechy a štítů
     arr.push({node:roof,home:roof.position.clone(),from:new THREE.Vector3(0,2.6,0),t0:.45,t1:.56});
     arr.push({node:gL,home:gL.position.clone(),from:new THREE.Vector3(0,2.2,0),t0:.44,t1:.53});
@@ -827,30 +829,57 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
       let L=null;if(!MOBILE||i===0){L=new THREE.PointLight(0xffd29a,0,2.2,2);L.position.set(0,.45,0);g.add(L)}
       pop(g,.7+i*.01);pend.push({bulb,spr,pool,L})});
     // nástěnná světla u vchodu (hood)
-    const scon=[];[-1.32,-.58].forEach(x=>{const b=add(new THREE.BoxGeometry(.06,.1,.05),M.bulb.clone(),root,x,.08+.82,fz+.03,false,false);
+    const scon=[];[-1.32,-.58].forEach(x=>{const b=add(new THREE.BoxGeometry(.06,.1,.05),M.bulb.clone(),entry,x,.08+.82,fz+.03,false,false);
       const wash=new THREE.Mesh(new THREE.PlaneGeometry(.5,.9),new THREE.MeshBasicMaterial({map:VG,color:0xffd7a2,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));wash.rotation.z=Math.PI;wash.position.set(x,.08+.4,fz+.02);root.add(wash);scon.push({b,wash})});
     const porchPool=new THREE.Mesh(new THREE.PlaneGeometry(1.6,1.2).rotateX(-Math.PI/2),glowMat(0xffc98a));porchPool.position.set(-.95,.03,fz+.6);root.add(porchPool);
     const porchL=new THREE.SpotLight(0xffd8a8,0,4,.9,.6,1.5);porchL.position.set(-.95,1.15,fz+.25);porchL.target.position.set(-.95,0,fz+.9);root.add(porchL,porchL.target);
     // světlo z oken (led): odlesky na terase a trávníku
     const spill=[[-2.35,fz+.55,.9],[-1.5,fz+.55,.9],[-.25,fz+.6,1.2],[1.6,wz+.7,1.8]].map(([x,z,s])=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(s,s*.8).rotateX(-Math.PI/2),glowMat(0xffc480));m.position.set(x,.05,z);root.add(m);return m});
 
-    /* --- výkres: půdorys na zemi --- */
+    /* --- výkres: kreslí se postupně jako skutečný projekt --- */
     const planPts=[],Y0=.012;const seg=(x1,z1,x2,z2)=>planPts.push(x1,Y0,z1,x2,Y0,z2);
     const rect=(x0,z0,x1,z1)=>{seg(x0,z0,x1,z0);seg(x1,z0,x1,z1);seg(x1,z1,x0,z1);seg(x0,z1,x0,z0)};
     const arc=(cx,cz,r,a0,a1,n=12)=>{for(let i=0;i<n;i++){const t0=a0+(a1-a0)*i/n,t1=a0+(a1-a0)*(i+1)/n;seg(cx+Math.cos(t0)*r,cz+Math.sin(t0)*r,cx+Math.cos(t1)*r,cz+Math.sin(t1)*r)}};
-    const dim=(x1,z1,x2,z2)=>{seg(x1,z1,x2,z2);const tk=.07;[[x1,z1],[x2,z2]].forEach(([x,z])=>seg(x-tk,z+tk,x+tk,z-tk))};
+    const dashed=(x0,z0,x1,z1,n=16,dot)=>{for(let i=0;i<n;i++){const a=i/n,b=(i+(dot?.35:.6))/n;seg(lerp(x0,x1,a),lerp(z0,z1,a),lerp(x0,x1,b),lerp(z0,z1,b))}};
+    const tick=(x,z)=>{const t=.06;seg(x-t,z+t,x+t,z-t)};
+    const DIMS=[],DT=[];      // kóty: pozice popisku a okamžik, kdy se dokreslí
+    const chainX=(xs,z,ext)=>{seg(xs[0]-.1,z,xs[xs.length-1]+.1,z);xs.forEach(x=>{tick(x,z);seg(x,z-.08,x,ext)});for(let i=0;i<xs.length-1;i++){DIMS.push([(xs[i]+xs[i+1])/2,0,z-.09]);DT.push(planPts.length)}};
+    const chainZ=(zs,x,ext)=>{seg(x,zs[0]-.1,x,zs[zs.length-1]+.1);zs.forEach(z=>{tick(x,z);seg(x+(ext>x?-.08:.08),z,ext,z)});for(let i=0;i<zs.length-1;i++){DIMS.push([x-.12,0,(zs[i]+zs[i+1])/2]);DT.push(planPts.length)}};
+    // 1) hranice pozemku
+    const PX0=-4.6,PX1=4.3,PZ0=-1.4,PZ1=5.6;dashed(PX0,PZ0,PX1,PZ0,24,1);dashed(PX1,PZ0,PX1,PZ1,18,1);dashed(PX1,PZ1,PX0,PZ1,24,1);dashed(PX0,PZ1,PX0,PZ0,18,1);
+    // 2) osy konstrukce s kroužky
+    const AX=[H.x0+T/2,-1.9,-.6,H.x1-T/2,Wg.x1-T/2],AZ=[H.z0+T/2,1.9,H.z1-T/2];
+    AX.forEach(x=>{dashed(x,-.9,x,4.7,14,1);arc(x,-1.08,.17,0,6.283,14)});AZ.forEach(z=>{dashed(-4.1,z,3.5,z,18,1);arc(-4.28,z,.17,0,6.283,14)});
+    // 3) obvodové zdi (dvojitá čára)
     rect(H.x0,H.z0,H.x1,H.z1);rect(H.x0+T,H.z0+T,H.x1-T,H.z1-T);rect(Wg.x0,Wg.z0,Wg.x1,Wg.z1);rect(Wg.x0+T,Wg.z0+T,Wg.x1-T,Wg.z1-T);
+    // 4) příčky, dveře, okna, schodiště
     seg(-1.9,H.z0+T,-1.9,1.9);seg(H.x0+T,1.9,-.6,1.9);seg(-.6,H.z0+T,-.6,2.3);seg(-2.2,1.9,-2.2,H.z1-T);seg(Wg.x0+T,2.0,Wg.x1-T,2.0);
-    arc(-.71,H.z1,.48,Math.PI,Math.PI*1.5);arc(-1.9,1.4,.4,0,Math.PI/2);arc(-.6,2.3,.4,Math.PI/2,Math.PI);
-    [[-2.35,.7,H.z1],[-1.5,.7,H.z1],[-.25,1.0,H.z1],[1.6,1.5,Wg.z1]].forEach(([x,w,z])=>{seg(x-w/2,z+.04,x+w/2,z+.04)});
-    for(let i=0;i<7;i++)seg(-1.75+i*.08,.55,-1.75+i*.08,1.25);  // schodiště
-    dim(H.x0,H.z1+.95,Wg.x1,H.z1+.95);dim(H.x0-.55,H.z0,H.x0-.55,H.z1);dim(Wg.x0,Wg.z0-.45,Wg.x1,Wg.z0-.45);dim(Wg.x1+.45,Wg.z0,Wg.x1+.45,Wg.z1);
+    arc(-.71,H.z1,.48,Math.PI,Math.PI*1.5);arc(-1.9,1.4,.4,0,Math.PI/2);arc(-.6,2.3,.4,Math.PI/2,Math.PI);arc(Wg.x0+T,2.0,.45,0,Math.PI/2);
+    [[-2.35,.7,H.z1],[-1.5,.7,H.z1],[-.25,1.0,H.z1],[1.6,1.5,Wg.z1]].forEach(([x,w,z])=>{seg(x-w/2,z+.04,x+w/2,z+.04);seg(x-w/2,z-T-.04,x+w/2,z-T-.04)});
+    for(let i=0;i<9;i++)seg(-1.78+i*.07,.5,-1.78+i*.07,1.3);seg(-1.78,.9,-1.22,.9);
+    // terasa, chodník
+    rect(.7,Wg.z1,2.5,Wg.z1+.85);for(let i=1;i<9;i++)seg(.7+i*.2,Wg.z1,.7+i*.2,Wg.z1+.85);rect(-1.25,H.z1,-.65,H.z1+1.6);
+    // 5) kótovací řetězce
+    chainX([H.x0,-1.9,-.6,H.x1,Wg.x1],H.z1+1.25,H.z1+.12);
+    chainX([H.x0,Wg.x1],H.z1+1.65,H.z1+1.33);
+    chainZ([H.z0,1.9,H.z1],H.x0-.7,H.x0-.06);
+    chainZ([Wg.z0,Wg.z1],Wg.x1+.6,Wg.x1+.06);
+    // 6) severka
+    arc(3.6,-.6,.28,0,6.283,20);seg(3.6,-.95,3.6,-.25);seg(3.6,-.95,3.5,-.75);seg(3.6,-.95,3.7,-.75);
     const planGeo=new THREE.BufferGeometry();planGeo.setAttribute("position",new THREE.Float32BufferAttribute(planPts,3));
-    const blueM=new THREE.LineBasicMaterial({color:0x8cc4ea,transparent:true,opacity:0,fog:false,depthWrite:false});
+    const blueM=new THREE.LineBasicMaterial({color:0x9fd3ff,transparent:true,opacity:0,fog:false,depthWrite:false});
     const plan=new THREE.LineSegments(planGeo,blueM);plan.renderOrder=2;root.add(plan);const planN=planPts.length/3;
-    const dims=[[-.2,0,H.z1+.95],[H.x0-.55,0,1.6],[1.6,0,Wg.z0-.45],[Wg.x1+.45,0,2.0]].map(p=>new THREE.Vector3(...p));
+    const pen=new THREE.Sprite(new THREE.SpriteMaterial({map:RAD,color:0xffe2b8,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));pen.scale.set(.42,.42,1);pen.renderOrder=3;root.add(pen);
+    // výškové kóty (pohled) – kreslí se při růstu obrysů
+    const elevPts=[],EX=Wg.x1+1.15,EZ=H.z0+.4,lev=[0,.08+H.h,.08+H.h+H.ridge];const es=(a,b,c,d,e,f)=>elevPts.push(a,b,c,d,e,f);
+    es(EX,0,EZ,EX,lev[2]+.15,EZ);lev.forEach(y=>{es(EX-.1,y,EZ,EX+.55,y,EZ);es(EX-.06,y-.06,EZ,EX+.06,y+.06,EZ);es(EX+.6,y,EZ,EX+.75,y,EZ)});
+    const elevGeo=new THREE.BufferGeometry();elevGeo.setAttribute("position",new THREE.Float32BufferAttribute(elevPts,3));
+    const elevM=new THREE.LineBasicMaterial({color:0x9fd3ff,transparent:true,opacity:0,fog:false,depthWrite:false});const elev=new THREE.LineSegments(elevGeo,elevM);elev.visible=false;root.add(elev);
+    // popisky kót: půdorys (podle postupu kreslení) + výšky
+    const dims=DIMS.map(p=>new THREE.Vector3(...p)).concat(lev.map(y=>new THREE.Vector3(EX+.35,y+.12,EZ)));
+    const dimWin=DT.map(n=>{const f=(n/3)/planN;return [f*.22,.33]}).concat([[.2,.47],[.22,.47],[.24,.47]]);
     /* --- drátové obrysy --- */
-    const ghostM=new THREE.LineBasicMaterial({color:0x8cc4ea,transparent:true,opacity:0,fog:false,depthWrite:false});
+    const ghostM=new THREE.LineBasicMaterial({color:0x9fd3ff,transparent:true,opacity:0,fog:false,depthWrite:false});
     ghostSpecs.push({x:(H.x0+H.x1)/2,y0:.08+H.h,z:(H.z0+H.z1)/2,w:H.x1-H.x0,h:H.ridge,d:H.z1-H.z0,roof:1});
     const ghosts=ghostSpecs.map(s=>{const g=new THREE.Group();g.position.set(s.x,s.y0,s.z);let geo;
       if(s.roof){const sh=new THREE.Shape(),hz=s.d/2;sh.moveTo(-hz,0);sh.lineTo(hz,0);sh.lineTo(0,s.h);sh.lineTo(-hz,0);geo=new THREE.ExtrudeGeometry(sh,{depth:s.w,bevelEnabled:false});geo.rotateY(Math.PI/2);geo.translate(-s.w/2,0,0)}
@@ -879,9 +908,11 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
     const RAW={front:"raw",top:"raw",handle:"none"};
     const cA=new THREE.Color(),cB=new THREE.Color();
     const K={root,RAW,
-      setPlan(f,op){planGeo.setDrawRange(0,Math.floor(planN*f/2)*2);blueM.opacity=op;plan.visible=op>.002&&f>0},
-      dimPoints:dims,
-      setGhost(P,op){ghostM.opacity=op;ghosts.forEach(gh=>{const d=cl((gh.x+3.2)/6),s=ease(sm(.12+d*.12,.2+d*.12,P));gh.g.visible=op>.002&&s>.002;gh.g.scale.y=Math.max(.001,s)})},
+      setPlan(f,op){const n=Math.floor(planN*f/2)*2;planGeo.setDrawRange(0,n);blueM.opacity=op;plan.visible=op>.002&&f>0;
+        if(n>=2&&f<1){const i=(n-1)*3;pen.position.set(planPts[i],.05,planPts[i+2]);pen.material.opacity=op*.95}else pen.material.opacity=0;pen.visible=pen.material.opacity>.01},
+      dimPoints:dims,dimWin,
+      setElev(op){elevM.opacity=op;elev.visible=op>.002},
+      setGhost(P,op){ghostM.opacity=op;ghosts.forEach(gh=>{const d=cl((gh.x+3.2)/6),s=ease(sm(.2+d*.1,.28+d*.1,P));gh.g.visible=op>.002&&s>.002;gh.g.scale.y=Math.max(.001,s)})},
       setCarcass(sx){carc.forEach(c=>c.m.visible=c.x<sx)},
       setRoom(v){M.grass.opacity=v;M.grass.transparent=v<1;M.grass.depthWrite=v>.5;ground.visible=v>.002;path.visible=v>.3;slabs.visible=v>.002},
       setArrive(P){arr.forEach(a=>{const k=ease(sm(a.t0,a.t1,P));a.node.position.copy(a.home).addScaledVector(a.from,1-k);a.node.visible=k>.001})},
@@ -902,7 +933,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
         const led=L.led||0;M.winGlass.color.lerpColors(cA.setHex(day>.5?0x7f97ab:0x0c1520),cB.setHex(0xffcf8a),led*(1-day*.6));spill.forEach(m=>m.material.opacity=led*(1-day)*.55);
         const hd=L.hood||0;scon.forEach(s=>{s.b.material.color.lerpColors(cA.setHex(0x2c2822),cB.setHex(0xfff2dc),hd);s.wash.material.opacity=hd*.5});porchPool.material.opacity=hd*.6*(1-day*.7);porchL.intensity=hd*1.6;
         const pv=L.pend||[0,0,0];pend.forEach((p,i)=>{const v=pv[i]||0;p.bulb.material.color.lerpColors(cA.setHex(0x2c2822),cB.setHex(0xfff0d6),v);p.spr.material.opacity=v*.9;p.pool.material.opacity=v*.45*(1-day*.7);if(p.L)p.L.intensity=v*(MOBILE?1.6:1.1)})},
-      finished(){this.setPlan(0,0);this.setGhost(1,0);this.setCarcass(99);this.setRoom(1);this.setArrive(1);this.setPop(1);this.setOpen(0);this.setLaser(0,"cut",0,0)}
+      finished(){this.setElev(0);this.setPlan(0,0);this.setGhost(1,0);this.setCarcass(99);this.setRoom(1);this.setArrive(1);this.setPop(1);this.setOpen(0);this.setLaser(0,"cut",0,0)}
     };
     return K;
   }
@@ -914,18 +945,18 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
   const mixCam=(a,b,k)=>{const o={};for(const n in a)o[n]=lerp(a[n],b[n],k);return o};
   function createHero(onFail){
     const cv=document.getElementById("kitchen"),R=makeRenderer(cv,!MOBILE);if(!R)return null;
-    const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(30,1,.05,80);S.environment=studioEnv();S.fog=new THREE.Fog(0x16120f,13,32);
+    const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(30,1,.05,80);S.environment=studioEnv();S.fog=new THREE.Fog(0x0d1620,13,32);
     const K=buildKitchen({blueprint:true,shadows:!MOBILE});S.add(K.root);
-    const A={tx:-.2,ty:0,tz:1.9,pol:.02,az:0,r:12.5},B={tx:-.2,ty:.9,tz:2.0,pol:1.0,az:.6,r:12.5},Cf={tx:-.1,ty:1.0,tz:2.2,pol:1.2,az:.34,r:12.8};
+    const A={tx:.1,ty:0,tz:2.1,pol:.02,az:0,r:16},B={tx:-.2,ty:.9,tz:2.0,pol:1.0,az:.6,r:12.5},Cf={tx:-.1,ty:1.0,tz:2.2,pol:1.2,az:.34,r:12.8};
     let mx=0,my=0,tmx=0,tmy=0;
     if(FINE)addEventListener("pointermove",e=>{tmx=e.clientX/innerWidth-.5;tmy=e.clientY/innerHeight-.5;d.poke()},{passive:true});
     const v=new THREE.Vector3();
     const draw=(P,t,aspect)=>{
       const W=d.W,H=d.H,narrow=aspect<.9;
-      C.aspect=aspect;C.fov=narrow?46:30;if(narrow)C.setViewOffset(W,H,0,-H*.2,W,H);else C.setViewOffset(W,H,-W*.2,0,W,H);C.updateProjectionMatrix();
+      C.aspect=aspect;C.fov=narrow?46:30;if(narrow)C.setViewOffset(W,H,0,-H*.2,W,H);else C.setViewOffset(W,H,-W*.25,0,W,H);C.updateProjectionMatrix();
       // fáze
-      K.setPlan(sm(0,.11,P),1-sm(.36,.5,P));
-      K.setGhost(P,sm(.06,.12,P)*(1-sm(.5,.62,P)));
+      K.setPlan(sm(0,.22,P),1-sm(.38,.5,P));K.setElev(sm(.2,.25,P)*(1-sm(.44,.5,P)));
+      K.setGhost(P,sm(.17,.22,P)*(1-sm(.5,.62,P)));
       const lx=lerp(-3.4,3.0,sm(.3,.46,P)),lOn=sm(.28,.31,P)*(1-sm(.455,.48,P));
       K.setCarcass(P<.3?-99:lx);K.setRoom(sm(.3,.44,P));K.setArrive(P);K.setPop(P);
       const sx=lerp(-3.4,3.0,sm(.64,.76,P)),sOn=sm(.62,.645,P)*(1-sm(.755,.78,P));
@@ -940,8 +971,8 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
       o.az+=mx*.12*sm(.1,.3,P)+(FINE&&P>.97?Math.sin(t/4200)*.03:0);o.pol=Math.min(1.35,o.pol+my*.05*sm(.1,.3,P));if(narrow)o.r*=1.4;o.r*=lerp(1,.92,ease(sm(.78,1,P)));
       camSet(C,o);R.render(S,C);
       // kóty
-      const dv=sm(.03,.09,P)*(1-sm(.26,.32,P));C.updateMatrixWorld();
-      dimEls.forEach((el,i)=>{v.copy(K.dimPoints[i]).project(C);el.style.opacity=dv.toFixed(3);el.style.left=((v.x+1)/2*W).toFixed(0)+"px";el.style.top=((1-v.y)/2*H).toFixed(0)+"px"});
+      C.updateMatrixWorld();
+      dimEls.forEach((el,i)=>{v.copy(K.dimPoints[i]).project(C);const w=K.dimWin[i]||[.03,.3];el.style.opacity=(sm(w[0],w[0]+.02,P)*(1-sm(w[1],w[1]+.04,P))).toFixed(3);el.style.left=((v.x+1)/2*W).toFixed(0)+"px";el.style.top=((1-v.y)/2*H).toFixed(0)+"px"});
     };
     const d=sceneDriver(cv,R,draw,onFail);
     /* předkompilace shaderů: všechny fáze se vykreslí jednou hned po načtení, aby scroll později necukal */
@@ -957,7 +988,7 @@ input:focus-visible,textarea:focus-visible{outline:none;border-color:var(--oak)}
   const conf={front:"bila",top:"antracit",handle:"bar",mood:"den",view:"celek"};
   function createConf(onFail){
     const cv=document.getElementById("confCanvas"),R=makeRenderer(cv,!MOBILE);if(!R)return null;
-    const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(32,1,.05,80);S.environment=studioEnv();S.fog=new THREE.Fog(0x2a221b,13,32);
+    const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(32,1,.05,80);S.environment=studioEnv();S.fog=new THREE.Fog(0x1a2a3a,13,32);
     const K=buildKitchen({blueprint:false,shadows:!MOBILE});S.add(K.root);K.finished();
     let cur={front:conf.front,top:conf.top,handle:conf.handle},next=cur,sweep=1,lastT=0;
     let mood=conf.mood==="den"?1:0,tMood=mood;

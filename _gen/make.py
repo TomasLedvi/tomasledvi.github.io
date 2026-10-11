@@ -116,6 +116,9 @@ def main(cfg_path):
     if c.get("source_note"):
         rep("Fotografie a údaje převzaty ze současného webu truhlářství.", c["source_note"])
 
+    if c.get("template") == "dum":
+        s = s.replace("<span>Pracujeme s</span>", "<span>Navrhujeme</span>")
+
     # barva akcentu (volitelně)
     if c.get("accent"):
         a, a2 = c["accent"]

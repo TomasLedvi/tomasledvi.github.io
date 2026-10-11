@@ -22,7 +22,7 @@ def block(start, end, new):
 block("  /* ---------- materiálové varianty ---------- */", "  /* ================= HERO", house)
 rep('const FIN={front:"dub",top:"kamenB",handle:"bar"};', 'const FIN={front:"bila",top:"antracit",handle:"bar"};')
 rep('const A={tx:-.15,ty:0,tz:1.4,pol:.02,az:0,r:11},B={tx:-.15,ty:.9,tz:1.2,pol:1.02,az:.6,r:8.6},Cf={tx:-.3,ty:1.0,tz:1.2,pol:1.17,az:.24,r:7.9};',
-    'const A={tx:-.2,ty:0,tz:1.9,pol:.02,az:0,r:12.5},B={tx:-.2,ty:.9,tz:2.0,pol:1.0,az:.6,r:12.5},Cf={tx:-.1,ty:1.0,tz:2.2,pol:1.2,az:.34,r:12.8};')
+    'const A={tx:.1,ty:0,tz:2.1,pol:.02,az:0,r:16},B={tx:-.2,ty:.9,tz:2.0,pol:1.0,az:.6,r:12.5},Cf={tx:-.1,ty:1.0,tz:2.2,pol:1.2,az:.34,r:12.8};')
 rep('S.fog=new THREE.Fog(0x16120f,10,24);', 'S.fog=new THREE.Fog(0x16120f,13,32);')
 rep('S.fog=new THREE.Fog(0x2a221b,9,22);', 'S.fog=new THREE.Fog(0x2a221b,13,32);')
 rep('const VIEWS=[["celek","Celek",{tx:-.25,ty:1.0,tz:1.2,pol:1.16,az:.32,r:6.6}],["ostruvek","Ostrůvek",{tx:-.3,ty:.8,tz:2.1,pol:1.02,az:-.28,r:3.9}],["deska","Detail desky",{tx:-.55,ty:.95,tz:.4,pol:.98,az:.2,r:2.5}]];',
@@ -80,5 +80,21 @@ block('<svg id="confFallback"', '\n        <div class="cv-bar">', CONF_SVG)
 rep('$("cfWall").setAttribute("fill",m==="den"?"#d9d2c7":"#6e655a")', '$("cfWall").setAttribute("fill",m==="den"?"#cfe0ee":"#1b2330")')
 
 rep("if(narrow)o.r*=1.75;", "if(narrow)o.r*=1.4;")
+rep("else C.setViewOffset(W,H,-W*.2,0,W,H);", "else C.setViewOffset(W,H,-W*.25,0,W,H);")
+rep("K.setPlan(sm(0,.11,P),1-sm(.36,.5,P));", "K.setPlan(sm(0,.22,P),1-sm(.38,.5,P));K.setElev(sm(.2,.25,P)*(1-sm(.44,.5,P)));")
+rep("K.setGhost(P,sm(.06,.12,P)*(1-sm(.5,.62,P)));", "K.setGhost(P,sm(.17,.22,P)*(1-sm(.5,.62,P)));")
+rep('const dv=sm(.03,.09,P)*(1-sm(.26,.32,P));C.updateMatrixWorld();', 'C.updateMatrixWorld();')
+rep('el.style.opacity=dv.toFixed(3);', 'const w=K.dimWin[i]||[.03,.3];el.style.opacity=(sm(w[0],w[0]+.02,P)*(1-sm(w[1],w[1]+.04,P))).toFixed(3);')
+# více kót v HTML
+labels=["2 500","3 250","3 250","4 500","13 500","4 500","3 000","7 500","±0,000","+3,830","+6,450"]
+rep('<span class="dim" data-dim="0">13 500</span><span class="dim" data-dim="1">7 500</span><span class="dim" data-dim="2">4 500</span><span class="dim" data-dim="3">7 500</span>',
+    "".join(f'<span class="dim" data-dim="{i}">{t}</span>' for i,t in enumerate(labels)))
+# styl výkresu: modrošedé pozadí, světle modré linky, pískový akcent
+for a,b in [("#16120f","#0d1620"),("0x16120f","0x0d1620"),("#1e1814","#122030"),("#2a221b","#1a2a3a"),("0x2a221b","0x1a2a3a"),("#f4ede3","#eef3f7"),("#c7b9a7","#a9b9c7"),("#9c8c79","#7f91a2"),
+            ("#f3ece1","#edf1f4"),("#e9e0d2","#dde4ea"),("#2b2219","#142231"),("#6e5f50","#526476"),("#3a2a1c88","#1b2d4088"),("#9a6634","#b07a45"),("#fffaf2","#f7f9fb"),("Co vyrábíme","Co navrhujeme"),
+            ("#d9a66a","#e3ab6e"),("%23d9a66a","%23e3ab6e"),("#efc48f","#f3c896"),("#8cc4ea","#9fd3ff"),("0x8cc4ea","0x9fd3ff")]:
+    s_count=s
+    s=s.replace(a,b)
+
 (ROOT / "_gen" / "dum_base.html").write_text(s, encoding="utf-8")
 print("hotovo: _gen/dum_base.html")

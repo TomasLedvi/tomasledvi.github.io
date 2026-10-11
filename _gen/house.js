@@ -131,7 +131,9 @@
     const doorPivot=new THREE.Group();doorPivot.position.set(-.95+.24,.08,fz);root.add(doorPivot);
     add(new THREE.BoxGeometry(.48,.98,.04),M.door,doorPivot,-.24,.49,.02);add(new THREE.BoxGeometry(.03,.22,.03),M.steel,doorPivot,-.42,.5,.06);
     arr.push({node:doorPivot,home:doorPivot.position.clone(),from:new THREE.Vector3(0,0,1.4),t0:.52,t1:.6});
-    add(new THREE.BoxGeometry(.7,.04,.4),M.flat,root,-.95,.08+1.12,fz+.2);   // stříška nad vstupem
+    const entry=new THREE.Group();root.add(entry);
+    add(new THREE.BoxGeometry(.7,.04,.4),M.flat,entry,-.95,.08+1.12,fz+.2);   // stříška nad vstupem
+    arr.push({node:entry,home:entry.position.clone(),from:new THREE.Vector3(0,1.6,0),t0:.55,t1:.62});
     // příchody střechy a štítů
     arr.push({node:roof,home:roof.position.clone(),from:new THREE.Vector3(0,2.6,0),t0:.45,t1:.56});
     arr.push({node:gL,home:gL.position.clone(),from:new THREE.Vector3(0,2.2,0),t0:.44,t1:.53});
@@ -156,28 +158,55 @@
       let L=null;if(!MOBILE||i===0){L=new THREE.PointLight(0xffd29a,0,2.2,2);L.position.set(0,.45,0);g.add(L)}
       pop(g,.7+i*.01);pend.push({bulb,spr,pool,L})});
     // nástěnná světla u vchodu (hood)
-    const scon=[];[-1.32,-.58].forEach(x=>{const b=add(new THREE.BoxGeometry(.06,.1,.05),M.bulb.clone(),root,x,.08+.82,fz+.03,false,false);
+    const scon=[];[-1.32,-.58].forEach(x=>{const b=add(new THREE.BoxGeometry(.06,.1,.05),M.bulb.clone(),entry,x,.08+.82,fz+.03,false,false);
       const wash=new THREE.Mesh(new THREE.PlaneGeometry(.5,.9),new THREE.MeshBasicMaterial({map:VG,color:0xffd7a2,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));wash.rotation.z=Math.PI;wash.position.set(x,.08+.4,fz+.02);root.add(wash);scon.push({b,wash})});
     const porchPool=new THREE.Mesh(new THREE.PlaneGeometry(1.6,1.2).rotateX(-Math.PI/2),glowMat(0xffc98a));porchPool.position.set(-.95,.03,fz+.6);root.add(porchPool);
     const porchL=new THREE.SpotLight(0xffd8a8,0,4,.9,.6,1.5);porchL.position.set(-.95,1.15,fz+.25);porchL.target.position.set(-.95,0,fz+.9);root.add(porchL,porchL.target);
     // světlo z oken (led): odlesky na terase a trávníku
     const spill=[[-2.35,fz+.55,.9],[-1.5,fz+.55,.9],[-.25,fz+.6,1.2],[1.6,wz+.7,1.8]].map(([x,z,s])=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(s,s*.8).rotateX(-Math.PI/2),glowMat(0xffc480));m.position.set(x,.05,z);root.add(m);return m});
 
-    /* --- výkres: půdorys na zemi --- */
+    /* --- výkres: kreslí se postupně jako skutečný projekt --- */
     const planPts=[],Y0=.012;const seg=(x1,z1,x2,z2)=>planPts.push(x1,Y0,z1,x2,Y0,z2);
     const rect=(x0,z0,x1,z1)=>{seg(x0,z0,x1,z0);seg(x1,z0,x1,z1);seg(x1,z1,x0,z1);seg(x0,z1,x0,z0)};
     const arc=(cx,cz,r,a0,a1,n=12)=>{for(let i=0;i<n;i++){const t0=a0+(a1-a0)*i/n,t1=a0+(a1-a0)*(i+1)/n;seg(cx+Math.cos(t0)*r,cz+Math.sin(t0)*r,cx+Math.cos(t1)*r,cz+Math.sin(t1)*r)}};
-    const dim=(x1,z1,x2,z2)=>{seg(x1,z1,x2,z2);const tk=.07;[[x1,z1],[x2,z2]].forEach(([x,z])=>seg(x-tk,z+tk,x+tk,z-tk))};
+    const dashed=(x0,z0,x1,z1,n=16,dot)=>{for(let i=0;i<n;i++){const a=i/n,b=(i+(dot?.35:.6))/n;seg(lerp(x0,x1,a),lerp(z0,z1,a),lerp(x0,x1,b),lerp(z0,z1,b))}};
+    const tick=(x,z)=>{const t=.06;seg(x-t,z+t,x+t,z-t)};
+    const DIMS=[],DT=[];      // kóty: pozice popisku a okamžik, kdy se dokreslí
+    const chainX=(xs,z,ext)=>{seg(xs[0]-.1,z,xs[xs.length-1]+.1,z);xs.forEach(x=>{tick(x,z);seg(x,z-.08,x,ext)});for(let i=0;i<xs.length-1;i++){DIMS.push([(xs[i]+xs[i+1])/2,0,z-.09]);DT.push(planPts.length)}};
+    const chainZ=(zs,x,ext)=>{seg(x,zs[0]-.1,x,zs[zs.length-1]+.1);zs.forEach(z=>{tick(x,z);seg(x+(ext>x?-.08:.08),z,ext,z)});for(let i=0;i<zs.length-1;i++){DIMS.push([x-.12,0,(zs[i]+zs[i+1])/2]);DT.push(planPts.length)}};
+    // 1) hranice pozemku
+    const PX0=-4.6,PX1=4.3,PZ0=-1.4,PZ1=5.6;dashed(PX0,PZ0,PX1,PZ0,24,1);dashed(PX1,PZ0,PX1,PZ1,18,1);dashed(PX1,PZ1,PX0,PZ1,24,1);dashed(PX0,PZ1,PX0,PZ0,18,1);
+    // 2) osy konstrukce s kroužky
+    const AX=[H.x0+T/2,-1.9,-.6,H.x1-T/2,Wg.x1-T/2],AZ=[H.z0+T/2,1.9,H.z1-T/2];
+    AX.forEach(x=>{dashed(x,-.9,x,4.7,14,1);arc(x,-1.08,.17,0,6.283,14)});AZ.forEach(z=>{dashed(-4.1,z,3.5,z,18,1);arc(-4.28,z,.17,0,6.283,14)});
+    // 3) obvodové zdi (dvojitá čára)
     rect(H.x0,H.z0,H.x1,H.z1);rect(H.x0+T,H.z0+T,H.x1-T,H.z1-T);rect(Wg.x0,Wg.z0,Wg.x1,Wg.z1);rect(Wg.x0+T,Wg.z0+T,Wg.x1-T,Wg.z1-T);
+    // 4) příčky, dveře, okna, schodiště
     seg(-1.9,H.z0+T,-1.9,1.9);seg(H.x0+T,1.9,-.6,1.9);seg(-.6,H.z0+T,-.6,2.3);seg(-2.2,1.9,-2.2,H.z1-T);seg(Wg.x0+T,2.0,Wg.x1-T,2.0);
-    arc(-.71,H.z1,.48,Math.PI,Math.PI*1.5);arc(-1.9,1.4,.4,0,Math.PI/2);arc(-.6,2.3,.4,Math.PI/2,Math.PI);
-    [[-2.35,.7,H.z1],[-1.5,.7,H.z1],[-.25,1.0,H.z1],[1.6,1.5,Wg.z1]].forEach(([x,w,z])=>{seg(x-w/2,z+.04,x+w/2,z+.04)});
-    for(let i=0;i<7;i++)seg(-1.75+i*.08,.55,-1.75+i*.08,1.25);  // schodiště
-    dim(H.x0,H.z1+.95,Wg.x1,H.z1+.95);dim(H.x0-.55,H.z0,H.x0-.55,H.z1);dim(Wg.x0,Wg.z0-.45,Wg.x1,Wg.z0-.45);dim(Wg.x1+.45,Wg.z0,Wg.x1+.45,Wg.z1);
+    arc(-.71,H.z1,.48,Math.PI,Math.PI*1.5);arc(-1.9,1.4,.4,0,Math.PI/2);arc(-.6,2.3,.4,Math.PI/2,Math.PI);arc(Wg.x0+T,2.0,.45,0,Math.PI/2);
+    [[-2.35,.7,H.z1],[-1.5,.7,H.z1],[-.25,1.0,H.z1],[1.6,1.5,Wg.z1]].forEach(([x,w,z])=>{seg(x-w/2,z+.04,x+w/2,z+.04);seg(x-w/2,z-T-.04,x+w/2,z-T-.04)});
+    for(let i=0;i<9;i++)seg(-1.78+i*.07,.5,-1.78+i*.07,1.3);seg(-1.78,.9,-1.22,.9);
+    // terasa, chodník
+    rect(.7,Wg.z1,2.5,Wg.z1+.85);for(let i=1;i<9;i++)seg(.7+i*.2,Wg.z1,.7+i*.2,Wg.z1+.85);rect(-1.25,H.z1,-.65,H.z1+1.6);
+    // 5) kótovací řetězce
+    chainX([H.x0,-1.9,-.6,H.x1,Wg.x1],H.z1+1.25,H.z1+.12);
+    chainX([H.x0,Wg.x1],H.z1+1.65,H.z1+1.33);
+    chainZ([H.z0,1.9,H.z1],H.x0-.7,H.x0-.06);
+    chainZ([Wg.z0,Wg.z1],Wg.x1+.6,Wg.x1+.06);
+    // 6) severka
+    arc(3.6,-.6,.28,0,6.283,20);seg(3.6,-.95,3.6,-.25);seg(3.6,-.95,3.5,-.75);seg(3.6,-.95,3.7,-.75);
     const planGeo=new THREE.BufferGeometry();planGeo.setAttribute("position",new THREE.Float32BufferAttribute(planPts,3));
-    const blueM=new THREE.LineBasicMaterial({color:0x8cc4ea,transparent:true,opacity:0,fog:false,depthWrite:false});
+    const blueM=new THREE.LineBasicMaterial({color:0x9fd3ff,transparent:true,opacity:0,fog:false,depthWrite:false});
     const plan=new THREE.LineSegments(planGeo,blueM);plan.renderOrder=2;root.add(plan);const planN=planPts.length/3;
-    const dims=[[-.2,0,H.z1+.95],[H.x0-.55,0,1.6],[1.6,0,Wg.z0-.45],[Wg.x1+.45,0,2.0]].map(p=>new THREE.Vector3(...p));
+    const pen=new THREE.Sprite(new THREE.SpriteMaterial({map:RAD,color:0xffe2b8,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));pen.scale.set(.42,.42,1);pen.renderOrder=3;root.add(pen);
+    // výškové kóty (pohled) – kreslí se při růstu obrysů
+    const elevPts=[],EX=Wg.x1+1.15,EZ=H.z0+.4,lev=[0,.08+H.h,.08+H.h+H.ridge];const es=(a,b,c,d,e,f)=>elevPts.push(a,b,c,d,e,f);
+    es(EX,0,EZ,EX,lev[2]+.15,EZ);lev.forEach(y=>{es(EX-.1,y,EZ,EX+.55,y,EZ);es(EX-.06,y-.06,EZ,EX+.06,y+.06,EZ);es(EX+.6,y,EZ,EX+.75,y,EZ)});
+    const elevGeo=new THREE.BufferGeometry();elevGeo.setAttribute("position",new THREE.Float32BufferAttribute(elevPts,3));
+    const elevM=new THREE.LineBasicMaterial({color:0x9fd3ff,transparent:true,opacity:0,fog:false,depthWrite:false});const elev=new THREE.LineSegments(elevGeo,elevM);elev.visible=false;root.add(elev);
+    // popisky kót: půdorys (podle postupu kreslení) + výšky
+    const dims=DIMS.map(p=>new THREE.Vector3(...p)).concat(lev.map(y=>new THREE.Vector3(EX+.35,y+.12,EZ)));
+    const dimWin=DT.map(n=>{const f=(n/3)/planN;return [f*.22,.33]}).concat([[.2,.47],[.22,.47],[.24,.47]]);
     /* --- drátové obrysy --- */
     const ghostM=new THREE.LineBasicMaterial({color:0x8cc4ea,transparent:true,opacity:0,fog:false,depthWrite:false});
     ghostSpecs.push({x:(H.x0+H.x1)/2,y0:.08+H.h,z:(H.z0+H.z1)/2,w:H.x1-H.x0,h:H.ridge,d:H.z1-H.z0,roof:1});
@@ -208,9 +237,11 @@
     const RAW={front:"raw",top:"raw",handle:"none"};
     const cA=new THREE.Color(),cB=new THREE.Color();
     const K={root,RAW,
-      setPlan(f,op){planGeo.setDrawRange(0,Math.floor(planN*f/2)*2);blueM.opacity=op;plan.visible=op>.002&&f>0},
-      dimPoints:dims,
-      setGhost(P,op){ghostM.opacity=op;ghosts.forEach(gh=>{const d=cl((gh.x+3.2)/6),s=ease(sm(.12+d*.12,.2+d*.12,P));gh.g.visible=op>.002&&s>.002;gh.g.scale.y=Math.max(.001,s)})},
+      setPlan(f,op){const n=Math.floor(planN*f/2)*2;planGeo.setDrawRange(0,n);blueM.opacity=op;plan.visible=op>.002&&f>0;
+        if(n>=2&&f<1){const i=(n-1)*3;pen.position.set(planPts[i],.05,planPts[i+2]);pen.material.opacity=op*.95}else pen.material.opacity=0;pen.visible=pen.material.opacity>.01},
+      dimPoints:dims,dimWin,
+      setElev(op){elevM.opacity=op;elev.visible=op>.002},
+      setGhost(P,op){ghostM.opacity=op;ghosts.forEach(gh=>{const d=cl((gh.x+3.2)/6),s=ease(sm(.2+d*.1,.28+d*.1,P));gh.g.visible=op>.002&&s>.002;gh.g.scale.y=Math.max(.001,s)})},
       setCarcass(sx){carc.forEach(c=>c.m.visible=c.x<sx)},
       setRoom(v){M.grass.opacity=v;M.grass.transparent=v<1;M.grass.depthWrite=v>.5;ground.visible=v>.002;path.visible=v>.3;slabs.visible=v>.002},
       setArrive(P){arr.forEach(a=>{const k=ease(sm(a.t0,a.t1,P));a.node.position.copy(a.home).addScaledVector(a.from,1-k);a.node.visible=k>.001})},
@@ -231,7 +262,7 @@
         const led=L.led||0;M.winGlass.color.lerpColors(cA.setHex(day>.5?0x7f97ab:0x0c1520),cB.setHex(0xffcf8a),led*(1-day*.6));spill.forEach(m=>m.material.opacity=led*(1-day)*.55);
         const hd=L.hood||0;scon.forEach(s=>{s.b.material.color.lerpColors(cA.setHex(0x2c2822),cB.setHex(0xfff2dc),hd);s.wash.material.opacity=hd*.5});porchPool.material.opacity=hd*.6*(1-day*.7);porchL.intensity=hd*1.6;
         const pv=L.pend||[0,0,0];pend.forEach((p,i)=>{const v=pv[i]||0;p.bulb.material.color.lerpColors(cA.setHex(0x2c2822),cB.setHex(0xfff0d6),v);p.spr.material.opacity=v*.9;p.pool.material.opacity=v*.45*(1-day*.7);if(p.L)p.L.intensity=v*(MOBILE?1.6:1.1)})},
-      finished(){this.setPlan(0,0);this.setGhost(1,0);this.setCarcass(99);this.setRoom(1);this.setArrive(1);this.setPop(1);this.setOpen(0);this.setLaser(0,"cut",0,0)}
+      finished(){this.setElev(0);this.setPlan(0,0);this.setGhost(1,0);this.setCarcass(99);this.setRoom(1);this.setArrive(1);this.setPop(1);this.setOpen(0);this.setLaser(0,"cut",0,0)}
     };
     return K;
   }
