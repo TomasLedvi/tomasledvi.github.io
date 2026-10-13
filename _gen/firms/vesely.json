@@ -266,5 +266,30 @@
    ]
   }
  ],
- "new_site": true
+ "new_site": true,
+ "stamp": "assets/razitko.png",
+ "cert": {
+  "img": "assets/osvedceni.jpg",
+  "eyebrow": "Autorizace",
+  "h": "Autorizovaný <em>inženýr.</em>",
+  "lead": "Projekty zpracovává autorizovaný inženýr, zapsaný v seznamu autorizovaných osob České komory autorizovaných inženýrů a techniků činných ve výstavbě (ČKAIT). Autorizace zaručuje odbornou způsobilost i odpovědnost za projekt.",
+  "facts": [
+   [
+    "Obor",
+    "Pozemní stavby"
+   ],
+   [
+    "Číslo v seznamu ČKAIT",
+    "0003015"
+   ],
+   [
+    "Osvědčení",
+    "č. 7876"
+   ],
+   [
+    "Autorizace od",
+    "17. 10. 1994"
+   ]
+  ]
+ }
 }

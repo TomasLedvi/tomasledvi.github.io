@@ -120,6 +120,61 @@ def main(cfg_path):
     if c.get("template") == "dum":
         s = s.replace("<span>Pracujeme s</span>", "<span>Navrhujeme</span>")
 
+    # otisk razítka v úvodu (volitelně)
+    if c.get("stamp"):
+        st = c["stamp"]
+        rep('<div class="tblock" aria-hidden="true">',
+            f'<div class="stamp-hero" aria-hidden="true" style="--m:url({st})"></div>\n    <div class="tblock" aria-hidden="true">')
+        rep("</style>", """
+.stamp-hero{position:absolute;z-index:4;right:calc(max(16px,3vw) + 182px);bottom:calc(clamp(96px,14vh,140px) - 4px);width:118px;height:118px;pointer-events:none;
+  background:var(--blue);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;
+  opacity:0;transform:rotate(-14deg) scale(2.4);filter:blur(3px)}
+.stamp-hero.on{animation:stampIn .55s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes stampIn{0%{opacity:0;transform:rotate(-20deg) scale(2.4);filter:blur(3px)}60%{opacity:.95;filter:blur(0)}100%{opacity:.82;transform:rotate(-12deg) scale(1);filter:blur(0)}}
+.stamp-hero::after{content:"";position:absolute;inset:-18%;border-radius:50%;border:2px solid var(--blue);opacity:0}
+.stamp-hero.on::after{animation:stampRing .7s .12s ease-out forwards}
+@keyframes stampRing{0%{opacity:.6;transform:scale(.7)}100%{opacity:0;transform:scale(1.25)}}
+@media (max-width:900px){.stamp-hero{right:22px;bottom:150px;width:96px;height:96px}}
+@media (prefers-reduced-motion:reduce){.stamp-hero.on{animation:none;opacity:.82;transform:rotate(-12deg);filter:none}.stamp-hero.on::after{animation:none}}
+</style>""")
+        rep("</body>", """<script>addEventListener("load",()=>setTimeout(()=>{const e=document.querySelector(".stamp-hero");e&&e.classList.add("on")},900));</script>
+</body>""")
+
+    # sekce s osvědčením o autorizaci (volitelně)
+    if c.get("cert"):
+        ce = c["cert"]
+        facts = "".join(f"<div><small>{a}</small><span>{b}</span></div>" for a, b in ce["facts"])
+        rep('<section class="map-sec gut" id="oblast">', f'''<section class="sec gut light cert" id="autorizace">
+  <div class="wrap cert-grid">
+    <div>
+      <div class="eyebrow bar-rv"><span><b>—</b> {ce["eyebrow"]}</span></div>
+      <h2 class="h" data-split>{ce["h"]}</h2>
+      <p class="lead rv">{ce["lead"]}</p>
+      <div class="cert-facts rv">{facts}</div>
+    </div>
+    <a class="cert-sheet rv" href="{ce["img"]}" target="_blank" rel="noopener" aria-label="Zobrazit osvědčení o autorizaci ve větší velikosti">
+      <img src="{ce["img"]}" alt="Osvědčení o autorizaci ČKAIT" loading="lazy" width="760" height="1191">
+      <span>Zobrazit osvědčení</span>
+    </a>
+  </div>
+</section>
+
+<section class="map-sec gut" id="oblast">''')
+        rep("</style>", """
+.cert-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,90px);align-items:center}
+.cert-facts{display:grid;grid-template-columns:1fr 1fr;margin-top:28px;border:1px solid var(--pline)}
+.cert-facts div{padding:14px 16px;border-right:1px solid var(--pline);border-bottom:1px solid var(--pline);display:grid;gap:4px}
+.cert-facts div:nth-child(2n){border-right:0}.cert-facts div:nth-last-child(-n+2){border-bottom:0}
+.cert-facts small{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pmuted)}
+.cert-facts span{font-size:1.02rem;color:var(--pink)}
+.cert-sheet{position:relative;display:block;justify-self:center;width:min(100%,420px);background:#fff;padding:14px;box-shadow:0 30px 60px -30px #14223166,0 2px 6px #14223122;transform:rotate(2deg);transition:transform .5s var(--ease)}
+.cert-sheet:hover{transform:rotate(0) translateY(-6px)}
+.cert-sheet img{display:block;width:100%;height:auto}
+.cert-sheet span{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:var(--pink);color:var(--paper);padding:7px 12px;white-space:nowrap}
+@media (max-width:900px){.cert-grid{grid-template-columns:1fr}.cert-sheet{width:min(86%,360px)}}
+</style>""")
+        rep('<a href="#oblast">', '<a href="#autorizace">Autorizace</a><a href="#oblast">')
+
     # barva akcentu (volitelně)
     if c.get("accent"):
         a, a2 = c["accent"]

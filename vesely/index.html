@@ -355,13 +355,36 @@ body{counter-reset:list}
 .xl::after{content:"";position:absolute;left:-3px;top:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:currentColor}
 @media (max-width:900px){.xpl-head{top:auto;bottom:6vh}.xl{font-size:.6rem;padding-left:30px}.xl::before{width:24px}}
 .sunr{width:100%;accent-color:var(--oak)}
+
+.stamp-hero{position:absolute;z-index:4;right:calc(max(16px,3vw) + 182px);bottom:calc(clamp(96px,14vh,140px) - 4px);width:118px;height:118px;pointer-events:none;
+  background:var(--blue);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;
+  opacity:0;transform:rotate(-14deg) scale(2.4);filter:blur(3px)}
+.stamp-hero.on{animation:stampIn .55s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes stampIn{0%{opacity:0;transform:rotate(-20deg) scale(2.4);filter:blur(3px)}60%{opacity:.95;filter:blur(0)}100%{opacity:.82;transform:rotate(-12deg) scale(1);filter:blur(0)}}
+.stamp-hero::after{content:"";position:absolute;inset:-18%;border-radius:50%;border:2px solid var(--blue);opacity:0}
+.stamp-hero.on::after{animation:stampRing .7s .12s ease-out forwards}
+@keyframes stampRing{0%{opacity:.6;transform:scale(.7)}100%{opacity:0;transform:scale(1.25)}}
+@media (max-width:900px){.stamp-hero{right:22px;bottom:150px;width:96px;height:96px}}
+@media (prefers-reduced-motion:reduce){.stamp-hero.on{animation:none;opacity:.82;transform:rotate(-12deg);filter:none}.stamp-hero.on::after{animation:none}}
+
+.cert-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,90px);align-items:center}
+.cert-facts{display:grid;grid-template-columns:1fr 1fr;margin-top:28px;border:1px solid var(--pline)}
+.cert-facts div{padding:14px 16px;border-right:1px solid var(--pline);border-bottom:1px solid var(--pline);display:grid;gap:4px}
+.cert-facts div:nth-child(2n){border-right:0}.cert-facts div:nth-last-child(-n+2){border-bottom:0}
+.cert-facts small{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pmuted)}
+.cert-facts span{font-size:1.02rem;color:var(--pink)}
+.cert-sheet{position:relative;display:block;justify-self:center;width:min(100%,420px);background:#fff;padding:14px;box-shadow:0 30px 60px -30px #14223166,0 2px 6px #14223122;transform:rotate(2deg);transition:transform .5s var(--ease)}
+.cert-sheet:hover{transform:rotate(0) translateY(-6px)}
+.cert-sheet img{display:block;width:100%;height:auto}
+.cert-sheet span{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:var(--pink);color:var(--paper);padding:7px 12px;white-space:nowrap}
+@media (max-width:900px){.cert-grid{grid-template-columns:1fr}.cert-sheet{width:min(86%,360px)}}
 </style>
 </head>
 <body>
 <div class="concept-bar" id="conceptBar">NEOFICIÁLNÍ NÁVRH WEBU · nejde o oficiální web Projektant Ing. Jaromír Veselý</div>
 <header class="nav" id="nav">
   <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 15.5L16 7l10 8.5V25H6z" fill="none" stroke="#e3ab6e" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 29h20M6 27.5v3M26 27.5v3M13.5 25v-6h5v6" fill="none" stroke="#9fd3ff" stroke-width="1.3" stroke-linecap="round"/></svg><span>Jaromír Veselý<small>Projektant · Sedlčany</small></span></a>
-  <nav class="links"><a href="#postup">Postup</a><a href="#konfigurator">Konfigurátor</a><a href="#realizace">Realizace</a><a href="#oblast">Kancelář</a><a href="#kontakt">Kontakt</a><button class="btn fill" type="button" data-open="poptavka">Poptávka <span class="arr">→</span></button></nav>
+  <nav class="links"><a href="#postup">Postup</a><a href="#konfigurator">Konfigurátor</a><a href="#realizace">Realizace</a><a href="#autorizace">Autorizace</a><a href="#oblast">Kancelář</a><a href="#kontakt">Kontakt</a><button class="btn fill" type="button" data-open="poptavka">Poptávka <span class="arr">→</span></button></nav>
   <div class="prog" aria-hidden="true"></div>
 </header>
 <div class="cur" aria-hidden="true"><span>Táhni</span></div>
@@ -400,6 +423,7 @@ body{counter-reset:list}
       <div class="h-ctas rv" style="--d:.65s"><button class="btn fill" type="button" data-open="poptavka">Poptat projekt <span class="arr">→</span></button><a class="btn" href="#realizace">Naše realizace</a></div>
     </div>
     <div class="scroll-hint" aria-hidden="true">Scrollujte</div>
+    <div class="stamp-hero" aria-hidden="true" style="--m:url(assets/razitko.png)"></div>
     <div class="tblock" aria-hidden="true"><span>Výkres</span><span><b>Půdorys 1.NP</b></span><span>Měřítko</span><span><b>1 : 100</b></span><span>Formát</span><span><b>A1</b></span><span>List</span><span><b>01</b></span></div>
     <div class="steps gut">
       <div class="step-cap" aria-live="polite">
@@ -493,6 +517,21 @@ body{counter-reset:list}
   <div class="wrap">
     <div class="filters rv" id="filters"></div>
     <div class="masonry" id="masonry"></div>
+  </div>
+</section>
+
+<section class="sec gut light cert" id="autorizace">
+  <div class="wrap cert-grid">
+    <div>
+      <div class="eyebrow bar-rv"><span><b>—</b> Autorizace</span></div>
+      <h2 class="h" data-split>Autorizovaný <em>inženýr.</em></h2>
+      <p class="lead rv">Projekty zpracovává autorizovaný inženýr, zapsaný v seznamu autorizovaných osob České komory autorizovaných inženýrů a techniků činných ve výstavbě (ČKAIT). Autorizace zaručuje odbornou způsobilost i odpovědnost za projekt.</p>
+      <div class="cert-facts rv"><div><small>Obor</small><span>Pozemní stavby</span></div><div><small>Číslo v seznamu ČKAIT</small><span>0003015</span></div><div><small>Osvědčení</small><span>č. 7876</span></div><div><small>Autorizace od</small><span>17. 10. 1994</span></div></div>
+    </div>
+    <a class="cert-sheet rv" href="assets/osvedceni.jpg" target="_blank" rel="noopener" aria-label="Zobrazit osvědčení o autorizaci ve větší velikosti">
+      <img src="assets/osvedceni.jpg" alt="Osvědčení o autorizaci ČKAIT" loading="lazy" width="760" height="1191">
+      <span>Zobrazit osvědčení</span>
+    </a>
   </div>
 </section>
 
@@ -1219,5 +1258,6 @@ body{counter-reset:list}
   requestAnimationFrame(frame);
 })();
 </script>
+<script>addEventListener("load",()=>setTimeout(()=>{const e=document.querySelector(".stamp-hero");e&&e.classList.add("on")},900));</script>
 </body>
 </html>
