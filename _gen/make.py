@@ -139,9 +139,17 @@ def main(cfg_path):
 @media (max-width:900px){.stamp-wrap{left:auto;right:18px;top:auto;bottom:140px;width:110px}.stamp-c{right:-6px;bottom:-40px;width:104px;height:104px}}
 @media (prefers-reduced-motion:reduce){.stamp-ink.on{animation:none;opacity:var(--o,.9);transform:rotate(var(--r,-12deg))}.stamp-wrap.hit::after{animation:none}}
 </style>""")
+        rep('<div class="h-ctas rv" style="--d:.65s">', f'<div class="h-ctas rv" style="--d:.65s;position:relative"><div class="stamp-ink stamp-done" aria-hidden="true" style="--m:url({st})"></div>')
+        rep("</style>", """
+.stamp-done{position:absolute;left:22px;top:calc(100% + 8px);width:clamp(110px,9vw,138px);aspect-ratio:1;background:#b9e0ff;--o:.9;--r:-9deg;filter:drop-shadow(0 0 14px #9fd3ff4d);z-index:2}
+.stamp-done.off{animation:none;opacity:0;transition:opacity .3s}
+@media (max-width:900px){.stamp-done{left:40px;top:calc(100% + 16px);width:100px}}
+</style>""")
         rep("</body>", """<script>(()=>{const w=document.querySelector(".stamp-wrap"),h=w&&w.firstElementChild;
 addEventListener("load",()=>setTimeout(()=>{h&&h.classList.add("on");setTimeout(()=>w&&w.classList.add("hit"),230)},700));
 if(w){const f=()=>{w.style.opacity=Math.max(0,1-scrollY/(innerHeight*.35)).toFixed(3)};addEventListener("scroll",f,{passive:true});f()}
+const sd=document.querySelector(".stamp-done"),hero=document.getElementById("postup");
+if(sd&&hero){let on=false;const g=()=>{const r=hero.getBoundingClientRect(),P=-r.top/Math.max(1,r.height-innerHeight);if(!on&&P>.8&&P<1.02){on=true;sd.classList.remove("off");sd.classList.add("on")}else if(on&&P<.72){on=false;sd.classList.remove("on");sd.classList.add("off")}};addEventListener("scroll",g,{passive:true});g()}
 const sc=document.querySelector(".stamp-c");if(sc&&"IntersectionObserver"in window){const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){setTimeout(()=>sc.classList.add("on"),450);io.disconnect()}},{threshold:.6});io.observe(sc)}else if(sc)sc.classList.add("on")})();</script>
 </body>""")
 
