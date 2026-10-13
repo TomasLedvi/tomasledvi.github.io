@@ -55,7 +55,7 @@ h2.h em{color:var(--oak)}
 .concept-bar{position:fixed;top:0;left:0;right:0;z-index:45;padding:calc(6px + env(safe-area-inset-top,0px)) 16px 6px;background:var(--oak);color:#0d1620;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-align:center;line-height:1.35}
 .nav{position:fixed;inset:0 0 auto 0;z-index:40;margin-top:var(--barH,26px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px max(16px,5vw);transition:background .35s,box-shadow .35s,transform .5s var(--ease)}
 .nav.solid{background:#0d1620f0;box-shadow:0 1px 0 var(--line)}
-.nav.hide{transform:translateY(-140%)}
+.nav{will-change:transform}.nav.hide{transform:translateY(-140%);transition:background .35s,box-shadow .35s,transform .45s cubic-bezier(.4,0,.2,1)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-size:1.45rem;line-height:1}
 .logo svg{width:28px;height:28px}
 .logo small{display:block;font-family:var(--f-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:3px}
@@ -1198,7 +1198,7 @@ body{counter-reset:list}
   /* ================= SCROLL ================= */
   const nav=document.getElementById("nav"),hero=document.getElementById("postup"),heroStage=hero.firstElementChild,mapSec=document.getElementById("oblast"),confV=document.getElementById("confView"),bigword=document.getElementById("bigword"),sticky=document.getElementById("sticky");
   const scs=[...document.querySelectorAll(".sc")],ticks=[...document.querySelectorAll(".ticks i")],routes=[...document.querySelectorAll(".route")],trucks=[...document.querySelectorAll(".truck")],mq=document.getElementById("mq");
-  let shH=800,docH=1,vh=innerHeight,sI=-1,lastY=scrollY,vel=0,mapOn=false,routeDone=0;
+  let navY=null,navAcc=0,shH=800,docH=1,vh=innerHeight,sI=-1,lastY=scrollY,vel=0,mapOn=false,routeDone=0;
   const cache=new Map(),setV=(el,k,v)=>{const key=(el.id||el.className)+k;if(cache.get(key)!==v){cache.set(key,v);el.style.setProperty(k,v)}};
   function measure(){shH=heroStage.offsetHeight||innerHeight;vh=innerHeight;docH=Math.max(1,document.documentElement.scrollHeight-vh)}
   const pin=(r,sh)=>cl(-r.top/Math.max(1,r.height-sh));
@@ -1207,7 +1207,7 @@ body{counter-reset:list}
     const y=window.scrollY||window.pageYOffset||0,hr=hero.getBoundingClientRect(),mr=mapSec.getBoundingClientRect(),cr=confV.getBoundingClientRect(),br=bigword.getBoundingClientRect();
     const p=pin(hr,shH);vel+=y-lastY;const down=y>lastY;lastY=y;
     setV(nav,"--prog",(y/docH).toFixed(4));const solid=y>vh*.5;if(nav.classList.contains("solid")!==solid)nav.classList.toggle("solid",solid);
-    const hide=down&&y>vh*1.2&&hr.bottom<0;if(nav.classList.contains("hide")!==hide)nav.classList.toggle("hide",hide);
+    const dy=y-(navY??y);navY=y;navAcc=(Math.sign(dy)===Math.sign(navAcc)?navAcc:0)+dy;let hide=nav.classList.contains("hide");if(y<vh*1.2||hr.bottom>=0)hide=false;else if(navAcc>60)hide=true;else if(navAcc<-24)hide=false;if(nav.classList.contains("hide")!==hide)nav.classList.toggle("hide",hide);
     if(sticky.classList.contains("hide")!==(hr.bottom>vh*.2))sticky.classList.toggle("hide",hr.bottom>vh*.2);
     setV(heroStage,"--p",p.toFixed(4));setV(heroStage,"--warm",sm(.8,1,p).toFixed(3));setV(heroStage,"--grid",(1-sm(.3,.46,p)).toFixed(3));scenes.hero.set(p,hr.bottom>0&&hr.top<vh);
     const si=SB.findIndex((b,i)=>p>=b&&p<SB[i+1]);if(si!==sI&&si>=0){scs.forEach((s,i)=>s.classList.toggle("on",i===si));sI=si}
