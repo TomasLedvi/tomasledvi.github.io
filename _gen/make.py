@@ -120,24 +120,29 @@ def main(cfg_path):
     if c.get("template") == "dum":
         s = s.replace("<span>Pracujeme s</span>", "<span>Navrhujeme</span>")
 
-    # otisk razítka v úvodu (volitelně)
+    # otisk razítka (volitelně): v úvodu a na kontaktech
     if c.get("stamp"):
         st = c["stamp"]
         rep('<div class="tblock" aria-hidden="true">',
-            f'<div class="stamp-hero" aria-hidden="true" style="--m:url({st})"></div>\n    <div class="tblock" aria-hidden="true">')
+            f'<div class="stamp-wrap" aria-hidden="true"><div class="stamp-ink stamp-hero" style="--m:url({st})"></div></div>\n    <div class="tblock" aria-hidden="true">')
+        rep('<div class="cgrid rv">', f'<div class="cgrid rv" style="position:relative"><div class="stamp-ink stamp-c" aria-hidden="true" style="--m:url({st})"></div>')
         rep("</style>", """
-.stamp-hero{position:absolute;z-index:4;right:calc(max(16px,3vw) + 182px);bottom:calc(clamp(96px,14vh,140px) - 4px);width:118px;height:118px;pointer-events:none;
-  background:var(--blue);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;
-  opacity:0;transform:rotate(-14deg) scale(2.4);filter:blur(3px)}
-.stamp-hero.on{animation:stampIn .55s cubic-bezier(.3,1.5,.5,1) forwards}
-@keyframes stampIn{0%{opacity:0;transform:rotate(-20deg) scale(2.4);filter:blur(3px)}60%{opacity:.95;filter:blur(0)}100%{opacity:.82;transform:rotate(-12deg) scale(1);filter:blur(0)}}
-.stamp-hero::after{content:"";position:absolute;inset:-18%;border-radius:50%;border:2px solid var(--blue);opacity:0}
-.stamp-hero.on::after{animation:stampRing .7s .12s ease-out forwards}
-@keyframes stampRing{0%{opacity:.6;transform:scale(.7)}100%{opacity:0;transform:scale(1.25)}}
-@media (max-width:900px){.stamp-hero{right:22px;bottom:150px;width:96px;height:96px}}
-@media (prefers-reduced-motion:reduce){.stamp-hero.on{animation:none;opacity:.82;transform:rotate(-12deg);filter:none}.stamp-hero.on::after{animation:none}}
+.stamp-ink{pointer-events:none;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;opacity:0}
+.stamp-ink.on{animation:stampIn .6s cubic-bezier(.3,1.45,.5,1) forwards}
+@keyframes stampIn{0%{opacity:0;transform:rotate(-24deg) scale(2.6);filter:blur(4px)}55%{opacity:1;filter:blur(0)}100%{opacity:var(--o,.9);transform:rotate(var(--r,-12deg)) scale(1);filter:blur(0)}}
+.stamp-wrap{position:absolute;z-index:4;left:clamp(560px,46vw,760px);top:calc(var(--bar,40px) + 22vh);width:clamp(150px,13vw,200px);aspect-ratio:1;pointer-events:none;will-change:opacity}
+.stamp-hero{width:100%;height:100%;background:#b9e0ff;--o:.92;filter:drop-shadow(0 0 18px #9fd3ff55)}
+.stamp-wrap::after{content:"";position:absolute;inset:-14%;border-radius:50%;border:2px solid #9fd3ff;opacity:0}
+.stamp-wrap.hit::after{animation:stampRing .8s ease-out forwards}
+@keyframes stampRing{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(1.35)}}
+.stamp-c{position:absolute;right:-26px;bottom:-34px;width:132px;height:132px;background:#2650b8;--o:.8;--r:9deg;mix-blend-mode:multiply;z-index:2}
+@media (max-width:900px){.stamp-wrap{left:auto;right:18px;top:auto;bottom:140px;width:110px}.stamp-c{right:-6px;bottom:-40px;width:104px;height:104px}}
+@media (prefers-reduced-motion:reduce){.stamp-ink.on{animation:none;opacity:var(--o,.9);transform:rotate(var(--r,-12deg))}.stamp-wrap.hit::after{animation:none}}
 </style>""")
-        rep("</body>", """<script>addEventListener("load",()=>setTimeout(()=>{const e=document.querySelector(".stamp-hero");e&&e.classList.add("on")},900));</script>
+        rep("</body>", """<script>(()=>{const w=document.querySelector(".stamp-wrap"),h=w&&w.firstElementChild;
+addEventListener("load",()=>setTimeout(()=>{h&&h.classList.add("on");setTimeout(()=>w&&w.classList.add("hit"),230)},700));
+if(w){const f=()=>{w.style.opacity=Math.max(0,1-scrollY/(innerHeight*.35)).toFixed(3)};addEventListener("scroll",f,{passive:true});f()}
+const sc=document.querySelector(".stamp-c");if(sc&&"IntersectionObserver"in window){const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){setTimeout(()=>sc.classList.add("on"),450);io.disconnect()}},{threshold:.6});io.observe(sc)}else if(sc)sc.classList.add("on")})();</script>
 </body>""")
 
     # sekce s osvědčením o autorizaci (volitelně)
