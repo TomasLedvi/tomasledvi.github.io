@@ -288,7 +288,7 @@ let lastS=-1,yp=0,yt=0;
 const grad=el("linearGradient",{id:"skyg",x1:0,x2:0,y1:0,y2:1}),s1=el("stop",{offset:0}),s2=el("stop",{offset:1});grad.append(s1,s2);const defs=el("defs",{});defs.append(grad);svg.prepend(defs);sky.setAttribute("fill","url(#skyg)");
 function render(p){const draw=sm(0,.2,p),q=cl((p-.2)/.8)*3,i=Math.min(2,Math.floor(q)),f=sm(0,1,q-i),A=P[i],B=P[Math.min(3,i+1)],col=sm(.16,.26,p);
  s1.setAttribute("stop-color",mix(A.sky[0],B.sky[0],f));s2.setAttribute("stop-color",mix(A.sky[1],B.sky[1],f));
- const sp=cl((p-.15)/.85);sun.setAttribute("cx",200+sp*1200);sun.setAttribute("cy",330-Math.sin(sp*Math.PI)*230);sun.setAttribute("fill",mix(A.sun,B.sun,f));sun.style.opacity=col;
+ const sp=cl((p-.15)/.85);sun.setAttribute("cx",200+sp*1200);sun.setAttribute("cy",440-Math.sin(sp*Math.PI)*160);sun.setAttribute("fill",mix(A.sun,B.sun,f));sun.style.opacity=col;
  hills.forEach((h,k)=>{h.line.setAttribute("stroke-dashoffset",1-sm(k*.18,k*.18+.6,draw));h.fill.setAttribute("fill",mix(A.h[k],B.h[k],f));h.fill.setAttribute("fill-opacity",col);h.line.setAttribute("stroke-opacity",.75-col*.5)});
  rows.forEach((rs,k)=>rs.forEach((r,j)=>{r.setAttribute("stroke",col>0?mix(A.row,B.row,f):"#2b1b18");r.style.opacity=sm(.08+k*.03+j*.01,.2+k*.03,p)}));
  const autumn=sm(1.55,1.9,q)*(1-sm(2.35,2.6,q)),winter=sm(2.35,2.8,q);
