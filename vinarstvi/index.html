@@ -44,9 +44,6 @@ a{color:inherit}
 .dots i{width:7px;height:7px;border-radius:50%;border:1px solid #fffa;transition:background .4s,transform .4s}.dots i.on{background:#fff;transform:scale(1.25)}
 .scroll{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:1px;height:46px;background:#fff6;overflow:hidden;transition:opacity .4s}
 .scroll::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:#fff;animation:sd 1.8s cubic-bezier(.6,0,.3,1) infinite}@keyframes sd{to{top:46px}}
-.loader{position:absolute;inset:0;display:grid;place-items:center;background:#120b0a;color:#f5efe6;font:300 1.4rem/1 var(--serif);font-style:italic;transition:opacity 1s}
-.loader small{display:block;margin-top:14px;font:400 .66rem/1 var(--sans);font-style:normal;letter-spacing:.3em;text-transform:uppercase;opacity:.6;text-align:center}
-.loader.done{opacity:0;pointer-events:none}
 .sec{padding:clamp(90px,15vh,170px) max(18px,6vw)}
 .wrap{max-width:1180px;margin:0 auto}
 .k2{font:500 .72rem/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
@@ -138,7 +135,7 @@ footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-
       <h1>Vítejte <em>ve sklepě</em></h1>
       <p>Víno, které zraje v klidu starého sklepa. Pojďte dál.</p>
     </div>
-    <div class="cap" data-a=".32" data-b=".58">
+    <div class="cap" data-a=".28" data-b=".5">
       <div class="k">Z našich sudů</div>
       <h2>Každá lahev <em>má svůj příběh</em></h2>
     </div>
@@ -149,7 +146,6 @@ footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-
     </div>
     <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     <div class="scroll" id="hint" aria-hidden="true"></div>
-    <div class="loader" id="loader"><div>Otevíráme sklep…<small><span id="lp">0</span> %</small></div></div>
   </div>
 </section>
 
@@ -236,7 +232,6 @@ footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-
 <footer>Ukázka webu pro vinařství. Záběry jsou ilustrační, na skutečném webu natočíme vaše vlastní. © 2026 Tomáš Ledvina – koncept, použití jen po dohodě s autorem.</footer>
 
 <script>
-const FRAMES=323,PATH="frames/f",EXT=".jpg";
 const WINES=[
 {n:"Ryzlink rýnský",t:"Bílé · suché · 2023",c:"#e9cf6a",lv:.55,d:"Svěží a minerální, s tóny meruňky, limetky a lipového květu. Víno, které se na terase dopíjí samo.",food:"Ryby, kozí sýr",tmp:"8–10 °C",pr:"260 Kč"},
 {n:"Pálava",t:"Bílé · polosuché · 2023",c:"#d9ae3e",lv:.6,d:"Kořenitá vůně růží a liči, plné tělo a jemná sladkost na dojezdu. Moravská specialita.",food:"Asijská kuchyně, dezerty",tmp:"10–12 °C",pr:"290 Kč"},
@@ -300,30 +295,154 @@ let flakesOn=0;
  flakes.forEach(c=>{c._y+=c._s;c._x+=Math.sin((t/1000)+c._y*.02)*.3;if(c._y>700)c._y=-5;c.setAttribute("cx",c._x);c.setAttribute("cy",c._y);c.style.opacity=flakesOn})}requestAnimationFrame(tick)})(0);
 render(0)})();
 
+(()=>{
 const cv=document.getElementById("cv"),cx=cv.getContext("2d"),film=document.getElementById("film"),caps=[...document.querySelectorAll(".cap")],dots=[...document.querySelectorAll(".dots i")];
-const bmp=new Array(FRAMES);let loaded=0,cur=-1,tgt=0,sm=0,dpr=1;
-const pad=n=>String(n).padStart(4,"0");
-async function load(i){try{const r=await fetch(PATH+pad(i+1)+EXT);const b=await r.blob();bmp[i]=await createImageBitmap(b)}catch(e){await new Promise(res=>{const im=new Image();im.onload=im.onerror=()=>{bmp[i]=im;res()};im.src=PATH+pad(i+1)+EXT})}loaded++;document.getElementById("lp").textContent=Math.round(loaded/FRAMES*100)}
-(async()=>{const seen=new Set(),order=[];for(const s of [8,4,2,1])for(let i=0;i<FRAMES;i+=s)if(!seen.has(i)){seen.add(i);order.push(i)}
- const first=Math.ceil(FRAMES/8);await Promise.all(order.slice(0,first).map(load));document.getElementById("loader").classList.add("done");draw(true);
- for(let k=first;k<order.length;k+=10)await Promise.all(order.slice(k,k+10).map(load));})();
-function size(){dpr=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;draw(true)}
-function near(i){for(let d=1;d<FRAMES;d++){if(bmp[i-d])return bmp[i-d];if(bmp[i+d])return bmp[i+d]}return null}
-function cover(ctx,im,W,H){const iw=im.width||im.naturalWidth,ih=im.height||im.naturalHeight;if(!iw)return;const r=Math.max(W/iw,H/ih),w=iw*r,h=ih*r,fx=W<H?.66:.5;ctx.drawImage(im,Math.min(0,Math.max(W-w,W/2-w*fx)),(H-h)/2,w,h)}
-function draw(force){const i=Math.min(FRAMES-1,Math.max(0,Math.round(sm*(FRAMES-1))));if(i===cur&&!force)return;const im=bmp[i]||near(i);if(!im)return;if(bmp[i])cur=i;cover(cx,im,cv.width,cv.height)}
-function onScroll(){const r=film.getBoundingClientRect();tgt=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
+let tgt=0,sm=0,dpr=1,W=0,H=0;
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),ss=t=>{t=cl(t);return t*t*(3-2*t)},L=(a,b,t)=>a+(b-a)*t;
+const hx=h=>{const n=parseInt(h.slice(1),16);return[n>>16,n>>8&255,n&255]};
+const mx=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t),rgb=(a,al=1)=>`rgba(${a.map(Math.round).join(",")},${al})`;
+const C={dark:hx("#120a07"),wall:hx("#3b2117"),rib:hx("#6e3b25"),glow:hx("#e7a865"),hot:hx("#fff0d6"),wood:hx("#8a552f"),woodD:hx("#3e2213"),floor:hx("#2a170e"),wine:hx("#6e1a2b")};
+const YEARS=["2016","2018","2019","2020","2021","2022","2023","2017","2024"];
+const dust=[...Array(46)].map((_,i)=>({x:Math.random(),y:Math.random(),s:.2+Math.random()*.8,p:Math.random()*6}));
+
+/* ---------- SKLEP: nekonečná klenutá chodba se sudy ---------- */
+function tunnel(c,W,H,cam,t){
+ const F=Math.min(W,H*1.1)*.62,ox=W/2,oy=H*.5,P=(x,y,z)=>[ox+x*F/z,oy-y*F/z];
+ let g=c.createRadialGradient(ox,oy-F*.05,0,ox,oy,Math.max(W,H)*.75);
+ g.addColorStop(0,rgb(C.hot));g.addColorStop(.06,rgb(C.glow));g.addColorStop(.3,rgb(mx(C.wall,C.glow,.35)));g.addColorStop(1,rgb(C.dark));
+ c.fillStyle=g;c.fillRect(0,0,W,H);
+ const fg=c.createLinearGradient(0,oy,0,H);fg.addColorStop(0,rgb(mx(C.floor,C.glow,.75)));fg.addColorStop(.18,rgb(mx(C.floor,C.glow,.25)));fg.addColorStop(1,rgb(C.dark));
+ c.fillStyle=fg;c.fillRect(0,oy,W,H-oy);
+ // odlesk světla na mokré podlaze
+ const rg=c.createLinearGradient(0,oy,0,H);rg.addColorStop(0,rgb(C.glow,.5));rg.addColorStop(1,rgb(C.glow,0));
+ c.fillStyle=rg;c.beginPath();c.moveTo(ox-6,oy);c.lineTo(ox+6,oy);c.lineTo(ox+F*.35,H);c.lineTo(ox-F*.35,H);c.fill();
+ const k0=Math.floor(cam),fog=z=>Math.pow(cl((z-.5)/13),.75);
+ const open=(z,r,spring=.22)=>{const s=F/z,x0=ox-r*s,x1=ox+r*s,ys=oy-spring*s;c.moveTo(x0,H+40);c.lineTo(x0,ys);c.arc(ox,ys,r*s,Math.PI,0);c.lineTo(x1,H+40);c.closePath()};
+ for(let k=k0+17;k>k0;k--){
+  const z=k-cam;if(z<.32)continue;const f=fog(z),fr=fog(z+.14);
+  // žebro klenby (cihla)
+  c.beginPath();c.rect(-20,-20,W+40,H+40);open(z+.14,.9,.3);c.fillStyle=rgb(mx(C.rib,C.glow,fr*.97));c.fill("evenodd");
+  // spáry cihel na žebru
+  if(z<7){const s=F/(z+.14),ys=oy-.3*s;c.strokeStyle=rgb(C.dark,.28*(1-f));c.lineWidth=Math.max(.6,s*.006);c.beginPath();
+   for(let a=0;a<=12;a++){const an=Math.PI+a*Math.PI/12,r1=.9*s,r2=1.0*s;c.moveTo(ox+Math.cos(an)*r1,ys+Math.sin(an)*r1);c.lineTo(ox+Math.cos(an)*r2,ys+Math.sin(an)*r2)}c.stroke()}
+  // čelo stěny
+  c.beginPath();c.rect(-20,-20,W+40,H+40);open(z,1.02);c.fillStyle=rgb(mx(mx(C.dark,C.wall,.8),C.glow,f*.96));c.fill("evenodd");
+  // světlá hrana žebra
+  c.beginPath();open(z+.14,.9,.3);c.strokeStyle=rgb(C.glow,.22*(1-f));c.lineWidth=Math.max(1,F/z*.008);c.stroke();
+  // svíčka ve výklenku
+  if(k%2===0){const sd=(k%4===0)?-1:1,[X,Y]=P(sd*.955,.05,z+.07),s=F/z,fl=.85+.15*Math.sin(t*.011+k)*Math.sin(t*.017+k*3);
+   c.fillStyle=rgb(mx([236,224,200],C.glow,f));c.fillRect(X-s*.012,Y,s*.024,s*.07);
+   c.save();c.globalCompositeOperation="lighter";const cg=c.createRadialGradient(X,Y-s*.02,0,X,Y-s*.02,s*.42);cg.addColorStop(0,`rgba(255,190,110,${.5*fl*(1-f)})`);cg.addColorStop(1,"rgba(255,140,60,0)");c.fillStyle=cg;c.fillRect(X-s*.5,Y-s*.5,s,s);
+   c.fillStyle=`rgba(255,226,160,${(1-f)*.95})`;c.beginPath();c.ellipse(X,Y-s*.022,s*.008,s*.024*fl,0,0,7);c.fill();c.restore()}
+  // sudy mezi oblouky
+  const zb=z-.5;if(zb>.45)for(const sd of[-1,1]){const f2=fog(zb);
+   barrel(c,P(sd*.66,-.72,zb),.27*F/zb,f2,YEARS[(k*2+(sd>0))%9]);barrel(c,P(sd*.68,-.18,zb),.25*F/zb,f2,null)}
+ }
+ // prach ve světle
+ c.save();c.globalCompositeOperation="lighter";
+ for(const d of dust){const x=((d.x+Math.sin(t*.0002*d.s+d.p)*.03)%1)*W,y=((d.y-t*.00002*d.s)%1+1)%1*H,r=Math.hypot(x-ox,y-oy)/Math.max(W,H);
+  c.fillStyle=`rgba(255,215,160,${(.5-r)*.5*(.5+.5*Math.sin(t*.002+d.p))})`;c.beginPath();c.arc(x,y,.7+d.s*1.4,0,7);c.fill()}
+ c.restore();
+}
+function barrel(c,[X,Y],R,f,yr){
+ if(R<1.5)return;
+ const g=c.createRadialGradient(X-R*.35,Y-R*.4,R*.1,X,Y,R*1.05);
+ g.addColorStop(0,rgb(mx(C.wood,C.glow,.2+f*.75)));g.addColorStop(1,rgb(mx(C.woodD,C.glow,f*.85)));
+ c.save();c.beginPath();c.arc(X,Y,R,0,7);c.fillStyle=g;c.fill();c.clip();
+ c.strokeStyle=rgb(C.dark,.3*(1-f));c.lineWidth=Math.max(.5,R*.025);c.beginPath();
+ for(let i=-4;i<=4;i++){c.moveTo(X+i*R*.24,Y-R);c.lineTo(X+i*R*.24,Y+R)}c.stroke();c.restore();
+ c.strokeStyle=rgb(mx(C.dark,C.glow,f*.8),.9);c.lineWidth=R*.1;c.beginPath();c.arc(X,Y,R*.95,0,7);c.stroke();
+ c.lineWidth=R*.03;c.beginPath();c.arc(X,Y,R*.76,0,7);c.stroke();
+ if(yr&&R>26){c.fillStyle=`rgba(244,236,220,${.75*(1-f)})`;c.font=`italic 300 ${R*.24}px Fraunces,Georgia,serif`;c.textAlign="center";c.textBaseline="middle";c.fillText(yr,X,Y+R*.05)}
+}
+
+/* ---------- NALÉVÁNÍ: lahev, proud vína, sklenka ---------- */
+function pour(c,W,H,q,t){
+ const gh=Math.min(H*(H>W?.44:.4),W*.8),b=gh*.5,gx=W/2,y0=H*(H>W?.17:.2),yb=y0+.56*gh,yT=y0+.97*gh;
+ let g=c.createRadialGradient(gx,y0+gh*.35,0,gx,y0+gh*.35,Math.max(W,H)*.65);
+ g.addColorStop(0,rgb(mx(C.wall,C.glow,.42)));g.addColorStop(.45,rgb(mx(C.dark,C.wall,.6)));g.addColorStop(1,rgb(C.dark));c.fillStyle=g;c.fillRect(0,0,W,H);
+ // stůl
+ const tg=c.createLinearGradient(0,yT-gh*.06,0,H);tg.addColorStop(0,rgb(mx(C.woodD,C.glow,.25)));tg.addColorStop(.25,rgb(mx(C.woodD,C.dark,.35)));tg.addColorStop(1,rgb(C.dark));
+ c.fillStyle=tg;c.fillRect(0,yT-gh*.06,W,H);c.fillStyle=rgb(C.glow,.25);c.fillRect(0,yT-gh*.06,W,1);
+ // stín sklenky
+ const sg=c.createRadialGradient(gx,yT,0,gx,yT,b*.6);sg.addColorStop(0,"rgba(0,0,0,.45)");sg.addColorStop(1,"rgba(0,0,0,0)");c.fillStyle=sg;c.beginPath();c.ellipse(gx,yT+gh*.01,b*.6,gh*.05,0,0,7);c.fill();
+ const bowl=()=>{c.moveTo(gx-.43*b,y0);c.bezierCurveTo(gx-.54*b,y0+.18*gh,gx-.56*b,y0+.44*gh,gx,yb);c.bezierCurveTo(gx+.56*b,y0+.44*gh,gx+.54*b,y0+.18*gh,gx+.43*b,y0)};
+ const fill=ss((q-.27)/.52),s1=ss((q-.2)/.07),s0=ss((q-.79)/.06),flow=s1>s0+.01&&s0<.99;
+ const lvl=yb-fill*.36*gh-(fill>0?gh*.012:-4);
+ // víno ve sklence
+ c.save();c.beginPath();bowl();c.closePath();c.clip();
+ c.fillStyle="rgba(255,255,255,.035)";c.fillRect(gx-b,y0,2*b,gh*.6);
+ if(fill>0){const amp=(flow?.022:.007)*b,lg=c.createLinearGradient(0,lvl,0,yb);lg.addColorStop(0,rgb(mx(C.wine,[200,60,80],.35)));lg.addColorStop(1,rgb(mx(C.wine,C.dark,.55)));
+  c.fillStyle=lg;c.beginPath();c.moveTo(gx-b,yb+5);for(let x=-b;x<=b;x+=b/24)c.lineTo(gx+x,lvl+Math.sin(x/b*7+t*.006)*amp+Math.sin(x/b*13-t*.009)*amp*.5);c.lineTo(gx+b,yb+5);c.fill();
+  c.strokeStyle="rgba(255,190,190,.28)";c.lineWidth=1.2;c.beginPath();for(let x=-b;x<=b;x+=b/24){const y=lvl+Math.sin(x/b*7+t*.006)*amp+Math.sin(x/b*13-t*.009)*amp*.5;x===-b?c.moveTo(gx+x,y):c.lineTo(gx+x,y)}c.stroke();
+  // světlo prosvítající vínem
+  const lr=c.createRadialGradient(gx+b*.15,lvl+gh*.08,0,gx+b*.15,lvl+gh*.08,b*.4);lr.addColorStop(0,"rgba(255,90,90,.28)");lr.addColorStop(1,"rgba(255,90,90,0)");c.fillStyle=lr;c.fillRect(gx-b,lvl-5,2*b,yb-lvl+10)}
+ c.restore();
+ // sklo
+ c.strokeStyle="rgba(255,240,225,.55)";c.lineWidth=Math.max(1.2,b*.008);c.beginPath();bowl();c.stroke();
+ c.strokeStyle="rgba(255,240,225,.38)";c.beginPath();c.ellipse(gx,y0,.43*b,gh*.022,0,0,7);c.stroke();
+ c.strokeStyle="rgba(255,255,255,.32)";c.lineCap="round";c.lineWidth=b*.035;c.beginPath();c.moveTo(gx-.37*b,y0+.07*gh);c.quadraticCurveTo(gx-.46*b,y0+.25*gh,gx-.3*b,y0+.43*gh);c.stroke();
+ c.lineWidth=b*.012;c.strokeStyle="rgba(255,255,255,.22)";c.beginPath();c.moveTo(gx+.38*b,y0+.12*gh);c.quadraticCurveTo(gx+.44*b,y0+.24*gh,gx+.4*b,y0+.32*gh);c.stroke();c.lineCap="butt";
+ const st=c.createLinearGradient(gx-b*.04,0,gx+b*.04,0);st.addColorStop(0,"rgba(255,240,225,.5)");st.addColorStop(.5,"rgba(255,240,225,.12)");st.addColorStop(1,"rgba(255,240,225,.4)");
+ c.fillStyle=st;c.beginPath();c.moveTo(gx-b*.06,yb-2);c.quadraticCurveTo(gx-b*.022,yb+gh*.06,gx-b*.022,yb+gh*.12);c.lineTo(gx-b*.025,yT-gh*.03);c.quadraticCurveTo(gx-b*.06,yT-gh*.005,gx-b*.33,yT);c.lineTo(gx+b*.33,yT);c.quadraticCurveTo(gx+b*.06,yT-gh*.005,gx+b*.025,yT-gh*.03);c.lineTo(gx+b*.022,yb+gh*.12);c.quadraticCurveTo(gx+b*.022,yb+gh*.06,gx+b*.06,yb-2);c.fill();
+ c.strokeStyle="rgba(255,240,225,.45)";c.lineWidth=1;c.beginPath();c.ellipse(gx,yT,b*.33,gh*.032,0,0,7);c.stroke();
+ // lahev
+ const e=ss(q/.22),x=ss((q-.82)/.16);
+ const PX=gx+.13*b,PY=y0-.07*gh;
+ let mxp=L(gx+b*1.4+W*.12,PX,e),myp=L(y0-gh*.45,PY,e),ang=L(-12,-102,e)-fill*14;
+ mxp=L(mxp,gx+b*1.2+W*.15,x);myp=L(myp,y0-gh*.6,x);ang=L(ang,-35,x);
+ const al=1-x;
+ // proud
+ if(s1>s0&&al>.02){const rad=ang*Math.PI/180,dx=-Math.sin(rad),dy=Math.cos(rad),Ln=gh*1.1,mo=[mxp,myp];
+  const p0=mo,p2=[gx+.03*b,lvl+2],p1=[p0[0]-dx*gh*.05-b*.06,p0[1]+(p2[1]-p0[1])*.25];
+  const Q=t=>[(1-t)**2*p0[0]+2*(1-t)*t*p1[0]+t*t*p2[0],(1-t)**2*p0[1]+2*(1-t)*t*p1[1]+t*t*p2[1]];
+  c.strokeStyle=rgb(mx(C.wine,[170,40,60],.3));c.lineCap="round";c.lineWidth=b*.04;c.beginPath();
+  for(let i=0;i<=24;i++){const u=L(s0,s1,i/24),[a,bb]=Q(u);i?c.lineTo(a,bb):c.moveTo(a,bb)}c.stroke();
+  c.strokeStyle="rgba(255,170,170,.3)";c.lineWidth=b*.01;c.beginPath();for(let i=0;i<=24;i++){const u=L(s0,s1,i/24),[a,bb]=Q(u);i?c.lineTo(a-b*.008,bb):c.moveTo(a-b*.008,bb)}c.stroke();c.lineCap="butt";
+  if(flow&&s1>.97){c.fillStyle=rgb(mx(C.wine,[200,70,90],.4),.8);for(let i=0;i<7;i++){const ph=(t*.004+i*.37)%1,a=i*2.4;c.beginPath();c.arc(p2[0]+Math.cos(a)*b*.09*ph,lvl-Math.sin(ph*Math.PI)*b*.06,b*.009*(1-ph),0,7);c.fill()}}}
+ if(al>.01){c.save();c.globalAlpha=al;c.translate(mxp,myp);c.rotate(ang*Math.PI/180);bottle(c,gh*1.0);c.restore()}
+}
+function bottle(c,Ln){
+ const l=Ln;c.beginPath();c.moveTo(-.04*l,0);c.lineTo(.04*l,0);c.lineTo(.04*l,.03*l);c.lineTo(.043*l,.03*l);c.lineTo(.043*l,.3*l);
+ c.bezierCurveTo(.043*l,.37*l,.14*l,.36*l,.14*l,.45*l);c.lineTo(.14*l,.98*l);c.quadraticCurveTo(.14*l,1.0*l,.12*l,1.0*l);c.lineTo(-.12*l,1.0*l);c.quadraticCurveTo(-.14*l,1.0*l,-.14*l,.98*l);c.lineTo(-.14*l,.45*l);c.bezierCurveTo(-.14*l,.36*l,-.043*l,.37*l,-.043*l,.3*l);c.lineTo(-.043*l,.03*l);c.lineTo(-.04*l,.03*l);c.closePath();
+ const g=c.createLinearGradient(-.14*l,0,.14*l,0);g.addColorStop(0,"#0a140e");g.addColorStop(.3,"#21402c");g.addColorStop(.55,"#13261a");g.addColorStop(1,"#07100a");c.fillStyle=g;c.fill();
+ c.strokeStyle="rgba(231,168,101,.35)";c.lineWidth=1;c.stroke();
+ // kapsle
+ const k=c.createLinearGradient(-.045*l,0,.045*l,0);k.addColorStop(0,"#3c0d17");k.addColorStop(.4,"#8f2a3c");k.addColorStop(1,"#2c0911");c.fillStyle=k;c.fillRect(-.045*l,.03*l,.09*l,.17*l);
+ c.fillStyle="#b08a52";c.fillRect(-.045*l,.19*l,.09*l,.008*l);
+ // etiketa
+ c.fillStyle="#efe5d3";c.fillRect(-.14*l,.58*l,.28*l,.26*l);c.strokeStyle="#b08a52";c.lineWidth=Math.max(.7,l*.003);c.strokeRect(-.125*l,.595*l,.25*l,.23*l);
+ c.save();c.translate(0,.71*l);c.rotate(Math.PI/2);c.fillStyle="#6e1a2b";c.textAlign="center";c.textBaseline="middle";
+ c.font=`italic 400 ${l*.05}px Fraunces,Georgia,serif`;c.fillText("Ryzlink",0,-l*.02);c.font=`500 ${l*.022}px Jost,system-ui,sans-serif`;c.fillText("RÝNSKÝ · 2023",0,l*.04);c.restore();
+ // odlesk
+ c.strokeStyle="rgba(255,236,210,.22)";c.lineWidth=l*.018;c.lineCap="round";c.beginPath();c.moveTo(-.085*l,.47*l);c.lineTo(-.085*l,.56*l);c.moveTo(-.085*l,.86*l);c.lineTo(-.085*l,.95*l);c.stroke();c.lineCap="butt";
+}
+
+/* ---------- řízení ---------- */
+function frame(t){
+ const p=sm,c=cx;c.setTransform(dpr,0,0,dpr,0,0);
+ const a2=ss((p-.53)/.08);
+ if(a2<1){const cam=p*6+ss((p-.3)/.28)*4;tunnel(c,W,H,cam,t);
+  if(p>.46){c.fillStyle=rgb(C.hot,ss((p-.46)/.09)*.85*(1-a2));c.fillRect(0,0,W,H)}}
+ if(a2>0){c.globalAlpha=a2;pour(c,W,H,cl((p-.58)/.4),t);c.globalAlpha=1}
+}
+function size(){dpr=Math.min(devicePixelRatio||1,1.6);W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr}
+function onScroll(){const r=film.getBoundingClientRect();tgt=cl(-r.top/(r.height-innerHeight));
  caps.forEach(c=>c.classList.toggle("on",tgt>+c.dataset.a&&tgt<+c.dataset.b));const sI=tgt<.33?0:tgt<.66?1:2;dots.forEach((d,i)=>d.classList.toggle("on",i===sI));
  document.getElementById("hint").style.opacity=tgt>.02?0:1}
 let navY=scrollY,acc=0;const nav=document.getElementById("nav");
 function navUpd(){const y=scrollY,dy=y-navY;navY=y;acc=(Math.sign(dy)===Math.sign(acc)?acc:0)+dy;const fr=film.getBoundingClientRect();nav.classList.toggle("solid",fr.bottom<80);
  if(y<innerHeight*.5)nav.classList.remove("hide");else if(acc>60)nav.classList.add("hide");else if(acc<-24)nav.classList.remove("hide")}
 addEventListener("scroll",()=>{onScroll();navUpd()},{passive:true});addEventListener("resize",size);
+const c2=document.getElementById("cv2"),x2=c2.getContext("2d");
 let last=performance.now();
-(function tick(t){const dt=Math.min(64,t-last);last=t;sm+=(tgt-sm)*(1-Math.pow(.88,dt/16.7));if(Math.abs(tgt-sm)<.0003)sm=tgt;draw(false);requestAnimationFrame(tick)})(last);
+(function tick(t){const dt=Math.min(64,t-last);last=t;sm+=(tgt-sm)*(1-Math.pow(.9,dt/16.7));if(Math.abs(tgt-sm)<.0002)sm=tgt;
+ if(film.getBoundingClientRect().bottom>0)frame(t);
+ const r=c2.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight&&r.width){const w=Math.round(r.width),h=Math.round(r.height);if(c2.width!==w*dpr){c2.width=w*dpr;c2.height=h*dpr}x2.setTransform(dpr,0,0,dpr,0,0);tunnel(x2,w,h,t*.00025,t)}
+ requestAnimationFrame(tick)})(last);
 size();onScroll();
+})();
 
-const c2=document.getElementById("cv2"),x2=c2.getContext("2d");let k2=0,t2=0;const A=Math.floor(FRAMES*.66);
-(function loop(t){if(t-t2>1000/24){t2=t;const r=c2.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const n=FRAMES-A,ph=k2++%(2*n),i=A+(ph<n?ph:2*n-ph-1),im=bmp[i]||near(i);if(im){c2.width=r.width*dpr;c2.height=r.height*dpr;const iw=im.width||im.naturalWidth,ih=im.height||im.naturalHeight,s=Math.max(c2.width/iw,c2.height/ih),w=iw*s,h=ih*s;x2.drawImage(im,Math.min(0,Math.max(c2.width-w,c2.width/2-w*.66)),(c2.height-h)/2,w,h)}}}requestAnimationFrame(loop)})(0);
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 </script>
