@@ -69,7 +69,8 @@ a{color:inherit}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,7vw,110px);align-items:center}
 @media (max-width:860px){.split{grid-template-columns:1fr}}
 .arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 8px 8px;overflow:hidden;box-shadow:0 40px 80px -40px #2b1b1866;max-width:520px}
-.arch canvas{width:100%;height:100%;display:block}
+.arch canvas{position:absolute;inset:0;width:100%;height:100%;display:block}#cv2{filter:blur(5px) brightness(.55) saturate(1.1);transform:scale(1.08)}
+#degustace .list>div{transition:opacity .5s}#degustace .list>div:not(.lit){opacity:.45}
 .list{margin-top:34px;display:grid;gap:22px}
 .list div{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:start}
 .list b{font:300 2rem/1 var(--serif);font-style:italic;color:var(--gold)}
@@ -266,7 +267,7 @@ footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-
 
 <section class="sec taste" id="degustace">
   <div class="wrap split">
-    <div class="arch rv"><canvas id="cv2" aria-hidden="true"></canvas></div>
+    <div class="arch rv"><canvas id="cv2" aria-hidden="true"></canvas><canvas id="gl3" aria-label="Sud jako stolek se šesti vzorky vína"></canvas></div>
     <div>
       <div class="k2 rv">Degustace ve sklepě</div>
       <h2 class="h2 rv">Posezení <em>u sudu.</em></h2>
@@ -308,7 +309,8 @@ document.getElementById("wps").innerHTML=VINO.slice(0,4).map((w,i)=>`<div class=
 </script>
 <script src="../vendor/three-r128.min.js"></script>
 <script src="hero3d.js?v=3"></script>
-<script src="vyroba3d.js?v=2"></script>
+<script src="vyroba3d.js?v=3"></script>
+<script src="sud3d.js?v=2"></script>
 <script>
 /* ===== bedna ===== */
 (()=>{const V=window.VINO,wl=document.getElementById("wl"),slots=[...document.querySelectorAll(".slot")],cnt=document.getElementById("cnt"),tot=document.getElementById("tot"),old=document.getElementById("old"),hint=document.getElementById("hint2"),ask=document.getElementById("ask");

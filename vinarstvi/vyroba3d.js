@@ -45,6 +45,7 @@ const mBerry=new T.MeshPhysicalMaterial({color:lin(0x3a0c2a),roughness:.34,clear
 const mStem=new T.MeshStandardMaterial({color:lin(0x6b5a2a),roughness:.8});
 const mGlass=new T.MeshPhysicalMaterial({color:0xf4f1ee,roughness:.03,metalness:0,clearcoat:1,transparent:true,opacity:.16,envMapIntensity:2.6,depthWrite:false,side:T.DoubleSide});
 
+Object.assign(V3,{woodTex,mOak,mWood,mIron});
 /* A: hrozen */
 const A=new T.Group();scene.add(A);const BP=[];
 for(let j=0;j<9;j++){const y=.5-j*.15,rr=.4*(1-j/10.5)*(j===0?.85:1),n=Math.max(1,Math.round(Math.PI*2*rr/.17));for(let i=0;i<n;i++){const a=i/n*Math.PI*2+j*.6+rnd(-.15,.15);BP.push([Math.cos(a)*rr+rnd(-.02,.02),y+rnd(-.03,.03),Math.sin(a)*rr,rnd(.088,.104)])}
