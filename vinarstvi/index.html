@@ -6,209 +6,215 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Rodinné vinařství · ukázka webu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0e0908;--bg2:#160e0c;--ink:#f3e9df;--muted:#b9a698;--dim:#7d6b60;--wine:#7a1626;--wine2:#a52a3a;--gold:#d8b27a;--line:#ffffff1a;
---serif:"Cormorant Garamond",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+:root{--paper:#f5efe6;--paper2:#ece3d6;--ink:#2b1b18;--muted:#6f5d55;--wine:#6e1a2b;--wine2:#8f2a3c;--gold:#b08a52;--line:#2b1b1822;
+--serif:"Fraunces",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--bg)}body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{background:var(--paper)}body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
-.bar{position:fixed;inset:0 0 auto;z-index:60;background:var(--gold);color:#1a0f0b;font:500 .62rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:7px 12px}
-.nav{position:fixed;left:0;right:0;top:26px;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px max(16px,4vw);transition:background .4s,transform .45s cubic-bezier(.4,0,.2,1)}
-.nav.solid{background:#0e0908ee;box-shadow:0 1px 0 var(--line)}
-.nav.hide{transform:translateY(-140%)}
-.logo{font:500 1.35rem/1 var(--serif);letter-spacing:.02em;text-decoration:none}.logo small{display:block;font:400 .55rem/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.nav ul{display:flex;gap:26px;list-style:none;font-size:.85rem}.nav ul a{text-decoration:none;color:var(--muted)}.nav ul a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid var(--gold);color:var(--ink);text-decoration:none;font-size:.85rem;letter-spacing:.04em;background:transparent;cursor:pointer;transition:background .3s,color .3s}
-.btn:hover,.btn.fill{background:var(--gold);color:#1a0f0b}
-@media (max-width:800px){.nav ul{display:none}}
-
-/* ===== FILM ===== */
-.film{position:relative;height:520vh}
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
+.bar{position:fixed;inset:0 0 auto;z-index:60;background:var(--wine);color:#f5efe6;font:400 .68rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:7px 12px}
+.nav{position:fixed;left:0;right:0;top:25px;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px max(16px,4vw);color:#fff;transition:background .5s,color .5s,transform .45s cubic-bezier(.4,0,.2,1),padding .4s}
+.nav.solid{background:#f5efe6f2;color:var(--ink);padding-top:12px;padding-bottom:12px;box-shadow:0 1px 0 var(--line)}
+.nav.hide{transform:translateY(-150%)}
+.nav ul{display:flex;gap:30px;list-style:none;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.nav ul a{text-decoration:none;opacity:.85}.nav ul a:hover{opacity:1}
+.logo{text-align:center;text-decoration:none;font:300 1.6rem/1 var(--serif);letter-spacing:.02em}
+.logo i{display:block;font:400 .58rem/1.8 var(--sans);font-style:normal;letter-spacing:.32em;text-transform:uppercase;opacity:.75}
+.nav .r{justify-self:end}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border-radius:999px;border:1px solid currentColor;text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;transition:background .35s,color .35s,border-color .35s}
+.pill:hover{background:#fff;color:var(--wine);border-color:#fff}
+.nav.solid .pill:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+.pill.fill{background:var(--wine);border-color:var(--wine);color:#fff}.pill.fill:hover{background:var(--wine2);border-color:var(--wine2);color:#fff}
+@media (max-width:860px){.nav{grid-template-columns:1fr auto}.nav ul{display:none}.logo{text-align:left}}
+.film{position:relative;height:560vh;background:#120b0a}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 #cv{position:absolute;inset:0;width:100%;height:100%;display:block}
-.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 45%,#000a 100%),linear-gradient(#0008,transparent 22%,transparent 70%,#000c)}
-.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 1s steps(4) infinite}
-@keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
-.hud{position:absolute;inset:clamp(96px,14vh,124px) clamp(16px,3vw,40px) clamp(20px,4vh,40px);pointer-events:none;font:400 .66rem/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#f3e9dfcc}
-.hud .c{position:absolute;width:26px;height:26px;border:1.5px solid #f3e9df99}
-.c.tl{left:0;top:0;border-right:0;border-bottom:0}.c.tr{right:0;top:0;border-left:0;border-bottom:0}.c.bl{left:0;bottom:0;border-right:0;border-top:0}.c.br{right:0;bottom:0;border-left:0;border-top:0}
-.hud .tl-t{position:absolute;left:38px;top:4px;display:flex;gap:10px;align-items:center}
-.rec{width:8px;height:8px;border-radius:50%;background:#e23b3b;animation:blink 1.2s steps(2) infinite}@keyframes blink{50%{opacity:.15}}
-.hud .tr-t{position:absolute;right:38px;top:4px;text-align:right}
-.hud .bl-t{position:absolute;left:38px;bottom:2px}
-.hud .br-t{position:absolute;right:38px;bottom:2px;text-align:right}
-.hud .prog{position:absolute;left:38px;right:38px;bottom:-14px;height:1px;background:#f3e9df26}.hud .prog i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);width:calc(var(--p,0)*100%)}
-.cap{position:absolute;left:clamp(20px,6vw,90px);bottom:clamp(90px,16vh,150px);max-width:min(620px,86vw)}
-.cap .eb{font:400 .7rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.cap h1,.cap h2{font:400 clamp(2.8rem,7vw,6.2rem)/.95 var(--serif);letter-spacing:-.01em;text-shadow:0 2px 30px #0009}
-.cap h1 em,.cap h2 em{font-style:italic;color:var(--gold)}
-.cap p{margin-top:18px;color:#f3e9dfd9;font-size:1.02rem;line-height:1.6;max-width:460px;text-shadow:0 1px 12px #000c}
-.cap{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.75,.15,1)}
-.cap.on{opacity:1;transform:none}
-.cap .ctas{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto}
-.loader{position:absolute;inset:0;display:grid;place-items:center;background:#000;font:400 .7rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);transition:opacity .8s}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#0007 0%,transparent 26%,transparent 55%,#000a 100%)}
+.cap{position:absolute;left:0;right:0;bottom:clamp(70px,14vh,140px);text-align:center;color:#fff;padding:0 20px;opacity:0;transform:translateY(30px);filter:blur(6px);transition:opacity 1s,transform 1.1s cubic-bezier(.2,.75,.15,1),filter 1s;pointer-events:none}
+.cap.on{opacity:1;transform:none;filter:none}
+.cap .k{font:400 .74rem/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;opacity:.85}
+.cap .k::before,.cap .k::after{content:"";display:inline-block;width:34px;height:1px;background:currentColor;vertical-align:middle;margin:0 14px;opacity:.6}
+.cap h1,.cap h2{margin-top:18px;font:300 clamp(2.6rem,7.4vw,6.8rem)/1 var(--serif);letter-spacing:-.015em;text-shadow:0 4px 40px #0008}
+.cap h1 em,.cap h2 em{font-style:italic;color:#f1d3a6}
+.cap p{margin:20px auto 0;max-width:520px;font-weight:300;font-size:1.05rem;line-height:1.7;opacity:.92;text-shadow:0 2px 16px #000a}
+.cap .ctas{margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;pointer-events:auto}
+.cap .pill{color:#fff}
+.dots{position:absolute;right:clamp(16px,3vw,36px);top:50%;transform:translateY(-50%);display:grid;gap:14px}
+.dots i{width:7px;height:7px;border-radius:50%;border:1px solid #fffa;transition:background .4s,transform .4s}.dots i.on{background:#fff;transform:scale(1.25)}
+.scroll{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:1px;height:46px;background:#fff6;overflow:hidden;transition:opacity .4s}
+.scroll::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:#fff;animation:sd 1.8s cubic-bezier(.6,0,.3,1) infinite}@keyframes sd{to{top:46px}}
+.loader{position:absolute;inset:0;display:grid;place-items:center;background:#120b0a;color:#f5efe6;font:300 1.4rem/1 var(--serif);font-style:italic;transition:opacity 1s}
+.loader small{display:block;margin-top:14px;font:400 .66rem/1 var(--sans);font-style:normal;letter-spacing:.3em;text-transform:uppercase;opacity:.6;text-align:center}
 .loader.done{opacity:0;pointer-events:none}
-.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:400 .6rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:#f3e9df99;transition:opacity .4s}
-
-/* ===== SECTIONS ===== */
-.sec{padding:clamp(80px,13vh,150px) max(16px,6vw);position:relative}
+.sec{padding:clamp(90px,15vh,170px) max(18px,6vw)}
 .wrap{max-width:1180px;margin:0 auto}
-.eb2{font:400 .68rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-.h2{font:400 clamp(2.4rem,5vw,4.4rem)/1 var(--serif);letter-spacing:-.01em}.h2 em{font-style:italic;color:var(--gold)}
-.lead{margin-top:20px;color:var(--muted);line-height:1.7;max-width:560px}
-.wines{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.wine{position:relative;border:1px solid var(--line);padding:28px 22px 24px;background:linear-gradient(180deg,#ffffff06,transparent);transition:border-color .4s,transform .5s cubic-bezier(.2,.75,.15,1)}
-.wine:hover{border-color:#d8b27a66;transform:translateY(-6px)}
-.wine svg{display:block;width:64px;height:110px;margin:0 auto 22px}
-.wine .t{font:500 .62rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
-.wine h3{font:400 1.7rem/1.1 var(--serif);margin:8px 0 10px}
-.wine p{font-size:.88rem;line-height:1.6;color:var(--muted)}
-.wine .pr{margin-top:16px;display:flex;justify-content:space-between;font:400 .72rem/1 var(--mono);letter-spacing:.08em;color:var(--gold)}
+.k2{font:500 .72rem/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.h2{margin-top:18px;font:300 clamp(2.4rem,5.4vw,4.8rem)/1.02 var(--serif);letter-spacing:-.015em}.h2 em{font-style:italic;color:var(--wine)}
+.lead{margin-top:22px;max-width:560px;color:var(--muted);font-weight:300;font-size:1.08rem;line-height:1.75}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.intro{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,7vw,110px);align-items:end}
+.intro blockquote{font:300 clamp(1.4rem,2.4vw,2rem)/1.4 var(--serif);font-style:italic;color:var(--wine);border-left:1px solid var(--gold);padding-left:28px}
+.intro blockquote cite{display:block;margin-top:16px;font:400 .72rem/1 var(--sans);font-style:normal;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);margin-top:70px;border-top:1px solid var(--line)}
+.nums div{padding:30px 0 0}.nums b{display:block;font:300 clamp(2.6rem,4.5vw,4rem)/1 var(--serif);color:var(--wine)}.nums span{display:block;margin-top:10px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.intro{grid-template-columns:1fr}.nums{grid-template-columns:1fr}.nums div{border-bottom:1px solid var(--line);padding:22px 0}}
+.wines{margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,28px)}
+.wine{position:relative;text-align:center;padding:40px 22px 34px;background:#fbf7f1;border-radius:200px 200px 6px 6px;box-shadow:0 1px 0 var(--line);transition:transform .6s cubic-bezier(.2,.75,.15,1),box-shadow .6s}
+.wine:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px #6e1a2b55}
+.wine svg{display:block;width:46px;height:150px;margin:0 auto 26px}
+.wine .t{font:500 .66rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.wine h3{margin:12px 0 10px;font:400 1.75rem/1.1 var(--serif)}
+.wine p{font-weight:300;font-size:.92rem;line-height:1.6;color:var(--muted)}
+.wine .pr{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font:400 .85rem/1 var(--sans);letter-spacing:.06em}
+.wine .pr b{color:var(--wine);font-weight:500}
 @media (max-width:980px){.wines{grid-template-columns:1fr 1fr}}@media (max-width:520px){.wines{grid-template-columns:1fr}}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.taste{background:var(--paper2)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,7vw,110px);align-items:center}
 @media (max-width:860px){.split{grid-template-columns:1fr}}
-.steps{margin-top:30px;display:grid;gap:0;border-top:1px solid var(--line)}
-.steps div{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:18px 0;border-bottom:1px solid var(--line)}
-.steps b{font:400 1.6rem/1 var(--serif);color:var(--gold);font-style:italic}
-.steps span{color:var(--muted);line-height:1.6;font-size:.95rem}.steps strong{color:var(--ink);font-weight:500;display:block}
-.frame{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line)}
-.frame canvas{width:100%;height:100%;display:block}
-.frame::after{content:"";position:absolute;inset:14px;border:1px solid #f3e9df40;pointer-events:none}
-.info{display:grid;grid-template-columns:repeat(3,1fr);margin-top:50px;border:1px solid var(--line)}
-.info div{padding:26px;border-right:1px solid var(--line)}.info div:last-child{border-right:0}
-.info small{display:block;font:400 .62rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
-.info span{font:400 1.25rem/1.45 var(--serif)}
-@media (max-width:760px){.info{grid-template-columns:1fr}.info div{border-right:0;border-bottom:1px solid var(--line)}}
-footer{padding:40px max(16px,6vw) 60px;border-top:1px solid var(--line);color:var(--dim);font-size:.8rem;line-height:1.7}
-.rv{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s cubic-bezier(.2,.75,.15,1)}.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.grain,.rec{animation:none}.cap,.rv{transition:none}}
+.arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 8px 8px;overflow:hidden;box-shadow:0 40px 80px -40px #2b1b1866;max-width:520px}
+.arch canvas{width:100%;height:100%;display:block}
+.list{margin-top:34px;display:grid;gap:22px}
+.list div{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:start}
+.list b{font:300 2rem/1 var(--serif);font-style:italic;color:var(--gold)}
+.list strong{display:block;font:400 1.25rem/1.3 var(--serif);margin-bottom:4px}.list span{color:var(--muted);font-weight:300;line-height:1.6}
+.contact{background:var(--wine);color:#f5efe6}
+.contact .k2{color:#e9c895}.contact .h2 em{color:#f1d3a6}
+.cards{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ffffff26}
+.cards div{background:var(--wine);padding:34px 28px}
+.cards small{display:block;font:500 .66rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:#e9c895;margin-bottom:14px}
+.cards span{font:300 1.35rem/1.5 var(--serif)}
+.contact .pill{color:#fff;margin-top:44px}.contact .pill:hover{background:#fff;color:var(--wine)}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-height:1.7;text-align:center}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1.1s cubic-bezier(.2,.75,.15,1)}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.cap,.rv{transition:none}.scroll::after{animation:none}}
 </style>
 </head>
 <body>
 <div class="bar">Ukázka webu pro vinařství · záběry jsou ilustrační</div>
 <nav class="nav" id="nav">
-  <a class="logo" href="#">Rodinné vinařství<small>Morava · od roku 1998</small></a>
-  <ul><li><a href="#vina">Naše vína</a></li><li><a href="#sklep">Sklep a degustace</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
-  <a class="btn" href="#kontakt">Rezervovat degustaci</a>
+  <ul><li><a href="#vina">Vína</a></li><li><a href="#degustace">Degustace</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <a class="logo" href="#">Rodinné vinařství<i>Morava · od roku 1998</i></a>
+  <div class="r"><a class="pill" href="#kontakt">Rezervace</a></div>
 </nav>
 
 <section class="film" id="film">
   <div class="stage">
     <canvas id="cv" aria-hidden="true"></canvas>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="vig" aria-hidden="true"></div>
-    <div class="hud" aria-hidden="true">
-      <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
-      <div class="tl-t"><span class="rec"></span><span>REC</span><span id="tc">00:00:00:00</span></div>
-      <div class="tr-t">4K · 24 FPS<br><span id="sc">SCÉNA 01 · VSTUP</span></div>
-      <div class="bl-t">ISO 800 · ƒ/2.0 · 1/50<br>WB 3200K</div>
-      <div class="br-t">SNÍMEK <span id="fr">000</span> / <span id="fn">000</span></div>
-      <div class="prog"><i></i></div>
+    <div class="shade" aria-hidden="true"></div>
+    <div class="cap on" data-a="-1" data-b=".22">
+      <div class="k">Rodinné vinařství</div>
+      <h1>Vítejte <em>ve sklepě</em></h1>
+      <p>Víno, které zraje v klidu starého sklepa. Pojďte dál.</p>
     </div>
-    <div class="cap on" data-a="0" data-b=".24">
-      <div class="eb">Rodinné vinařství · Morava</div>
-      <h1>Vítejte <em>ve sklepě.</em></h1>
-      <p>Víno, které zraje v klidu starého sklepa. Pojďte dál a sjeďte stránkou dolů.</p>
+    <div class="cap" data-a=".32" data-b=".58">
+      <div class="k">Z našich sudů</div>
+      <h2>Každá lahev <em>má svůj příběh</em></h2>
     </div>
-    <div class="cap" data-a=".34" data-b=".6">
-      <div class="eb">Scéna 02 · Výběr</div>
-      <h2>Každá lahev <em>má svůj příběh.</em></h2>
-      <p>Bílá i červená vína z vlastních vinic, ručně sbíraná a zrající v dubových sudech.</p>
+    <div class="cap" data-a=".74" data-b="2">
+      <div class="k">Ochutnejte</div>
+      <h2>Nalijeme vám <em>to nejlepší</em></h2>
+      <div class="ctas"><a class="pill fill" href="#kontakt">Rezervovat degustaci</a><a class="pill" href="#vina">Naše vína</a></div>
     </div>
-    <div class="cap" data-a=".7" data-b="1.1">
-      <div class="eb">Scéna 03 · Ochutnávka</div>
-      <h2>Nalijeme vám <em>to nejlepší.</em></h2>
-      <div class="ctas"><a class="btn fill" href="#kontakt">Rezervovat degustaci →</a><a class="btn" href="#vina">Naše vína</a></div>
-    </div>
-    <div class="hint" id="hint">Scrollujte</div>
-    <div class="loader" id="loader">Načítám záběry · <span id="lp">0</span> %</div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    <div class="scroll" id="hint" aria-hidden="true"></div>
+    <div class="loader" id="loader"><div>Otevíráme sklep…<small><span id="lp">0</span> %</small></div></div>
   </div>
 </section>
 
-<section class="sec" id="vina">
-  <div class="wrap">
-    <div class="eb2 rv">Naše vína</div>
-    <h2 class="h2 rv">Z vinice <em>až do sklenky.</em></h2>
-    <p class="lead rv">Vybrané odrůdy z naší vinice. Ceny a ročníky jsou ilustrační, na skutečném webu je doplníme podle vaší nabídky.</p>
-    <div class="wines" id="wines"></div>
-  </div>
-</section>
-
-<section class="sec" id="sklep" style="background:var(--bg2)">
-  <div class="wrap split">
+<section class="sec">
+  <div class="wrap intro">
     <div>
-      <div class="eb2 rv">Sklep a degustace</div>
-      <h2 class="h2 rv">Posezení <em>u sudu.</em></h2>
-      <p class="lead rv">Řízená degustace pro skupiny i páry. Provedeme vás sklepem, ochutnáte šest vzorků a k tomu domácí pochutiny.</p>
-      <div class="steps rv">
-        <div><b>01</b><span><strong>Prohlídka sklepa</strong>Jak víno vzniká a proč zraje právě tady.</span></div>
-        <div><b>02</b><span><strong>Řízená degustace</strong>Šest vzorků od lehkých bílých po zralá červená.</span></div>
-        <div><b>03</b><span><strong>Víno s sebou</strong>Co vám zachutná, odvezete si rovnou domů.</span></div>
-      </div>
+      <div class="k2 rv">Náš příběh</div>
+      <h2 class="h2 rv">Tři generace <em>u jednoho sklepa.</em></h2>
+      <p class="lead rv">Vinice obděláváme ručně a víno necháváme v klidu zrát ve starém sklepě. Ilustrační text, na skutečném webu sem napíšeme váš příběh.</p>
     </div>
-    <div class="frame rv"><canvas id="cv2" aria-hidden="true"></canvas></div>
+    <blockquote class="rv">„Dobré víno se nedělá ve spěchu. Dělá se s trpělivostí a s láskou k vinici.“<cite>— Vinař</cite></blockquote>
+  </div>
+  <div class="wrap nums">
+    <div class="rv"><b>12 ha</b><span>vlastních vinic</span></div>
+    <div class="rv"><b>14</b><span>odrůd vína</span></div>
+    <div class="rv"><b>1998</b><span>první ročník</span></div>
   </div>
 </section>
 
-<section class="sec" id="kontakt">
-  <div class="wrap">
-    <div class="eb2 rv">Kontakt</div>
+<section class="sec" id="vina" style="padding-top:20px">
+  <div class="wrap center">
+    <div class="k2 rv">Naše vína</div>
+    <h2 class="h2 rv">Z vinice <em>až do sklenky.</em></h2>
+    <p class="lead rv">Ceny a ročníky jsou ilustrační, doplníme je podle vaší nabídky.</p>
+  </div>
+  <div class="wrap wines" id="wines"></div>
+</section>
+
+<section class="sec taste" id="degustace">
+  <div class="wrap split">
+    <div class="arch rv"><canvas id="cv2" aria-hidden="true"></canvas></div>
+    <div>
+      <div class="k2 rv">Degustace ve sklepě</div>
+      <h2 class="h2 rv">Posezení <em>u sudu.</em></h2>
+      <p class="lead rv">Řízená degustace pro páry i skupiny, s prohlídkou sklepa a domácími pochutinami.</p>
+      <div class="list rv">
+        <div><b>i.</b><span><strong>Prohlídka sklepa</strong>Jak víno vzniká a proč zraje právě tady.</span></div>
+        <div><b>ii.</b><span><strong>Šest vzorků</strong>Od svěžích bílých po zralá červená.</span></div>
+        <div><b>iii.</b><span><strong>Víno s sebou</strong>Co vám zachutná, odvezete si domů.</span></div>
+      </div>
+      <a class="pill fill rv" href="#kontakt" style="margin-top:38px">Rezervovat termín</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="kontakt">
+  <div class="wrap center">
+    <div class="k2 rv">Kontakt</div>
     <h2 class="h2 rv">Těšíme se <em>na vás.</em></h2>
-    <div class="info rv">
+    <div class="cards rv" style="text-align:left">
       <div><small>Adresa</small><span>Sklepní ulice 12<br>Morava</span></div>
       <div><small>Otevřeno</small><span>Pá–Ne 14–20 h<br>a po domluvě</span></div>
       <div><small>Rezervace</small><span>+420 000 000 000<br>info@vase-vinarstvi.cz</span></div>
     </div>
+    <a class="pill rv" href="mailto:info@vase-vinarstvi.cz">Napsat nám</a>
   </div>
 </section>
 
 <footer>Ukázka webu pro vinařství. Záběry jsou ilustrační, na skutečném webu natočíme vaše vlastní. © 2026 Tomáš Ledvina – koncept, použití jen po dohodě s autorem.</footer>
 
 <script>
-(()=>{
-const N=+document.documentElement.dataset.frames||0;
-})();
-</script>
-<script>
-const FRAMES=205,FPS=15,PATH="frames/f",EXT=".jpg";
-const WINES=[["Bílé · suché","Ryzlink rýnský","Svěží, s tóny meruňky a lipového květu.","2023","0,75 l · 260 Kč","#e9d98a"],
-["Bílé · polosuché","Pálava","Kořenitá vůně a jemná sladkost na dojezdu.","2023","0,75 l · 290 Kč","#e3c86a"],
-["Růžové · suché","Zweigeltrebe rosé","Jahody, maliny a chuť léta na terase.","2024","0,75 l · 240 Kč","#e59aa0"],
-["Červené · suché","Frankovka","Zrálá v dubu, višně a jemné koření.","2021","0,75 l · 320 Kč","#7a1626"]];
-document.getElementById("wines").innerHTML=WINES.map(([t,n,d,y,p,c],i)=>`<article class="wine rv" style="transition-delay:${i*.08}s">
-<svg viewBox="0 0 64 110" aria-hidden="true"><path d="M14 6h36c0 22-3 36-18 40C17 42 14 28 14 6z" fill="none" stroke="#f3e9df88" stroke-width="1.4"/><path d="M15.5 20h33c-1 14-5 22-16.5 24C21 42 16.5 34 15.5 20z" fill="${c}" opacity=".92"/><path d="M32 46v46M18 104h28" stroke="#f3e9df88" stroke-width="1.4" fill="none"/></svg>
-<div class="t">${t}</div><h3>${n}</h3><p>${d}</p><div class="pr"><span>Ročník ${y}</span><span>${p}</span></div></article>`).join("");
+const FRAMES=323,PATH="frames/f",EXT=".jpg";
+const WINES=[["Bílé · suché","Ryzlink rýnský","Svěží, s tóny meruňky a lipového květu.","2023","260 Kč","#e7d47e"],
+["Bílé · polosuché","Pálava","Kořenitá vůně a jemná sladkost na dojezdu.","2023","290 Kč","#dcbb52"],
+["Růžové · suché","Zweigeltrebe rosé","Jahody, maliny a chuť léta na terase.","2024","240 Kč","#e0919a"],
+["Červené · suché","Frankovka","Zrálá v dubu, višně a jemné koření.","2021","320 Kč","#6e1a2b"]];
+document.getElementById("wines").innerHTML=WINES.map(([t,n,d,y,p,c],i)=>`<article class="wine rv" style="transition-delay:${i*.1}s">
+<svg viewBox="0 0 46 150" aria-hidden="true"><path d="M17 4h12v30c0 6 11 12 11 26v82c0 3-2 5-5 5H11c-3 0-5-2-5-5V60c0-14 11-20 11-26z" fill="${c}" opacity=".9"/><path d="M17 4h12v6H17z" fill="#2b1b18" opacity=".7"/><rect x="9" y="78" width="28" height="36" rx="2" fill="#fbf7f1" opacity=".92"/><path d="M14 92h18M16 99h14" stroke="#2b1b18" stroke-width="1" opacity=".5"/></svg>
+<div class="t">${t}</div><h3>${n}</h3><p>${d}</p><div class="pr">Ročník ${y} · <b>${p}</b></div></article>`).join("");
 
-const cv=document.getElementById("cv"),cx=cv.getContext("2d"),film=document.getElementById("film"),caps=[...document.querySelectorAll(".cap")];
-const imgs=new Array(FRAMES);let loaded=0,cur=-1,tgt=0,sm=0;
+const cv=document.getElementById("cv"),cx=cv.getContext("2d"),film=document.getElementById("film"),caps=[...document.querySelectorAll(".cap")],dots=[...document.querySelectorAll(".dots i")];
+const bmp=new Array(FRAMES);let loaded=0,cur=-1,tgt=0,sm=0,dpr=1;
 const pad=n=>String(n).padStart(4,"0");
-function load(i){return new Promise(r=>{const im=new Image();im.decoding="async";im.onload=im.onerror=()=>{imgs[i]=im;loaded++;document.getElementById("lp").textContent=Math.round(loaded/FRAMES*100);r()};im.src=PATH+pad(i+1)+EXT})}
-// načítat napřed každý 4. snímek, pak zbytek
-(async()=>{const order=[];for(let s=4;s>=1;s=s>>1)for(let i=0;i<FRAMES;i+=s)if(!order.includes(i))order.push(i);
- const first=order.slice(0,Math.ceil(FRAMES/4));await Promise.all(first.map(load));document.getElementById("loader").classList.add("done");draw(true);
- for(let k=first.length;k<order.length;k+=8)await Promise.all(order.slice(k,k+8).map(load));})();
-function size(){const d=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*d;cv.height=innerHeight*d;draw(true)}
-function near(i){for(let d=0;d<FRAMES;d++){if(imgs[i-d])return imgs[i-d];if(imgs[i+d])return imgs[i+d]}return null}
-function cover(ctx,im,W,H){const r=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*r,h=im.naturalHeight*r,fx=W<H?.68:.5;ctx.drawImage(im,Math.min(0,Math.max(W-w,W/2-w*fx)),(H-h)/2,w,h)}
-function draw(force){const i=Math.min(FRAMES-1,Math.max(0,Math.round(sm*(FRAMES-1))));if(i===cur&&!force)return;const im=imgs[i]||near(i);if(!im||!im.naturalWidth)return;cur=i;cover(cx,im,cv.width,cv.height);
- const s=i/FPS;document.getElementById("tc").textContent="00:00:"+String(Math.floor(s)).padStart(2,"0")+":"+String(i%FPS).padStart(2,"0");
- document.getElementById("fr").textContent=String(i+1).padStart(3,"0");document.querySelector(".hud").style.setProperty("--p",(i/(FRAMES-1)).toFixed(3))}
-document.getElementById("fn").textContent=String(FRAMES).padStart(3,"0");
-const scn=["SCÉNA 01 · VSTUP","SCÉNA 02 · VÝBĚR","SCÉNA 03 · OCHUTNÁVKA"];
+async function load(i){try{const r=await fetch(PATH+pad(i+1)+EXT);const b=await r.blob();bmp[i]=await createImageBitmap(b)}catch(e){await new Promise(res=>{const im=new Image();im.onload=im.onerror=()=>{bmp[i]=im;res()};im.src=PATH+pad(i+1)+EXT})}loaded++;document.getElementById("lp").textContent=Math.round(loaded/FRAMES*100)}
+(async()=>{const seen=new Set(),order=[];for(const s of [8,4,2,1])for(let i=0;i<FRAMES;i+=s)if(!seen.has(i)){seen.add(i);order.push(i)}
+ const first=Math.ceil(FRAMES/8);await Promise.all(order.slice(0,first).map(load));document.getElementById("loader").classList.add("done");draw(true);
+ for(let k=first;k<order.length;k+=10)await Promise.all(order.slice(k,k+10).map(load));})();
+function size(){dpr=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;draw(true)}
+function near(i){for(let d=1;d<FRAMES;d++){if(bmp[i-d])return bmp[i-d];if(bmp[i+d])return bmp[i+d]}return null}
+function cover(ctx,im,W,H){const iw=im.width||im.naturalWidth,ih=im.height||im.naturalHeight;if(!iw)return;const r=Math.max(W/iw,H/ih),w=iw*r,h=ih*r,fx=W<H?.66:.5;ctx.drawImage(im,Math.min(0,Math.max(W-w,W/2-w*fx)),(H-h)/2,w,h)}
+function draw(force){const i=Math.min(FRAMES-1,Math.max(0,Math.round(sm*(FRAMES-1))));if(i===cur&&!force)return;const im=bmp[i]||near(i);if(!im)return;if(bmp[i])cur=i;cover(cx,im,cv.width,cv.height)}
 function onScroll(){const r=film.getBoundingClientRect();tgt=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
- caps.forEach(c=>c.classList.toggle("on",tgt>=+c.dataset.a&&tgt<+c.dataset.b));document.getElementById("sc").textContent=scn[tgt<.33?0:tgt<.66?1:2];
- document.getElementById("hint").style.opacity=tgt>.03?0:1}
+ caps.forEach(c=>c.classList.toggle("on",tgt>+c.dataset.a&&tgt<+c.dataset.b));const sI=tgt<.33?0:tgt<.66?1:2;dots.forEach((d,i)=>d.classList.toggle("on",i===sI));
+ document.getElementById("hint").style.opacity=tgt>.02?0:1}
 let navY=scrollY,acc=0;const nav=document.getElementById("nav");
-function navUpd(){const y=scrollY,dy=y-navY;navY=y;acc=(Math.sign(dy)===Math.sign(acc)?acc:0)+dy;nav.classList.toggle("solid",y>innerHeight*.5);
- if(y<innerHeight)nav.classList.remove("hide");else if(acc>60)nav.classList.add("hide");else if(acc<-24)nav.classList.remove("hide")}
+function navUpd(){const y=scrollY,dy=y-navY;navY=y;acc=(Math.sign(dy)===Math.sign(acc)?acc:0)+dy;const fr=film.getBoundingClientRect();nav.classList.toggle("solid",fr.bottom<80);
+ if(y<innerHeight*.5)nav.classList.remove("hide");else if(acc>60)nav.classList.add("hide");else if(acc<-24)nav.classList.remove("hide")}
 addEventListener("scroll",()=>{onScroll();navUpd()},{passive:true});addEventListener("resize",size);
-(function tick(){sm+=(tgt-sm)*.14;if(Math.abs(tgt-sm)<.0005)sm=tgt;draw(false);requestAnimationFrame(tick)})();
+let last=performance.now();
+(function tick(t){const dt=Math.min(64,t-last);last=t;sm+=(tgt-sm)*(1-Math.pow(.88,dt/16.7));if(Math.abs(tgt-sm)<.0003)sm=tgt;draw(false);requestAnimationFrame(tick)})(last);
 size();onScroll();
-// malý „film“ v sekci sklep: dokola přehrává konec záběru (nalévání)
-const c2=document.getElementById("cv2"),x2=c2.getContext("2d");let k2=0,t2=0;
-(function loop(t){if(t-t2>1000/FPS){t2=t;const a=Math.floor(FRAMES*.72),i=a+(k2++%(FRAMES-a)),im=imgs[i]||near(i);if(im&&im.naturalWidth){const r=c2.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){c2.width=r.width*Math.min(devicePixelRatio||1,2);c2.height=r.height*Math.min(devicePixelRatio||1,2);cover(x2,im,c2.width,c2.height)}}}requestAnimationFrame(loop)})(0);
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
+
+const c2=document.getElementById("cv2"),x2=c2.getContext("2d");let k2=0,t2=0;const A=Math.floor(FRAMES*.66);
+(function loop(t){if(t-t2>1000/24){t2=t;const r=c2.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const n=FRAMES-A,ph=k2++%(2*n),i=A+(ph<n?ph:2*n-ph-1),im=bmp[i]||near(i);if(im){c2.width=r.width*dpr;c2.height=r.height*dpr;const iw=im.width||im.naturalWidth,ih=im.height||im.naturalHeight,s=Math.max(c2.width/iw,c2.height/ih),w=iw*s,h=ih*s;x2.drawImage(im,Math.min(0,Math.max(c2.width-w,c2.width/2-w*.66)),(c2.height-h)/2,w,h)}}}requestAnimationFrame(loop)})(0);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 </script>
 </body>
