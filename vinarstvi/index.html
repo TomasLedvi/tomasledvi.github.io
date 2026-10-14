@@ -30,7 +30,7 @@ a{color:inherit}
 .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 45%,transparent 45%,#000a 100%),linear-gradient(#0008,transparent 22%,transparent 70%,#000c)}
 .grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 1s steps(4) infinite}
 @keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
-.hud{position:absolute;inset:clamp(70px,11vh,96px) clamp(16px,3vw,40px) clamp(20px,4vh,40px);pointer-events:none;font:400 .66rem/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#f3e9dfcc}
+.hud{position:absolute;inset:clamp(96px,14vh,124px) clamp(16px,3vw,40px) clamp(20px,4vh,40px);pointer-events:none;font:400 .66rem/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#f3e9dfcc}
 .hud .c{position:absolute;width:26px;height:26px;border:1.5px solid #f3e9df99}
 .c.tl{left:0;top:0;border-right:0;border-bottom:0}.c.tr{right:0;top:0;border-left:0;border-bottom:0}.c.bl{left:0;bottom:0;border-right:0;border-top:0}.c.br{right:0;bottom:0;border-left:0;border-top:0}
 .hud .tl-t{position:absolute;left:38px;top:4px;display:flex;gap:10px;align-items:center}
@@ -106,17 +106,17 @@ footer{padding:40px max(16px,6vw) 60px;border-top:1px solid var(--line);color:va
       <div class="br-t">SNÍMEK <span id="fr">000</span> / <span id="fn">000</span></div>
       <div class="prog"><i></i></div>
     </div>
-    <div class="cap on" data-a="0" data-b=".2">
+    <div class="cap on" data-a="0" data-b=".24">
       <div class="eb">Rodinné vinařství · Morava</div>
       <h1>Vítejte <em>ve sklepě.</em></h1>
       <p>Víno, které zraje v klidu starého sklepa. Pojďte dál a sjeďte stránkou dolů.</p>
     </div>
-    <div class="cap" data-a=".28" data-b=".58">
+    <div class="cap" data-a=".34" data-b=".6">
       <div class="eb">Scéna 02 · Výběr</div>
       <h2>Každá lahev <em>má svůj příběh.</em></h2>
       <p>Bílá i červená vína z vlastních vinic, ručně sbíraná a zrající v dubových sudech.</p>
     </div>
-    <div class="cap" data-a=".68" data-b="1.1">
+    <div class="cap" data-a=".7" data-b="1.1">
       <div class="eb">Scéna 03 · Ochutnávka</div>
       <h2>Nalijeme vám <em>to nejlepší.</em></h2>
       <div class="ctas"><a class="btn fill" href="#kontakt">Rezervovat degustaci →</a><a class="btn" href="#vina">Naše vína</a></div>
@@ -171,7 +171,7 @@ const N=+document.documentElement.dataset.frames||0;
 })();
 </script>
 <script>
-const FRAMES=0,FPS=24,PATH="frames/f",EXT=".jpg";
+const FRAMES=205,FPS=15,PATH="frames/f",EXT=".jpg";
 const WINES=[["Bílé · suché","Ryzlink rýnský","Svěží, s tóny meruňky a lipového květu.","2023","0,75 l · 260 Kč","#e9d98a"],
 ["Bílé · polosuché","Pálava","Kořenitá vůně a jemná sladkost na dojezdu.","2023","0,75 l · 290 Kč","#e3c86a"],
 ["Růžové · suché","Zweigeltrebe rosé","Jahody, maliny a chuť léta na terase.","2024","0,75 l · 240 Kč","#e59aa0"],
@@ -190,14 +190,14 @@ function load(i){return new Promise(r=>{const im=new Image();im.decoding="async"
  for(let k=first.length;k<order.length;k+=8)await Promise.all(order.slice(k,k+8).map(load));})();
 function size(){const d=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*d;cv.height=innerHeight*d;draw(true)}
 function near(i){for(let d=0;d<FRAMES;d++){if(imgs[i-d])return imgs[i-d];if(imgs[i+d])return imgs[i+d]}return null}
-function cover(ctx,im,W,H){const r=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*r,h=im.naturalHeight*r;ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h)}
+function cover(ctx,im,W,H){const r=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*r,h=im.naturalHeight*r,fx=W<H?.68:.5;ctx.drawImage(im,Math.min(0,Math.max(W-w,W/2-w*fx)),(H-h)/2,w,h)}
 function draw(force){const i=Math.min(FRAMES-1,Math.max(0,Math.round(sm*(FRAMES-1))));if(i===cur&&!force)return;const im=imgs[i]||near(i);if(!im||!im.naturalWidth)return;cur=i;cover(cx,im,cv.width,cv.height);
  const s=i/FPS;document.getElementById("tc").textContent="00:00:"+String(Math.floor(s)).padStart(2,"0")+":"+String(i%FPS).padStart(2,"0");
  document.getElementById("fr").textContent=String(i+1).padStart(3,"0");document.querySelector(".hud").style.setProperty("--p",(i/(FRAMES-1)).toFixed(3))}
 document.getElementById("fn").textContent=String(FRAMES).padStart(3,"0");
 const scn=["SCÉNA 01 · VSTUP","SCÉNA 02 · VÝBĚR","SCÉNA 03 · OCHUTNÁVKA"];
 function onScroll(){const r=film.getBoundingClientRect();tgt=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
- caps.forEach(c=>c.classList.toggle("on",tgt>=+c.dataset.a&&tgt<+c.dataset.b));document.getElementById("sc").textContent=scn[tgt<.28?0:tgt<.68?1:2];
+ caps.forEach(c=>c.classList.toggle("on",tgt>=+c.dataset.a&&tgt<+c.dataset.b));document.getElementById("sc").textContent=scn[tgt<.33?0:tgt<.66?1:2];
  document.getElementById("hint").style.opacity=tgt>.03?0:1}
 let navY=scrollY,acc=0;const nav=document.getElementById("nav");
 function navUpd(){const y=scrollY,dy=y-navY;navY=y;acc=(Math.sign(dy)===Math.sign(acc)?acc:0)+dy;nav.classList.toggle("solid",y>innerHeight*.5);
