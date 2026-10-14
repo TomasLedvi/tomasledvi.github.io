@@ -56,7 +56,7 @@ function makeBottle(w){const P=PROF[w.shape],pts=smooth(P.p,160);pts[0].x=0;pts.
   :new T.MeshPhysicalMaterial({color:lin(w.glass),metalness:0,roughness:.035,reflectivity:.9,clearcoat:1,clearcoatRoughness:.02,envMapIntensity:2.4});
  const body=new T.Mesh(new T.LatheGeometry(pts,96),gm);body.renderOrder=2;m.add(body);
  if(clear){const lp=pts.filter(p=>p.y<=2.62).map(p=>new T.Vector2(p.x*.93,Math.max(.03,p.y)));lp.push(new T.Vector2(0,2.62));
-  const lq=new T.Mesh(new T.LatheGeometry(lp,64),new T.MeshPhysicalMaterial({color:lin(w.liquid),roughness:.2,metalness:0,transparent:true,opacity:.92,envMapIntensity:.5,emissive:lin(w.liquid),emissiveIntensity:.25}));lq.renderOrder=1;m.add(lq)}
+  const lq=new T.Mesh(new T.LatheGeometry(lp,64),new T.MeshPhysicalMaterial({color:lin(w.liquid),roughness:.2,metalness:0,transparent:true,opacity:.92,envMapIntensity:.5,emissive:lin(w.liquid),emissiveIntensity:.25}));lq.renderOrder=1;m.add(lq);g.userData.liq=lq}
  // kapsle
  const fp=[];for(let i=0;i<=24;i++){const y=L(P.foil,P.H+.002,i/24);fp.push(new T.Vector2(rAt(pts,y)+.006,y))}
  const fm=new T.MeshStandardMaterial({color:lin(w.foil),metalness:.8,roughness:.3,envMapIntensity:1.5});
@@ -68,7 +68,7 @@ function makeBottle(w){const P=PROF[w.shape],pts=smooth(P.p,160);pts[0].x=0;pts.
  lab.position.y=(P.lab[0]+P.lab[1])/2;m.add(lab);g.userData.lab=lab;
  // zadní etiketa
  const bl=new T.Mesh(new T.CylinderGeometry(P.r+.004,P.r+.004,lh*.55,64,1,true,Math.PI-.7,1.4),new T.MeshStandardMaterial({color:w.label==="black"?0x151113:0xefe5d2,roughness:.8}));bl.position.y=P.lab[0]+lh*.35;m.add(bl);
- g.userData.cap=cap;g.userData.top=P.H/2;return g}
+ g.userData.cap=cap;g.userData.foil=foil;g.userData.ring=ring;g.userData.top=P.H/2;return g}
 
 const bottles=VINO.slice(0,4).map(makeBottle);bottles.forEach(b=>scene.add(b));
 
@@ -142,6 +142,7 @@ let last=performance.now();
 (function tick(t){const dt=Math.min(64,t-last);last=t;sm+=(tgt-sm)*(1-Math.pow(.88,dt/16.7));if(Math.abs(tgt-sm)<.0002)sm=tgt;
  const r=hero.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)frame(t);requestAnimationFrame(tick)})(last);
 
+window.V3={labelTex,makeBottle,leafGeo,leafMat,corkTex,PROF};
 /* náhledy lahví pro bednu */
 window.renderThumbs=function(){const out=[],ts=new T.Scene();ts.environment=scene.environment;ts.add(new T.HemisphereLight(0xffffff,0x332222,.6));const k2=new T.DirectionalLight(0xffffff,1.4);k2.position.set(-3,5,6);ts.add(k2);const r2=new T.DirectionalLight(0xffe6c8,1.6);r2.position.set(5,2,-4);ts.add(r2);
  const tc=new T.PerspectiveCamera(20,.36,.1,50);tc.position.set(0,0,11.2);const pw=R.getPixelRatio();R.setPixelRatio(1);R.setSize(216,600,false);
