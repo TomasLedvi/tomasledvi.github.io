@@ -89,12 +89,42 @@ a{color:inherit}
 footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-height:1.7;text-align:center}
 .rv{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1.1s cubic-bezier(.2,.75,.15,1)}.rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.cap,.rv{transition:none}.scroll::after{animation:none}}
+
+/* ===== rok na vinici ===== */
+.year{position:relative;height:420vh;background:var(--paper)}
+.ystage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.yhead{padding:calc(110px + 2vh) max(18px,6vw) 0;display:flex;justify-content:space-between;align-items:end;gap:20px;position:relative;z-index:2}
+.yhead .h2{margin-top:12px}
+.season{text-align:right;min-width:240px}
+.season b{display:block;font:300 clamp(2rem,4vw,3.4rem)/1 var(--serif);font-style:italic;color:var(--wine);transition:opacity .5s}
+.season span{display:block;margin-top:10px;color:var(--muted);font-weight:300;line-height:1.6;max-width:320px;margin-left:auto;transition:opacity .5s}
+.months{display:flex;gap:6px;justify-content:flex-end;margin-top:14px}
+.months i{width:26px;height:2px;background:var(--line);position:relative;overflow:hidden}.months i::after{content:"";position:absolute;inset:0;background:var(--wine);transform:scaleX(var(--f,0));transform-origin:left}
+#land{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%}
+@media (max-width:760px){.yhead{flex-direction:column;align-items:flex-start}.season{text-align:left}.season span{margin-left:0}.months{justify-content:flex-start}}
+/* ===== sklenka ===== */
+.pick{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,100px);align-items:center;margin-top:60px}
+@media (max-width:860px){.pick{grid-template-columns:1fr}}
+.glassbox{position:relative;display:grid;place-items:center}
+.glassbox svg{width:min(100%,360px);height:auto;overflow:visible}
+.glassbox .ring{position:absolute;width:min(78%,300px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--wc,#6e1a2b) 0%,transparent 66%);opacity:.16;filter:blur(20px);transition:background 1s}
+.tabs{display:flex;flex-wrap:wrap;gap:10px}
+.tab{font:400 .8rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:13px 20px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:background .3s,border-color .3s,color .3s}
+.tab i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.tab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.wdesc{margin-top:36px;min-height:300px}
+.wdesc .t{font:500 .7rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.wdesc h3{margin:14px 0 14px;font:300 clamp(2.4rem,4.6vw,3.8rem)/1 var(--serif)}
+.wdesc p{color:var(--muted);font-weight:300;font-size:1.06rem;line-height:1.75;max-width:520px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:28px;border-top:1px solid var(--line)}
+.facts div{padding:18px 14px 0 0}.facts small{display:block;font:500 .64rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.facts span{font:300 1.15rem/1.4 var(--serif)}
+.wdesc.sw{animation:sw .7s cubic-bezier(.2,.75,.15,1)}@keyframes sw{from{opacity:0;transform:translateY(14px)}}
 </style>
 </head>
 <body>
 <div class="bar">Ukázka webu pro vinařství · záběry jsou ilustrační</div>
 <nav class="nav" id="nav">
-  <ul><li><a href="#vina">Vína</a></li><li><a href="#degustace">Degustace</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <ul><li><a href="#rok">Vinice</a></li><li><a href="#vina">Vína</a></li><li><a href="#degustace">Degustace</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
   <a class="logo" href="#">Rodinné vinařství<i>Morava · od roku 1998</i></a>
   <div class="r"><a class="pill" href="#kontakt">Rezervace</a></div>
 </nav>
@@ -139,13 +169,38 @@ footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-
   </div>
 </section>
 
+<section class="year" id="rok">
+  <div class="ystage">
+    <div class="yhead">
+      <div><div class="k2">Rok na vinici</div><h2 class="h2">Víno se rodí <em>venku.</em></h2></div>
+      <div class="season"><b id="sN">Jaro</b><span id="sT">Řez je hotový, réva raší a my vyhlížíme první pupeny.</span><div class="months" id="mo"><i></i><i></i><i></i><i></i></div></div>
+    </div>
+    <svg id="land" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+  </div>
+</section>
+
 <section class="sec" id="vina" style="padding-top:20px">
   <div class="wrap center">
     <div class="k2 rv">Naše vína</div>
     <h2 class="h2 rv">Z vinice <em>až do sklenky.</em></h2>
-    <p class="lead rv">Ceny a ročníky jsou ilustrační, doplníme je podle vaší nabídky.</p>
+    <p class="lead rv">Vyberte si víno a nechte si nalít. Ceny a ročníky jsou ilustrační.</p>
   </div>
-  <div class="wrap wines" id="wines"></div>
+  <div class="wrap pick">
+    <div class="glassbox rv"><div class="ring" id="ring"></div>
+      <svg viewBox="0 0 300 420" aria-label="Sklenka vína">
+        <defs><clipPath id="bowl"><path d="M70 30h160c4 70-6 128-80 150C76 158 66 100 70 30z"/></clipPath>
+        <linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".3"/></linearGradient></defs>
+        <g clip-path="url(#bowl)"><path id="liq" fill="#6e1a2b"/><path id="liq2" fill="#ffffff" opacity=".12"/></g>
+        <path d="M70 30h160c4 70-6 128-80 150C76 158 66 100 70 30z" fill="url(#gl)" stroke="#2b1b18" stroke-opacity=".35" stroke-width="1.5"/>
+        <path d="M150 180v190" stroke="#2b1b18" stroke-opacity=".35" stroke-width="3"/><ellipse cx="150" cy="378" rx="62" ry="10" fill="none" stroke="#2b1b18" stroke-opacity=".35" stroke-width="1.5"/>
+        <path d="M88 44c-2 40 4 80 22 104" stroke="#fff" stroke-opacity=".6" stroke-width="5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="tabs rv" id="tabs"></div>
+      <div class="wdesc" id="wd"></div>
+    </div>
+  </div>
 </section>
 
 <section class="sec taste" id="degustace">
@@ -182,13 +237,68 @@ footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-
 
 <script>
 const FRAMES=323,PATH="frames/f",EXT=".jpg";
-const WINES=[["Bílé · suché","Ryzlink rýnský","Svěží, s tóny meruňky a lipového květu.","2023","260 Kč","#e7d47e"],
-["Bílé · polosuché","Pálava","Kořenitá vůně a jemná sladkost na dojezdu.","2023","290 Kč","#dcbb52"],
-["Růžové · suché","Zweigeltrebe rosé","Jahody, maliny a chuť léta na terase.","2024","240 Kč","#e0919a"],
-["Červené · suché","Frankovka","Zrálá v dubu, višně a jemné koření.","2021","320 Kč","#6e1a2b"]];
-document.getElementById("wines").innerHTML=WINES.map(([t,n,d,y,p,c],i)=>`<article class="wine rv" style="transition-delay:${i*.1}s">
-<svg viewBox="0 0 46 150" aria-hidden="true"><path d="M17 4h12v30c0 6 11 12 11 26v82c0 3-2 5-5 5H11c-3 0-5-2-5-5V60c0-14 11-20 11-26z" fill="${c}" opacity=".9"/><path d="M17 4h12v6H17z" fill="#2b1b18" opacity=".7"/><rect x="9" y="78" width="28" height="36" rx="2" fill="#fbf7f1" opacity=".92"/><path d="M14 92h18M16 99h14" stroke="#2b1b18" stroke-width="1" opacity=".5"/></svg>
-<div class="t">${t}</div><h3>${n}</h3><p>${d}</p><div class="pr">Ročník ${y} · <b>${p}</b></div></article>`).join("");
+const WINES=[
+{n:"Ryzlink rýnský",t:"Bílé · suché · 2023",c:"#e9cf6a",lv:.55,d:"Svěží a minerální, s tóny meruňky, limetky a lipového květu. Víno, které se na terase dopíjí samo.",food:"Ryby, kozí sýr",tmp:"8–10 °C",pr:"260 Kč"},
+{n:"Pálava",t:"Bílé · polosuché · 2023",c:"#d9ae3e",lv:.6,d:"Kořenitá vůně růží a liči, plné tělo a jemná sladkost na dojezdu. Moravská specialita.",food:"Asijská kuchyně, dezerty",tmp:"10–12 °C",pr:"290 Kč"},
+{n:"Zweigeltrebe rosé",t:"Růžové · suché · 2024",c:"#e48e98",lv:.58,d:"Jahody, maliny a šťavnatá kyselinka. Léto v lahvi, nejlépe dobře vychlazené.",food:"Saláty, grilovaná zelenina",tmp:"8 °C",pr:"240 Kč"},
+{n:"Frankovka",t:"Červené · suché · 2021",c:"#6e1a2b",lv:.62,d:"Zrálá dva roky v dubovém sudu. Višně, švestky, jemné koření a sametová třísloviny.",food:"Zvěřina, pečená kachna",tmp:"16–18 °C",pr:"320 Kč"}];
+const tabs=document.getElementById("tabs"),wd=document.getElementById("wd"),liq=document.getElementById("liq"),liq2=document.getElementById("liq2"),ring=document.getElementById("ring");
+tabs.innerHTML=WINES.map((w,i)=>`<button class="tab${i===3?" on":""}" type="button" style="--c:${w.c}" data-i="${i}"><i></i>${w.n}</button>`).join("");
+let wi=3,lvl=0,lvT=WINES[3].lv,colA=[110,26,43],colT=[110,26,43],slosh=0;
+const hex=h=>[1,3,5].map(k=>parseInt(h.slice(k,k+2),16));
+function pickW(i){wi=i;const w=WINES[i];tabs.querySelectorAll(".tab").forEach((b,k)=>b.classList.toggle("on",k===i));
+ wd.innerHTML=`<div class="t">${w.t}</div><h3>${w.n}</h3><p>${w.d}</p><div class="facts"><div><small>K jídlu</small><span>${w.food}</span></div><div><small>Podávat</small><span>${w.tmp}</span></div><div><small>Cena 0,75 l</small><span>${w.pr}</span></div></div>`;
+ wd.classList.remove("sw");void wd.offsetWidth;wd.classList.add("sw");colT=hex(w.c);lvT=w.lv;slosh=1;ring.style.setProperty("--wc",w.c)}
+tabs.addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)pickW(+b.dataset.i)});
+pickW(3);lvl=0;
+const gIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){lvl=0;slosh=1}})},{threshold:.4});gIO.observe(document.querySelector(".glassbox"));
+(function wave(t){t/=1000;lvl+=(lvT-lvl)*.035;colA=colA.map((v,k)=>v+(colT[k]-v)*.06);slosh*=.985;
+ const top=180-lvl*150,amp=2+slosh*9,mk=(ph,a)=>{let d=`M60 ${top}`;for(let x=60;x<=240;x+=6)d+=` L${x} ${top+Math.sin(x*.045+t*2.2+ph)*a+Math.sin(x*.02-t*1.3)*a*.6}`;return d+" L240 200 L60 200 Z"};
+ liq.setAttribute("d",mk(0,amp));liq2.setAttribute("d",mk(1.7,amp*.8).replace(/L240 200 L60 200 Z$/,` L240 ${top+6} L60 ${top+6} Z`));
+ liq.setAttribute("fill",`rgb(${colA.map(Math.round).join(",")})`);requestAnimationFrame(wave)})(0);
+
+/* ===== rok na vinici ===== */
+(()=>{const svg=document.getElementById("land"),NS="http://www.w3.org/2000/svg",sec=document.getElementById("rok");
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+const sky=el("rect",{x:0,y:0,width:1600,height:700});svg.append(sky);
+const sun=el("circle",{r:46});svg.append(sun);
+const H=[{b:420,a:70,f:.0032,p:.8,f2:.009,a2:18},{b:500,a:60,f:.0026,p:2.6,f2:.012,a2:14},{b:590,a:44,f:.0036,p:4.2,f2:.008,a2:12}];
+const hy=(h,x)=>h.b+Math.sin(x*h.f+h.p)*h.a+Math.sin(x*h.f2)*h.a2;
+const hills=[],rows=[],grapes=[],snow=[];let all=[];
+H.forEach((h,i)=>{let d="M-10 700";for(let x=-10;x<=1610;x+=10)d+=` L${x} ${hy(h,x).toFixed(1)}`;d+=" L1610 700 Z";
+ const fill=el("path",{d,"fill-opacity":0});svg.append(fill);
+ const line=el("path",{d:d.replace(/^M-10 700 L/,"M").replace(/ L1610 700 Z$/,""),fill:"none",stroke:"#2b1b18","stroke-width":1.4,pathLength:1,"stroke-dasharray":1,"stroke-dashoffset":1});svg.append(line);
+ const rs=[];for(let k=1;k<(i===2?6:5);k++){let rd="";for(let x=-10;x<=1610;x+=14){const y=hy(h,x)+k*(i===2?20:16)+Math.sin(x*.05+k)*1.2;rd+=(x===-10?"M":" L")+x+" "+y.toFixed(1)}
+  const r=el("path",{d:rd,fill:"none","stroke-width":i===2?2.4:1.6,"stroke-linecap":"round","stroke-dasharray":"2 7",pathLength:1});rs.push(r);svg.append(r)}
+ const gs=[];if(i===2)for(let x=30;x<1600;x+=38){const y=hy(h,x)+28+((x/38)%3)*20;const g=el("circle",{cx:x,cy:y,r:4.2,fill:"#5b1d3a"});g.style.opacity=0;gs.push(g);svg.append(g)}
+ let sd="";for(let x=-10;x<=1610;x+=10)sd+=(x===-10?"M":" L")+x+" "+(hy(h,x)-1).toFixed(1);for(let x=1610;x>=-10;x-=10)sd+=" L"+x+" "+(hy(h,x)+9+Math.sin(x*.3)*3).toFixed(1);sd+=" Z";
+ const sn=el("path",{d:sd,fill:"#fff","fill-opacity":0});svg.append(sn);
+ hills.push({fill,line});rows.push(rs);grapes.push(gs);snow.push(sn)});
+const flakes=[...Array(60)].map(()=>{const c=el("circle",{r:1.5+Math.random()*2.2,fill:"#fff"});c._x=Math.random()*1600;c._y=Math.random()*700;c._s=.3+Math.random()*.8;c.style.opacity=0;svg.append(c);return c});
+// palety: jaro, léto, podzim, zima
+const P=[{sky:["#e8eef0","#f6efe2"],h:["#b9c99a","#9fb57c","#86a064"],row:"#6d8a45",sun:"#f3d79a"},
+{sky:["#cfe3ec","#f8eccd"],h:["#8fae62","#6f9446","#557d35"],row:"#3f6326",sun:"#f6c763"},
+{sky:["#f3d9b8","#f6e4cf"],h:["#d4a65a","#c4863f","#a8642f"],row:"#7e3f1c",sun:"#ee9a4a"},
+{sky:["#d9dfe6","#eef0f2"],h:["#c9cfd4","#b8c0c6","#a7b0b8"],row:"#8a949c",sun:"#f1ede4"}];
+const TXT=[["Jaro","Řez je hotový, réva raší a my vyhlížíme první pupeny."],["Léto","Hrozny rostou a zrají v moravském slunci. Ošetřujeme každý keř ručně."],["Podzim","Vinobraní. Sbíráme ručně, hrozen po hroznu, a lisujeme ještě týž den."],["Zima","Vinice odpočívá pod sněhem. Ve sklepě mezitím v klidu zraje mladé víno."]];
+const sN=document.getElementById("sN"),sT=document.getElementById("sT"),mo=[...document.querySelectorAll("#mo i")];
+const mix=(a,b,t)=>{const A=hex(a),B=hex(b);return`rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")})`};
+const cl=v=>Math.max(0,Math.min(1,v)),sm=(a,b,v)=>{const t=cl((v-a)/(b-a));return t*t*(3-2*t)};
+let lastS=-1,yp=0,yt=0;
+const grad=el("linearGradient",{id:"skyg",x1:0,x2:0,y1:0,y2:1}),s1=el("stop",{offset:0}),s2=el("stop",{offset:1});grad.append(s1,s2);const defs=el("defs",{});defs.append(grad);svg.prepend(defs);sky.setAttribute("fill","url(#skyg)");
+function render(p){const draw=sm(0,.2,p),q=cl((p-.2)/.8)*3,i=Math.min(2,Math.floor(q)),f=sm(0,1,q-i),A=P[i],B=P[Math.min(3,i+1)],col=sm(.16,.26,p);
+ s1.setAttribute("stop-color",mix(A.sky[0],B.sky[0],f));s2.setAttribute("stop-color",mix(A.sky[1],B.sky[1],f));
+ const sp=cl((p-.15)/.85);sun.setAttribute("cx",200+sp*1200);sun.setAttribute("cy",330-Math.sin(sp*Math.PI)*230);sun.setAttribute("fill",mix(A.sun,B.sun,f));sun.style.opacity=col;
+ hills.forEach((h,k)=>{h.line.setAttribute("stroke-dashoffset",1-sm(k*.18,k*.18+.6,draw));h.fill.setAttribute("fill",mix(A.h[k],B.h[k],f));h.fill.setAttribute("fill-opacity",col);h.line.setAttribute("stroke-opacity",.75-col*.5)});
+ rows.forEach((rs,k)=>rs.forEach((r,j)=>{r.setAttribute("stroke",col>0?mix(A.row,B.row,f):"#2b1b18");r.style.opacity=sm(.08+k*.03+j*.01,.2+k*.03,p)}));
+ const autumn=sm(1.55,1.9,q)*(1-sm(2.35,2.6,q)),winter=sm(2.35,2.8,q);
+ grapes.flat().forEach((g,k)=>{g.style.opacity=autumn;g.setAttribute("r",4.2*autumn)});snow.forEach(s=>s.setAttribute("fill-opacity",winter*.9));
+ const season=Math.min(3,Math.round(q));if(season!==lastS&&p>.18){lastS=season;sN.style.opacity=sT.style.opacity=0;setTimeout(()=>{sN.textContent=TXT[season][0];sT.textContent=TXT[season][1];sN.style.opacity=sT.style.opacity=1},250)}
+ mo.forEach((m,k)=>m.style.setProperty("--f",cl(q+1-k).toFixed(3)));flakesOn=winter}
+let flakesOn=0;
+(function tick(t){const r=sec.getBoundingClientRect();yt=cl(-r.top/Math.max(1,r.height-innerHeight));yp+=(yt-yp)*.12;if(r.bottom>0&&r.top<innerHeight){render(yp);
+ flakes.forEach(c=>{c._y+=c._s;c._x+=Math.sin((t/1000)+c._y*.02)*.3;if(c._y>700)c._y=-5;c.setAttribute("cx",c._x);c.setAttribute("cy",c._y);c.style.opacity=flakesOn})}requestAnimationFrame(tick)})(0);
+render(0)})();
 
 const cv=document.getElementById("cv"),cx=cv.getContext("2d"),film=document.getElementById("film"),caps=[...document.querySelectorAll(".cap")],dots=[...document.querySelectorAll(".dots i")];
 const bmp=new Array(FRAMES);let loaded=0,cur=-1,tgt=0,sm=0,dpr=1;
