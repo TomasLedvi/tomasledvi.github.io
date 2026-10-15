@@ -1,0 +1,114 @@
+{
+ "slug": "zahnas",
+ "name": "Rodinné vinařství Zahnaš",
+ "logo": "Vinařství Zahnaš",
+ "logo_sub": "Rodinné vinařství · Hovorany",
+ "label": "VINAŘSTVÍ ZAHNAŠ",
+ "labelSp": 8,
+ "hero_k": "Rodinné vinařství · Hovorany, Sklepy Na Benátkách",
+ "hero_h": "Víno s tradicí <em>a moderním duchem.</em>",
+ "story_k": "Tři muži, jeden sklep",
+ "story_h": "Táta Zdeněk <em>a synové.</em>",
+ "story": "Výroba vína v naší rodině sahá až do první republiky. Vinařství jako takové začalo v 60. letech, kdy dědeček vysadil první vinohrad, postavil sklep a začal vinařit. Dnes se o něj stará Zdeněk Zahnaš se syny Radkem a Markem. Na zhruba půl hektaru vinic pěstujeme Pálavu, Ryzlink, Chardonnay, Cabernet Moravia, Frankovku i Fratavu.",
+ "quote": "Domluvit se lze takřka na všem.",
+ "quote_by": "Zdeněk Zahnaš se syny",
+ "nums": [
+  [
+   "60. léta",
+   "první vinohrad a sklep"
+  ],
+  [
+   "3",
+   "vinaři v rodině"
+  ],
+  [
+   "15",
+   "vzorků při degustaci"
+  ]
+ ],
+ "zrani": "Vyrábíme vína od suchých po sladká, každé v odrůdovém charakteru",
+ "discount": 0,
+ "crate_lead": "Poskládejte si bednu z naší nabídky. Od šesti lahví máte dopravu zdarma, stejně jako v našem e-shopu.",
+ "deg": {
+  "k": "Degustace ve sklípku",
+  "h": "Bavte se <em>a pijte s námi.</em>",
+  "lead": "Degustaci vám připravíme přímo v našem sklepě, ochutnat můžete až 15 vzorků. Na přání studené občerstvení, zabijačkové speciality nebo teplé jídlo. Zahraje i cimbálka.",
+  "list": [
+   [
+    "Až 15 vzorků",
+    "Od suchých po sladká, Pálava, Hibernal, rulandská i frizzante."
+   ],
+   [
+    "Domácí pohoštění",
+    "Zabijačkové speciality, studená mísa nebo teplé jídlo."
+   ],
+   [
+    "Akce a ubytování",
+    "Otevřené sklepy, vinařské stezky a spaní v okolních sklepech."
+   ]
+  ]
+ },
+ "contact": {
+  "addr": "Sklepy Na Benátkách<br>696 12 Hovorany",
+  "open_k": "Návštěva",
+  "open": "Degustace a prodej<br>celoročně po domluvě",
+  "tel": "+420 724 265 791",
+  "mail": "vinarstvizahnas@centrum.cz"
+ },
+ "wines": [
+  {
+   "n": "Pálava",
+   "y": "2025",
+   "t": "aroma",
+   "k": "Bílé víno · Hovorany",
+   "notes": "Kořenitá vůně růží a liči, plné tělo a jemný dojezd.",
+   "pr": 199,
+   "food": "Asijská kuchyně, dezerty"
+  },
+  {
+   "n": "Ryzlink rýnský",
+   "y": "2025",
+   "t": "white2",
+   "k": "Bílé víno · Hovorany",
+   "notes": "Lipový květ, meruňka a citrusy, živá kyselinka.",
+   "pr": 199,
+   "food": "Ryby, kozí sýr"
+  },
+  {
+   "n": "Rosé Akademik",
+   "y": "2025",
+   "t": "rose",
+   "k": "Růžové víno · Hovorany",
+   "notes": "Svěží růžové víno s tóny jahod a malin.",
+   "pr": 199,
+   "food": "Saláty, gril"
+  },
+  {
+   "n": "Cabernet Moravia",
+   "y": "2025",
+   "t": "red",
+   "k": "Červené víno · Hovorany",
+   "notes": "Moravská odrůda s tóny černého rybízu a koření.",
+   "pr": 199,
+   "food": "Grilované maso"
+  },
+  {
+   "n": "Hibernal",
+   "y": "2025",
+   "t": "white",
+   "k": "Bílé víno · Hovorany",
+   "notes": "Aromatické víno s tóny broskve a muškátu.",
+   "pr": 209,
+   "food": "Drůbež, sýry"
+  },
+  {
+   "n": "Frizzante",
+   "y": "2025",
+   "t": "spark",
+   "k": "Perlivé víno · Hovorany",
+   "notes": "Lehké perlivé víno na terasu i k oslavě.",
+   "pr": 209,
+   "food": "Aperitiv"
+  }
+ ]
+}

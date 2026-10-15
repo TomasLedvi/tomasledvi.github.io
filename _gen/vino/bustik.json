@@ -1,0 +1,139 @@
+{
+ "slug": "bustik",
+ "name": "Rodinné vinařství Buštík",
+ "logo": "Vinařství Buštík",
+ "logo_sub": "Rodinné vinařství · Šardice",
+ "label": "VINAŘSTVÍ BUŠTÍK",
+ "labelSp": 8,
+ "hero_k": "Rodinné vinařství · Šardice, Moravské Toskánsko",
+ "hero_h": "Víno z <em>Moravského Toskánska.</em>",
+ "story_k": "Od 19. století",
+ "story_h": "Od dědova sklepa <em>po nový archiv.</em>",
+ "story": "Tradice našeho vinařství sahá do 19. století, kdy děda Josef Buštík vysázel v Šardicích první vinohrad a začal vyrábět víno v ručně kopaném sklepě. Navázal syn Miloslav a od roku 1994 budujeme samostatné vinařství. Bílá vína kvasíme v kameninových nádobách, červená zrají v dubových sudech barrique.",
+ "quote": "Žijeme příliš krátce na to, abychom pili špatná vína.",
+ "quote_by": "Rodina Buštíkova",
+ "nums": [
+  [
+   "19. stol.",
+   "první vinohrad v Šardicích"
+  ],
+  [
+   "17",
+   "pěstovaných odrůd"
+  ],
+  [
+   "21",
+   "lůžek v penzionu"
+  ]
+ ],
+ "zrani": "Bílá kvasí v kameninových nádobách, červená zrají v barrique",
+ "crate_lead": "Poskládejte si bednu z našich limitovaných šarží, včetně perlivých frizzante. Od šesti lahví sleva 10 %. Ceny jsou v ukázce zčásti ilustrační.",
+ "deg": {
+  "k": "Degustace a pohoštění",
+  "h": "Večer <em>u Buštíků.</em>",
+  "lead": "Prohlídka vinařství s majitelem, řízená degustace a pohoštění od paní domácí: slivovice na uvítanou, teplý i studený raut, domácí škvarky. Celovečerní pohoštění za 650 Kč na osobu.",
+  "list": [
+   [
+    "Velký sklep s krbem",
+    "Degustace až pro 20 hostů pod vinařstvím."
+   ],
+   [
+    "Kvelbený sklípek",
+    "Pro skupiny do 11 osob přímo v penzionu."
+   ],
+   [
+    "Až do svítání",
+    "Ubytovaní hosté se po degustaci přesunou jen o patro výš."
+   ]
+  ]
+ },
+ "stay": {
+  "h": "Penzion <em>U Buštíků.</em>",
+  "lead": "Nový rodinný penzion hned vedle vinařství, přímo na Mutěnické vinařské stezce. Ubytování až pro 21 hostů, bohatá snídaně od paní domácí a vinotéka s více než 20 druhy našeho vína.",
+  "rooms": [
+   [
+    "5 pokojů",
+    "Dvoulůžkové pokoje",
+    "Standard i Delux, každý s vlastní koupelnou a WC.",
+    "dle sezóny"
+   ],
+   [
+    "Apartmán",
+    "Třílůžkový apartmán",
+    "Kuchyňka, jídelní stůl a koupelna s vanou.",
+    "dle sezóny"
+   ]
+  ],
+  "amen": [
+   "Snídaně v ceně",
+   "Vinotéka 20+ vín",
+   "Úschovna 20 kol",
+   "Nabíjení elektrokol",
+   "Pergola v zahradě",
+   "Petanque"
+  ]
+ },
+ "contact": {
+  "addr": "Vinařství Šardice 794<br>Penzion Šardice 852",
+  "open_k": "Majitel",
+  "open": "Ing. Zdeněk Buštík, MBA<br>IČ 13046829",
+  "tel": "+420 607 908 134",
+  "mail": "zdenek.bustik@seznam.cz"
+ },
+ "wines": [
+  {
+   "n": "Muscaris frizzante",
+   "y": "2025",
+   "t": "spark",
+   "k": "Perlivé · extra dry",
+   "notes": "Perlivé a voňavé, s tóny muškátu, citrusů a bílých květů.",
+   "pr": 218,
+   "food": "Aperitiv, dezerty"
+  },
+  {
+   "n": "Souvignier Gris",
+   "y": "2025",
+   "t": "white2",
+   "k": "Perlivé · brut",
+   "notes": "Svěží perlivé víno s tóny hrušek a angreštu.",
+   "pr": 218,
+   "food": "Ryby, předkrmy"
+  },
+  {
+   "n": "Cabernet Sauvignon rosé",
+   "y": "2025",
+   "t": "rose",
+   "k": "Růžové · dry",
+   "notes": "Jahody, maliny a svěží kyselinka.",
+   "pr": 218,
+   "food": "Saláty, grilovaná zelenina"
+  },
+  {
+   "n": "Frankovka",
+   "y": "2022",
+   "t": "red",
+   "k": "Červené · barrique",
+   "notes": "Višně, švestky a jemné koření z dubového sudu.",
+   "pr": 260,
+   "food": "Zvěřina, pečená kachna"
+  },
+  {
+   "n": "Chardonnay",
+   "y": "2025",
+   "t": "spark",
+   "k": "Perlivé · extra dry",
+   "notes": "Žlutá jablka a jemná smetanovost v perlivém kabátě.",
+   "pr": 218,
+   "food": "Drůbež, rizoto"
+  },
+  {
+   "n": "Pinot Blanc",
+   "y": "2025",
+   "t": "white",
+   "k": "Perlivé · extra brut",
+   "notes": "Suché a elegantní, s tóny zeleného jablka a mandlí.",
+   "pr": 218,
+   "food": "Ústřice, sýry"
+  }
+ ]
+}

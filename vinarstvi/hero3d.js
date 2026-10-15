@@ -28,7 +28,7 @@ function labelTex(w){const c=document.createElement("canvas");c.width=900;c.heig
  for(let i=0;i<14000;i++){x.fillStyle=`rgba(${t.dot},${Math.random()*.04})`;x.fillRect(Math.random()*900,Math.random()*1100,2,2)}
  x.strokeStyle=t.gold;x.lineWidth=5;x.strokeRect(46,46,808,1008);x.lineWidth=1.6;x.strokeRect(64,64,772,972);
  x.textAlign="center";x.textBaseline="alphabetic";
- x.fillStyle=t.gold;x.font="500 30px Jost, system-ui, sans-serif";spaced(x,"RODINNÉ VINAŘSTVÍ",450,156,9);
+ x.fillStyle=t.gold;x.font="500 30px Jost, system-ui, sans-serif";spaced(x,(window.BRAND||{}).label||"RODINNÉ VINAŘSTVÍ",450,156,(window.BRAND||{}).labelSp??9);
  grapesIcon(x,450,250,t.acc,1.15);
  x.fillStyle=t.ink;const words=w.n.split(" ");let lines=[w.n],fs=124;x.font=`italic 300 ${fs}px Fraunces, Georgia, serif`;
  if(x.measureText(w.n).width>700&&words.length>1)lines=[words[0],words.slice(1).join(" ")];

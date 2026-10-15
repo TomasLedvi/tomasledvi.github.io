@@ -1,0 +1,145 @@
+{
+ "slug": "uveselych",
+ "name": "Sklep u Veselých",
+ "logo": "Sklep u Veselých",
+ "logo_sub": "Vinařství a ubytování · Mutěnice",
+ "label": "SKLEP U VESELÝCH",
+ "labelSp": 8,
+ "hero_k": "Drobné vinařství manželů Veselých · Mutěnice",
+ "hero_h": "Víno, sklep <em>a spaní nad ním.</em>",
+ "story_k": "Naše vinařství",
+ "story_h": "Malé šarže, <em>velká péče.</em>",
+ "story": "Jsme drobné vinařství manželů Veselých. Na 0,40 ha vlastních vinic pěstujeme devět odrůd a kvalitu hlídáme už ve vinici. Kombinujeme tradiční postupy s moderní technologií a vyrábíme harmonická, chuťově bohatá vína s odrůdovým charakterem.",
+ "quote": "Kvalita vína se rodí už ve vinici.",
+ "quote_by": "Manželé Veselí",
+ "nums": [
+  [
+   "0,40 ha",
+   "vlastních vinic"
+  ],
+  [
+   "9",
+   "pěstovaných odrůd"
+  ],
+  [
+   "~500",
+   "sklepů v okolí, Búdy"
+  ]
+ ],
+ "zrani": "Malé šarže, každý sud hlídáme osobně",
+ "crate_lead": "Vyberte si vína z našich malých šarží do bedny, připravíme vám je k vyzvednutí. Od šesti lahví sleva 10 %. Ceny jsou v ukázce ilustrační.",
+ "deg": {
+  "k": "Posezení ve sklípku",
+  "h": "Malá, nebo <em>velká ochutnávka?</em>",
+  "lead": "Malá ochutnávka trvá hodinu, má 8 vzorků a něco k zakousnutí za 250 Kč na osobu. Velká trvá tři hodiny s rautem za 500 Kč na osobu. Obě od čtyř osob, obě s prohlídkou sklepa.",
+  "list": [
+   [
+    "Prohlídka sklepa",
+    "Povídání o révě, víně a historii vinařství na jižní Moravě."
+   ],
+   [
+    "Až 12 hostů",
+    "Místnost se sklípkem, televizí i pro menší školení."
+   ],
+   [
+    "Pergola a gril",
+    "Posezení venku s výhledem na vinohrad."
+   ]
+  ]
+ },
+ "stay": {
+  "h": "Spaní <em>přímo nad sklípkem.</em>",
+  "lead": "Ubytování nad naším sklepem v mutěnských Búdách. Terasa s grilem a výhledem na vinohrad, parkoviště a úschovna kol. Všechny pokoje mají klimatizaci.",
+  "rooms": [
+   [
+    "Apartmán",
+    "4lůžkový apartmán",
+    "Dvě ložnice, kuchyňka s myčkou, rozkládací pohovka.",
+    "2 000 Kč / noc"
+   ],
+   [
+    "Apartmán",
+    "Rodinný apartmán",
+    "Manželská postel, dvě lůžka, kuchyňka a koupelna s vanou.",
+    "2 000 Kč / noc"
+   ],
+   [
+    "Pokoj",
+    "Dvoulůžkový pokoj",
+    "Manželská postel, vlastní sprcha a WC.",
+    "1 000 Kč / noc"
+   ]
+  ],
+  "amen": [
+   "Klimatizace",
+   "Vířivka na terase",
+   "Terasa s grilem",
+   "Platba kartou",
+   "Úschovna kol",
+   "Dětská postýlka"
+  ]
+ },
+ "contact": {
+  "addr": "Sklepní ev. č. 14, 15<br>696 11 Mutěnice",
+  "open_k": "Kontakt",
+  "open": "Dana Veselá<br>degustace po domluvě",
+  "tel": "+420 777 556 647",
+  "mail": "sklepuveselych@seznam.cz"
+ },
+ "wines": [
+  {
+   "n": "Malverina",
+   "y": "2024",
+   "t": "white2",
+   "k": "Bílé víno · odolná odrůda",
+   "notes": "Svěží, ovocné víno z odolné odrůdy s tóny broskve a bylinek.",
+   "pr": 190,
+   "food": "Saláty, ryby"
+  },
+  {
+   "n": "Pálava",
+   "y": "2024",
+   "t": "aroma",
+   "k": "Bílé víno · Mutěnice",
+   "notes": "Kořenitá vůně růží a liči, plné tělo a jemný dojezd.",
+   "pr": 230,
+   "food": "Asijská kuchyně, dezerty"
+  },
+  {
+   "n": "Sauvignon gris",
+   "y": "2024",
+   "t": "white",
+   "k": "Bílé víno · Mutěnice",
+   "notes": "Angrešt, citrusy a bylinky, svěží a šťavnaté.",
+   "pr": 220,
+   "food": "Kozí sýr, chřest"
+  },
+  {
+   "n": "Svatovavřinecké",
+   "y": "2023",
+   "t": "red",
+   "k": "Červené víno · Mutěnice",
+   "notes": "Višně, černý rybíz a sametové tělo.",
+   "pr": 240,
+   "food": "Kachna, pečené maso"
+  },
+  {
+   "n": "Hibernal",
+   "y": "2024",
+   "t": "white",
+   "k": "Bílé víno · odolná odrůda",
+   "notes": "Aromatické víno s tóny broskve a muškátu.",
+   "pr": 200,
+   "food": "Drůbež, sýry"
+  },
+  {
+   "n": "Zweigeltrebe",
+   "y": "2023",
+   "t": "red2",
+   "k": "Červené víno · Mutěnice",
+   "notes": "Ovocné víno s tóny višní a jemného koření.",
+   "pr": 230,
+   "food": "Gril, těstoviny"
+  }
+ ]
+}

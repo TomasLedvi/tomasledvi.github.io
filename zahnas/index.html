@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Rodinné vinařství Zahnaš · návrh webu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f5efe6;--paper2:#ece3d6;--ink:#2b1b18;--muted:#6f5d55;--wine:#6e1a2b;--wine2:#8f2a3c;--gold:#b08a52;--line:#2b1b1822;
+--serif:"Fraunces",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--paper)}body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.bar{position:fixed;inset:0 0 auto;z-index:60;background:var(--wine);color:#f5efe6;font:400 .68rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:7px 12px}
+.nav{position:fixed;left:0;right:0;top:25px;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px max(16px,4vw);color:#fff;transition:background .5s,color .5s,transform .45s cubic-bezier(.4,0,.2,1),padding .4s}
+.nav.solid{background:#f5efe6f2;color:var(--ink);padding-top:12px;padding-bottom:12px;box-shadow:0 1px 0 var(--line)}
+.nav.hide{transform:translateY(-150%)}
+.nav ul{display:flex;gap:clamp(16px,1.7vw,30px);list-style:none;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.nav ul a{text-decoration:none;opacity:.85}.nav ul a:hover{opacity:1}
+.logo{text-align:center;text-decoration:none;font:300 1.6rem/1 var(--serif);letter-spacing:.02em}
+.logo i{display:block;font:400 .58rem/1.8 var(--sans);font-style:normal;letter-spacing:.32em;text-transform:uppercase;opacity:.75}
+.nav .r{justify-self:end}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border-radius:999px;border:1px solid currentColor;text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;transition:background .35s,color .35s,border-color .35s}
+.pill:hover{background:#fff;color:var(--wine);border-color:#fff}
+.nav.solid .pill:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+.pill.fill{background:var(--wine);border-color:var(--wine);color:#fff}.pill.fill:hover{background:var(--wine2);border-color:var(--wine2);color:#fff}
+@media (max-width:860px){.nav{grid-template-columns:1fr auto}.nav ul{display:none}.logo{text-align:left}}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#0007 0%,transparent 26%,transparent 55%,#000a 100%)}
+.cap{position:absolute;left:0;right:0;bottom:clamp(70px,14vh,140px);text-align:center;color:#fff;padding:0 20px;opacity:0;transform:translateY(30px);filter:blur(6px);transition:opacity 1s,transform 1.1s cubic-bezier(.2,.75,.15,1),filter 1s;pointer-events:none}
+.cap.on{opacity:1;transform:none;filter:none}
+.cap .k{font:400 .74rem/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;opacity:.85}
+.cap .k::before,.cap .k::after{content:"";display:inline-block;width:34px;height:1px;background:currentColor;vertical-align:middle;margin:0 14px;opacity:.6}
+.cap h1,.cap h2{margin-top:18px;font:300 clamp(2.6rem,7.4vw,6.8rem)/1 var(--serif);letter-spacing:-.015em;text-shadow:0 4px 40px #0008}
+.cap h1 em,.cap h2 em{font-style:italic;color:#f1d3a6}
+.cap p{margin:20px auto 0;max-width:520px;font-weight:300;font-size:1.05rem;line-height:1.7;opacity:.92;text-shadow:0 2px 16px #000a}
+.cap .ctas{margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;pointer-events:auto}
+.cap .pill{color:#fff}
+.dots{position:absolute;right:clamp(16px,3vw,36px);top:50%;transform:translateY(-50%);display:grid;gap:14px}
+.dots i{width:7px;height:7px;border-radius:50%;border:1px solid #fffa;transition:background .4s,transform .4s}.dots i.on{background:#fff;transform:scale(1.25)}
+.scroll{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:1px;height:46px;background:#fff6;overflow:hidden;transition:opacity .4s}
+.scroll::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:#fff;animation:sd 1.8s cubic-bezier(.6,0,.3,1) infinite}@keyframes sd{to{top:46px}}
+.sec{padding:clamp(90px,15vh,170px) max(18px,6vw)}
+.wrap{max-width:1180px;margin:0 auto}
+.k2{font:500 .72rem/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.h2{margin-top:18px;font:300 clamp(2.4rem,5.4vw,4.8rem)/1.02 var(--serif);letter-spacing:-.015em}.h2 em{font-style:italic;color:var(--wine)}
+.lead{margin-top:22px;max-width:560px;color:var(--muted);font-weight:300;font-size:1.08rem;line-height:1.75}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.intro{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,7vw,110px);align-items:end}
+.intro blockquote{font:300 clamp(1.4rem,2.4vw,2rem)/1.4 var(--serif);font-style:italic;color:var(--wine);border-left:1px solid var(--gold);padding-left:28px}
+.intro blockquote cite{display:block;margin-top:16px;font:400 .72rem/1 var(--sans);font-style:normal;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);margin-top:70px;border-top:1px solid var(--line)}
+.nums div{padding:30px 0 0}.nums b{display:block;font:300 clamp(2.6rem,4.5vw,4rem)/1 var(--serif);color:var(--wine)}.nums span{display:block;margin-top:10px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.intro{grid-template-columns:1fr}.nums{grid-template-columns:1fr}.nums div{border-bottom:1px solid var(--line);padding:22px 0}}
+.wines{margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,28px)}
+.wine{position:relative;text-align:center;padding:40px 22px 34px;background:#fbf7f1;border-radius:200px 200px 6px 6px;box-shadow:0 1px 0 var(--line);transition:transform .6s cubic-bezier(.2,.75,.15,1),box-shadow .6s}
+.wine:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px #6e1a2b55}
+.wine svg{display:block;width:46px;height:150px;margin:0 auto 26px}
+.wine .t{font:500 .66rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.wine h3{margin:12px 0 10px;font:400 1.75rem/1.1 var(--serif)}
+.wine p{font-weight:300;font-size:.92rem;line-height:1.6;color:var(--muted)}
+.wine .pr{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font:400 .85rem/1 var(--sans);letter-spacing:.06em}
+.wine .pr b{color:var(--wine);font-weight:500}
+@media (max-width:980px){.wines{grid-template-columns:1fr 1fr}}@media (max-width:520px){.wines{grid-template-columns:1fr}}
+.taste{background:var(--paper2)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,7vw,110px);align-items:center}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 8px 8px;overflow:hidden;box-shadow:0 40px 80px -40px #2b1b1866;max-width:520px}
+.arch canvas{position:absolute;inset:0;width:100%;height:100%;display:block}#cv2{filter:blur(5px) brightness(.55) saturate(1.1);transform:scale(1.08)}
+#degustace .list>div{transition:opacity .5s}#degustace .list>div:not(.lit){opacity:.45}
+.list{margin-top:34px;display:grid;gap:22px}
+.list div{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:start}
+.list b{font:300 2rem/1 var(--serif);font-style:italic;color:var(--gold)}
+.list strong{display:block;font:400 1.25rem/1.3 var(--serif);margin-bottom:4px}.list span{color:var(--muted);font-weight:300;line-height:1.6}
+.contact{background:var(--wine);color:#f5efe6}
+.contact .k2{color:#e9c895}.contact .h2 em{color:#f1d3a6}
+.cards{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ffffff26}
+.cards div{background:var(--wine);padding:34px 28px}
+.cards small{display:block;font:500 .66rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:#e9c895;margin-bottom:14px}
+.cards span{font:300 1.35rem/1.5 var(--serif)}
+.contact .pill{color:#fff;margin-top:44px}.contact .pill:hover{background:#fff;color:var(--wine)}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+footer{padding:36px max(18px,6vw) 50px;color:var(--muted);font-size:.82rem;line-height:1.7;text-align:center}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1.1s cubic-bezier(.2,.75,.15,1)}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.cap,.rv{transition:none}.scroll::after{animation:none}}
+
+/* ===== rok na vinici ===== */
+.year{position:relative;height:640vh;background:var(--paper)}
+.ystage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.yhead{padding:calc(110px + 2vh) max(18px,6vw) 0;display:flex;justify-content:space-between;align-items:end;gap:20px;position:relative;z-index:2}
+.yhead .h2{margin-top:12px}
+.season{text-align:right;min-width:240px}
+.season b{display:block;font:300 clamp(2rem,4vw,3.4rem)/1 var(--serif);font-style:italic;color:var(--wine);transition:opacity .5s}
+.season span{display:block;margin-top:10px;color:var(--muted);font-weight:300;line-height:1.6;max-width:320px;margin-left:auto;transition:opacity .5s}
+.months{display:flex;gap:6px;justify-content:flex-end;margin-top:14px}
+.months i{width:26px;height:2px;background:var(--line);position:relative;overflow:hidden}.months i::after{content:"";position:absolute;inset:0;background:var(--wine);transform:scaleX(var(--f,0));transform-origin:left}
+#land{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%}
+@media (max-width:760px){.yhead{flex-direction:column;align-items:flex-start}.season{text-align:left}.season span{margin-left:0}.months{justify-content:flex-start}}
+.season .sm{font:500 .66rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;transition:opacity .4s}.season .sm span{transition:opacity .4s}
+.season .sf{display:inline-block;margin-top:14px;padding:7px 13px;border-radius:999px;background:#ffffff8c;border:1px solid var(--line);font-size:.8rem;color:var(--ink);transition:opacity .5s;backdrop-filter:blur(4px)}
+.season .sm span{display:inline;margin:0;max-width:none;font-size:inherit;line-height:inherit;color:inherit}
+.ysub{margin-top:12px;color:var(--muted);font-weight:300}
+.months{display:grid!important;grid-template-columns:repeat(12,1fr);gap:4px;width:min(330px,100%);margin:16px 0 0 auto}
+.months i{height:22px!important;width:auto!important;background:none!important;position:relative;font-style:normal;overflow:visible!important}
+.months i::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--line);transition:background .4s}.months i::after{display:none}
+.months i em{position:absolute;top:8px;left:0;right:0;text-align:center;font:500 .58rem/1 var(--sans);font-style:normal;color:var(--muted)}
+.months i.on::before{background:var(--wine)}.months i.on em{color:var(--wine)}
+.season{max-width:380px}
+@media (max-width:760px){.yhead{padding-top:96px;gap:10px}.yhead .h2{font-size:2.2rem}.ysub{display:none}.season{max-width:none}.season b{font-size:1.9rem}.season span{font-size:.9rem;line-height:1.5}.season .sf{margin-top:8px;font-size:.72rem}.months{margin:10px 0 0}}
+/* ===== 3D lahve ===== */
+.show{position:relative;height:760vh;background:#0d0708}
+.s3{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;--g:#2c1d18;background:radial-gradient(55% 65% at 50% 52%,color-mix(in srgb,var(--g) 78%,#000) 0%,color-mix(in srgb,var(--g) 22%,#0d0708) 45%,#0b0607 78%)}
+.s3::before{content:"";position:absolute;left:50%;top:-30vh;width:min(90vw,900px);height:90vh;transform:translateX(-50%);background:radial-gradient(closest-side,#ffffff12,#0000);pointer-events:none}
+.s3::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;z-index:3}
+#gl{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
+.big{position:absolute;left:50%;top:50%;z-index:0;transform:translate(-50%,-50%);font:300 clamp(4.6rem,17vw,20rem)/.86 var(--serif);letter-spacing:-.035em;white-space:nowrap;text-align:center;color:color-mix(in srgb,var(--g) 45%,#f3e2c6);opacity:0;pointer-events:none}
+.big em{font-style:italic}
+@media (max-width:700px){.big{font-size:17vw;top:24%}}
+.k3{font:500 .72rem/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:#e9c895}
+.i3{position:absolute;left:0;right:0;bottom:clamp(54px,10vh,110px);z-index:2;text-align:center;color:#fff;padding:0 20px}
+.i3 h1{margin-top:18px;font:300 clamp(2.8rem,7.2vw,6.6rem)/1 var(--serif);letter-spacing:-.02em}.i3 h1 em{font-style:italic;color:#f1d3a6}
+.i3 p{margin-top:16px;font-weight:300;opacity:.75}
+.i3 .scroll{position:relative;left:auto;bottom:auto;transform:none;margin:26px auto 0;display:block}
+.wp{position:absolute;z-index:2;left:max(20px,6vw);top:0;bottom:0;width:min(40vw,540px);display:flex;flex-direction:column;justify-content:center;color:#f5efe6;opacity:0;pointer-events:none}
+.wp .n{font:300 1.1rem/1 var(--serif);margin-bottom:22px}.wp .n span{opacity:.5}
+.wp h2{margin:16px 0 18px;font:300 clamp(2.8rem,5.4vw,5.4rem)/.98 var(--serif);letter-spacing:-.02em}
+.wp h2 em{display:block;font-style:italic;font-size:.62em;margin-top:6px;color:color-mix(in srgb,var(--g) 35%,#f5e2c0)}
+.wp p{font-weight:300;font-size:1.08rem;line-height:1.7;opacity:.82;max-width:430px}
+.f3{display:flex;gap:34px;margin-top:30px;padding-top:18px;border-top:1px solid #ffffff22}
+.f3 small{display:block;font:500 .6rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#e9c895;margin-bottom:8px}.f3 span{font:300 1.2rem/1 var(--serif)}
+.pr3{display:flex;align-items:center;gap:22px;margin-top:30px}.pr3 b{font:300 2.1rem/1 var(--serif)}.pr3 .pill{color:#fff}
+.o3{position:absolute;left:0;right:0;bottom:clamp(36px,8vh,80px);z-index:2;text-align:center;color:#f5efe6;opacity:0;padding:0 20px;pointer-events:none}
+.o3 p{max-width:500px;margin:0 auto 22px;font-weight:300;line-height:1.7;opacity:.85}
+.o3 .ctas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.o3 .pill{color:#fff}
+.rail{position:absolute;right:clamp(14px,3vw,36px);top:50%;transform:translateY(-50%);display:grid;gap:10px;z-index:3}
+.rail i{display:block;width:2px;height:22px;background:#ffffff30;transition:background .4s,height .4s cubic-bezier(.2,.75,.15,1)}.rail i.on{background:#fff;height:46px}
+@media (max-width:760px){
+ .wp{left:20px;right:20px;width:auto;top:auto;bottom:22px;justify-content:flex-end}
+ .wp .n{margin-bottom:12px;font-size:.95rem}.wp h2{font-size:2.5rem;margin:10px 0 10px}.wp p{font-size:.95rem;line-height:1.55}
+ .f3{gap:20px;margin-top:16px;padding-top:12px}.f3 span{font-size:1rem}.pr3{margin-top:16px}.pr3 b{font-size:1.6rem}.pr3 .pill{padding:10px 18px}
+ .i3{bottom:40px}.rail{top:auto;bottom:auto;top:110px;transform:none}}
+/* ===== výroba ===== */
+.prod{height:700vh}
+#gl2{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
+.phead{position:absolute;left:max(20px,6vw);top:clamp(96px,14vh,140px);z-index:2;color:#f5efe6}
+.phead b{display:block;margin-top:10px;font:300 clamp(1.4rem,2.4vw,2rem)/1 var(--serif)}.phead em{font-style:italic;color:#f1d3a6}
+.vp h2{font-size:clamp(2.6rem,5vw,5rem)}
+.chip3{display:inline-block;margin-top:24px;padding:9px 15px;border:1px solid #ffffff30;border-radius:999px;font-size:.85rem;color:#f1d3a6;background:#ffffff0d}
+.rail2{position:absolute;right:clamp(14px,3vw,36px);top:50%;transform:translateY(-50%);display:grid;gap:10px;z-index:3}
+.rail2 i{display:block;width:2px;height:20px;background:#ffffff30;transition:background .4s,height .4s cubic-bezier(.2,.75,.15,1)}.rail2 i.on{background:#fff;height:44px}
+@media (max-width:760px){.phead{top:88px;left:20px}.phead b{font-size:1.3rem}.chip3{margin-top:12px;font-size:.75rem}.rail2{top:96px;transform:none}}
+/* ===== odkazy a menu ===== */
+html{scroll-behavior:smooth}section[id]{scroll-margin-top:0}
+.burger{display:none;width:44px;height:44px;border:1px solid currentColor;border-radius:50%;background:none;color:inherit;cursor:pointer;place-content:center;gap:6px;margin-left:10px}
+.burger i{display:block;width:16px;height:1.5px;background:currentColor;transition:transform .35s}
+.nav .r{display:flex;align-items:center}
+@media (max-width:860px){.burger{display:grid}.logo{font-size:1.2rem}.logo i{font-size:.5rem;letter-spacing:.24em}.nav .r .pill{padding:10px 16px;font-size:.7rem}
+ .nav ul{display:flex!important;position:fixed;inset:0;z-index:-1;flex-direction:column;justify-content:center;align-items:center;gap:28px;background:#160c0bf5;color:#f5efe6;font-size:1.05rem;opacity:0;pointer-events:none;transition:opacity .4s}
+ .nav.open ul{opacity:1;pointer-events:auto}.nav.open{color:#fff;background:transparent!important;box-shadow:none!important}
+ .nav.open .burger i:first-child{transform:translateY(3.75px) rotate(45deg)}.nav.open .burger i:last-child{transform:translateY(-3.75px) rotate(-45deg)}}
+.crates{display:grid;gap:18px}
+.crate.cin{animation:cin .6s cubic-bezier(.2,.75,.15,1)}@keyframes cin{from{opacity:0;transform:translateY(-24px)}}
+.slot img{cursor:pointer}
+/* ===== bedna ===== */
+.cfg{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center;margin-top:60px}
+@media (max-width:900px){.cfg{grid-template-columns:1fr;gap:26px}.cbox{order:-1}.wl{grid-auto-flow:column;grid-auto-columns:84%;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 14px;margin:0 -2px;scrollbar-width:none}.wl::-webkit-scrollbar{display:none}.wrow{scroll-snap-align:start;gap:10px;grid-template-columns:48px 1fr auto 34px}.nm b{font-size:1.05rem}.add{width:32px;height:32px}.tot b{font-size:1.8rem}.wrow:hover{transform:none}}
+.wl{display:grid;gap:10px}
+.wrow{position:relative;display:grid;grid-template-columns:52px 1fr auto 38px;align-items:center;gap:16px;padding:8px 14px 8px 8px;border:1px solid var(--line);border-radius:16px;background:#fbf7f1;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:transform .35s cubic-bezier(.2,.75,.15,1),box-shadow .35s,border-color .35s}
+.wrow:hover{transform:translateX(6px);border-color:var(--g);box-shadow:0 18px 40px -26px var(--g)}
+.wrow:active{transform:scale(.98)}
+.th{height:78px;display:grid;place-items:center;overflow:hidden;border-radius:11px;background:radial-gradient(circle at 50% 62%,color-mix(in srgb,var(--g) 32%,#fff),#efe7dc 72%)}
+.th img{height:74px;width:auto;display:block}
+.nm b{display:block;font:400 1.22rem/1.15 var(--serif)}.nm small{display:block;margin-top:5px;font-size:.78rem;color:var(--muted);letter-spacing:.03em}
+.pc{font:400 1.05rem/1 var(--serif);color:var(--wine);white-space:nowrap}
+.add{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--wine);color:#fff;font:300 1.4rem/1 var(--sans);transition:transform .35s}
+.wrow:hover .add{transform:rotate(90deg)}
+.bd{position:absolute;left:46px;top:4px;min-width:21px;height:21px;padding:0 5px;border-radius:11px;background:var(--gold);color:#fff;font:500 .7rem/21px var(--sans);text-align:center;transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}.bd.on{transform:scale(1)}
+.crate{position:relative;aspect-ratio:1.45}
+.crate .back{position:absolute;left:2.5%;right:2.5%;bottom:5%;height:50%;border-radius:5px 5px 0 0;background:linear-gradient(#2a1a10,#4e321d);box-shadow:inset 0 20px 30px #000a}
+.slots{position:absolute;left:5%;right:5%;bottom:9%;top:0;display:grid;grid-template-columns:repeat(6,1fr);z-index:1}
+.slot{position:relative;cursor:pointer}
+.slot img{position:absolute;left:50%;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);filter:drop-shadow(0 12px 10px #0007)}
+.slot img.drop{animation:drop .75s cubic-bezier(.3,1.35,.5,1)}@keyframes drop{from{transform:translate(-50%,-75%);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+.slot img.up{transition:transform .38s cubic-bezier(.5,0,.8,.4),opacity .38s;transform:translate(-50%,-90%);opacity:0}
+.slot:hover img:not(.up){transform:translate(-50%,-4%);transition:transform .3s}
+.front{position:absolute;left:0;right:0;bottom:0;height:44%;z-index:2;border-radius:4px;display:grid;place-content:center;text-align:center;
+ background:linear-gradient(90deg,#0000 0 3.5%,#0002 3.5% 4%,#0000 4% 96%,#0002 96% 96.5%,#0000 96.5%),repeating-linear-gradient(180deg,#b07c46 0 30%,#8a5b30 30% 33.33%),linear-gradient(90deg,#9a6a3a,#b8854e 50%,#94643a);background-blend-mode:normal,multiply,normal;
+ box-shadow:0 34px 50px -30px #2b1b18aa,inset 0 2px 0 #ffffff40,inset 0 -6px 12px #0003}
+.front span{font:400 clamp(1.1rem,2.5vw,1.9rem)/1 var(--serif);font-style:italic;color:#3e220e;opacity:.82}
+.front i{display:block;margin-top:9px;font:500 .58rem/1 var(--sans);font-style:normal;letter-spacing:.3em;text-transform:uppercase;color:#3e220e;opacity:.65}
+.crate.shake{animation:shk .4s}@keyframes shk{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.sum{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+.sum b{display:block;font:300 1.8rem/1 var(--serif)}.sum span{display:block;color:var(--muted);font-size:.9rem;margin-top:8px;line-height:1.4}
+.tot{text-align:right;white-space:nowrap}.tot s{display:block;color:var(--muted);font-size:.9rem;margin-bottom:4px}.tot b{color:var(--wine);font-size:2.3rem}
+#ask{margin-top:22px}
+</style>
+</head>
+<body>
+<div class="bar">Neoficiální návrh webu pro Rodinné vinařství Zahnaš · ceny a údaje u vín jsou ilustrační</div>
+<nav class="nav" id="nav">
+  <ul><li><a href="#rok">Vinice</a></li><li><a href="#vyroba">Výroba</a></li><li><a href="#vina">Vína</a></li><li><a href="#degustace">Degustace</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <a class="logo" href="#">Vinařství Zahnaš<i>Rodinné vinařství · Hovorany</i></a>
+  <div class="r"><a class="pill" href="#kontakt">Rezervace</a><button class="burger" id="burger" type="button" aria-label="Otevřít menu" aria-expanded="false"><i></i><i></i></button></div>
+</nav>
+
+<section class="show" id="show">
+  <div class="s3" id="s3">
+    <div class="big" id="big">Jen <em>hrozny.</em></div>
+    <canvas id="gl" aria-label="Lahve našich vín"></canvas>
+    <div class="i3" id="i3">
+      <div class="k3">Rodinné vinařství · Hovorany, Sklepy Na Benátkách</div>
+      <h1>Víno s tradicí <em>a moderním duchem.</em></h1>
+      <p>Posuňte dolů a poznejte je jedno po druhém.</p>
+      <div class="scroll" aria-hidden="true"></div>
+    </div>
+    <div id="wps"></div>
+    <div class="o3" id="o3"><p>Žádné zkratky. Jen hrozny z našich vinic, čas a dubové sudy.</p><div class="ctas"><a class="pill fill" href="#vina">Sestavit bednu</a><a class="pill" href="#degustace">Degustace</a></div></div>
+    <div class="rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap intro">
+    <div>
+      <div class="k2 rv">Tři muži, jeden sklep</div>
+      <h2 class="h2 rv">Táta Zdeněk <em>a synové.</em></h2>
+      <p class="lead rv">Výroba vína v naší rodině sahá až do první republiky. Vinařství jako takové začalo v 60. letech, kdy dědeček vysadil první vinohrad, postavil sklep a začal vinařit. Dnes se o něj stará Zdeněk Zahnaš se syny Radkem a Markem. Na zhruba půl hektaru vinic pěstujeme Pálavu, Ryzlink, Chardonnay, Cabernet Moravia, Frankovku i Fratavu.</p>
+    </div>
+    <blockquote class="rv">„Domluvit se lze takřka na všem.“<cite>— Zdeněk Zahnaš se syny</cite></blockquote>
+  </div>
+  <div class="wrap nums">
+    <div class="rv"><b>60. léta</b><span>první vinohrad a sklep</span></div>
+    <div class="rv"><b>3</b><span>vinaři v rodině</span></div>
+    <div class="rv"><b>15</b><span>vzorků při degustaci</span></div>
+  </div>
+</section>
+
+<section class="year" id="rok">
+  <div class="ystage">
+    <div class="yhead">
+      <div><div class="k2">Rok na vinici</div><h2 class="h2">Víno se rodí <em>venku.</em></h2><p class="ysub">Jeden rok jednoho keře, tak jak jde na Moravě.</p></div>
+      <div class="season"><div class="sm"><span id="sI">01</span> / 09 · <span id="sM">Leden – únor</span></div><b id="sN">Zimní řez</b><span id="sT">Réva spí.</span><div class="sf" id="sF"></div><div class="months" id="mo"><i><em>L</em></i><i><em>Ú</em></i><i><em>B</em></i><i><em>D</em></i><i><em>K</em></i><i><em>Č</em></i><i><em>Č</em></i><i><em>S</em></i><i><em>Z</em></i><i><em>Ř</em></i><i><em>L</em></i><i><em>P</em></i></div></div>
+    </div>
+    <svg id="land" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+  </div>
+</section>
+
+<section class="show prod" id="vyroba">
+  <div class="s3" id="p3">
+    <div class="phead"><div class="k3">Ze sklepa</div><b>Jak se rodí <em>víno</em></b></div>
+    <canvas id="gl2" aria-label="Jak se vyrábí víno"></canvas>
+    <div id="vps"></div>
+    <div class="rail2" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<section class="sec crate-sec" id="vina">
+  <div class="wrap center">
+    <div class="k2 rv">Sestavte si bednu</div>
+    <h2 class="h2 rv">Šest lahví <em>podle vás.</em></h2>
+    <p class="lead rv">Poskládejte si bednu z naší nabídky. Od šesti lahví máte dopravu zdarma, stejně jako v našem e-shopu.</p>
+  </div>
+  <div class="wrap cfg">
+    <div class="wl rv" id="wl"></div>
+    <div class="cbox rv">
+      <div class="crates" id="crates"></div>
+      <div class="sum"><div><b id="cnt">0 / 6</b><span id="hint2"></span></div><div class="tot"><s id="old"></s><b id="tot">0 Kč</b></div></div>
+      <a class="pill fill" id="ask" href="#kontakt">Poptat bednu e-mailem</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec taste" id="degustace">
+  <div class="wrap split">
+    <div class="arch rv"><canvas id="cv2" aria-hidden="true"></canvas><canvas id="gl3" aria-label="Sud jako stolek se šesti vzorky vína"></canvas></div>
+    <div>
+      <div class="k2 rv">Degustace ve sklípku</div>
+      <h2 class="h2 rv">Bavte se <em>a pijte s námi.</em></h2>
+      <p class="lead rv">Degustaci vám připravíme přímo v našem sklepě, ochutnat můžete až 15 vzorků. Na přání studené občerstvení, zabijačkové speciality nebo teplé jídlo. Zahraje i cimbálka.</p>
+      <div class="list rv">
+        <div><b>i.</b><span><strong>Až 15 vzorků</strong>Od suchých po sladká, Pálava, Hibernal, rulandská i frizzante.</span></div>
+        <div><b>ii.</b><span><strong>Domácí pohoštění</strong>Zabijačkové speciality, studená mísa nebo teplé jídlo.</span></div>
+        <div><b>iii.</b><span><strong>Akce a ubytování</strong>Otevřené sklepy, vinařské stezky a spaní v okolních sklepech.</span></div>
+      </div>
+      <a class="pill fill rv" href="#kontakt" style="margin-top:38px">Rezervovat termín</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="kontakt">
+  <div class="wrap center">
+    <div class="k2 rv">Kontakt</div>
+    <h2 class="h2 rv">Těšíme se <em>na vás.</em></h2>
+    <div class="cards rv" style="text-align:left">
+      <div><small>Adresa</small><span>Sklepy Na Benátkách<br>696 12 Hovorany</span></div>
+      <div><small>Návštěva</small><span>Degustace a prodej<br>celoročně po domluvě</span></div>
+      <div><small>Rezervace</small><span>+420 724 265 791<br>vinarstvizahnas@centrum.cz</span></div>
+    </div>
+    <a class="pill rv" href="mailto:vinarstvizahnas@centrum.cz">Napsat nám</a>
+  </div>
+</section>
+
+<footer>Neoficiální návrh webu pro Rodinné vinařství Zahnaš. Texty vycházejí z vašich současných stránek, ceny a údaje u vín jsou ilustrační. © 2026 Tomáš Ledvina – koncept, použití jen po dohodě s autorem.</footer>
+
+<script>
+window.BRAND={"label": "VINAŘSTVÍ ZAHNAŠ", "zrani": "Vyrábíme vína od suchých po sladká, každé v odrůdovém charakteru", "discount": 0, "labelSp": 8};
+window.VINO=[{"id": "w0", "n": "Pálava", "y": "2025", "k": "Bílé víno · Hovorany", "notes": "Kořenitá vůně růží a liči, plné tělo a jemný dojezd.", "pr": 199, "f": [["Typ", "Bílé víno"], ["Podávat", "10–12 °C"], ["K jídlu", "Asijská kuchyně, dezerty"]], "glass": 4859912, "shape": "flute", "foil": 8003374, "glow": "#c06a1c", "label": "cream"}, {"id": "w1", "n": "Ryzlink rýnský", "y": "2025", "k": "Bílé víno · Hovorany", "notes": "Lipový květ, meruňka a citrusy, živá kyselinka.", "pr": 199, "f": [["Typ", "Bílé víno"], ["Podávat", "9–11 °C"], ["K jídlu", "Ryby, kozí sýr"]], "glass": 2902560, "shape": "flute", "foil": 11043658, "glow": "#9aa03a", "label": "cream"}, {"id": "w2", "n": "Rosé Akademik", "y": "2025", "k": "Růžové víno · Hovorany", "notes": "Svěží růžové víno s tóny jahod a malin.", "pr": 199, "f": [["Typ", "Růžové víno"], ["Podávat", "8–10 °C"], ["K jídlu", "Saláty, gril"]], "glass": "clear", "liquid": 14243434, "shape": "flute", "foil": 15250350, "glow": "#c9566f", "label": "white"}, {"id": "w3", "n": "Cabernet Moravia", "y": "2025", "k": "Červené víno · Hovorany", "notes": "Moravská odrůda s tóny černého rybízu a koření.", "pr": 199, "f": [["Typ", "Červené víno"], ["Podávat", "16–18 °C"], ["K jídlu", "Grilované maso"]], "glass": 922123, "shape": "bdx", "foil": 2755090, "glow": "#8f1d33", "label": "black"}, {"id": "w4", "n": "Hibernal", "y": "2025", "k": "Bílé víno · Hovorany", "notes": "Aromatické víno s tóny broskve a muškátu.", "pr": 209, "f": [["Typ", "Bílé víno"], ["Podávat", "9–11 °C"], ["K jídlu", "Drůbež, sýry"]], "glass": 2244636, "shape": "flute", "foil": 12096062, "glow": "#a8842a", "label": "cream"}, {"id": "w5", "n": "Frizzante", "y": "2025", "k": "Perlivé víno · Hovorany", "notes": "Lehké perlivé víno na terasu i k oslavě.", "pr": 209, "f": [["Typ", "Perlivé víno"], ["Podávat", "6–8 °C"], ["K jídlu", "Aperitiv"]], "glass": "clear", "liquid": 14731379, "shape": "flute", "foil": 13214558, "glow": "#b8962e", "label": "white"}];
+document.getElementById("wps").innerHTML=VINO.slice(0,4).map((w,i)=>`<div class="wp"><div class="n">0${i+1} <span>/ 04</span></div><div class="k3">${w.k}</div><h2>${w.n} <em>${w.y}</em></h2><p>${w.notes}</p><div class="f3">${w.f.map(f=>`<div><small>${f[0]}</small><span>${f[1]}</span></div>`).join("")}</div><div class="pr3"><b>${w.pr} Kč</b><a class="pill" href="#vina" data-add="${i}">Do bedny</a></div></div>`).join("");
+</script>
+<script src="../vendor/three-r128.min.js"></script>
+<script src="../vinarstvi/hero3d.js?v=5"></script>
+<script src="../vinarstvi/vyroba3d.js?v=5"></script>
+<script src="../vinarstvi/sud3d.js?v=5"></script>
+<script>
+/* ===== bedna ===== */
+(()=>{const V=window.VINO,MAX=18,wl=document.getElementById("wl"),wrapC=document.getElementById("crates"),cnt=document.getElementById("cnt"),tot=document.getElementById("tot"),old=document.getElementById("old"),hint=document.getElementById("hint2"),ask=document.getElementById("ask");
+const box=[],els=[];let th=[];const fmt=n=>n.toLocaleString("cs-CZ")+" Kč",EASE="cubic-bezier(.2,.75,.15,1)";
+const lahvi=n=>n===1?"lahev":n>1&&n<5?"lahve":"lahví";
+wl.innerHTML=V.map((w,i)=>`<button class="wrow" type="button" data-i="${i}" style="--g:${w.glow}"><span class="th"><img alt="" data-t="${i}"></span><span class="nm"><b>${w.n}</b><small>${w.k} · ${w.y}</small></span><span class="pc">${w.pr} Kč</span><span class="add" aria-hidden="true">+</span><span class="bd" data-b="${i}"></span></button>`).join("");
+const CR='<div class="back"></div><div class="slots">'+'<div class="slot"></div>'.repeat(6)+'</div><div class="front"><span>Rodinné vinařství</span><i>Morava · od roku 1998</i></div>';
+function crates(n){const need=Math.max(1,Math.ceil(n/6));while(wrapC.children.length<need){const c=document.createElement("div");c.className="crate cin";c.innerHTML=CR;wrapC.append(c)}
+ while(wrapC.children.length>need){const c=wrapC.lastElementChild;c.remove()}}
+const slotAt=k=>wrapC.children[Math.floor(k/6)].querySelectorAll(".slot")[k%6];
+function summary(){const n=box.length,sum=box.reduce((a,i)=>a+V[i].pr,0),disc=false,fin=sum,nb=Math.max(1,Math.ceil(n/6));
+ cnt.textContent=n?`${n} ${lahvi(n)} · ${nb} ${nb===1?"bedna":"bedny"}`:"Prázdná bedna";tot.textContent=fmt(fin);old.textContent=disc?fmt(sum):"";
+ hint.textContent=n===0?"Klikněte na víno a vložte ho do bedny":n<6?`Ještě ${6-n} ${lahvi(6-n)} a máte dopravu zdarma`:n>=MAX?"Větší odběr rádi domluvíme e-mailem":"Doprava zdarma";
+ document.querySelectorAll("[data-b]").forEach(b=>{const c=box.filter(i=>i==b.dataset.b).length;b.textContent=c||"";b.classList.toggle("on",c>0)});
+ const lines=V.map((w,i)=>[w,box.filter(x=>x===i).length]).filter(x=>x[1]).map(([w,c])=>`${c}× ${w.n} ${w.y}`).join("\n");
+ ask.href="mailto:vinarstvizahnas@centrum.cz?subject="+encodeURIComponent("Poptávka vína")+"&body="+encodeURIComponent((lines||"(prázdná bedna)")+"\n\nCelkem: "+fmt(fin))}
+function shake(){const c=wrapC.lastElementChild;c.classList.remove("shake");void c.offsetWidth;c.classList.add("shake")}
+function add(i,anim=true){if(box.length>=MAX){shake();return false}const k=box.length;box.push(i);crates(box.length);
+ const im=new Image();im.src=th[i]||"";im.alt=V[i].n;if(anim)im.className="drop";im.addEventListener("click",()=>remove(els.indexOf(im)));slotAt(k).append(im);els.push(im);summary();return true}
+function remove(k){if(k<0)return;const gone=els[k];els.splice(k,1);box.splice(k,1);gone.style.pointerEvents="none";gone.className="up";
+ const before=els.slice(k).map(e=>e.getBoundingClientRect());
+ setTimeout(()=>{gone.remove();els.slice(k).forEach((e,j)=>{e.classList.remove("drop");slotAt(k+j).append(e)});crates(box.length);
+  els.slice(k).forEach((e,j)=>{const a=before[j],b=e.getBoundingClientRect(),dx=a.left-b.left,dy=a.top-b.top;if(dx||dy)e.animate([{transform:`translate(calc(-50% + ${dx}px),${dy}px)`},{transform:"translate(-50%,0)"}],{duration:520,easing:EASE})});summary()},300)}
+wl.addEventListener("click",e=>{const r=e.target.closest(".wrow");if(r)add(+r.dataset.i)});
+document.addEventListener("click",e=>{const a=e.target.closest("[data-add]");if(a)add(+a.dataset.add)});
+function thumbs(){try{th=window.renderThumbs()}catch(e){th=[]}document.querySelectorAll("[data-t]").forEach(im=>im.src=th[+im.dataset.t]||"");[3,0,2].forEach(i=>add(i,false))}
+let done=false;const go=()=>{if(!done){done=true;thumbs()}};addEventListener("vino-ready",go);setTimeout(go,2500);crates(0);summary()})();
+
+const hex=h=>[1,3,5].map(k=>parseInt(h.slice(k,k+2),16));
+/* ===== rok na vinici (fenologie révy) ===== */
+(()=>{const svg=document.getElementById("land"),NS="http://www.w3.org/2000/svg",sec=document.getElementById("rok");
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).append(e);return e};
+const cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),ss=v=>{v=cl(v);return v*v*(3-2*v)},bump=(s,a,b,w=.3)=>ss((s-a)/w)*(1-ss((s-b)/w));
+const mix=(a,b,t)=>{const A=hex(a),B=hex(b);return`rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*cl(t))).join(",")})`};
+const defs=el("defs",{}),grad=el("linearGradient",{id:"skyg",x1:0,x2:0,y1:0,y2:1},defs),s1=el("stop",{offset:0},grad),s2=el("stop",{offset:1},grad);
+let lp="";for(let i=0;i<=90;i++){const a=i/90*Math.PI*2,r=1+.22*Math.cos(5*(a+Math.PI/2))+.045*Math.cos(30*a)-.4*Math.pow(Math.max(0,Math.cos(a-Math.PI/2)),16);lp+=(i?"L":"M")+(Math.cos(a)*r).toFixed(3)+" "+(Math.sin(a)*r).toFixed(3)}
+el("path",{id:"lf",d:lp+"Z"},defs);
+let vn="";for(let k=0;k<5;k++){const a=-Math.PI/2+k*Math.PI*2/5;vn+=`M0 .25L${(Math.cos(a)*.95).toFixed(2)} ${(Math.sin(a)*.95).toFixed(2)}`}el("path",{id:"lv",d:vn},defs);
+const sky=el("rect",{x:0,y:0,width:1600,height:700,fill:"url(#skyg)"}),sun=el("circle",{r:44});
+const H=[{b:420,a:70,f:.0032,p:.8,f2:.009,a2:18},{b:500,a:60,f:.0026,p:2.6,f2:.012,a2:14},{b:590,a:44,f:.0036,p:4.2,f2:.008,a2:12}];
+const hy=(h,x)=>h.b+Math.sin(x*h.f+h.p)*h.a+Math.sin(x*h.f2)*h.a2;
+const hills=[],rows=[],snow=[];
+H.forEach((h,i)=>{let d="M-10 700";for(let x=-10;x<=1610;x+=10)d+=` L${x} ${hy(h,x).toFixed(1)}`;d+=" L1610 700 Z";
+ const fill=el("path",{d,"fill-opacity":0}),line=el("path",{d:d.replace(/^M-10 700 L/,"M").replace(/ L1610 700 Z$/,""),fill:"none",stroke:"#2b1b18","stroke-width":1.4,pathLength:1,"stroke-dasharray":1,"stroke-dashoffset":1});
+ const rs=[];for(let k=1;k<(i===2?6:5);k++){let rd="";for(let x=-10;x<=1610;x+=14){const y=hy(h,x)+k*(i===2?20:16)+Math.sin(x*.05+k)*1.2;rd+=(x===-10?"M":" L")+x+" "+y.toFixed(1)}rs.push(el("path",{d:rd,fill:"none","stroke-width":i===2?2.4:1.6,"stroke-linecap":"round","stroke-dasharray":"2 7"}))}
+ let sd="";for(let x=-10;x<=1610;x+=10)sd+=(x===-10?"M":" L")+x+" "+(hy(h,x)-1).toFixed(1);for(let x=1610;x>=-10;x-=10)sd+=" L"+x+" "+(hy(h,x)+9+Math.sin(x*.3)*3).toFixed(1);
+ snow.push(el("path",{d:sd+" Z",fill:"#fff","fill-opacity":0}));hills.push({fill,line});rows.push(rs)});
+const flakes=[...Array(60)].map(()=>{const c=el("circle",{r:1.5+Math.random()*2.2,fill:"#fff"});c._x=Math.random()*1600;c._y=Math.random()*700;c._s=.3+Math.random()*.8;c.style.opacity=0;return c});
+/* --- keř v popředí: Guyotův řez, kmínek + tažeň na drátěnce --- */
+const V=el("g",{});const wood="#5e4129",woodL="#7a5838";
+el("rect",{x:1012,y:410,width:11,height:300,fill:woodL,rx:2},V);el("rect",{x:598,y:410,width:11,height:300,fill:woodL,rx:2},V);
+[500,430,370].forEach(y=>el("line",{x1:560,x2:1080,y1:y,y2:y+2,stroke:"#555","stroke-width":1.1,"stroke-opacity":.55},V));
+const crate=el("g",{opacity:0},V);el("rect",{x:1040,y:640,width:120,height:52,rx:3,fill:"#a8743f"},crate);el("rect",{x:1040,y:640,width:120,height:8,fill:"#8a5b30"},crate);
+for(let i=0;i<16;i++)el("circle",{cx:1050+(i%8)*14.5,cy:636-Math.floor(i/8)*9+(i%3),r:7,fill:"#3d1233"},crate);
+el("path",{d:"M948 700 C 952 640, 938 584, 946 530 C 950 512, 944 503, 932 499",fill:"none",stroke:wood,"stroke-width":15,"stroke-linecap":"round"},V);
+el("path",{d:"M948 700 C 952 640, 938 584, 946 530",fill:"none",stroke:"#3e2a1a","stroke-width":2,"stroke-dasharray":"3 9","stroke-opacity":.6},V);
+const caneD="M934 499 C 880 494, 800 503, 668 499";el("path",{d:caneD,fill:"none",stroke:wood,"stroke-width":7,"stroke-linecap":"round"},V);
+const caneSnow=el("path",{d:caneD,fill:"none",stroke:"#fff","stroke-width":4,"stroke-linecap":"round",transform:"translate(0,-5)",opacity:0},V);
+const trunkSnow=el("path",{d:"M934 497 C 944 497, 948 503, 946 520",fill:"none",stroke:"#fff","stroke-width":5,"stroke-linecap":"round",transform:"translate(-3,-6)",opacity:0},V);
+const tears=[...Array(4)].map((_,k)=>el("circle",{r:2.6,fill:"#bcd3e0",opacity:0},V));
+const NX=[904,848,792,736,690];const shoots=[];
+NX.forEach((x,i)=>{const dx=i%2?20:-16,h=150+(i%3)*18,P0=[x,499],P1=[x+dx*.2,430],P2=[x+dx,499-h];
+ const Q=t=>[(1-t)**2*P0[0]+2*(1-t)*t*P1[0]+t*t*P2[0],(1-t)**2*P0[1]+2*(1-t)*t*P1[1]+t*t*P2[1]];
+ const g=el("g",{},V),bud=el("ellipse",{cx:x,cy:494,rx:4.5,ry:5.5},V);
+ const path=el("path",{d:`M${P0}Q${P1} ${P2}`,fill:"none","stroke-width":4.2,"stroke-linecap":"round",pathLength:1,"stroke-dasharray":1,"stroke-dashoffset":1},g);
+ const leaves=[.32,.56,.8,1].map((t,k)=>{const side=(k+i)%2?1:-1,sz=k===3?15:24-(k===0?4:0),[px,py]=Q(t);const lg=el("g",{},g);
+  const stem=el("line",{x1:0,y1:0,x2:side*sz*.9,y2:-sz*.3,"stroke-width":1.6,"stroke-linecap":"round"},lg);
+  const lf=el("g",{transform:`translate(${side*sz*1.55},${-sz*.85}) rotate(${side*30+180}) scale(${sz})`},lg);const f=el("use",{href:"#lf"},lf),vv=el("use",{href:"#lv",fill:"none","stroke-width":.06,"stroke-opacity":.55},lf);
+  return{lg,stem,f,vv,t,px,py,side,rnd:Math.random(),rot:(Math.random()-.5)*160,dy:120+Math.random()*120}});
+ let cluster=null;if(i<4){const side=i%2?-1:1,[cx,cy]=Q(.2),cg=el("g",{},g);const dots=[];const rws=[5,5,4,4,3,3,2,1];let y=0;
+  rws.forEach((n,r)=>{for(let j=0;j<n;j++)dots.push(el("circle",{cx:(j-(n-1)/2)*9.4+((r%2)?2:0),cy:y,r:5},cg));y+=8.2});
+  el("path",{d:"M0 -14 Q -3 -8 0 -2",fill:"none",stroke:"#6b5a2a","stroke-width":1.6},cg);cluster={cg,dots,x:cx+side*10,y:cy+16}}
+ shoots.push({path,leaves,bud,cluster,g})});
+/* --- data fází (Morava, běžný rok) --- */
+const ST=[["Zimní řez","Leden – únor","Réva spí. V mrazu ručně stříháme loňské letorosty a necháme jen jeden tažeň s několika očky. Řezem se rozhoduje o úrodě celého roku.","Na keři zůstane 8–10 oček"],
+["Slzení révy","Březen","Půda se prohřívá a réva se probouzí. Z čerstvých řezů kape míza, vinaři říkají, že réva pláče.","Začíná při teplotě půdy kolem 8 °C"],
+["Rašení","Duben","Očka nabobtnají a vyraší první chlupaté lístky. Je to nejcitlivější doba, jarní mrazík umí vzít část úrody.","Strach z mrazíků trvá do ledových mužů"],
+["Růst letorostů","Květen","Letorosty rostou i několik centimetrů za den. Vyvazujeme je k drátům a přebytečné vylamujeme.","Vyvazování a podlom ručně"],
+["Kvetení","Červen","Réva kvete nenápadně, drobnými nazelenalými květy. Když je teplo a sucho, z většiny květů se stanou bobule.","Kvete zhruba 10–14 dní"],
+["Nasazení hroznů","Červenec","Tvrdé zelené bobule rostou. Kolem hroznů odlisťujeme, aby na ně svítilo slunce a profoukl je vítr.","Bobule rostou asi 6–8 týdnů"],
+["Zaměkání","Srpen","Bobule měknou a modré odrůdy se zbarvují. Hroznům přibývá cukru a ubývá kyselin.","Cukr roste, kyseliny klesají"],
+["Vinobraní","Září – říjen","Cukernatost měříme ve stupních normalizovaného moštoměru. Zralé hrozny sbíráme ručně do přepravek a lisujeme ještě týž den.","Pozdní sběr od 21 °NM, výběr z hroznů od 24 °NM"],
+["Opad listí","Listopad – prosinec","Listy zežloutnou a opadají, réva ukládá zásoby do dřeva a usíná. Ve sklepě mezitím kvasí nový ročník.","Na ledové víno se sbírá až při −7 °C"]];
+const MO=[[0,1],[2],[3],[4],[5],[6],[7],[8,9],[10,11]];
+const P=[{sky:["#d9dfe6","#eef0f2"],h:["#c9cfd4","#b8c0c6","#a7b0b8"],row:"#8a949c",sun:"#f1ede4"},
+{sky:["#e1e6e4","#f3eee2"],h:["#bcb38c","#a69c74","#8f8560"],row:"#6b5a3e",sun:"#f2e2b4"},
+{sky:["#dbe7ec","#f5f0e0"],h:["#c3c99a","#aab47e","#919d64"],row:"#6d7a45",sun:"#f3d79a"},
+{sky:["#d3e6ee","#f6f0d8"],h:["#a8c378","#8fae5c","#76984a"],row:"#4f7330",sun:"#f5cf78"},
+{sky:["#cfe3ec","#f8eccd"],h:["#8fae62","#6f9446","#557d35"],row:"#3f6326",sun:"#f6c763"},
+{sky:["#cde0ea","#fae7c0"],h:["#87a457","#6a8b3f","#527430"],row:"#3a5a22",sun:"#f7c050"},
+{sky:["#d6dfe0","#f8e2b8"],h:["#9aa35a","#7f8a42","#66732f"],row:"#4a5524",sun:"#f4b54a"},
+{sky:["#f3d9b8","#f6e4cf"],h:["#d4a65a","#c4863f","#a8642f"],row:"#7e3f1c",sun:"#ee9a4a"},
+{sky:["#dcd8d0","#ece6dc"],h:["#b59a6a","#9c8256","#836b45"],row:"#6b5638",sun:"#efe3cf"}];
+const sN=document.getElementById("sN"),sT=document.getElementById("sT"),sM=document.getElementById("sM"),sI=document.getElementById("sI"),sF=document.getElementById("sF"),mo=[...document.querySelectorAll("#mo i")];
+let last=-1,yp=0,yt=0,flakesOn=0,TT=0;
+function render(p){const draw=ss(p/.07),col=ss((p-.04)/.05),s=cl((p-.07)/.93)*9,i=Math.min(8,Math.floor(s)),f=ss((s-i)/.35),A=P[Math.max(0,i-1)],B=P[i];
+ const C=(k)=>i===8?A[k]:null;const pick=(a,b)=>mix(a,b,f);
+ s1.setAttribute("stop-color",pick(A.sky[0],B.sky[0]));s2.setAttribute("stop-color",pick(A.sky[1],B.sky[1]));
+ const el2=.2+.8*Math.sin(Math.PI*cl((s+.4)/9.8));sun.setAttribute("cx",230+cl(p)*1140);sun.setAttribute("cy",575-el2*215);sun.setAttribute("fill",pick(A.sun,B.sun));sun.style.opacity=col;
+ hills.forEach((h,k)=>{h.line.setAttribute("stroke-dashoffset",1-ss((draw-k*.15)/.6));h.fill.setAttribute("fill",pick(A.h[k],B.h[k]));h.fill.setAttribute("fill-opacity",col);h.line.setAttribute("stroke-opacity",.75-col*.5)});
+ rows.forEach((rs,k)=>rs.forEach((r,j)=>{r.setAttribute("stroke",pick(A.row,B.row));r.style.opacity=ss((p-.03-k*.01-j*.005)/.04)}));
+ const winter=1-ss(s/.9)+ss((s-8.55)/.4)*.7;snow.forEach(x=>x.setAttribute("fill-opacity",winter*.9));flakesOn=winter;caneSnow.setAttribute("opacity",winter);trunkSnow.setAttribute("opacity",winter);
+ const tear=bump(s,1.05,1.85,.25);
+ const budSw=ss((s-1.6)/.8),grow=ss((s-2.25)/2.3),lig=ss((s-7.4)/1.1),turn=ss((s-7.75)/.7),fall=ss((s-8.15)/.55),flw=bump(s,3.95,4.85,.25),set=ss((s-4.75)/.45),ber=ss((s-5.1)/2.2),ver=ss((s-6.05)/.8),harv=ss((s-7.6)/.25);
+ V.style.opacity=col;const k=innerWidth>innerHeight*1.1?1.18:1,dy=k>1?70:45;V.setAttribute("transform",`translate(880 ${700+dy}) scale(${k}) translate(-880 -700)`);crate.setAttribute("opacity",bump(s,7.55,8.3,.2));
+ shoots.forEach((sh,k)=>{const g=cl(grow*(1-k*.06)+k*.0);sh.path.setAttribute("stroke-dashoffset",1-g);sh.path.setAttribute("stroke",mix("#7d9a3c","#7a5a38",lig));
+  sh.bud.setAttribute("fill",mix("#6b4a2e","#b9c98a",budSw));sh.bud.setAttribute("rx",4.5+budSw*2.5*(1-grow));sh.bud.setAttribute("ry",5.5+budSw*3*(1-grow));sh.bud.style.opacity=1-ss((grow-.15)/.2)*.6;
+  sh.leaves.forEach(l=>{const sc=ss((g-l.t+.2)/.3),fl=cl(fall*1.4-l.rnd*.4);const g1=hex("#6f9a3a"),g2=hex("#e2b23a"),g3=hex("#a0662a"),t1=turn*(.6+l.rnd*.4),t2=ss((turn-.6)/.4)*l.rnd,young=1-ss(sc*1.5),yc=hex("#b9d07a");
+   const cc=g1.map((v,q)=>{let x=v+(g2[q]-v)*t1;x+=(g3[q]-x)*t2;x+=(yc[q]-x)*young;return Math.round(x)}),c=`rgb(${cc})`;
+   l.f.setAttribute("fill",c);l.vv.setAttribute("stroke",mix("#e7f0c8","#f3e3b0",turn));l.stem.setAttribute("stroke",c);
+   l.lg.setAttribute("transform",`translate(${l.px+fl*l.side*30},${l.py+fl*l.dy}) rotate(${fl*l.rot}) scale(${Math.max(.001,sc)})`);l.lg.style.opacity=1-ss((fl-.6)/.4)});
+  if(sh.cluster){const c=sh.cluster,sc=Math.max(flw*.55,set*(.5+.5*ber));c.cg.setAttribute("transform",`translate(${c.x},${c.y}) scale(${Math.max(.001,sc*g)})`);
+   const fillc=flw>set?"#d8d6a0":mix("#9cbf4c","#3d1233",ver);c.dots.forEach((d,j)=>{d.setAttribute("fill",fillc);d.setAttribute("r",flw>set?2.4:5)});c.cg.style.opacity=1-harv}});
+ tears.forEach((d,k)=>{const ph=((TT*.0006+k*.25)%1);d.setAttribute("cx",667+(k%2)*2);d.setAttribute("cy",503+ph*60);d.setAttribute("opacity",tear*(1-ph))});
+ if(i!==last&&p>.06){last=i;[sN,sT,sM,sF].forEach(e=>e.style.opacity=0);setTimeout(()=>{sN.textContent=ST[i][0];sT.textContent=ST[i][2];sM.textContent=ST[i][1];sF.textContent=ST[i][3];sI.textContent="0"+(i+1);[sN,sT,sM,sF].forEach(e=>e.style.opacity=1)},220);
+  mo.forEach((m,k)=>m.classList.toggle("on",MO[i].includes(k)))}}
+(function tick(t){TT=t;const r=sec.getBoundingClientRect();yt=cl(-r.top/Math.max(1,r.height-innerHeight));yp+=(yt-yp)*.12;if(r.bottom>0&&r.top<innerHeight){render(yp);
+ flakes.forEach(c=>{c._y+=c._s;c._x+=Math.sin((t/1000)+c._y*.02)*.3;if(c._y>700)c._y=-5;c.setAttribute("cx",c._x);c.setAttribute("cy",c._y);c.style.opacity=flakesOn})}requestAnimationFrame(tick)})(0);
+render(0)})();
+
+(()=>{
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),ss=t=>{t=cl(t);return t*t*(3-2*t)},L=(a,b,t)=>a+(b-a)*t;
+const hx=h=>{const n=parseInt(h.slice(1),16);return[n>>16,n>>8&255,n&255]};
+const mx=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t),rgb=(a,al=1)=>`rgba(${a.map(Math.round).join(",")},${al})`;
+const C={dark:hx("#120a07"),wall:hx("#3b2117"),rib:hx("#6e3b25"),glow:hx("#e7a865"),hot:hx("#fff0d6"),wood:hx("#8a552f"),woodD:hx("#3e2213"),floor:hx("#2a170e"),wine:hx("#6e1a2b")};
+const YEARS=["2016","2018","2019","2020","2021","2022","2023","2017","2024"];
+const dust=[...Array(46)].map((_,i)=>({x:Math.random(),y:Math.random(),s:.2+Math.random()*.8,p:Math.random()*6}));
+
+/* ---------- SKLEP: nekonečná klenutá chodba se sudy ---------- */
+function tunnel(c,W,H,cam,t){
+ const F=Math.min(W,H*1.1)*.62,ox=W/2,oy=H*.5,P=(x,y,z)=>[ox+x*F/z,oy-y*F/z];
+ let g=c.createRadialGradient(ox,oy-F*.05,0,ox,oy,Math.max(W,H)*.75);
+ g.addColorStop(0,rgb(C.hot));g.addColorStop(.06,rgb(C.glow));g.addColorStop(.3,rgb(mx(C.wall,C.glow,.35)));g.addColorStop(1,rgb(C.dark));
+ c.fillStyle=g;c.fillRect(0,0,W,H);
+ const fg=c.createLinearGradient(0,oy,0,H);fg.addColorStop(0,rgb(mx(C.floor,C.glow,.75)));fg.addColorStop(.18,rgb(mx(C.floor,C.glow,.25)));fg.addColorStop(1,rgb(C.dark));
+ c.fillStyle=fg;c.fillRect(0,oy,W,H-oy);
+ // odlesk světla na mokré podlaze
+ const rg=c.createLinearGradient(0,oy,0,H);rg.addColorStop(0,rgb(C.glow,.5));rg.addColorStop(1,rgb(C.glow,0));
+ c.fillStyle=rg;c.beginPath();c.moveTo(ox-6,oy);c.lineTo(ox+6,oy);c.lineTo(ox+F*.35,H);c.lineTo(ox-F*.35,H);c.fill();
+ const k0=Math.floor(cam),fog=z=>Math.pow(cl((z-.5)/13),.75);
+ const open=(z,r,spring=.22)=>{const s=F/z,x0=ox-r*s,x1=ox+r*s,ys=oy-spring*s;c.moveTo(x0,H+40);c.lineTo(x0,ys);c.arc(ox,ys,r*s,Math.PI,0);c.lineTo(x1,H+40);c.closePath()};
+ for(let k=k0+17;k>k0;k--){
+  const z=k-cam;if(z<.32)continue;const f=fog(z),fr=fog(z+.14);
+  // žebro klenby (cihla)
+  c.beginPath();c.rect(-20,-20,W+40,H+40);open(z+.14,.9,.3);c.fillStyle=rgb(mx(C.rib,C.glow,fr*.97));c.fill("evenodd");
+  // spáry cihel na žebru
+  if(z<7){const s=F/(z+.14),ys=oy-.3*s;c.strokeStyle=rgb(C.dark,.28*(1-f));c.lineWidth=Math.max(.6,s*.006);c.beginPath();
+   for(let a=0;a<=12;a++){const an=Math.PI+a*Math.PI/12,r1=.9*s,r2=1.0*s;c.moveTo(ox+Math.cos(an)*r1,ys+Math.sin(an)*r1);c.lineTo(ox+Math.cos(an)*r2,ys+Math.sin(an)*r2)}c.stroke()}
+  // čelo stěny
+  c.beginPath();c.rect(-20,-20,W+40,H+40);open(z,1.02);c.fillStyle=rgb(mx(mx(C.dark,C.wall,.8),C.glow,f*.96));c.fill("evenodd");
+  // světlá hrana žebra
+  c.beginPath();open(z+.14,.9,.3);c.strokeStyle=rgb(C.glow,.22*(1-f));c.lineWidth=Math.max(1,F/z*.008);c.stroke();
+  // svíčka ve výklenku
+  if(k%2===0){const sd=(k%4===0)?-1:1,[X,Y]=P(sd*.955,.05,z+.07),s=F/z,fl=.85+.15*Math.sin(t*.011+k)*Math.sin(t*.017+k*3);
+   c.fillStyle=rgb(mx([236,224,200],C.glow,f));c.fillRect(X-s*.012,Y,s*.024,s*.07);
+   c.save();c.globalCompositeOperation="lighter";const cg=c.createRadialGradient(X,Y-s*.02,0,X,Y-s*.02,s*.42);cg.addColorStop(0,`rgba(255,190,110,${.5*fl*(1-f)})`);cg.addColorStop(1,"rgba(255,140,60,0)");c.fillStyle=cg;c.fillRect(X-s*.5,Y-s*.5,s,s);
+   c.fillStyle=`rgba(255,226,160,${(1-f)*.95})`;c.beginPath();c.ellipse(X,Y-s*.022,s*.008,s*.024*fl,0,0,7);c.fill();c.restore()}
+  // sudy mezi oblouky
+  const zb=z-.5;if(zb>.45)for(const sd of[-1,1]){const f2=fog(zb);
+   barrel(c,P(sd*.66,-.72,zb),.27*F/zb,f2,YEARS[(k*2+(sd>0))%9]);barrel(c,P(sd*.68,-.18,zb),.25*F/zb,f2,null)}
+ }
+ // prach ve světle
+ c.save();c.globalCompositeOperation="lighter";
+ for(const d of dust){const x=((d.x+Math.sin(t*.0002*d.s+d.p)*.03)%1)*W,y=((d.y-t*.00002*d.s)%1+1)%1*H,r=Math.hypot(x-ox,y-oy)/Math.max(W,H);
+  c.fillStyle=`rgba(255,215,160,${(.5-r)*.5*(.5+.5*Math.sin(t*.002+d.p))})`;c.beginPath();c.arc(x,y,.7+d.s*1.4,0,7);c.fill()}
+ c.restore();
+}
+function barrel(c,[X,Y],R,f,yr){
+ if(R<1.5)return;
+ const g=c.createRadialGradient(X-R*.35,Y-R*.4,R*.1,X,Y,R*1.05);
+ g.addColorStop(0,rgb(mx(C.wood,C.glow,.2+f*.75)));g.addColorStop(1,rgb(mx(C.woodD,C.glow,f*.85)));
+ c.save();c.beginPath();c.arc(X,Y,R,0,7);c.fillStyle=g;c.fill();c.clip();
+ c.strokeStyle=rgb(C.dark,.3*(1-f));c.lineWidth=Math.max(.5,R*.025);c.beginPath();
+ for(let i=-4;i<=4;i++){c.moveTo(X+i*R*.24,Y-R);c.lineTo(X+i*R*.24,Y+R)}c.stroke();c.restore();
+ c.strokeStyle=rgb(mx(C.dark,C.glow,f*.8),.9);c.lineWidth=R*.1;c.beginPath();c.arc(X,Y,R*.95,0,7);c.stroke();
+ c.lineWidth=R*.03;c.beginPath();c.arc(X,Y,R*.76,0,7);c.stroke();
+ if(yr&&R>26){c.fillStyle=`rgba(244,236,220,${.75*(1-f)})`;c.font=`italic 300 ${R*.24}px Fraunces,Georgia,serif`;c.textAlign="center";c.textBaseline="middle";c.fillText(yr,X,Y+R*.05)}
+}
+
+let navY=scrollY,acc=0;const nav=document.getElementById("nav"),show=document.getElementById("show");
+function navUpd(){const y=scrollY,dy=y-navY;navY=y;acc=(Math.sign(dy)===Math.sign(acc)?acc:0)+dy;nav.classList.toggle("solid",show.getBoundingClientRect().bottom<80);
+ if(y<innerHeight*.5)nav.classList.remove("hide");else if(acc>60)nav.classList.add("hide");else if(acc<-24)nav.classList.remove("hide")}
+addEventListener("scroll",navUpd,{passive:true});
+const c2=document.getElementById("cv2"),x2=c2.getContext("2d");let dpr=Math.min(devicePixelRatio||1,1.6);
+(function tick(t){const r=c2.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight&&r.width){const w=Math.round(r.width),h=Math.round(r.height);if(c2.width!==w*dpr){c2.width=w*dpr;c2.height=h*dpr}x2.setTransform(dpr,0,0,dpr,0,0);tunnel(x2,w,h,t*.00025,t)}
+ requestAnimationFrame(tick)})(0);
+})();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+
+/* mobilní menu */
+(()=>{const nav=document.getElementById("nav"),b=document.getElementById("burger");const set=o=>{nav.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Zavřít menu":"Otevřít menu")};
+b.addEventListener("click",()=>set(!nav.classList.contains("open")));nav.querySelectorAll("ul a").forEach(a=>a.addEventListener("click",()=>set(false)));addEventListener("keydown",e=>{if(e.key==="Escape")set(false)})})();
+</script>
+</body>
+</html>

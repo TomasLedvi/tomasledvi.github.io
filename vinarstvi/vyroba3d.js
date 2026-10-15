@@ -7,7 +7,7 @@ const STEPS=[
 ["Odzrnění a drcení","Hned po sklizni","Odzrňovač oddělí bobule od třapin a jemně je nadrtí. Vznikne rmut, tedy šťáva i se slupkami a semínky.","Třapiny se kompostují"],
 ["Kvašení","1 až 3 týdny","Kvasinky mění cukr na alkohol a oxid uhličitý. Červená vína kvasí i se slupkami, z nich mají barvu a třísloviny. Klobouk ze slupek denně promícháváme.","Bílá vína se lisují hned a kvasí jen mošt"],
 ["Lisování","Po dokvašení","Lis jemně oddělí mladé víno od slupek a semínek. Zbytku se říká matoliny.","Z matolin se pálí matolinovice"],
-["Zrání","Měsíce až roky","Víno zraje v dubových sudech nebo v nerezových tancích. Několikrát ho stočíme z kalů, aby se pročistilo.","Naše Frankovka zraje 24 měsíců v barrique"],
+["Zrání","Měsíce až roky","Víno zraje v dubových sudech nebo v nerezových tancích. Několikrát ho stočíme z kalů, aby se pročistilo.",(window.BRAND||{}).zrani||"Naše Frankovka zraje 24 měsíců v barrique"],
 ["Lahvování","Když je víno hotové","Víno přefiltrujeme, naplníme do lahví a zazátkujeme. Pak ještě pár měsíců odpočívá v lahvi, než ho pustíme k vám.","Lahve skladujeme naležato"]];
 const GL=["#4d2a3c","#4a1426","#3c1630","#4a2412","#47280f","#5a1424"];
 const sec=document.getElementById("vyroba"),wrap=document.getElementById("p3"),cv=document.getElementById("gl2");
@@ -32,7 +32,7 @@ function woodTex(n,base,dark){const c=document.createElement("canvas");c.width=1
 function endTex(){const c=document.createElement("canvas");c.width=c.height=512;const x=c.getContext("2d");
  for(let i=0;i<7;i++){x.fillStyle=`hsl(26,${38+Math.random()*8}%,${30+Math.random()*7}%)`;x.fillRect(0,i*74,512,74);x.fillStyle="rgba(0,0,0,.45)";x.fillRect(0,i*74,512,2)}
  x.strokeStyle="rgba(0,0,0,.18)";for(let g=0;g<60;g++){x.beginPath();const y=Math.random()*512;x.moveTo(0,y);x.bezierCurveTo(170,y+rnd(-8,8),340,y+rnd(-8,8),512,y);x.stroke()}
- x.fillStyle="rgba(245,238,225,.85)";x.textAlign="center";x.font="italic 300 64px Fraunces, Georgia, serif";x.fillText("Frankovka",256,230);x.font="300 54px Fraunces, Georgia, serif";x.fillText("2024",256,300);
+ x.fillStyle="rgba(245,238,225,.85)";x.textAlign="center";x.font="italic 300 64px Fraunces, Georgia, serif";x.fillText((window.VINO&&VINO[3].n)||"Frankovka",256,230);x.font="300 54px Fraunces, Georgia, serif";x.fillText((window.VINO&&VINO[3].y)||"2024",256,300);
  x.fillStyle="#1b0f08";x.beginPath();x.arc(256,400,18,0,7);x.fill();
  const t=new T.CanvasTexture(c);t.encoding=T.sRGBEncoding;return t}
 function speckTex(a,b){const c=document.createElement("canvas");c.width=c.height=256;const x=c.getContext("2d");x.fillStyle=a;x.fillRect(0,0,256,256);
@@ -95,7 +95,7 @@ const bung=new T.Mesh(new T.CylinderGeometry(.05,.05,.04,20),new T.MeshStandardM
 EB.rotation.z=Math.PI/2;
 [-.45,.45].forEach(x=>{const ch=new T.Mesh(new T.BoxGeometry(.18,.16,1.1),mWood);ch.position.set(x,-.66,0);E.add(ch)});
 /* F: lahev */
-const Fb=V3.makeBottle({n:"Frankovka",y:"2024",k:"Barrique · suché",glass:"clear",liquid:0x4a0c1e,shape:"bdx",foil:0x6e1a2b,label:"black"});scene.add(Fb);
+const Fb=V3.makeBottle({n:VINO[3].n,y:VINO[3].y,k:VINO[3].k,glass:"clear",liquid:0x4a0c1e,shape:"bdx",foil:0x6e1a2b,label:"black"});scene.add(Fb);
 const fu=Fb.userData;fu.lab.material.transparent=true;
 const nozzle=new T.Mesh(new T.CylinderGeometry(.04,.04,1.6,16),mSteel);scene.add(nozzle);const fstream=new T.Mesh(new T.CylinderGeometry(.018,.018,1,10),mMust);scene.add(fstream);
 const fcork=new T.Mesh(new T.CylinderGeometry(.118,.118,.48,32),new T.MeshStandardMaterial({map:V3.corkTex,roughness:.95}));scene.add(fcork);

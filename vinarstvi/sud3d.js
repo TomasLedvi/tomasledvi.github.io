@@ -31,7 +31,7 @@ WC.forEach((c,i)=>{const a=L(-1.05,1.05,i/5)+Math.PI/2,r=.55,g=new T.Group();g.p
  const wm=new T.MeshPhysicalMaterial({color:lin(c),roughness:.1,transparent:true,opacity:i<3?.78:.92,envMapIntensity:1.2,emissive:lin(c),emissiveIntensity:.12});
  const w=new T.Mesh(wGeo,wm);w.position.y=.176;w.renderOrder=1;g.add(w);g.scale.setScalar(1.15);glasses.push({w,i})});
 /* lahev, svíčka, prkénko se sýrem */
-const bt=V3.makeBottle({n:"Frankovka",y:"2021",k:"Barrique · suché",glass:0x0e120b,shape:"bdx",foil:0x2a0a12,label:"cream"});bt.scale.setScalar(.31);bt.position.set(.3,TY+3.3*.31/2,-.48);bt.rotation.y=-.2;scene.add(bt);
+const bt=V3.makeBottle({n:VINO[3].n,y:VINO[3].y,k:VINO[3].k,glass:0x0e120b,shape:"bdx",foil:0x2a0a12,label:"cream"});bt.scale.setScalar(.31);bt.position.set(.3,TY+3.3*.31/2,-.48);bt.rotation.y=-.2;scene.add(bt);
 const candle=new T.Mesh(new T.CylinderGeometry(.05,.052,.26,32),new T.MeshStandardMaterial({color:0xf3ead6,roughness:.6,emissive:0x3a2008,emissiveIntensity:.3}));candle.position.set(-.38,TY+.13,-.36);scene.add(candle);
 const holder=new T.Mesh(new T.CylinderGeometry(.09,.1,.03,32),V3.mIron);holder.position.set(-.38,TY+.015,-.36);scene.add(holder);
 const flame=new T.Mesh(new T.SphereGeometry(.022,16,12),new T.MeshBasicMaterial({color:0xffd27a}));flame.scale.set(1,2.1,1);flame.position.set(-.38,TY+.31,-.36);scene.add(flame);
