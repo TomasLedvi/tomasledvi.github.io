@@ -7,7 +7,7 @@
  "map_nav": "Kancelář",
  "source_note": "Fotografie a údaje převzaty z katalogu ČESKÉSTAVBY.cz.",
  "hero_eyebrow": "Autorizovaný inženýr · <b>Sedlčany</b>",
- "hero_p": "Projekty pozemních staveb od roku 1991. Přes 500 stavebních projektů z kanceláře v Sedlčanech a ateliéru PROKON v Příbrami.",
+ "hero_p": "Projekty pozemních staveb od roku 1991. Realizováno přes 500 nových staveb a rekonstrukcí.",
  "steps": [
   [
    "01 · Konzultace",
@@ -31,13 +31,13 @@
   ],
   [
    "05 · Hotovo",
-   "Přes 500 staveb.",
+   "Realizováno přes 500 nových staveb a rekonstrukcí.",
    "Ing. Jaromír Veselý, Sedlčany."
   ]
  ],
  "price": {
   "eyebrow": "Co projektujeme",
-  "h": "Zkušenost <em>z 500 staveb.</em>",
+  "h": "Realizováno přes 500 <em>nových staveb a rekonstrukcí.</em>",
   "lead": "Autorizovaný inženýr pro pozemní stavby. Projekty navrhuje samostatně i jako hlavní inženýr projektu a autor stavebně konstrukční části v ateliéru PROKON Příbram.",
   "stamps": [
    [
@@ -47,8 +47,8 @@
    ],
    [
     "500+",
-    "Projektů",
-    "dotažených do stavby"
+    "Realizováno přes 500",
+    "nových staveb a rekonstrukcí"
    ],
    [
     "Autorizace",
@@ -154,48 +154,48 @@
   "Statika",
   "Stavební povolení",
   "Od roku 1991",
-  "500+ staveb"
+  "Realizováno přes 500 nových staveb a rekonstrukcí"
  ],
  "photos": [
   [
    "projekty",
    "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45871154.jpg",
-   "Projekt Ing. Jaromíra Veselého"
+   "Rekonstrukce provozní budovy dolu Anna na bytový dům, Příbram"
   ],
   [
    "projekty",
    "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45796be9.jpg",
-   "Projekt Ing. Jaromíra Veselého"
+   "Budova Hasičské záchranné služby Sedlčany"
   ],
   [
    "projekty",
    "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45407dfe.jpg",
-   "Projekt Ing. Jaromíra Veselého"
+   "Velkosklad pneumatik Michelin Jesenice u Chebu"
   ],
   [
    "projekty",
    "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a455ce134.jpg",
-   "Projekt Ing. Jaromíra Veselého"
+   "Čerpací stanice pohonných hmot Drhovle u Strakonic"
   ],
   [
    "projekty",
    "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a454e70d2.jpg",
-   "Projekt Ing. Jaromíra Veselého"
+   "Rekonstrukce obchodního a společenského centra Dubina v Domažlicích"
   ],
   [
    "projekty",
    "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a4478c3c4.jpg",
-   "Projekt Ing. Jaromíra Veselého"
+   "Sanace vlhkého zdiva, Benešova vila v Sezimově Ústí"
   ],
   [
    "projekty",
    "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a450b022e.jpg",
-   "Projekt Ing. Jaromíra Veselého"
+   "Objekt 0924 – Distribuce v Březnici, budova bývalé České spořitelny"
   ],
   [
    "projekty",
    "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a44d8dc64.jpg",
-   "Projekt Ing. Jaromíra Veselého"
+   "Stavební úpravy Panského domu v Rožmitále pod Třemšínem na Kulturní dům"
   ]
  ],
  "feat": [
@@ -291,5 +291,237 @@
     "17. 10. 1994"
    ]
   ]
- }
+ },
+ "refs": [
+  {
+   "t": "Objekt 0924 – Distribuce, Březnice",
+   "cost": "18,0 mil. Kč",
+   "inv": "Město Březnice",
+   "sup": "CONGESTA s.r.o., Příbram",
+   "y": "1991"
+  },
+  {
+   "t": "Objekt Rezidenz, Praha-Bubeneč",
+   "cost": "19,0 mil. Kč",
+   "inv": "Rezidenz s.r.o., Praha",
+   "sup": "CONGESTA s.r.o., Příbram",
+   "y": "1991"
+  },
+  {
+   "t": "Rekonstrukce sklepení Toskánského paláce, Praha",
+   "cost": "8,0 mil. Kč",
+   "inv": "Soukromá osoba",
+   "sup": "CONGESTA s.r.o., Příbram",
+   "y": "1992"
+  },
+  {
+   "t": "Agrobanka Příbram",
+   "cost": "68,0 mil. Kč",
+   "inv": "Agrobanka Praha, a.s.",
+   "sup": "PORTAL s.r.o., Praha",
+   "y": "1993"
+  },
+  {
+   "t": "Rekonstrukce obytného bloku č.3, Mladá Boleslav",
+   "cost": "28,5 mil. Kč",
+   "inv": "Ministerstvo obrany ČR, zastoupené VUSS Praha",
+   "sup": "PSJ Jihlava a.s.",
+   "y": "1995"
+  },
+  {
+   "t": "Březnice – Drahenická, SO-0302 Bytový dům",
+   "cost": "60,0 mil. Kč",
+   "inv": "Město Březnice",
+   "sup": "STAVEKO s.r.o., Příbram",
+   "y": "1995"
+  },
+  {
+   "t": "Zateplení 8 panelových domů na sídlištích Ládví a Bohnice",
+   "cost": "každá cca 20 mil. Kč",
+   "inv": "Městská část Praha 8",
+   "y": "1995–1999"
+  },
+  {
+   "t": "Rekonstrukce loděnice DUKLA Praha, Císařská louka",
+   "cost": "23,0 mil. Kč",
+   "inv": "Ministerstvo obrany ČR, zastoupené VUSS Praha",
+   "sup": "PSJ Jihlava a.s.",
+   "y": "1996"
+  },
+  {
+   "t": "Stavební opravy ubytovny č. 5.2., Praha - Ruzyně",
+   "cost": "10,5 mil. Kč",
+   "inv": "Ministerstvo obrany ČR, zastoupené VUSS Praha",
+   "sup": "PSJ Jihlava a.s.",
+   "y": "1997"
+  },
+  {
+   "t": "Stavební úpravy Panského domu, Rožmitál p. Tř.",
+   "cost": "30,0 mil. Kč",
+   "inv": "Město Rožmitál pod Třemšínem",
+   "sup": "CONGESTA s.r.o., Příbram",
+   "y": "1998"
+  },
+  {
+   "t": "Integrovaná stanice HZS a ZZS Sedlčany",
+   "cost": "30,5 mil. Kč",
+   "inv": "ČR, zastoupená HZS Příbram",
+   "sup": "STAVEKO s.r.o., Příbram",
+   "y": "1998"
+  },
+  {
+   "t": "Rekonstrukce mytí vozidel, kasárna gen. Píky, Praha - Dejvice",
+   "cost": "9,5 mil. Kč",
+   "inv": "Ministerstvo obrany ČR, zastoupené VUSS Praha",
+   "sup": "ELIS s.r.o., Praha",
+   "y": "1998"
+  },
+  {
+   "t": "Velitelství vzduš. sil Stará Boleslav, stav. úpravy objektu č.1",
+   "cost": "6,5 mil. Kč",
+   "inv": "Ministerstvo obrany ČR, zastoupené VUSS Praha",
+   "sup": "ELIS s.r.o., Praha",
+   "y": "1998"
+  },
+  {
+   "t": "Logistické centrum, Jesenice u Chebu",
+   "cost": "98,0 mil. Kč",
+   "inv": "AVEX LOGISTIC-CZ, a.s., Praha",
+   "sup": "Konstruktiva a.s., Praha",
+   "y": "1999"
+  },
+  {
+   "t": "MO-ČR, rekonstrukce soc. zařízení v budově č.3, Praha - Valy",
+   "cost": "3,5 mil. Kč",
+   "inv": "Ministerstvo obrany ČR, zastoupené VUSS Praha",
+   "sup": "PSJ Jihlava a.s.",
+   "y": "2000"
+  },
+  {
+   "t": "Stavební úpravy objektu č.p. 8, Jirny",
+   "cost": "10 mil. Kč",
+   "inv": "Labox s.r.o., Jirny, Brandýská 8",
+   "sup": "STAVEKO s.r.o., Příbram",
+   "y": "2000"
+  },
+  {
+   "t": "Prodejny potravin PLUS DISKONT (nyní Penny nebo Billa) Sedlčany, Dobříš, Vlašim, Sušice, Domažlice, Milevsko",
+   "cost": "každá cca 30 mil. Kč",
+   "inv": "PLUS-DISCOUNT spol.s r.o., Počernická 257, Radonice",
+   "y": "2000–2006"
+  },
+  {
+   "t": "Víceúčelová tělocvična, přístavba gymnázia Sedlčany",
+   "cost": "50 mil. Kč",
+   "inv": "Krajský úřad Stč kraje, Praha 5",
+   "sup": "MAO s.r.o., Kladno",
+   "y": "2006"
+  },
+  {
+   "t": "Sanace vlhkého zdiva, objekt Úřadu vlády ČR (Benešova vila), Sezimovo Ústí",
+   "cost": "3 mil. Kč",
+   "inv": "Úřad vlády ČR, oddělení investic, Praha 1-Malá Strana",
+   "y": "2007"
+  },
+  {
+   "t": "Obchodní centrum Příbram – Zdaboř, objekty SO-04 a SO-05",
+   "cost": "55 mil. Kč",
+   "inv": "MTJ consulting a.s., České Budějovice",
+   "sup": "CASTA a.s., Písek",
+   "y": "2008"
+  },
+  {
+   "t": "Rekonstrukce EMERGENCY, Ústřední vojen.nemocnice Praha",
+   "cost": "4 mil. Kč",
+   "inv": "ÚVN Praha - Střešovice",
+   "sup": "ZEMAN s.r.o., Praha 6",
+   "y": "2009"
+  },
+  {
+   "t": "Rekonstrukce obchodního a společenského centra Dubina, Domažlice",
+   "cost": "13,5 mil. Kč",
+   "inv": "VIA CAPRI s.r.o., Plzeň",
+   "y": "2011"
+  },
+  {
+   "t": "Přístavba haly, KAMÝK-DAUNEN",
+   "cost": "40 mil. Kč",
+   "inv": "Kamýk – Daunen s.r.o., Kamýk nad Vltavou",
+   "sup": "HD stavební s.r.o., Praha 10",
+   "y": "2012"
+  },
+  {
+   "t": "Obchodní centrum Domažlice, 1. a 2.etapa",
+   "cost": "50 mil. Kč",
+   "inv": "TREI s.r.o., Praha 8",
+   "sup": "PS Slovácko spol. s r.o., Kunovice",
+   "y": "2012"
+  },
+  {
+   "t": "Rekonstr. a přístavba provozní budovy, Slavia Praha, pozemní hokej",
+   "cost": "38 mil. Kč",
+   "inv": "Slavia Praha",
+   "y": "2013"
+  },
+  {
+   "t": "Rekonstrukce budovy Městské teplárenské společnosti, Sedlčany",
+   "cost": "10 mil. Kč",
+   "inv": "Město Sedlčany",
+   "y": "2015"
+  },
+  {
+   "t": "Centrum služeb pro nákladní automobily, dálniční odpočívka Rozvadov",
+   "cost": "35 mil. Kč",
+   "inv": "VIA CAPRI s.r.o., Praha 5",
+   "y": "2015"
+  },
+  {
+   "t": "Obchodní centrum Brandov, změna stavby před dokončením",
+   "cost": "45 mil. Kč",
+   "inv": "W.H.R. Petrol s.r.o., Praha 5",
+   "y": "2016"
+  },
+  {
+   "t": "Rekonstrukce a modernizace sportovního hřiště s umělou trávou, Sedlčany",
+   "cost": "3 mil. Kč",
+   "inv": "Město Sedlčany",
+   "y": "2016"
+  },
+  {
+   "t": "Rekonstrukce vzduchotechnického systému v Lažanském paláci, kavárna Slavie a FAMU, Praha 1",
+   "cost": "9 mil. Kč",
+   "inv": "Magistrát hl. m. Prahy",
+   "y": "2016"
+  },
+  {
+   "t": "Skladová hala na pozemku parc.č. 466/52, Příbram – Dubno",
+   "cost": "4 mil. Kč",
+   "inv": "INFORM-CONSULT-AQUA s.r.o., Příbram",
+   "y": "2017"
+  },
+  {
+   "t": "Sběrna odpadů Libíň, rekonstrukce bývalého objektu ZD",
+   "cost": "2,5 mil. Kč",
+   "inv": "ECOCYCLE s.r.o., Praha 1",
+   "y": "2017"
+  },
+  {
+   "t": "Stavební úpravy výrobních hal v areálu T.G. a.s., Plzeň - Černice",
+   "cost": "26,5 mil. Kč",
+   "inv": "T.G. a.s., Plzeň",
+   "y": "2019"
+  },
+  {
+   "t": "Čerpací stanice pohonných hmot Milevsko, Drhovle, Katovice, Líbeznice, obec Rozvadov, Lísková, Horní Folmava, dálniční hraniční přechod Rozvadov, Železná Ruda, Brandov u Chomutova, Slivenec",
+   "cost": "každá cca 30 mil. Kč",
+   "inv": "ABAK s.r.o., Příbram, START STEP s.r.o., Rozvadov, VIA CAPRI s.r.o., Plzeň, TOP TANK s.r.o., Praha 5",
+   "y": "1996–2025"
+  },
+  {
+   "t": "Projekty rodinných domů Říčany, Doubravčice, Sedlčany, Vrbice, Dobříš, Kunžak, Újezd u Hořovic, Královna u Votic, Horšovský Týn, Rovina u Sedlčan, Příčovy u Sedlčan, Dobřany, Rosovice, Plzeň – Koterov, Lhotka u Hořovic",
+   "cost": "každá cca 3 mil. Kč",
+   "inv": "různý",
+   "y": "1992–2025"
+  }
+ ]
 }

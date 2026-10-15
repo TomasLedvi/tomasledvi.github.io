@@ -188,6 +188,57 @@ const sc=document.querySelector(".stamp-c");if(sc&&"IntersectionObserver"in wind
 </style>""")
         rep('<a href="#oblast">', '<a href="#autorizace">Autorizace</a><a href="#oblast">')
 
+    # seznam vybraných zakázek (volitelně)
+    if c.get("refs"):
+        import html as _h
+        def per(y):
+            a=int(y[:4]);b=int(y[-4:])
+            if b-a>10: return "long"
+            return "90" if a<2000 else "00" if a<2010 else "10"
+        rows="".join(
+            f'<li data-p="{per(r["y"])}"{" class=\"hid\"" if i>=10 else ""}><span class="ry">{r["y"]}</span>'
+            f'<div class="rt"><b>{_h.escape(r["t"])}</b><small>Investor: {_h.escape(r["inv"])}'
+            + (f' · Dodavatel: {_h.escape(r["sup"])}' if r.get("sup") else "") + '</small></div>'
+            f'<span class="rc">{_h.escape(r["cost"])}</span></li>' for i,r in enumerate(c["refs"]))
+        n=len(c["refs"])
+        rep('<section class="map-sec gut" id="oblast">', f'''<section class="sec gut refs" id="zakazky">
+  <div class="wrap">
+    <div class="eyebrow bar-rv"><span><b>—</b> Vybrané zakázky</span></div>
+    <h2 class="h" data-split>Stavby, které <em>stojí.</em></h2>
+    <p class="lead rv">Realizováno přes 500 nových staveb a rekonstrukcí. Tady je výběr z nich, projektovaný samostatně nebo jako vedoucí projektu a zpracovatel stavební části v rámci ateliéru PROKON Příbram.</p>
+    <div class="ref-f rv" role="group" aria-label="Období">
+      <button type="button" class="ref-chip" data-f="all" aria-pressed="true">Vše ({n})</button><button type="button" class="ref-chip" data-f="90" aria-pressed="false">1991–1999</button><button type="button" class="ref-chip" data-f="00" aria-pressed="false">2000–2009</button><button type="button" class="ref-chip" data-f="10" aria-pressed="false">2010–2019</button><button type="button" class="ref-chip" data-f="long" aria-pressed="false">Dlouhodobě</button>
+    </div>
+    <ol class="ref-list">{rows}</ol>
+    <button type="button" class="ref-more">Zobrazit všechny zakázky ({n})</button>
+  </div>
+</section>
+<script>(()=>{{const s=document.getElementById("zakazky"),li=[...s.querySelectorAll(".ref-list li")],more=s.querySelector(".ref-more");let f="all",open=false;
+const draw=()=>{{let k=0;li.forEach(l=>{{const ok=f==="all"||l.dataset.p===f;const show=ok&&(f!=="all"||open||k<10);if(ok)k++;l.classList.toggle("hid",!show)}});more.hidden=f!=="all"||open}};
+s.querySelectorAll(".ref-chip").forEach(b=>b.addEventListener("click",()=>{{f=b.dataset.f;s.querySelectorAll(".ref-chip").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}}));
+more.addEventListener("click",()=>{{open=true;draw()}});draw()}})();</script>
+
+<section class="map-sec gut" id="oblast">''')
+        rep("</style>", """
+.refs .lead{max-width:62ch}
+.ref-f{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.ref-chip{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:transparent;color:inherit;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.ref-chip[aria-pressed="true"]{background:var(--oak);color:#0f1720;border-color:var(--oak)}
+.ref-chip:focus-visible,.ref-more:focus-visible{outline:2px solid var(--oak);outline-offset:3px}
+.ref-list{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--line)}
+.ref-list li{display:grid;grid-template-columns:118px minmax(0,1fr) auto;gap:22px;align-items:baseline;padding:17px 4px;border-bottom:1px solid var(--line);transition:background .3s}
+.ref-list li:hover{background:color-mix(in srgb,var(--line) 35%,transparent)}
+.ref-list li.hid{display:none}
+.ry{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+.rt b{display:block;font-weight:500;font-size:1.02rem;line-height:1.4}
+.rt small{display:block;margin-top:5px;font-size:.84rem;line-height:1.5;color:var(--muted)}
+.rc{font-family:var(--f-mono);font-size:.78rem;white-space:nowrap;color:var(--oak)}
+.ref-more{margin-top:26px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:13px 20px;border:1px solid var(--oak);background:transparent;color:var(--oak);cursor:pointer;border-radius:999px}
+.ref-more:hover{background:var(--oak);color:#0f1720}
+@media (max-width:700px){.ref-list li{grid-template-columns:1fr auto;gap:6px 14px}.ry{grid-column:1/-1}.rt{grid-column:1/-1}.rc{grid-column:1/-1}}
+</style>""")
+        rep('<a href="#oblast">', '<a href="#zakazky">Zakázky</a><a href="#oblast">')
+
     # barva akcentu (volitelně)
     if c.get("accent"):
         a, a2 = c["accent"]
