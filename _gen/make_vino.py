@@ -10,7 +10,7 @@ GLASS = {  # vzhled lahve podle typu vína
  "rose": dict(glass="clear", liquid=0xd9566a, shape="flute", foil=0xe8b3ae, glow="#c9566f", label="white"),
  "red": dict(glass=0x0e120b, shape="bdx", foil=0x2a0a12, glow="#8f1d33", label="black"),
  "red2": dict(glass=0x120e0b, shape="bdx", foil=0x6e1a2b, glow="#6e1a2b"),
- "spark": dict(glass="clear", liquid=0xe0c873, shape="flute", foil=0xc9a35e, glow="#b8962e", label="white"),
+ "spark": dict(glass="clear", liquid=0xb8901e, shape="flute", foil=0xc9a35e, glow="#b8962e", label="white"),
  "white2": dict(glass=0x2c4a20, shape="flute", foil=0xa8834a, glow="#9aa03a"),
 }
 SERVE = {"white":"9–11 °C","white2":"9–11 °C","aroma":"10–12 °C","rose":"8–10 °C","red":"16–18 °C","red2":"15–17 °C","spark":"6–8 °C"}
