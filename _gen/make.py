@@ -141,9 +141,10 @@ def main(cfg_path):
 </style>""")
         rep('<div class="h-ctas rv" style="--d:.65s">', f'<div class="h-ctas rv" style="--d:.65s;position:relative"><div class="stamp-ink stamp-done" aria-hidden="true" style="--m:url({st})"></div>')
         rep("</style>", """
-.stamp-done{position:absolute;left:22px;top:calc(100% + 8px);width:clamp(110px,9vw,138px);aspect-ratio:1;background:#b9e0ff;--o:.9;--r:-9deg;filter:drop-shadow(0 0 14px #9fd3ff4d);z-index:2}
+.stamp-done{position:absolute;left:360px;top:-46px;width:clamp(110px,9vw,138px);aspect-ratio:1;background:#b9e0ff;--o:.9;--r:-9deg;filter:drop-shadow(0 0 14px #9fd3ff4d);z-index:2}
 .stamp-done.off{animation:none;opacity:0;transition:opacity .3s}
-@media (max-width:900px){.stamp-done{left:40px;top:calc(100% + 16px);width:100px}}
+@media (max-width:900px){.stamp-done{left:min(390px,calc(100% - 118px));top:-34px;width:106px}}
+@media (max-width:559px){.stamp-done{left:40px;top:calc(100% + 16px);width:100px}}
 </style>""")
         rep("</body>", """<script>(()=>{const w=document.querySelector(".stamp-wrap"),h=w&&w.firstElementChild;
 addEventListener("load",()=>setTimeout(()=>{h&&h.classList.add("on");setTimeout(()=>w&&w.classList.add("hit"),230)},700));
@@ -238,6 +239,13 @@ more.addEventListener("click",()=>{{open=true;draw()}});draw()}})();</script>
 @media (max-width:700px){.ref-list li{grid-template-columns:1fr auto;gap:6px 14px}.ry{grid-column:1/-1}.rt{grid-column:1/-1}.rc{grid-column:1/-1}}
 </style>""")
         rep('<a href="#oblast">', '<a href="#zakazky">Zakázky</a><a href="#oblast">')
+
+    # jen jedna kategorie fotek: bez filtru, na dlaždici popisek místo kategorie
+    if len(c.get("cat",{}))<=2 and all(len(ph)>2 for ph in c.get("photos",[])):
+        rep('<div class="filters rv" id="filters"></div>','<div class="filters rv" id="filters" hidden></div>')
+        rep('<figcaption><small>${CAT[p[0]]}</small>','<figcaption>')
+        rep('<span class="tg">${CAT[p[0]]}</span>','<span class="tg tgc">${esc(p[2])}</span>')
+        rep("</style>", ".tgc{text-transform:none!important;letter-spacing:0!important;font-family:inherit!important;white-space:normal!important;max-width:calc(100% - 28px);line-height:1.35;border-radius:8px!important;font-size:.78rem!important;padding:6px 10px!important}\n</style>")
 
     # barva akcentu (volitelně)
     if c.get("accent"):

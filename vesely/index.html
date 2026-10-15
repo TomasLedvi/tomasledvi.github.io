@@ -368,9 +368,10 @@ body{counter-reset:list}
 @media (max-width:900px){.stamp-wrap{left:auto;right:18px;top:auto;bottom:140px;width:110px}.stamp-c{right:-6px;bottom:-40px;width:104px;height:104px}}
 @media (prefers-reduced-motion:reduce){.stamp-ink.on{animation:none;opacity:var(--o,.9);transform:rotate(var(--r,-12deg))}.stamp-wrap.hit::after{animation:none}}
 
-.stamp-done{position:absolute;left:22px;top:calc(100% + 8px);width:clamp(110px,9vw,138px);aspect-ratio:1;background:#b9e0ff;--o:.9;--r:-9deg;filter:drop-shadow(0 0 14px #9fd3ff4d);z-index:2}
+.stamp-done{position:absolute;left:360px;top:-46px;width:clamp(110px,9vw,138px);aspect-ratio:1;background:#b9e0ff;--o:.9;--r:-9deg;filter:drop-shadow(0 0 14px #9fd3ff4d);z-index:2}
 .stamp-done.off{animation:none;opacity:0;transition:opacity .3s}
-@media (max-width:900px){.stamp-done{left:40px;top:calc(100% + 16px);width:100px}}
+@media (max-width:900px){.stamp-done{left:min(390px,calc(100% - 118px));top:-34px;width:106px}}
+@media (max-width:559px){.stamp-done{left:40px;top:calc(100% + 16px);width:100px}}
 
 .cert-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,90px);align-items:center}
 .cert-facts{display:grid;grid-template-columns:1fr 1fr;margin-top:28px;border:1px solid var(--pline)}
@@ -400,6 +401,7 @@ body{counter-reset:list}
 .ref-more{margin-top:26px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:13px 20px;border:1px solid var(--oak);background:transparent;color:var(--oak);cursor:pointer;border-radius:999px}
 .ref-more:hover{background:var(--oak);color:#0f1720}
 @media (max-width:700px){.ref-list li{grid-template-columns:1fr auto;gap:6px 14px}.ry{grid-column:1/-1}.rt{grid-column:1/-1}.rc{grid-column:1/-1}}
+.tgc{text-transform:none!important;letter-spacing:0!important;font-family:inherit!important;white-space:normal!important;max-width:calc(100% - 28px);line-height:1.35;border-radius:8px!important;font-size:.78rem!important;padding:6px 10px!important}
 </style>
 </head>
 <body>
@@ -537,7 +539,7 @@ body{counter-reset:list}
 
 <section class="sec gut light" style="padding-top:50px">
   <div class="wrap">
-    <div class="filters rv" id="filters"></div>
+    <div class="filters rv" id="filters" hidden></div>
     <div class="masonry" id="masonry"></div>
   </div>
 </section>
@@ -656,14 +658,14 @@ more.addEventListener("click",()=>{open=true;draw()});draw()})();</script>
   // swipovací pás
   const rail=document.getElementById("rail");
   FEAT.forEach((pi,i)=>{const p=PH[pi];const f=document.createElement("figure");f.className="fc";f.tabIndex=0;f.style.setProperty("--i",i);f.dataset.lb=pi;f.setAttribute("role","button");f.setAttribute("aria-label","Zvětšit: "+p[2]);
-    f.innerHTML=`<img src="${p[1]}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" draggable="false" onerror="this.style.visibility='hidden'"><span class="num">${String(i+1).padStart(2,"0")} / ${String(FEAT.length).padStart(2,"0")}</span><figcaption><small>${CAT[p[0]]}</small><b>${esc(p[2])}</b></figcaption>`;
+    f.innerHTML=`<img src="${p[1]}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" draggable="false" onerror="this.style.visibility='hidden'"><span class="num">${String(i+1).padStart(2,"0")} / ${String(FEAT.length).padStart(2,"0")}</span><figcaption><b>${esc(p[2])}</b></figcaption>`;
     rail.appendChild(f)});
   // galerie
   const filters=document.getElementById("filters"),mas=document.getElementById("masonry");
   Object.entries(CAT).forEach(([k,v],i)=>{const b=document.createElement("button");b.type="button";b.textContent=v;b.dataset.f=k;b.setAttribute("aria-pressed",i===0);b.addEventListener("click",()=>setFilter(k));filters.appendChild(b)});
   PH.forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.className="tile wipe"+(i%2?" r":"");b.dataset.c=p[0];b.setAttribute("aria-label","Zvětšit: "+p[2]);
     const im=new Image();im.src=p[1];im.alt=p[2];im.loading="lazy";im.decoding="async";im.referrerPolicy="no-referrer";im.onerror=()=>b.classList.add("miss");
-    b.appendChild(im);b.insertAdjacentHTML("beforeend",`<span class="tg">${CAT[p[0]]}</span>`);b.addEventListener("click",()=>openLb(i));mas.appendChild(b)});
+    b.appendChild(im);b.insertAdjacentHTML("beforeend",`<span class="tg tgc">${esc(p[2])}</span>`);b.addEventListener("click",()=>openLb(i));mas.appendChild(b)});
   function setFilter(k){[...filters.children].forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===k));
     [...mas.children].forEach(t=>{const show=k==="vse"||t.dataset.c===k;t.classList.toggle("hide",!show);if(show&&root.classList.contains("js")){t.classList.remove("in");requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add("in")))}})}
   // mapa
