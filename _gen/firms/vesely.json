@@ -523,5 +523,8 @@
    "inv": "různý",
    "y": "1992–2025"
   }
- ]
+ ],
+ "form_to": "prokon-vesely@volny.cz",
+ "form_h": "Co pro vás můžeme navrhnout?",
+ "form_dim": "Velikost stavby (nepovinné)<input id=\"pdim\" placeholder=\"např. 4+kk, cca 120 m²\">"
 }

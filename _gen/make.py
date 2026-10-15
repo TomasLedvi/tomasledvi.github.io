@@ -250,6 +250,25 @@ more.addEventListener("click",()=>{{open=true;draw()}});draw()}})();</script>
         rep('<span class="tg">${CAT[p[0]]}</span>','<span class="tg tgc">${esc(p[2])}</span>')
         rep("</style>", ".tgc{text-transform:none!important;letter-spacing:0!important;font-family:inherit!important;white-space:normal!important;max-width:calc(100% - 28px);line-height:1.35;border-radius:8px!important;font-size:.78rem!important;padding:6px 10px!important}\n</style>")
 
+    # skutečné odesílání poptávek přes FormSubmit (volitelně)
+    if c.get("form_to"):
+        to=c["form_to"]
+        a=s.index('winBody.querySelector("#pform").addEventListener("submit",e=>{')
+        b=s.index('na skutečném webu přijde poptávka rovnou do vašeho e-mailu.</p></div>`})}',a)+len('na skutečném webu přijde poptávka rovnou do vašeho e-mailu.</p></div>`})}')
+        fjs=('winBody.querySelector("#pform").addEventListener("submit",async e=>{e.preventDefault();const q=x=>winBody.querySelector(x),n=q("#pname"),c=q("#pcontact");'
+            'if(!n.value.trim()){n.focus();return}if(!c.value.trim()){c.focus();return}'
+            'const btn=q("#pform button[type=submit]");btn.disabled=true;btn.textContent="Odesílám…";'
+            'try{const r=await fetch("https://formsubmit.co/ajax/'+to+'",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},'
+            'body:JSON.stringify({_subject:"Poptávka z webu: "+pType,_template:"table",_captcha:"false","Typ stavby":pType,"Velikost":q("#pdim").value,"Lokalita":q("#ploc").value,"Jméno":n.value,"Kontakt":c.value,"Poznámka":q("#pnote").value,_replyto:c.value.includes("@")?c.value.trim():undefined})});'
+            'const j=await r.json().catch(()=>({}));if(!r.ok||String(j.success)==="false")throw 0;'
+            'winBody.innerHTML=`<div class="done"><b>Děkujeme.</b><p id="winTitle">Poptávka byla odeslána. Ozveme se vám co nejdříve.</p></div>`}'
+            'catch(_){btn.disabled=false;btn.textContent="Odeslat poptávku";let m=q(".ferr");if(!m){m=document.createElement("p");m.className="small ferr";m.style.color="#e07a5f";q("#pform").append(m)}'
+            'm.textContent="Poptávku se nepodařilo odeslat. Zkuste to prosím znovu, nebo napište na '+to+'."}})}')
+        s=s[:a]+fjs+s[b:]
+        s=s.replace("Co pro vás můžeme vyrobit?",c.get("form_h","Co pro vás můžeme vyrobit?"))
+        if c.get("form_dim"):
+            s=s.replace('Přibližné rozměry (nepovinné)<input id="pdim" placeholder="např. 3,6 × 2,4 m">',c["form_dim"])
+
     # barva akcentu (volitelně)
     if c.get("accent"):
         a, a2 = c["accent"]

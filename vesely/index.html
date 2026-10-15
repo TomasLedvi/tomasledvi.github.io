@@ -694,20 +694,18 @@ more.addEventListener("click",()=>{open=true;draw()});draw()})();</script>
       <div class="h-ctas"><button class="btn fill" type="button" data-open="poptavka">Poptávka <span class="arr">→</span></button></div>`)}
   let pType="Rodinný dům";
   function openPoptavka(){
-    openWin(`<div class="eyebrow" style="margin-bottom:10px"><b>—</b> Poptávka</div><h3 id="winTitle">Co pro vás můžeme vyrobit?</h3>
+    openWin(`<div class="eyebrow" style="margin-bottom:10px"><b>—</b> Poptávka</div><h3 id="winTitle">Co pro vás můžeme navrhnout?</h3>
       <p>Pošlete nám pár údajů o pozemku nebo domě a ozveme se vám.</p>
       <form id="pform" novalidate>
         <div class="chips" role="group" aria-label="Typ zakázky">${["Rodinný dům", "Rekonstrukce", "Přístavba / nástavba", "Provozovna", "Jiná stavba"].map(t=>`<button type="button" data-pt="${t}" aria-pressed="${t===pType}">${t}</button>`).join("")}</div>
-        <div class="row2"><label for="pdim">Přibližné rozměry (nepovinné)<input id="pdim" placeholder="např. 3,6 × 2,4 m"></label><label for="ploc">Lokalita<input id="ploc" placeholder="např. Sedlčany"></label></div>
+        <div class="row2"><label for="pdim">Velikost stavby (nepovinné)<input id="pdim" placeholder="např. 4+kk, cca 120 m²"></label><label for="ploc">Lokalita<input id="ploc" placeholder="např. Sedlčany"></label></div>
         <div class="row2"><label for="pname">Jméno<input id="pname" required autocomplete="name"></label><label for="pcontact">Telefon nebo e-mail<input id="pcontact" required></label></div>
         <label for="pnote">Poznámka<textarea id="pnote" placeholder="Představa, materiály, termín…"></textarea></label>
         <button class="btn fill" type="submit" style="justify-content:center">Odeslat poptávku</button>
         <p class="small" style="margin:0">Údaje použijeme jen k vyřízení vaší poptávky.</p>
       </form>`);
     winBody.querySelectorAll("[data-pt]").forEach(b=>b.addEventListener("click",()=>{pType=b.dataset.pt;winBody.querySelectorAll("[data-pt]").forEach(x=>x.setAttribute("aria-pressed",x===b))}));
-    winBody.querySelector("#pform").addEventListener("submit",e=>{e.preventDefault();const n=winBody.querySelector("#pname"),c=winBody.querySelector("#pcontact");
-      if(!n.value.trim()){n.focus();return}if(!c.value.trim()){c.focus();return}
-      winBody.innerHTML=`<div class="done"><b>Děkujeme.</b><p id="winTitle">${esc(pType)} · ozveme se vám co nejdříve.</p><p class="small">Ukázka: na skutečném webu přijde poptávka rovnou do vašeho e-mailu.</p></div>`})}
+    winBody.querySelector("#pform").addEventListener("submit",async e=>{e.preventDefault();const q=x=>winBody.querySelector(x),n=q("#pname"),c=q("#pcontact");if(!n.value.trim()){n.focus();return}if(!c.value.trim()){c.focus();return}const btn=q("#pform button[type=submit]");btn.disabled=true;btn.textContent="Odesílám…";try{const r=await fetch("https://formsubmit.co/ajax/prokon-vesely@volny.cz",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({_subject:"Poptávka z webu: "+pType,_template:"table",_captcha:"false","Typ stavby":pType,"Velikost":q("#pdim").value,"Lokalita":q("#ploc").value,"Jméno":n.value,"Kontakt":c.value,"Poznámka":q("#pnote").value,_replyto:c.value.includes("@")?c.value.trim():undefined})});const j=await r.json().catch(()=>({}));if(!r.ok||String(j.success)==="false")throw 0;winBody.innerHTML=`<div class="done"><b>Děkujeme.</b><p id="winTitle">Poptávka byla odeslána. Ozveme se vám co nejdříve.</p></div>`}catch(_){btn.disabled=false;btn.textContent="Odeslat poptávku";let m=q(".ferr");if(!m){m=document.createElement("p");m.className="small ferr";m.style.color="#e07a5f";q("#pform").append(m)}m.textContent="Poptávku se nepodařilo odeslat. Zkuste to prosím znovu, nebo napište na prokon-vesely@volny.cz."}})}
   let lbI=0;
   const lbHTML=()=>`<img src="${PH[lbI][1]}" alt="${esc(PH[lbI][2])}" referrerpolicy="no-referrer"><div class="lb-bar"><button type="button" data-lb="-1">← Předchozí</button><span id="winTitle">${esc(PH[lbI][2])} · ${lbI+1} / ${PH.length}</span><button type="button" data-lb="1">Další →</button></div>`;
   function lbGo(d){lbI=(lbI+d+PH.length)%PH.length;winBody.innerHTML=lbHTML()}
