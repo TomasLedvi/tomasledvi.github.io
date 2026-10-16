@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>SKIP Děčín · střechy a klempířské práce · návrh webu</title>
+<meta name="description" content="Střechy na klíč, krovy, krytiny a klempířské práce v Děčíně a okolí od roku 1992.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* Neoficiální koncept webu pro SKIP Děčín. © 2026 Tomáš Ledvina */
+:root{
+  --slate:#1c1f22;--slate2:#25292d;--line:#363b40;
+  --copper:#c8834e;--copper2:#e2a877;--patina:#7fb3a0;
+  --cream:#ece5d8;--fog:#9aa1a6;
+  --d:"Archivo",system-ui,sans-serif;--s:"Newsreader",Georgia,serif;
+  --ease:cubic-bezier(.2,.7,.2,1)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--slate);color:var(--cream);font-family:var(--d);font-stretch:100%;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--copper2);outline-offset:3px}
+.note{position:fixed;inset:0 0 auto 0;z-index:80;background:var(--copper);color:#1c1f22;font:600 12px/1.3 var(--d);text-align:center;padding:6px 12px}
+.nav{position:fixed;top:25px;left:0;right:0;z-index:70;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(16px,4vw,52px);transition:background .5s}
+.nav.solid{background:#1c1f22e6;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.brand b{font-weight:900;font-stretch:72%;font-size:1.7rem;letter-spacing:.02em;line-height:1}
+.brand span{font-family:var(--s);font-style:italic;color:var(--fog);font-size:1rem}
+.menu{display:flex;gap:26px;align-items:center}
+.menu a{text-decoration:none;color:var(--fog);transition:color .3s}.menu a:hover{color:var(--cream)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--copper);color:#1c1f22!important;font-weight:700;padding:13px 22px;border-radius:2px;text-decoration:none;border:0;cursor:pointer;font-family:var(--d);font-size:1rem;transition:background .3s}
+.btn:hover{background:var(--copper2)}
+.btn.ghost{background:transparent;color:var(--cream)!important;box-shadow:inset 0 0 0 1px #ece5d855}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--cream)}
+@media (max-width:860px){.menu a:not(.btn){display:none}.menu .btn{padding:10px 14px;font-size:.9rem}.brand span{display:none}}
+
+/* nadpisy s ozvěnou (rozmazání → ostrost) */
+.echo{position:relative;display:inline-block}
+.echo::before,.echo::after{content:attr(data-t);position:absolute;inset:0;pointer-events:none;color:inherit;opacity:0}
+.js .echo{filter:blur(14px);opacity:0;transition:filter 1.1s var(--ease),opacity .9s}
+.js .echo.in{filter:blur(0);opacity:1}
+.js .echo.in::before{animation:ghost 1.4s var(--ease) forwards}
+.js .echo.in::after{animation:ghost 1.4s .12s var(--ease) forwards}
+@keyframes ghost{0%{opacity:.5;transform:translate(0,-.18em);filter:blur(3px)}100%{opacity:0;transform:translate(0,-.5em);filter:blur(10px)}}
+
+h1,h2,h3{margin:0;font-weight:850;font-stretch:68%;letter-spacing:-.005em;line-height:.92;text-transform:none}
+h1{font-size:clamp(3.2rem,9.5vw,9rem)}
+h2{font-size:clamp(2.6rem,6.6vw,6rem)}
+.serif{display:block;font-family:var(--s);font-style:italic;font-weight:400;font-stretch:100%;letter-spacing:-.01em;line-height:1.02;color:var(--copper2)}
+h1 .serif{font-size:.56em;margin-top:.12em}h2 .serif{font-size:.6em;margin-top:.14em}
+p.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#cfc7b8;max-width:46ch}
+
+/* scéna 1: stavba střechy */
+#build{position:relative;height:1000vh}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#111}
+.stage video,.stage .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage video{opacity:0}.stage video.on{opacity:1}
+.stage .poster{transition:opacity .6s}
+.veil{position:absolute;inset:0;background:linear-gradient(90deg,#1c1f22f0 0%,#1c1f22a8 32%,transparent 62%),linear-gradient(0deg,#1c1f22cc,transparent 40%);pointer-events:none;transition:opacity .8s}
+.intro{position:absolute;left:clamp(16px,6vw,96px);top:50%;transform:translateY(-46%);max-width:min(720px,88vw);transition:opacity .6s,transform .8s var(--ease)}
+.intro .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.phase{position:absolute;left:clamp(16px,6vw,96px);bottom:clamp(28px,9vh,96px);width:min(640px,88vw);pointer-events:none}
+.phase div{position:absolute;left:0;bottom:0;width:100%;opacity:0;filter:blur(10px);transform:translateY(16px);transition:opacity .6s,filter .8s,transform .8s var(--ease)}
+.phase div.on{opacity:1;filter:none;transform:none}
+.phase .k{font-weight:700;color:var(--copper2);font-size:1rem;font-stretch:90%}
+.phase h3{font-size:clamp(2.2rem,5.4vw,4.8rem);margin-top:.15em}
+.phase p{margin:.6em 0 0;color:#d8d0c2;max-width:44ch}
+.track{position:absolute;right:clamp(16px,4vw,52px);top:50%;transform:translateY(-50%);display:grid;gap:12px}
+.track i{display:block;width:2px;height:46px;background:#ece5d833;position:relative}
+.track b{position:absolute;inset:0;background:var(--copper);transform-origin:top;transform:scaleY(0)}
+.loading{position:absolute;right:clamp(16px,4vw,52px);bottom:24px;color:var(--fog);font-size:.9rem;transition:opacity .5s}
+@media (max-width:760px){.veil{background:linear-gradient(0deg,#1c1f22f5 0%,#1c1f22b0 45%,transparent 75%)}.intro{top:auto;bottom:10vh;transform:none}.track{display:none}}
+
+/* záblesk mezi scénami */
+.flash{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:0;background:radial-gradient(60% 60% at 50% 50%,#fff6e8,#e2a87766 45%,transparent 75%)}
+.flash.go{animation:flash 1.1s var(--ease)}
+@keyframes flash{0%{opacity:0}18%{opacity:.95}100%{opacity:0}}
+
+/* scéna 2: otázky a jistoty */
+#otazky{position:relative;height:420vh;background:#141618}
+.q-stage{position:sticky;top:0;height:100vh;overflow:hidden}
+#shards{position:absolute;inset:0;width:100%;height:100%}
+.qs{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;pointer-events:none}
+.qs h2{position:absolute;opacity:0;filter:blur(18px);transform:scale(1.06);transition:opacity .7s,filter .9s,transform 1s var(--ease);max-width:14ch}
+.qs h2.on{opacity:1;filter:none;transform:none}
+.orb{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px;border-radius:50%;background:#fff3e2;box-shadow:0 0 40px 12px #e2a877,0 0 160px 60px #c8834e66;opacity:0;transform:scale(.2)}
+.promise{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;text-align:center;padding:0 16px;opacity:0;pointer-events:none;transition:opacity .8s}
+.promise.on{opacity:1;pointer-events:auto}
+.promise .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,4vw,60px);margin-top:46px;max-width:1080px;text-align:left}
+.promise .three div{border-top:1px solid var(--line);padding-top:18px}
+.promise .three b{display:block;font-stretch:72%;font-weight:850;font-size:clamp(2.4rem,4.6vw,3.6rem);line-height:1;color:var(--cream)}
+.promise .three span{display:block;margin-top:10px;color:var(--fog)}
+@media (max-width:760px){.promise .three{grid-template-columns:1fr;gap:16px;margin-top:28px}.promise .three b{font-size:2.2rem}}
+
+/* reference: vodorovný pás */
+#reference{position:relative;height:420vh;background:var(--cream);color:var(--slate)}
+.r-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.r-head{padding:0 clamp(16px,6vw,96px);display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.r-head h2 .serif{color:#9a5a2b}
+.r-head p{max-width:36ch;margin:0;color:#4a4e52}
+.strip{display:flex;gap:clamp(14px,2vw,26px);padding:40px clamp(16px,6vw,96px) 0;will-change:transform}
+.ref{flex:0 0 auto;width:clamp(260px,34vw,520px)}
+.ref .ph{aspect-ratio:4/3;overflow:hidden;background:#d8d0c2}
+.ref img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.2s var(--ease)}
+.ref:hover img{transform:scale(1.02)}
+.ref h3{font-size:clamp(1.6rem,2.4vw,2.2rem);margin-top:16px}
+.ref p{margin:6px 0 0;color:#55595d;font-family:var(--s);font-style:italic;font-size:1.08rem}
+
+/* postup se světelnou čárou */
+.sec{padding:clamp(90px,14vw,170px) clamp(16px,6vw,96px);max-width:1360px;margin:0 auto}
+.proc{position:relative;margin-top:70px}
+.proc svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.steps{position:relative;display:grid;gap:clamp(70px,10vw,130px)}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.step .t{max-width:470px}
+.step:nth-child(odd) .t{justify-self:end;text-align:right}
+.step:nth-child(even) .t{order:2}
+.step .n{font-family:var(--s);font-style:italic;color:var(--copper2);font-size:1.3rem}
+.step h3{font-size:clamp(2rem,3.6vw,3rem);margin:.15em 0 .3em}
+.step p{margin:0;color:var(--fog)}
+.dot{width:16px;height:16px;border-radius:50%;background:var(--slate);border:2px solid var(--copper2);box-shadow:0 0 0 7px #c8834e22,0 0 26px var(--copper);justify-self:start}
+.step:nth-child(even) .dot{justify-self:end}
+@media (max-width:760px){.step{grid-template-columns:1fr}.step .t,.step:nth-child(odd) .t{justify-self:start;text-align:left;order:2}.dot,.proc svg{display:none}}
+
+/* krytiny */
+.mat{background:var(--slate2)}
+.mat .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,64px);margin-top:56px}
+.mat h3{font-size:clamp(1.7rem,2.6vw,2.3rem);color:var(--copper2)}
+.mat ul{list-style:none;margin:18px 0 0;padding:0}
+.mat li{padding:12px 0;border-bottom:1px solid var(--line);font-size:1.1rem}
+@media (max-width:860px){.mat .cols{grid-template-columns:1fr}}
+
+/* kontakt */
+.contact{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,6vw,100px);align-items:start}
+.tel{display:block;font-weight:900;font-stretch:66%;font-size:clamp(2.6rem,5.6vw,5.4rem);white-space:nowrap;line-height:.95;text-decoration:none;color:var(--copper2);margin-top:28px;letter-spacing:.01em}
+.tel small{display:block;font-family:var(--s);font-style:italic;font-weight:400;font-stretch:100%;font-size:1.1rem;color:var(--fog);letter-spacing:0;margin-bottom:6px}
+.adr{margin-top:34px;color:#cfc7b8;line-height:1.8}
+form{background:var(--slate2);padding:clamp(22px,3vw,40px);display:grid;gap:16px;border-top:3px solid var(--copper)}
+label{display:grid;gap:7px;font-weight:600;font-size:.95rem;color:#d8d0c2}
+input,select,textarea{font:inherit;font-weight:400;color:var(--cream);background:var(--slate);border:1px solid var(--line);border-radius:2px;padding:13px 14px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--copper2)}
+.fnote{margin:0;font-size:.9rem;color:var(--fog)}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:36px clamp(16px,6vw,96px) 56px;color:var(--fog);font-size:.9rem;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.js .echo{filter:none;opacity:1}}
+</style>
+</head>
+<body>
+<div class="note">Neoficiální návrh webu pro SKIP Děčín, nejde o oficiální stránky. Úvodní animace je ilustrační.</div>
+<header class="nav" id="nav">
+  <a class="brand" href="#build"><b>SKIP</b><span>střechy Děčín</span></a>
+  <nav class="menu"><a href="#build">Jak stavíme</a><a href="#reference">Reference</a><a href="#postup">Střecha na klíč</a><a href="#krytiny">Krytiny</a><a class="btn" href="#kontakt">Prohlídka zdarma</a></nav>
+</header>
+
+<section id="build" aria-label="Jak stavíme střechu">
+  <div class="stage">
+    <img class="poster" id="poster" alt="" src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_141334_96214645-3e21-45f5-a6d8-785e15836422.png">
+    <video muted playsinline preload="auto" data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_141817_09d93cf2-6092-4632-9b7b-bbb989ff6736.mp4"></video>
+    <video muted playsinline preload="auto" data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_141822_02a841f1-eb3f-4ed8-b088-6a34fda73833.mp4"></video>
+    <video muted playsinline preload="auto" data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_142030_de62d06b-e4da-4dd2-adb1-b6e048ec2b9a.mp4"></video>
+    <video muted playsinline preload="auto" data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_142117_eb8f5f74-2564-4f2f-95de-8cfdd09f7d12.mp4"></video>
+    <div class="veil" id="veil"></div>
+    <div class="intro" id="intro">
+      <h1><span class="echo in" data-t="Střechy, které vydrží.">Střechy, které vydrží.</span><span class="serif">Stavíme je v Děčíně od roku 1992.</span></h1>
+      <p class="lead">Krovy, krytiny, ploché střechy i klempířské práce. Od prohlídky až po poslední okap.</p>
+      <div class="row"><a class="btn" href="#kontakt">Domluvit prohlídku zdarma</a><a class="btn ghost" href="#build" id="watch">Podívat se, jak stavíme</a></div>
+    </div>
+    <div class="phase" id="phase" aria-live="polite">
+      <div><span class="k">1. Krov</span><h3>Krokve, hřeben, pozednice.</h3><p>Nosná konstrukce, na které stojí všechno ostatní.</p></div>
+      <div><span class="k">2. Pojistná fólie</span><h3>První ochrana před vodou.</h3><p>Fólie a kontralatě odvedou vodu i vlhkost, kdyby se pod krytinu něco dostalo.</p></div>
+      <div><span class="k">3. Latě a krytina</span><h3>Taška po tašce, od okapu nahoru.</h3><p>Pálené, betonové, plechové nebo šindel. Vybereme krytinu, která sedí k domu.</p></div>
+      <div><span class="k">4. Klempířské práce</span><h3>Okapy, svody, oplechování.</h3><p>Detaily, kudy voda nejčastěji zatéká. Proto je děláme sami.</p></div>
+    </div>
+    <div class="track" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    <div class="loading" id="loading">Načítám animaci…</div>
+  </div>
+</section>
+
+<div class="flash" id="flash" aria-hidden="true"></div>
+
+<section id="otazky" aria-label="Proč SKIP">
+  <div class="q-stage">
+    <canvas id="shards" aria-hidden="true"></canvas>
+    <div class="qs" id="qs">
+      <h2>Zatéká vám do podkroví?</h2>
+      <h2>Kolik zim ještě stará střecha vydrží?</h2>
+      <h2>Kdo to udělá pořádně a včas?</h2>
+    </div>
+    <div class="orb" id="orb"></div>
+    <div class="promise" id="promise">
+      <h2><span class="echo" data-t="S námi to víte předem.">S námi to víte předem.</span><span class="serif">Co, kdy a za kolik. Dřív než se sundá první taška.</span></h2>
+      <div class="three">
+        <div><b>Zdarma</b><span>prohlídka a konzultace vaší střechy a klempířských prací</span></div>
+        <div><b>až 10 let</b><span>záruka na provedené práce podle použitého materiálu</span></div>
+        <div><b>bez odkladů</b><span>dodržujeme předem dané termíny i kalkulace</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reference" aria-label="Reference">
+  <div class="r-stage">
+    <div class="r-head">
+      <h2><span class="echo" data-t="Střechy, na které se díváte.">Střechy, na které se díváte.</span><span class="serif">Pivovar, aquapark, školy i rodinné domy.</span></h2>
+      <p>Výběr z realizací v Děčíně a okolí. Velké zakázky i rodinné domy děláme se stejnou péčí.</p>
+    </div>
+    <div class="strip" id="strip">
+      <article class="ref"><div class="ph"><img loading="lazy" alt="Centrum Pivovar Děčín z výšky" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f7ba1853-78b4-46b7-bb9c-b26318abd709.jpg"></div><h3>Centrum Pivovar Děčín</h3><p>Šikmé střechy a hydroizolace parkovací plochy</p></article>
+      <article class="ref"><div class="ph"><img loading="lazy" alt="Aquapark Děčín" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/bc7006da-dc22-404c-bb70-04d65fd011bd.jpg"></div><h3>Aquapark Děčín</h3><p>Rekonstrukce plochých střech</p></article>
+      <article class="ref"><div class="ph"><img loading="lazy" alt="Věž městského úřadu v Benešově nad Ploučnicí" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/3fcac6e0-bdf9-4929-a67e-68c51561800c.jpg"></div><h3>MÚ Benešov nad Ploučnicí</h3><p>Věž městského úřadu</p></article>
+      <article class="ref"><div class="ph"><img loading="lazy" alt="Měděná střecha ZŠ Vrchlického v Děčíně" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/2098d7c9-3040-43fd-a6f5-c6bdf9d1233f.jpg"></div><h3>ZŠ Vrchlického, Děčín</h3><p>Měděná střecha a věžička</p></article>
+      <article class="ref"><div class="ph"><img loading="lazy" alt="Evropská obchodní akademie Děčín" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/7f55e4f2-2a8a-4504-9dd3-52e261fc72c3.jpg"></div><h3>Evropská obchodní akademie</h3><p>Děčín</p></article>
+      <article class="ref"><div class="ph"><img loading="lazy" alt="Rodinný dům Sněžník" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f5abe850-bf5a-4a03-ad58-8ab12cbdccf9.jpg"></div><h3>Rodinný dům Sněžník</h3><p>Střecha rodinného domu</p></article>
+      <article class="ref"><div class="ph"><img loading="lazy" alt="Hala NOVUS Raspenava" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/29faf2b5-9c74-4a20-b541-5e62694a86b6.jpg"></div><h3>Hala NOVUS Raspenava</h3><p>Plochá střecha průmyslové haly</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="postup">
+  <h2><span class="echo" data-t="Střecha na klíč.">Střecha na klíč.</span><span class="serif">Vy si vyberete. O zbytek se postaráme my.</span></h2>
+  <div class="proc" id="proc">
+    <svg aria-hidden="true"><path id="pp0" fill="none" stroke="#363b40" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/><path id="pp" fill="none" stroke="#e2a877" stroke-width="2" stroke-linecap="round"/></svg>
+    <div class="steps">
+      <div class="step"><div class="t"><span class="n">první krok</span><h3>Prohlídka objektu</h3><p>Přijedeme, prohlédneme technický stav domu a vyslechneme si vaše představy. Zdarma.</p></div><span class="dot"></span></div>
+      <div class="step"><div class="t"><span class="n">druhý krok</span><h3>Návrh a kalkulace</h3><p>Doporučíme řešení vhodné pro dům i pro peněženku a předem řekneme termín a cenu.</p></div><span class="dot"></span></div>
+      <div class="step"><div class="t"><span class="n">třetí krok</span><h3>Nová střecha</h3><p>Postavíme ji rychle a citlivě ke zbytku domu, od krovu přes izolace po krytinu.</p></div><span class="dot"></span></div>
+      <div class="step"><div class="t"><span class="n">čtvrtý krok</span><h3>Komín a dokončení</h3><p>Postaráme se i o doplňkové zednické práce a opravu komínu.</p></div><span class="dot"></span></div>
+      <div class="step"><div class="t"><span class="n">a potom</span><h3>Záruka až deset let</h3><p>Podle použitého materiálu. Když stavíte nový dům, postavíme střechu podle projektu.</p></div><span class="dot"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="mat" id="krytiny">
+  <div class="sec" style="padding-top:clamp(80px,10vw,130px);padding-bottom:clamp(80px,10vw,130px)">
+    <h2><span class="echo" data-t="S čím pracujeme.">S čím pracujeme.</span><span class="serif">Každá krytina má své výhody. Poradíme, která sedí k vašemu domu.</span></h2>
+    <div class="cols">
+      <div><h3>Lehké krytiny</h3><ul><li>Plechové krytiny</li><li>Asfaltové šindele</li><li>Cementovláknité krytiny</li><li>Plastové krytiny</li></ul></div>
+      <div><h3>Těžké krytiny</h3><ul><li>Pálené tašky</li><li>Betonové tašky</li></ul><h3 style="margin-top:34px">Netradiční střechy</h3><ul><li>Střešní terasy</li><li>Střešní zahrady</li><li>Prosklená atria</li></ul></div>
+      <div><h3>Ploché střechy</h3><ul><li>Modifikované asfaltové pásy</li><li>Hydroizolační fólie z PVC</li><li>Fólie z EVA-terpolymeru</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="kontakt">
+  <div class="contact">
+    <div>
+      <h2><span class="echo" data-t="Ukažte nám svou střechu.">Ukažte nám svou střechu.</span><span class="serif">Prohlídka i konzultace jsou zdarma.</span></h2>
+      <a class="tel" href="tel:+420602579590"><small>Zavolejte nám</small>602 579 590</a>
+      <div class="adr">SKIP Děčín, Bohuslav Čepila<br>Pivovarská 190/34, 405 02 Děčín IV<br>Tel./fax 412 532 404 · <a href="mailto:skip@skipdecin.cz">skip@skipdecin.cz</a></div>
+    </div>
+    <form id="pf" novalidate>
+      <label>O jakou práci jde
+        <select id="ft"><option>Nová střecha</option><option>Rekonstrukce střechy</option><option>Oprava, zatéká</option><option>Plochá střecha</option><option>Klempířské práce</option></select></label>
+      <label>Obec<input id="fo" placeholder="např. Děčín"></label>
+      <label>Jméno<input id="fn" autocomplete="name"></label>
+      <label>Telefon nebo e-mail<input id="fc" autocomplete="tel"></label>
+      <label>Co potřebujete<textarea id="fm" rows="3" placeholder="např. stará eternitová střecha, chceme novou krytinu"></textarea></label>
+      <button class="btn" type="submit">Odeslat poptávku</button>
+      <p class="fnote" id="fnote">Toto je ukázka webu, poptávka se zatím nikam neodesílá.</p>
+    </form>
+  </div>
+</section>
+
+<footer><span>SKIP Děčín, Bohuslav Čepila · IČO 10413847 · Pivovarská 190/34, 405 02 Děčín</span><span>Neoficiální návrh webu, koncept Tomáš Ledvina. Použití jen po dohodě s autorem.</span></footer>
+
+<script>
+document.documentElement.classList.add("js");
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),prog=el=>{const r=el.getBoundingClientRect();return cl(-r.top/Math.max(1,r.height-innerHeight))};
+const flashEl=document.getElementById("flash");let lastFlash=0;const flash=()=>{const n=performance.now();if(n-lastFlash<900)return;lastFlash=n;flashEl.classList.remove("go");void flashEl.offsetWidth;flashEl.classList.add("go")};
+
+/* 1) stavba střechy: video podle scrollu */
+(async()=>{
+ const sec=document.getElementById("build"),vids=[...sec.querySelectorAll("video")],phases=[...document.querySelectorAll("#phase div")],bars=[...sec.querySelectorAll(".track b")],intro=document.getElementById("intro"),veil=document.getElementById("veil"),poster=document.getElementById("poster"),N=vids.length;
+ document.getElementById("watch").addEventListener("click",e=>{e.preventDefault();scrollTo({top:sec.offsetTop+(sec.offsetHeight-innerHeight)*.16,behavior:"smooth"})});
+ await Promise.all(vids.map(async v=>{try{const r=await fetch(v.dataset.src,{mode:"cors"});if(!r.ok)throw 0;v.src=URL.createObjectURL(await r.blob())}catch(e){v.src=v.dataset.src}await new Promise(ok=>{if(v.readyState>=2)ok();else v.addEventListener("loadeddata",ok,{once:true})})}));
+ document.getElementById("loading").style.opacity=0;
+ let s=0;const busy=vids.map(()=>false);
+ (function loop(){const t=prog(sec);s+=(t-s)*.09;
+  const a=cl((s-.1)/.86),x=Math.min(N-1e-4,a*N),i=Math.floor(x),k=x-i;
+  poster.style.opacity=a>0?0:1;vids.forEach((v,j)=>v.classList.toggle("on",a>0&&j===i));
+  if(a>0){const v=vids[i],want=Math.min(v.duration-.04,k*v.duration);if(!busy[i]&&Math.abs(v.currentTime-want)>.02){busy[i]=true;v.currentTime=want;v.addEventListener("seeked",()=>busy[i]=false,{once:true})}}
+  const iv=1-cl(s/.08);intro.style.opacity=iv;intro.style.pointerEvents=iv>.5?"auto":"none";veil.style.opacity=.55+.45*iv;
+  const ph=a<=0?-1:Math.min(N-1,Math.floor(x+.15));phases.forEach((p,j)=>p.classList.toggle("on",j===ph&&s<.985));
+  bars.forEach((b,j)=>b.style.transform=`scaleY(${cl(x-j)})`);
+  requestAnimationFrame(loop)})();
+})();
+
+/* 2) otázky jako střepy tašek, záblesk, jistoty */
+(()=>{
+ const sec=document.getElementById("otazky"),cv=document.getElementById("shards"),g=cv.getContext("2d"),qs=[...document.querySelectorAll("#qs h2")],orb=document.getElementById("orb"),pr=document.getElementById("promise");
+ const P=[];for(let i=0;i<120;i++){const a=Math.random()*Math.PI*2,sp=.25+Math.random()*.9;P.push({a,sp,r:Math.random()*Math.PI,vr:(Math.random()-.5)*4,w:14+Math.random()*30,h:9+Math.random()*16,c:Math.random()<.55?"#c8834e":Math.random()<.5?"#4a5056":"#7a4a2b",z:.4+Math.random()*.9})}
+ let W,H;const size=()=>{const d=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*d;cv.height=H*d;g.setTransform(d,0,0,d,0,0)};addEventListener("resize",size);size();
+ let s=0,was=false,wasP=false;
+ (function loop(){const t=prog(sec);s+=(t-s)*.1;const r=sec.getBoundingClientRect();
+  if(r.top<innerHeight&&r.bottom>0){
+   if(!was&&r.top<innerHeight*.15){was=true;flash()}if(r.top>innerHeight*.5)was=false;
+   g.clearRect(0,0,W,H);const burst=cl(s/.62),fade=1-cl((s-.6)/.12);
+   if(fade>0)P.forEach(p=>{const d=burst*Math.max(W,H)*.75*p.sp;const x=W/2+Math.cos(p.a)*d,y=H/2+Math.sin(p.a)*d*.8;g.save();g.globalAlpha=fade*(.25+.75*p.z)*cl(burst*6);g.translate(x,y);g.rotate(p.r+burst*p.vr);g.fillStyle=p.c;g.beginPath();g.moveTo(-p.w/2,-p.h/2);g.lineTo(p.w/2,-p.h/2);g.quadraticCurveTo(p.w/2+3,p.h/2,0,p.h/2+4);g.quadraticCurveTo(-p.w/2-3,p.h/2,-p.w/2,-p.h/2);g.fill();g.restore()});
+   const qi=s<.06?-1:s<.24?0:s<.42?1:s<.6?2:-1;qs.forEach((q,j)=>q.classList.toggle("on",j===qi));
+   const o=cl((s-.6)/.1),big=cl((s-.66)/.06);orb.style.opacity=o*(1-big);orb.style.transform=`scale(${.2+o*1.2+big*40})`;
+   const on=s>.7;pr.classList.toggle("on",on);if(on&&!wasP){wasP=true;flash();pr.querySelectorAll(".echo").forEach(e=>e.classList.add("in"))}if(!on)wasP=false;
+  }
+  requestAnimationFrame(loop)})();
+})();
+
+/* 3) reference: vodorovný posun */
+(()=>{const sec=document.getElementById("reference"),strip=document.getElementById("strip");let s=0;
+ (function loop(){const t=prog(sec);s+=(t-s)*.1;const max=Math.max(0,strip.scrollWidth-innerWidth);strip.style.transform=`translate3d(${-s*max}px,0,0)`;requestAnimationFrame(loop)})();
+ sec.querySelectorAll(".ref img").forEach(i=>i.addEventListener("load",()=>i.style.transform="scale(1)"))})();
+
+/* 4) postup: světelná čára */
+(()=>{const proc=document.getElementById("proc"),svg=proc.querySelector("svg"),pp=document.getElementById("pp"),pp0=document.getElementById("pp0");let len=0;
+ function build(){const b=proc.getBoundingClientRect();svg.setAttribute("viewBox",`0 0 ${b.width} ${b.height}`);const pts=[...proc.querySelectorAll(".dot")].map(d=>{const r=d.getBoundingClientRect();return[r.left-b.left+r.width/2,r.top-b.top+r.height/2]});if(pts.length<2||!pts[0][0])return;let d=`M${pts[0][0]},${pts[0][1]}`;for(let i=1;i<pts.length;i++){const a=pts[i-1],c=pts[i],m=(a[1]+c[1])/2;d+=` C${a[0]},${m} ${c[0]},${m} ${c[0]},${c[1]}`}pp.setAttribute("d",d);pp0.setAttribute("d",d);len=pp.getTotalLength();pp.style.strokeDasharray=len;draw()}
+ function draw(){if(!len)return;const b=proc.getBoundingClientRect();pp.style.strokeDashoffset=len*(1-cl((innerHeight*.72-b.top)/b.height))}
+ addEventListener("resize",build);addEventListener("scroll",draw,{passive:true});addEventListener("load",build);build()})();
+
+/* nadpisy s ozvěnou, navigace, formulář */
+(()=>{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.4});
+ document.querySelectorAll(".echo:not(.in)").forEach(e=>{if(!e.closest("#promise"))io.observe(e)});
+ const nav=document.getElementById("nav");const f=()=>nav.classList.toggle("solid",scrollY>innerHeight*.6);addEventListener("scroll",f,{passive:true});f();
+ document.getElementById("pf").addEventListener("submit",e=>{e.preventDefault();const n=document.getElementById("fn"),c=document.getElementById("fc");if(!n.value.trim())return n.focus();if(!c.value.trim())return c.focus();document.getElementById("fnote").textContent="Děkujeme. V ukázce se poptávka neodesílá, na skutečném webu by teď přišla na skip@skipdecin.cz."})})();
+</script>
+</body>
+</html>
