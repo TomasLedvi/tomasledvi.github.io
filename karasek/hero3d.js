@@ -77,7 +77,7 @@ function setB(b,s){b.position.set(s.x,s.y,s.z||0);b.scale.setScalar(s.s);b.rotat
 function mixS(a,b,t){return{x:L(a.x,b.x,t),y:L(a.y,b.y,t),z:L(a.z||0,b.z||0,t),s:L(a.s,b.s,t),rx:L(a.rx||0,b.rx||0,t),ry:L(a.ry||0,b.ry||0,t),rz:L(a.rz||0,b.rz||0,t)}}
 function glowAt(p){if(p<.16)return[0,0];if(p<.2)return[0,1,ss((p-.16)/.04)];for(let i=0;i<4;i++){const b=A[i]+D;if(p<b-.02||i===3)return[i+1,i+1]; if(p<b+.02)return[i+1,i+2,ss((p-(b-.02))/.04)]}return[4,4]}
 function frame(t){
- const p=sm,F=mob?{x:0,y:vh*.17,s:.74}:{x:vw*.16,y:-.02,s:1.02},C=mob?{x:0,y:-vh*.03,s:.56}:{x:0,y:.28,s:.86};
+ const p=sm,F=mob?{x:0,y:vh*.1,s:.66}:{x:vw*.16,y:-.02,s:1.02},C=mob?{x:0,y:-vh*.03,s:.56}:{x:0,y:.28,s:.86};
  const sp=Math.min(1.85,vw/4.3),lsc=mob?Math.min(.56,vw/4.6/.9):.64;
  bottles.forEach((b,i)=>{
   const Lp={x:(i-1.5)*sp,y:(mob?vh*.12:.62)+Math.sin(t*.0012+i*1.7)*.06,s:lsc,ry:(i-1.5)*-.22+Math.sin(t*.0007+i)*.18,rz:(i-1.5)*-.03};

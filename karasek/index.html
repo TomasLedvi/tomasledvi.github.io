@@ -26,6 +26,7 @@ a{color:inherit}img{display:block;max-width:100%}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:3px;background:var(--brass);color:#1d140c;font:700 1rem/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:background .3s}
 .btn:hover{background:var(--brass2)}
 .btn.line{background:transparent;color:#f3e6cc;box-shadow:inset 0 0 0 1px #f3e6cc66}.btn.line:hover{box-shadow:inset 0 0 0 1px #f3e6cc}
+@media (max-width:700px){.lg-only{display:none}.logo span{display:none}}
 @media (max-width:900px){.nav ul{display:none}.logo{font-size:1.1rem}.logo span{font-size:.8rem}.nav .btn{padding:10px 14px;font-size:.9rem}}
 
 h1,h2,h3{font-weight:400}
@@ -169,11 +170,11 @@ footer{padding:34px max(18px,6vw) 50px;color:#9c8c72;font-size:.92rem;line-heigh
 </style>
 </head>
 <body>
-<div class="bar">Neoficiální návrh webu pro pivovar Karásek a Stülpner, nejde o oficiální stránky</div>
+<div class="bar">Neoficiální návrh webu<span class="lg-only"> pro pivovar Karásek a Stülpner, nejde o oficiální stránky</span></div>
 <nav class="nav" id="nav">
   <a class="logo" href="#">Karásek a Stülpner<span>první občanský pivovar v Chomutově</span></a>
   <ul><li><a href="#show">Piva</a></li><li><a href="#legenda">Legenda</a></li><li><a href="#varime">Jak vaříme</a></li><li><a href="#prohlidky">Prohlídky</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
-  <a class="btn" href="#prohlidky">Prohlídka pivovaru</a>
+  <a class="btn" href="#prohlidky">Prohlídky</a>
 </nav>
 
 <section class="show" id="show">
@@ -296,7 +297,7 @@ window.PIVA=[
 document.getElementById("wps").innerHTML=PIVA.map((w,i)=>`<div class="wp"><div class="n">${w.k}</div><h2>${w.n} ${w.d}<i>Karásek a Stülpner</i></h2><p>${w.notes}</p><div class="f3">${w.f.map(f=>`<div><small>${f[0]}</small><span>${f[1]}</span></div>`).join("")}</div><a class="btn" href="#basa" data-add="${i}">Přidat do basy</a></div>`).join("");
 </script>
 <script src="../vendor/three-r128.min.js"></script>
-<script src="hero3d.js?v=1"></script>
+<script src="hero3d.js?v=2"></script>
 <script>
 const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),prog=el=>{const r=el.getBoundingClientRect();return cl(-r.top/Math.max(1,r.height-innerHeight))};
 /* ===== basa ===== */
