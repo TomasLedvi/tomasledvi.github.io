@@ -96,7 +96,8 @@ p.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#cfc7b8;max-width:46ch}
 
 /* reference: vodorovný pás */
 #reference{position:relative;height:420vh;background:var(--cream);color:var(--slate)}
-.r-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.r-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding-top:100px}
+@media (max-width:760px){.r-head h2{font-size:2.4rem}.r-head p{font-size:.95rem}.strip{padding-top:24px}}
 .r-head{padding:0 clamp(16px,6vw,96px);display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
 .r-head h2 .serif{color:#9a5a2b}
 .r-head p{max-width:36ch;margin:0;color:#4a4e52}
