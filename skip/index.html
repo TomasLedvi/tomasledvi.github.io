@@ -125,7 +125,7 @@ p.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#cfc7b8;max-width:46ch}
 .step p{margin:0;color:var(--fog)}
 .dot{width:16px;height:16px;border-radius:50%;background:var(--slate);border:2px solid var(--copper2);box-shadow:0 0 0 7px #c8834e22,0 0 26px var(--copper);justify-self:start}
 .step:nth-child(even) .dot{justify-self:end}
-@media (max-width:760px){.step{grid-template-columns:1fr}.step .t,.step:nth-child(odd) .t{justify-self:start;text-align:left;order:2}.dot,.proc svg{display:none}}
+@media (max-width:760px){.step .t,.step:nth-child(odd) .t{justify-self:start;text-align:left;order:2}.step{grid-template-columns:22px 1fr;gap:18px;align-items:start}.step .dot,.step:nth-child(even) .dot{order:1;justify-self:start;margin-top:10px}.step .t{order:2}.steps{gap:56px}}
 
 /* krytiny */
 .mat{background:var(--slate2)}
@@ -276,13 +276,15 @@ const flashEl=document.getElementById("flash");let lastFlash=0;const flash=()=>{
 (async()=>{
  const sec=document.getElementById("build"),vids=[...sec.querySelectorAll("video")],phases=[...document.querySelectorAll("#phase div")],bars=[...sec.querySelectorAll(".track b")],intro=document.getElementById("intro"),veil=document.getElementById("veil"),poster=document.getElementById("poster"),N=vids.length;
  document.getElementById("watch").addEventListener("click",e=>{e.preventDefault();scrollTo({top:sec.offsetTop+(sec.offsetHeight-innerHeight)*.16,behavior:"smooth"})});
- await Promise.all(vids.map(async v=>{try{const r=await fetch(v.dataset.src,{mode:"cors"});if(!r.ok)throw 0;v.src=URL.createObjectURL(await r.blob())}catch(e){v.src=v.dataset.src}await new Promise(ok=>{if(v.readyState>=2)ok();else v.addEventListener("loadeddata",ok,{once:true})})}));
+ const prime=v=>{try{const p=v.play();if(p&&p.then)p.then(()=>v.pause()).catch(()=>{})}catch(e){}};
+ await Promise.all(vids.map(async v=>{try{const r=await fetch(v.dataset.src,{mode:"cors"});if(!r.ok)throw 0;v.src=URL.createObjectURL(await r.blob())}catch(e){v.src=v.dataset.src}v.load();prime(v);await new Promise(ok=>{if(v.readyState>=1)return ok();v.addEventListener("loadedmetadata",ok,{once:true});v.addEventListener("loadeddata",ok,{once:true});setTimeout(ok,9000)})}));
+ const unlock=()=>{vids.forEach(v=>{if(v.paused)prime(v)});removeEventListener("touchstart",unlock)};addEventListener("touchstart",unlock,{passive:true});
  document.getElementById("loading").style.opacity=0;
  let s=0;const busy=vids.map(()=>false);
  (function loop(){const t=prog(sec);s+=(t-s)*.09;
   const a=cl((s-.1)/.86),x=Math.min(N-1e-4,a*N),i=Math.floor(x),k=x-i;
   poster.style.opacity=a>0?0:1;vids.forEach((v,j)=>v.classList.toggle("on",a>0&&j===i));
-  if(a>0){const v=vids[i],want=Math.min(v.duration-.04,k*v.duration);if(!busy[i]&&Math.abs(v.currentTime-want)>.02){busy[i]=true;v.currentTime=want;v.addEventListener("seeked",()=>busy[i]=false,{once:true})}}
+  if(a>0&&vids[i].duration>0){const v=vids[i],want=Math.min(v.duration-.04,k*v.duration);if(!busy[i]&&Math.abs(v.currentTime-want)>.02){busy[i]=true;v.currentTime=want;v.addEventListener("seeked",()=>busy[i]=false,{once:true})}}
   const iv=1-cl(s/.08);intro.style.opacity=iv;intro.style.pointerEvents=iv>.5?"auto":"none";veil.style.opacity=.55+.45*iv;
   const ph=a<=0?-1:Math.min(N-1,Math.floor(x+.15));phases.forEach((p,j)=>p.classList.toggle("on",j===ph&&s<.985));
   bars.forEach((b,j)=>b.style.transform=`scaleY(${cl(x-j)})`);
