@@ -533,5 +533,6 @@
  ],
  "gallery_grid": true,
  "stamp_in_cert": true,
- "svc_bg": "assets/vykres.png"
+ "svc_bg": "assets/vykres.png",
+ "hero_h": "Vaše stavba. <em>Od první čáry.</em>"
 }

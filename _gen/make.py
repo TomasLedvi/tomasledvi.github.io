@@ -287,6 +287,10 @@ more.addEventListener("click",()=>{{open=true;draw()}});draw()}})();</script>
         rep('const cv=document.getElementById("confCanvas"),R=makeRenderer(cv,!MOBILE);if(!R)return null;','const cv=document.getElementById("confCanvas"),R=null;if(!R)return null;')
         rep('<a href="#konfigurator">Konfigurátor</a>','')
 
+    # vlastní hlavní nadpis (volitelně)
+    if c.get("hero_h"):
+        rep('<h1 data-split>Váš dům. <em>Od první čáry.</em></h1>', f'<h1 data-split>{c["hero_h"]}</h1>')
+
     # výkres jako podklad sekce Služby (volitelně)
     if c.get("svc_bg"):
         rep("</style>", "#sluzby{position:relative;overflow:hidden;isolation:isolate}#sluzby::before{content:'';position:absolute;inset:40px 6%;background:url(" + c["svc_bg"] + ") center/contain no-repeat;transform:rotate(-5deg);opacity:.15;z-index:-1;pointer-events:none}@media (max-width:700px){#sluzby::before{inset:70px 12px auto;height:62vw;opacity:.13}}\n</style>")
