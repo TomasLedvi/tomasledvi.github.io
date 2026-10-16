@@ -125,7 +125,8 @@ def main(cfg_path):
         st = c["stamp"]
         rep('<div class="tblock" aria-hidden="true">',
             f'<div class="stamp-wrap" aria-hidden="true"><div class="stamp-ink stamp-hero" style="--m:url({st})"></div></div>\n    <div class="tblock" aria-hidden="true">')
-        rep('<div class="cgrid rv">', f'<div class="cgrid rv" style="position:relative"><div class="stamp-ink stamp-c" aria-hidden="true" style="--m:url({st})"></div>')
+        if not c.get("stamp_in_cert"):
+            rep('<div class="cgrid rv">', f'<div class="cgrid rv" style="position:relative"><div class="stamp-ink stamp-c" aria-hidden="true" style="--m:url({st})"></div>')
         rep("</style>", """
 .stamp-ink{pointer-events:none;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;opacity:0}
 .stamp-ink.on{animation:stampIn .6s cubic-bezier(.3,1.45,.5,1) forwards}
@@ -161,13 +162,14 @@ const sc=document.querySelector(".stamp-c");if(sc&&"IntersectionObserver"in wind
     if c.get("cert"):
         ce = c["cert"]
         facts = "".join(f"<div><small>{a}</small><span>{b}</span></div>" for a, b in ce["facts"])
+        cst = f'<div class="stamp-ink stamp-c cert-st" aria-hidden="true" style="--m:url({c["stamp"]})"></div>' if c.get("stamp_in_cert") else ""
         rep('<section class="map-sec gut" id="oblast">', f'''<section class="sec gut light cert" id="autorizace">
   <div class="wrap cert-grid">
     <div>
       <div class="eyebrow bar-rv"><span><b>—</b> {ce["eyebrow"]}</span></div>
       <h2 class="h" data-split>{ce["h"]}</h2>
       <p class="lead rv">{ce["lead"]}</p>
-      <div class="cert-facts rv">{facts}</div>
+      <div class="cert-facts rv">{facts}</div>{cst}
     </div>
     <a class="cert-sheet rv" href="{ce["img"]}" target="_blank" rel="noopener" aria-label="Zobrazit osvědčení o autorizaci ve větší velikosti">
       <img src="{ce["img"]}" alt="Osvědčení o autorizaci ČKAIT" loading="lazy" width="760" height="1191">
@@ -189,6 +191,8 @@ const sc=document.querySelector(".stamp-c");if(sc&&"IntersectionObserver"in wind
 .cert-sheet img{display:block;width:100%;height:auto}
 .cert-sheet span{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;background:var(--pink);color:var(--paper);padding:7px 12px;white-space:nowrap}
 @media (max-width:900px){.cert-grid{grid-template-columns:1fr}.cert-sheet{width:min(86%,360px)}}
+.stamp-c.cert-st{position:relative;right:auto;bottom:auto;display:block;width:130px;height:130px;margin:30px 0 0 auto;--r:-8deg}
+@media (max-width:900px){.stamp-c.cert-st{width:110px;height:110px;margin:24px 8px 0 auto}}
 </style>""")
         rep('<a href="#oblast">', '<a href="#autorizace">Autorizace</a><a href="#oblast">')
 
@@ -209,7 +213,7 @@ const sc=document.querySelector(".stamp-c");if(sc&&"IntersectionObserver"in wind
   <div class="wrap">
     <div class="eyebrow bar-rv"><span><b>—</b> Vybrané zakázky</span></div>
     <h2 class="h" data-split>Stavby, které <em>stojí.</em></h2>
-    <p class="lead rv">Realizováno přes 500 nových staveb a rekonstrukcí. Tady je výběr z nich, projektovaný samostatně nebo jako vedoucí projektu a zpracovatel stavební části v rámci ateliéru PROKON Příbram.</p>
+    <p class="lead rv">Realizováno přes 500 nových staveb a rekonstrukcí. Zde je výběr z nich, projektovaných samostatně nebo jako vedoucí projektu a zpracovatel stavební části v rámci ateliéru PROKON Příbram.</p>
     <div class="ref-f rv" role="group" aria-label="Období">
       <button type="button" class="ref-chip" data-f="all" aria-pressed="true">Vše ({n})</button><button type="button" class="ref-chip" data-f="90" aria-pressed="false">1991–1999</button><button type="button" class="ref-chip" data-f="00" aria-pressed="false">2000–2009</button><button type="button" class="ref-chip" data-f="10" aria-pressed="false">2010–2019</button><button type="button" class="ref-chip" data-f="long" aria-pressed="false">Dlouhodobě</button>
     </div>
@@ -273,6 +277,19 @@ more.addEventListener("click",()=>{{open=true;draw()}});draw()}})();</script>
     if c.get("accent"):
         a, a2 = c["accent"]
         s = s.replace("#d9a66a", a).replace("%23d9a66a", "%23" + a[1:]).replace("#efc48f", a2)
+
+    # vypuštěné sekce (zůstanou v kódu skryté, 3D se v nich nespouští)
+    if "skladba" in c.get("drop_sections",[]):
+        rep('<section class="xpl" id="skladba">','<section class="xpl" id="skladba" hidden style="display:none">')
+        rep('const R=makeRenderer(cv,!MOBILE);\n   if(!R){sec.style.display="none"}else{','const R=null;\n   if(!R){sec.style.display="none"}else{')
+    if "konfigurator" in c.get("drop_sections",[]):
+        rep('<section class="conf gut" id="konfigurator">','<section class="conf gut" id="konfigurator" hidden style="display:none">')
+        rep('const cv=document.getElementById("confCanvas"),R=makeRenderer(cv,!MOBILE);if(!R)return null;','const cv=document.getElementById("confCanvas"),R=null;if(!R)return null;')
+        rep('<a href="#konfigurator">Konfigurátor</a>','')
+
+    # galerie v řádcích (pořadí jako v knížce) místo sloupcové mozaiky
+    if c.get("gallery_grid"):
+        rep(".masonry{columns:4 250px;column-gap:12px}",".masonry{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}.masonry .tile{margin:0!important;width:100%}@media (max-width:700px){.masonry{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:420px){.masonry{grid-template-columns:1fr}}")
 
     out = ROOT / c["slug"] / "index.html"
     out.parent.mkdir(exist_ok=True)

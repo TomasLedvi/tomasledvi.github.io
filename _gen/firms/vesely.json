@@ -2,7 +2,7 @@
  "template": "dum",
  "slug": "vesely",
  "name": "Projektant Ing. Jaromír Veselý",
- "logo": "Jaromír Veselý",
+ "logo": "Ing. Jaromír Veselý",
  "logo_sub": "Projektant · Sedlčany",
  "map_nav": "Kancelář",
  "source_note": "Fotografie a údaje převzaty z katalogu ČESKÉSTAVBY.cz.",
@@ -164,17 +164,17 @@
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45796be9.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a455ce134.jpg",
    "Budova Hasičské záchranné služby Sedlčany"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45407dfe.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a450b022e.jpg",
    "Velkosklad pneumatik Michelin Jesenice u Chebu"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a455ce134.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45796be9.jpg",
    "Čerpací stanice pohonných hmot Drhovle u Strakonic"
   ],
   [
@@ -184,17 +184,17 @@
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a4478c3c4.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a44d8dc64.jpg",
    "Sanace vlhkého zdiva, Benešova vila v Sezimově Ústí"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a450b022e.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45407dfe.jpg",
    "Objekt 0924 – Distribuce v Březnici, budova bývalé České spořitelny"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a44d8dc64.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a4478c3c4.jpg",
    "Stavební úpravy Panského domu v Rožmitále pod Třemšínem na Kulturní dům"
   ]
  ],
@@ -230,7 +230,7 @@
    "id": "rekonstrukce",
    "t": "Rekonstrukce",
    "s": "Přístavby, nástavby, úpravy.",
-   "img": 2,
+   "img": 6,
    "intro": "Projekty rekonstrukcí, přístaveb, nástaveb a stavebních úprav.",
    "spec": [
     [
@@ -256,7 +256,7 @@
    "id": "statika",
    "t": "Konstrukční část",
    "s": "Statika v jednom projektu.",
-   "img": 6,
+   "img": 2,
    "intro": "Stavebně konstrukční část projektu zpracujeme v rámci jedné zakázky.",
    "spec": [
     [
@@ -526,5 +526,11 @@
  ],
  "form_to": "prokon-vesely@volny.cz",
  "form_h": "Co pro vás můžeme navrhnout?",
- "form_dim": "Velikost stavby (nepovinné)<input id=\"pdim\" placeholder=\"např. 4+kk, cca 120 m²\">"
+ "form_dim": "Velikost stavby (nepovinné)<input id=\"pdim\" placeholder=\"např. 4+kk, cca 120 m²\">",
+ "drop_sections": [
+  "skladba",
+  "konfigurator"
+ ],
+ "gallery_grid": true,
+ "stamp_in_cert": true
 }
