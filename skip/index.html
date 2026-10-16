@@ -79,7 +79,7 @@ p.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#cfc7b8;max-width:46ch}
 @keyframes flash{0%{opacity:0}18%{opacity:.95}100%{opacity:0}}
 
 /* scéna 2: otázky a jistoty */
-#otazky{position:relative;height:420vh;background:#141618}
+#otazky{position:relative;height:800vh;background:#141618}
 .q-stage{position:sticky;top:0;height:100vh;overflow:hidden}
 #shards{position:absolute;inset:0;width:100%;height:100%}
 .qs{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 16px;pointer-events:none}
@@ -102,7 +102,8 @@ p.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#cfc7b8;max-width:46ch}
 .r-head h2 .serif{color:#9a5a2b}
 .r-head p{max-width:36ch;margin:0;color:#4a4e52}
 .strip{display:flex;gap:clamp(14px,2vw,26px);padding:40px clamp(16px,6vw,96px) 0;will-change:transform}
-.ref{flex:0 0 auto;width:clamp(260px,34vw,520px)}
+.ref{flex:0 0 auto;width:clamp(240px,min(34vw,calc((100vh - 400px)*1.33)),520px)}
+.r-head h2{font-size:clamp(2.2rem,min(6.6vw,9vh),6rem)}
 .ref .ph{aspect-ratio:4/3;overflow:hidden;background:#d8d0c2}
 .ref img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.2s var(--ease)}
 .ref:hover img{transform:scale(1.02)}
