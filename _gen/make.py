@@ -287,6 +287,10 @@ more.addEventListener("click",()=>{{open=true;draw()}});draw()}})();</script>
         rep('const cv=document.getElementById("confCanvas"),R=makeRenderer(cv,!MOBILE);if(!R)return null;','const cv=document.getElementById("confCanvas"),R=null;if(!R)return null;')
         rep('<a href="#konfigurator">Konfigurátor</a>','')
 
+    # výkres jako podklad sekce Služby (volitelně)
+    if c.get("svc_bg"):
+        rep("</style>", "#sluzby{position:relative;overflow:hidden;isolation:isolate}#sluzby::before{content:'';position:absolute;left:-8%;right:-8%;top:-6%;bottom:-6%;background:url(" + c["svc_bg"] + ") center/min(1500px,118%) auto no-repeat;transform:rotate(-7deg);opacity:.14;z-index:-1;pointer-events:none}@media (max-width:700px){#sluzby::before{background-size:260% auto;background-position:30% 12%;background-repeat:repeat-y;opacity:.12}}\n</style>")
+
     # galerie v řádcích (pořadí jako v knížce) místo sloupcové mozaiky
     if c.get("gallery_grid"):
         rep(".masonry{columns:4 250px;column-gap:12px}",".masonry{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}.masonry .tile{margin:0!important;width:100%}@media (max-width:700px){.masonry{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:420px){.masonry{grid-template-columns:1fr}}")

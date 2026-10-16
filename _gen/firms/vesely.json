@@ -532,5 +532,6 @@
   "konfigurator"
  ],
  "gallery_grid": true,
- "stamp_in_cert": true
+ "stamp_in_cert": true,
+ "svc_bg": "assets/vykres.png"
 }
