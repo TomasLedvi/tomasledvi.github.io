@@ -289,7 +289,7 @@ more.addEventListener("click",()=>{{open=true;draw()}});draw()}})();</script>
 
     # výkres jako podklad sekce Služby (volitelně)
     if c.get("svc_bg"):
-        rep("</style>", "#sluzby{position:relative;overflow:hidden;isolation:isolate}#sluzby::before{content:'';position:absolute;left:-8%;right:-8%;top:-6%;bottom:-6%;background:url(" + c["svc_bg"] + ") center/min(1500px,118%) auto no-repeat;transform:rotate(-7deg);opacity:.14;z-index:-1;pointer-events:none}@media (max-width:700px){#sluzby::before{background-size:260% auto;background-position:30% 12%;background-repeat:repeat-y;opacity:.12}}\n</style>")
+        rep("</style>", "#sluzby{position:relative;overflow:hidden;isolation:isolate}#sluzby::before{content:'';position:absolute;inset:40px 4%;background:url(" + c["svc_bg"] + ") center/contain no-repeat;opacity:.15;z-index:-1;pointer-events:none}@media (max-width:700px){#sluzby::before{inset:70px 12px auto;height:62vw;opacity:.13}}\n</style>")
 
     # galerie v řádcích (pořadí jako v knížce) místo sloupcové mozaiky
     if c.get("gallery_grid"):
