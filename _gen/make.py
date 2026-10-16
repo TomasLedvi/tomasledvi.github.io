@@ -293,7 +293,7 @@ more.addEventListener("click",()=>{{open=true;draw()}});draw()}})();</script>
 
     # galerie v řádcích (pořadí jako v knížce) místo sloupcové mozaiky
     if c.get("gallery_grid"):
-        rep(".masonry{columns:4 250px;column-gap:12px}",".masonry{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}.masonry .tile{margin:0!important;width:100%}@media (max-width:700px){.masonry{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:420px){.masonry{grid-template-columns:1fr}}")
+        rep(".masonry{columns:4 250px;column-gap:12px}",".masonry{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}@media (max-width:1000px){.masonry{grid-template-columns:repeat(3,minmax(0,1fr))}}.masonry .tile{margin:0!important;width:100%}@media (max-width:700px){.masonry{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:420px){.masonry{grid-template-columns:1fr}}")
 
     out = ROOT / c["slug"] / "index.html"
     out.parent.mkdir(exist_ok=True)

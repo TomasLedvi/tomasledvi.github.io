@@ -164,37 +164,37 @@
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a455ce134.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45407dfe.jpg",
    "Budova Hasičské záchranné služby Sedlčany"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a450b022e.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a454e70d2.jpg",
    "Velkosklad pneumatik Michelin Jesenice u Chebu"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45796be9.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a450b022e.jpg",
    "Čerpací stanice pohonných hmot Drhovle u Strakonic"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a454e70d2.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45796be9.jpg",
    "Rekonstrukce obchodního a společenského centra Dubina v Domažlicích"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a44d8dc64.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a455ce134.jpg",
    "Sanace vlhkého zdiva, Benešova vila v Sezimově Ústí"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a45407dfe.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a4478c3c4.jpg",
    "Objekt 0924 – Distribuce v Březnici, budova bývalé České spořitelny"
   ],
   [
    "projekty",
-   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a4478c3c4.jpg",
+   "https://img.ceskestavby.cz/cache/1200x800-1/i.ceskyinternet.cz/foto/5023259/5257a44d8dc64.jpg",
    "Stavební úpravy Panského domu v Rožmitále pod Třemšínem na Kulturní dům"
   ]
  ],
@@ -230,7 +230,7 @@
    "id": "rekonstrukce",
    "t": "Rekonstrukce",
    "s": "Přístavby, nástavby, úpravy.",
-   "img": 6,
+   "img": 1,
    "intro": "Projekty rekonstrukcí, přístaveb, nástaveb a stavebních úprav.",
    "spec": [
     [
@@ -243,7 +243,7 @@
    "id": "stavby",
    "t": "Pozemní stavby",
    "s": "Občanské i provozní budovy.",
-   "img": 4,
+   "img": 2,
    "intro": "Projekty pozemních staveb, samostatně i jako hlavní inženýr projektu v ateliéru PROKON Příbram.",
    "spec": [
     [
@@ -256,7 +256,7 @@
    "id": "statika",
    "t": "Konstrukční část",
    "s": "Statika v jednom projektu.",
-   "img": 2,
+   "img": 3,
    "intro": "Stavebně konstrukční část projektu zpracujeme v rámci jedné zakázky.",
    "spec": [
     [
