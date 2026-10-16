@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Karásek a Stülpner · První občanský pivovar v Chomutově · návrh webu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Alegreya:ital,wght@0,400;1,400;1,500&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Neoficiální koncept webu pro pivovar Karásek a Stülpner. © 2026 Tomáš Ledvina */
+:root{--soot:#16110d;--cellar:#221812;--wood:#3a2618;--paper:#e6dac2;--paper2:#d9cbb0;--ink:#231a12;--muted:#6b5a48;--red:#8c2a1c;--red2:#a8382a;--brass:#c99b48;--brass2:#e3bd72;--line:#ffffff1f;
+--slab:"Alfa Slab One",Georgia,serif;--serif:"Alegreya",Georgia,serif;--sans:"Alegreya Sans",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--soot);scroll-behavior:smooth}
+body{background:var(--soot);color:#efe4cf;font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--brass2);outline-offset:3px}
+.bar{position:fixed;inset:0 0 auto;z-index:60;background:var(--red);color:#f3e6cc;font:500 .78rem/1.3 var(--sans);text-align:center;padding:6px 12px}
+.nav{position:fixed;left:0;right:0;top:26px;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px max(16px,4vw);transition:background .5s,transform .45s cubic-bezier(.4,0,.2,1)}
+.nav.solid{background:#16110df0;backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.logo{text-decoration:none;font:400 1.35rem/1 var(--slab);letter-spacing:.01em;color:#f3e6cc}
+.logo span{display:block;margin-top:5px;font:italic 400 .9rem/1 var(--serif);color:var(--brass2);letter-spacing:0}
+.nav ul{display:flex;gap:clamp(16px,2vw,30px);list-style:none}
+.nav ul a{text-decoration:none;color:#d8ccb4;transition:color .3s}.nav ul a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:3px;background:var(--brass);color:#1d140c;font:700 1rem/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:background .3s}
+.btn:hover{background:var(--brass2)}
+.btn.line{background:transparent;color:#f3e6cc;box-shadow:inset 0 0 0 1px #f3e6cc66}.btn.line:hover{box-shadow:inset 0 0 0 1px #f3e6cc}
+@media (max-width:900px){.nav ul{display:none}.logo{font-size:1.1rem}.logo span{font-size:.8rem}.nav .btn{padding:10px 14px;font-size:.9rem}}
+
+h1,h2,h3{font-weight:400}
+.h2{font:400 clamp(2.3rem,5.2vw,4.6rem)/1.02 var(--slab);letter-spacing:.005em}
+.h2 i{display:block;margin-top:.18em;font:italic 400 .56em/1.12 var(--serif);color:var(--brass2)}
+.lead{margin-top:22px;max-width:56ch;font-size:1.12rem;line-height:1.7;color:#cdbfa6}
+.sec{padding:clamp(90px,14vh,160px) max(18px,6vw)}
+.wrap{max-width:1180px;margin:0 auto}
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s,transform 1.1s cubic-bezier(.2,.75,.15,1)}.rv.in{opacity:1;transform:none}
+
+/* ===== 3D lahve ===== */
+.show{position:relative;height:760vh;background:var(--soot)}
+.s3{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;--g:#2a1a10;background:radial-gradient(55% 65% at 50% 52%,color-mix(in srgb,var(--g) 70%,#000) 0%,color-mix(in srgb,var(--g) 22%,#110c09) 46%,#0d0907 80%)}
+.s3::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;background:
+ repeating-linear-gradient(0deg,#0000 0 54px,#0006 54px 58px),repeating-linear-gradient(90deg,#0000 0 118px,#0005 118px 122px);
+ -webkit-mask:radial-gradient(70% 60% at 50% 45%,#000,#0000);mask:radial-gradient(70% 60% at 50% 45%,#000,#0000)}
+#gl{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
+.big{position:absolute;left:50%;top:50%;z-index:0;transform:translate(-50%,-50%);font:400 clamp(4.4rem,15vw,17rem)/.9 var(--slab);white-space:nowrap;text-align:center;color:color-mix(in srgb,var(--g) 40%,#f0dcb0);opacity:0;pointer-events:none}
+.big i{font:italic 400 1em var(--serif)}
+@media (max-width:700px){.big{font-size:15vw;top:24%}}
+.i3{position:absolute;left:0;right:0;bottom:clamp(54px,10vh,110px);z-index:2;text-align:center;padding:0 20px}
+.i3 h1{font:400 clamp(2.7rem,7vw,6.4rem)/1 var(--slab);color:#f6ead2;text-shadow:0 6px 40px #000c}
+.i3 h1 i{display:block;margin-top:.2em;font:italic 400 .5em/1.1 var(--serif);color:var(--brass2)}
+.i3 p{margin-top:16px;color:#d6c8ae}
+.scroll{width:1px;height:46px;background:#fff6;overflow:hidden;position:relative;margin:26px auto 0}
+.scroll::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:#fff;animation:sd 1.8s cubic-bezier(.6,0,.3,1) infinite}@keyframes sd{to{top:46px}}
+.wp{position:absolute;z-index:2;left:max(20px,6vw);top:0;bottom:0;width:min(40vw,540px);display:flex;flex-direction:column;justify-content:center;opacity:0;pointer-events:none}
+.wp .n{font:italic 400 1.15rem/1 var(--serif);color:var(--brass2)}
+.wp h2{margin:14px 0 18px;font:400 clamp(2.6rem,4.8vw,4.8rem)/1 var(--slab);color:#f6ead2}
+.wp h2 i{display:block;margin-top:.2em;font:italic 400 .5em/1.1 var(--serif);color:color-mix(in srgb,var(--g) 30%,#f0d6a6)}
+.wp p{font-size:1.1rem;line-height:1.7;color:#ddd0b8;max-width:440px}
+.f3{display:flex;gap:30px;margin-top:28px;padding-top:18px;border-top:1px solid #ffffff22}
+.f3 small{display:block;font:500 .85rem/1 var(--sans);color:var(--brass2);margin-bottom:8px}.f3 span{font:400 1.2rem/1.1 var(--serif);color:#f3e6cc}
+.wp .btn{margin-top:28px;align-self:flex-start;pointer-events:auto}
+.o3{position:absolute;left:0;right:0;bottom:clamp(36px,8vh,80px);z-index:2;text-align:center;opacity:0;padding:0 20px;pointer-events:none}
+.o3 p{max-width:520px;margin:0 auto 22px;line-height:1.7;color:#e3d6bd}
+.o3 .ctas{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.rail{position:absolute;right:clamp(14px,3vw,36px);top:50%;transform:translateY(-50%);display:grid;gap:10px;z-index:3}
+.rail i{display:block;width:2px;height:22px;background:#ffffff30;transition:background .4s,height .4s cubic-bezier(.2,.75,.15,1)}.rail i.on{background:var(--brass2);height:46px}
+@media (max-width:760px){
+ .wp{left:20px;right:20px;width:auto;top:auto;bottom:22px;justify-content:flex-end}
+ .wp h2{font-size:2.3rem;margin:8px 0 10px}.wp p{font-size:.98rem;line-height:1.55}
+ .f3{gap:18px;margin-top:14px;padding-top:12px}.f3 span{font-size:1rem}.wp .btn{margin-top:14px;padding:10px 16px}
+ .i3{bottom:40px}.rail{top:110px;transform:none}}
+
+/* ===== legenda (zatykač) ===== */
+.legend{background:var(--paper);color:var(--ink);position:relative;overflow:hidden}
+.legend::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .33 0 0 0 0 .2 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E")}
+.legend .h2 i{color:var(--red)}
+.legend .lead{color:#4d3f30}
+.lg{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,6vw,100px);align-items:center}
+.poster{position:relative;border:2px solid var(--ink);padding:clamp(22px,3vw,40px);background:#efe5d0;box-shadow:10px 10px 0 #2319121a;transform:rotate(-1.4deg)}
+.poster small{display:block;text-align:center;font:400 clamp(1.6rem,3vw,2.4rem)/1 var(--slab);color:var(--red);letter-spacing:.04em}
+.poster .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.poster .duo div{border-top:2px solid var(--ink);padding-top:12px}
+.poster b{display:block;font:400 1.5rem/1.1 var(--slab)}
+.poster p{margin-top:8px;font:400 1rem/1.5 var(--serif);color:#4d3f30}
+.poster .src{margin-top:22px;padding-top:14px;border-top:1px dashed #23191266;font:italic 400 .98rem/1.5 var(--serif);color:#5a4a39}
+.quote{margin-top:40px;font:italic 400 clamp(1.5rem,2.6vw,2.2rem)/1.35 var(--serif);color:var(--red);border-left:3px solid var(--red);padding-left:24px}
+.quote cite{display:block;margin-top:12px;font:500 .95rem/1.3 var(--sans);font-style:normal;color:#5a4a39}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);margin-top:70px;border-top:2px solid var(--ink)}
+.nums div{padding:26px 0 0}.nums b{display:block;font:400 clamp(2.4rem,4.4vw,3.8rem)/1 var(--slab);color:var(--red)}.nums span{display:block;margin-top:10px;color:#4d3f30}
+@media (max-width:900px){.lg{grid-template-columns:1fr}.poster{transform:none}.nums{grid-template-columns:1fr}.nums div{border-bottom:1px solid #23191233;padding:20px 0}}
+
+/* ===== jak vaříme: fotky + světelná čára ===== */
+.brew{position:relative;height:640vh;background:var(--cellar)}
+.bstage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr}
+.ph{position:relative;overflow:hidden;background:#0d0907}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity 1s,transform 7s linear;filter:saturate(.9) contrast(1.05)}
+.ph img.on{opacity:1;transform:scale(1.02)}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0000 60%,var(--cellar)),linear-gradient(0deg,#0008,#0000 30%)}
+.bt{position:relative;display:flex;flex-direction:column;justify-content:center;padding:120px max(20px,5vw) 60px clamp(30px,4vw,60px)}
+.bt .h2{font-size:clamp(2rem,3.6vw,3.4rem)}
+.track{position:relative;margin-top:40px;padding-left:34px}
+.track svg{position:absolute;left:6px;top:8px;width:4px;height:calc(100% - 16px);overflow:visible}
+.st{position:relative;padding:10px 0;opacity:.32;transition:opacity .5s}
+.st.on{opacity:1}
+.st::before{content:"";position:absolute;left:-34px;top:17px;width:14px;height:14px;border-radius:50%;background:var(--cellar);border:2px solid #c99b4866;transition:border-color .4s,box-shadow .4s}
+.st.on::before,.st.done::before{border-color:var(--brass2);box-shadow:0 0 0 6px #c99b4822,0 0 22px var(--brass)}
+.st h3{font:400 1.45rem/1.2 var(--slab);color:#f3e6cc}
+.st p{max-height:0;overflow:hidden;color:#cdbfa6;line-height:1.6;transition:max-height .6s cubic-bezier(.2,.75,.15,1),margin .6s}
+.st.on p{max-height:9em;margin-top:6px}
+@media (max-width:860px){.bstage{grid-template-columns:1fr;grid-template-rows:42vh 1fr}.ph::after{background:linear-gradient(0deg,var(--cellar),#0000 45%)}.bt{padding:10px 20px 20px;justify-content:flex-start}.bt .h2{font-size:1.9rem}.track{margin-top:18px}.st{padding:6px 0}.st h3{font-size:1.15rem}.st p{font-size:.95rem}.st::before{top:11px}}
+
+/* ===== basa ===== */
+.crate-sec{background:var(--soot)}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.cfg{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center;margin-top:60px}
+@media (max-width:900px){.cfg{grid-template-columns:1fr;gap:26px}.cbox{order:-1}.wl{grid-auto-flow:column;grid-auto-columns:84%;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 14px;scrollbar-width:none}.wl::-webkit-scrollbar{display:none}.wrow{scroll-snap-align:start}}
+.wl{display:grid;gap:10px}
+.wrow{position:relative;display:grid;grid-template-columns:52px 1fr 38px;align-items:center;gap:16px;padding:8px 14px 8px 8px;border:1px solid var(--line);border-radius:6px;background:#1f1711;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:transform .35s cubic-bezier(.2,.75,.15,1),border-color .35s}
+.wrow:hover{transform:translateX(6px);border-color:var(--g)}
+.th{height:78px;display:grid;place-items:center;overflow:hidden;border-radius:4px;background:radial-gradient(circle at 50% 62%,color-mix(in srgb,var(--g) 45%,#2a1d14),#120d0a 75%)}
+.th img{height:74px;width:auto}
+.nm b{display:block;font:400 1.1rem/1.15 var(--slab);color:#f3e6cc}.nm small{display:block;margin-top:5px;font-size:.88rem;color:#b3a48a}
+.add{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--brass);color:#1d140c;font:700 1.4rem/1 var(--sans);transition:transform .35s}
+.wrow:hover .add{transform:rotate(90deg)}
+.bd{position:absolute;left:46px;top:4px;min-width:21px;height:21px;padding:0 5px;border-radius:11px;background:var(--red2);color:#fff;font:700 .75rem/21px var(--sans);text-align:center;transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}.bd.on{transform:scale(1)}
+.crates{display:grid;gap:18px}
+.crate{position:relative;aspect-ratio:1.5}
+.crate.cin{animation:cin .6s cubic-bezier(.2,.75,.15,1)}@keyframes cin{from{opacity:0;transform:translateY(-24px)}}
+.crate .back{position:absolute;left:2%;right:2%;bottom:5%;height:52%;border-radius:4px 4px 0 0;background:linear-gradient(#5b1a12,#8c2a1c);box-shadow:inset 0 20px 30px #000a}
+.slots{position:absolute;left:5%;right:5%;bottom:9%;top:0;display:grid;grid-template-columns:repeat(6,1fr);z-index:1}
+.slot{position:relative;cursor:pointer}
+.slot img{position:absolute;left:50%;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);filter:drop-shadow(0 12px 10px #0009);cursor:pointer}
+.slot img.drop{animation:drop .75s cubic-bezier(.3,1.35,.5,1)}@keyframes drop{from{transform:translate(-50%,-75%);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+.slot img.up{transition:transform .38s cubic-bezier(.5,0,.8,.4),opacity .38s;transform:translate(-50%,-90%);opacity:0}
+.front{position:absolute;left:0;right:0;bottom:0;height:44%;z-index:2;border-radius:3px;display:grid;place-content:center;text-align:center;
+ background:repeating-linear-gradient(90deg,#0000 0 24.6%,#0003 24.6% 25%),linear-gradient(180deg,#a83526,#7d2318);box-shadow:0 34px 50px -30px #000,inset 0 2px 0 #ffffff30,inset 0 -6px 12px #0004}
+.front span{font:400 clamp(1rem,2.3vw,1.7rem)/1 var(--slab);color:#f1dcb0;opacity:.92}
+.front i{display:block;margin-top:8px;font:italic 400 .95rem/1 var(--serif);color:#f1dcb0;opacity:.75}
+.crate.shake{animation:shk .4s}@keyframes shk{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.sum{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.sum b{display:block;font:400 1.5rem/1 var(--slab)}.sum span{display:block;color:#b3a48a;font-size:.95rem;margin-top:8px}
+#ask{margin-top:22px}
+
+/* ===== prohlídky ===== */
+.tour{background:var(--wood);position:relative}
+.split{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(30px,7vw,110px);align-items:center}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.frame{position:relative;aspect-ratio:4/5;max-width:520px;border-radius:200px 200px 4px 4px;overflow:hidden;box-shadow:0 40px 80px -40px #000}
+.frame img{width:100%;height:100%;object-fit:cover}
+.frame figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;background:linear-gradient(0deg,#000b,#0000);font:italic 400 1rem/1.4 var(--serif);color:#e8dcc2}
+.facts{margin-top:34px;display:grid;gap:18px}
+.facts div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.facts small{font:500 .95rem/1.4 var(--sans);color:var(--brass2)}.facts span{color:#e3d6bd;line-height:1.55}
+.tour .btn{margin-top:34px}
+
+/* ===== kontakt ===== */
+.contact{background:var(--red);color:#f3e6cc}
+.contact .h2 i{color:#f1d29a}
+.cards{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ffffff2e}
+.cards div{background:var(--red);padding:30px 26px}
+.cards small{display:block;font:500 .95rem/1 var(--sans);color:#f1d29a;margin-bottom:12px}
+.cards span{font:400 1.3rem/1.5 var(--serif)}
+.cards a{text-decoration:none}.cards a:hover{text-decoration:underline}
+.contact .btn{margin-top:44px;background:#f3e6cc;color:var(--red)}.contact .btn:hover{background:#fff}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+footer{padding:34px max(18px,6vw) 50px;color:#9c8c72;font-size:.92rem;line-height:1.7;text-align:center;background:var(--soot)}
+@media (prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}.scroll::after{animation:none}.ph img{transition:opacity .3s}}
+</style>
+</head>
+<body>
+<div class="bar">Neoficiální návrh webu pro pivovar Karásek a Stülpner, nejde o oficiální stránky</div>
+<nav class="nav" id="nav">
+  <a class="logo" href="#">Karásek a Stülpner<span>první občanský pivovar v Chomutově</span></a>
+  <ul><li><a href="#show">Piva</a></li><li><a href="#legenda">Legenda</a></li><li><a href="#varime">Jak vaříme</a></li><li><a href="#prohlidky">Prohlídky</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <a class="btn" href="#prohlidky">Prohlídka pivovaru</a>
+</nav>
+
+<section class="show" id="show">
+  <div class="s3" id="s3">
+    <div class="big" id="big">Bez <i>filtru.</i></div>
+    <canvas id="gl" aria-label="Lahve našich piv"></canvas>
+    <div class="i3" id="i3">
+      <h1>Pivo s pověstí lupičů.<i>Vaříme ho v chomutovském sklepě od roku 2013.</i></h1>
+      <p>Posuňte dolů a poznejte naše piva jedno po druhém.</p>
+      <div class="scroll" aria-hidden="true"></div>
+    </div>
+    <div id="wps"></div>
+    <div class="o3" id="o3"><p>Nefiltrovaná a nepasterizovaná piva, bez přídavků, náhražek, konzervačních a stabilizačních látek.</p><div class="ctas"><a class="btn" href="#basa">Sestavit basu</a><a class="btn line" href="#prohlidky">Prohlídka pivovaru</a></div></div>
+    <div class="rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<section class="sec legend" id="legenda">
+  <div class="wrap lg">
+    <div>
+      <h2 class="h2 rv">Dva lupiči,<i>jeden pivovar.</i></h2>
+      <p class="lead rv">Jan Karásek byl lupič a podloudník ze saského pohraničí. Karel Stülpner proslulý pytlák, jehož revír neměl hranic, od severních Čech po Německo. Oba byli nazýváni českými Jánošíky: nikdy nezabili člověka a pomáhali chudým a ublíženým.</p>
+      <p class="lead rv">Jejich osudy spojil spisovatel Kvidon z Felsů v loupežnickém románu z roku 1908. A my jsme podle nich pojmenovali pivovar, který patří lidem z Chomutova.</p>
+      <blockquote class="quote rv">„Někdo ho již dávno zrušil, jiní ho nenávratně zbourali. My nerušíme, nebouráme, my obnovujeme.“<cite>Ze zakladatelské myšlenky pivovaru</cite></blockquote>
+    </div>
+    <div class="poster rv" aria-label="Karásek a Stülpner">
+      <small>Hledají se</small>
+      <div class="duo">
+        <div><b>Jan Karásek</b><p>Lupič a podloudník. Působil hlavně v saském pohraničí.</p></div>
+        <div><b>Karel Stülpner</b><p>Pytlák z Krušných hor. Historik Petr Rak ho nazval Robinem Hoodem Krušných hor.</p></div>
+      </div>
+      <p class="src">Odměna: poctivé nefiltrované pivo. Hledané naleznete v pivovaru na ulici 28. října v Chomutově.</p>
+    </div>
+  </div>
+  <div class="wrap nums">
+    <div class="rv"><b>2013</b><span>založen pivovar jako akciová společnost místních patriotů</span></div>
+    <div class="rv"><b>1908</b><span>vyšel loupežnický román Karásek a Stülpner</span></div>
+    <div class="rv"><b>20+</b><span>piv a speciálů od světlé jedenáctky po sedmnáctku</span></div>
+  </div>
+</section>
+
+<section class="brew" id="varime">
+  <div class="bstage">
+    <div class="ph" id="ph">
+      <img alt="Šrotovník na slad v pivovaru" data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/4aa47423-3b3b-48e4-b46f-20d5afac8951.jpg">
+      <img alt="Sládek u měděné varny" data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/efb0a75b-9629-4297-aa57-a94066f04ccf.jpg">
+      <img alt="Práce u měděné nádoby varny" data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/76eb53d2-7932-4e9c-b1f9-df6a5c7a8a30.jpg">
+      <img alt="Přidávání chmele do mladiny" data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f4e24e23-9865-4a3c-a2b9-4011f7a7b6d8.jpg">
+      <img alt="Nerezové tanky ve sklepě pivovaru" data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/58274db1-faad-4db1-8753-9845c16f3331.jpg">
+      <img alt="Sudy připravené ke stáčení" data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/8c041de1-4c6d-4b58-a351-28ff095209dd.jpg">
+    </div>
+    <div class="bt">
+      <h2 class="h2">Jak vaříme<i>v našem sklepě.</i></h2>
+      <div class="track" id="track">
+        <svg aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 4 100"><line x1="2" y1="0" x2="2" y2="100" stroke="#c99b4833" stroke-width="2" vector-effect="non-scaling-stroke"/><line id="bl" x1="2" y1="0" x2="2" y2="100" stroke="#e3bd72" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="filter:drop-shadow(0 0 4px #e3bd72)"/></svg>
+        <div class="st"><h3>Šrotování</h3><p>Slad nejdřív rozdrtíme ve šrotovníku, aby se z něj dal vylouhovat cukr.</p></div>
+        <div class="st"><h3>Vystírání a rmutování</h3><p>Šrot smícháme s vodou a postupně zahříváme. Škroby se mění na cukry, ze kterých bude pivo.</p></div>
+        <div class="st"><h3>Scezování</h3><p>Sladinu oddělíme od mláta, tedy od zbytků sladu.</p></div>
+        <div class="st"><h3>Chmelovar</h3><p>Sladinu vaříme s chmelem. Ten dává pivu hořkost a vůni, u nás často žatecké odrůdy jako Kazbek nebo Saaz Comfort.</p></div>
+        <div class="st"><h3>Kvašení a ležení</h3><p>Kvasnice promění cukr v alkohol. Pak pivo v klidu dozrává v tancích.</p></div>
+        <div class="st"><h3>Stáčení</h3><p>Pivo nefiltrujeme ani nepasterizujeme, takže si zachová kvasnice a plnou chuť.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec crate-sec" id="basa">
+  <div class="wrap center">
+    <h2 class="h2 rv">Sestavte si basu<i>z našich piv.</i></h2>
+    <p class="lead rv">Vyberte piva, která chcete ochutnat, a pošlete nám poptávku. Kliknutím na lahev ji z basy zase vyndáte.</p>
+  </div>
+  <div class="wrap cfg">
+    <div class="wl rv" id="wl"></div>
+    <div class="cbox rv">
+      <div class="crates" id="crates"></div>
+      <div class="sum"><div><b id="cnt">Prázdná basa</b><span id="hint2"></span></div></div>
+      <a class="btn" id="ask" href="#kontakt">Poptat basu e-mailem</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec tour" id="prohlidky">
+  <div class="wrap split">
+    <figure class="frame rv"><img loading="lazy" alt="Chodba pivovarského sklepa s malbou" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/156fc9f0-4feb-4075-95bd-1977bc40ede2.jpg"><figcaption>Sklepní chodba pivovaru, kudy vede prohlídka.</figcaption></figure>
+    <div>
+      <h2 class="h2 rv">Prohlídka pivovaru<i>každé pondělí v pět.</i></h2>
+      <p class="lead rv">Provedeme vás historií, technologií i prostory pivovaru. Na konci ochutnáte a skleněný půllitr nebo třetinku si odnesete na památku.</p>
+      <div class="facts rv">
+        <div><small>Kdy</small><span>Každé pondělí od 17.00, prohlídka trvá zhruba hodinu</span></div>
+        <div><small>Cena</small><span>100 Kč včetně degustace a sklenice na památku</span></div>
+        <div><small>Skupina</small><span>Ideálně 10 až 12 lidí, sraz před domem</span></div>
+        <div><small>Jiný termín</small><span>Individuální prohlídku domluví průvodce Dušan Dufka na <a href="tel:+420602473239">602 473 239</a></span></div>
+      </div>
+      <a class="btn rv" href="tel:+420602473239">Rezervovat prohlídku</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="kontakt">
+  <div class="wrap center">
+    <h2 class="h2 rv">Zastavte se<i>v pivovaru.</i></h2>
+    <div class="cards rv" style="text-align:left">
+      <div><small>Adresa</small><span>28. října 1081/19<br>430 01 Chomutov</span></div>
+      <div><small>Telefon</small><span><a href="tel:+420602241716">602 241 716</a><br>prohlídky <a href="tel:+420602473239">602 473 239</a></span></div>
+      <div><small>E-mail</small><span><a href="mailto:info@karasekastulpner.cz">info@karasekastulpner.cz</a></span></div>
+    </div>
+    <a class="btn rv" href="mailto:info@karasekastulpner.cz">Napsat do pivovaru</a>
+  </div>
+</section>
+
+<footer>První občanský pivovar v Chomutově, a.s. · IČO 02193744 · 28. října 1081/19, 430 01 Chomutov<br>Neoficiální návrh webu, koncept Tomáš Ledvina. Etikety, fotografie a texty pocházejí z dosavadního webu pivovaru. Použití jen po dohodě s autorem.</footer>
+
+<script>
+const C="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/";
+window.PIVA=[
+{id:"kar",n:"Karáskova světlá",d:"11°",k:"Světlý ležák",img:C+"47c9b56e-6dca-4b29-b64f-f11af771a452.png",glass:0x3a1c06,glow:"#b8862a",notes:"Nefiltrované, nepasterizované světlé české pivo. Lehké a osvěžující, se střední hořkostí. Pivo na takové to běžné popíjení.",f:[["Druh","světlé"],["Filtrace","bez filtru"]]},
+{id:"stu",n:"Stülpnerova polotmavá",d:"13°",k:"Polotmavé pivo",img:C+"004a0953-88ee-467c-bed5-ec889f55abe5.png",glass:0x2e1504,glow:"#9a4f1c",notes:"Vyvážená lahodná chuť s lehkou karamelovou a kávovou příchutí. Podávané ve správné teplotě potěší duši každého milovníka piva.",f:[["Druh","polotmavé"],["Filtrace","bez filtru"]]},
+{id:"pod",n:"Podloudnická",d:"14°",k:"Silné polotmavé pivo",img:C+"37c2c925-a6b0-494c-9773-2e21da0b41df.png",glass:0x2a1203,glow:"#7a3b16",notes:"Silné, hutné a plné polotmavé pivo. Hodí se k masitým jídlům nebo pro sólové potěšení náročného pijáka.",f:[["Druh","polotmavé"],["Síla","14°"]]},
+{id:"kvi",n:"Kvidona z Felsů",d:"17°",k:"India Brown Ale",img:C+"4180b342-5747-41e5-ac10-1af01f6a0251.png",glass:0x1f0d02,glow:"#5a2a0e",notes:"Unikát na českém trhu: sedmnáctistupňové IBA ze čtyř druhů sladů a dvou chmelů, s bezmála sedmi procenty alkoholu.",f:[["Sladů","4 druhy"],["Alkohol","bezmála 7 %"]]}];
+document.getElementById("wps").innerHTML=PIVA.map((w,i)=>`<div class="wp"><div class="n">${w.k}</div><h2>${w.n} ${w.d}<i>Karásek a Stülpner</i></h2><p>${w.notes}</p><div class="f3">${w.f.map(f=>`<div><small>${f[0]}</small><span>${f[1]}</span></div>`).join("")}</div><a class="btn" href="#basa" data-add="${i}">Přidat do basy</a></div>`).join("");
+</script>
+<script src="../vendor/three-r128.min.js"></script>
+<script src="hero3d.js?v=1"></script>
+<script>
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),prog=el=>{const r=el.getBoundingClientRect();return cl(-r.top/Math.max(1,r.height-innerHeight))};
+/* ===== basa ===== */
+(()=>{const V=window.PIVA,MAX=12,wl=document.getElementById("wl"),wrapC=document.getElementById("crates"),cnt=document.getElementById("cnt"),hint=document.getElementById("hint2"),ask=document.getElementById("ask");
+const box=[],els=[];let th=[];const EASE="cubic-bezier(.2,.75,.15,1)";
+const lahvi=n=>n===1?"lahev":n>1&&n<5?"lahve":"lahví";
+wl.innerHTML=V.map((w,i)=>`<button class="wrow" type="button" data-i="${i}" style="--g:${w.glow}"><span class="th"><img alt="" data-t="${i}"></span><span class="nm"><b>${w.n} ${w.d}</b><small>${w.k}</small></span><span class="add" aria-hidden="true">+</span><span class="bd" data-b="${i}"></span></button>`).join("");
+const CR='<div class="back"></div><div class="slots">'+'<div class="slot"></div>'.repeat(6)+'</div><div class="front"><span>Karásek a Stülpner</span><i>Chomutov · založeno 2013</i></div>';
+function crates(n){const need=Math.max(1,Math.ceil(n/6));while(wrapC.children.length<need){const c=document.createElement("div");c.className="crate cin";c.innerHTML=CR;wrapC.append(c)}while(wrapC.children.length>need)wrapC.lastElementChild.remove()}
+const slotAt=k=>wrapC.children[Math.floor(k/6)].querySelectorAll(".slot")[k%6];
+function summary(){const n=box.length,nb=Math.max(1,Math.ceil(n/6));
+ cnt.textContent=n?`${n} ${lahvi(n)} · ${nb} ${nb===1?"basa":"basy"}`:"Prázdná basa";
+ hint.textContent=n===0?"Klikněte na pivo a vložte ho do basy":n<6?`Do plné basy chybí ${6-n} ${lahvi(6-n)}`:n>=MAX?"Větší odběr domluvíme e-mailem":"Basa je plná, další pivo založí novou";
+ document.querySelectorAll("[data-b]").forEach(b=>{const c=box.filter(i=>i==b.dataset.b).length;b.textContent=c||"";b.classList.toggle("on",c>0)});
+ const lines=V.map((w,i)=>[w,box.filter(x=>x===i).length]).filter(x=>x[1]).map(([w,c])=>`${c}× ${w.n} ${w.d}`).join("\n");
+ ask.href="mailto:info@karasekastulpner.cz?subject="+encodeURIComponent("Poptávka piva")+"&body="+encodeURIComponent("Dobrý den,\nměl/a bych zájem o tato piva:\n\n"+(lines||"(prázdná basa)"))}
+function shake(){const c=wrapC.lastElementChild;c.classList.remove("shake");void c.offsetWidth;c.classList.add("shake")}
+function add(i,anim=true){if(box.length>=MAX){shake();return}const k=box.length;box.push(i);crates(box.length);
+ const im=new Image();im.src=th[i]||"";im.alt=V[i].n;if(anim)im.className="drop";im.addEventListener("click",()=>remove(els.indexOf(im)));slotAt(k).append(im);els.push(im);summary()}
+function remove(k){if(k<0)return;const gone=els[k];els.splice(k,1);box.splice(k,1);gone.style.pointerEvents="none";gone.className="up";
+ const before=els.slice(k).map(e=>e.getBoundingClientRect());
+ setTimeout(()=>{gone.remove();els.slice(k).forEach((e,j)=>{e.classList.remove("drop");slotAt(k+j).append(e)});crates(box.length);
+  els.slice(k).forEach((e,j)=>{const a=before[j],b=e.getBoundingClientRect(),dx=a.left-b.left,dy=a.top-b.top;if(dx||dy)e.animate([{transform:`translate(calc(-50% + ${dx}px),${dy}px)`},{transform:"translate(-50%,0)"}],{duration:520,easing:EASE})});summary()},300)}
+wl.addEventListener("click",e=>{const r=e.target.closest(".wrow");if(r)add(+r.dataset.i)});
+document.addEventListener("click",e=>{const a=e.target.closest("[data-add]");if(a)add(+a.dataset.add)});
+function thumbs(){try{th=window.renderThumbs()}catch(e){th=[]}document.querySelectorAll("[data-t]").forEach(im=>im.src=th[+im.dataset.t]||"");[0,1,0].forEach(i=>add(i,false))}
+let done=false;const go=()=>{if(!done){done=true;thumbs()}};addEventListener("piva-ready",go);setTimeout(go,6000);crates(0);summary()})();
+
+/* ===== jak vaříme ===== */
+(()=>{const sec=document.getElementById("varime"),imgs=[...sec.querySelectorAll(".ph img")],st=[...sec.querySelectorAll(".st")],bl=document.getElementById("bl"),N=st.length;
+ let loaded=false;const load=()=>{if(loaded)return;loaded=true;imgs.forEach(i=>i.src=i.dataset.src)};
+ new IntersectionObserver(e=>{if(e[0].isIntersecting)load()},{rootMargin:"600px"}).observe(sec);
+ let cur=-1;(function loop(){const p=prog(sec),i=Math.min(N-1,Math.floor(p*N*.999));
+  bl.style.strokeDashoffset=1-cl(p*1.02);
+  if(i!==cur){cur=i;imgs.forEach((im,j)=>im.classList.toggle("on",j===i));st.forEach((s,j)=>{s.classList.toggle("on",j===i);s.classList.toggle("done",j<i)})}
+  requestAnimationFrame(loop)})()})();
+
+/* ===== odhalení, menu ===== */
+(()=>{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.2});
+ document.querySelectorAll(".rv").forEach(e=>io.observe(e));
+ const nav=document.getElementById("nav"),f=()=>nav.classList.toggle("solid",scrollY>60);addEventListener("scroll",f,{passive:true});f()})();
+</script>
+</body>
+</html>
