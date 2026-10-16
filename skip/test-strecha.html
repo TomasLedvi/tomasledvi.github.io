@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>SKIP · test stavby střechy</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&family=Newsreader:ital,opsz@1,6..72&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0d0d0c;color:#f3efe8;font-family:Archivo,sans-serif}
+#seq{height:600vh;position:relative}
+.st{position:sticky;top:0;height:100vh;overflow:hidden}
+.st img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform}
+.cap{position:absolute;left:clamp(16px,5vw,70px);bottom:clamp(30px,8vh,90px);max-width:560px;text-shadow:0 2px 30px #000a}
+.cap div{position:absolute;bottom:0;left:0;width:min(560px,90vw);opacity:0;transform:translateY(20px);transition:opacity .7s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.cap div.on{opacity:1;transform:none}
+.cap small{font:500 12px Archivo;letter-spacing:.2em;text-transform:uppercase;color:#e7b56a}
+.cap h2{font-weight:800;font-size:clamp(2rem,5vw,4.2rem);line-height:.95;letter-spacing:-.03em;margin:.25em 0 0}
+.cap h2 em{font-family:Newsreader,serif;font-weight:400}
+.shade{position:absolute;inset:0;background:linear-gradient(to top,#000b,transparent 55%)}
+.bar{position:absolute;right:clamp(16px,4vw,50px);top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.bar i{width:3px;height:34px;background:#ffffff33;position:relative}.bar i b{position:absolute;inset:0;background:#e7b56a;transform-origin:top;transform:scaleY(0)}
+.end{height:60vh;display:grid;place-items:center;font-size:1.2rem;color:#aaa}
+</style></head><body>
+<section id="seq"><div class="st">
+<img src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_141334_96214645-3e21-45f5-a6d8-785e15836422.png" alt="">
+<img src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_141230_2047d5fe-98d3-4c66-9f38-7d7f16313d5a.png" alt="">
+<img src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_141236_7daf214c-f7b7-48c1-8855-2a5783c869d7.png" alt="">
+<img src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_141241_39c83627-9ba4-48f1-b5af-0ded599ad324.png" alt="">
+<img src="https://d8j0ntlcm91z4.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/hf_20261016_141142_0f660131-9e62-492a-90d0-9896a2c3011a.png" alt="">
+<div class="shade"></div>
+<div class="cap">
+<div><small>01 · Hrubá stavba</small><h2>Zdi stojí. <em>Střecha přijde.</em></h2></div>
+<div><small>02 · Krov</small><h2>Krokve, hřeben, <em>pozednice.</em></h2></div>
+<div><small>03 · Pojistná fólie</small><h2>Fólie a kontralatě. <em>První ochrana.</em></h2></div>
+<div><small>04 · Laťování a krytina</small><h2>Taška po tašce, <em>od okapu nahoru.</em></h2></div>
+<div><small>05 · Klempířské práce</small><h2>Okapy, oplechování. <em>Hotovo.</em></h2></div>
+</div>
+<div class="bar"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+</div></section>
+<div class="end">Testovací ukázka · scrollujte nahoru a dolů</div>
+<script>
+const sec=document.getElementById("seq"),imgs=[...sec.querySelectorAll("img")],caps=[...sec.querySelectorAll(".cap div")],bars=[...sec.querySelectorAll(".bar b")],N=imgs.length;
+let t=0,s=0;
+function f(){const r=sec.getBoundingClientRect();t=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));}
+addEventListener("scroll",f,{passive:true});f();
+(function loop(){s+=(t-s)*.08;const x=s*(N-1);
+imgs.forEach((im,i)=>{const d=x-i;let o=i===0?1:Math.min(1,Math.max(0,(d+1)*1.25-0.25));im.style.opacity=o;const z=1.08-Math.min(1,Math.max(0,(d+1)/2))*.08;im.style.transform=`scale(${z})`});
+const k=Math.round(x);caps.forEach((c,i)=>c.classList.toggle("on",i===k));bars.forEach((b,i)=>b.style.transform=`scaleY(${Math.min(1,Math.max(0,x-i+1))})`);
+requestAnimationFrame(loop)})();
+</script></body></html>
