@@ -62,3 +62,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   3D: `FPS=60 python3 render3d.py cast.html video out.mp4` (SwiftShader ~1,8 s/snímek → pouštět na pozadí),
   zvuk: `python3 sfx_*.py out.wav` (vše syntetizované, bez licencí), pak ffmpeg mux + loudnorm I=-15.
 - Tomáš má doma PC s RTX 2060 (rychlejší render), zatím neřešíme.
+- Skilly pro videa/animace (18. 10. připraveny jako zip k nahrání do jeho účtu, prověřené, MIT): motion-design
+  (github.com/lottiefiles/motion-design-skill), design-dna (github.com/zanwei/design-dna), genjutsu
+  (github.com/AThevon/genjutsu – cast/paint, uvnitř i GSAP a Three.js). Genjutsu „bunshin“ NEPOUŠTĚT
+  (paralelní subagenti, miliony tokenů). Pokud v seznamu skillů nejsou, naklonovat repo a číst SKILL.md přímo.
