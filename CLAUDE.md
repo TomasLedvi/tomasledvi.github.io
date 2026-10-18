@@ -1,0 +1,44 @@
+# Ukázkové weby Tomáše Ledviny – poznámky pro Clauda
+
+Tomáš prodává malým firmám weby s animacemi. Claude weby navrhuje a staví,
+Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
+
+## Pravidla
+- Nikdy nic neposílat za Tomáše (e-maily, zprávy). Jen návrhy textu, bez tučného písma.
+  V podpisech ledvina.tomi@gmail.com (gametom2002 nepoužívat).
+- Neutrácet (Higgsfield kredity, platby) bez jeho souhlasu – nejdřív říct cenu.
+- Nic nevymýšlet: údaje o firmách jen ověřené (ARES, jejich web, Facebook).
+- Na ostrém webu projekty-vesely.cz nic neměnit bez Tomášova souhlasu.
+- Ukázky cizích firem nepublikovat veřejně (TikTok apod.) bez jejich svolení.
+- HZS: k výdělečné činnosti potřebuje písemný souhlas služebního funkcionáře (§ 48 zák. 361/2003 Sb.); živnost zatím nemá.
+
+## Tento repozitář (GitHub Pages: https://tomasledvi.github.io/)
+- Každá ukázka je složka (`skip/`, `karasek/`, `vesely/`, `vinarstvi/`…), nasazení = commit + push na `main`.
+- Čekání na nasazení:
+  `for i in $(seq 1 50); do r=$(gh run list -L 1 --json headSha,status -q '.[0].headSha[0:7]+" "+.[0].status'); [ "$r" = "$(git rev-parse --short=7 HEAD) completed" ] && break; sleep 5; done`
+- Generátory: `_gen/make.py` (projektanti/domy), `_gen/make_vino.py` (vinařství).
+- Kontrola v reálném prohlížeči: built-in browser na Tomášově Macu. Pozor: v tom panelu neběží requestAnimationFrame,
+  animace proto testovat lokálně přes Playwright (`python3 -m http.server`).
+- Obrázky/videa hostujeme na Higgsfield CloudFront (`https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/<id>`),
+  nahrávání: media_upload → PUT z prohlížeče na Macu → media_confirm.
+
+## Stav klientů (k 18. 10. 2026)
+- **Ing. Jaromír Veselý** (projektant, Sedlčany): HOTOVO a ZAPLACENO (12 000 Kč, výzva k úhradě č. 2026001).
+  Jeho rodné číslo nikde nezveřejňovat.
+  Ostrý web https://projekty-vesely.cz = repozitář `TomasLedvi/projekty-vesely` (GitHub Pages, doména u Wedosu).
+  Formulář přes Web3Forms (účet Tomáše, klíč 3edf4b38-3fbf-445b-a25c-84f1d845e8cb, příjemce prokon-vesely@volny.cz).
+  Search Console + Bing hotové, Seznam ohlášen přes IndexNow (klíč b9c4cd543e404532bb70c293790deaa2).
+  Čeká se: potvrzení, že zkušební poptávka dorazila; případně Firemní profil Google (zatím nechce).
+  Další možná zakázka: web pro jeho paní (ubytování).
+- **SKIP** (střechy): návrh `skip/` hotový (scroll video stavby střechy, opravené načítání na iPhonu),
+  e-mail připravený, Tomáš ho zatím odložil.
+- **Karásek a Stülpner** (pivovar Chomutov, IČO 02193744): návrh `karasek/` hotový (Three.js lahve se skutečnými
+  etiketami, vlající zatykač „Hledají se“, čísla od nuly, čára postupu u „Jak vaříme“, basa, prohlídky).
+  E-mail připravený; před odesláním projít jejich Facebook. Cenový návrh: cca 18 tis. základ, DE verze +3–5 tis.,
+  správa 300–500 Kč/měs. Assety na CloudFrontu: etikety karaskova 47c9b56e…, stulpnerova 004a0953…,
+  podloudnicka 37c2c925…, kvidona 4180b342… (plné ID v `karasek/hero3d.js` a `karasek/index.html`).
+- Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
+
+## Nápady na další kroky
+- Tomášův vlastní web s portfoliem a značkou; reference od pana Veselého.
+- Promo videa (TikTok/Reels/FB): „před a po“, jen s webem klienta se souhlasem nebo s vymyšlenými firmami.
