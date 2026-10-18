@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#09090b;font-family:'Inter Display','Inter',sans-serif;color:#fff}
+.abs{position:absolute}
+#stage{left:0;top:0;width:1080px;height:1920px;transform-origin:540px 960px}
+#glow{left:-300px;top:200px;width:1700px;height:1700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,90,31,.30) 0%,rgba(255,90,31,.08) 35%,transparent 65%)}
+#glow2{left:200px;top:900px;width:1200px;height:1200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(120,80,255,.20) 0%,transparent 60%)}
+#flash{left:0;top:0;width:1080px;height:1920px;background:#fff;opacity:0;z-index:50}
+#vign{left:0;top:0;width:1080px;height:1920px;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.6));z-index:40}
+.acc{color:#ff5a1f}
+/* hook */
+.hk{left:0;width:1080px;text-align:center;font-weight:800;letter-spacing:-3px;line-height:1}
+#hk1{top:560px;font-size:110px}
+#hk2{top:690px;font-size:110px}
+#year{top:860px;font-size:330px;letter-spacing:-14px;font-variant-numeric:tabular-nums}
+#year.glitch{}
+/* caption */
+.cap{left:0;width:1080px;text-align:center;font-weight:800;font-size:80px;line-height:1.06;letter-spacing:-2px}
+.cap span{display:inline-block}
+/* browser window */
+#win{left:80px;top:560px;width:920px;height:900px;border-radius:26px;background:#1b1b1f;
+  box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08);overflow:hidden}
+#bar{left:0;top:0;width:920px;height:60px;background:#26262b;display:flex;align-items:center;padding:0 24px;gap:12px}
+#bar i{width:16px;height:16px;border-radius:50%;display:block}
+#url{margin-left:24px;flex:1;height:34px;border-radius:17px;background:#141417;color:#9a9aa3;font-size:20px;
+  display:flex;align-items:center;padding-left:20px;font-family:'Inter'}
+#content{left:0;top:60px;width:920px;height:840px;overflow:hidden;background:#f6f2ea}
+.old{position:absolute;left:0;top:0;width:920px;height:840px;background:#c8c8c8;font-family:'Liberation Serif',serif;color:#000}
+.old .hd{height:120px;background:linear-gradient(#3a6fd8,#1f3f99);color:#ff0;font-size:46px;font-weight:bold;
+  text-align:center;line-height:120px;text-shadow:3px 3px 0 #000}
+.old .mq{background:#000;color:#0f0;font-family:'Liberation Mono';font-size:22px;padding:8px 14px;white-space:nowrap}
+.old .cols{display:flex}
+.old .side{width:230px;background:#e8e8e8;border-right:3px ridge #999;height:640px;padding:20px 16px;font-size:24px;line-height:2}
+.old .side a{color:#00e;text-decoration:underline;display:block}
+.old .main{flex:1;padding:24px 28px;font-size:25px;line-height:1.4}
+.old .main h2{font-size:36px;color:#900;margin-bottom:14px}
+.old .uc{margin-top:26px;border:4px dashed #000;background:repeating-linear-gradient(45deg,#ffd400 0 22px,#111 22px 44px);
+  height:90px;display:flex;align-items:center;justify-content:center}
+.old .uc b{background:#ffd400;padding:6px 14px;font-size:26px}
+.old .cnt{margin-top:26px;font-family:'Liberation Mono';font-size:22px}
+.old .cnt span{background:#000;color:#f00;padding:2px 8px;letter-spacing:4px}
+.old .img{margin-top:22px;width:280px;height:120px;border:3px outset #ccc;background:#ddd;display:flex;align-items:center;
+  justify-content:center;color:#666;font-size:20px;font-family:'Liberation Sans'}
+.shard{position:absolute;left:0;top:0;width:920px;height:840px}
+#new{left:0;top:0;width:920px;height:840px;background:#f6f2ea;color:#141414}
+.nav{left:44px;top:34px;right:44px;height:50px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:30px;letter-spacing:-.5px;display:flex;align-items:center;gap:12px}
+.logo i{width:30px;height:30px;border-radius:9px;background:#ff5a1f;display:block}
+.menu{display:flex;gap:26px;font-size:20px;color:#555;font-family:'Inter'}
+.h1{left:44px;top:140px;font-size:86px;font-weight:800;line-height:1.0;letter-spacing:-3px}
+.h1 .ln{display:block;overflow:hidden;height:92px}
+.h1 .ln span{display:block}
+.sub{left:46px;top:446px;width:400px}
+.sk{height:14px;border-radius:7px;background:#d9d2c5;margin-bottom:14px}
+.btn{left:44px;top:522px;height:66px;padding:0 34px;border-radius:33px;background:#ff5a1f;color:#fff;font-size:24px;
+  font-weight:700;display:flex;align-items:center;font-family:'Inter';box-shadow:0 14px 30px rgba(255,90,31,.35)}
+.hero-img{left:500px;top:140px;width:376px;height:440px;border-radius:30px;overflow:hidden;
+  background:linear-gradient(150deg,#ff7a3d,#ff3d6e 60%,#7b4dff)}
+.blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.28)}
+.card{top:626px;width:262px;height:186px;border-radius:24px;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.08);padding:26px}
+.card .ic{width:52px;height:52px;border-radius:16px;margin-bottom:22px}
+#cursor{left:700px;top:1500px;width:64px;height:64px;z-index:30}
+#ripple{left:0;top:0;width:140px;height:140px;border-radius:50%;border:6px solid #ff5a1f;z-index:29}
+/* kinetic */
+.word{left:0;width:1080px;top:830px;text-align:center;font-size:165px;font-weight:800;letter-spacing:-6px;line-height:1}
+.w3{text-shadow:0 0 60px rgba(255,90,31,.8)}
+.uline{left:240px;top:1020px;width:600px;height:18px;border-radius:9px;background:#ff5a1f;transform-origin:left center;box-shadow:0 0 30px rgba(255,90,31,.8)}
+#accbg{left:0;top:0;width:1080px;height:1920px;background:#ff5a1f;opacity:0}
+/* phone */
+#phone{left:290px;top:600px;width:500px;height:1020px;border-radius:70px;background:#111;
+  box-shadow:0 0 0 3px #333,0 50px 120px rgba(0,0,0,.7);padding:18px}
+#screen{width:464px;height:984px;border-radius:54px;overflow:hidden;background:#f6f2ea;position:relative}
+#scroll{left:0;top:0;width:464px}
+.notch{left:182px;top:16px;width:100px;height:30px;border-radius:15px;background:#000;z-index:5}
+.notif{left:18px;top:56px;width:428px;height:110px;border-radius:28px;background:rgba(255,255,255,.97);
+  box-shadow:0 20px 50px rgba(0,0,0,.25);display:flex;align-items:center;gap:18px;padding:0 22px;color:#111;z-index:4}
+.notif .ic{width:62px;height:62px;border-radius:16px;background:#ff5a1f;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:34px;font-weight:800;flex:none}
+.notif b{font-size:22px;display:block}
+.notif span{font-size:19px;color:#666;font-family:'Inter'}
+/* end */
+.e-small{left:0;width:1080px;top:760px;text-align:center;font-size:38px;font-weight:600;color:#c9c9d2;letter-spacing:6px;text-transform:uppercase}
+.e-name{left:0;width:1080px;top:830px;text-align:center;font-size:140px;font-weight:800;letter-spacing:-5px;line-height:1.05}
+.e-name .ln{display:block;overflow:hidden;height:156px}
+.e-name .ln span{display:block;background:linear-gradient(100deg,#fff 0%,#fff 40%,#ffb38f 50%,#fff 60%,#fff 100%);
+  background-size:300% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent}
+.e-line{left:390px;top:1160px;width:300px;height:10px;border-radius:5px;background:#ff5a1f;box-shadow:0 0 30px rgba(255,90,31,.9)}
+.e-mail{left:0;width:1080px;top:1210px;text-align:center;font-size:46px;font-weight:500;font-family:'Inter'}
+.spark{position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:#ffb070;box-shadow:0 0 18px 4px #ff5a1f;z-index:35;opacity:0}
+</style></head><body>
+<div id="stage" class="abs">
+<div id="glow" class="abs"></div><div id="glow2" class="abs"></div>
+<div id="accbg" class="abs"></div>
+
+<div id="hook" class="abs" style="left:0;top:0;width:1080px;height:1920px">
+  <div id="hk1" class="hk abs">Váš web je</div>
+  <div id="hk2" class="hk abs">pořád z roku</div>
+  <div id="year" class="hk abs">2026</div>
+</div>
+
+<div id="s1" class="abs" style="left:0;top:0;width:1080px;height:1920px">
+  <div id="cap2" class="cap abs" style="top:250px"><span>Co</span> <span>takhle</span> <span>radši</span><br><span class="acc">tohle?</span></div>
+  <div id="win" class="abs">
+    <div id="bar" class="abs"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>
+      <div id="url">www.vase-firma.cz</div></div>
+    <div id="content" class="abs">
+      <div id="new" class="abs">
+        <div class="nav abs"><div class="logo"><i></i>Vaše firma</div><div class="menu"><span>Služby</span><span>Reference</span><span>Kontakt</span></div></div>
+        <div class="h1 abs"><span class="ln"><span>Váš web.</span></span><span class="ln"><span>Konečně</span></span><span class="ln"><span style="color:#ff5a1f">moderní.</span></span></div>
+        <div class="sub abs"><div class="sk" style="width:390px"></div><div class="sk" style="width:330px"></div><div class="sk" style="width:250px"></div></div>
+        <div class="btn abs">Nezávazná poptávka →</div>
+        <div class="hero-img abs">
+          <div class="blob b1" style="left:40px;top:50px;width:150px;height:150px"></div>
+          <div class="blob b2" style="left:200px;top:220px;width:120px;height:120px"></div>
+          <div class="blob b3" style="left:90px;top:290px;width:70px;height:70px;background:rgba(255,255,255,.45)"></div>
+        </div>
+        <div class="card abs" style="left:44px"><div class="ic" style="background:#ffe1d4"></div><div class="sk" style="width:160px"></div><div class="sk" style="width:120px"></div></div>
+        <div class="card abs" style="left:329px"><div class="ic" style="background:#e3dcff"></div><div class="sk" style="width:150px"></div><div class="sk" style="width:110px"></div></div>
+        <div class="card abs" style="left:614px"><div class="ic" style="background:#d6f5e3"></div><div class="sk" style="width:170px"></div><div class="sk" style="width:100px"></div></div>
+      </div>
+      <div id="oldwrap" class="abs" style="left:0;top:0;width:920px;height:840px"></div>
+    </div>
+  </div>
+  <div id="ripple" class="abs" style="opacity:0"></div>
+  <svg id="cursor" class="abs" viewBox="0 0 24 24"><path d="M4 2 L4 19 L8.5 15 L11.5 22 L14.5 20.7 L11.5 14 L18 14 Z" fill="#fff" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></svg>
+</div>
+
+<div id="kin" class="abs" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+  <div class="word abs w0">Moderní.</div>
+  <div class="word abs w1">Rychlý.</div>
+  <div class="word abs w2">Na mobilu.</div>
+  <div class="word abs w3 acc">Animovaný.</div>
+  <div class="uline abs"></div>
+</div>
+
+<div id="s5" class="abs" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+  <div class="cap abs" id="cap5" style="top:250px;font-size:70px"><span>A</span> <span>zákazníci</span> <span>se</span><br><span class="acc">konečně</span> <span class="acc">ozvou.</span></div>
+  <div id="phone" class="abs"><div id="screen">
+    <div class="notch abs"></div>
+    <div class="notif abs"><div class="ic">✓</div><div><b>Nová poptávka z webu</b><span>„Dobrý den, mám zájem o…“</span></div></div>
+    <div id="scroll" class="abs"></div>
+  </div></div>
+</div>
+
+<div id="end" class="abs" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+  <div class="e-small abs">Weby s animacemi pro malé firmy</div>
+  <div class="e-name abs"><span class="ln"><span>Tomáš</span></span><span class="ln"><span>Ledvina</span></span></div>
+  <div class="e-line abs"></div>
+  <div class="e-mail abs">ledvina.tomi@gmail.com</div>
+</div>
+<div id="sparks"></div>
+</div>
+<div id="vign" class="abs"></div>
+<div id="flash" class="abs"></div>
+
+<script>
+const A=[],U=[];
+function an(target,kf,start,dur,o={}){
+  const els=typeof target==='string'?[...document.querySelectorAll(target)]:(target.length!==undefined?[...target]:[target]);
+  els.forEach((el,i)=>{const a=el.animate(kf,{duration:dur*1000,delay:(start+(o.stagger||0)*i)*1000,
+    fill:o.fill||'both',easing:o.ease||'cubic-bezier(.2,.85,.25,1)',iterations:o.iter||1,direction:o.dir||'normal',composite:o.comp||'replace'});
+    a.pause();A.push(a);});
+}
+window.seek=t=>{A.forEach(a=>a.currentTime=t*1000);U.forEach(f=>f(t))};
+const OUT={fill:'forwards',ease:'cubic-bezier(.6,0,.8,.4)'};
+const SLAM={ease:'cubic-bezier(.15,1,.3,1)'};
+let seed=11;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+// --- effects
+function shake(t,amp=18,dur=0.35){const k=[];const n=8;for(let i=0;i<=n;i++){const f=1-i/n;
+  k.push({transform:`translate(${(i%2?1:-1)*amp*f*(0.6+rnd()*0.4)}px,${(rnd()-.5)*amp*f}px)`});}
+  an('#stage',k,t,dur,{fill:'forwards',ease:'linear',comp:'add'});}
+function flash(t,op=0.85,dur=0.3){an('#flash',[{opacity:op},{opacity:0}],t,dur,{fill:'forwards',ease:'ease-out'});}
+function punch(t,s=1.06,dur=0.4){an('#stage',[{transform:`scale(${s})`},{transform:'scale(1)'}],t,dur,{fill:'forwards',comp:'add'});}
+const SP=document.getElementById('sparks');
+function burst(x,y,t,n=24,spread=360){for(let i=0;i<n;i++){const d=document.createElement('div');d.className='spark';SP.appendChild(d);
+  const ang=rnd()*Math.PI*2,dist=150+rnd()*380,sz=.3+rnd()*1.1,st=t+rnd()*0.05,du=0.6+rnd()*0.5;
+  an(d,[{transform:`translate(${x}px,${y}px) scale(${sz})`,opacity:1},
+        {transform:`translate(${x+Math.cos(ang)*dist}px,${y+Math.sin(ang)*dist+120}px) scale(0)`,opacity:0}],st,du,{fill:'forwards',ease:'cubic-bezier(.1,.8,.3,1)'});}}
+function glitch(sel,t,dur){const k=[];const n=10;for(let i=0;i<=n;i++){const a=i===n?0:(rnd()-.5)*30,b=i===n?0:(rnd()-.5)*30;
+  k.push({textShadow:`${a}px 0 #ff2a55, ${b}px 0 #2af0ff`,transform:`translateX(${i===n?0:(rnd()-.5)*24}px)`});}
+  an(sel,k,t,dur,{fill:'forwards',ease:'steps(10)'});}
+
+// ---------- HOOK 0–1.7
+an('#hk1',[{transform:'scale(2.2)',opacity:0,filter:'blur(20px)'},{transform:'scale(1)',opacity:1,filter:'blur(0)'}],0.05,0.3,SLAM);
+shake(0.12,14,0.3);
+an('#hk2',[{transform:'scale(2.2)',opacity:0,filter:'blur(20px)'},{transform:'scale(1)',opacity:1,filter:'blur(0)'}],0.38,0.3,SLAM);
+shake(0.45,14,0.3);
+an('#year',[{transform:'scale(.4)',opacity:0},{transform:'scale(1)',opacity:1}],0.65,0.25,SLAM);
+const yr=document.getElementById('year');
+U.push(t=>{let y=2026;if(t>0.7)y=Math.round(2026-16*Math.min(1,Math.pow((t-0.7)/0.65,1.6)));yr.textContent=y;
+  yr.style.color=t>1.35?'#ff3b3b':'#fff';});
+glitch('#year',1.35,0.35);shake(1.36,26,0.4);flash(1.36,0.35,0.25);
+an('#hook',[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(-200px) scale(1.1)'}],1.75,0.25,OUT);
+
+// ---------- OLD SITE 1.8–3.4
+const oldHTML=`<div class="old"><div class="hd">VÍTEJTE NA NAŠICH STRÁNKÁCH!!!</div>
+<div class="mq">*** Nejlepší služby ve městě *** Volejte *** Nejlepší služby ve městě ***</div>
+<div class="cols"><div class="side"><a>Úvod</a><a>O nás</a><a>Služby</a><a>Fotogalerie</a><a>Kniha návštěv</a><a>Kontakt</a></div>
+<div class="main"><h2>Vítáme Vás!</h2>Jsme firma s dlouholetou tradicí. Na těchto stránkách naleznete informace o naší činnosti.
+<div class="uc"><b>⚠ STRÁNKA JE V REKONSTRUKCI ⚠</b></div>
+<div class="img">[ obrázek se nenačetl ]</div>
+<div class="cnt">Jste návštěvník č. <span>000347</span></div></div></div></div>`;
+const ow=document.getElementById('oldwrap');
+const W=920,H=840,C=4,R=5,pts=[];
+for(let r=0;r<=R;r++){pts[r]=[];for(let c=0;c<=C;c++){const ex=c===0||c===C,ey=r===0||r===R;
+  pts[r][c]=[c*W/C+(ex?0:(rnd()-.5)*120),r*H/R+(ey?0:(rnd()-.5)*90)];}}
+const tris=[];
+for(let r=0;r<R;r++)for(let c=0;c<C;c++){const a=pts[r][c],b=pts[r][c+1],d=pts[r+1][c],e=pts[r+1][c+1];
+  if((r+c)%2){tris.push([a,b,e],[a,e,d])}else{tris.push([a,b,d],[b,e,d])}}
+const TS=3.3;
+tris.forEach(tr=>{const s=document.createElement('div');s.className='shard';
+  s.style.clipPath='polygon('+tr.map(p=>p[0]+'px '+p[1]+'px').join(',')+')';s.innerHTML=oldHTML;ow.appendChild(s);
+  const cx=(tr[0][0]+tr[1][0]+tr[2][0])/3,cy=(tr[0][1]+tr[1][1]+tr[2][1])/3;
+  const dx=(cx-W/2)*(1.2+rnd()*1.2)+(rnd()-.5)*260,dy=700+rnd()*1100,rot=(rnd()-.5)*220,dz=1+rnd()*0.5;
+  s.style.transformOrigin=cx+'px '+cy+'px';
+  an(s,[{transform:'translate(0,0) rotate(0) scale(1)'},{transform:`translate(${dx*0.3}px,-${120+rnd()*160}px) rotate(${rot*0.3}deg) scale(${dz})`,offset:.22},
+        {transform:`translate(${dx}px,${dy}px) rotate(${rot}deg) scale(${dz})`}],TS+rnd()*0.12,1.0,{fill:'forwards',ease:'cubic-bezier(.25,0,.9,.6)'});});
+const crack=document.createElementNS('http://www.w3.org/2000/svg','svg');
+crack.setAttribute('width',W);crack.setAttribute('height',H);crack.style.cssText='position:absolute;left:0;top:0';
+const half=tris.slice(0,Math.floor(tris.length/2)),all=tris;
+const pth=l=>l.map(tr=>`M${tr[0][0]} ${tr[0][1]}L${tr[1][0]} ${tr[1][1]}L${tr[2][0]} ${tr[2][1]}Z`).join('');
+crack.innerHTML=`<path id="c1" d="${pth(half)}" fill="none" stroke="#fff" stroke-width="4"/><path id="c2" d="${pth(all)}" fill="none" stroke="#fff" stroke-width="3"/>`;
+ow.appendChild(crack);
+an('#c1',[{opacity:0},{opacity:1}],2.75,0.05,{ease:'linear'});
+an('#c2',[{opacity:0},{opacity:1}],3.05,0.05,{ease:'linear'});
+an(crack,[{opacity:1},{opacity:0}],TS+0.05,0.15,{fill:'forwards',ease:'linear'});
+an('#win',[{transform:'scale(1.5)',opacity:0,filter:'blur(16px)'},{transform:'scale(1)',opacity:1,filter:'blur(0)'}],1.8,0.4,SLAM);
+an('#s1',[{opacity:0},{opacity:1}],1.8,0.01);
+shake(2.75,16,0.3);shake(3.05,22,0.3);
+shake(TS,34,0.5);flash(TS,0.9,0.35);punch(TS,1.08,0.5);
+// ---------- NEW SITE 3.5–6.0
+an('#cap2 span',[{transform:'translateY(80px) scale(.6)',opacity:0},{transform:'translateY(0) scale(1)',opacity:1}],3.55,0.4,{stagger:0.09,ease:'cubic-bezier(.2,1.4,.4,1)'});
+an('#url',[{color:'#9a9aa3'},{color:'#e8e8ee'}],3.5,0.3);
+an('.nav',[{transform:'translateY(-40px)',opacity:0},{transform:'translateY(0)',opacity:1}],3.55,0.4);
+an('.h1 .ln span',[{transform:'translateY(100%)'},{transform:'translateY(0)'}],3.65,0.5,{stagger:0.1});
+an('.hero-img',[{clipPath:'inset(100% 0 0 0 round 30px)'},{clipPath:'inset(0 0 0 0 round 30px)'}],3.8,0.6);
+an('.sub .sk',[{transform:'scaleX(0)',transformOrigin:'left'},{transform:'scaleX(1)',transformOrigin:'left'}],4.1,0.4,{stagger:0.06});
+an('.btn',[{transform:'scale(.3)',opacity:0},{transform:'scale(1.12)',opacity:1,offset:.6},{transform:'scale(1)',opacity:1}],4.35,0.45);
+an('.card',[{transform:'translateY(140px) scale(.8)',opacity:0},{transform:'translateY(0) scale(1)',opacity:1}],4.55,0.45,{stagger:0.1,ease:'cubic-bezier(.2,1.3,.4,1)'});
+an('.b1',[{transform:'translate(0,0)'},{transform:'translate(40px,30px)'}],3.8,1.2,{iter:4,dir:'alternate',ease:'ease-in-out'});
+an('.b2',[{transform:'translate(0,0)'},{transform:'translate(-50px,-40px)'}],3.8,1.4,{iter:4,dir:'alternate',ease:'ease-in-out'});
+an('.b3',[{transform:'translate(0,0) scale(1)'},{transform:'translate(30px,-50px) scale(1.3)'}],3.8,1.0,{iter:6,dir:'alternate',ease:'ease-in-out'});
+// cursor -> button click (button center ≈ x 80+44+170=294, y 560+60+522+33=1175)
+an('#cursor',[{transform:'translate(300px,300px)',opacity:0},{transform:'translate(300px,300px)',opacity:1,offset:.1},{transform:'translate(-420px,-330px)',opacity:1}],4.9,0.75,{ease:'cubic-bezier(.5,0,.2,1)'});
+an('#cursor',[{transform:'translate(-420px,-330px) scale(1)'},{transform:'translate(-420px,-330px) scale(.8)'},{transform:'translate(-420px,-330px) scale(1)'}],5.7,0.18,{fill:'forwards'});
+an('.btn',[{transform:'scale(1)'},{transform:'scale(.92)'},{transform:'scale(1)'}],5.7,0.2,{fill:'forwards'});
+an('#ripple',[{transform:'translate(224px,1105px) scale(.2)',opacity:1},{transform:'translate(224px,1105px) scale(2.4)',opacity:0}],5.72,0.5,{fill:'forwards',ease:'ease-out'});
+burst(294,1175,5.72,16);
+// zoom into button -> kinetic
+an('#s1',[{transform:'scale(1)',transformOrigin:'294px 1175px',opacity:1},{transform:'scale(5)',transformOrigin:'294px 1175px',opacity:0}],5.95,0.35,{fill:'forwards',ease:'cubic-bezier(.7,0,.9,.5)'});
+an('#accbg',[{opacity:0},{opacity:1}],6.05,0.2,{ease:'ease-in'});
+an('#accbg',[{opacity:1},{opacity:0}],6.3,0.3,{fill:'forwards',ease:'ease-out'});
+// ---------- KINETIC 6.3–9.4
+an('#kin',[{opacity:0},{opacity:1}],6.3,0.01);
+const wt=[6.35,7.0,7.65,8.3];
+wt.forEach((t,i)=>{
+  an('.w'+i,[{transform:'scale(2.2)',opacity:0,filter:'blur(24px)'},{transform:'scale(1)',opacity:1,filter:'blur(0)'}],t,0.28,SLAM);
+  shake(t+0.05,i===3?28:16,0.3);punch(t,1.05,0.35);
+  if(i<3) an('.w'+i,[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(-60px) scale(.85)'}],t+0.5,0.15,OUT);
+});
+burst(540,900,8.3,34);
+an('.uline',[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],8.45,0.35);
+an('#kin',[{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(1.3)'}],9.15,0.25,OUT);
+// ---------- PHONE 9.3–12.6
+an('#s5',[{opacity:0},{opacity:1}],9.3,0.05);
+an('#phone',[{transform:'translateY(900px) rotate(25deg) scale(.7)'},{transform:'translateY(0) rotate(0) scale(1)'}],9.3,0.65,{ease:'cubic-bezier(.2,1.15,.4,1)'});
+an('#cap5 span',[{transform:'translateY(80px) scale(.6)',opacity:0},{transform:'translateY(0) scale(1)',opacity:1}],9.55,0.4,{stagger:0.08,ease:'cubic-bezier(.2,1.4,.4,1)'});
+const sc=document.getElementById('scroll');
+sc.innerHTML=`<div style="transform:scale(.5045);transform-origin:0 0;width:920px;position:relative;height:2780px">
+ ${document.getElementById('new').outerHTML.replace('id="new"','').replace('class="abs"','class="abs" style="height:840px"')}
+ <div class="abs" style="left:0;top:840px;width:920px;height:1940px;background:#141414;color:#fff;padding:70px 44px">
+   <div style="font-size:64px;font-weight:800;letter-spacing:-2px;line-height:1.05">Ozvěte se nám.<br><span style="color:#ff5a1f">Rádi pomůžeme.</span></div>
+   <div style="margin-top:50px;height:84px;border-radius:20px;background:#2a2a2e"></div>
+   <div style="margin-top:22px;height:84px;border-radius:20px;background:#2a2a2e"></div>
+   <div style="margin-top:22px;height:300px;border-radius:20px;background:#2a2a2e"></div>
+   <div style="margin-top:30px;height:90px;border-radius:45px;background:#ff5a1f;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700">Odeslat poptávku</div>
+ </div></div>`;
+an('#scroll',[{transform:'translateY(0)'},{transform:'translateY(-420px)'}],10.0,1.0,{ease:'cubic-bezier(.6,0,.2,1)'});
+an('.notif',[{transform:'translateY(-220px)',opacity:0},{transform:'translateY(0)',opacity:1}],11.15,0.45,{ease:'cubic-bezier(.2,1.4,.4,1)'});
+an('#phone',[{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],11.2,0.35,{fill:'forwards',comp:'add'});
+burst(540,780,11.2,26);
+an('.notif .ic',[{transform:'scale(1)'},{transform:'scale(1.2)'}],11.5,0.2,{iter:2,dir:'alternate'});
+// build-up then cut
+an('#s5',[{transform:'scale(1)',opacity:1},{transform:'scale(1.12)',opacity:1}],11.6,1.2,{fill:'forwards',ease:'ease-in'});
+an('#s5',[{opacity:1},{opacity:0}],12.8,0.1,{fill:'forwards',ease:'linear',comp:'replace'});
+// ---------- END 12.9–16
+const TE=12.9;
+an('#end',[{opacity:0},{opacity:1}],TE,0.01);
+flash(TE,1,0.45);shake(TE,30,0.5);punch(TE,1.1,0.6);
+an('.e-name .ln span',[{transform:'translateY(105%)'},{transform:'translateY(0)'}],TE,0.6,{stagger:0.12});
+an('.e-small',[{opacity:0,letterSpacing:'24px'},{opacity:1,letterSpacing:'6px'}],TE+0.3,0.8);
+an('.e-line',[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],TE+0.5,0.45);
+burst(540,1165,TE+0.55,30);burst(540,950,TE,30);
+an('.e-mail',[{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'translateY(0)'}],TE+0.75,0.5);
+an('.e-name .ln span',[{backgroundPosition:'100% 0'},{backgroundPosition:'0% 0'}],TE+1.3,0.9,{fill:'forwards',ease:'ease-in-out'});
+an('.e-line',[{boxShadow:'0 0 20px rgba(255,90,31,.6)'},{boxShadow:'0 0 50px rgba(255,90,31,1)'}],TE+1.0,0.7,{iter:3,dir:'alternate',ease:'ease-in-out'});
+an('#glow',[{transform:'translate(0,0) scale(1)'},{transform:'translate(200px,-150px) scale(1.2)'}],0,16,{ease:'ease-in-out'});
+an('#glow2',[{transform:'translate(0,0)'},{transform:'translate(-250px,100px)'}],0,16,{ease:'ease-in-out'});
+window.DUR=16.0;
+seek(0);
+</script></body></html>

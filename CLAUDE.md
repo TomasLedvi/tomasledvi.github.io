@@ -48,3 +48,17 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   2) případně krátké video k návrhu pro Karáska (jen neveřejně).
   Cíl: nabízet firmám videa na Instagram/FB/TikTok, i v balíčku s webem nebo měsíčně ke správě.
 - Písemný souhlas HZS: Tomáš si zažádá, až přijde další nabídka.
+
+## Videa (složka `_video/`, stav 18. 10. 2026)
+- Hotové verze promo videa pro Tomáše (podpis „Tomáš Ledvina“ + ledvina.tomi@gmail.com, značku zatím nemá –
+  Webdílna/Webmotion obsazené, Webkovárna se mu nelíbila):
+  v1 `promo.html` (jednoduchá), v2 `promo2.html` (hook „Váš web je pořád z roku 2010“, efekty + zvuky `sfx.py`),
+  v3 `promo3.html` (světlý tech styl, oranžová kulička-zákazník, hudba `sfx3.py`). Tomášovi přišly „staré“ oproti
+  referencím (plynulé proměny, 3D, motion blur, 60 fps).
+- 3D casting maskota `cast.html` (Three.js) – Tomáš VYBRAL postavičku 2 „Okénko“ (malý prohlížeč s obličejem
+  na obrazovce, obličej se umí proměnit ve web). NEdělat maskota podobného Claudovi/logu Anthropicu.
+- Plán na úterý: celé promo v novém stylu s Okénkem (jeden plynulý záběr, proměny, 60 fps, motion blur), pak šablona
+  pro videa firmám. Postup: `npm i three @fontsource/instrument-serif`, 2D: `python3 render.py <abs cesta html> video out.mp4`,
+  3D: `FPS=60 python3 render3d.py cast.html video out.mp4` (SwiftShader ~1,8 s/snímek → pouštět na pozadí),
+  zvuk: `python3 sfx_*.py out.wav` (vše syntetizované, bez licencí), pak ffmpeg mux + loudnorm I=-15.
+- Tomáš má doma PC s RTX 2060 (rychlejší render), zatím neřešíme.

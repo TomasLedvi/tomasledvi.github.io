@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'ISerif';font-style:italic;src:url(node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-ext-400-italic.woff2) format('woff2');unicode-range:U+0100-02AF}
+@font-face{font-family:'ISerif';font-style:italic;src:url(node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2) format('woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:'Inter Display',sans-serif}
+canvas{position:absolute;left:0;top:0}
+.lab{position:absolute;left:0;width:1080px;top:250px;text-align:center;opacity:0}
+.lab .n{font-size:34px;font-weight:600;letter-spacing:8px;text-transform:uppercase}
+.lab .t{font-family:'ISerif',serif;font-style:italic;font-size:190px;line-height:1.05;color:#ff5a1f}
+.lab .d{font-size:40px;font-weight:500;margin-top:8px}
+#l1,#l2{color:#1a1a1a}#l3{color:#fff}
+#l3 .t{color:#ffb07a}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<div class="lab" id="l1"><div class="n">Postavička 1</div><div class="t">Klik</div><div class="d">kulička s kurzorem</div></div>
+<div class="lab" id="l2"><div class="n">Postavička 2</div><div class="t">Okénko</div><div class="d">malý prohlížeč s náladou</div></div>
+<div class="lab" id="l3"><div class="n">Postavička 3</div><div class="t">Jiskra</div><div class="d">světlo, které zanechává stopu</div></div>
+<script type="module">
+import * as THREE from 'three';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
+
+const W=1080,H=1920;
+const R=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+R.setPixelRatio(1);R.setSize(W,H);R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=0.92;
+R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFShadowMap;document.body.prepend(R.domElement);
+const S=new THREE.Scene();
+const pm=new THREE.PMREMGenerator(R);S.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;
+const cam=new THREE.PerspectiveCamera(32,W/H,0.1,100);
+const comp=new EffectComposer(R);comp.addPass(new RenderPass(S,cam));
+const bloom=new UnrealBloomPass(new THREE.Vector2(W/2,H/2),0.2,0.6,0.92);comp.addPass(bloom);comp.addPass(new OutputPass());
+
+// helpers
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const io=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;          // easeInOutCubic
+const out=t=>1-Math.pow(1-t,3);
+const prog=(t,a,b)=>cl((t-a)/(b-a));
+const spring=(t,f=3.2,d=5)=>t<0?0:Math.exp(-d*t)*Math.sin(2*Math.PI*f*t); // damped osc starting 0
+const bounceDrop=(t,t0,t1,h)=>{ // fall from h to 0 between t0..t1 (gravity)
+  const p=prog(t,t0,t1);return h*(1-p*p);}
+
+// ground + lights
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,60),new THREE.ShadowMaterial({opacity:.16}));
+ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;S.add(ground);
+S.add(new THREE.HemisphereLight(0xffffff,0xffe6d6,0.6));
+const key=new THREE.DirectionalLight(0xffffff,2.4);key.position.set(3,8,6);key.castShadow=true;
+key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-4;key.shadow.camera.right=4;key.shadow.camera.top=6;key.shadow.camera.bottom=-2;
+key.shadow.radius=6;key.shadow.bias=-0.0005;S.add(key);S.add(key.target);
+const rim=new THREE.DirectionalLight(0xffc7a8,1.2);rim.position.set(-5,4,-4);S.add(rim);
+
+// ========== 1) KLIK
+const klik=new THREE.Group();S.add(klik);
+const kBody=new THREE.Group();klik.add(kBody);
+const orange=new THREE.MeshPhysicalMaterial({color:0xff4a10,roughness:.4,clearcoat:.8,clearcoatRoughness:.35});
+const ball=new THREE.Mesh(new THREE.SphereGeometry(.9,96,64),orange);ball.position.y=.9;ball.castShadow=true;kBody.add(ball);
+const white=new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:.15,clearcoat:1});
+const black=new THREE.MeshPhysicalMaterial({color:0x111111,roughness:.1,clearcoat:1});
+function eye(x,parent,y=1.05,z=.72){const g=new THREE.Group();g.position.set(x,y,z);
+  const e=new THREE.Mesh(new THREE.SphereGeometry(.2,48,32),white);e.scale.set(1,1.3,.6);g.add(e);
+  const p=new THREE.Mesh(new THREE.SphereGeometry(.105,32,24),black);p.position.z=.1;p.scale.set(1,1.15,.6);g.add(p);
+  const hl=new THREE.Mesh(new THREE.SphereGeometry(.03,16,12),new THREE.MeshBasicMaterial({color:0xffffff}));hl.position.set(.04,.06,.17);g.add(hl);
+  g.userData={e,p,hl};parent.add(g);return g;}
+const kE=[eye(-.3,kBody),eye(.3,kBody)];
+const mouthMat=new THREE.MeshPhysicalMaterial({color:0x3a1200,roughness:.4});
+const kMouth=new THREE.Mesh(new THREE.TorusGeometry(.16,.035,16,48,Math.PI),mouthMat);
+kMouth.position.set(0,.74,.86);kMouth.rotation.z=Math.PI;kMouth.rotation.x=-.25;kBody.add(kMouth);
+// cursor antenna
+const cs=new THREE.Shape();[[0,0],[0,.62],[.15,.48],[.25,.72],[.34,.68],[.24,.45],[.44,.45]].forEach((p,i)=>i?cs.lineTo(p[0],p[1]):cs.moveTo(p[0],p[1]));cs.closePath();
+const cGeo=new THREE.ExtrudeGeometry(cs,{depth:.09,bevelEnabled:true,bevelThickness:.03,bevelSize:.03,bevelSegments:4});cGeo.center();
+const ant=new THREE.Group();ant.position.set(.18,1.74,0);kBody.add(ant);
+const stem=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.28,16),white);stem.position.y=.1;ant.add(stem);
+const cur=new THREE.Mesh(cGeo,white);cur.castShadow=true;cur.position.set(.06,.48,0);cur.rotation.z=-.35;cur.scale.setScalar(.9);ant.add(cur);
+const curOut=new THREE.Mesh(cGeo,new THREE.MeshBasicMaterial({color:0x1a1a1a,side:THREE.BackSide}));curOut.scale.setScalar(1.08);cur.add(curOut);
+
+// ========== 2) OKÉNKO
+const X2=8;
+const ok=new THREE.Group();ok.position.x=X2;S.add(ok);
+const okB=new THREE.Group();ok.add(okB);
+const frame=new THREE.Mesh(new RoundedBoxGeometry(1.9,1.55,.4,6,.22),new THREE.MeshPhysicalMaterial({color:0xfbfaf7,roughness:.35,clearcoat:.8}));
+frame.position.y=1.2;frame.castShadow=true;okB.add(frame);
+const bar=new THREE.Mesh(new RoundedBoxGeometry(1.9,.32,.42,4,.12),new THREE.MeshPhysicalMaterial({color:0xece7de,roughness:.4}));bar.position.y=1.82;okB.add(bar);
+[0xff5f57,0xfebc2e,0x28c840].forEach((c,i)=>{const d=new THREE.Mesh(new THREE.SphereGeometry(.055,24,16),new THREE.MeshPhysicalMaterial({color:c,roughness:.2,clearcoat:1}));
+  d.position.set(-.75+i*.17,1.83,.22);okB.add(d);});
+const scv=document.createElement('canvas');scv.width=620;scv.height=400;const sx=scv.getContext('2d');
+const stex=new THREE.CanvasTexture(scv);stex.colorSpace=THREE.SRGBColorSpace;
+const screen=new THREE.Mesh(new THREE.PlaneGeometry(1.66,1.07),new THREE.MeshBasicMaterial({map:stex,toneMapped:false}));
+screen.position.set(0,1.1,.205);okB.add(screen);
+function rr(x,y,w,h,r){sx.beginPath();sx.roundRect(x,y,w,h,r);sx.fill();}
+function drawScreen(t,blink,look,web,smile){ // web 0..1 wipe
+  sx.fillStyle='#16171d';rr(0,0,620,400,26);
+  // face
+  sx.save();sx.beginPath();sx.rect(0,0,620*(1-web),400);sx.clip();
+  sx.fillStyle='#ff7a3d';sx.shadowColor='#ff5a1f';sx.shadowBlur=30;
+  const eh=90*(1-blink)+6;
+  rr(190+look*18,150-eh/2+20,58,eh,29);rr(372+look*18,150-eh/2+20,58,eh,29);
+  sx.shadowBlur=20;sx.lineWidth=16;sx.lineCap='round';sx.strokeStyle='#ff7a3d';
+  sx.beginPath();sx.arc(310+look*10,250,48+smile*10,0.15*Math.PI,0.85*Math.PI);sx.stroke();
+  sx.restore();
+  // website
+  if(web>0){sx.save();sx.beginPath();sx.rect(620*(1-web),0,620*web,400);sx.clip();
+    sx.fillStyle='#faf8f4';rr(0,0,620,400,26);
+    sx.fillStyle='#ff5a1f';sx.beginPath();sx.arc(44,40,12,0,7);sx.fill();
+    sx.fillStyle='#1a1a1a';rr(64,32,90,16,8);
+    sx.fillStyle='#1a1a1a';rr(40,90,260,34,10);rr(40,134,200,34,10);
+    sx.fillStyle='#ff5a1f';rr(40,178,150,34,10);
+    sx.fillStyle='#ddd5c8';rr(40,234,230,12,6);rr(40,256,190,12,6);
+    sx.fillStyle='#111';rr(40,290,160,46,23);
+    const g=sx.createLinearGradient(330,80,580,330);g.addColorStop(0,'#ffb48a');g.addColorStop(1,'#e9430e');sx.fillStyle=g;rr(330,80,250,270,24);
+    sx.fillStyle='rgba(255,255,255,.35)';sx.beginPath();sx.arc(410+Math.sin(t*3)*14,170,48,0,7);sx.fill();
+    sx.beginPath();sx.arc(510,270+Math.cos(t*3)*12,34,0,7);sx.fill();
+    sx.restore();}
+  if(web>0&&web<1){sx.fillStyle='#ff7a3d';sx.shadowColor='#ff5a1f';sx.shadowBlur=24;sx.fillRect(620*(1-web)-4,0,8,400);sx.shadowBlur=0;}
+  stex.needsUpdate=true;}
+
+// ========== 3) JISKRA
+const X3=16;
+const jk=new THREE.Group();S.add(jk);
+const prof=[];for(let i=0;i<=40;i++){const a=i/40; // teardrop: bottom round, tip up
+  const y=-.55+1.45*a;const r=a<.38?Math.sin(Math.acos(1-a/.38*1))*.55:.55*Math.pow(1-(a-.38)/.62,1.35)*Math.cos(0);prof.push(new THREE.Vector2(Math.max(0.0001,r),y));}
+const dropG=new THREE.LatheGeometry(prof,64);
+const jMat=new THREE.MeshStandardMaterial({color:0xffb380,emissive:0xff5a14,emissiveIntensity:1.3,roughness:.3});
+const drop=new THREE.Mesh(dropG,jMat);jk.add(drop);
+const core=new THREE.Mesh(new THREE.SphereGeometry(.28,32,24),new THREE.MeshBasicMaterial({color:0xfff3e6}));core.position.y=-.15;core.scale.setScalar(.8);
+core.material.toneMapped=false;core.material.transparent=true;core.material.opacity=.7;drop.add(core);
+const jEyes=[-.17,.17].map(x=>{const e=new THREE.Mesh(new THREE.SphereGeometry(.09,24,16),new THREE.MeshBasicMaterial({color:0x1a0600,toneMapped:false}));
+  e.scale.set(1,1.4,.5);e.position.set(x,0,.5);drop.add(e);return e;});
+// glow sprite
+const gc=document.createElement('canvas');gc.width=gc.height=256;const gx=gc.getContext('2d');
+const rg=gx.createRadialGradient(128,128,0,128,128,128);rg.addColorStop(0,'rgba(255,170,110,1)');rg.addColorStop(.3,'rgba(255,110,40,.45)');rg.addColorStop(1,'rgba(255,90,31,0)');
+gx.fillStyle=rg;gx.fillRect(0,0,256,256);const gtex=new THREE.CanvasTexture(gc);
+const glowM=new THREE.SpriteMaterial({map:gtex,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true});
+const halo=new THREE.Sprite(glowM);halo.scale.set(1.8,1.8,1);jk.add(halo);
+const TR=150,trail=[];for(let i=0;i<TR;i++){const s=new THREE.Sprite(glowM.clone());S.add(s);trail.push(s);}
+const curve=new THREE.CatmullRomCurve3([[X3+5,-1,2],[X3+2.4,1.0,1.5],[X3-1.6,3.2,.5],[X3-2.0,1.0,-.5],[X3+.3,0.2,.8],[X3+1.6,1.6,.3],[X3,1.3,0]].map(p=>new THREE.Vector3(...p)),false,'catmullrom',.5);
+const JA=6.55,JB=8.15;
+function jPos(t){if(t<=JA)return curve.getPoint(0);if(t<JB){return curve.getPoint(io(prog(t,JA,JB)))}
+  const h=t-JB;return new THREE.Vector3(X3,1.3+Math.sin(h*2.4)*.08,0);}
+// sparkles
+const SPN=40,sparks=[];let seed=3;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+for(let i=0;i<SPN;i++){const s=new THREE.Sprite(glowM.clone());S.add(s);sparks.push({s,t0:JA+rnd()*2.6,u:rnd(),v:new THREE.Vector3((rnd()-.5)*.8,rnd()*.9+.2,(rnd()-.5)*.6)});}
+
+// ========== camera / background timeline
+const bgL=new THREE.Color(0xf3efe8),bgD=new THREE.Color(0x0a0d22),bg=new THREE.Color();
+S.background=bg;
+const labs=[1,2,3].map(i=>document.getElementById('l'+i));
+function labAnim(el,t,a,b){const pin=out(prog(t,a,a+.6)),pout=prog(t,b-.35,b);
+  el.style.opacity=pin*(1-pout);el.style.transform=`translateY(${(1-pin)*60-pout*40}px)`;el.style.filter=`blur(${(1-pin)*10+pout*8}px)`;}
+
+window.DUR=9.8;window.BLUR=[[2.95,3.55,5],[6.2,6.85,5],[6.55,8.15,3]];
+window.seek=function(t){
+  // camera x: whip pans
+  const w1=io(prog(t,2.95,3.55)),w2=io(prog(t,6.2,6.85));
+  const cx=lerp(lerp(0,X2,w1),X3,w2);
+  const dolly=Math.sin(t*0.6)*.15;
+  const whipTilt=Math.sin(Math.PI*prog(t,2.95,3.55))*.06+Math.sin(Math.PI*prog(t,6.2,6.85))*.06;
+  cam.position.set(cx+.2*Math.sin(t*.5),2.0,7.6-dolly-(t>8.5?(t-8.5)*.4:0));cam.lookAt(cx,1.75,0);cam.rotation.z+=whipTilt;
+  key.position.set(cx+3,8,6);key.target.position.set(cx,0,0);
+  bg.copy(bgL).lerp(bgD,io(prog(t,6.3,6.9)));
+  ground.material.opacity=.16*(1-prog(t,6.3,6.7));
+  bloom.strength=lerp(.0,.6,prog(t,6.3,6.9));bloom.threshold=lerp(1.0,.72,prog(t,6.3,6.9));bloom.radius=.45;
+  S.environmentIntensity=lerp(.6,.3,prog(t,6.3,6.9));
+
+  // ---- KLIK
+  { const t0=.15,t1=.62; let y=0,sxz=1,sy=1;
+    if(t<t1){y=bounceDrop(t,t0,t1,7);const p=prog(t,t0,t1);sy=1+.25*p;sxz=1-.12*p;}
+    else{const k=spring(t-t1,2.6,4.5);sy=1-.32*k;sxz=1+.25*k;}
+    // hop at 1.9
+    const hp=prog(t,1.9,2.4);if(hp>0&&hp<1){y+=Math.sin(Math.PI*hp)*.9;}
+    const k2=spring(t-2.4,3,6);sy*=1-.2*k2;sxz*=1+.15*k2;
+    const ka=spring(t-1.88,2.4,4);sy*=1+.12*ka;sxz*=1-.08*ka;
+    klik.position.set(0,y,0);kBody.scale.set(sxz,sy,sxz);
+    klik.rotation.y=Math.sin(t*1.3)*.15+(t>1.9&&t<2.4?Math.sin(Math.PI*hp)*0.4:0);
+    ant.rotation.z=spring(t-t1,1.8,2.2)*.6+spring(t-2.4,2,2.5)*.5+Math.sin(t*2)*.05;
+    const look=t<1.2?0:Math.sin((t-1.2)*2.5)*.05;
+    kE.forEach(g=>{g.userData.p.position.x=look+(t>1.2&&t<1.9?.035:0);g.userData.p.position.y=t<1?.03:0;
+      const bl=Math.max(Math.exp(-Math.pow((t-1.3)/.05,2)),Math.exp(-Math.pow((t-2.65)/.05,2)));g.scale.y=1-.9*bl;});
+    kMouth.scale.set(1+.3*prog(t,1.9,2.1),1+.4*prog(t,1.9,2.1),1);
+    klik.visible=t<4.0;
+  }
+  labAnim(labs[0],t,.55,3.0);
+  // ---- OKÉNKO
+  { const a=3.35,b=3.95; let y=0,sq=0;
+    if(t<b){y=bounceDrop(t,a,b,6);} else sq=spring(t-b,2.4,4.5);
+    okB.scale.set(1+.18*sq,1-.22*sq,1+.18*sq);
+    ok.position.y=y;ok.rotation.y=-Math.PI*2*(1-out(prog(t,a,b+.3)))+Math.sin(t*1.1)*.18;
+    ok.rotation.z=Math.sin(t*1.7)*.04;
+    const web=io(prog(t,4.9,5.15))*(1-io(prog(t,5.8,6.05)));
+    const blink=Math.max(Math.exp(-Math.pow((t-4.4)/.05,2)),Math.exp(-Math.pow((t-6.25)/.06,2)));
+    drawScreen(t,blink,Math.sin(t*2)*.6,web,prog(t,6.1,6.3));
+    ok.visible=t>3.0&&t<7.2;
+  }
+  labAnim(labs[1],t,3.75,6.25);
+  // ---- JISKRA
+  { const p=jPos(t),pp=jPos(t-0.02);jk.position.copy(p);
+    const vel=p.clone().sub(pp);const sp=vel.length()/0.02;
+    // orient: tip trails behind velocity while flying, upright when hovering
+    const flying=cl(sp/4);const up=new THREE.Vector3(0,1,0);
+    const dir=sp>.01?vel.clone().normalize().negate():up.clone();
+    const tgt=up.clone().lerp(dir,flying).normalize();
+    drop.quaternion.setFromUnitVectors(up,tgt);
+    const st=1+.18*flying;drop.scale.set(1/Math.sqrt(st),st,1/Math.sqrt(st));
+    const pulse=1+Math.sin(t*5)*.05*(t>JB?1:0);halo.scale.setScalar(2.0*pulse+flying*.4);halo.material.opacity=.55;
+    jMat.emissiveIntensity=1.0+Math.sin(t*5)*.15;
+    jEyes.forEach((e,i)=>{e.visible=t>JB-0.25;const bl=Math.max(Math.exp(-Math.pow((t-8.85)/.05,2)),Math.exp(-Math.pow((t-9.45)/.05,2)));e.scale.y=1.4*(1-.9*bl);
+      e.position.x=(i?.17:-.17)+(t>9.0&&t<9.3?.04:0);});
+    trail.forEach((s,i)=>{const tt=t-i*0.0042;const q=jPos(tt);s.position.copy(q);
+      const a=(1-i/TR);const vis=tt>JA-.05&&tt<JB+.25?1:0;s.material.opacity=a*a*.5*vis;s.scale.setScalar(0.55*a+.06);});
+    sparks.forEach(o=>{const age=t-o.t0;if(age<0||age>1.2){o.s.visible=false;return;}o.s.visible=true;
+      const base=jPos(o.t0);o.s.position.set(base.x+o.v.x*age,base.y+o.v.y*age-.4*age*age,base.z+o.v.z*age);
+      o.s.material.opacity=(1-age/1.2)*.9;o.s.scale.setScalar(.18*(1-age/1.2)+.04);});
+    jk.visible=t>6.4;
+  }
+  labAnim(labs[2],t,8.0,99);
+  comp.render();
+};
+window.seek(0);window.READY=true;
+</script></body></html>

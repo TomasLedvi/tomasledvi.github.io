@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0c0c0e;font-family:'Inter Display','Inter',sans-serif;color:#fff}
+.abs{position:absolute}
+#glow{left:-300px;top:200px;width:1700px;height:1700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,90,31,.28) 0%,rgba(255,90,31,.08) 35%,transparent 65%)}
+#glow2{left:200px;top:900px;width:1200px;height:1200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(120,80,255,.18) 0%,transparent 60%)}
+.cap{left:0;width:1080px;text-align:center;font-weight:800;font-size:76px;line-height:1.08;letter-spacing:-2px}
+.cap span{display:inline-block}
+.acc{color:#ff5a1f}
+/* browser window */
+#win{left:80px;top:560px;width:920px;height:900px;border-radius:26px;background:#1b1b1f;
+  box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08);overflow:hidden}
+#bar{left:0;top:0;width:920px;height:60px;background:#26262b;display:flex;align-items:center;padding:0 24px;gap:12px}
+#bar i{width:16px;height:16px;border-radius:50%;display:block}
+#url{margin-left:24px;flex:1;height:34px;border-radius:17px;background:#141417;color:#9a9aa3;font-size:20px;
+  display:flex;align-items:center;padding-left:20px;font-family:'Inter'}
+#content{left:0;top:60px;width:920px;height:840px;overflow:hidden;background:#f6f2ea}
+/* old site */
+.old{position:absolute;left:0;top:0;width:920px;height:840px;background:#c8c8c8;font-family:'Liberation Serif',serif;color:#000}
+.old .hd{height:120px;background:linear-gradient(#3a6fd8,#1f3f99);color:#ff0;font-size:46px;font-weight:bold;
+  text-align:center;line-height:120px;font-family:'Liberation Serif',serif;text-shadow:3px 3px 0 #000}
+.old .mq{background:#000;color:#0f0;font-family:'Liberation Mono';font-size:22px;padding:8px 14px;white-space:nowrap}
+.old .cols{display:flex}
+.old .side{width:230px;background:#e8e8e8;border-right:3px ridge #999;height:640px;padding:20px 16px;font-size:24px;line-height:2}
+.old .side a{color:#00e;text-decoration:underline;display:block}
+.old .main{flex:1;padding:24px 28px;font-size:25px;line-height:1.4}
+.old .main h2{font-size:36px;color:#900;margin-bottom:14px;font-family:'Liberation Serif'}
+.old .uc{margin-top:26px;border:4px dashed #000;background:repeating-linear-gradient(45deg,#ffd400 0 22px,#111 22px 44px);
+  height:90px;display:flex;align-items:center;justify-content:center}
+.old .uc b{background:#ffd400;padding:6px 14px;font-size:26px}
+.old .cnt{margin-top:26px;font-family:'Liberation Mono';font-size:22px}
+.old .cnt span{background:#000;color:#f00;padding:2px 8px;letter-spacing:4px}
+.old .img{margin-top:22px;width:280px;height:120px;border:3px outset #ccc;background:#ddd;display:flex;align-items:center;
+  justify-content:center;color:#666;font-size:20px;font-family:'Liberation Sans'}
+.shard{position:absolute;left:0;top:0;width:920px;height:840px}
+/* new site */
+#new{left:0;top:0;width:920px;height:840px;background:#f6f2ea;color:#141414}
+.nav{left:44px;top:34px;right:44px;height:50px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:30px;letter-spacing:-.5px;display:flex;align-items:center;gap:12px}
+.logo i{width:30px;height:30px;border-radius:9px;background:#ff5a1f;display:block}
+.menu{display:flex;gap:26px;font-size:20px;color:#555;font-family:'Inter'}
+.h1{left:44px;top:140px;font-size:86px;font-weight:800;line-height:1.0;letter-spacing:-3px}
+.h1 .ln{display:block;overflow:hidden;height:92px}
+.h1 .ln span{display:block}
+.sub{left:46px;top:446px;width:400px}
+.sk{height:14px;border-radius:7px;background:#d9d2c5;margin-bottom:14px}
+.btn{left:44px;top:522px;height:66px;padding:0 34px;border-radius:33px;background:#ff5a1f;color:#fff;font-size:24px;
+  font-weight:700;display:flex;align-items:center;font-family:'Inter';box-shadow:0 14px 30px rgba(255,90,31,.35)}
+.hero-img{left:500px;top:140px;width:376px;height:440px;border-radius:30px;overflow:hidden;
+  background:linear-gradient(150deg,#ff7a3d,#ff3d6e 60%,#7b4dff)}
+.blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.28)}
+.card{top:626px;width:262px;height:186px;border-radius:24px;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.08);padding:26px}
+.card .ic{width:52px;height:52px;border-radius:16px;margin-bottom:22px}
+/* kinetic words */
+#kin{left:0;top:0;width:1080px;height:1920px}
+.word{left:0;width:1080px;top:820px;text-align:center;font-size:170px;font-weight:800;letter-spacing:-6px;line-height:1}
+.uline{left:290px;top:1015px;width:500px;height:16px;border-radius:8px;background:#ff5a1f;transform-origin:left center}
+/* phone */
+#phone{left:290px;top:560px;width:500px;height:1020px;border-radius:70px;background:#111;
+  box-shadow:0 0 0 3px #333,0 50px 120px rgba(0,0,0,.7);padding:18px}
+#screen{width:464px;height:984px;border-radius:54px;overflow:hidden;background:#f6f2ea;position:relative}
+#scroll{left:0;top:0;width:464px}
+.notch{left:182px;top:16px;width:100px;height:30px;border-radius:15px;background:#000;z-index:5}
+.notif{left:18px;top:56px;width:428px;height:110px;border-radius:28px;background:rgba(255,255,255,.96);
+  box-shadow:0 20px 50px rgba(0,0,0,.25);display:flex;align-items:center;gap:18px;padding:0 22px;color:#111;z-index:4}
+.notif .ic{width:62px;height:62px;border-radius:16px;background:#ff5a1f;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:34px;font-weight:800;flex:none}
+.notif b{font-size:22px;display:block}
+.notif span{font-size:19px;color:#666;font-family:'Inter'}
+/* end */
+#end{left:0;top:0;width:1080px;height:1920px}
+.e-small{left:0;width:1080px;top:760px;text-align:center;font-size:40px;font-weight:500;color:#bdbdc6;letter-spacing:6px;text-transform:uppercase}
+.e-name{left:0;width:1080px;top:830px;text-align:center;font-size:132px;font-weight:800;letter-spacing:-5px;line-height:1.05}
+.e-name .ln{display:block;overflow:hidden;height:150px}
+.e-name .ln span{display:block}
+.e-line{left:390px;top:1150px;width:300px;height:10px;border-radius:5px;background:#ff5a1f}
+.e-mail{left:0;width:1080px;top:1200px;text-align:center;font-size:44px;font-weight:500;font-family:'Inter';color:#fff}
+.spark{position:absolute;width:12px;height:12px;border-radius:50%;background:#ff5a1f}
+</style></head><body>
+<div id="glow" class="abs"></div><div id="glow2" class="abs"></div>
+
+<!-- scene 1-3 -->
+<div id="s1" class="abs" style="left:0;top:0;width:1080px;height:1920px">
+  <div id="cap1" class="cap abs" style="top:250px"><span>Takhle</span> <span>vypadá</span> <span>váš</span> <span class="acc">web?</span></div>
+  <div id="cap2" class="cap abs" style="top:250px;opacity:0"><span>Co</span> <span>takhle</span> <span>radši</span><br><span class="acc">tohle?</span></div>
+  <div id="win" class="abs">
+    <div id="bar" class="abs"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>
+      <div id="url">www.vase-firma.cz</div></div>
+    <div id="content" class="abs">
+      <div id="new" class="abs">
+        <div class="nav abs"><div class="logo"><i></i>Vaše firma</div><div class="menu"><span>Služby</span><span>Reference</span><span>Kontakt</span></div></div>
+        <div class="h1 abs"><span class="ln"><span>Váš web.</span></span><span class="ln"><span>Konečně</span></span><span class="ln"><span class="acc" style="color:#ff5a1f">moderní.</span></span></div>
+        <div class="sub abs"><div class="sk" style="width:390px"></div><div class="sk" style="width:330px"></div><div class="sk" style="width:250px"></div></div>
+        <div class="btn abs">Nezávazná poptávka →</div>
+        <div class="hero-img abs">
+          <div class="blob b1" style="left:40px;top:50px;width:150px;height:150px"></div>
+          <div class="blob b2" style="left:200px;top:200px;width:120px;height:120px"></div>
+          <div class="blob b3" style="left:90px;top:260px;width:70px;height:70px;background:rgba(255,255,255,.45)"></div>
+        </div>
+        <div class="card abs" style="left:44px"><div class="ic" style="background:#ffe1d4"></div><div class="sk" style="width:160px"></div><div class="sk" style="width:120px"></div></div>
+        <div class="card abs" style="left:329px"><div class="ic" style="background:#e3dcff"></div><div class="sk" style="width:150px"></div><div class="sk" style="width:110px"></div></div>
+        <div class="card abs" style="left:614px"><div class="ic" style="background:#d6f5e3"></div><div class="sk" style="width:170px"></div><div class="sk" style="width:100px"></div></div>
+      </div>
+      <div id="oldwrap" class="abs" style="left:0;top:0;width:920px;height:840px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- scene 4 kinetic -->
+<div id="kin" class="abs" style="opacity:0">
+  <div class="word abs w0">Moderní.</div>
+  <div class="word abs w1">Rychlý.</div>
+  <div class="word abs w2">Na mobilu.</div>
+  <div class="word abs w3 acc">Živý.</div>
+  <div class="uline abs"></div>
+</div>
+
+<!-- scene 5 phone -->
+<div id="s5" class="abs" style="left:0;top:0;width:1080px;height:1920px;opacity:0">
+  <div class="cap abs" id="cap5" style="top:250px;font-size:68px"><span>Aby</span> <span>se</span> <span>vám</span> <span>zákazníci</span><br><span class="acc">opravdu</span> <span class="acc">ozvali.</span></div>
+  <div id="phone" class="abs"><div id="screen">
+    <div class="notch abs"></div>
+    <div class="notif abs"><div class="ic">✓</div><div><b>Nová poptávka z webu</b><span>„Dobrý den, mám zájem o…“</span></div></div>
+    <div id="scroll" class="abs"></div>
+  </div></div>
+</div>
+
+<!-- scene 6 end -->
+<div id="end" class="abs" style="opacity:0">
+  <div class="e-small abs">Weby s animacemi pro malé firmy</div>
+  <div class="e-name abs"><span class="ln"><span>Tomáš</span></span><span class="ln"><span>Ledvina</span></span></div>
+  <div class="e-line abs"></div>
+  <div class="e-mail abs">ledvina.tomi@gmail.com</div>
+  <div id="sparks"></div>
+</div>
+
+<script>
+const A=[];
+function an(target,kf,start,dur,o={}){
+  const els=typeof target==='string'?[...document.querySelectorAll(target)]:(target.length!==undefined?[...target]:[target]);
+  els.forEach((el,i)=>{const a=el.animate(kf,{duration:dur*1000,delay:(start+(o.stagger||0)*i)*1000,
+    fill:o.fill||'both',easing:o.ease||'cubic-bezier(.2,.85,.25,1)',iterations:o.iter||1,direction:o.dir||'normal'});
+    a.pause();A.push(a);});
+}
+window.seek=t=>{A.forEach(a=>a.currentTime=t*1000)};
+const OUT={fill:'forwards',ease:'cubic-bezier(.6,0,.8,.4)'};
+
+// --- old site + shards
+const oldHTML=`<div class="old"><div class="hd">VÍTEJTE NA NAŠICH STRÁNKÁCH!!!</div>
+<div class="mq">*** Nejlepší služby ve městě *** Volejte *** Nejlepší služby ve městě ***</div>
+<div class="cols"><div class="side"><a>Úvod</a><a>O nás</a><a>Služby</a><a>Fotogalerie</a><a>Kniha návštěv</a><a>Kontakt</a></div>
+<div class="main"><h2>Vítáme Vás!</h2>Jsme firma s dlouholetou tradicí. Na těchto stránkách naleznete informace o naší činnosti.
+<div class="uc"><b>⚠ STRÁNKA JE V REKONSTRUKCI ⚠</b></div>
+<div class="img">[ obrázek se nenačetl ]</div>
+<div class="cnt">Jste návštěvník č. <span>000347</span></div></div></div></div>`;
+const ow=document.getElementById('oldwrap');
+const W=920,H=840,C=4,R=5,pts=[];
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+for(let r=0;r<=R;r++){pts[r]=[];for(let c=0;c<=C;c++){
+  const edgeX=c===0||c===C,edgeY=r===0||r===R;
+  pts[r][c]=[c*W/C+(edgeX?0:(rnd()-.5)*120),r*H/R+(edgeY?0:(rnd()-.5)*90)];}}
+const tris=[];
+for(let r=0;r<R;r++)for(let c=0;c<C;c++){const a=pts[r][c],b=pts[r][c+1],d=pts[r+1][c],e=pts[r+1][c+1];
+  if((r+c)%2){tris.push([a,b,e],[a,e,d])}else{tris.push([a,b,d],[b,e,d])}}
+tris.forEach((tr,i)=>{const s=document.createElement('div');s.className='shard';
+  s.style.clipPath='polygon('+tr.map(p=>p[0]+'px '+p[1]+'px').join(',')+')';s.innerHTML=oldHTML;ow.appendChild(s);
+  const cx=(tr[0][0]+tr[1][0]+tr[2][0])/3,cy=(tr[0][1]+tr[1][1]+tr[2][1])/3;
+  const dx=(cx-W/2)*(0.9+rnd()*0.8)+(rnd()-.5)*200, dy=900+rnd()*900, rot=(rnd()-.5)*140;
+  const st=3.25+ (1-cy/H)*0.05 + rnd()*0.25;
+  s.style.transformOrigin=cx+'px '+cy+'px';
+  an(s,[{transform:'translate(0,0) rotate(0)'},{transform:`translate(${dx*0.25}px,-${60+rnd()*80}px) rotate(${rot*0.3}deg)`,offset:.25},
+        {transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`}],st,1.1,{fill:'forwards',ease:'cubic-bezier(.3,0,.9,.6)'});
+});
+// crack shake
+an('#win',[{transform:'translateX(0)'},{transform:'translateX(-14px) rotate(-.6deg)'},{transform:'translateX(12px) rotate(.5deg)'},
+  {transform:'translateX(-8px)'},{transform:'translateX(0)'}],2.85,0.4,{fill:'forwards',ease:'linear'});
+// crack lines flash (white lines over old site)
+const crack=document.createElementNS('http://www.w3.org/2000/svg','svg');
+crack.setAttribute('width',W);crack.setAttribute('height',H);crack.style.cssText='position:absolute;left:0;top:0;pointer-events:none';
+let path='';tris.forEach(tr=>{path+=`M${tr[0][0]} ${tr[0][1]}L${tr[1][0]} ${tr[1][1]}L${tr[2][0]} ${tr[2][1]}Z`});
+crack.innerHTML=`<path d="${path}" fill="none" stroke="#fff" stroke-width="3" opacity=".9"/>`;ow.appendChild(crack);
+an(crack,[{opacity:0},{opacity:1}],2.9,0.15,{ease:'linear'});
+an(crack,[{opacity:1},{opacity:0}],3.3,0.2,{fill:'forwards',ease:'linear'});
+
+// --- scene 1 entrance
+an('#win',[{transform:'translateY(140px) scale(.9)',opacity:0},{transform:'translateY(0) scale(1)',opacity:1}],0.15,0.9);
+an('#cap1 span',[{transform:'translateY(60px)',opacity:0},{transform:'translateY(0)',opacity:1}],0.35,0.6,{stagger:0.12});
+an('#cap1',[{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-40px)'}],3.2,0.35,OUT);
+an('#cap2 span',[{transform:'translateY(60px)',opacity:0},{transform:'translateY(0)',opacity:1}],3.9,0.6,{stagger:0.1});
+an('#cap2',[{opacity:0},{opacity:1}],3.9,0.01);
+
+// --- new site assemble (starts while shards fall)
+an('#url',[{color:'#9a9aa3'},{color:'#e8e8ee'}],3.6,0.4);
+an('.nav',[{transform:'translateY(-30px)',opacity:0},{transform:'translateY(0)',opacity:1}],3.7,0.6);
+an('.h1 .ln span',[{transform:'translateY(100%)'},{transform:'translateY(0)'}],3.85,0.7,{stagger:0.13});
+an('.sub .sk',[{transform:'scaleX(0)',transformOrigin:'left'},{transform:'scaleX(1)',transformOrigin:'left'}],4.4,0.6,{stagger:0.08});
+an('.btn',[{transform:'scale(.5)',opacity:0},{transform:'scale(1.06)',opacity:1,offset:.7},{transform:'scale(1)',opacity:1}],4.7,0.6);
+an('.btn',[{boxShadow:'0 14px 30px rgba(255,90,31,.35)'},{boxShadow:'0 14px 50px rgba(255,90,31,.7)'}],5.4,0.8,{iter:4,dir:'alternate',ease:'ease-in-out'});
+an('.hero-img',[{clipPath:'inset(100% 0 0 0 round 30px)'},{clipPath:'inset(0 0 0 0 round 30px)'}],4.0,0.9);
+an('.b1',[{transform:'translate(0,0)'},{transform:'translate(40px,30px)'}],4.0,1.6,{iter:6,dir:'alternate',ease:'ease-in-out'});
+an('.b2',[{transform:'translate(0,0)'},{transform:'translate(-50px,-40px)'}],4.0,1.9,{iter:6,dir:'alternate',ease:'ease-in-out'});
+an('.b3',[{transform:'translate(0,0) scale(1)'},{transform:'translate(30px,-50px) scale(1.3)'}],4.0,1.3,{iter:8,dir:'alternate',ease:'ease-in-out'});
+an('.card',[{transform:'translateY(120px)',opacity:0},{transform:'translateY(0)',opacity:1}],5.0,0.7,{stagger:0.12});
+// window zooms out of scene
+an('#s1',[{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(.85)'}],7.6,0.45,OUT);
+
+// --- scene 4 kinetic words
+an('#kin',[{opacity:0},{opacity:1}],7.9,0.01);
+const wt=[8.0,9.0,10.0,11.0];
+wt.forEach((t,i)=>{
+  an('.w'+i,[{transform:'scale(1.6)',opacity:0,filter:'blur(18px)'},{transform:'scale(1)',opacity:1,filter:'blur(0)'}],t,0.35,{ease:'cubic-bezier(.2,1,.3,1)'});
+  if(i<3) an('.w'+i,[{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-90px)'}],t+0.8,0.2,OUT);
+});
+an('.uline',[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],11.2,0.45);
+an('#kin',[{opacity:1},{opacity:0}],12.0,0.3,OUT);
+
+// --- scene 5 phone
+const sc=document.getElementById('scroll');
+sc.innerHTML=`<div style="transform:scale(.5045);transform-origin:0 0;width:920px;position:relative;height:2780px">
+ ${document.getElementById('new').outerHTML.replace('id="new"','').replace('class="abs"','class="abs" style="height:840px"')}
+ <div class="abs" style="left:0;top:840px;width:920px;height:1940px;background:#141414;color:#fff;padding:70px 44px">
+   <div style="font-size:64px;font-weight:800;letter-spacing:-2px;line-height:1.05">Ozvěte se nám.<br><span style="color:#ff5a1f">Rádi pomůžeme.</span></div>
+   <div style="margin-top:50px;height:84px;border-radius:20px;background:#2a2a2e"></div>
+   <div style="margin-top:22px;height:84px;border-radius:20px;background:#2a2a2e"></div>
+   <div style="margin-top:22px;height:300px;border-radius:20px;background:#2a2a2e"></div>
+   <div style="margin-top:30px;height:90px;border-radius:45px;background:#ff5a1f;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700">Odeslat poptávku</div>
+ </div></div>`;
+an('#s5',[{opacity:0},{opacity:1}],12.2,0.3);
+an('#phone',[{transform:'translateY(500px) rotate(8deg)'},{transform:'translateY(0) rotate(0)'}],12.2,0.9);
+an('#cap5 span',[{transform:'translateY(60px)',opacity:0},{transform:'translateY(0)',opacity:1}],12.5,0.55,{stagger:0.08});
+an('#scroll',[{transform:'translateY(0)'},{transform:'translateY(-420px)'}],13.0,1.6,{ease:'cubic-bezier(.6,0,.2,1)'});
+an('.notif',[{transform:'translateY(-200px)',opacity:0},{transform:'translateY(0)',opacity:1}],14.7,0.55,{ease:'cubic-bezier(.2,1.3,.4,1)'});
+an('.notif .ic',[{transform:'scale(1)'},{transform:'scale(1.15)'}],15.25,0.25,{iter:2,dir:'alternate'});
+an('#s5',[{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(1.08)'}],16.4,0.4,OUT);
+
+// --- scene 6 end card
+an('#end',[{opacity:0},{opacity:1}],16.75,0.01);
+an('.e-small',[{opacity:0,letterSpacing:'20px'},{opacity:1,letterSpacing:'6px'}],16.85,0.9);
+an('.e-name .ln span',[{transform:'translateY(105%)'},{transform:'translateY(0)'}],17.05,0.75,{stagger:0.14});
+an('.e-line',[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],17.7,0.5);
+an('.e-mail',[{opacity:0,transform:'translateY(30px)'},{opacity:1,transform:'translateY(0)'}],17.9,0.6);
+// sparks burst from line
+const sp=document.getElementById('sparks');
+for(let i=0;i<22;i++){const d=document.createElement('div');d.className='spark';d.style.left='534px';d.style.top='1150px';
+  const ang=rnd()*Math.PI*2,dist=120+rnd()*260,sz=.4+rnd()*.9;sp.appendChild(d);
+  an(d,[{transform:`translate(0,0) scale(${sz})`,opacity:1},{transform:`translate(${Math.cos(ang)*dist}px,${Math.sin(ang)*dist*0.6}px) scale(0)`,opacity:0}],17.75+rnd()*0.1,0.8+rnd()*0.4,{ease:'cubic-bezier(.1,.8,.3,1)'});}
+// background glow drift
+an('#glow',[{transform:'translate(0,0)'},{transform:'translate(200px,-150px)'}],0,20,{ease:'ease-in-out'});
+an('#glow2',[{transform:'translate(0,0)'},{transform:'translate(-250px,100px)'}],0,20,{ease:'ease-in-out'});
+window.DUR=20.0;
+seek(0);
+</script></body></html>
