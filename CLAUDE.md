@@ -61,6 +61,9 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   pro videa firmám. Postup: `npm i three @fontsource/instrument-serif`, 2D: `python3 render.py <abs cesta html> video out.mp4`,
   3D: `FPS=60 python3 render3d.py cast.html video out.mp4` (SwiftShader ~1,8 s/snímek → pouštět na pozadí),
   zvuk: `python3 sfx_*.py out.wav` (vše syntetizované, bez licencí), pak ffmpeg mux + loudnorm I=-15.
+- Na začátku každého nového videa dát Tomášovi krátký dotazník (AskUserQuestion, max 4 otázky s volbami):
+  pro koho a kam (platforma/formát), pocit/styl, délka, co tam musí být (texty, logo, kontakt) + požádat o referenci.
+  Pak hned náhled, ne dlouhé plánování.
 - Tomáš má doma PC s RTX 2060 (rychlejší render), zatím neřešíme.
 - Skilly pro videa/animace (18. 10. připraveny jako zip k nahrání do jeho účtu, prověřené, MIT): motion-design
   (github.com/lottiefiles/motion-design-skill), design-dna (github.com/zanwei/design-dna), genjutsu
