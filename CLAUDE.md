@@ -34,7 +34,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   e-mail připravený, Tomáš ho zatím odložil.
 - **Karásek a Stülpner** (pivovar Chomutov, IČO 02193744): návrh `karasek/` hotový (Three.js lahve se skutečnými
   etiketami, vlající zatykač „Hledají se“, čísla od nuly, čára postupu u „Jak vaříme“, basa, prohlídky).
-  E-mail připravený; před odesláním projít jejich Facebook. Cenový návrh: cca 18 tis. základ, DE verze +3–5 tis.,
+  E-mail ODESLÁN (Tomáš, 18. 10. 2026), čeká se na odpověď. Cenový návrh: cca 18 tis. základ, DE verze +3–5 tis.,
   správa 300–500 Kč/měs. Assety na CloudFrontu: etikety karaskova 47c9b56e…, stulpnerova 004a0953…,
   podloudnicka 37c2c925…, kvidona 4180b342… (plné ID v `karasek/hero3d.js` a `karasek/index.html`).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
@@ -42,3 +42,9 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
 ## Nápady na další kroky
 - Tomášův vlastní web s portfoliem a značkou; reference od pana Veselého.
 - Promo videa (TikTok/Reels/FB): „před a po“, jen s webem klienta se souhlasem nebo s vymyšlenými firmami.
+- Motion-graphics videa (styl „Claude cooked“: velké texty, odpočítávaná čísla, skládající se dashboardy, maskot),
+  dělané kódem (HTML/JS animace → Playwright → ffmpeg MP4), bez kreditů. Plán na úterý 20. 10.:
+  1) promo Tomášovy služby (~20 s, 9:16: starý web se rozpadne → animovaný web → podpis; zeptat se na jméno/značku),
+  2) případně krátké video k návrhu pro Karáska (jen neveřejně).
+  Cíl: nabízet firmám videa na Instagram/FB/TikTok, i v balíčku s webem nebo měsíčně ke správě.
+- Písemný souhlas HZS: Tomáš si zažádá, až přijde další nabídka.
