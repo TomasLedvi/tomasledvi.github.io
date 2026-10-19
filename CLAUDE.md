@@ -22,14 +22,15 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
 - Obrázky/videa hostujeme na Higgsfield CloudFront (`https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/<id>`),
   nahrávání: media_upload → PUT z prohlížeče na Macu → media_confirm.
 
-## Stav klientů (k 18. 10. 2026)
+## Stav klientů (k 19. 10. 2026)
 - **Ing. Jaromír Veselý** (projektant, Sedlčany): HOTOVO a ZAPLACENO (12 000 Kč, výzva k úhradě č. 2026001).
   Jeho rodné číslo nikde nezveřejňovat.
   Ostrý web https://projekty-vesely.cz = repozitář `TomasLedvi/projekty-vesely` (GitHub Pages, doména u Wedosu).
   Formulář přes Web3Forms (účet Tomáše, klíč 3edf4b38-3fbf-445b-a25c-84f1d845e8cb, příjemce prokon-vesely@volny.cz).
   Search Console + Bing hotové, Seznam ohlášen přes IndexNow (klíč b9c4cd543e404532bb70c293790deaa2).
-  Čeká se: potvrzení, že zkušební poptávka dorazila; případně Firemní profil Google (zatím nechce).
-  Další možná zakázka: web pro jeho paní (ubytování).
+  Zkušební poptávka DORAZILA (potvrdil 19. 10.), ale spadla mu do hromadné pošty – hlídá si ji.
+  Poděkoval za spolupráci, „ozve se s www stránkami pro manželku“ (ubytování) → další zakázka.
+  Případně Firemní profil Google (zatím nechce). Reference/svolení použít web v portfoliu: zeptat se.
 - **SKIP** (střechy): návrh `skip/` hotový (scroll video stavby střechy, opravené načítání na iPhonu),
   e-mail připravený, Tomáš ho zatím odložil.
 - **Karásek a Stülpner** (pivovar Chomutov, IČO 02193744): návrh `karasek/` hotový (Three.js lahve se skutečnými
