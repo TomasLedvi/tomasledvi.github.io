@@ -40,6 +40,9 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   správa 300–500 Kč/měs. Assety na CloudFrontu: etikety karaskova 47c9b56e…, stulpnerova 004a0953…,
   podloudnicka 37c2c925…, kvidona 4180b342… (plné ID v `karasek/hero3d.js` a `karasek/index.html`).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
+- Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
+  (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
+  Postup: nejdřív telefon, e-mail s ukázkou až po souhlasu (zákon 480/2004 Sb. – žádné hromadné e-maily).
 
 ## Nápady na další kroky
 - Tomášův vlastní web s portfoliem a značkou; reference od pana Veselého.
