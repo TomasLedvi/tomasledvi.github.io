@@ -30,7 +30,8 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   Search Console + Bing hotové, Seznam ohlášen přes IndexNow (klíč b9c4cd543e404532bb70c293790deaa2).
   Zkušební poptávka DORAZILA (potvrdil 19. 10.), ale spadla mu do hromadné pošty – hlídá si ji.
   Poděkoval za spolupráci, „ozve se s www stránkami pro manželku“ (ubytování) → další zakázka.
-  Případně Firemní profil Google (zatím nechce). Reference/svolení použít web v portfoliu: zeptat se.
+  Případně Firemní profil Google (zatím nechce). O referenci + svolení použít web v portfoliu požádat AŽ PO
+  předání webu pro manželku (Tomášovo rozhodnutí 19. 10.). Poslán návod na filtr „Poptávky z webu“ (web3forms.com).
 - **SKIP** (střechy): návrh `skip/` hotový (scroll video stavby střechy, opravené načítání na iPhonu),
   e-mail připravený, Tomáš ho zatím odložil.
 - **Karásek a Stülpner** (pivovar Chomutov, IČO 02193744): návrh `karasek/` hotový (Three.js lahve se skutečnými
