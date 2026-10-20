@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Instalatérství a topenářství Bohuňovský, Brno</title>
+<meta name="description" content="Voda, topení a plyn v Brně od roku 1992. Koupelny na klíč, rekonstrukce bytových jader, rozvody a servis plynových kotlů.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Teze: web je rozvod. Měděná trubka vede celou stránkou a plní se vodou, služby jsou rozdělovač
+   s ventily ve skutečných barvách médií (voda modrá, topení červená, plyn žlutá), koupelna se staví po vrstvách.
+   Podklad je studená bílá keramika, ne papír. Archivo v proměnné šířce jako písmo technických katalogů armatur. */
+:root{
+  --tile:#f3f6f7; --tile-2:#e6ecee; --grout:#d3dcdf; --ink:#0e1c24; --ink-2:#44545d;
+  --copper:#b5652e; --copper-hi:#e0955c; --copper-lo:#7a3f19;
+  --water:#1b7fc4; --heat:#cf3b2b; --gas:#e2b400;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--tile);color:var(--ink);font:400 18px/1.55 var(--body);overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--water);outline-offset:3px;border-radius:6px}
+.demo{background:var(--ink);color:#cfdbe1;font-size:14px;text-align:center;padding:8px 16px}
+.demo b{color:#fff;font-weight:600}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(243,246,247,.94);border-bottom:1px solid var(--grout)}
+nav .wrap{display:flex;align-items:center;gap:24px;height:68px}
+.brand{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+.brand b{font:800 24px/1 var(--display);font-stretch:112%;letter-spacing:-.5px}
+.brand span{font-size:13px;color:var(--ink-2);margin-top:4px}
+nav ul{display:flex;gap:22px;list-style:none;padding:0;margin-left:auto}
+nav ul a{text-decoration:none;font-weight:500;color:var(--ink-2)}
+nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:14px 22px;font:700 17px/1 var(--display);font-stretch:105%;text-decoration:none;cursor:pointer;transition:transform .15s ease,background .2s}
+.btn:active{transform:scale(.97)}
+.btn-copper{background:var(--copper);color:#fff}
+.btn-copper:hover{background:var(--copper-lo)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn svg{width:18px;height:18px}
+@media (max-width:820px){nav ul{display:none}.nav-call{margin-left:auto;padding:12px 14px;font-size:15px}.nav-call .t{display:none}}
+/* hero */
+.hero{position:relative;min-height:min(820px,92vh);display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:20px;padding-block:40px 30px}
+.hero h1{font:900 clamp(44px,6.4vw,92px)/.95 var(--display);font-stretch:78%;letter-spacing:-1.5px;text-transform:uppercase}
+.hero h1 .since{display:block;color:var(--copper);font-stretch:125%;font-size:.42em;letter-spacing:0;margin-top:.45em;text-transform:none;font-weight:800}
+.hero p.lead{font-size:20px;color:var(--ink-2);max-width:34ch;margin-top:22px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.free{display:flex;flex-direction:column;gap:6px;margin-top:28px;padding:0;list-style:none;font-weight:500}
+.free li{display:flex;gap:10px;align-items:flex-start}
+.free svg{flex:none;width:22px;height:22px;margin-top:2px;color:var(--water)}
+#pipes{position:relative;height:min(640px,70vh);border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#e9eff1,#dfe7ea)}
+#pipes canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
+#pipes .tilegrid{position:absolute;inset:0;background-image:linear-gradient(var(--grout) 1px,transparent 1px),linear-gradient(90deg,var(--grout) 1px,transparent 1px);background-size:64px 64px;opacity:.55}
+@media (max-width:900px){.hero{grid-template-columns:1fr;min-height:0}#pipes{height:340px;order:-1}}
+/* spine pipe */
+#spine{position:absolute;left:max(14px,calc(50% - 640px));top:0;width:40px;pointer-events:none;z-index:1}
+@media (max-width:1300px){#spine{display:none}}
+main{position:relative}
+section{position:relative;z-index:2}
+.eyebrow{font:700 14px/1 var(--display);font-stretch:120%;letter-spacing:2px;text-transform:uppercase;color:var(--copper)}
+h2{font:900 clamp(34px,4.6vw,62px)/1 var(--display);font-stretch:82%;letter-spacing:-1px;text-transform:uppercase;margin-top:12px;text-wrap:balance}
+/* manifold */
+.services{padding-block:110px 90px}
+.manifold{margin-top:46px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:900px){.manifold{grid-template-columns:1fr}}
+.mani-svg{width:100%;height:auto;overflow:visible}
+.valve{cursor:pointer}
+.valve .handle{transition:transform .5s cubic-bezier(.2,1.3,.4,1);transform-box:fill-box;transform-origin:50% 100%}
+.valve[aria-pressed="true"] .handle{transform:rotate(90deg)}
+.valve text{font:800 22px var(--display);font-stretch:110%;fill:var(--ink)}
+.valve:focus-visible{outline:none}
+.valve:focus-visible .ring{stroke:var(--water);stroke-width:4}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{border:2px solid var(--ink);background:transparent;color:var(--ink);padding:10px 18px;border-radius:999px;font:700 16px var(--display);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:#fff}
+.panel{margin-top:22px}
+.panel h3{font:800 34px/1.05 var(--display);font-stretch:95%}
+.panel .k{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:10px;vertical-align:2px}
+.panel ul{margin-top:16px;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.panel li{padding-left:28px;position:relative}
+.panel li::before{content:"";position:absolute;left:0;top:11px;width:16px;height:3px;border-radius:2px;background:var(--c,var(--water))}
+.panel[hidden]{display:none}
+/* bathroom */
+.bath{background:var(--ink);color:#e8f0f3;padding-block:110px 40px;overflow:hidden}
+.bath .eyebrow{color:var(--copper-hi)}
+.bath-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:50px;align-items:center;margin-top:30px}
+@media (max-width:900px){.bath-grid{grid-template-columns:1fr}}
+.stages{position:relative;min-height:260px}
+.stage{position:absolute;inset:0 0 auto 0;opacity:0}
+.stage:first-child{opacity:1}
+.stage h3{font:800 clamp(28px,3vw,40px)/1.05 var(--display);font-stretch:95%;color:#fff}
+.stage p{margin-top:12px;color:#b8c7ce;max-width:38ch;font-size:19px}
+.progress{display:flex;gap:6px;margin-top:28px}
+.progress i{height:4px;flex:1;border-radius:2px;background:#2a3a43;overflow:hidden;position:relative}
+.progress i b{position:absolute;inset:0;background:var(--copper-hi);transform:scaleX(0);transform-origin:left}
+.bath-svg{width:100%;height:auto;background:#13252f;border-radius:20px}
+.bath-svg .ln{fill:none;stroke:#9fb3bc;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.bath-svg .dim{stroke:#e0955c;stroke-width:1.5;fill:none}
+.bath-svg .dimt{fill:#e0955c;font:600 13px var(--body)}
+.bath-svg .pw{stroke:#3fa3e6;stroke-width:6;fill:none;stroke-linecap:round}
+.bath-svg .pc{stroke:#e85a48;stroke-width:6;fill:none;stroke-linecap:round}
+.bath-svg .pg{stroke:#7a8a93;stroke-width:9;fill:none;stroke-linecap:round}
+.bath-svg .tile{fill:#dfe8eb;stroke:#b9c7cc;stroke-width:1.5}
+.bath-svg .fx{fill:#fff;stroke:#8aa0a9;stroke-width:2.5}
+.bath-svg .chrome{fill:#c9d4d9;stroke:#7d9099;stroke-width:2}
+/* gallery */
+.work{padding-block:110px 40px}
+.frames{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:14px;margin-top:40px}
+.frames div{border:2px dashed #a7b6bc;border-radius:var(--r);display:flex;align-items:flex-end;padding:16px;color:var(--ink-2);font-size:15px;background:repeating-linear-gradient(135deg,transparent 0 14px,rgba(14,28,36,.03) 14px 28px)}
+.frames div:first-child{grid-row:span 2}
+@media (max-width:700px){.frames{grid-template-columns:1fr 1fr;grid-template-rows:180px 140px 140px}.frames div:first-child{grid-column:span 2;grid-row:auto}}
+.work p.note{margin-top:16px;color:var(--ink-2);max-width:60ch}
+/* contact */
+.contact{padding-block:110px 120px}
+.c-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;margin-top:40px}
+@media (max-width:900px){.c-grid{grid-template-columns:1fr}}
+.phone{display:block;font:900 clamp(40px,5.6vw,76px)/1 var(--display);font-stretch:80%;text-decoration:none;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.phone small{display:block;font:600 15px var(--body);letter-spacing:.5px;color:var(--ink-2);text-transform:uppercase;margin-bottom:6px}
+.phone + .phone{margin-top:26px}
+.addr{margin-top:34px;color:var(--ink-2);line-height:1.6}
+.addr a{color:var(--water);font-weight:600}
+form{background:#fff;border:1px solid var(--grout);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px}
+label{font-weight:600;font-size:15px;display:flex;flex-direction:column;gap:6px}
+input,textarea{font:400 17px var(--body);padding:13px 14px;border:1.5px solid var(--grout);border-radius:10px;background:var(--tile);color:var(--ink)}
+input:focus,textarea:focus{outline:none;border-color:var(--water)}
+textarea{min-height:120px;resize:vertical}
+.formmsg{font-size:15px;color:var(--water);min-height:1.2em}
+footer{background:var(--ink);color:#9fb0b8;font-size:15px;padding-block:34px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between}
+.callbar{display:none}
+@media (max-width:700px){.callbar{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;justify-content:center}
+  .callbar a{flex:1;justify-content:center;padding:17px}
+  footer{padding-bottom:110px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="demo">Ukázka nového webu pro <b>Instalatérství a topenářství Bohuňovský</b>, připravil Tomáš Ledvina</div>
+<nav><div class="wrap">
+  <a class="brand" href="#top"><b>Bohuňovský</b><span>instalatérství a topenářství</span></a>
+  <ul><li><a href="#sluzby">Služby</a></li><li><a href="#koupelny">Koupelny na klíč</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <a class="btn btn-copper nav-call" href="tel:+420602757901"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="t">602 757 901</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Zavolat</span></a>
+</div></nav>
+
+<main id="top">
+<svg id="spine" aria-hidden="true"></svg>
+
+<header class="wrap hero">
+  <div>
+    <h1>Voda, topení a&nbsp;plyn v&nbsp;Brně<span class="since">Rodinné řemeslo od roku 1992</span></h1>
+    <p class="lead">Navazujeme na instalatérskou tradici po dědečkovi. Koupelny na klíč, rekonstrukce bytových jader, nové rozvody i servis plynových kotlů.</p>
+    <div class="ctas">
+      <a class="btn btn-copper" href="tel:+420602757901">Zavolat 602 757 901</a>
+      <a class="btn btn-line" href="#kontakt">Napsat poptávku</a>
+    </div>
+    <ul class="free">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Konzultace, kalkulace i návrh zdarma</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Cenu domluvíme podle vašich potřeb a možností</li>
+    </ul>
+  </div>
+  <div id="pipes" aria-hidden="true"><div class="tilegrid"></div></div>
+</header>
+
+<section class="services" id="sluzby"><div class="wrap">
+  <div class="eyebrow">Co pro vás uděláme</div>
+  <h2>Jeden instalatér na vodu, topení i&nbsp;plyn</h2>
+  <div class="manifold">
+    <svg class="mani-svg" viewBox="0 0 600 420" role="group" aria-label="Rozdělovač služeb">
+      <defs>
+        <linearGradient id="cu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7a26d"/><stop offset=".45" stop-color="#b5652e"/><stop offset="1" stop-color="#6e3615"/></linearGradient>
+        <linearGradient id="cuv" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e7a26d"/><stop offset=".45" stop-color="#b5652e"/><stop offset="1" stop-color="#6e3615"/></linearGradient>
+        <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0d68a"/><stop offset=".5" stop-color="#c9a240"/><stop offset="1" stop-color="#8a6a1c"/></linearGradient>
+      </defs>
+      <!-- header pipe -->
+      <rect x="20" y="70" width="560" height="44" rx="22" fill="url(#cu)"/>
+      <rect id="flowHead" x="34" y="84" width="0" height="16" rx="8" fill="#1b7fc4" opacity=".9"/>
+      <rect x="0" y="62" width="40" height="60" rx="8" fill="url(#brass)"/>
+      <g id="outlets"></g>
+    </svg>
+    <div>
+      <div class="tabs" role="tablist" aria-label="Služby">
+        <button class="tab" role="tab" id="t-voda" aria-controls="p-voda" aria-selected="true">Voda</button>
+        <button class="tab" role="tab" id="t-topeni" aria-controls="p-topeni" aria-selected="false">Topení</button>
+        <button class="tab" role="tab" id="t-plyn" aria-controls="p-plyn" aria-selected="false">Plyn</button>
+      </div>
+      <div class="panel" id="p-voda" role="tabpanel" aria-labelledby="t-voda" style="--c:var(--water)">
+        <h3><span class="k" style="background:var(--water)"></span>Voda a koupelny</h3>
+        <ul><li>Rozvody vody z plastu, mědi i oceli</li><li>Rekonstrukce koupelen a bytových jader</li><li>Domácí vodárny a bytové vodoměry</li><li>Údržba a servis</li></ul>
+      </div>
+      <div class="panel" id="p-topeni" role="tabpanel" aria-labelledby="t-topeni" style="--c:var(--heat)" hidden>
+        <h3><span class="k" style="background:var(--heat)"></span>Topení</h3>
+        <ul><li>Nové rozvody ústředního topení</li><li>Rekonstrukce starých topných systémů</li><li>Podlahové topení elektrické i teplovodní</li><li>Rekonstrukce kotelen a předávacích stanic</li></ul>
+      </div>
+      <div class="panel" id="p-plyn" role="tabpanel" aria-labelledby="t-plyn" style="--c:var(--gas)" hidden>
+        <h3><span class="k" style="background:var(--gas)"></span>Plyn</h3>
+        <ul><li>Plynovody a přípojky od projektu po montáž</li><li>Plynofikace kotelen a objektů</li><li>Dodávka a montáž plynových spotřebičů</li><li>Tlakové zkoušky a kontroly plynových zařízení</li><li>Servis plynových kotlů</li></ul>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="bath" id="koupelny"><div class="wrap">
+  <div class="eyebrow">Koupelny na klíč</div>
+  <h2 style="color:#fff">Od návrhu po poslední spáru</h2>
+  <div class="bath-grid">
+    <div>
+      <div class="stages">
+        <div class="stage"><h3>Návrh a kalkulace zdarma</h3><p>Přijedeme, zaměříme a navrhneme rozložení koupelny. Cenu spočítáme podle vašich potřeb a možností.</p></div>
+        <div class="stage"><h3>Nové rozvody vody, odpadů a topení</h3><p>Potrubí vedeme přesně tam, kde bude vana, umyvadlo i radiátor.</p></div>
+        <div class="stage"><h3>Zednické práce a obklady</h3><p>Stěny, podlaha i obklad v jedné ruce, bez shánění dalších řemeslníků.</p></div>
+        <div class="stage"><h3>Hotová koupelna</h3><p>Osadíme vanu, umyvadlo, WC i baterie. Vy jen otočíte kohoutkem.</p></div>
+      </div>
+      <div class="progress" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    </div>
+    <svg class="bath-svg" viewBox="0 0 640 460" role="img" aria-label="Koupelna se staví po krocích: návrh, rozvody, obklady, hotovo">
+      <!-- room -->
+      <path class="ln room" d="M60 60 H580 V400 H60 Z"/>
+      <line class="ln room" x1="60" y1="330" x2="580" y2="330"/>
+      <!-- stage 1: plan dims -->
+      <g id="s1">
+        <path class="dim" d="M60 36 H580 M60 30 V42 M580 30 V42"/><text class="dimt" x="300" y="28">2 400</text>
+        <path class="dim" d="M604 60 V400 M598 60 H610 M598 400 H610"/><text class="dimt" x="612" y="236">2 600</text>
+        <rect class="dim" x="90" y="240" width="250" height="90" stroke-dasharray="7 6"/>
+        <rect class="dim" x="400" y="230" width="80" height="60" stroke-dasharray="7 6"/>
+        <rect class="dim" x="510" y="260" width="50" height="70" stroke-dasharray="7 6"/>
+        <text class="dimt" x="186" y="292">vana</text><text class="dimt" x="404" y="222">umyvadlo</text><text class="dimt" x="512" y="252">WC</text>
+      </g>
+      <!-- stage 2: pipes -->
+      <g id="s2">
+        <path class="pw" d="M60 300 H430 V230"/><path class="pc" d="M60 316 H446 V230"/>
+        <path class="pw" d="M300 300 V280 H320"/><path class="pc" d="M316 316 V286 H330"/>
+        <path class="pg" d="M535 400 V330"/><path class="pg" d="M440 400 V330 M200 400 V352"/>
+        <path class="pc" d="M60 226 H132 V216" opacity=".9"/>
+      </g>
+      <!-- stage 3: tiles -->
+      <g id="s3"></g>
+      <!-- stage 4: fixtures -->
+      <g id="s4">
+        <rect class="fx" x="90" y="250" width="250" height="80" rx="14"/>
+        <path class="chrome" d="M300 250 v-26 h26 v8 h-16 v18 z"/>
+        <rect class="fx" x="398" y="226" width="84" height="22" rx="9"/><path class="fx" d="M406 248 h68 l-8 36 h-52 z"/>
+        <path class="chrome" d="M434 226 v-16 h16 v6 h-10 v10z"/>
+        <rect class="fx" x="410" y="90" width="60" height="110" rx="8"/><line class="ln" x1="418" y1="100" x2="440" y2="122"/>
+        <path class="fx" d="M512 330 v-58 h44 v20 c0 26 -10 38 -22 38 z"/><rect class="fx" x="512" y="232" width="44" height="40" rx="6"/>
+        <rect class="fx" x="100" y="96" width="64" height="120" rx="10"/><g stroke="#8aa0a9" stroke-width="2.5">
+        <line x1="100" y1="118" x2="164" y2="118"/><line x1="100" y1="140" x2="164" y2="140"/><line x1="100" y1="162" x2="164" y2="162"/><line x1="100" y1="184" x2="164" y2="184"/></g>
+      </g>
+    </svg>
+  </div>
+</div></section>
+
+<section class="work" id="prace"><div class="wrap">
+  <div class="eyebrow">Hotové zakázky</div>
+  <h2>Vaše koupelny mluví za vás</h2>
+  <div class="frames"><div>Místo pro fotku hotové koupelny</div><div>Rekonstrukce jádra</div><div>Kotelna</div><div>Podlahové topení</div><div>Plynová přípojka</div></div>
+  <p class="note">Sem patří fotky vašich hotových prací. Pro zákazníka, který vybírá řemeslníka, jsou to nejpřesvědčivější reference.</p>
+</div></section>
+
+<section class="contact" id="kontakt"><div class="wrap">
+  <div class="eyebrow">Kontakt</div>
+  <h2>Nebojte se zeptat</h2>
+  <div class="c-grid">
+    <div>
+      <a class="phone" href="tel:+420602757901"><small>Mobil</small>602 757 901</a>
+      <a class="phone" href="tel:+420548532414"><small>Pevná linka</small>548 532 414</a>
+      <p class="addr">Jáchym Bohuňovský<br><a href="mailto:bohunovsky.j@seznam.cz">bohunovsky.j@seznam.cz</a><br>Bělohorská 3159/23, 636 00 Brno-Židenice<br>
+      <a href="https://www.google.com/maps/search/?api=1&query=B%C4%9Blohorsk%C3%A1%203159%2F23%2C%20Brno" target="_blank" rel="noopener">Ukázat na mapě</a></p>
+    </div>
+    <form id="f" novalidate>
+      <label>Jméno<input name="jmeno" autocomplete="name"></label>
+      <label>Telefon nebo e-mail<input name="kontakt" autocomplete="tel"></label>
+      <label>Co potřebujete<textarea name="zprava" placeholder="Například: rekonstrukce koupelny v panelovém bytě, kolem 5 m²"></textarea></label>
+      <button class="btn btn-copper" type="submit" style="align-self:flex-start">Odeslat poptávku</button>
+      <div class="formmsg" id="fm" role="status"></div>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>Instalatérství a topenářství Bohuňovský, Bělohorská 3159/23, Brno-Židenice</span><span>Ukázka webu, připravil Tomáš Ledvina, ledvina.tomi@gmail.com</span></div></footer>
+<div class="callbar"><a class="btn btn-copper" href="tel:+420602757901">Zavolat 602 757 901</a></div>
+
+<script src="../vendor/gsap-3.13.0.min.js"></script>
+<script src="../vendor/ScrollTrigger-3.13.0.min.js"></script>
+<script src="../vendor/lenis-1.1.13.min.js"></script>
+<script src="../vendor/three-r128.min.js"></script>
+<script src="hero3d.js"></script>
+<script src="page.js"></script>
+</body>
+</html>

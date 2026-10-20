@@ -39,6 +39,10 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   E-mail ODESLÁN (Tomáš, 18. 10. 2026), čeká se na odpověď. Cenový návrh: cca 18 tis. základ, DE verze +3–5 tis.,
   správa 300–500 Kč/měs. Assety na CloudFrontu: etikety karaskova 47c9b56e…, stulpnerova 004a0953…,
   podloudnicka 37c2c925…, kvidona 4180b342… (plné ID v `karasek/hero3d.js` a `karasek/index.html`).
+- **Bohuňovský** (instalatér a topenář Brno-Židenice, IČO 15567249, od 1992, tradice po dědečkovi): ukázka `bohunovsky/`
+  (20. 10.; Three.js měděné trubky se šipkami směru toku, rozdělovač služeb voda/topení/plyn, scroll stavba koupelny,
+  trubka přes stránku plnící se vodou). Na jeho webu je Reference jen šablonový text a druhý odkaz nefunguje.
+  Tomáš mu volá ráno 21. 10. s hotovou ukázkou (poctivě: „připravil jsem vám ukázku“).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
