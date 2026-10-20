@@ -96,22 +96,13 @@ if(!reduce){
   gsap.from('.phone',{y:30,opacity:0,stagger:.12,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.c-grid',start:'top 80%'}});
 }
 
-/* ---------- spine pipe filling with water */
-const spine=document.getElementById('spine');
-function buildSpine(){
-  const mainEl=document.querySelector('main');const H=mainEl.offsetHeight;spine.setAttribute('height',H);spine.setAttribute('viewBox',`0 0 40 ${H}`);spine.style.height=H+'px';
-  spine.innerHTML='';
-  const pipe=document.createElementNS(NS,'path');const d=`M20 120 V${H-60}`;
-  pipe.setAttribute('d',d);pipe.setAttribute('stroke','url(#spcu)');pipe.setAttribute('stroke-width','14');pipe.setAttribute('stroke-linecap','round');
-  spine.innerHTML=`<defs><linearGradient id="spcu" x1="0" x2="1"><stop offset="0" stop-color="#e7a26d"/><stop offset=".5" stop-color="#b5652e"/><stop offset="1" stop-color="#6e3615"/></linearGradient></defs>`;
-  spine.appendChild(pipe);
-  const water=document.createElementNS(NS,'path');water.setAttribute('d',d);water.setAttribute('stroke','#1b7fc4');water.setAttribute('stroke-width','5');water.setAttribute('stroke-linecap','round');water.setAttribute('fill','none');spine.appendChild(water);
-  ['#sluzby','#koupelny','#prace','#kontakt'].forEach(s=>{const el=document.querySelector(s);if(!el)return;const y=el.offsetTop+40;
-    const f=document.createElementNS(NS,'rect');f.setAttribute('x',8);f.setAttribute('y',y-14);f.setAttribute('width',24);f.setAttribute('height',28);f.setAttribute('rx',5);f.setAttribute('fill','url(#spcu)');f.setAttribute('stroke','#6e3615');spine.appendChild(f)});
-  const L=water.getTotalLength();water.style.strokeDasharray=L;water.style.strokeDashoffset=reduce?0:L;
-  if(!reduce) gsap.to(water,{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:'main',start:'top top',end:'bottom bottom',scrub:.6}});
-}
-window.addEventListener('load',()=>{buildSpine();ScrollTrigger.refresh()});
+/* ---------- nápověda ke kohoutu */
+const hint=document.getElementById('hint');let hintDone=false;
+document.addEventListener('valve',()=>{hintDone=true;hint.style.opacity=0});
+setTimeout(()=>{(function loop(){if(hintDone){hint.style.opacity=0;return}const v=window.__bgValveScreen&&window.__bgValveScreen();
+  if(v&&v.vis&&scrollY<innerHeight*.4&&innerWidth>900){hint.style.opacity=1;hint.style.transform=`translate(${v.x-hint.offsetWidth/2}px,${v.y-hint.offsetHeight-38}px)`}else hint.style.opacity=0;
+  requestAnimationFrame(loop)})()},2600);
+window.addEventListener('load',()=>ScrollTrigger.refresh());
 
 /* ---------- form (demo) */
 document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('fm').textContent='Tohle je ukázka webu, zpráva se zatím nikam neodešle. Na hotovém webu dorazí panu Bohuňovskému rovnou do e-mailu.'});
