@@ -7,10 +7,10 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobile=matchMedia('(max-width: 820px)').matches;
 const R=new THREE.WebGLRenderer({antialias:!mobile,powerPreference:'high-performance'});
 R.setPixelRatio(Math.min(mobile?1.5:2,window.devicePixelRatio||1));
-R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.0;
+R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.05;
 R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
 host.appendChild(R.domElement);
-const S=new THREE.Scene();S.background=new THREE.Color(0xdfe5e7);
+const S=new THREE.Scene();S.background=new THREE.Color(0x090b0c);S.fog=new THREE.Fog(0x090b0c,14,30);
 const cam=new THREE.PerspectiveCamera(34,1,.1,200);
 
 /* ---------- procedurální textury */
@@ -21,23 +21,25 @@ function heightToNormal(srcCanvas,strength){const w=srcCanvas.width,h=srcCanvas.
   for(let j=0;j<h;j++)for(let i=0;i<w;i++){const dx=(H(i+1,j)-H(i-1,j))*strength,dy=(H(i,j+1)-H(i,j-1))*strength;
     const l=Math.hypot(dx,dy,1),k=(j*w+i)*4;out.data[k]=(-dx/l*.5+.5)*255;out.data[k+1]=(dy/l*.5+.5)*255;out.data[k+2]=(1/l*.5+.5)*255;out.data[k+3]=255}
   x.putImageData(out,0,0);return c}
-// obklad: 8x8 dlaždic na texturu, spára 4px, mírné odchylky barvy a "duhování" glazury
-const T=mobile?512:1024, cell=T/8, gr=Math.max(3,T/256);
+// obklad: velkoformát 60x120 z antracitového kamene, 2 dlaždice na šířku textury, úzká spára, jemné žilky
+const T=mobile?512:1024, gr=Math.max(2,T/340);
 const [tc,tx]=canvas(T,T),[th,thx]=canvas(T,T),[trc,trx]=canvas(T,T);
-const r1=rnd(7);
-tx.fillStyle='#b9c1c3';tx.fillRect(0,0,T,T);thx.fillStyle='#000';thx.fillRect(0,0,T,T);trx.fillStyle='#cfcfcf';trx.fillRect(0,0,T,T);
-for(let j=0;j<8;j++)for(let i=0;i<8;i++){const x0=i*cell+gr/2,y0=j*cell+gr/2,s=cell-gr;const v=235+Math.floor(r1()*10);
-  const g=tx.createLinearGradient(x0,y0,x0+s,y0+s);g.addColorStop(0,`rgb(${v},${v+3},${v+4})`);g.addColorStop(1,`rgb(${v-6},${v-3},${v-2})`);
-  tx.fillStyle=g;tx.fillRect(x0,y0,s,s);
-  const hg=thx.createRadialGradient(x0+s/2,y0+s/2,s*.2,x0+s/2,y0+s/2,s*.75);hg.addColorStop(0,'#fff');hg.addColorStop(1,'#e8e8e8');thx.fillStyle=hg;
-  thx.beginPath();thx.roundRect(x0+1,y0+1,s-2,s-2,gr*1.2);thx.fill();
-  trx.fillStyle='#1a1a1a';trx.beginPath();trx.roundRect(x0,y0,s,s,gr);trx.fill();}
+const r1=rnd(11);
+tx.fillStyle='#0c0d0e';tx.fillRect(0,0,T,T);thx.fillStyle='#000';thx.fillRect(0,0,T,T);trx.fillStyle='#e0e0e0';trx.fillRect(0,0,T,T);
+for(let i=0;i<2;i++){const x0=i*T/2+gr/2,y0=gr/2,w=T/2-gr,h=T-gr;const v=34+Math.floor(r1()*7);
+  tx.fillStyle=`rgb(${v},${v+3},${v+5})`;tx.fillRect(x0,y0,w,h);
+  for(let k=0;k<1800;k++){const a=r1()*.06;tx.fillStyle=r1()<.5?`rgba(255,255,255,${a})`:`rgba(0,0,0,${a*1.4})`;const sz=r1()*3+.5;tx.fillRect(x0+r1()*w,y0+r1()*h,sz,sz)}
+  for(let k=0;k<5;k++){tx.strokeStyle=`rgba(190,196,200,${.05+r1()*.07})`;tx.lineWidth=.6+r1()*1.6;tx.beginPath();let x=x0+r1()*w,y=y0;tx.moveTo(x,y);
+    for(let q=0;q<6;q++){const nx=x+(r1()-.5)*w*.6,ny=y+h/6;tx.quadraticCurveTo(x+(r1()-.5)*w*.4,y+h/12,nx,ny);x=nx;y=ny}tx.stroke()}
+  thx.fillStyle='#f2f2f2';thx.fillRect(x0+1,y0+1,w-2,h-2);
+  trx.fillStyle='#7a7a7a';trx.fillRect(x0,y0,w,h);
+  for(let k=0;k<900;k++){trx.fillStyle=`rgba(${r1()<.5?255:0},${r1()<.5?255:0},${r1()<.5?255:0},.05)`;trx.fillRect(x0+r1()*w,y0+r1()*h,6,6)}}
 const tileMap=new THREE.CanvasTexture(tc);tileMap.encoding=THREE.sRGBEncoding;
-const tileNorm=new THREE.CanvasTexture(heightToNormal(th,mobile?2:3));const tileRough=new THREE.CanvasTexture(trc);
+const tileNorm=new THREE.CanvasTexture(heightToNormal(th,mobile?1.2:1.8));const tileRough=new THREE.CanvasTexture(trc);
 [tileMap,tileNorm,tileRough].forEach(t=>{t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=R.capabilities.getMaxAnisotropy();});
 // měď: podélné stopy po broušení + jemná patina
 const [cc,cx]=canvas(512,128),[cr,crx]=canvas(512,128);const r2=rnd(3);
-cx.fillStyle='#c27a46';cx.fillRect(0,0,512,128);crx.fillStyle='#5a5a5a';crx.fillRect(0,0,512,128);
+cx.fillStyle='#c9814f';cx.fillRect(0,0,512,128);crx.fillStyle='#5a5a5a';crx.fillRect(0,0,512,128);
 for(let i=0;i<900;i++){const y=r2()*128,l=40+r2()*260,x=r2()*512,a=.04+r2()*.08;cx.strokeStyle=r2()<.5?`rgba(255,214,170,${a})`:`rgba(90,40,15,${a})`;cx.lineWidth=.6+r2();cx.beginPath();cx.moveTo(x,y);cx.lineTo(x+l,y);cx.stroke();
   crx.strokeStyle=`rgba(${r2()<.5?140:40},${r2()<.5?140:40},${r2()<.5?140:40},.25)`;crx.beginPath();crx.moveTo(x,y);crx.lineTo(x+l,y);crx.stroke();}
 for(let i=0;i<26;i++){const x=r2()*512,y=r2()*128,rr=6+r2()*26;const g=cx.createRadialGradient(x,y,0,x,y,rr);g.addColorStop(0,'rgba(120,58,30,.32)');g.addColorStop(1,'rgba(120,58,30,0)');cx.fillStyle=g;cx.fillRect(x-rr,y-rr,rr*2,rr*2);
@@ -53,9 +55,9 @@ const pm=new THREE.PMREMGenerator(R);S.environment=pm.fromScene(envS,.03).textur
 
 /* ---------- materiály */
 const M={
-  tile:new THREE.MeshPhysicalMaterial({map:tileMap,normalMap:tileNorm,roughnessMap:tileRough,roughness:1,metalness:0,clearcoat:.85,clearcoatRoughness:.08,envMapIntensity:.4}),
-  cu:new THREE.MeshPhysicalMaterial({color:0xffffff,map:cuMap,roughnessMap:cuRough,roughness:.62,metalness:1,clearcoat:.15,clearcoatRoughness:.4,envMapIntensity:1}),
-  bronze:new THREE.MeshPhysicalMaterial({color:0x9a6a28,metalness:1,roughness:.36,envMapIntensity:.75}),
+  tile:new THREE.MeshPhysicalMaterial({map:tileMap,normalMap:tileNorm,roughnessMap:tileRough,roughness:1,metalness:0,clearcoat:.35,clearcoatRoughness:.35,envMapIntensity:.25}),
+  cu:new THREE.MeshPhysicalMaterial({color:0xffffff,map:cuMap,roughnessMap:cuRough,roughness:.42,metalness:1,clearcoat:.6,clearcoatRoughness:.15,envMapIntensity:1.1}),
+  bronze:new THREE.MeshPhysicalMaterial({color:0x9c7230,metalness:1,roughness:.26,clearcoat:.4,envMapIntensity:.9}),
   bead:new THREE.MeshPhysicalMaterial({color:0x8f6526,metalness:1,roughness:.45}),
   steel:new THREE.MeshPhysicalMaterial({color:0xaeb6ba,metalness:1,roughness:.38}),
   rubber:new THREE.MeshStandardMaterial({color:0x222426,roughness:.9}),
@@ -66,9 +68,9 @@ const M={
 };
 
 /* ---------- stěna */
-const WALL_W=40,WALL_H=90,TILE=.66;
+const WALL_W=40,WALL_H=90,TW=1.3,TH=2.6;
 const wall=new THREE.Mesh(new THREE.PlaneGeometry(WALL_W,WALL_H),M.tile);wall.position.set(0,-WALL_H/2+8,0);wall.receiveShadow=true;
-[tileMap,tileNorm,tileRough].forEach(t=>t.repeat.set(WALL_W/(TILE*8),WALL_H/(TILE*8)));S.add(wall);
+[tileMap,tileNorm,tileRough].forEach(t=>t.repeat.set(WALL_W/(TW*2),WALL_H/TH));S.add(wall);
 
 /* ---------- rozvody */
 const R0=.11; // poloměr trubky (cca Cu 22 v měřítku scény)
@@ -109,7 +111,7 @@ route([[-7.4,9,Zc],[-7.4,-70,Zc]],{flow:'blue'});
 route([[-6.7,9,Zh],[-6.7,-1.2,Zh],[-5.2,-1.2,Zh],[-5.2,-70,Zh]],{flow:'red'});
 route([[ 9,3.2,Zc],[3.2,3.2,Zc],[3.2,.6,Zc],[6.6,.6,Zc],[6.6,-70,Zc]],{flow:'blue'});
 route([[ 9,2.3,Zh],[4.2,2.3,Zh],[4.2,-1.6,Zh],[7.4,-1.6,Zh],[7.4,-70,Zh]],{flow:'red'});
-route([[2.0,9,Zg],[2.0,.9,Zg],[1.0,.9,Zg],[1.0,-2.6,Zg],[5.6,-2.6,Zg],[5.6,-70,Zg]],{mat:M.gas,r:R0*1.05,clampEvery:2.8});
+route([[8.4,-9,Zg],[5.9,-9,Zg],[5.9,-70,Zg]],{mat:M.gas,r:R0*1.05,clampEvery:2.8});
 // odbočky k "zařizovacím předmětům" níž na stránce
 [-14,-27,-41,-55].forEach((y,i)=>{const s=i%2?-1:1;
   route([[s*(s>0?6.6:7.4),y,Zc],[s*3.4,y,Zc],[s*3.4,y-1.4,Zc]].map(p=>[p[0],p[1],p[2]]),{});
@@ -132,10 +134,10 @@ flowRuns.forEach(f=>{const n=Math.max(2,Math.round(f.len/3.1));for(let i=0;i<n;i
   g.userData.u=i/n;group.add(g);f.items.push(g)}});
 
 /* ---------- světla */
-S.add(new THREE.HemisphereLight(0xffffff,0xb7c3c8,.22));
-const key=new THREE.DirectionalLight(0xfff4ea,.55);key.position.set(5,8,9);key.castShadow=true;key.shadow.mapSize.set(mobile?1024:2048,mobile?1024:2048);
+S.add(new THREE.HemisphereLight(0xc8d2d8,0x1a1410,.12));const rimL=new THREE.DirectionalLight(0x9cc4ff,.35);rimL.position.set(-8,-4,6);S.add(rimL);
+const key=new THREE.DirectionalLight(0xffe6cc,.32);key.position.set(5,8,9);key.castShadow=true;key.shadow.mapSize.set(mobile?1024:2048,mobile?1024:2048);
 Object.assign(key.shadow.camera,{left:-12,right:12,top:8,bottom:-8,near:1,far:40});key.shadow.radius=4;key.shadow.bias=-.0004;S.add(key);S.add(key.target);
-const torch=new THREE.SpotLight(0xfff1e0,mobile?3.2:4.2,28,.36,.65,1.1);torch.position.set(2,2,7);torch.castShadow=!mobile;torch.shadow.mapSize.set(1024,1024);torch.shadow.bias=-.0005;S.add(torch);S.add(torch.target);
+const torch=new THREE.SpotLight(0xffd9b0,mobile?3.6:4.6,30,.46,.95,1.2);torch.position.set(2,2,7);torch.castShadow=!mobile;torch.shadow.mapSize.set(1024,1024);torch.shadow.bias=-.0005;S.add(torch);S.add(torch.target);
 
 /* ---------- velikost, ovládání */
 let W=1,H=1;function size(){W=host.clientWidth;H=host.clientHeight;R.setSize(W,H,false);cam.aspect=W/H;

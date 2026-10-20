@@ -14,7 +14,7 @@ if(lenis) lenis.on('scroll', e=>{window.__scrollVel = e.velocity||0});
 /* ---------- hero entrance */
 if(!reduce){
   const tl = gsap.timeline({defaults:{ease:'power3.out'}});
-  tl.from('.hero h1', {y:40, opacity:0, duration:.9})
+  tl.from('.hero .label',{y:14,opacity:0,duration:.6}).from('.hero h1', {y:40, opacity:0, duration:1.1},'-=.3')
     .from('.hero .lead', {y:24, opacity:0, duration:.7}, '-=.55')
     .from('.ctas .btn', {y:16, opacity:0, duration:.5, stagger:.08}, '-=.45')
     .from('.free li', {x:-12, opacity:0, duration:.45, stagger:.08}, '-=.3');
@@ -22,7 +22,7 @@ if(!reduce){
 
 /* ---------- manifold */
 const NS='http://www.w3.org/2000/svg';
-const outs=[['voda','Voda','#1b7fc4',140],['topeni','Topení','#cf3b2b',300],['plyn','Plyn','#e2b400',460]];
+const outs=[['voda','Voda','#3d9be0',140],['topeni','Topení','#e0533f',300],['plyn','Plyn','#e2b400',460]];
 const g=document.getElementById('outlets');
 const mk=(tag,attrs,parent)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);(parent||g).appendChild(e);return e};
 const fills={};
@@ -63,7 +63,7 @@ ScrollTrigger.create({trigger:'.manifold',start:'top 70%',once:true,onEnter:()=>
 const s3=document.getElementById('s3');
 for(let y=60;y<330;y+=34)for(let x=60;x<580;x+=34){const r=document.createElementNS(NS,'rect');
   r.setAttribute('x',x+1);r.setAttribute('y',y+1);r.setAttribute('width',Math.min(32,580-x-1));r.setAttribute('height',Math.min(32,330-y-1));r.setAttribute('class','tile');s3.appendChild(r)}
-for(let x=60;x<580;x+=58){const r=document.createElementNS(NS,'rect');r.setAttribute('x',x+1);r.setAttribute('y',331);r.setAttribute('width',Math.min(56,580-x-1));r.setAttribute('height',68);r.setAttribute('class','tile');r.style.fill='#c9d6da';s3.appendChild(r)}
+for(let x=60;x<580;x+=58){const r=document.createElementNS(NS,'rect');r.setAttribute('x',x+1);r.setAttribute('y',331);r.setAttribute('width',Math.min(56,580-x-1));r.setAttribute('height',68);r.setAttribute('class','tile');r.style.fill='#3a4146';s3.appendChild(r)}
 // draw-on prep
 const lines=[...document.querySelectorAll('#s1 path,#s1 rect,#s2 path')];
 lines.forEach(p=>{const L=p.getTotalLength?p.getTotalLength():400;p.style.strokeDasharray=L;p.style.strokeDashoffset=L;p.dataset.len=L});
@@ -91,7 +91,7 @@ if(reduce){
 
 /* ---------- reveals */
 if(!reduce){
-  gsap.utils.toArray('section h2, section .eyebrow').forEach(el=>gsap.from(el,{y:30,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'}}));
+  gsap.utils.toArray('section h2, section .label').forEach(el=>gsap.from(el,{y:30,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'}}));
   ScrollTrigger.batch('.frames div',{start:'top 88%',onEnter:b=>gsap.from(b,{y:30,opacity:0,stagger:.08,duration:.6,ease:'power2.out'})});
   gsap.from('.phone',{y:30,opacity:0,stagger:.12,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.c-grid',start:'top 80%'}});
 }
