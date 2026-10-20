@@ -26,7 +26,7 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--copper-hi);outline-offset:4px}
 #bg3d{position:fixed;inset:0;z-index:0;background:#0b0d0e}
 #bg3d canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
-#bg3d::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(9,11,12,.86) 0%,rgba(9,11,12,.55) 38%,rgba(9,11,12,0) 64%)}
+#bg3d::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(9,11,12,.72) 0%,rgba(9,11,12,.38) 40%,rgba(9,11,12,0) 62%)}
 @media (max-width:900px){#bg3d::after{background:linear-gradient(180deg,rgba(9,11,12,0) 0%,rgba(9,11,12,.2) 35%,rgba(9,11,12,.9) 62%)}}
 .demo,nav,main,footer,.callbar{position:relative;z-index:2}
 #hint{position:fixed;z-index:3;left:0;top:0;pointer-events:none;font:500 12px/1 var(--display);letter-spacing:2px;text-transform:uppercase;color:var(--ink);padding:9px 12px;border:1px solid var(--line);background:rgba(9,11,12,.8);opacity:0;transition:opacity .5s;white-space:nowrap}
@@ -66,7 +66,7 @@ nav ul a:hover{color:var(--ink)}
 /* sections */
 main{position:relative}
 section{position:relative}
-.sheet{background:rgba(13,16,18,.94);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.sheet{background:rgba(13,16,18,.8);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
 .services,.work,.contact{padding-block:130px}
 h2{font:300 clamp(36px,4.8vw,70px)/1.02 var(--display);font-stretch:92%;letter-spacing:-1.2px;margin-top:20px;max-width:16ch;text-wrap:balance}
 h2 b{font-weight:700}
