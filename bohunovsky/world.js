@@ -458,9 +458,10 @@ let visible=true;document.addEventListener('visibilitychange',()=>visible=!docum
 /* ================= úvod ================= */
 const labWrap=document.createElement('div');labWrap.className='xlabels';document.body.appendChild(labWrap);
 LBL.forEach(l=>{const d=document.createElement('div');d.className='xlab'+(l.water?' w':'');d.innerHTML='<i></i><span>'+l.text+'</span>';labWrap.appendChild(d);l.el=d});
-const tag=document.createElement('div');tag.className='xtag';tag.innerHTML='<b>RTG</b> co je schované ve zdi';document.body.appendChild(tag);
 const cap=document.createElement('div');cap.className='xcap';cap.innerHTML='<b>RTG</b> Lisovaný spoj, rozvod studené vody<button type="button">Přeskočit</button>';document.body.appendChild(cap);
-const LTX=[...document.querySelectorAll('.hero .label,.hero h1,.hero h1 em,.hero .lead,.free li,#kontakt .blk .label,#kontakt h2,.demo')];const H1=document.querySelector('.hero h1');
+// bílá kopie textu, která se ukáže jen uvnitř rentgenu (maska), aby text zůstal čitelný
+const INV=[...document.querySelectorAll('.hero .blk,#kontakt .blk')].map(src=>{const c=src.cloneNode(true);c.classList.add('inv');c.setAttribute('aria-hidden','true');c.removeAttribute('id');
+  c.querySelectorAll('a,button').forEach(a=>{a.tabIndex=-1});src.parentNode.style.position=src.parentNode.style.position||'relative';src.parentNode.appendChild(c);return {src,c}});
 const intro={on:!reduce&&scrollY<40,t:0,dur:3.5};
 function endIntro(){if(!intro.on)return;intro.on=false;intro.t=intro.dur;cap.classList.remove('on');labWrap.classList.remove('on');document.documentElement.classList.remove('intro');document.dispatchEvent(new Event('intro-done'))}
 cap.querySelector('button').addEventListener('click',()=>{intro.skip=true});document.addEventListener('intro-skip',()=>{intro.skip=true});
@@ -525,9 +526,10 @@ function frame(now){requestAnimationFrame(frame);if(!visible)return;const dt=Mat
   const showLab=ip&&intro.t>.85&&intro.t<2.55;labWrap.classList.toggle('on',!!showLab);
   if(showLab)LBL.forEach(l=>{const p=(l.pos||l.obj.getWorldPosition(tmpP)).clone().project(cam);l.el.style.transform=`translate(${(p.x*.5+.5)*W}px,${(-p.y*.5+.5)*H}px)`;l.el.style.setProperty('--dx',l.dx+'px');l.el.style.setProperty('--dy',l.dy+'px')});
   // text pod rentgenem zbělá
-  LTX.forEach(el=>{const r=el.getBoundingClientRect();const on=el.tagName==='EM'?H1.classList.contains('lens-on'):!ip&&lr>2&&lcx+lr>r.left&&lcx-lr<r.right&&lcy+lr>r.top&&lcy-lr<r.bottom;
-    if(on){el.classList.add('lens-on');el.style.setProperty('--lx',(lcx-r.left)+'px');el.style.setProperty('--ly',(lcy-r.top)+'px');el.style.setProperty('--lr',lr+'px')}else if(el.classList.contains('lens-on'))el.classList.remove('lens-on')});
-  tag.style.opacity=(!ip&&lr>40)?1:0;tag.style.transform=`translate(${lcx+lr*.72}px,${lcy+lr*.72}px)`;
+  INV.forEach(({src,c})=>{c.style.left=src.offsetLeft+'px';c.style.top=src.offsetTop+'px';c.style.width=src.offsetWidth+'px';
+    const r=src.getBoundingClientRect();const on=!ip&&lr>2&&lcx+lr>r.left&&lcx-lr<r.right&&lcy+lr>r.top&&lcy-lr<r.bottom;
+    if(on){const cr=c.getBoundingClientRect();const m=`radial-gradient(circle ${lr.toFixed(1)}px at ${(lcx-cr.left).toFixed(1)}px ${(lcy-cr.top).toFixed(1)}px, #000 ${(lr-1.2).toFixed(1)}px, transparent ${lr.toFixed(1)}px)`;c.style.webkitMaskImage=m;c.style.maskImage=m;c.style.visibility='visible'}
+    else if(c.style.visibility!=='hidden')c.style.visibility='hidden'});
 }
 function updateParticles(){const fu=flowOn?flowU:flowU;for(const c in PART){const {im,list}=PART[c];for(let i=0;i<list.length;i++){const q=list[i];const f=q.f;const sp=f.tag&&f.tag!==outlet?0:1;
     const u=((q.u+(f.ph||0)*(2.5/f.len)*1.6)%1+1)%1;tmpP.copy(f.path.getPointAt(u));const tg=f.path.getTangentAt(u);if(f.parent!==world&&f.parent)tmpP.add(f.parent.position);
