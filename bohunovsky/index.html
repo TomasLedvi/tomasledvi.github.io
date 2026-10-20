@@ -9,34 +9,34 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Teze: showroom. Tmavá antracitová stěna, leštěná měď a mosaz, světlo baterky. Web je rozvod: rozdělovač služeb
+/* Teze: showroom. Světlá stěna z leštěného mramoru Calacatta (dříve tmavá antracitová), leštěná měď a mosaz, světlo baterky. Web je rozvod: rozdělovač služeb
    v barvách médií (voda modrá, topení červená, plyn žlutá), koupelna se staví po vrstvách. Archivo v tenkých řezech
    s širokým prostrkáním jako na štítcích armatur, měď jen jako akcent. */
 :root{
-  --bg:#090b0c; --panel:#101316; --panel-2:#161a1e; --line:rgba(201,129,79,.28); --line-soft:rgba(239,233,226,.09);
-  --ink:#efe9e2; --ink-2:#a39d96; --ink-3:#6f6a65;
-  --copper:#c9814f; --copper-hi:#e3a77a; --copper-lo:#8c5228;
+  --bg:#f3f0eb; --panel:#faf8f5; --panel-2:#efebe5; --line:rgba(166,90,44,.32); --line-soft:rgba(28,26,24,.1);
+  --ink:#1c1a18; --ink-2:#4f4a44; --ink-3:#7d766e;
+  --copper:#a65a2c; --copper-hi:#8a4520; --copper-lo:#6e3517;
   --water:#3d9be0; --heat:#e0533f; --gas:#e2b400;
   --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0}
-html{-webkit-text-size-adjust:100%;overflow-x:clip;color-scheme:dark}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;color-scheme:light}
 body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--body);overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--copper-hi);outline-offset:4px}
-#bg3d{position:fixed;inset:0;z-index:0;background:#0b0d0e}
+#bg3d{position:fixed;inset:0;z-index:0;background:#ece8e2}
 #bg3d canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
-#bg3d::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(9,11,12,.72) 0%,rgba(9,11,12,.38) 40%,rgba(9,11,12,0) 62%)}
-@media (max-width:900px){#bg3d::after{background:linear-gradient(180deg,rgba(9,11,12,0) 0%,rgba(9,11,12,.2) 35%,rgba(9,11,12,.9) 62%)}}
+#bg3d::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(246,243,238,.86) 0%,rgba(246,243,238,.55) 42%,rgba(246,243,238,0) 64%)}
+@media (max-width:900px){#bg3d::after{background:linear-gradient(180deg,rgba(246,243,238,0) 0%,rgba(246,243,238,.25) 35%,rgba(246,243,238,.92) 62%)}}
 .demo,nav,main,footer,.callbar{position:relative;z-index:2}
-#hint{position:fixed;z-index:3;left:0;top:0;pointer-events:none;font:500 12px/1 var(--display);letter-spacing:2px;text-transform:uppercase;color:var(--ink);padding:9px 12px;border:1px solid var(--line);background:rgba(9,11,12,.8);opacity:0;transition:opacity .5s;white-space:nowrap}
+#hint{position:fixed;z-index:3;left:0;top:0;pointer-events:none;font:500 12px/1 var(--display);letter-spacing:2px;text-transform:uppercase;color:var(--ink);padding:9px 12px;border:1px solid var(--line);background:rgba(250,248,245,.92);opacity:0;transition:opacity .5s;white-space:nowrap}
 @media (max-width:900px){#hint{display:none}}
-.demo{background:#000;color:var(--ink-3);font-size:13px;text-align:center;padding:7px 16px;letter-spacing:.3px}
-.demo b{color:var(--ink-2);font-weight:600}
+.demo{background:#1c1a18;color:#a9a29a;font-size:13px;text-align:center;padding:7px 16px;letter-spacing:.3px}
+.demo b{color:#ebe5dd;font-weight:600}
 .wrap{max-width:1240px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
 .label{font:500 12px/1 var(--display);font-stretch:118%;letter-spacing:3.2px;text-transform:uppercase;color:var(--copper)}
 /* nav */
-nav{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(9,11,12,.92),rgba(9,11,12,.7));border-bottom:1px solid var(--line-soft)}
+nav{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(248,246,242,.94),rgba(248,246,242,.78));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
 nav .wrap{display:flex;align-items:center;gap:30px;height:76px}
 .brand{display:flex;flex-direction:column;line-height:1;text-decoration:none}
 .brand b{font:600 22px/1 var(--display);font-stretch:118%;letter-spacing:4px;text-transform:uppercase}
@@ -45,9 +45,9 @@ nav ul{display:flex;gap:34px;list-style:none;padding:0;margin-left:auto}
 nav ul a{text-decoration:none;font:500 13px/1 var(--display);font-stretch:112%;letter-spacing:2px;text-transform:uppercase;color:var(--ink-2);transition:color .2s}
 nav ul a:hover{color:var(--ink)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;border-radius:2px;padding:17px 26px;font:600 13px/1 var(--display);font-stretch:115%;letter-spacing:2.4px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s}
-.btn-copper{background:var(--copper);color:#140c06}
-.btn-copper:hover{background:var(--copper-hi)}
-.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(239,233,226,.35)}
+.btn-copper{background:#b8693a;color:#fff}
+.btn-copper:hover{background:var(--copper)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(28,26,24,.4);background:rgba(250,248,245,.6)}
 .btn-line:hover{box-shadow:inset 0 0 0 1px var(--copper-hi);color:var(--copper-hi)}
 .btn svg{width:16px;height:16px}
 @media (max-width:860px){nav ul{display:none}.nav-call{margin-left:auto;padding:14px}.nav-call .t{display:none}}
@@ -66,7 +66,7 @@ nav ul a:hover{color:var(--ink)}
 /* sections */
 main{position:relative}
 section{position:relative}
-.sheet{background:rgba(13,16,18,.8);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.sheet{background:rgba(250,248,245,.82);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
 .services,.work,.contact{padding-block:130px}
 h2{font:300 clamp(36px,4.8vw,70px)/1.02 var(--display);font-stretch:92%;letter-spacing:-1.2px;margin-top:20px;max-width:16ch;text-wrap:balance}
 h2 b{font-weight:700}
@@ -102,21 +102,21 @@ h2 b{font-weight:700}
 .stage h3{font:300 clamp(28px,3vw,42px)/1.08 var(--display);font-stretch:92%}
 .stage p{margin-top:16px;color:var(--ink-2);max-width:38ch}
 .progress{display:flex;gap:8px;margin-top:20px}
-.progress i{height:1px;flex:1;background:rgba(239,233,226,.15);position:relative}
+.progress i{height:1px;flex:1;background:rgba(28,26,24,.15);position:relative}
 .progress i b{position:absolute;inset:-1px 0;background:var(--copper);transform:scaleX(0);transform-origin:left}
-.bath-svg{width:100%;height:auto;background:#0b0e10;border:1px solid var(--line-soft)}
-.bath-svg .ln{fill:none;stroke:#57636a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bath-svg{width:100%;height:auto;background:#fbfaf8;border:1px solid var(--line-soft)}
+.bath-svg .ln{fill:none;stroke:#8d8780;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .bath-svg .dim{stroke:var(--copper);stroke-width:1.2;fill:none}
-.bath-svg .dimt{fill:var(--copper-hi);font:500 12px var(--display);letter-spacing:1.5px}
+.bath-svg .dimt{fill:var(--copper);font:500 12px var(--display);letter-spacing:1.5px}
 .bath-svg .pw{stroke:#3d9be0;stroke-width:5;fill:none;stroke-linecap:round}
 .bath-svg .pc{stroke:#e0533f;stroke-width:5;fill:none;stroke-linecap:round}
-.bath-svg .pg{stroke:#59646b;stroke-width:8;fill:none;stroke-linecap:round}
-.bath-svg .tile{fill:#2a2f33;stroke:#15191c;stroke-width:1.5}
-.bath-svg .fx{fill:#e9e5df;stroke:#9c968f;stroke-width:2}
+.bath-svg .pg{stroke:#a3a9ad;stroke-width:8;fill:none;stroke-linecap:round}
+.bath-svg .tile{fill:#ece8e2;stroke:#cfc8bf;stroke-width:1.5}
+.bath-svg .fx{fill:#ffffff;stroke:#a79f96;stroke-width:2}
 .bath-svg .chrome{fill:#c9a35a;stroke:#7c6230;stroke-width:1.5}
 /* gallery */
 .frames{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:230px 230px;gap:16px;margin-top:60px}
-.frames div{border:1px solid var(--line);display:flex;align-items:flex-end;padding:18px;color:var(--ink-3);font:500 12px/1.3 var(--display);font-stretch:115%;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(160deg,#14181b,#0d1012)}
+.frames div{border:1px solid var(--line);display:flex;align-items:flex-end;padding:18px;color:var(--ink-3);font:500 12px/1.3 var(--display);font-stretch:115%;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(160deg,#f6f3ef,#ebe6df)}
 .frames div:first-child{grid-row:span 2}
 @media (max-width:700px){.frames{grid-template-columns:1fr 1fr;grid-template-rows:200px 150px 150px}.frames div:first-child{grid-column:span 2;grid-row:auto}}
 .work p.note{margin-top:22px;color:var(--ink-2);max-width:58ch}
@@ -131,11 +131,11 @@ h2 b{font-weight:700}
 .addr a{color:var(--copper-hi);text-underline-offset:4px}
 form{display:flex;flex-direction:column;gap:22px}
 label{font:500 12px var(--display);font-stretch:118%;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-3);display:flex;flex-direction:column;gap:10px}
-input,textarea{font:400 18px var(--body);letter-spacing:0;text-transform:none;padding:12px 0;border:0;border-bottom:1px solid rgba(239,233,226,.25);background:transparent;color:var(--ink);border-radius:0}
+input,textarea{font:400 18px var(--body);letter-spacing:0;text-transform:none;padding:12px 0;border:0;border-bottom:1px solid rgba(28,26,24,.28);background:transparent;color:var(--ink);border-radius:0}
 input:focus,textarea:focus{outline:none;border-bottom-color:var(--copper)}
 textarea{min-height:110px;resize:vertical}
 .formmsg{font-size:15px;color:var(--copper-hi);min-height:1.2em}
-footer{background:#000;color:var(--ink-3);font-size:14px;padding-block:40px}
+footer{background:#1c1a18;color:#a9a29a;font-size:14px;padding-block:40px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between}
 .callbar{display:none}
 @media (max-width:700px){.callbar{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30}

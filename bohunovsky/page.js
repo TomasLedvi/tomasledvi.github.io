@@ -63,7 +63,7 @@ ScrollTrigger.create({trigger:'.manifold',start:'top 70%',once:true,onEnter:()=>
 const s3=document.getElementById('s3');
 for(let y=60;y<330;y+=34)for(let x=60;x<580;x+=34){const r=document.createElementNS(NS,'rect');
   r.setAttribute('x',x+1);r.setAttribute('y',y+1);r.setAttribute('width',Math.min(32,580-x-1));r.setAttribute('height',Math.min(32,330-y-1));r.setAttribute('class','tile');s3.appendChild(r)}
-for(let x=60;x<580;x+=58){const r=document.createElementNS(NS,'rect');r.setAttribute('x',x+1);r.setAttribute('y',331);r.setAttribute('width',Math.min(56,580-x-1));r.setAttribute('height',68);r.setAttribute('class','tile');r.style.fill='#3a4146';s3.appendChild(r)}
+for(let x=60;x<580;x+=58){const r=document.createElementNS(NS,'rect');r.setAttribute('x',x+1);r.setAttribute('y',331);r.setAttribute('width',Math.min(56,580-x-1));r.setAttribute('height',68);r.setAttribute('class','tile');r.style.fill='#d9d3cb';s3.appendChild(r)}
 // draw-on prep
 const lines=[...document.querySelectorAll('#s1 path,#s1 rect,#s2 path')];
 lines.forEach(p=>{const L=p.getTotalLength?p.getTotalLength():400;p.style.strokeDasharray=L;p.style.strokeDashoffset=L;p.dataset.len=L});
