@@ -190,7 +190,6 @@ const LBL=[];
   [-1,1].forEach(s=>{const e=mesh(new THREE.CylinderGeometry(r*1.005,r*1.005,r*2.6,24,1,true),M.cu,joint,XM.pipe);e.rotation.z=Math.PI/2;e.position.x=s*r*1.3;jpart(e,[s*.16,0,0],0,s>0?'Měděná trubka Cu 22 × 1 mm':null,60,60)});}
 LBL.push({pos:new V3(JX+1.3,3.2,Zc),text:'Studená voda pod tlakem',dx:20,dy:40,water:true});
 // žebra uvnitř úvodní trubky (tunel v rentgenu)
-for(let x=16.8;x>JX+.3;x-=.32){const t=xrOnly(new THREE.TorusGeometry(R0*.97,.004,6,32),XM.dim,world);t.rotation.y=Math.PI/2;t.position.set(x,3.2,Zc)}
 
 /* ================= servisní stěna: ventily, vodoměr, manometr ================= */
 const MANI={};
@@ -405,9 +404,7 @@ const ovMat=new THREE.ShaderMaterial({uniforms:{tX:{value:rtX.texture},m:{value:
     if(al<.002){gl_FragColor=vec4(.965,.953,.933,sa);return;}
     vec3 x=texture2D(tX,vUv).rgb;x=1.-exp(-x*1.35);
     vec3 base=vec3(.03,.085,.15);
-    float sc=.5+.5*sin(p.y*1.4+t*6.);
-    vec3 col=base+vec3(.12,.28,.45)*grid(p,24.)*.28+vec3(.25,.5,.8)*grid(p,120.)*.32+x*1.05+vec3(.01,.02,.03)*sc;
-    float sw=fract(t*.18);float band=exp(-pow((vUv.y-1.+sw*1.2)*14.,2.));col+=vec3(.1,.25,.4)*band*.35;
+    vec3 col=base+vec3(.12,.28,.45)*grid(p,24.)*.28+vec3(.25,.5,.8)*grid(p,120.)*.32+x*1.05;
     float vig=smoothstep(R*.45,R,d)*(1.-full);col*=1.-vig*.35;
     col=mix(col,vec3(.6,.88,1.),clamp(ring+tick*.8+ch*.7,0.,1.)*inside+ring*(1.-inside));
     vec3 sc2=vec3(.965,.953,.933);float ain=clamp(inside+ring+tick,0.,1.);gl_FragColor=vec4(mix(sc2,col,ain/max(.001,max(ain,sa))),max(ain,sa));}`});
@@ -437,7 +434,8 @@ function rail(){if(!SH.length)return null;const P=SH.map(shotPose);const mid=H*.
   for(i=0;i<P.length-1;i++)if(mid>=P[i].cy&&mid<P[i+1].cy)break;
   const a=P[i],b=P[i+1];const t=ease(sm(.18,.82,(mid-a.cy)/(b.cy-a.cy)));
   const pos=a.pos.clone().lerp(b.pos,t);const dist=a.look.distanceTo(b.look);pos.z+=Math.sin(Math.PI*t)*Math.min(30,dist*.28);pos.y+=Math.sin(Math.PI*t)*Math.min(8,dist*.05);
-  return {pos,look:a.look.clone().lerp(b.look,t),sx:lerp(a.sx,b.sx,t),sy:lerp(a.sy,b.sy,t),flight:Math.sin(Math.PI*t)}}
+  const zone=i===0?1-t:i===P.length-2?t:0;
+  return {pos,look:a.look.clone().lerp(b.look,t),sx:lerp(a.sx,b.sx,t),sy:lerp(a.sy,b.sy,t),flight:Math.sin(Math.PI*t),zone}}
 
 /* ================= ovládání ================= */
 function size(){W=host.clientWidth;H=host.clientHeight;R.setSize(W,H,false);cam.aspect=W/H;cam.fov=W<760?46:34;cam.updateProjectionMatrix();
@@ -462,18 +460,18 @@ const labWrap=document.createElement('div');labWrap.className='xlabels';document
 LBL.forEach(l=>{const d=document.createElement('div');d.className='xlab'+(l.water?' w':'');d.innerHTML='<i></i><span>'+l.text+'</span>';labWrap.appendChild(d);l.el=d});
 const tag=document.createElement('div');tag.className='xtag';tag.innerHTML='<b>RTG</b> co je schované ve zdi';document.body.appendChild(tag);
 const cap=document.createElement('div');cap.className='xcap';cap.innerHTML='<b>RTG</b> Lisovaný spoj, rozvod studené vody<button type="button">Přeskočit</button>';document.body.appendChild(cap);
-const intro={on:!reduce&&scrollY<40,t:0,dur:6.2};
+const LTX=[...document.querySelectorAll('.hero .label,.hero h1,.hero h1 em,.hero .lead,.free li,#kontakt .blk .label,#kontakt h2,.demo')];const H1=document.querySelector('.hero h1');
+const intro={on:!reduce&&scrollY<40,t:0,dur:3.5};
 function endIntro(){if(!intro.on)return;intro.on=false;intro.t=intro.dur;cap.classList.remove('on');labWrap.classList.remove('on');document.documentElement.classList.remove('intro');document.dispatchEvent(new Event('intro-done'))}
 cap.querySelector('button').addEventListener('click',()=>{intro.skip=true});document.addEventListener('intro-skip',()=>{intro.skip=true});
-['wheel','touchmove','keydown'].forEach(ev=>addEventListener(ev,()=>{if(intro.on&&intro.t>.6)intro.skip=true},{passive:true}));
+['wheel','touchmove','keydown'].forEach(ev=>addEventListener(ev,()=>{if(intro.on&&intro.t>.3)intro.skip=true},{passive:true}));
 if(intro.on){document.documentElement.classList.add('intro');cap.classList.add('on')}else{document.dispatchEvent(new Event('intro-done'))}
 window.__introPending=intro.on;window.__intro=intro;window.__dbg={PART,joint,world,S};
-function introPose(t){// vrací pozici, cíl, fov, rentgen (full,r,mx,my)
+function introPose(t){// krátký úvod: přílet k lisovanému spoji v rentgenu, rozložení, návrat
   const jp=new V3(JX,3.2,Zc);
-  if(t<2.0){const k=ease(t/2.0);const x=lerp(16.6,JX+.75,k);return {pos:new V3(x,3.2,Zc),look:new V3(x-1,3.2,Zc),fov:72,full:1,explode:0}}
-  if(t<3.0){const k=ease((t-2)/1);const pos=new V3(lerp(JX+.75,JX+.9,k),lerp(3.2,3.75,k),lerp(Zc,2.6,k));const look=new V3(lerp(JX-.25,JX,k),3.2,Zc).lerp(jp,k);return {pos,look,fov:lerp(72,38,k),full:1-k*.0,explode:ease(Math.max(0,(t-2.3)/.7))}}
-  if(t<4.7){const k=(t-3)/1.7;const a=k*.35;return {pos:new V3(JX+.9*Math.cos(a)-.2*Math.sin(a),3.75+k*.1,2.6*Math.cos(a*.6)),look:jp,fov:38,full:Math.max(0,1-ease(Math.min(1,k*2.2))),explode:1}}
-  return {pos:null,look:jp,fov:null,full:0,explode:1-ease(Math.min(1,(t-4.7)/.7))}}
+  if(t<1.1){const k=ease(t/1.1);return {pos:new V3(lerp(JX+2.8,JX+.9,k),lerp(4.8,3.75,k),lerp(7.5,2.6,k)),look:jp,fov:lerp(48,38,k),full:1,explode:ease(Math.max(0,(t-.4)/.7))}}
+  if(t<2.4){const k=(t-1.1)/1.3;const a=k*.3;return {pos:new V3(JX+.9*Math.cos(a)-.2*Math.sin(a),3.75+k*.1,2.6*Math.cos(a*.6)),look:jp,fov:38,full:Math.max(0,1-ease(Math.min(1,k*2.4))),explode:1}}
+  return {pos:null,look:jp,fov:null,full:0,explode:1-ease(Math.min(1,(t-2.4)/.6))}}
 
 /* ================= smyčka ================= */
 const UP=new V3(0,1,0);const camPos=new V3(4.4,1.7,10),camLook=new V3(4.4,1.7,0);let scrimK=0,last=performance.now(),T=0,flowU=0,lensR=0,lensFull=intro.on?1:0,first=true,gaugeA=0;
@@ -488,7 +486,7 @@ function frame(now){requestAnimationFrame(frame);if(!visible)return;const dt=Mat
   const px=(lx_/W-.5),py=(ly_/H-.5);const dist=tPos.distanceTo(tLook);
   const right=new V3().subVectors(tLook,tPos).cross(UP).normalize();tPos=tPos.clone().add(right.multiplyScalar(px*dist*.02)).add(new V3(0,-py*dist*.015,0));
   let vOff=1;
-  if(ip){const k=intro.t<4.7?1:1-ease(Math.min(1,(intro.t-4.7)/1.5));vOff=1-k;
+  if(ip){const k=intro.t<2.4?1:1-ease(Math.min(1,(intro.t-2.4)/1.0));vOff=1-k;
     if(ip.pos){tPos=tPos.clone().lerp(ip.pos,k);}else{tPos=ip.look.clone().add(new V3(.9,.6,2.6)).lerp(tPos,1-k)}
     tLook=tLook.clone().lerp(ip.look,k);cam.fov=lerp(cam.fov,ip.fov||cam.fov,k);
     JP.forEach(m=>{const e=ip.explode;m.position.copy(m.userData.base).addScaledVector(m.userData.off,e);m.rotation.x=(m.userData.rot||0)*e});}
@@ -511,21 +509,24 @@ function frame(now){requestAnimationFrame(frame);if(!visible)return;const dt=Mat
   updateBath(dt);
   // rentgen
   const lensOn=!coarse&&hasPointer&&!overUI;touchT=Math.max(0,touchT-dt);
-  let target=(lensOn?(mobile?120:150):0)*(1-(rp&&rp.flight||0)*.5);if(coarse&&touchT>0)target=110;
+  const zone=rp?(rp.zone===undefined?1:rp.zone):1;let target=(lensOn?72:0)*zone;if(coarse&&touchT>0)target=56*zone;
   if(ip){const fullK=ip.full;lensFull=fullK;}else lensFull=Math.max(0,lensFull-dt*2);
   lensR+=(target-lensR)*(1-Math.exp(-dt*8));
   lx_+=(mx-lx_)*(1-Math.exp(-dt*14));ly_+=(my-ly_)*(1-Math.exp(-dt*14));
   let lcx=lx_,lcy=ly_,lr=lensR;
-  if(ip&&intro.t>3.0){const jp=joint.getWorldPosition(new V3()).project(cam);const jx=(jp.x*.5+.5)*W,jy=(-jp.y*.5+.5)*H;const big=Math.min(W,H)*.36;
-    const k=intro.t<4.7?1:1-ease(Math.min(1,(intro.t-4.7)/1.2));lcx=lerp(lx_,jx,k);lcy=lerp(ly_,jy,k);lr=lerp(lensR,big,k)}
+  if(ip&&intro.t>1.1){const jp=joint.getWorldPosition(new V3()).project(cam);const jx=(jp.x*.5+.5)*W,jy=(-jp.y*.5+.5)*H;const big=Math.min(W,H)*.36;
+    const k=intro.t<2.4?1:1-ease(Math.min(1,(intro.t-2.4)/1.0));lcx=lerp(lx_,jx,k);lcy=lerp(ly_,jy,k);lr=lerp(lensR,big,k)}
   const xrOn=lensFull>.001||lr>1.5;const scr=W<900?0:(ip?0:1);scrimK+=(scr-scrimK)*(1-Math.exp(-dt*2));
   // vykreslení
   cam.layers.set(0);R.setRenderTarget(null);R.render(S,cam);
   if(xrOn){updateParticles();cam.layers.set(XL);S.background=null;const fg=S.fog;S.fog=null;R.setRenderTarget(rtX);R.setClearColor(0x000000,1);R.clear();R.render(S,cam);S.background=BG;S.fog=fg;R.setRenderTarget(null);cam.layers.set(0)}
   if(xrOn||scrimK>.002){ovMat.uniforms.m.value.set(lcx,H-lcy);ovMat.uniforms.r.value=xrOn?lr:0;ovMat.uniforms.full.value=xrOn?lensFull:0;ovMat.uniforms.t.value=T;ovMat.uniforms.scrim.value=scrimK;R.autoClear=false;R.render(ovScene,ovCam);R.autoClear=true}
   // štítky
-  const showLab=ip&&intro.t>2.9&&intro.t<5.0;labWrap.classList.toggle('on',!!showLab);
+  const showLab=ip&&intro.t>.85&&intro.t<2.55;labWrap.classList.toggle('on',!!showLab);
   if(showLab)LBL.forEach(l=>{const p=(l.pos||l.obj.getWorldPosition(tmpP)).clone().project(cam);l.el.style.transform=`translate(${(p.x*.5+.5)*W}px,${(-p.y*.5+.5)*H}px)`;l.el.style.setProperty('--dx',l.dx+'px');l.el.style.setProperty('--dy',l.dy+'px')});
+  // text pod rentgenem zbělá
+  LTX.forEach(el=>{const r=el.getBoundingClientRect();const on=el.tagName==='EM'?H1.classList.contains('lens-on'):!ip&&lr>2&&lcx+lr>r.left&&lcx-lr<r.right&&lcy+lr>r.top&&lcy-lr<r.bottom;
+    if(on){el.classList.add('lens-on');el.style.setProperty('--lx',(lcx-r.left)+'px');el.style.setProperty('--ly',(lcy-r.top)+'px');el.style.setProperty('--lr',lr+'px')}else if(el.classList.contains('lens-on'))el.classList.remove('lens-on')});
   tag.style.opacity=(!ip&&lr>40)?1:0;tag.style.transform=`translate(${lcx+lr*.72}px,${lcy+lr*.72}px)`;
 }
 function updateParticles(){const fu=flowOn?flowU:flowU;for(const c in PART){const {im,list}=PART[c];for(let i=0;i<list.length;i++){const q=list[i];const f=q.f;const sp=f.tag&&f.tag!==outlet?0:1;
