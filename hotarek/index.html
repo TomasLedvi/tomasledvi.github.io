@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Vodoinstalatérství Jan Hotárek · Klášterec nad Ohří · návrh webu</title>
+<meta name="description" content="Voda, topení, plyn. Vodoinstalatérství Jan Hotárek, Klášterec nad Ohří, od roku 1995. Návrh webu.">
+<meta name="theme-color" content="#0c0f12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0f12'/%3E%3Cpath d='M16 6c4 6 7 9.5 7 13a7 7 0 0 1-14 0c0-3.5 3-7 7-13z' fill='%234fb3ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Fraunces:ital,opsz,wght@1,9..144,400&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Teze: „Každá kapka na svém místě.“ Tři filmové scény, které se přehrávají scrollem (kapka → výkres → koupelna → teplo),
+   mezi nimi velká široká písmena jako v reklamě na prémiový produkt. Tma grafitu, jediný akcent: barva vody. */
+:root{--bg:#0c0f12;--bg2:#13181d;--ink:#eef2f5;--ink2:#a7b1ba;--ink3:#6b7681;--water:#4fb3ff;--heat:#ff7a45;--line:rgba(238,242,245,.12);
+  --wide:"Archivo",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--body:"Inter Tight",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--body);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--water);outline-offset:4px}
+.demo{position:relative;z-index:30;background:#000;color:#8d96a0;font-size:13px;text-align:center;padding:7px 16px}
+.demo b{color:#fff;font-weight:600}
+nav{position:fixed;top:30px;left:0;right:0;z-index:20;transition:top .3s,background .3s}
+nav.solid{top:0;background:rgba(12,15,18,.78);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+nav .in{max-width:1300px;margin:0 auto;padding:18px max(24px,env(safe-area-inset-left));display:flex;align-items:center;gap:26px}
+.brand{text-decoration:none;line-height:1}
+.brand b{display:block;font:800 17px/1 var(--wide);font-stretch:118%;letter-spacing:3px;text-transform:uppercase}
+.brand span{display:block;font:500 10px/1 var(--wide);font-stretch:118%;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);margin-top:6px}
+nav ul{display:flex;gap:28px;list-style:none;padding:0;margin-left:auto}
+nav ul a{text-decoration:none;font:500 14px var(--body);color:var(--ink2);transition:color .2s}
+nav ul a:hover{color:var(--ink)}
+.call{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:13px 20px;background:var(--ink);color:var(--bg);text-decoration:none;font:600 14px var(--body);isolation:isolate}
+.call::before{content:"";position:absolute;left:0;right:0;bottom:0;height:0;background:var(--water);z-index:-1;transition:height .5s cubic-bezier(.3,.7,.2,1)}
+.call:hover::before{height:100%}
+@media (max-width:820px){nav ul{display:none}.call{margin-left:auto}}
+/* filmové scény */
+.scene{position:relative}
+.scene .stick{position:sticky;top:0;height:100svh;overflow:hidden}
+.scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scene .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(12,15,18,.78),rgba(12,15,18,.15) 55%,rgba(12,15,18,0))}
+.scene.light .shade{background:linear-gradient(90deg,rgba(12,15,18,.55),rgba(12,15,18,0) 50%)}
+.cap{position:absolute;left:max(24px,6vw);bottom:12vh;max-width:min(640px,88vw);opacity:0}
+.cap.top{bottom:auto;top:20vh}
+.big{font:900 clamp(54px,10vw,170px)/.86 var(--wide);font-stretch:112%;letter-spacing:-2px;text-transform:uppercase}
+.big em{font:400 italic .5em/1 var(--serif);text-transform:none;letter-spacing:0;color:var(--water);display:block;margin-top:.25em}
+.mid{font:800 clamp(34px,5.2vw,78px)/.95 var(--wide);font-stretch:110%;letter-spacing:-1px;text-transform:uppercase}
+.mid em{font:400 italic .62em/1.1 var(--serif);text-transform:none;letter-spacing:0;color:var(--water)}
+.heat .mid em,.heat .big em{color:var(--heat)}
+.lead{margin-top:20px;color:var(--ink2);font-size:19px;max-width:40ch}
+.kick{font:600 12px/1 var(--wide);font-stretch:118%;letter-spacing:3.5px;text-transform:uppercase;color:var(--water);margin-bottom:18px}
+.heat .kick{color:var(--heat)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;list-style:none}
+.tags li{font:500 14px var(--body);padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(12,15,18,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font:500 11px var(--wide);font-stretch:118%;letter-spacing:3px;text-transform:uppercase;color:var(--ink2);display:flex;flex-direction:column;align-items:center;gap:10px}
+.hint i{width:1px;height:42px;background:linear-gradient(var(--water),transparent);animation:drip 1.8s ease-in infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0);opacity:1}70%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+.loading{position:absolute;right:24px;bottom:24px;font:500 11px var(--wide);letter-spacing:2px;color:var(--ink3);text-transform:uppercase}
+@media (max-width:760px){.scene .shade{background:linear-gradient(0deg,rgba(12,15,18,.85),rgba(12,15,18,.2) 60%,rgba(12,15,18,0))}.cap{bottom:9vh}.cap.top{top:auto;bottom:9vh}}
+/* služby */
+.sec{padding:140px 0}
+.wrap{max-width:1300px;margin:0 auto;padding-inline:max(24px,env(safe-area-inset-left))}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:60px}
+.grid article{background:var(--bg);padding:34px 28px 40px;position:relative;overflow:hidden;transition:background .4s}
+.grid article::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--water);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.3,.7,.2,1)}
+.grid article.h::after{background:var(--heat)}
+.grid article:hover{background:var(--bg2)}.grid article:hover::after{transform:scaleX(1)}
+.grid small{font:600 11px var(--wide);font-stretch:118%;letter-spacing:3px;text-transform:uppercase;color:var(--ink3)}
+.grid h3{font:700 23px/1.15 var(--wide);font-stretch:100%;margin-top:40px}
+.grid p{color:var(--ink2);font-size:16px;margin-top:10px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.sec{padding:90px 0}}
+.since{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap}
+.since b{font:900 clamp(90px,16vw,240px)/.8 var(--wide);font-stretch:112%;letter-spacing:-4px;color:transparent;-webkit-text-stroke:1.5px var(--ink2)}
+.since p{max-width:34ch;color:var(--ink2)}
+/* kontakt */
+.contact{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:60px;margin-top:60px;align-items:start}
+@media (max-width:900px){.contact{grid-template-columns:1fr;gap:34px}}
+.tel{display:inline-block;position:relative;font:800 clamp(40px,6vw,86px)/1 var(--wide);font-stretch:105%;text-decoration:none;letter-spacing:-1px;padding-bottom:10px}
+.tel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--water),#bfe4ff) 0 0/0% 100% no-repeat,var(--line);transition:background-size .9s cubic-bezier(.3,.7,.2,1)}
+.tel:hover::after{background-size:100% 100%,auto}
+.info{margin-top:30px;color:var(--ink2);line-height:1.9}
+.info a{color:var(--water)}
+form{display:flex;flex-direction:column;gap:18px;background:var(--bg2);padding:32px;border:1px solid var(--line)}
+label{font:600 11px var(--wide);font-stretch:118%;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink3);display:flex;flex-direction:column;gap:9px}
+input,textarea,select{font:400 17px var(--body);letter-spacing:0;text-transform:none;padding:13px 14px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:0;transition:border-color .3s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--water)}
+textarea{min-height:100px;resize:vertical}
+.send{align-self:flex-start;border:0;cursor:pointer}
+.formmsg{font-size:15px;color:var(--water);min-height:1.2em}
+footer{border-top:1px solid var(--line);color:var(--ink3);font-size:14px;padding:34px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="demo">Návrh nového webu pro <b>Vodoinstalatérství Jan Hotárek</b>, připravil Tomáš Ledvina</div>
+<nav id="nav"><div class="in">
+  <a class="brand" href="#top"><b>Jan Hotárek</b><span>Voda · Topení · Plyn</span></a>
+  <ul><li><a href="#koupelny">Koupelny</a></li><li><a href="#teplo">Topení</a></li><li><a href="#sluzby">Služby</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <a class="call" href="tel:+420603178325"><span>603 178 325</span></a>
+</div></nav>
+
+<main id="top">
+<section class="scene" id="kapka" data-frames="drop" style="height:320vh"><div class="stick">
+  <canvas></canvas><div class="shade"></div>
+  <div class="cap c0" style="opacity:1"><div class="kick">Klášterec nad Ohří · od roku 1995</div><h1 class="big">Každá kapka<em>na svém místě.</em></h1></div>
+  <div class="cap c1"><p class="mid">Voda, topení<br>a plyn <em>od jednoho řemeslníka.</em></p><p class="lead">Vodoinstalatérství Jan Hotárek. Kompletní dodávky a montáže na klíč, od drobné opravy po celý rozvod.</p></div>
+  <div class="hint"><i></i>Scrollujte</div><div class="loading"></div>
+</div></section>
+
+<section class="scene light" id="koupelny" data-frames="plan" style="height:340vh"><div class="stick">
+  <canvas></canvas><div class="shade"></div>
+  <div class="cap top c0"><div class="kick">Koupelny a rozvody</div><p class="mid">Od výkresu<br><em>k hotové koupelně.</em></p></div>
+  <div class="cap c1"><p class="mid">Trubky tam,<br><em>kde mají být.</em></p><ul class="tags"><li>Rozvody vody a kanalizace</li><li>Montáž WC</li><li>Sprchové kouty a vanové zástěny</li><li>Otopné žebříky</li></ul></div>
+  <div class="loading"></div>
+</div></section>
+
+<section class="scene heat" id="teplo" data-frames="heat" style="height:320vh"><div class="stick">
+  <canvas></canvas><div class="shade"></div>
+  <div class="cap top c0"><div class="kick">Topení a plyn</div><p class="big">Teplo<em>bez starostí.</em></p></div>
+  <div class="cap c1"><p class="mid">Kotle, radiátory<br><em>i podlahové topení.</em></p><ul class="tags"><li>Ústřední a etážové vytápění</li><li>Podlahové a stěnové vytápění</li><li>Plynové rozvody</li><li>Autorizovaný servis kotlů EKOKOMFORT</li></ul></div>
+  <div class="loading"></div>
+</div></section>
+
+<section class="sec" id="sluzby"><div class="wrap">
+  <div class="since"><b>1995</b><p>Na trhu od roku 1995. Kvalitní materiál, profesionální nářadí a bezchybná montáž.</p></div>
+  <div class="grid">
+    <article><small>Voda</small><h3>Domovní a venkovní instalace vody a kanalizace</h3><p>Nové rozvody, rekonstrukce i přípojky.</p></article>
+    <article class="h"><small>Topení</small><h3>Ústřední a etážové vytápění</h3><p>Kotle, radiátory, otopné žebříky, termostatické ventily a hlavice, čerpadla.</p></article>
+    <article class="h"><small>Topení</small><h3>Podlahové a stěnové vytápění</h3><p>Teplo rovnoměrně v celé místnosti.</p></article>
+    <article class="h"><small>Plyn</small><h3>Dodávka a montáž plynových rozvodů</h3><p>Od rozvodu po připojení spotřebiče.</p></article>
+    <article><small>Koupelny</small><h3>WC, sprchové kouty a vanové zástěny</h3><p>Montáž zařizovacích předmětů.</p></article>
+    <article><small>Voda</small><h3>Vodárny a úprava pitné vody</h3><p>Připojení vodáren, prodej a montáž zařízení na úpravu vody.</p></article>
+    <article class="h"><small>Servis</small><h3>Autorizovaný servis kotlů EKOKOMFORT</h3><p>Pravidelný servis a opravy.</p></article>
+    <article><small>Opravy</small><h3>Drobné opravy</h3><p>Kapající baterie, protékající WC, ucpaný odpad.</p></article>
+    <article><small>Prodej</small><h3>Prodej materiálu</h3><p>Instalatérský a topenářský materiál.</p></article>
+  </div>
+</div></section>
+
+<section class="sec" id="kontakt" style="padding-top:40px"><div class="wrap">
+  <div class="kick">Kontakt</div>
+  <p class="mid">Zavolejte,<br><em>domluvíme se.</em></p>
+  <div class="contact">
+    <div>
+      <a class="tel" href="tel:+420603178325">603 178 325</a>
+      <p class="info">Jan Hotárek<br><a href="mailto:jan.hotarek@seznam.cz">jan.hotarek@seznam.cz</a><br>Polní 653, Miřetice u Klášterce nad Ohří, 431 51<br>
+      <a href="https://www.google.com/maps/search/?api=1&query=Poln%C3%AD%20653%2C%20Kl%C3%A1%C5%A1terec%20nad%20Oh%C5%99%C3%AD" target="_blank" rel="noopener">Ukázat na mapě</a></p>
+    </div>
+    <form id="f" novalidate>
+      <label>Jméno<input name="jmeno" autocomplete="name"></label>
+      <label>Telefon<input name="tel" autocomplete="tel"></label>
+      <label>Co potřebujete<select name="co"><option>Oprava</option><option>Rozvody vody a odpadů</option><option>Topení nebo kotel</option><option>Plyn</option><option>Koupelna</option><option>Jiné</option></select></label>
+      <label>Popis<textarea name="zprava" placeholder="Například: kape baterie v kuchyni, Klášterec"></textarea></label>
+      <button class="call send" type="submit"><span>Odeslat poptávku</span></button>
+      <div class="formmsg" id="fm" role="status"></div>
+    </form>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>Vodoinstalatérství Jan Hotárek, Klášterec nad Ohří</span><span>Návrh webu, připravil Tomáš Ledvina, ledvina.tomi@gmail.com</span></div></footer>
+
+<script src="../vendor/gsap-3.13.0.min.js"></script>
+<script src="../vendor/ScrollTrigger-3.13.0.min.js"></script>
+<script src="../vendor/lenis-1.1.13.min.js"></script>
+<script src="frames.js"></script>
+<script>
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;gsap.registerPlugin(ScrollTrigger);
+let lenis=null;if(!reduce&&window.Lenis){lenis=new Lenis({lerp:.09});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1){e.preventDefault();lenis.scrollTo(id,{duration:1.6})}}))}
+const nav=document.getElementById('nav');ScrollTrigger.create({start:30,onUpdate:s=>nav.classList.toggle('solid',s.scroll()>30)});
+const SEQ=window.FRAMES||{},mobile=innerWidth<760;
+document.querySelectorAll('.scene').forEach(sc=>{
+  const cfg=SEQ[sc.dataset.frames];const cv=sc.querySelector('canvas'),cx=cv.getContext('2d');const caps=[...sc.querySelectorAll('.cap')];const ld=sc.querySelector('.loading');
+  const imgs=[];let cur=-1,want=0;const n=cfg?cfg.n:0;let vid=null,dur=0,seeking=false,live=false;
+  function size(){const d=Math.min(devicePixelRatio,2);cv.width=cv.clientWidth*d;cv.height=cv.clientHeight*d;cur=-1;draw()}
+  function pick(i){for(let k=0;k<n;k++){const a=imgs[i-k],b=imgs[i+k];if(a)return a;if(b)return b}return null}
+  function blit(src,sw,sh){const W=cv.width,H=cv.height,s=Math.max(W/sw,H/sh),w=sw*s,h=sh*s;const fx=mobile&&cfg.fx!==undefined?cfg.fx:.5;cx.drawImage(src,(W-w)*fx,(H-h)/2,w,h)}
+  function draw(){if(!n)return;const i=Math.max(0,Math.min(n-1,Math.round(want)));if(i===cur)return;
+    const im=imgs[i]||pick(i);if(im&&(imgs[i]||!live)){cur=imgs[i]?i:-1;blit(im,im.naturalWidth||im.width,im.naturalHeight||im.height);return}
+    if(vid&&dur&&!seeking){seeking=true;live=true;vid.currentTime=i/(n-1)*(dur-.05)}}
+  async function extract(){ // druhé video jen na vytažení snímků, první slouží k okamžitému posouvání
+    const v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';v.crossOrigin='anonymous';v.src=cfg.video;
+    await new Promise(r=>{v.addEventListener('loadeddata',r,{once:true});v.load()});const d=v.duration;
+    const sw=Math.min(mobile?900:1600,v.videoWidth),sh=Math.round(v.videoHeight*sw/v.videoWidth);const c=document.createElement('canvas');c.width=sw;c.height=sh;
+    for(let i=0;i<n;i++){v.currentTime=Math.min(d-.05,i/(n-1)*(d-.05));await new Promise(r=>v.addEventListener('seeked',r,{once:true}));
+      c.getContext('2d').drawImage(v,0,0,sw,sh);const bl=await new Promise(r=>c.toBlob(r,'image/jpeg',.84));const im=new Image();im.src=URL.createObjectURL(bl);await im.decode().catch(()=>{});imgs[i]=im;
+      if(ld)ld.textContent=i<n-1?Math.round((i+1)/n*100)+' %':'';if(Math.abs(i-want)<2){cur=-1;draw()}}
+    if(ld)ld.textContent='';v.removeAttribute('src');v.load()}
+  if(n&&cfg.video){vid=document.createElement('video');vid.muted=true;vid.playsInline=true;vid.preload='auto';vid.crossOrigin='anonymous';vid.src=cfg.video;
+    vid.addEventListener('loadeddata',()=>{dur=vid.duration;blit(vid,vid.videoWidth,vid.videoHeight)});
+    vid.addEventListener('seeked',()=>{seeking=false;blit(vid,vid.videoWidth,vid.videoHeight);const i=Math.round(want),t=Math.round(vid.currentTime/(dur-.05)*(n-1));if(i!==t)draw()});
+    const go=()=>extract().catch(()=>{});new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){go();o.disconnect()}},{rootMargin:'150% 0px'}).observe(sc)}
+  size();addEventListener('resize',size);
+  const tl=gsap.timeline({scrollTrigger:{trigger:sc,start:'top top',end:'bottom bottom',scrub:reduce?true:.4,onUpdate:s=>{want=s.progress*(n-1);draw()}}});
+  // titulky: první viditelný na začátku, další v druhé polovině
+  if(caps[1]){tl.to(caps[0],{opacity:0,y:-30,duration:.12},.38).fromTo(caps[1],{opacity:0,y:30},{opacity:1,y:0,duration:.14},.5).to({},{duration:.36},.64)}
+  if(sc.id!=='kapka'){gsap.set(caps[0],{opacity:0});tl.fromTo(caps[0],{opacity:0,y:30},{opacity:1,y:0,duration:.12},.04)}
+  const hint=sc.querySelector('.hint');if(hint)tl.to(hint,{opacity:0,duration:.06},0.02);
+});
+if(!reduce){gsap.from('#kapka .c0 > *',{y:40,opacity:0,stagger:.12,duration:1.1,ease:'power3.out',delay:.2});
+  ScrollTrigger.batch('.grid article',{start:'top 90%',onEnter:b=>gsap.from(b,{y:30,opacity:0,stagger:.06,duration:.6,ease:'power2.out'})});
+  gsap.from('.since b',{x:-60,opacity:0,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.since',start:'top 85%'}})}
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('fm').textContent='Tohle je návrh webu, zpráva se zatím nikam neodešle. Na hotovém webu dorazí panu Hotárkovi rovnou do e-mailu.'});
+addEventListener('load',()=>ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
