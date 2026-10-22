@@ -17,7 +17,7 @@
   --wide:"Archivo",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--body:"Inter Tight",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{-webkit-text-size-adjust:100%;overflow-x:clip;background:var(--bg)}
-body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--body);overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--body)}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--water);outline-offset:4px}
 .demo{position:relative;z-index:30;background:#000;color:#8d96a0;font-size:13px;text-align:center;padding:7px 16px}
@@ -182,7 +182,7 @@ document.querySelectorAll('.scene').forEach(sc=>{
     if(vid&&dur&&!seeking){seeking=true;live=true;vid.currentTime=i/(n-1)*(dur-.05)}}
   async function extract(){ // druhé video jen na vytažení snímků, první slouží k okamžitému posouvání
     const v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';v.crossOrigin='anonymous';v.src=cfg.video;
-    await new Promise(r=>{v.addEventListener('loadeddata',r,{once:true});v.load()});const d=v.duration;
+    await new Promise(r=>{v.addEventListener('loadeddata',r,{once:true});v.load();v.play().then(()=>v.pause()).catch(()=>{})});v.pause();const d=v.duration;
     const sw=Math.min(mobile?900:1600,v.videoWidth),sh=Math.round(v.videoHeight*sw/v.videoWidth);const c=document.createElement('canvas');c.width=sw;c.height=sh;
     for(let i=0;i<n;i++){v.currentTime=Math.min(d-.05,i/(n-1)*(d-.05));await new Promise(r=>v.addEventListener('seeked',r,{once:true}));
       c.getContext('2d').drawImage(v,0,0,sw,sh);const bl=await new Promise(r=>c.toBlob(r,'image/jpeg',.84));const im=new Image();im.src=URL.createObjectURL(bl);await im.decode().catch(()=>{});imgs[i]=im;
@@ -190,6 +190,7 @@ document.querySelectorAll('.scene').forEach(sc=>{
     if(ld)ld.textContent='';v.removeAttribute('src');v.load()}
   if(n&&cfg.video){vid=document.createElement('video');vid.muted=true;vid.playsInline=true;vid.preload='auto';vid.crossOrigin='anonymous';vid.src=cfg.video;
     vid.addEventListener('loadeddata',()=>{dur=vid.duration;blit(vid,vid.videoWidth,vid.videoHeight)});
+    vid.play().then(()=>{vid.pause();vid.currentTime=0}).catch(()=>{});
     vid.addEventListener('seeked',()=>{seeking=false;blit(vid,vid.videoWidth,vid.videoHeight);const i=Math.round(want),t=Math.round(vid.currentTime/(dur-.05)*(n-1));if(i!==t)draw()});
     const go=()=>extract().catch(()=>{});new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){go();o.disconnect()}},{rootMargin:'150% 0px'}).observe(sc)}
   size();addEventListener('resize',size);
