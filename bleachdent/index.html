@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>BLEACH DENT CLINIC · zubní klinika Most · návrh webu</title>
+<meta name="description" content="Návrh webu pro BLEACH DENT CLINIC s.r.o., zubní kliniku v Mostě.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2312171c'/%3E%3Cpath d='M10 9q3-3 6 0q3-3 6 0q2 4-1 9l-1 6q-1 2-2 0l-1-4h-2l-1 4q-1 2-2 0l-1-6q-3-5-1-9z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
+<style>
+/* Teze: „odstín po odstínu“. Světlé studio, porcelánová bílá, jediný 3D zub, který při scrollu bělá podle stupnice VITA.
+   Typografie: Hanken Grotesk v tenkých řezech, kurzíva Newsreader jen pro jedno slovo v nadpisu. Akcent chladná porcelánová modř. */
+:root{--bg:#f6f5f2;--paper:#fbfaf8;--ink:#12171c;--ink2:#4b5560;--ink3:#86909a;--line:rgba(18,23,28,.1);--accent:#2f6b86;--accent2:#d8e7ee;
+  --sans:"Hanken Grotesk",system-ui,sans-serif;--serif:"Newsreader",Georgia,serif}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+#tooth{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transition:opacity .4s}
+.demo,nav,main,footer{position:relative;z-index:2}
+.demo{background:var(--ink);color:#a8b0b8;font-size:13px;text-align:center;padding:7px 16px}
+.demo b{color:#fff;font-weight:600}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:max(24px,env(safe-area-inset-left))}
+.label{font:600 12px/1 var(--sans);letter-spacing:3px;text-transform:uppercase;color:var(--accent)}
+nav{position:sticky;top:0;z-index:20;background:rgba(246,245,242,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.brand b{font:700 19px/1 var(--sans);letter-spacing:4px}
+.brand span{font:500 10px/1 var(--sans);letter-spacing:3.5px;color:var(--ink3);margin-top:6px}
+nav ul{display:flex;gap:30px;list-style:none;padding:0;margin-left:auto}
+nav ul a{position:relative;text-decoration:none;font:500 14px var(--sans);color:var(--ink2)}
+nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.3,.7,.2,1)}
+nav ul a:hover{color:var(--ink)}nav ul a:hover::after{transform:scaleX(1)}
+@media (max-width:820px){nav ul{display:none}nav .btn{margin-left:auto}}
+@media (max-width:520px){.brand b{font-size:15px;letter-spacing:2.5px}.brand span{font-size:9px;letter-spacing:2px}nav .btn{padding:12px 16px;font-size:14px}}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:16px 26px;font:600 15px/1 var(--sans);text-decoration:none;cursor:pointer;transition:transform .3s cubic-bezier(.3,.7,.2,1),box-shadow .3s,background .3s}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark::after{content:"";position:absolute;top:-50%;bottom:-50%;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);transition:left .7s cubic-bezier(.3,.7,.2,1)}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(18,23,28,.6)}
+.btn-dark:hover::after{left:130%}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+/* hero */
+.hero{min-height:calc(100svh - 110px);display:flex;align-items:center;padding-block:60px}
+.hero .txt{max-width:560px}
+.hero h1{font:300 clamp(44px,6.2vw,88px)/1 var(--sans);letter-spacing:-2.5px;margin-top:22px}
+.hero h1 em{font:400 italic 1.05em/1 var(--serif);letter-spacing:-1px}
+.hero p{margin-top:26px;color:var(--ink2);font-size:20px;max-width:34ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.facts{display:flex;gap:34px;margin-top:48px;padding:0;list-style:none;color:var(--ink2);font-size:15px}
+.facts b{display:block;font:600 13px var(--sans);letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+@media (max-width:900px){.hero{padding-top:44vh;align-items:flex-end}.facts{flex-direction:column;gap:14px}}
+/* odstíny */
+.shade{height:100svh;display:flex;align-items:center}
+.shade .card{max-width:440px}
+.card{background:rgba(251,250,248,.84);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:34px;box-shadow:0 30px 60px -44px rgba(18,23,28,.4)}
+h2{font:300 clamp(34px,4.4vw,60px)/1.05 var(--sans);letter-spacing:-1.5px;margin-top:16px}
+h2 b{font-weight:600}
+.steps{position:relative;min-height:150px;margin-top:22px}
+.step{position:absolute;inset:0 0 auto 0;opacity:0}
+.step:first-child{opacity:1}
+.step h3{font:500 22px/1.2 var(--sans)}
+.step p{margin-top:8px;color:var(--ink2);font-size:17px}
+.guide{display:flex;gap:6px;margin-top:22px}
+.guide span{flex:1;text-align:center;font:600 11px/1 var(--sans);letter-spacing:1px;color:var(--ink3);padding-top:44px;position:relative}
+.guide span::before{content:"";position:absolute;left:50%;top:0;width:26px;height:36px;margin-left:-13px;border-radius:7px 7px 13px 13px;background:var(--c);box-shadow:inset 0 -6px 10px rgba(0,0,0,.06),0 2px 6px -2px rgba(0,0,0,.2);transition:transform .4s}
+.guide span.on{color:var(--ink)}.guide span.on::before{transform:translateY(-4px) scale(1.08)}
+.note{margin-top:16px;font-size:13px;color:var(--ink3)}
+@media (max-width:900px){.shade{align-items:flex-end;padding-bottom:max(24px,env(safe-area-inset-bottom))}.shade .card{max-width:none;padding:22px}.steps{min-height:130px}}
+/* služby */
+.sec{padding-block:130px}
+.draft{display:inline-block;margin-top:18px;font-size:14px;color:var(--accent);background:var(--accent2);padding:6px 12px;border-radius:999px}
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-top:50px}
+.svc article{background:var(--paper);padding:34px 30px 38px;transition:background .4s}
+.svc article:hover{background:#fff}
+.svc .n{font:500 13px var(--sans);color:var(--ink3);letter-spacing:2px}
+.svc h3{font:500 24px/1.2 var(--sans);margin-top:46px}
+.svc p{margin-top:10px;color:var(--ink2);font-size:16px}
+.svc svg{width:34px;height:34px;stroke:var(--accent);fill:none;stroke-width:1.5;margin-top:20px;transition:transform .6s cubic-bezier(.3,1.4,.4,1)}
+.svc article:hover svg{transform:rotate(-8deg) scale(1.1)}
+@media (max-width:900px){.svc{grid-template-columns:1fr}.sec{padding-block:80px}}
+/* otevíráme */
+.open{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:start}
+@media (max-width:900px){.open{grid-template-columns:1fr;gap:30px}}
+.addr{margin-top:26px;font-size:20px;line-height:1.5}
+.addr small{display:block;font:600 12px var(--sans);letter-spacing:2.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.addr a{color:var(--accent);font-size:16px}
+form{display:flex;flex-direction:column;gap:18px}
+label{font:600 12px var(--sans);letter-spacing:2px;text-transform:uppercase;color:var(--ink3);display:flex;flex-direction:column;gap:8px}
+input,textarea,select{font:400 17px var(--sans);letter-spacing:0;text-transform:none;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);transition:border-color .3s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:100px;resize:vertical}
+.formmsg{font-size:15px;color:var(--accent);min-height:1.2em}
+footer{border-top:1px solid var(--line);color:var(--ink3);font-size:14px;padding-block:36px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="tooth" aria-hidden="true"></canvas>
+<div class="demo">Návrh nového webu pro <b>BLEACH DENT CLINIC s.r.o.</b>, připravil Tomáš Ledvina</div>
+<nav><div class="wrap">
+  <a class="brand" href="#top"><b>BLEACH DENT</b><span>ZUBNÍ KLINIKA · MOST</span></a>
+  <ul><li><a href="#odstin">Bělení</a></li><li><a href="#sluzby">Služby</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <a class="btn btn-dark" href="#kontakt">Objednat se</a>
+</div></nav>
+<main id="top">
+<header class="wrap hero"><div class="txt">
+  <div class="label">Zubní klinika v Mostě</div>
+  <h1>Úsměv, který se <em>nebojí</em> světla.</h1>
+  <p>Nová zubní klinika v Mostě. Péče o zuby od preventivní prohlídky až po šetrné bělení.</p>
+  <div class="ctas"><a class="btn btn-dark" href="#kontakt">Objednat se</a><a class="btn btn-ghost" href="#odstin">Jak funguje bělení</a></div>
+  <ul class="facts"><li><b>Nová klinika</b>Most, Jaroslava Ježka</li><li><b>Obor</b>Zubní lékařství</li></ul>
+</div></header>
+
+<section class="shade" id="odstin"><div class="wrap"><div class="card">
+  <div class="label">Odstín po odstínu</div>
+  <h2>Bělení <b>pod dohledem lékaře</b></h2>
+  <div class="steps">
+    <div class="step"><h3>1. Konzultace</h3><p>Prohlédneme zuby, určíme výchozí odstín a probereme, co je pro vás vhodné.</p></div>
+    <div class="step"><h3>2. Hygiena</h3><p>Před bělením zuby důkladně vyčistíme, aby výsledek byl rovnoměrný.</p></div>
+    <div class="step"><h3>3. Bělení</h3><p>Šetrné bělení v ordinaci, zuby postupně zesvětlají.</p></div>
+    <div class="step"><h3>4. Kontrola</h3><p>Porovnáme výsledek se stupnicí a poradíme, jak odstín udržet.</p></div>
+  </div>
+  <div class="guide" aria-hidden="true">
+    <span style="--c:#e9d3a8">A3,5</span><span style="--c:#edd9b3">A3</span><span style="--c:#f1e2c4">A2</span><span style="--c:#f4ead5">A1</span><span style="--c:#f7f1e6">B1</span><span style="--c:#fdfdfb">BL</span>
+  </div>
+  <p class="note">Ilustrace. Výsledek bělení je u každého jiný a určí ho lékař.</p>
+</div></div></section>
+
+<section class="sec" id="sluzby" style="background:var(--bg)"><div class="wrap">
+  <div class="label">Služby</div>
+  <h2>Péče, kterou <b>u nás najdete</b></h2>
+  <span class="draft">Ukázkový přehled, doplníme podle vaší skutečné nabídky</span>
+  <div class="svc">
+    <article><div class="n">01</div><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="M20 12v8l5 4"/></svg><h3>Preventivní prohlídky</h3><p>Pravidelná kontrola zubů a dásní.</p></article>
+    <article><div class="n">02</div><svg viewBox="0 0 40 40"><path d="M8 30l14-14M22 16l4-8 6 6-8 4"/></svg><h3>Dentální hygiena</h3><p>Odstranění zubního kamene a pigmentací.</p></article>
+    <article><div class="n">03</div><svg viewBox="0 0 40 40"><path d="M20 6v6M20 28v6M6 20h6M28 20h6M10 10l4 4M26 26l4 4M30 10l-4 4M14 26l-4 4"/><circle cx="20" cy="20" r="5"/></svg><h3>Bělení zubů</h3><p>Šetrné zesvětlení odstínu v ordinaci.</p></article>
+    <article><div class="n">04</div><svg viewBox="0 0 40 40"><path d="M12 10q4-3 8 0q4-3 8 0q3 6-1 13l-2 9q-1 2-2 0l-2-6h-2l-2 6q-1 2-2 0l-2-9q-4-7-1-13z"/></svg><h3>Ošetření a výplně</h3><p>Ošetření zubního kazu estetickými výplněmi.</p></article>
+    <article><div class="n">05</div><svg viewBox="0 0 40 40"><rect x="9" y="14" width="22" height="14" rx="5"/><path d="M14 14v-4M20 14v-4M26 14v-4"/></svg><h3>Protetika</h3><p>Korunky, můstky a náhrady.</p></article>
+    <article><div class="n">06</div><svg viewBox="0 0 40 40"><circle cx="20" cy="15" r="6"/><path d="M9 33q11-12 22 0"/></svg><h3>Pro celou rodinu</h3><p>Péče pro dospělé i děti.</p></article>
+  </div>
+</div></section>
+
+<section class="sec" id="kontakt"><div class="wrap open">
+  <div>
+    <div class="label">Kontakt</div>
+    <h2>Objednejte se <b>na první prohlídku</b></h2>
+    <p class="addr"><small>Sídlo společnosti</small>BLEACH DENT CLINIC s.r.o.<br>Jaroslava Ježka 168/6, 434 01 Most<br>
+    <a href="https://www.google.com/maps/search/?api=1&query=Jaroslava%20Je%C5%BEka%20168%2F6%2C%20Most" target="_blank" rel="noopener">Ukázat na mapě</a></p>
+    <p class="addr"><small>Telefon a ordinační hodiny</small>Doplníme</p>
+  </div>
+  <form id="f" class="card" novalidate>
+    <label>Jméno<input name="jmeno" autocomplete="name"></label>
+    <label>Telefon nebo e-mail<input name="kontakt" autocomplete="tel"></label>
+    <label>S čím přicházíte<select name="duvod"><option>Preventivní prohlídka</option><option>Dentální hygiena</option><option>Bělení zubů</option><option>Bolest nebo ošetření</option><option>Jiné</option></select></label>
+    <label>Poznámka<textarea name="zprava"></textarea></label>
+    <button class="btn btn-dark" type="submit" style="align-self:flex-start">Odeslat žádost</button>
+    <div class="formmsg" id="fm" role="status"></div>
+  </form>
+</div></section>
+</main>
+<footer><div class="wrap"><span>BLEACH DENT CLINIC s.r.o., IČO 30147751, Jaroslava Ježka 168/6, Most</span><span>Návrh webu, připravil Tomáš Ledvina, ledvina.tomi@gmail.com</span></div></footer>
+
+<script src="../vendor/gsap-3.13.0.min.js"></script>
+<script src="../vendor/ScrollTrigger-3.13.0.min.js"></script>
+<script src="../vendor/lenis-1.1.13.min.js"></script>
+<script src="../vendor/three-r128.min.js"></script>
+<script>window.__toothPos={x:1.7,y:0,s:.62,o:1};</script>
+<script src="scene.js"></script>
+<script>
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;gsap.registerPlugin(ScrollTrigger);
+if(!reduce&&window.Lenis){const l=new Lenis({lerp:.1});l.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>l.raf(t*1000));gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1){e.preventDefault();l.scrollTo(id,{offset:-72,duration:1.4})}}))}
+const P=window.__toothPos,narrow=()=>innerWidth/innerHeight<.9;
+if(!reduce){gsap.timeline({defaults:{ease:'power3.out'}}).from('.hero .label',{y:14,opacity:0,duration:.6}).from('.hero h1',{y:40,opacity:0,duration:1},'-=.3').from('.hero p',{y:20,opacity:0,duration:.7},'-=.6').from('.ctas .btn,.facts li',{y:14,opacity:0,stagger:.07,duration:.5},'-=.4')}
+// odstín: zub bělá během připnuté sekce
+const steps=[...document.querySelectorAll('.step')],marks=[...document.querySelectorAll('.guide span')];let cur=0;
+ScrollTrigger.create({trigger:'.shade',start:'top top',end:()=>'+='+Math.round(innerHeight*2.4),pin:true,scrub:true,onUpdate:s=>{
+  const p=s.progress;window.__shade=.08+p*.92;const m=Math.min(5,Math.round(window.__shade*5));marks.forEach((e,i)=>e.classList.toggle('on',i===m));
+  const n=Math.min(3,Math.floor(p*4));if(n!==cur){gsap.to(steps[cur],{opacity:0,y:-10,duration:.2,overwrite:true});gsap.fromTo(steps[n],{opacity:0,y:10},{opacity:1,y:0,duration:.35,delay:.1,overwrite:true});cur=n}}});
+window.__shade=.08;marks[0].classList.add('on');
+// pozice zubu: hero vpravo, v sekci odstínů víc vpravo a větší, pak zmizí
+ScrollTrigger.create({trigger:'.shade',start:'top bottom',end:'top top',scrub:true,onUpdate:s=>{P.x=1.7+s.progress*.2;P.s=.62+s.progress*.12}});
+ScrollTrigger.create({trigger:'#sluzby',start:'top 85%',end:'top 30%',scrub:true,onUpdate:s=>{P.o=1-s.progress}});
+if(!reduce){gsap.utils.toArray('.sec h2,.sec .label,.draft').forEach(el=>gsap.from(el,{y:24,opacity:0,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}}));
+  ScrollTrigger.batch('.svc article',{start:'top 90%',onEnter:b=>gsap.from(b,{y:30,opacity:0,stagger:.07,duration:.6,ease:'power2.out'})})}
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('fm').textContent='Tohle je návrh webu, žádost se zatím nikam neodešle. Na hotovém webu dorazí klinice rovnou do e-mailu.'});
+addEventListener('load',()=>ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
