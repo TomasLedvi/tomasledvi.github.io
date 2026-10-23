@@ -60,6 +60,15 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
   Postup: nejdřív telefon, e-mail s ukázkou až po souhlasu (zákon 480/2004 Sb. – žádné hromadné e-maily).
 
+## Sledování zakázky (`sledovani/`, 24. 10. 2026) – produkt pro měsíční poplatek
+- „Pizza tracker“ pro řemeslníky: dílna v mobilu posune krok / přidá fotku / vzkaz, zákazník na odkazu vidí stav živě.
+- Šablona: `core.js` + `core.css` společné, firma = jeden soubor `firmy/<id>.js` (název, barva, písmo, kroky, ukázková data).
+  Nové řemeslo = zkopírovat `firmy/kanocar.js` a upravit kroky (ukázka: `firmy/instalater.js`).
+- Stránky: `index.html` (předváděčka – dva mobily vedle sebe, přepínač řemesla), `zakaznik.html?f=&z=`, `dilna.html?f=`.
+- Ukázka ukládá do localStorage + BroadcastChannel (funguje jen v jednom prohlížeči). Ostré nasazení: vyměnit objekt STORE
+  v `core.js` za databázi (např. Supabase), přidat přihlášení dílny, SMS/e-mail s odkazem, GDPR (fotky mohou ukazovat SPZ).
+- Fotky v ukázce: Higgsfield obrázky a snímky z videí přes `video#t=sekunda`.
+
 ## Nápady na další kroky
 - Tomášův vlastní web s portfoliem a značkou; reference od pana Veselého.
 - Promo videa (TikTok/Reels/FB): „před a po“, jen s webem klienta se souhlasem nebo s vymyšlenými firmami.
