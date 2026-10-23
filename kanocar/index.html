@@ -134,7 +134,7 @@ h1 em,.h em,.h2 em{font:400 italic .56em/1 var(--serif);text-transform:none;lett
 
 /* služby jako technický list */
 .spec{margin-top:70px;border-top:1px solid var(--line)}
-.row{display:grid;grid-template-columns:90px minmax(0,1.1fr) minmax(0,1fr) 40px;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.row{display:grid;grid-template-columns:90px minmax(0,1.1fr) minmax(0,1fr) 110px;text-decoration:none;color:inherit;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .row::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--red2);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
 .row:hover::after{transform:scaleX(1)}
 .row .mono{color:var(--ink3)}
@@ -142,8 +142,12 @@ h1 em,.h em,.h2 em{font:400 italic .56em/1 var(--serif);text-transform:none;lett
 .row:hover h3{transform:translateX(10px);color:#fff}
 .row p{color:var(--ink2);font-size:16px}
 .row svg{width:22px;height:22px;color:var(--ink3);transition:color .3s,transform .5s var(--ease)}
-.row:hover svg{color:var(--red2);transform:rotate(-45deg)}
-@media (max-width:760px){.row{grid-template-columns:44px minmax(0,1fr);gap:8px 14px}.row p{grid-column:2}.row svg{display:none}}
+.row:hover svg,.row:focus-visible svg{color:var(--red2);transform:translateX(4px)}
+.row .go{justify-self:end;display:flex;align-items:center;gap:10px;color:var(--ink3);transition:color .3s}
+.row svg{flex:none}.row:hover .go,.row:focus-visible .go{color:var(--red2)}
+select.flash{animation:flash 1.4s var(--ease)}
+@keyframes flash{0%,40%{border-color:var(--red2);box-shadow:0 1px 0 var(--red2)}100%{box-shadow:none}}
+@media (max-width:760px){.row{grid-template-columns:44px minmax(0,1fr);gap:8px 14px}.row p,.row .go{grid-column:2}.row .go{justify-self:start;margin-top:6px;color:var(--red2)}}
 
 /* od roku */
 .since{display:grid;grid-template-columns:auto minmax(0,1fr);gap:50px;align-items:end}
@@ -245,13 +249,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-bet
   <div class="kick mono rv">Služby</div>
   <p class="h2 rv">Karoserie, lak <em>i mechanika.</em></p>
   <div class="spec">
-    <div class="row rv"><span class="mono">01</span><h3>Klempířské práce</h3><p>Opravy karoserií po nehodě i po letech provozu.</p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-    <div class="row rv"><span class="mono">02</span><h3>Lakýrnické práce</h3><p>Lakování dílů i celých vozů.</p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-    <div class="row rv"><span class="mono">03</span><h3>Mechanické práce</h3><p>Běžné opravy a údržba vozidel.</p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-    <div class="row rv"><span class="mono">04</span><h3>Prohlídky havarovaných vozidel</h3><p>A platba krycím dopisem u smluvních pojišťoven.</p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-    <div class="row rv"><span class="mono">05</span><h3>Geometrie</h3><p>Kontrola geometrie vozidel.</p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-    <div class="row rv"><span class="mono">06</span><h3>Výměna olejů</h3><p>Oleje značek Agip a Texaco.</p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-    <div class="row rv"><span class="mono">07</span><h3>Příprava na STK</h3><p>Příprava vozidel na technickou kontrolu a měření emisí.</p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <a class="row rv" href="#kontakt" data-co="Klempířina"><span class="mono">01</span><h3>Klempířské práce</h3><p>Opravy karoserií po nehodě i po letech provozu.</p><span class="go mono">Poptat<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="row rv" href="#kontakt" data-co="Lakování"><span class="mono">02</span><h3>Lakýrnické práce</h3><p>Lakování dílů i celých vozů.</p><span class="go mono">Poptat<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="row rv" href="#kontakt" data-co="Mechanika nebo olej"><span class="mono">03</span><h3>Mechanické práce</h3><p>Běžné opravy a údržba vozidel.</p><span class="go mono">Poptat<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="row rv" href="#kontakt" data-co="Oprava po nehodě"><span class="mono">04</span><h3>Prohlídky havarovaných vozidel</h3><p>A platba krycím dopisem u smluvních pojišťoven.</p><span class="go mono">Poptat<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="row rv" href="#kontakt" data-co="Geometrie"><span class="mono">05</span><h3>Geometrie</h3><p>Kontrola geometrie vozidel.</p><span class="go mono">Poptat<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="row rv" href="#kontakt" data-co="Mechanika nebo olej"><span class="mono">06</span><h3>Výměna olejů</h3><p>Oleje značek Agip a Texaco.</p><span class="go mono">Poptat<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="row rv" href="#kontakt" data-co="Příprava na STK"><span class="mono">07</span><h3>Příprava na STK</h3><p>Příprava vozidel na technickou kontrolu a měření emisí.</p><span class="go mono">Poptat<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
   </div>
 </div></section>
 
@@ -344,6 +348,11 @@ if(!reduce)ScrollTrigger.create({trigger:ba,start:'top 70%',once:true,onEnter:()
 const tint=document.getElementById('tint');document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));tint.style.background=b.dataset.c||'transparent';tint.classList.toggle('sat',b.dataset.m==='sat');
   const p=parseFloat(ba.style.getPropertyValue('--p'))||50;if(p>60){const o={p};gsap.to(o,{p:35,duration:.8,ease:'power3.inOut',onUpdate:()=>ba.style.setProperty('--p',o.p+'%')})}}));
+
+/* ---------- služba → rovnou předvyplněná poptávka */
+document.querySelectorAll('.row[data-co]').forEach(r=>r.addEventListener('click',e=>{const sel=document.querySelector('#f select');sel.value=r.dataset.co;
+  if(!lenis){e.preventDefault();document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})}
+  setTimeout(()=>{sel.classList.remove('flash');void sel.offsetWidth;sel.classList.add('flash');if(!matchMedia('(pointer:coarse)').matches)document.querySelector('#f input').focus({preventScroll:true})},lenis?1600:700)}));
 
 /* ---------- tlačítka: barva se „nastříká“ od místa kurzoru */
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('pointerenter',e=>{const r=b.getBoundingClientRect();b.style.setProperty('--x',(e.clientX-r.left)+'px');b.style.setProperty('--y',(e.clientY-r.top)+'px')}));
