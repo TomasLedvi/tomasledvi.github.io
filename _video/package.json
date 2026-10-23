@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fontsource/big-shoulders-display": "^5",
+    "@fontsource/ibm-plex-mono": "^5",
     "@fontsource/instrument-serif": "^5.3.0",
+    "@fontsource/schibsted-grotesk": "^5",
     "three": "^0.186.1"
   }
 }

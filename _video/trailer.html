@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8">
+<title>Trailer – sledování zakázky</title>
+<style>
+@font-face{font-family:BSD;font-weight:800;src:url(node_modules/@fontsource/big-shoulders-display/files/big-shoulders-display-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:BSD;font-weight:800;src:url(node_modules/@fontsource/big-shoulders-display/files/big-shoulders-display-latin-ext-800-normal.woff2) format('woff2');unicode-range:U+0100-02FF}
+@font-face{font-family:BSD;font-weight:900;src:url(node_modules/@fontsource/big-shoulders-display/files/big-shoulders-display-latin-900-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:BSD;font-weight:900;src:url(node_modules/@fontsource/big-shoulders-display/files/big-shoulders-display-latin-ext-900-normal.woff2) format('woff2');unicode-range:U+0100-02FF}
+@font-face{font-family:SG;font-weight:400;src:url(node_modules/@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:SG;font-weight:400;src:url(node_modules/@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02FF}
+@font-face{font-family:SG;font-weight:600;src:url(node_modules/@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:SG;font-weight:600;src:url(node_modules/@fontsource/schibsted-grotesk/files/schibsted-grotesk-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02FF}
+:root{--bg:#0b0b0c;--card:#17171a;--card2:#222226;--ink:#f3f1ee;--ink2:#b4afa9;--ink3:#7a756f;--red:#e0242f;--red2:#ff5a63;--green:#3ccf7a}
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--bg)}
+body{font:400 28px/1.4 SG,system-ui;color:var(--ink)}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--bg)}
+.abs{position:absolute}
+.d{font-family:BSD;font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:.005em}
+/* atmosféra */
+#glow{left:50%;top:50%;width:1600px;height:1600px;margin:-800px 0 0 -800px;border-radius:50%;background:radial-gradient(circle,rgba(224,36,47,.22),rgba(224,36,47,0) 60%)}
+#vig{inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 45%,rgba(0,0,0,.65) 100%);z-index:50;pointer-events:none}
+#grain{inset:-50%;opacity:.06;z-index:51;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* telefon */
+.phone{width:400px;height:820px;border-radius:58px;background:#050505;padding:14px;box-shadow:0 0 0 3px #2b2b2f,0 60px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.05) inset}
+.scr{width:100%;height:100%;border-radius:46px;overflow:hidden;background:var(--bg);position:relative}
+.isl{position:absolute;top:14px;left:50%;width:110px;height:32px;margin-left:-55px;border-radius:20px;background:#000;z-index:5}
+.sb{position:absolute;top:18px;left:34px;right:34px;display:flex;justify-content:space-between;font:600 17px SG;color:var(--ink)}
+/* hovor */
+.call{position:absolute;inset:0;background:linear-gradient(#26262b,#0e0e10);display:flex;flex-direction:column;align-items:center;padding-top:120px}
+.call .av{width:120px;height:120px;border-radius:50%;background:#3a3a40;display:grid;place-items:center;font:600 46px SG;color:#cfcfd4}
+.call b{font:600 38px SG;margin-top:22px}.call span{color:var(--ink2);font-size:22px;margin-top:6px}
+.call .btns{position:absolute;bottom:90px;left:50px;right:50px;display:flex;justify-content:space-between}
+.call .btns i{width:86px;height:86px;border-radius:50%;display:grid;place-items:center}
+.call .no{background:#ff3b30}.call .yes{background:#34c759}
+.call .btns svg{width:40px;height:40px;fill:#fff}
+/* notifikace */
+.ntf{position:absolute;left:18px;right:18px;padding:16px 18px;border-radius:22px;background:rgba(40,40,44,.96);font-size:19px;line-height:1.3;display:flex;gap:14px;align-items:flex-start}
+.ntf i{flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-style:normal;font-size:20px}
+.ntf .ph{background:#34c759}.ntf .ms{background:#30d158}
+.ntf b{display:block;font-weight:600;font-size:18px}.ntf small{color:var(--ink2);font-size:15px;float:right}
+/* aplikace – dílna a zákazník */
+.app{position:absolute;inset:0;padding:64px 22px 22px;font-size:18px}
+.app .hd{display:flex;justify-content:space-between;align-items:center}
+.app .hd b{font:900 30px BSD;text-transform:uppercase}.app .hd span{display:block;font-size:14px;color:var(--ink3)}
+.live{font-size:14px;padding:6px 10px;border-radius:99px;background:var(--card);color:var(--ink2)}.live::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px}
+.pic{position:relative;margin-top:16px;border-radius:20px;overflow:hidden;background:var(--card);aspect-ratio:4/3}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pic .tg{position:absolute;left:12px;bottom:12px;background:rgba(12,12,13,.8);padding:7px 12px;border-radius:10px;font-weight:600;font-size:15px}
+.pic .tg::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red2);margin-right:7px}
+.lbl{font-size:14px;color:var(--ink3)}
+.st{font:900 36px/1 BSD;text-transform:uppercase;color:var(--red2);margin-top:4px}
+.bar{display:flex;gap:6px;margin-top:14px}.bar i{flex:1;height:9px;border-radius:5px;background:var(--card2);position:relative;overflow:hidden}
+.bar i b{position:absolute;inset:0;background:var(--red);transform-origin:left;transform:scaleX(0)}
+.bigbtn{margin-top:18px;height:74px;border-radius:18px;background:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:600;font-size:22px;line-height:1.1}
+.bigbtn small{font-weight:400;font-size:14px;opacity:.85}
+.box{margin-top:14px;background:var(--card);border-radius:18px;padding:16px}
+.car{font:900 40px/.95 BSD;text-transform:uppercase;margin-top:12px}
+.tl{list-style:none;padding:0;margin-top:12px}
+.tl li{display:flex;gap:12px;align-items:center;padding:7px 0;font-size:18px}
+.tl li i{width:24px;height:24px;border-radius:50%;background:var(--card2);flex:none;display:grid;place-items:center;color:#fff;font-style:normal;font-size:14px}
+.tl li.ok i{background:var(--red)}.tl li.todo{color:var(--ink3)}
+.msg{border-left:4px solid var(--red)}
+.toast{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;font-size:17px;white-space:nowrap;z-index:6}
+.tap{position:absolute;width:90px;height:90px;border-radius:50%;border:4px solid #fff;opacity:0;z-index:7}
+.finger{position:absolute;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(0,0,0,.5);z-index:8;opacity:0}
+/* titulky */
+.cap{position:absolute;font:900 112px/.9 BSD;text-transform:uppercase}
+.cap em{font-style:normal;color:var(--red2)}
+.sm{font:400 34px/1.35 SG;color:var(--ink2)}
+.chip{display:inline-block;padding:14px 26px;border-radius:99px;background:var(--card);font:600 30px SG;margin:0 8px}
+.laptop{width:980px}
+.laptop .lid{border-radius:22px 22px 0 0;background:#050505;padding:16px 16px 0;box-shadow:0 0 0 3px #2b2b2f}
+.laptop .lid img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:6px 6px 0 0}
+.laptop .base{height:26px;margin:0 -60px;border-radius:0 0 26px 26px;background:linear-gradient(#3a3a3f,#1c1c1f)}
+.drop{position:absolute;width:16px;height:22px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%}
+</style></head>
+<body><div id="stage">
+<div id="glow" class="abs"></div>
+
+<!-- S1–S2: telefon na stole, otravné hovory -->
+<div id="s1" class="abs" style="inset:0">
+  <div id="p1" class="phone abs" style="left:1180px;top:130px"><div class="scr"><div class="isl"></div><div class="sb"><span>10:42</span><span>●●● 82 %</span></div>
+    <div class="call" id="call"><div class="av">PN</div><b>Pan Novák</b><span>mobil · volá…</span><div class="btns"><i class="no"><svg viewBox="0 0 24 24"><path d="M12 9c-1.6 0-3.2.3-4.6.8v3.1c0 .4-.2.7-.6.9-.9.4-1.8 1-2.5 1.7-.2.2-.4.3-.7.3s-.5-.1-.7-.3L.3 13.1c-.2-.2-.3-.4-.3-.7s.1-.5.3-.7C3.3 8.8 7.4 7 12 7s8.7 1.8 11.7 4.7c.2.2.3.4.3.7s-.1.5-.3.7l-2.5 2.5c-.2.2-.4.3-.7.3s-.5-.1-.7-.3c-.8-.7-1.6-1.3-2.5-1.7-.3-.2-.6-.5-.6-.9v-3.1C15.2 9.3 13.6 9 12 9z"/></svg></i><i class="yes"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></i></div></div>
+    <div id="ntfs"></div>
+  </div></div>
+  <p id="q1" class="cap" style="left:150px;top:300px;width:900px">„Tak co,<br>už to <em>bude?</em>“</p>
+  <p id="q1s" class="sm abs" style="left:156px;top:560px">Pan Novák. Hovor číslo <b id="cnt" style="color:var(--ink)">4</b>. Dnes.</p>
+  <p id="q2" class="cap" style="left:150px;top:690px;font-size:76px;color:var(--ink2)">Každý den. <em style="color:var(--ink)">Uprostřed práce.</em></p>
+</div>
+
+<!-- S3: otázka -->
+<p id="q3" class="cap" style="left:0;right:0;top:380px;text-align:center;font-size:150px">Co kdyby se zákazník<br><em>nemusel ptát?</em></p>
+
+<!-- S4–S5: dílna a zákazník -->
+<div id="s4" class="abs" style="inset:0">
+  <p id="c4a" class="cap" style="left:0;right:0;top:56px;text-align:center;font-size:80px">Jedno klepnutí v dílně.</p>
+  <p id="c4b" class="cap" style="left:0;right:0;top:56px;text-align:center;font-size:80px"><em>Zákazník to vidí hned.</em></p>
+  <div id="pd" class="phone abs" style="left:420px;top:200px"><div class="scr"><div class="isl"></div><div class="sb"><span>10:43</span><span>82 %</span></div>
+    <div class="app"><div class="hd"><div><b>Škoda Octavia</b><span>KC-2611 · Dílna</span></div></div>
+      <div class="pic"><img src="ta/tmel.jpg" alt=""><div class="tg" id="pdtg">Tmel a příprava</div></div>
+      <p class="lbl" style="margin-top:14px">Teď</p><p class="st" id="pdst">Tmel a příprava</p>
+      <div class="bar" id="pdbar"><i><b style="transform:none"></b></i><i><b style="transform:none"></b></i><i><b style="transform:none"></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+      <div class="bigbtn" id="btn"><small>Posunout na</small>Lakování</div>
+      <div class="box" style="font-size:16px;color:var(--ink2)">Přidat fotku</div>
+    </div><div class="tap" id="tap"></div></div></div>
+  <div class="finger" id="finger"></div>
+  <div id="spark" class="abs" style="width:26px;height:26px;border-radius:50%;background:var(--red2);box-shadow:0 0 30px 10px rgba(255,90,99,.6);opacity:0;z-index:9"></div>
+  <div id="pz" class="phone abs" style="left:1100px;top:200px"><div class="scr"><div class="isl"></div><div class="sb"><span>10:43</span><span>64 %</span></div>
+    <div class="app" id="zapp"><div class="hd"><div><b>KANO CAR</b><span>Karosárna Šestajovice</span></div><span class="live">Živě</span></div>
+      <div class="pic"><img id="zimg0" src="ta/tmel.jpg" alt=""><img id="zimg1" src="ta/box.jpg" alt="" style="clip-path:inset(0 0 0 100%)"><div class="tg" id="ztg">Tmel a příprava</div></div>
+      <p class="car">Škoda Octavia</p>
+      <div class="box"><p class="lbl">Právě děláme</p><p class="st" id="zst">Tmel a příprava</p>
+        <div class="bar" id="zbar"><i><b style="transform:none"></b></i><i><b style="transform:none"></b></i><i><b style="transform:none"></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+        <p style="margin-top:10px;font-size:15px;color:var(--ink2)">Předání plánujeme čtvrtek 30. 10.</p></div>
+      <div class="box msg" id="zmsg" style="opacity:0"><p class="lbl">Vzkaz z dílny</p><p id="zmsgt" style="font-size:17px;margin-top:4px"></p></div>
+      <ol class="tl" id="ztl"><li class="ok"><i>✓</i>Přijato</li><li class="ok"><i>✓</i>Klempířina</li><li class="ok"><i>✓</i>Tmel a příprava</li><li class="todo" id="tl4"><i></i>Lakování</li><li class="todo"><i></i>Leštění</li><li class="todo"><i></i>Hotovo k vyzvednutí</li></ol>
+    </div>
+    <div class="toast" id="ztoast" style="opacity:0"><b>Lakování</b> · zakázka se posunula</div></div></div>
+  <p id="c5" class="cap" style="left:150px;top:380px;width:760px;font-size:120px;opacity:0">Vidí svoje auto.<br><em>Ne ilustraci.</em></p>
+</div>
+
+<!-- S6: přínosy -->
+<div id="s6" class="abs" style="inset:0">
+  <div id="b1" class="abs" style="left:0;right:0;top:300px;text-align:center"><p class="cap" style="position:static;font-size:170px">Méně telefonátů.</p><p class="sm" style="margin-top:24px">Hovorů „tak co, už to bude?“ za týden: <b id="cnt2" style="color:var(--ink);font:900 64px BSD;vertical-align:-8px">27</b></p></div>
+  <div id="b2" class="abs" style="left:0;right:0;top:300px;text-align:center"><p class="cap" style="position:static;font-size:170px">Víc <em>důvěry.</em></p><p class="sm" style="margin-top:24px">Zákazník vidí fotky svého auta přímo z dílny.</p></div>
+  <div id="b3" class="abs" style="left:0;right:0;top:300px;text-align:center"><p class="cap" style="position:static;font-size:170px">A doporučí vás dál.</p><p class="sm" style="margin-top:24px">Odkaz na svoje auto v lakovacím boxu pošle každý rád.</p></div>
+  <div id="cards" class="abs" style="left:960px;top:700px"></div>
+</div>
+
+<!-- S7: hotovo -->
+<div id="s7" class="abs" style="inset:0">
+  <div id="ph7" class="phone abs" style="left:760px;top:130px"><div class="scr"><div class="isl"></div>
+    <div class="app"><div class="hd"><div><b>KANO CAR</b><span>Karosárna Šestajovice</span></div><span class="live">Živě</span></div>
+      <div class="pic"><img src="ta/after.jpg" alt=""><div class="tg">Hotovo k vyzvednutí</div></div>
+      <p class="car">Škoda Octavia</p>
+      <div class="box"><p class="lbl">Hotovo</p><p class="st" style="color:#5fe39a">Hotovo k vyzvednutí</p>
+        <div class="bar"><i><b style="transform:none;background:var(--green)"></b></i><i><b style="transform:none;background:var(--green)"></b></i><i><b style="transform:none;background:var(--green)"></b></i><i><b style="transform:none;background:var(--green)"></b></i><i><b style="transform:none;background:var(--green)"></b></i><i><b style="transform:none;background:var(--green)"></b></i></div>
+        <div class="bigbtn" style="margin-top:16px;height:60px;font-size:19px">Domluvit vyzvednutí</div></div></div>
+    <div class="toast"><b>Hotovo!</b> Můžete si pro auto přijet.</div></div></div>
+  <p id="c7a" class="cap" style="left:120px;top:360px;width:600px;font-size:110px">A když je hotovo,</p>
+  <p id="c7b" class="cap" style="left:1260px;top:440px;width:560px;font-size:110px"><em>ví to první.</em></p>
+  <div id="drops" class="abs" style="inset:0;pointer-events:none"></div>
+</div>
+
+<!-- S8: nabídka -->
+<div id="s8" class="abs" style="inset:0">
+  <p id="c8" class="cap" style="left:0;right:0;top:70px;text-align:center;font-size:96px">Web s animacemi <em>+</em> sledování zakázky</p>
+  <div id="lap" class="laptop abs" style="left:300px;top:250px"><div class="lid"><img src="ta/web.png" alt=""></div><div class="base"></div></div>
+  <div id="ph8" class="phone abs" style="left:1240px;top:240px;transform:scale(.82);transform-origin:top left"><div class="scr"><div class="isl"></div>
+    <div class="app"><div class="hd"><div><b>KANO CAR</b><span>Karosárna Šestajovice</span></div><span class="live">Živě</span></div>
+      <div class="pic"><img src="ta/box.jpg" alt=""><div class="tg">Lakování</div></div><p class="car">Škoda Octavia</p>
+      <div class="box"><p class="lbl">Právě děláme</p><p class="st">Lakování</p><div class="bar"><i><b style="transform:none"></b></i><i><b style="transform:none"></b></i><i><b style="transform:none"></b></i><i><b style="transform:scaleX(.6)"></b></i><i><b></b></i><i><b></b></i></div></div></div></div></div>
+  <div id="chips" class="abs" style="left:0;right:0;top:930px;text-align:center"><span class="sm" style="margin-right:14px">Jako balíček. Pro každé řemeslo:</span><span class="chip" id="chip">Karosárna</span></div>
+</div>
+
+<!-- S9: konec -->
+<div id="s9" class="abs" style="inset:0">
+  <p id="c9a" class="cap" style="left:0;right:0;top:250px;text-align:center;font-size:120px;color:var(--ink2)">Zákazník už <em>nemusí volat.</em></p>
+  <p id="c9b" class="cap" style="left:0;right:0;top:470px;text-align:center;font-size:190px">Tomáš Ledvina</p>
+  <p id="c9c" class="abs" style="left:0;right:0;top:680px;text-align:center;font:600 46px SG">ledvina.tomi@gmail.com</p>
+  <p id="c9d" class="sm abs" style="left:0;right:0;top:770px;text-align:center">Weby a aplikace pro řemeslníky</p>
+</div>
+
+<div id="vig" class="abs"></div><div id="grain" class="abs"></div>
+</div>
+<script src="../vendor/gsap-3.13.0.min.js"></script>
+<script>
+const DUR=30;const tl=gsap.timeline({paused:true});const $=s=>document.querySelector(s);
+const E='power3.out',EI='power2.inOut',EX='expo.out';
+gsap.set(['#s4','#s6','#s7','#s8','#s9','#q3'],{autoAlpha:0});
+gsap.set('#glow',{scale:.6,opacity:.6});
+tl.to('#glow',{scale:1.15,duration:30,ease:'none'},0);
+
+/* S1 0–3.2: vibrující telefon a otázka */
+gsap.set('#p1',{rotationZ:-6,y:60,opacity:0});gsap.set(['#q1','#q1s','#q2'],{opacity:0,y:40});
+tl.to('#p1',{opacity:1,y:0,duration:.8,ease:E},0.1);
+for(let i=0;i<9;i++){const t=0.5+i*0.32;tl.to('#p1',{x:(i%2?-9:9),rotationZ:-6+(i%2?-1.2:1.2),duration:.04,ease:'none',repeat:3,yoyo:true},t)}
+tl.to('#q1',{opacity:1,y:0,duration:.7,ease:EX},0.6).to('#q1s',{opacity:1,y:0,duration:.6,ease:E},1.1);
+/* S2 3.2–6.2: hromada zpráv a hovorů */
+const N=[['ph','Zmeškaný hovor (2)','Pan Novák','10:44'],['ms','Pan Novák','Dobrý den, kdy bude auto hotové?','10:51'],['ph','Zmeškaný hovor (3)','Paní Dvořáková','11:02'],['ms','Paní Dvořáková','Můžu si pro něj přijet zítra?','11:20'],['ph','Zmeškaný hovor (5)','Pan Novák','11:34']];
+N.forEach((n,i)=>{const d=document.createElement('div');d.className='ntf';d.style.top=(110+i*112)+'px';d.innerHTML=`<i class="${n[0]}">${n[0]==='ph'?'📞':'💬'}</i><div><small>${n[3]}</small><b>${n[1]}</b>${n[2]}</div>`;$('#ntfs').appendChild(d);gsap.set(d,{y:-60,opacity:0,scale:.92});
+  tl.to(d,{y:0,opacity:1,scale:1,duration:.38,ease:'back.out(1.6)'},3.25+i*0.42)});
+tl.to('#call',{opacity:.25,duration:.4},3.15);
+tl.to('#p1',{rotationZ:0,x:0,scale:1.04,duration:2.8,ease:'none'},3.2);
+const cnt={v:4};tl.to(cnt,{v:11,duration:2.2,ease:'power1.in',onUpdate:()=>{$('#cnt').textContent=Math.round(cnt.v)}},3.4);
+tl.to('#q2',{opacity:1,y:0,duration:.6,ease:EX},4.1);
+tl.to('#q1',{color:'#7a756f',duration:.6},4.1);
+/* S3 6.2–8.0: tma a otázka */
+tl.to('#s1',{autoAlpha:0,duration:.18,ease:'power2.in'},6.2).to('#glow',{opacity:0,duration:.2},6.2);
+tl.fromTo('#q3',{autoAlpha:0,y:30,scale:.98},{autoAlpha:1,y:0,scale:1,duration:.7,ease:EX},6.55);
+tl.to('#q3',{autoAlpha:0,y:-30,duration:.35,ease:'power2.in'},7.75);
+/* S4 8.0–12.5: dílna → zákazník */
+tl.to('#glow',{opacity:.7,duration:1},8.0);
+tl.set('#s4',{autoAlpha:1},8.0);gsap.set(['#pd','#pz'],{y:120,opacity:0});gsap.set(['#c4a','#c4b'],{opacity:0,y:30});
+tl.to('#pd',{y:0,opacity:1,duration:.8,ease:EX},8.05).to('#pz',{y:0,opacity:1,duration:.8,ease:EX},8.2);
+tl.to('#c4a',{opacity:1,y:0,duration:.6,ease:EX},8.3);
+// prst klepne na tlačítko
+gsap.set('#finger',{left:760,top:1000});
+tl.to('#finger',{opacity:1,left:600,top:735,duration:.7,ease:EI},8.9);
+tl.to('#finger',{scale:.8,duration:.1,ease:'power2.in'},9.6).to('#btn',{scale:.95,duration:.1},9.6).to('#finger',{scale:1,duration:.2},9.7).to('#btn',{scale:1,duration:.25,ease:'back.out(3)'},9.7);
+gsap.set('#tap',{left:155,top:520,scale:.3});tl.to('#tap',{opacity:.9,scale:1.6,duration:.45,ease:'power2.out'},9.62).to('#tap',{opacity:0,duration:.25},9.85);
+tl.to('#finger',{opacity:0,y:40,duration:.4},10.0);
+tl.set('#pdst',{textContent:'Lakování'},9.75).set('#pdtg',{textContent:'Lakování'},9.75).to('#pdbar i:nth-child(4) b',{scaleX:.6,duration:.6,ease:E},9.75);
+tl.set('#btn',{innerHTML:'<small>Posunout na</small>Leštění'},9.9);
+// jiskra letí z dílny k zákazníkovi
+gsap.set('#spark',{left:600,top:700});
+tl.to('#spark',{opacity:1,duration:.1},9.8).to('#spark',{left:1290,top:440,duration:.6,ease:'power2.inOut'},9.85).to('#spark',{scale:3,opacity:0,duration:.3},10.45);
+tl.to('#c4a',{opacity:0,y:-20,duration:.3},10.2).to('#c4b',{opacity:1,y:0,duration:.6,ease:EX},10.35);
+tl.to('#zimg1',{clipPath:'inset(0 0 0 0%)',duration:.9,ease:'expo.inOut'},10.45).fromTo('#zimg1',{scale:1.12},{scale:1,duration:1.3,ease:E},10.45);
+tl.set(['#ztg','#zst'],{textContent:'Lakování'},10.6).to('#zbar i:nth-child(4) b',{scaleX:.6,duration:.7,ease:E},10.6);
+tl.set('#tl4',{className:'ok'},10.65).set('#tl4 i',{textContent:'●'},10.65);
+tl.fromTo('#ztoast',{opacity:0,y:30},{opacity:1,y:0,duration:.4,ease:'back.out(2)'},10.7).to('#ztoast',{opacity:0,duration:.3},12.2);
+tl.to('#pz',{scale:1.04,duration:.25,yoyo:true,repeat:1,ease:'power2.out'},10.55);
+/* S5 12.5–16.5: zákazník zblízka */
+tl.to(['#pd','#c4b'],{opacity:0,x:-120,duration:.6,ease:'power2.in'},12.4);
+tl.to('#pz',{left:1060,scale:1.12,duration:1.2,ease:EI},12.5);
+tl.to('#zapp',{y:-330,duration:1.3,ease:EI},13.2);
+tl.to('#zmsg',{opacity:1,duration:.3},13.5);
+const msg='Lakujeme dnes dopoledne. Zítra odpoledne si pro auto můžete přijet.';const mo={n:0};
+tl.to(mo,{n:msg.length,duration:1.6,ease:'none',onUpdate:()=>{$('#zmsgt').textContent=msg.slice(0,Math.round(mo.n))}},13.7);
+tl.fromTo('#c5',{opacity:0,y:40},{opacity:1,y:0,duration:.7,ease:EX},12.9);
+/* S6 16.5–21: přínosy */
+tl.to('#s4',{autoAlpha:0,duration:.35,ease:'power2.in'},16.3);
+tl.set('#s6',{autoAlpha:1},16.5);gsap.set(['#b1','#b2','#b3'],{autoAlpha:0,y:50});
+tl.to('#b1',{autoAlpha:1,y:0,duration:.6,ease:EX},16.55);
+const c2={v:27};tl.to(c2,{v:0,duration:1.1,ease:'power2.inOut',onUpdate:()=>{$('#cnt2').textContent=Math.round(c2.v)}},16.9);
+tl.to('#b1',{autoAlpha:0,y:-40,duration:.3,ease:'power2.in'},18.0);
+tl.to('#b2',{autoAlpha:1,y:0,duration:.6,ease:EX},18.2);
+['tmel','box','after'].forEach((n,i)=>{const im=document.createElement('img');im.src='ta/'+n+'.jpg';im.style.cssText='position:absolute;width:300px;height:200px;object-fit:cover;border-radius:16px;box-shadow:0 30px 60px rgba(0,0,0,.6);left:-150px;top:0';$('#cards').appendChild(im);
+  gsap.set(im,{y:200,opacity:0,rotation:0});tl.to(im,{y:-20,opacity:1,rotation:(i-1)*9,x:(i-1)*230,duration:.6,ease:'back.out(1.4)'},18.45+i*.09)});
+tl.to(['#b2','#cards'],{autoAlpha:0,y:-40,duration:.3,ease:'power2.in'},19.4);
+tl.to('#b3',{autoAlpha:1,y:0,duration:.6,ease:EX},19.6);
+tl.to('#b3',{autoAlpha:0,y:-40,duration:.3,ease:'power2.in'},20.75);
+/* S7 21–23.8: hotovo */
+tl.set('#s6',{autoAlpha:0},21);tl.set('#s7',{autoAlpha:1},21);gsap.set('#ph7',{y:140,opacity:0});gsap.set(['#c7a','#c7b'],{opacity:0,y:40});
+tl.to('#ph7',{y:0,opacity:1,duration:.8,ease:EX},21.0).to('#c7a',{opacity:1,y:0,duration:.6,ease:EX},21.25).to('#c7b',{opacity:1,y:0,duration:.6,ease:EX},21.8);
+tl.to('#glow',{background:'radial-gradient(circle,rgba(60,207,122,.18),rgba(60,207,122,0) 60%)',duration:.8},21.6);
+for(let i=0;i<46;i++){const d=document.createElement('i');d.className='drop';d.style.left=(Math.random()*1920)+'px';d.style.top='-40px';d.style.background=['#ff5a63','#3ccf7a','#f3f1ee','#e0242f'][i%4];$('#drops').appendChild(d);
+  tl.to(d,{y:1200,rotation:Math.random()*90-45,duration:1.6+Math.random()*1.2,ease:'power1.in'},21.7+Math.random()*.7)}
+/* S8 23.8–27.2: nabídka */
+tl.to('#s7',{autoAlpha:0,duration:.3},23.7);tl.set('#s8',{autoAlpha:1},23.9);
+tl.to('#glow',{background:'radial-gradient(circle,rgba(224,36,47,.2),rgba(224,36,47,0) 60%)',duration:.6},23.9);
+gsap.set('#lap',{y:120,opacity:0,rotationX:12});gsap.set('#ph8',{x:160,opacity:0});gsap.set(['#c8','#chips'],{opacity:0,y:30});
+tl.to('#c8',{opacity:1,y:0,duration:.6,ease:EX},23.95).to('#lap',{y:0,opacity:1,rotationX:0,duration:.9,ease:EX},24.1).to('#ph8',{x:0,opacity:1,duration:.8,ease:EX},24.45).to('#chips',{opacity:1,y:0,duration:.5,ease:E},24.9);
+['Karosárna','Instalatér','Střechař','Truhlář','Malíř','Zahradník'].forEach((w,i)=>{if(!i)return;const t=25.1+i*.36;tl.to('#chip',{y:-14,opacity:0,duration:.12,ease:'power2.in'},t).set('#chip',{textContent:w,y:14},t+.12).to('#chip',{y:0,opacity:1,duration:.18,ease:'power2.out'},t+.12)});
+/* S9 27.2–30: konec */
+tl.to('#s8',{autoAlpha:0,duration:.3},27.1);tl.set('#s9',{autoAlpha:1},27.3);gsap.set(['#c9a','#c9b','#c9c','#c9d'],{opacity:0,y:40});
+tl.to('#c9a',{opacity:1,y:0,duration:.6,ease:EX},27.35).to('#c9b',{opacity:1,y:0,duration:.8,ease:EX},27.7).to('#c9c',{opacity:1,y:0,duration:.6,ease:E},28.1).to('#c9d',{opacity:1,y:0,duration:.6,ease:E},28.35);
+tl.to('#c9b',{scale:1.03,duration:2.2,ease:'none'},27.8);
+tl.to('#stage',{opacity:0,duration:.5},29.5);
+tl.set({}, {}, DUR);
+window.seek=t=>{tl.time(Math.min(t,DUR-0.001),false)};seek(0);
+</script>
+</body></html>

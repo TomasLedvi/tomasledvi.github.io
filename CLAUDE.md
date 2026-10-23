@@ -99,6 +99,10 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
 - Na začátku každého nového videa dát Tomášovi krátký dotazník (AskUserQuestion, max 4 otázky s volbami):
   pro koho a kam (platforma/formát), pocit/styl, délka, co tam musí být (texty, logo, kontakt) + požádat o referenci.
   Pak hned náhled, ne dlouhé plánování.
+- Trailer „Sledování zakázky“ (24. 10.): `trailer.html` (1920×1080, 30 s, GSAP, seek), zvuk `sfx_trailer.py`,
+  render `FPS=30 python3 render169.py <abs html> video out.mp4`. Příběh: otravné hovory „Tak co, už to bude?“ → klepnutí v dílně →
+  zákazník vidí → přínosy → hotovo → web + sledování jako balíček → Tomáš Ledvina. Jen pro schůzky (je v něm KANO CAR).
+  Fotky v `ta/` (mimo git): before/tmel/box/after.jpg + web.png – nahradit skutečnými z CloudFrontu přes prohlížeč na Macu.
 - Tomáš má doma PC s RTX 2060 (rychlejší render), zatím neřešíme.
 - Skilly pro videa/animace (18. 10. připraveny jako zip k nahrání do jeho účtu, prověřené, MIT): motion-design
   (github.com/lottiefiles/motion-design-skill), design-dna (github.com/zanwei/design-dna), genjutsu
