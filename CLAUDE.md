@@ -50,6 +50,8 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   geometrie, oleje Agip a Texaco, příprava na STK a emise; BEZ webu): návrh `kanocar/` (23. 10.; tmavý, jeden připnutý záběr ze 3 videí Kling – promáčklina → tmel a maskování
   → lakovací box → lesk, kolejnice kroků 01–04; před/po posuvník s výběrem odstínu přes mix-blend-mode:hue; fonty Big Shoulders Display + Instrument Serif + Schibsted Grotesk + IBM Plex Mono).
   Higgsfield: obrázky 8e988f6c (před), e64841f2 (tmel), 30397c5c (box), 9cf96669 (po); videa d13593bb, b2ec3812, 4be6f002. Lead z ověření lakoven (Firmy.cz) 23. 10.
+  Sekce „Vrstvy laku“: řez lakem (ocel, tmel, plnič, barva, bezbarvý lak) vyrenderovaný v Blenderu, 64 snímků v `kanocar/vrstvy/` + polohy popisků v `layers.js`.
+  Blender: na Macu chybí MCP doplněk, proto render v kontejneru přes `pip install bpy` (Cycles CPU, ~10 min); skript `_gen/blender_vrstvy_laku.py` (`NF=64 SPP=28 RX=1120 RY=630 python3 … -- out 0:64`).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
