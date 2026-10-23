@@ -65,6 +65,11 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   1) promo Tomášovy služby (~20 s, 9:16: starý web se rozpadne → animovaný web → podpis; zeptat se na jméno/značku),
   2) případně krátké video k návrhu pro Karáska (jen neveřejně).
   Cíl: nabízet firmám videa na Instagram/FB/TikTok, i v balíčku s webem nebo měsíčně ke správě.
+- React Bits (github.com/DavidHDev/react-bits, 23. 10.): knihovna animovaných komponent (pozadí, kurzory, text, karty).
+  Licence MIT + Commons Clause: používat ve webech klientů smíme (i placených), NESMÍME komponenty samotné prodávat/šířit
+  (např. jako balíček nebo skill). Naše weby jsou čisté HTML/JS → komponentu přepsat do vanilla JS. Tipy: MetallicPaint
+  (lakovny), LiquidEther/Ferrofluid (voda), GlareHover, CountUp, ScrollVelocity, TextPressure, MaskedHeading.
+- Taste skill (design-taste-frontend) nainstalován 23. 10. – používat při návrhu a kontrole webů.
 - Písemný souhlas HZS: Tomáš si zažádá, až přijde další nabídka.
 
 ## Videa (složka `_video/`, stav 18. 10. 2026)
