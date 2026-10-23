@@ -45,6 +45,11 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   Tomáš mu volá ráno 21. 10. s hotovou ukázkou (poctivě: „připravil jsem vám ukázku“).
 - **BLEACH DENT CLINIC s.r.o.** (zubní klinika Most, IČO 30147751, založena 13. 10. 2026, sídlo Jaroslava Ježka 168/6, jednatelé dle ARES; web ani telefon nenalezeny): návrh `bleachdent/` (22. 10.; světlý, 3D zub z brom-dent bělá při scrollu podle stupnice VITA; služby označené jako ukázkové). Oslovení DOPISEM s QR kódem (PDF připraveno, Tomáš doplní telefon a datum). Zdroj leadů: ARES dotaz na IČO 3008000x–3017500x (nové firmy 15. 9.–22. 10.), dopis = legální cesta bez telefonu.
 - **Vodoinstalatérství Jan Hotárek** (Klášterec n. O., IČO 63741555 aktivní, od 1995 dle jeho karty na ceskestavby.cz; jan.hotarek@seznam.cz, 603 178 325, Polní 653 Miřetice; BEZ webu; služby + autorizovaný servis kotlů EKOKOMFORT): návrh `hotarek/` (22. 10.; tmavý, 3 filmové scény z Higgsfieldu přehrávané scrollem jako sekvence snímků: kapka z baterie, výkres → koupelna, měď → kotel; Kling 3.0 std 5 s po 7,5 kr., obrázky gpt_image_2_5). Plán: osobní e-mail na míru (Tomáš chce e-mail, ne telefon).
+- **KANO CAR – karosárna, s.r.o.** (Šestajovice, Ženíškova 412, IČO 49613065, zapsána 1993, sídlo v Šestajovicích od 1994; jednatel Martin Noha dle ARES;
+  603 919 651, canocar@email.cz dle Firmy.cz, Po–Pá 8–17; klempířina, lakování, mechanika, prohlídky havarovaných vozidel, krycí dopis u smluvních pojišťoven,
+  geometrie, oleje Agip a Texaco, příprava na STK a emise; BEZ webu): návrh `kanocar/` (23. 10.; tmavý, jeden připnutý záběr ze 3 videí Kling – promáčklina → tmel a maskování
+  → lakovací box → lesk, kolejnice kroků 01–04; před/po posuvník s výběrem odstínu přes mix-blend-mode:hue; fonty Big Shoulders Display + Instrument Serif + Schibsted Grotesk + IBM Plex Mono).
+  Higgsfield: obrázky 8e988f6c (před), e64841f2 (tmel), 30397c5c (box), 9cf96669 (po); videa d13593bb, b2ec3812, 4be6f002. Lead z ověření lakoven (Firmy.cz) 23. 10.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).

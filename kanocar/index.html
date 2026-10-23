@@ -42,13 +42,13 @@ nav ul a:hover{color:var(--ink)}
 /* tlačítko se „stříkaným“ výplňovým efektem od kurzoru */
 .btn{--x:50%;--y:50%;position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border:1px solid rgba(241,235,227,.35);
   color:var(--ink);text-decoration:none;font:600 14px var(--body);letter-spacing:.01em;background:transparent;cursor:pointer;transition:border-color .4s,color .3s}
-.btn::before{content:"";position:absolute;inset:-2px;z-index:-1;transition:--r .7s var(--ease);
+.btn::before{content:"";position:absolute;inset:-2px;z-index:-1;transition:--r .7s var(--ease),opacity .25s;
   background:radial-gradient(circle at var(--x) var(--y),var(--red) 0,var(--red) var(--r),rgba(200,22,31,.55) calc(var(--r) + 6px),rgba(200,22,31,.15) calc(var(--r) + 18px),transparent calc(var(--r) + 30px))}
-.btn:hover::before,.btn:focus-visible::before{--r:260px}
+.btn::before{opacity:0}.btn:hover::before,.btn:focus-visible::before{--r:260px;opacity:1}
 .btn:hover{border-color:var(--red)}
 .btn.solid{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .btn.solid:hover{color:var(--ink)}
-.btn{white-space:nowrap}.brand b,.brand span{white-space:nowrap}
+.btn{white-space:nowrap}.brand b,.brand span{white-space:nowrap}.brand b{color:var(--ink)}
 .btn .ar{transition:transform .4s var(--ease)}.btn:hover .ar{transform:translateX(4px)}
 @media (max-width:860px){nav ul{display:none}nav .btn{margin-left:auto;padding:11px 16px}}
 @media (max-width:420px){.brand span span{display:none}}
