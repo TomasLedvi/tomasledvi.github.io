@@ -50,10 +50,9 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   geometrie, oleje Agip a Texaco, příprava na STK a emise; BEZ webu): návrh `kanocar/` (23. 10.; tmavý, jeden připnutý záběr ze 3 videí Kling – promáčklina → tmel a maskování
   → lakovací box → lesk, kolejnice kroků 01–04; před/po posuvník s výběrem odstínu přes mix-blend-mode:hue; fonty Big Shoulders Display + Instrument Serif + Schibsted Grotesk + IBM Plex Mono).
   Higgsfield: obrázky 8e988f6c (před), e64841f2 (tmel), 30397c5c (box), 9cf96669 (po); videa d13593bb, b2ec3812, 4be6f002. Lead z ověření lakoven (Firmy.cz) 23. 10.
-  24. 10. PŘEDĚLÁNO podle taste skillu (směr „Věta je rozvržení“, seed 1426763977): úvod „Jako by se ▢ nic nestalo“ s videem v okénku,
-  postup = slovesa (Rovnáme/Tmelíme/Lakujeme/Leštíme) nad filmem, vrstvy = sloupec slov + render, služby na světlém poli s fotkami, před/po,
-  pojistná událost na vínovém poli, o nás, kontakt s poptávkou, závěr s KANO CAR jako tekoucí lak (MetallicPaint z React Bits, `metallic.js`).
-  Písma Imbue + Albert Sans uložená v `kanocar/fonts/` (OFL). Předchozí verze je v historii gitu.
+  24. 10. zkoušen redesign podle taste skillu (commit 4414b02: věta s okénkem, Imbue, MetallicPaint v závěru) – Tomášovi se
+  NELÍBIL, vráceno na předchozí verzi. Ponaučení: jeho původní tmavý „filmový“ styl s více efekty má radši než střídmý
+  „award“ styl taste skillu; skilly používat spíš na dílčí vylepšení než na celkové přestavby.
   Sekce „Vrstvy laku“: řez lakem (ocel, tmel, plnič, barva, bezbarvý lak) vyrenderovaný v Blenderu, 128 snímků v `kanocar/vrstvy/` + polohy popisků v `layers.js`.
   Blender: na Macu chybí MCP doplněk, proto render v kontejneru přes `pip install bpy` (Cycles CPU, ~10 min); skript `_gen/blender_vrstvy_laku.py` (`NF=128 SPP=28 RX=1120 RY=630 python3 … -- out 0:128`, ~20 min).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
