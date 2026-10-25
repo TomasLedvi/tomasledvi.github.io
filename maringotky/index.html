@@ -113,7 +113,7 @@ a{color:inherit}img{display:block;max-width:100%}
 .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:70px;background:var(--line);border-radius:14px;overflow:hidden}
 .nums div{background:var(--night);padding:28px 24px}
 .nums b{display:block;font:800 clamp(3rem,6vw,5rem)/1 var(--disp);font-stretch:58%;color:var(--lamp2);font-variant-numeric:tabular-nums}
-.nums span{display:block;margin-top:8px;font:500 .8rem/1.4 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.nums>div>span{display:block;margin-top:8px;font:500 .8rem/1.4 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .intro blockquote{font:500 clamp(1.2rem,1.8vw,1.5rem)/1.5 var(--text);color:var(--ink);border-left:3px solid var(--lamp);padding-left:24px}
 .intro blockquote cite{display:block;margin-top:14px;font:600 .72rem/1 var(--text);font-style:normal;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 @media (max-width:860px){.intro{grid-template-columns:1fr}.nums{grid-template-columns:1fr}}
@@ -129,7 +129,8 @@ a{color:inherit}img{display:block;max-width:100%}
 .wlist strong{display:block;font-weight:600}
 .wlist span{display:block;color:var(--muted);font-size:.95rem;line-height:1.5}
 .wnote{margin-top:24px;color:var(--muted);font-size:.85rem;max-width:440px}
-.wscene{position:relative;height:min(78svh,720px);perspective:1600px;perspective-origin:50% 40%}
+.wscene{position:relative;width:100%;aspect-ratio:4/3;max-height:78svh;margin:auto}
+#wcv{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .wbox{position:absolute;left:50%;top:58%;width:min(400px,70vw);height:min(400px,70vw);transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(58deg) rotateZ(-38deg)}
 .ly{position:absolute;inset:0;transform-style:preserve-3d;border-radius:4px;box-shadow:0 0 0 1px #0004}
 .ly::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--th);transform-origin:bottom;transform:rotateX(-90deg);background:inherit;filter:brightness(.7)}
@@ -138,8 +139,10 @@ a{color:inherit}img{display:block;max-width:100%}
 .ly3{--th:60px;background:radial-gradient(circle at 20% 30%,#f2d28a 0 10%,transparent 11%),radial-gradient(circle at 70% 60%,#e9c46a 0 12%,transparent 13%),radial-gradient(circle at 40% 80%,#f0cd7d 0 9%,transparent 10%),repeating-radial-gradient(circle at 50% 50%,#e7c070 0 6px,#d9ac55 6px 12px)}
 .ly4{--th:4px;background:linear-gradient(115deg,#c9d4dc 0%,#f4f7f9 30%,#aab7c1 55%,#eef2f5 75%,#b5c1ca 100%);opacity:.92}
 .ly5{--th:16px;background:repeating-linear-gradient(90deg,#d8b98a 0 40px,#c7a473 40px 42px)}
-.wlab{position:absolute;left:0;top:0;font:600 .72rem/1.2 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);white-space:nowrap;opacity:0;transition:opacity .5s;pointer-events:none;text-shadow:0 2px 10px #000}
-@media (max-width:860px){.wstage{grid-template-columns:1fr;align-content:center;gap:10px}.wscene{height:46svh;order:-1}.wbox{width:56vw;height:56vw}.wlist{gap:8px}.wlist span{display:none}.wnote{display:none}}
+.wlab{position:absolute;left:0;top:0;transform:translate(-50%,-140%);padding:6px 10px;border-radius:999px;background:#08110dd9;border:1px solid #ffb44d66;font:600 .7rem/1.2 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap;opacity:0;transition:opacity .5s;pointer-events:none}
+.wlab.on{opacity:1}
+.wlab::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:18px;background:#ffb44d99}
+@media (max-width:860px){.wstage{grid-template-columns:1fr;align-content:center;gap:10px}.wscene{max-height:42svh;order:-1}.wlab{font-size:.6rem;padding:4px 8px}.wlist{gap:8px}.wlist span{display:none}.wnote{display:none}}
 
 /* AR section */
 .ar{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center}
@@ -234,7 +237,7 @@ footer{padding:70px var(--pad) 40px;background:var(--pine)}
 .js .rv{opacity:0;transform:translateY(34px);transition:opacity 1s,transform 1.1s cubic-bezier(.2,.75,.15,1);transition-delay:calc(var(--i,0)*90ms)}
 .js .rv.in{opacity:1;transform:none}
 .js .h2.rv .w{display:inline-block;transform:translateY(105%);transition:transform .9s cubic-bezier(.2,.75,.15,1);transition-delay:calc(var(--wi)*60ms)}
-.js .h2.rv .wm{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em}
+.js .h2.rv .wm{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.2em .02em .06em;margin:-.2em -.02em 0}
 .js .h2.rv.in .w{transform:none}
 @media (prefers-reduced-motion:reduce){.js .rv,.js .h2.rv .w{opacity:1;transform:none;transition:none}.smoke{display:none}*{transition-duration:.01ms!important;animation:none!important}}
 </style>
@@ -324,7 +327,7 @@ footer{padding:70px var(--pad) 40px;background:var(--pine)}
   </div>
   <div class="wrap nums">
     <div class="rv"><b data-count="9">9</b><span>modelů v nabídce</span></div>
-    <div class="rv" style="--i:1"><b>od <span data-count="107">107</span>&nbsp;tis.</b><span>Kč s DPH za dětský domeček</span></div>
+    <div class="rv" style="--i:1"><b>od <i data-count="107" style="font-style:normal">107</i>&nbsp;tis.</b><span>Kč s DPH za dětský domeček</span></div>
     <div class="rv" style="--i:2"><b data-count="365">365</b><span>dní v roce k užívání</span></div>
   </div>
 </section>
@@ -343,14 +346,9 @@ footer{padding:70px var(--pad) 40px;background:var(--pine)}
       <p class="wnote">Zjednodušená ukázka skladby. Přesné provedení pro váš model popíše dílna.</p>
     </div>
     <div class="wscene" id="wscene" aria-hidden="true">
-      <div class="wbox" id="wbox">
-        <div class="ly ly5" data-z="0"></div>
-        <div class="ly ly4" data-z="1"></div>
-        <div class="ly ly3" data-z="2"></div>
-        <div class="ly ly2" data-z="3"></div>
-        <div class="ly ly1" data-z="4"></div>
-      </div>
-    </div>
+      <canvas id="wcv" width="960" height="720"></canvas>
+      <div class="wlab" data-i="0">Venkovní obklad</div><div class="wlab" data-i="1">Izolace</div><div class="wlab" data-i="2">Parozábrana</div><div class="wlab" data-i="3">Vnitřní obklad</div>
+    </div></div>
   </div>
 </section>
 
@@ -555,13 +553,19 @@ async function modelUrl(){for(const k of['drevo','antracit']){try{const r=await 
 /* QR for desktop visitors */
 (()=>{try{if(window.QRious)new QRious({element:document.getElementById('qr'),value:location.href.split('#')[0]+'#zahrada',size:240,background:'#ffffff',foreground:'#08110d'})}catch(e){}})();
 
-/* wall cutaway */
-(()=>{const sec=document.getElementById('stena'),lys=[...document.querySelectorAll('#wbox .ly')],items=[...document.querySelectorAll('#wlist li')];
-function upd(){const r=sec.getBoundingClientRect(),p=clamp(-r.top/(r.height-innerHeight));const e=p<.1?0:clamp((p-.1)/.6);
-  lys.forEach(l=>{const z=+l.dataset.z;l.style.transform=`translateZ(${z*(18+e*90)*(innerWidth<860?.45:.62)}px)`});
-  const box=document.getElementById('wbox');box.style.transform=`translate(-50%,-50%) rotateX(${58-e*6}deg) rotateZ(${-38+p*16}deg)`;
-  const n=p<.12?0:Math.min(4,1+Math.floor((p-.12)/.17));items.forEach((li,i)=>li.classList.toggle('on',i<n))}
-addEventListener('scroll',upd,{passive:true});upd();})();
+/* wall cutaway: frames rendered in Blender */
+(()=>{const sec=document.getElementById('stena'),cv=document.getElementById('wcv'),cx=cv.getContext('2d'),items=[...document.querySelectorAll('#wlist li')],labs=[...document.querySelectorAll('.wlab')];
+const N=72,fr=new Array(N);let L=null,loaded=false,cur=-1;
+function load(){if(loaded)return;loaded=true;fetch('stena/labels.json').then(r=>r.json()).then(j=>{L=j.labels;upd()}).catch(()=>{});
+  const order=[0,71,36,18,54];for(let i=0;i<N;i++)if(!order.includes(i))order.push(i);
+  order.forEach(i=>{const im=new Image();im.decoding='async';im.onload=()=>{fr[i]=im;if(cur<0||Math.abs(i-cur)<3)draw(cur<0?0:cur,true)};im.src='stena/f'+String(i).padStart(3,'0')+'.webp'})}
+new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting))load()},{rootMargin:'120% 0px'}).observe(sec);
+function draw(i,force){let k=i;while(k>=0&&!fr[k])k--;if(k<0){k=i;while(k<N&&!fr[k])k++}if(!fr[k])return;if(k===cur&&!force)return;cur=k;cx.clearRect(0,0,cv.width,cv.height);cx.drawImage(fr[k],0,0,cv.width,cv.height)}
+function upd(){const r=sec.getBoundingClientRect(),p=clamp(-r.top/(r.height-innerHeight));const i=Math.round(p*(N-1));draw(i);
+  const n=p<.1?0:Math.min(4,1+Math.floor((p-.1)/.16));items.forEach((li,k)=>li.classList.toggle('on',k<n));
+  const box=cv.getBoundingClientRect(),wr=document.getElementById('wscene').getBoundingClientRect();
+  labs.forEach((lb,k)=>{const on=k<n&&L&&L[i];lb.classList.toggle('on',!!on);if(L&&L[i]){lb.style.left=(box.left-wr.left+L[i][k][0]*box.width)+'px';lb.style.top=(box.top-wr.top+L[i][k][1]*box.height)+'px'}})}
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();})();
 
 /* catalogue + configurator */
 const PR=[
