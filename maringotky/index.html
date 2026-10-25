@@ -90,8 +90,11 @@ model-viewer::part(default-progress-bar){display:none}.has3d .van svg{opacity:0;
 .prog{position:absolute;right:var(--pad);bottom:clamp(36px,7vh,70px);z-index:3;display:flex;gap:6px}
 .prog i{width:34px;height:3px;border-radius:2px;background:#ffffff33;overflow:hidden;position:relative}
 .prog i b{position:absolute;inset:0;width:0;background:var(--lamp)}
-.drag{position:absolute;left:50%;bottom:calc(8% + 6px);transform:translateX(-50%);z-index:2;font:600 .66rem/1 var(--text);letter-spacing:.22em;text-transform:uppercase;opacity:0;transition:opacity .8s;white-space:nowrap;text-shadow:0 2px 10px #000}
+.drag{position:absolute;right:clamp(16px,3vw,40px);bottom:calc(8% + 6px);z-index:2;font:600 .66rem/1 var(--text);letter-spacing:.22em;text-transform:uppercase;opacity:0;transition:opacity .8s;white-space:nowrap;text-shadow:0 2px 10px #000}
 .has3d .drag{opacity:.75}
+.fire{position:relative;width:0;height:0;pointer-events:none;border:0;background:none;padding:0}
+.firecv{position:absolute;left:0;top:0;width:240px;height:360px;pointer-events:none;z-index:1;mix-blend-mode:screen;opacity:0;transition:opacity .6s;will-change:transform}
+.has3d .firecv{opacity:1}
 @media (max-width:760px){
   .show{height:440svh}
   .van{left:50%;width:124vw;bottom:33%}.has3d .van{width:auto;left:0;bottom:0}.i3{max-width:none;right:var(--pad)}
@@ -511,12 +514,12 @@ function scene(){const r=showEl.getBoundingClientRect(),total=r.height-innerHeig
   document.querySelectorAll('.van svg').forEach(s=>s.style.setProperty('--glass',st.glass));document.documentElement.style.setProperty('--glass',st.glass);
   const mins=Math.round(st.t),hh=String(Math.floor(mins/60)).padStart(2,'0'),mm=String(mins%60).padStart(2,'0');clk.textContent=hh+':'+mm;big.textContent=hh+':'+mm;mon.textContent=st.m;
   const w=s3.clientWidth,h=s3.clientHeight;const sa=clamp(P/.78);sun.style.transform=`translate(${lerp(-.05,1.02,sa)*w}px,${(.62-Math.sin(sa*Math.PI)*.5)*h}px)`;sun.style.opacity=clamp(1-(P-.62)/.12);
-  moon.style.opacity=clamp((P-.7)/.12);moon.style.transform=w<760?`translate(${.12*w}px,${.2*h}px)`:`translate(${lerp(.62,.78,clamp((P-.7)/.3))*w}px,${.14*h}px)`;
+  moon.style.opacity=clamp((P-.7)/.12);moon.style.transform=w<760?`translate(${.12*w}px,${.2*h}px)`:`translate(${lerp(.2,.27,clamp((P-.7)/.3))*w}px,${.13*h}px)`;
   stars.style.opacity=st.stars;snowcap.style.opacity=clamp((P-.8)/.15)*.9;halo.style.opacity=st.warm*.9;smoke.style.opacity=clamp((P-.6)/.2);
   season=[clamp(1-Math.abs(P-0)/.3),clamp(1-Math.abs(P-.36)/.25),clamp(1-Math.abs(P-.66)/.22),clamp((P-.74)/.14)];
   const ch=P<.07?-1:P<.22?0:P<.5?1:P<.78?2:3;caps.forEach((c,i)=>c.classList.toggle('on',i===ch));bars.forEach((b,i)=>b.style.width=clamp(P*4-i)*100+'%');intro.style.opacity=clamp(1-P/.12);intro.style.pointerEvents=P<.1?'auto':'none';
   wheels.forEach((g,i)=>{const cx=i?470:150;g.setAttribute('transform',`translate(${cx} 262) rotate(${P*720})`)});
-  if(mv){mv.exposure=st.exp;const br=P<.66?lerp(.95,.8,clamp((P-.33)/.33)):lerp(.8,.42,clamp((P-.66)/.34));mv.style.filter=`brightness(${br.toFixed(3)}) saturate(${(.85+.15*br).toFixed(3)})`;if(!dragging&&!RM){mv.cameraOrbit=`${-38+P*70}deg ${77-Math.sin(P*Math.PI)*4}deg ${15-Math.sin(P*Math.PI)*2.5}m`}}}
+  if(mv){mv.exposure=st.exp;const br=P<.66?lerp(.95,.8,clamp((P-.33)/.33)):lerp(.8,.5,clamp((P-.66)/.34));mv.style.filter=`brightness(${br.toFixed(3)}) saturate(${(.85+.15*br).toFixed(3)})`;if(!dragging&&!RM){mv.cameraOrbit=`${CAM.a+P*(CAM.b-CAM.a)}deg ${CAM.ph-Math.sin(P*Math.PI)*2}deg ${CAM.r-Math.sin(P*Math.PI)*2}m`}}}
 addEventListener('scroll',scene,{passive:true});addEventListener('resize',()=>{sizeStars();scene()});
 
 /* stars */
@@ -538,12 +541,14 @@ function tick(){x.clearRect(0,0,w,h);for(const p of ps){const wgt=season[p.k];if
 tick();})();
 
 /* 3D maringotka (replaces the drawing as soon as a model file exists) */
+const CAM=window.CAM={a:-34,b:-20,ph:84,r:17,t:'0.2m 3.1m 2.4m',fov:'46deg'};
 const MODELS={drevo:'models/drevo.glb',antracit:'models/antracit.glb'},SCENES={drevo:'models/scena_drevo.glb',antracit:'models/scena_antracit.glb'};
 async function modelUrl(){for(const k of['drevo','antracit']){try{const r=await fetch(MODELS[k],{method:'HEAD'});if(r.ok)return MODELS[k]}catch(e){}}return null}
 (async()=>{const u=await modelUrl();if(!u)return;await customElements.whenDefined('model-viewer');
-  mv=document.createElement('model-viewer');const at={src:(u===MODELS.antracit?SCENES.antracit:SCENES.drevo),'camera-controls':'','disable-zoom':'','touch-action':'pan-y','interaction-prompt':'none','shadow-intensity':'1.2','shadow-softness':'.8','environment-image':'neutral','camera-orbit':'-38deg 77deg 15m','camera-target':'0.6m 2.2m 1.2m','field-of-view':'34deg','min-camera-orbit':'-70deg 60deg 8m','max-camera-orbit':'70deg 84deg 30m',alt:'3D model maringotky, který lze otáčet'};
+  mv=document.createElement('model-viewer');const at={src:(u===MODELS.antracit?SCENES.antracit:SCENES.drevo),'camera-controls':'','disable-zoom':'','touch-action':'pan-y','interaction-prompt':'none','shadow-intensity':'1.2','shadow-softness':'.8','environment-image':'neutral','camera-orbit':`${CAM.a}deg ${CAM.ph}deg ${CAM.r}m`,'camera-target':CAM.t,'field-of-view':CAM.fov,'min-camera-orbit':'-70deg 60deg 8m','max-camera-orbit':'70deg 86deg 30m',alt:'3D model maringotky, který lze otáčet'};
   for(const a in at)mv.setAttribute(a,at[a]);mv.addEventListener('load',()=>{s3.classList.add('has3d');scene()});
   mv.addEventListener('pointerdown',()=>dragging=true);addEventListener('pointerup',()=>dragging=false);
+  const fire=document.createElement('div');fire.className='fire';fire.slot='hotspot-fire';fire.dataset.position='-1.36m 0.36m 4.8m';fire.dataset.normal='0m 1m 0m';mv.appendChild(fire);const fcv=document.createElement('canvas');fcv.className='firecv';fcv.width=240;fcv.height=360;fcv.setAttribute('aria-hidden','true');document.getElementById('van').appendChild(fcv);startFire(fcv);
   document.getElementById('van').appendChild(mv);
   // AR copy
   const ar=document.createElement('model-viewer');const aat={src:u,ar:'','ar-modes':'webxr scene-viewer quick-look','ar-scale':'fixed','camera-controls':'','auto-rotate':'','disable-zoom':'','shadow-intensity':'1','environment-image':'neutral','camera-orbit':'-30deg 75deg 105%',alt:'Maringotka pro zobrazení na zahradě'};
@@ -553,8 +558,27 @@ async function modelUrl(){for(const k of['drevo','antracit']){try{const r=await 
   document.getElementById('arbox').appendChild(ar);
 })();
 
-/* flickering fire and lantern in the 3D scene */
-(()=>{let mats=[];const pick=()=>{if(!mv||!mv.model)return;mats=mv.model.materials.filter(m=>/Plamen|Lucerna svetlo/.test(m.name))};
+/* real-time campfire drawn over the 3D fire pit */
+function startFire(cv){const x=cv.getContext('2d'),W=cv.width,H=cv.height,ps=[],sp=[],B=H*.86;
+  function emit(){const o=(Math.random()-.5)*W*.2;ps.push({x:W/2+o,y:B-Math.random()*6,vx:-o*.004+(Math.random()-.5)*.2,vy:-(1.8+Math.random()*2)*(1-Math.abs(o)/W*2.2),r:W*(.075+Math.random()*.06),l:0,L:34+Math.random()*30,ph:Math.random()*6});
+    if(Math.random()<.22)sp.push({x:W/2+(Math.random()-.5)*W*.12,y:B-10,vx:(Math.random()-.5)*1.4,vy:-(2.2+Math.random()*2.6),l:0,L:60+Math.random()*60})}
+  function place(){if(!mv||!mv.queryHotspot)return;const h=mv.queryHotspot('hotspot-fire');if(!h)return;const cp=h.canvasPosition,o=mv.getCameraOrbit?mv.getCameraOrbit():null;
+    const d=o?o.radius:16;
+    const sc=clamp(16/Math.max(d,4),.35,1.1)*(mv.clientHeight/900)*Math.min(1,Math.sqrt(mv.clientWidth/mv.clientHeight/1.2));cv.style.transform=`translate(${cp.x-120}px,${cp.y-360*.86}px) scale(${sc.toFixed(3)})`;cv.style.transformOrigin='120px 310px'}
+  function frame(t){place();x.clearRect(0,0,W,H);const night=clamp((P-.45)/.4),fl=.85+.15*Math.sin(t/70)+.08*Math.sin(t/23);
+    let g=x.createRadialGradient(W/2,B,2,W/2,B,W*.46);g.addColorStop(0,`rgba(255,140,50,${(.22+.45*night)*fl})`);g.addColorStop(.5,`rgba(255,110,40,${(.08+.2*night)*fl})`);g.addColorStop(1,'rgba(255,90,30,0)');x.fillStyle=g;x.save();x.translate(W/2,B);x.scale(1,.45);x.translate(-W/2,-B);x.fillRect(0,0,W,H);x.restore();
+    for(let i=0;i<5;i++)emit();x.globalCompositeOperation='lighter';
+    for(let i=ps.length-1;i>=0;i--){const p=ps[i];p.l++;const k=p.l/p.L;if(k>=1){ps.splice(i,1);continue}
+      p.x+=p.vx+Math.sin(p.l*.22+p.ph)*.5*k+(W/2-p.x)*.012;p.y+=p.vy;p.vy*=.995;
+      const r=p.r*(1-k*.8),a=(1-k)*(k<.12?k/.12:1)*.26*fl;const c=k<.18?'255,205,110':k<.45?'255,150,45':k<.75?'235,85,25':'120,40,20';
+      x.save();x.translate(p.x,p.y);x.scale(1,1.9);const gr=x.createRadialGradient(0,0,0,0,0,r);gr.addColorStop(0,`rgba(${c},${a})`);gr.addColorStop(1,`rgba(${c},0)`);x.fillStyle=gr;x.beginPath();x.arc(0,0,r,0,7);x.fill();x.restore()}
+    g=x.createRadialGradient(W/2,B-10,0,W/2,B-10,W*.09);g.addColorStop(0,`rgba(255,220,150,${.32*fl})`);g.addColorStop(1,'rgba(255,200,120,0)');x.fillStyle=g;x.fillRect(0,0,W,H);
+    for(let i=sp.length-1;i>=0;i--){const s=sp[i];s.l++;s.x+=s.vx+Math.sin(s.l*.1)*.3;s.y+=s.vy;s.vy*=.985;if(s.l>s.L||s.y<0){sp.splice(i,1);continue}x.fillStyle=`rgba(255,${180+Math.random()*60|0},110,${1-s.l/s.L})`;x.fillRect(s.x,s.y,2,2)}
+    x.globalCompositeOperation='source-over';if(!RM)requestAnimationFrame(frame)}
+  requestAnimationFrame(frame)}
+
+/* flickering lantern in the 3D scene */
+(()=>{let mats=[];const pick=()=>{if(!mv||!mv.model)return;mats=mv.model.materials.filter(m=>/Lucerna svetlo/.test(m.name));const fl=mv.model.materials.find(m=>/Plamen/.test(m.name));if(fl){try{fl.setAlphaMode('BLEND');fl.pbrMetallicRoughness.setBaseColorFactor([1,.5,.1,0]);fl.setEmissiveFactor([0,0,0])}catch(e){}}};
 const tick=t=>{if(mv&&mv.model){if(!mats.length)pick();const night=.6+.4*clamp((P-.5)/.3);mats.forEach((m,i)=>{const f=night*(.75+.25*Math.sin(t/90+i*2)+.15*Math.sin(t/37+i));try{m.setEmissiveFactor([1*f,.55*f,.2*f])}catch(e){}})}if(!RM)requestAnimationFrame(tick)};
 document.addEventListener('load',e=>{if(e.target===mv)mats=[]},true);requestAnimationFrame(tick)})();
 

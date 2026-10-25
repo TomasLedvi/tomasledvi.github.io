@@ -44,7 +44,9 @@ for a_ in range(1,len(rings)-1):
     for k in range(SEG):bm.faces.new((A[k],B[k],B[(k+1)%SEG],A[(k+1)%SEG]))
 def hgt(x,y):
     r=(x*x+y*y)**.5;h=noise.noise(Vector((x*.18,y*.18,0)))*0.15
-    if r>12:h+=((r-12)/40)**1.5*16*(0.75+0.5*(noise.noise(Vector((x*.03,y*.03,7)))*.5+.5))
+    if r>12:
+        back=max(0,y/max(r,1e-6))**2          # 1 = přímo za maringotkou
+        h+=((r-12)/40)**1.5*16*(0.75+0.5*(noise.noise(Vector((x*.03,y*.03,7)))*.5+.5))*(1-0.85*back)
     return h
 for v in bm.verts:v.co.z=hgt(v.co.x,v.co.y)
 bmesh.ops.triangulate(bm,faces=bm.faces[:])
@@ -101,7 +103,8 @@ def band(name,n,rmin,rmax,hmin,hmax,tiers,pts):
     while placed<n and tries<n*40:
         tries+=1;ang=random.uniform(0,2*math.pi);r=rmin+(rmax-rmin)*random.random()**0.8;x,y=math.cos(ang)*r,math.sin(ang)*r
         if not okspot(x,y):continue
-        h=random.uniform(hmin,hmax);z=hgt(x,y)-0.2;R=h*0.17
+        if name=='Les_blizko' and y>0 and abs(math.atan2(x,y))<math.radians(50) and random.random()<0.75:continue   # průhled na oblohu za maringotkou
+        h=random.uniform(hmin,hmax)*(1-0.45*max(0,y/max(r,1e-6))**2);z=hgt(x,y)-0.2;R=h*0.17
         for t_ in range(tiers):
             t=t_/(max(1,tiers-1));z0=z+h*(0.15+0.78*t);rr=R*(1-t)**0.9+0.1
             top=bm.verts.new((x,y,z0+h*(0.28 if tiers<4 else 0.12)));ring=[]
