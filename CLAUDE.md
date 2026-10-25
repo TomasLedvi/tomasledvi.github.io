@@ -64,7 +64,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   galerie, FAQ). Fotky z jejich webu (jen 800 px, s vodoznakem; při zakázce vyžádat originály). 3D modely z TRELLIS.2
   (Hugging Face demo, Tomáš nahrává fotky sám, je přihlášený jako Tomikleda) → `maringotky/models/drevo.glb`
   a `antracit.glb` (25. 10. dodán Tomášem jeden model v metrech, 6,2 m, 11 tis. trojúhelníků, bez textur; dřevěné materiály
-  měly bílou barvu → v GLB nastavena barva obkladu ve dvou variantách; 25. 10. v Blenderu vyměněny terénní pneumatiky za litinová kola s loukotěmi, odstraněny blatníky, přidány schůdky ke dveřím – `_gen/blender_maringotka_kola.py`).
+  měly bílou barvu → v GLB nastavena barva obkladu ve dvou variantách; 25. 10. v Blenderu vyměněny terénní pneumatiky za litinová kola s loukotěmi, odstraněny blatníky, přidány schůdky ke dveřím – `_gen/blender_maringotka_kola.py`). Úvod ukazuje celou scénu `models/scena_*.glb` (maringotka + okolí: Tomášův okoli.glb z ChatGPT vylepšený skriptem `_gen/blender_okoli_maringotky.py` – organické smrky, trsy trávy, kvítí, kameny, kapradí, hromada dřeva, lucerna; barvy přes vertex colors), AR jen samotnou maringotku; plameny a lucerna blikají přes materiály model-vieweru.
   model-viewer a qrious hostujeme ve `vendor/` (unpkg/cdnjs z kontejneru nejdou). K ověření s firmou: kroky postupu, odpovědi v FAQ, otevírací doba
   Po–Pá 7–16 (z ČESKÉSTAVBY). Lead v Obvolávání (`zahradni-maringotky`); další 3D leady tam: Finka sauny, Jana Blacká.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
