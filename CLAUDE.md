@@ -55,6 +55,14 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   „award“ styl taste skillu; skilly používat spíš na dílčí vylepšení než na celkové přestavby.
   Sekce „Vrstvy laku“: řez lakem (ocel, tmel, plnič, barva, bezbarvý lak) vyrenderovaný v Blenderu, 128 snímků v `kanocar/vrstvy/` + polohy popisků v `layers.js`.
   Blender: na Macu chybí MCP doplněk, proto render v kontejneru přes `pip install bpy` (Cycles CPU, ~10 min); skript `_gen/blender_vrstvy_laku.py` (`NF=128 SPP=28 RX=1120 RY=630 python3 … -- out 0:128`, ~20 min).
+- **Zahradní maringotky** (výroba maringotek, tiny house, dětských domečků a stánků; Otročín 61, 346 01, Karlovarský kraj;
+  IČO 15463265; +420 704 708 946, +420 774 416 465, info@zahradnimaringotky.cz; web zahradnimaringotky.cz = WordPress,
+  v patičce chyba „Copyright © [year]“): ukázka `maringotky/` (25. 10.; noční scéna ve stylu `vinarstvi/`, 3D maringotka
+  otáčená scrollem přes model-viewer, katalog 9 modelů se skutečnými cenami + sestavení poptávky do e-mailu, výbava 01–06,
+  galerie, FAQ). Fotky z jejich webu (jen 800 px, s vodoznakem; při zakázce vyžádat originály). 3D modely z TRELLIS.2
+  (Hugging Face demo, Tomáš nahrává fotky sám, je přihlášený jako Tomikleda) → `maringotky/models/drevo.glb`
+  a `antracit.glb` (zatím chybí, do té doby fotka). K ověření s firmou: kroky postupu, odpovědi v FAQ, otevírací doba
+  Po–Pá 7–16 (z ČESKÉSTAVBY). Lead v Obvolávání (`zahradni-maringotky`); další 3D leady tam: Finka sauny, Jana Blacká.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
@@ -81,7 +89,8 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   Licence MIT + Commons Clause: používat ve webech klientů smíme (i placených), NESMÍME komponenty samotné prodávat/šířit
   (např. jako balíček nebo skill). Naše weby jsou čisté HTML/JS → komponentu přepsat do vanilla JS. Tipy: MetallicPaint
   (lakovny), LiquidEther/Ferrofluid (voda), GlareHover, CountUp, ScrollVelocity, TextPressure, MaskedHeading.
-- Taste skill (design-taste-frontend) nainstalován 23. 10. – používat při návrhu a kontrole webů.
+- Taste skill (design-taste-frontend) nainstalován 23. 10. – NEPOUŽÍVAT pro Tomášovy ukázky, pokud si o něj výslovně neřekne
+  (25. 10. znovu udělal web příliš střídmý; Tomáš chce tmavý filmový styl s efekty jako `vinarstvi/`).
 - Písemný souhlas HZS: Tomáš si zažádá, až přijde další nabídka.
 
 ## Videa (složka `_video/`, stav 18. 10. 2026)
