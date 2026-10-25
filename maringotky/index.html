@@ -112,7 +112,7 @@ a{color:inherit}img{display:block;max-width:100%}
 .intro{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,6vw,100px);align-items:end}
 .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:70px;background:var(--line);border-radius:14px;overflow:hidden}
 .nums div{background:var(--night);padding:28px 24px}
-.nums b{display:block;font:800 clamp(3rem,6vw,5rem)/1 var(--disp);font-stretch:58%;color:var(--lamp2);font-variant-numeric:tabular-nums}
+.nums b{display:block;white-space:nowrap;font:800 clamp(2.6rem,4.6vw,4.4rem)/1 var(--disp);font-stretch:58%;color:var(--lamp2);font-variant-numeric:tabular-nums}
 .nums>div>span{display:block;margin-top:8px;font:500 .8rem/1.4 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .intro blockquote{font:500 clamp(1.2rem,1.8vw,1.5rem)/1.5 var(--text);color:var(--ink);border-left:3px solid var(--lamp);padding-left:24px}
 .intro blockquote cite{display:block;margin-top:14px;font:600 .72rem/1 var(--text);font-style:normal;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
@@ -130,7 +130,7 @@ a{color:inherit}img{display:block;max-width:100%}
 .wlist span{display:block;color:var(--muted);font-size:.95rem;line-height:1.5}
 .wnote{margin-top:24px;color:var(--muted);font-size:.85rem;max-width:440px}
 .wscene{position:relative;width:100%;aspect-ratio:4/3;max-height:78svh;margin:auto}
-#wcv{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#wcv{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;-webkit-mask-image:radial-gradient(64% 62% at 50% 52%,#000 62%,transparent 100%);mask-image:radial-gradient(64% 62% at 50% 52%,#000 62%,transparent 100%)}
 .wbox{position:absolute;left:50%;top:58%;width:min(400px,70vw);height:min(400px,70vw);transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(58deg) rotateZ(-38deg)}
 .ly{position:absolute;inset:0;transform-style:preserve-3d;border-radius:4px;box-shadow:0 0 0 1px #0004}
 .ly::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--th);transform-origin:bottom;transform:rotateX(-90deg);background:inherit;filter:brightness(.7)}
@@ -142,7 +142,7 @@ a{color:inherit}img{display:block;max-width:100%}
 .wlab{position:absolute;left:0;top:0;transform:translate(-50%,-140%);padding:6px 10px;border-radius:999px;background:#08110dd9;border:1px solid #ffb44d66;font:600 .7rem/1.2 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap;opacity:0;transition:opacity .5s;pointer-events:none}
 .wlab.on{opacity:1}
 .wlab::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:18px;background:#ffb44d99}
-@media (max-width:860px){.wstage{grid-template-columns:1fr;align-content:center;gap:10px}.wscene{max-height:42svh;order:-1}.wlab{font-size:.6rem;padding:4px 8px}.wlist{gap:8px}.wlist span{display:none}.wnote{display:none}}
+@media (max-width:860px){.wstage{grid-template-columns:1fr;align-content:center;gap:10px}.wscene{max-height:42svh;order:-1}.wlab{display:none}.wlist{gap:8px}.wlist span{display:none}.wnote{display:none}}
 
 /* AR section */
 .ar{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center}
@@ -564,7 +564,7 @@ function draw(i,force){let k=i;while(k>=0&&!fr[k])k--;if(k<0){k=i;while(k<N&&!fr
 function upd(){const r=sec.getBoundingClientRect(),p=clamp(-r.top/(r.height-innerHeight));const i=Math.round(p*(N-1));draw(i);
   const n=p<.1?0:Math.min(4,1+Math.floor((p-.1)/.16));items.forEach((li,k)=>li.classList.toggle('on',k<n));
   const box=cv.getBoundingClientRect(),wr=document.getElementById('wscene').getBoundingClientRect();
-  labs.forEach((lb,k)=>{const on=k<n&&L&&L[i];lb.classList.toggle('on',!!on);if(L&&L[i]){lb.style.left=(box.left-wr.left+L[i][k][0]*box.width)+'px';lb.style.top=(box.top-wr.top+L[i][k][1]*box.height)+'px'}})}
+  labs.forEach((lb,k)=>{const on=k<n&&L&&L[i];lb.classList.toggle('on',!!on);if(L&&L[i]){lb.style.left=(box.left-wr.left+L[i][k][0]*box.width)+'px';lb.style.top=(box.top-wr.top+L[i][k][1]*box.height-(k%2)*30)+'px'}})}
 addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();})();
 
 /* catalogue + configurator */
