@@ -57,8 +57,10 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   Blender: na Macu chybí MCP doplněk, proto render v kontejneru přes `pip install bpy` (Cycles CPU, ~10 min); skript `_gen/blender_vrstvy_laku.py` (`NF=128 SPP=28 RX=1120 RY=630 python3 … -- out 0:128`, ~20 min).
 - **Zahradní maringotky** (výroba maringotek, tiny house, dětských domečků a stánků; Otročín 61, 346 01, Karlovarský kraj;
   IČO 15463265; +420 704 708 946, +420 774 416 465, info@zahradnimaringotky.cz; web zahradnimaringotky.cz = WordPress,
-  v patičce chyba „Copyright © [year]“): ukázka `maringotky/` (25. 10.; noční scéna ve stylu `vinarstvi/`, 3D maringotka
-  otáčená scrollem přes model-viewer, katalog 9 modelů se skutečnými cenami + sestavení poptávky do e-mailu, výbava 01–06,
+  v patičce chyba „Copyright © [year]“): ukázka `maringotky/` (25. 10.; tmavý les, fonty Anybody + Hanken Grotesk – Fraunces/Jost
+  se Tomášovi pletly s webem Veselého; úvod = jeden den a rok scrollem: jaro ráno → léto → podzim s listím → zimní noc se sněhem,
+  hodiny 06:40→22:15, SVG maringotka s točícími se koly jako záloha za 3D; řez stěnou (CSS 3D vrstvy); AR „Zobrazit na zahradě“
+  přes model-viewer ar + QR (qrious); 3D maringotka otáčená scrollem přes model-viewer, katalog 9 modelů se skutečnými cenami + sestavení poptávky do e-mailu, výbava 01–06,
   galerie, FAQ). Fotky z jejich webu (jen 800 px, s vodoznakem; při zakázce vyžádat originály). 3D modely z TRELLIS.2
   (Hugging Face demo, Tomáš nahrává fotky sám, je přihlášený jako Tomikleda) → `maringotky/models/drevo.glb`
   a `antracit.glb` (zatím chybí, do té doby fotka). K ověření s firmou: kroky postupu, odpovědi v FAQ, otevírací doba
