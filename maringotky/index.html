@@ -62,8 +62,8 @@ a{color:inherit}img{display:block;max-width:100%}
 .van svg,.van model-viewer{position:absolute;inset:0;width:100%;height:100%}
 .van model-viewer{opacity:0;transition:opacity 1.2s;--poster-color:transparent;background:transparent}
 .has3d .van model-viewer{opacity:1}
-.has3d .van{width:min(1500px,100vw);left:58%;bottom:0;aspect-ratio:16/9;transition:width .8s,bottom .8s}
-.has3d .t1,.has3d .ground,.has3d .snowcap{opacity:0;transition:opacity 1s}
+.has3d .van{left:0;right:0;top:0;bottom:0;width:auto;height:auto;transform:none;aspect-ratio:auto}
+.has3d .trees,.has3d .ground,.has3d .snowcap,.has3d .halo{opacity:0;transition:opacity 1s}
 model-viewer::part(default-progress-bar){display:none}.has3d .van svg{opacity:0;transition:opacity 1s}
 .halo{position:absolute;left:50%;bottom:4%;width:70%;height:40%;transform:translateX(-50%);background:radial-gradient(closest-side,#ffb44d55,#ffb44d00);opacity:0;pointer-events:none;mix-blend-mode:screen}
 .smoke{position:absolute;left:30.5%;top:-15%;width:6%;height:30%;pointer-events:none;opacity:0}
@@ -94,7 +94,7 @@ model-viewer::part(default-progress-bar){display:none}.has3d .van svg{opacity:0;
 .has3d .drag{opacity:.75}
 @media (max-width:760px){
   .show{height:440svh}
-  .van{left:50%;width:124vw;bottom:33%}.has3d .van{width:180vw;left:50%;bottom:14%}.i3{max-width:none;right:var(--pad)}
+  .van{left:50%;width:124vw;bottom:33%}.has3d .van{width:auto;left:0;bottom:0}.i3{max-width:none;right:var(--pad)}
   .i3 h1{font-size:13vw}.i3 p{display:none}
   .clock{top:calc(env(safe-area-inset-top,0px) + 84px)}.clock b{font-size:1.9rem}.clock span{font-size:.62rem}
   .i3{top:calc(env(safe-area-inset-top,0px) + 150px)}
@@ -511,12 +511,12 @@ function scene(){const r=showEl.getBoundingClientRect(),total=r.height-innerHeig
   document.querySelectorAll('.van svg').forEach(s=>s.style.setProperty('--glass',st.glass));document.documentElement.style.setProperty('--glass',st.glass);
   const mins=Math.round(st.t),hh=String(Math.floor(mins/60)).padStart(2,'0'),mm=String(mins%60).padStart(2,'0');clk.textContent=hh+':'+mm;big.textContent=hh+':'+mm;mon.textContent=st.m;
   const w=s3.clientWidth,h=s3.clientHeight;const sa=clamp(P/.78);sun.style.transform=`translate(${lerp(-.05,1.02,sa)*w}px,${(.62-Math.sin(sa*Math.PI)*.5)*h}px)`;sun.style.opacity=clamp(1-(P-.62)/.12);
-  moon.style.opacity=clamp((P-.7)/.12);moon.style.transform=`translate(${lerp(.62,.78,clamp((P-.7)/.3))*w}px,${.14*h}px)`;
+  moon.style.opacity=clamp((P-.7)/.12);moon.style.transform=w<760?`translate(${.12*w}px,${.2*h}px)`:`translate(${lerp(.62,.78,clamp((P-.7)/.3))*w}px,${.14*h}px)`;
   stars.style.opacity=st.stars;snowcap.style.opacity=clamp((P-.8)/.15)*.9;halo.style.opacity=st.warm*.9;smoke.style.opacity=clamp((P-.6)/.2);
   season=[clamp(1-Math.abs(P-0)/.3),clamp(1-Math.abs(P-.36)/.25),clamp(1-Math.abs(P-.66)/.22),clamp((P-.74)/.14)];
   const ch=P<.07?-1:P<.22?0:P<.5?1:P<.78?2:3;caps.forEach((c,i)=>c.classList.toggle('on',i===ch));bars.forEach((b,i)=>b.style.width=clamp(P*4-i)*100+'%');intro.style.opacity=clamp(1-P/.12);intro.style.pointerEvents=P<.1?'auto':'none';
   wheels.forEach((g,i)=>{const cx=i?470:150;g.setAttribute('transform',`translate(${cx} 262) rotate(${P*720})`)});
-  if(mv){mv.exposure=st.exp;const br=P<.66?lerp(.95,.8,clamp((P-.33)/.33)):lerp(.8,.42,clamp((P-.66)/.34));mv.style.filter=`brightness(${br.toFixed(3)}) saturate(${(.85+.15*br).toFixed(3)})`;if(!dragging&&!RM){mv.cameraOrbit=`${-40+P*80}deg ${66-Math.sin(P*Math.PI)*6}deg ${16-Math.sin(P*Math.PI)*3}m`}}}
+  if(mv){mv.exposure=st.exp;const br=P<.66?lerp(.95,.8,clamp((P-.33)/.33)):lerp(.8,.42,clamp((P-.66)/.34));mv.style.filter=`brightness(${br.toFixed(3)}) saturate(${(.85+.15*br).toFixed(3)})`;if(!dragging&&!RM){mv.cameraOrbit=`${-36+P*66}deg ${81-Math.sin(P*Math.PI)*3}deg ${21-Math.sin(P*Math.PI)*3}m`}}}
 addEventListener('scroll',scene,{passive:true});addEventListener('resize',()=>{sizeStars();scene()});
 
 /* stars */
@@ -541,7 +541,7 @@ tick();})();
 const MODELS={drevo:'models/drevo.glb',antracit:'models/antracit.glb'},SCENES={drevo:'models/scena_drevo.glb',antracit:'models/scena_antracit.glb'};
 async function modelUrl(){for(const k of['drevo','antracit']){try{const r=await fetch(MODELS[k],{method:'HEAD'});if(r.ok)return MODELS[k]}catch(e){}}return null}
 (async()=>{const u=await modelUrl();if(!u)return;await customElements.whenDefined('model-viewer');
-  mv=document.createElement('model-viewer');const at={src:(u===MODELS.antracit?SCENES.antracit:SCENES.drevo),'camera-controls':'','disable-zoom':'','touch-action':'pan-y','interaction-prompt':'none','shadow-intensity':'1.2','shadow-softness':'.8','environment-image':'neutral','camera-orbit':'-40deg 66deg 16m','camera-target':'0.6m 1.1m 1.2m','field-of-view':'30deg','min-camera-orbit':'auto 40deg auto','max-camera-orbit':'auto 86deg auto',alt:'3D model maringotky, který lze otáčet'};
+  mv=document.createElement('model-viewer');const at={src:(u===MODELS.antracit?SCENES.antracit:SCENES.drevo),'camera-controls':'','disable-zoom':'','touch-action':'pan-y','interaction-prompt':'none','shadow-intensity':'1.2','shadow-softness':'.8','environment-image':'neutral','camera-orbit':'-36deg 81deg 21m','camera-target':'0.4m 3.4m 2.2m','field-of-view':'30deg','min-camera-orbit':'-70deg 60deg 8m','max-camera-orbit':'70deg 84deg 30m',alt:'3D model maringotky, který lze otáčet'};
   for(const a in at)mv.setAttribute(a,at[a]);mv.addEventListener('load',()=>{s3.classList.add('has3d');scene()});
   mv.addEventListener('pointerdown',()=>dragging=true);addEventListener('pointerup',()=>dragging=false);
   document.getElementById('van').appendChild(mv);

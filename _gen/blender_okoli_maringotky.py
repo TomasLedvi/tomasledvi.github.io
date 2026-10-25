@@ -31,16 +31,30 @@ def obj(name,bm,mat):
 def mix(c1,c2,t):return tuple(c1[i]+(c2[i]-c1[i])*t for i in range(3))+(1,)
 
 GRASS=vc_mat('Trava detail',0.9);NEEDLE=vc_mat('Jehlici detail',0.85);BARK=vc_mat('Kura detail',0.9);ROCK=vc_mat('Kamen detail',0.8)
-# --- trávník: zvlněný kruh s měkkým tmavým okrajem
-bm=bmesh.new();bmesh.ops.create_circle(bm,cap_ends=True,radius=9.3,segments=128)
-bmesh.ops.subdivide_edges(bm,edges=bm.edges[:],cuts=6,use_grid_fill=True)
+# --- terén: louka uprostřed, kolem údolí se svahy, které schovají horizont
+bm=bmesh.new();SEG=112
+radii=[0]+[0.6*k for k in range(1,26)]+[15+2.2*k for k in range(1,12)]+[40+6*k for k in range(1,9)]
+rings=[]
+for r in radii:
+    if r==0:rings.append([bm.verts.new((0,0,0))]);continue
+    rings.append([bm.verts.new((math.cos(k*2*math.pi/SEG)*r,math.sin(k*2*math.pi/SEG)*r,0)) for k in range(SEG)])
+for k in range(SEG):bm.faces.new((rings[0][0],rings[1][k],rings[1][(k+1)%SEG]))
+for a_ in range(1,len(rings)-1):
+    A,B=rings[a_],rings[a_+1]
+    for k in range(SEG):bm.faces.new((A[k],B[k],B[(k+1)%SEG],A[(k+1)%SEG]))
+def hgt(x,y):
+    r=(x*x+y*y)**.5;h=noise.noise(Vector((x*.18,y*.18,0)))*0.15
+    if r>14:h+=((r-14)/45)**1.6*9*(0.75+0.5*(noise.noise(Vector((x*.03,y*.03,7)))*.5+.5))
+    return h
+for v in bm.verts:v.co.z=hgt(v.co.x,v.co.y)
 bmesh.ops.triangulate(bm,faces=bm.faces[:])
-for v in bm.verts:
-    r=v.co.length;v.co.z=noise.noise(Vector((v.co.x*.25,v.co.y*.25,0)))*0.12-max(0,r-7.6)*0.18
-g=obj('Travnik',bm,GRASS)
+g=obj('Teren',bm,GRASS)
 def gcol(v,p):
-    r=v.length;n=noise.noise(Vector((v.x*.4,v.y*.4,3)))*.5+.5;base=mix((0.05,0.14,0.035),(0.13,0.3,0.06),n)
-    return mix(base[:3],(0.02,0.05,0.02),min(1,max(0,(r-6.5)/2.6)))
+    r=(v.x*v.x+v.y*v.y)**.5;n=noise.noise(Vector((v.x*.35,v.y*.35,3)))*.5+.5
+    near=mix((0.05,0.14,0.035),(0.13,0.3,0.06),n);far=mix((0.02,0.06,0.03),(0.04,0.1,0.05),n)
+    c=mix(near[:3],far[:3],min(1,max(0,(r-9)/14)))
+    if abs(v.x)<3.6 and abs(v.y)<1.9:c=mix(c[:3],(0.02,0.04,0.015),0.55)   # stín pod maringotkou
+    return c
 paint(g.data,gcol)
 for p in g.data.polygons:p.use_smooth=True
 # --- smrky: kmen + 9–13 pater převislých hvězdicových větví
@@ -76,21 +90,49 @@ for i in range(13):
         if y<-1 and abs(x)<5.5:continue          # nic před dveřmi a ohništěm
         if all((x-a)**2+(y-b)**2>2.2**2 for a,b in spots):spots.append((x,y));break
 for i,(x,y) in enumerate(spots):spruce(f'Smrk_{i+1:02d}',x,y,random.uniform(5.0,9.0))
+# --- les dál od mýtiny: jednodušší smrky ve dvou pásech, jeden objekt na pás
+def okspot(x,y):
+    r=(x*x+y*y)**.5;ang=abs(math.atan2(x,-y))
+    if r<9.5:return False
+    if r<30 and ang<math.radians(58):return False      # průhled kamery na maringotku
+    return True
+def band(name,n,rmin,rmax,hmin,hmax,tiers,pts):
+    bm=bmesh.new();placed=0;tries=0
+    while placed<n and tries<n*40:
+        tries+=1;ang=random.uniform(0,2*math.pi);r=rmin+(rmax-rmin)*random.random()**0.8;x,y=math.cos(ang)*r,math.sin(ang)*r
+        if not okspot(x,y):continue
+        h=random.uniform(hmin,hmax);z=hgt(x,y)-0.2;R=h*0.17
+        for t_ in range(tiers):
+            t=t_/(max(1,tiers-1));z0=z+h*(0.15+0.78*t);rr=R*(1-t)**0.9+0.1
+            top=bm.verts.new((x,y,z0+h*(0.28 if tiers<4 else 0.12)));ring=[]
+            for q in range(pts*2):
+                a2=q*math.pi/pts;rad=rr*(1 if q%2==0 else 0.6)
+                ring.append(bm.verts.new((x+math.cos(a2)*rad,y+math.sin(a2)*rad,z0-h*0.03*(q%2==0))))
+            for q in range(len(ring)):bm.faces.new((top,ring[q],ring[(q+1)%len(ring)]))
+        placed+=1
+    o=obj(name,bm,NEEDLE)
+    def col(v,p):
+        n=noise.noise(Vector((v.x*.2,v.y*.2,9)))*.5+.5;r=(v.x*v.x+v.y*v.y)**.5
+        return mix((0.01,0.035,0.02),(0.05,0.13,0.06),n*0.7*max(0.25,1-(r-10)/60))
+    paint(o.data,col);return o
+band('Les_blizko',55,10,26,5,10,6,8)
+band('Les_daleko',380,26,85,6,11,3,6)
+
 # --- trsy trávy, kvítí, kapradí, kameny
 bm=bmesh.new()
 def tuft(x,y,s):
     for k in range(5):
         ang=random.uniform(0,6.3);l=s*random.uniform(.6,1.2);bx,by=x+random.uniform(-.06,.06),y+random.uniform(-.06,.06)
         w=0.025*s;dx,dy=math.cos(ang),math.sin(ang)
-        v1=bm.verts.new((bx-dy*w,by+dx*w,0));v2=bm.verts.new((bx+dy*w,by-dx*w,0));v3=bm.verts.new((bx+dx*l*.35,by+dy*l*.35,l))
+        z=hgt(bx,by);v1=bm.verts.new((bx-dy*w,by+dx*w,z));v2=bm.verts.new((bx+dy*w,by-dx*w,z));v3=bm.verts.new((bx+dx*l*.35,by+dy*l*.35,z+l))
         bm.faces.new((v1,v2,v3))
 n=0
-while n<1400:
-    x,y=random.uniform(-9,9),random.uniform(-9,9);r=(x*x+y*y)**.5
-    if r>8.6 or (abs(x)<3.4 and abs(y)<1.7):continue
+while n<2600:
+    x,y=random.uniform(-15,15),random.uniform(-15,15);r=(x*x+y*y)**.5
+    if r>14 or (abs(x)<3.4 and abs(y)<1.7):continue
     tuft(x,y,random.uniform(.18,.4));n+=1
 t=obj('Trsy_travy',bm,GRASS)
-def tcol(v,p):return mix((0.06,0.16,0.04),(0.24,0.42,0.1),min(1,v.z/0.4)+random.uniform(-.1,.1))
+def tcol(v,p):return mix((0.06,0.16,0.04),(0.24,0.42,0.1),min(1,max(0,(v.z-hgt(v.x,v.y))/0.4))+random.uniform(-.1,.1))
 paint(t.data,tcol)
 bm=bmesh.new()
 for _ in range(160):
@@ -141,8 +183,8 @@ bpy.ops.export_scene.gltf(filepath=OUTS,export_format='GLB',export_apply=True)
 if PRE:
     w=bpy.data.worlds.new('w');sc.world=w;w.use_nodes=True;w.node_tree.nodes['Background'].inputs['Color'].default_value=(0.45,0.55,0.7,1)
     l=bpy.data.lights.new('s','SUN');l.energy=3.5;o=bpy.data.objects.new('s',l);o.rotation_euler=(math.radians(50),0,math.radians(30));sc.collection.objects.link(o)
-    cd=bpy.data.cameras.new('c');cd.lens=28;cam=bpy.data.objects.new('c',cd);sc.collection.objects.link(cam);sc.camera=cam
-    tg=bpy.data.objects.new('t',None);tg.location=(0,0,1.2);sc.collection.objects.link(tg);cn=cam.constraints.new('TRACK_TO');cn.target=tg
-    sc.render.engine='CYCLES';sc.cycles.samples=16;sc.render.resolution_x=800;sc.render.resolution_y=450
-    for i,v in enumerate([(-6,-14,4),(10,-9,6)]):
+    cd=bpy.data.cameras.new('c');cd.sensor_fit='VERTICAL';cd.angle=math.radians(30);cam=bpy.data.objects.new('c',cd);sc.collection.objects.link(cam);sc.camera=cam
+    tg=bpy.data.objects.new('t',None);tg.location=(0.6,-1.2,1.1);sc.collection.objects.link(tg);cn=cam.constraints.new('TRACK_TO');cn.target=tg
+    sc.render.engine='CYCLES';sc.cycles.samples=16;sc.render.resolution_x=800;sc.render.resolution_y=450;sc.render.film_transparent=True
+    for i,v in enumerate([(0.6+14.6*math.sin(math.radians(-40)),-1.2-14.6*math.cos(math.radians(-40)),7.6),(0.6+14.6*math.sin(math.radians(30)),-1.2-14.6*math.cos(math.radians(30)),7.6)]):
         cam.location=v;sc.render.filepath=PRE.replace('.png',f'{i}.png');bpy.ops.render.render(write_still=True)
