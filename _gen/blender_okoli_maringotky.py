@@ -104,14 +104,18 @@ def band(name,n,rmin,rmax,hmin,hmax,tiers,pts):
         tries+=1;ang=random.uniform(0,2*math.pi);r=rmin+(rmax-rmin)*random.random()**0.8;x,y=math.cos(ang)*r,math.sin(ang)*r
         if not okspot(x,y):continue
         if name=='Les_blizko' and y>0 and abs(math.atan2(x,y))<math.radians(50) and random.random()<0.75:continue   # průhled na oblohu za maringotkou
-        h=random.uniform(hmin,hmax)*(1-0.45*max(0,y/max(r,1e-6))**2);z=hgt(x,y)-0.2;R=h*0.17
+        h=random.uniform(hmin,hmax)*(1-0.45*max(0,y/max(r,1e-6))**2);z=hgt(x,y)-0.2;R=h*(0.17 if tiers>4 else 0.22)
         for t_ in range(tiers):
-            t=t_/(max(1,tiers-1));z0=z+h*(0.15+0.78*t);rr=R*(1-t)**0.9+0.1
-            top=bm.verts.new((x,y,z0+h*(0.28 if tiers<4 else 0.12)));ring=[]
+            t=t_/(max(1,tiers-1));z0=z+h*(0.15+0.72*t);rr=R*(1-0.8*t)**0.9+0.15
+            gap=h*0.72/max(1,tiers-1);ap=gap*1.45 if t_<tiers-1 else max(rr*1.9,gap*.9)   # patra se překrývají, žádné mezery ani bodliny
+            top=bm.verts.new((x,y,z0+ap));ring=[]
             for q in range(pts*2):
                 a2=q*math.pi/pts;rad=rr*(1 if q%2==0 else 0.6)
                 ring.append(bm.verts.new((x+math.cos(a2)*rad,y+math.sin(a2)*rad,z0-h*0.03*(q%2==0))))
             for q in range(len(ring)):bm.faces.new((top,ring[q],ring[(q+1)%len(ring)]))
+            und=bm.verts.new((x,y,z0-h*0.05))      # spodek patra – ze dna údolí jsou vidět i spodky větví (jinak z nich zbydou jen bodliny)
+            tips=ring[0::2]
+            for q in range(len(tips)):bm.faces.new((und,tips[(q+1)%len(tips)],tips[q]))
         placed+=1
     o=obj(name,bm,NEEDLE)
     def col(v,p):
@@ -119,7 +123,7 @@ def band(name,n,rmin,rmax,hmin,hmax,tiers,pts):
         return mix((0.01,0.035,0.02),(0.05,0.13,0.06),n*0.7*max(0.25,1-(r-10)/60))
     paint(o.data,col);return o
 band('Les_blizko',110,9.5,26,6,12,6,8)
-band('Les_daleko',420,24,80,7,15,3,6)
+band('Les_daleko',360,24,80,7,15,4,6)
 
 # --- trsy trávy, kvítí, kapradí, kameny
 bm=bmesh.new()
