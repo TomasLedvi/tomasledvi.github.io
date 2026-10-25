@@ -516,7 +516,7 @@ function scene(){const r=showEl.getBoundingClientRect(),total=r.height-innerHeig
   season=[clamp(1-Math.abs(P-0)/.3),clamp(1-Math.abs(P-.36)/.25),clamp(1-Math.abs(P-.66)/.22),clamp((P-.74)/.14)];
   const ch=P<.07?-1:P<.22?0:P<.5?1:P<.78?2:3;caps.forEach((c,i)=>c.classList.toggle('on',i===ch));bars.forEach((b,i)=>b.style.width=clamp(P*4-i)*100+'%');intro.style.opacity=clamp(1-P/.12);intro.style.pointerEvents=P<.1?'auto':'none';
   wheels.forEach((g,i)=>{const cx=i?470:150;g.setAttribute('transform',`translate(${cx} 262) rotate(${P*720})`)});
-  if(mv){mv.exposure=st.exp;const br=P<.66?lerp(.95,.8,clamp((P-.33)/.33)):lerp(.8,.42,clamp((P-.66)/.34));mv.style.filter=`brightness(${br.toFixed(3)}) saturate(${(.85+.15*br).toFixed(3)})`;if(!dragging&&!RM){mv.cameraOrbit=`${-36+P*66}deg ${81-Math.sin(P*Math.PI)*3}deg ${21-Math.sin(P*Math.PI)*3}m`}}}
+  if(mv){mv.exposure=st.exp;const br=P<.66?lerp(.95,.8,clamp((P-.33)/.33)):lerp(.8,.42,clamp((P-.66)/.34));mv.style.filter=`brightness(${br.toFixed(3)}) saturate(${(.85+.15*br).toFixed(3)})`;if(!dragging&&!RM){mv.cameraOrbit=`${-38+P*70}deg ${77-Math.sin(P*Math.PI)*4}deg ${15-Math.sin(P*Math.PI)*2.5}m`}}}
 addEventListener('scroll',scene,{passive:true});addEventListener('resize',()=>{sizeStars();scene()});
 
 /* stars */
@@ -541,7 +541,7 @@ tick();})();
 const MODELS={drevo:'models/drevo.glb',antracit:'models/antracit.glb'},SCENES={drevo:'models/scena_drevo.glb',antracit:'models/scena_antracit.glb'};
 async function modelUrl(){for(const k of['drevo','antracit']){try{const r=await fetch(MODELS[k],{method:'HEAD'});if(r.ok)return MODELS[k]}catch(e){}}return null}
 (async()=>{const u=await modelUrl();if(!u)return;await customElements.whenDefined('model-viewer');
-  mv=document.createElement('model-viewer');const at={src:(u===MODELS.antracit?SCENES.antracit:SCENES.drevo),'camera-controls':'','disable-zoom':'','touch-action':'pan-y','interaction-prompt':'none','shadow-intensity':'1.2','shadow-softness':'.8','environment-image':'neutral','camera-orbit':'-36deg 81deg 21m','camera-target':'0.4m 3.4m 2.2m','field-of-view':'30deg','min-camera-orbit':'-70deg 60deg 8m','max-camera-orbit':'70deg 84deg 30m',alt:'3D model maringotky, který lze otáčet'};
+  mv=document.createElement('model-viewer');const at={src:(u===MODELS.antracit?SCENES.antracit:SCENES.drevo),'camera-controls':'','disable-zoom':'','touch-action':'pan-y','interaction-prompt':'none','shadow-intensity':'1.2','shadow-softness':'.8','environment-image':'neutral','camera-orbit':'-38deg 77deg 15m','camera-target':'0.6m 2.2m 1.2m','field-of-view':'34deg','min-camera-orbit':'-70deg 60deg 8m','max-camera-orbit':'70deg 84deg 30m',alt:'3D model maringotky, který lze otáčet'};
   for(const a in at)mv.setAttribute(a,at[a]);mv.addEventListener('load',()=>{s3.classList.add('has3d');scene()});
   mv.addEventListener('pointerdown',()=>dragging=true);addEventListener('pointerup',()=>dragging=false);
   document.getElementById('van').appendChild(mv);

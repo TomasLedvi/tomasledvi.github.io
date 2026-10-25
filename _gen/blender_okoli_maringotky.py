@@ -44,7 +44,7 @@ for a_ in range(1,len(rings)-1):
     for k in range(SEG):bm.faces.new((A[k],B[k],B[(k+1)%SEG],A[(k+1)%SEG]))
 def hgt(x,y):
     r=(x*x+y*y)**.5;h=noise.noise(Vector((x*.18,y*.18,0)))*0.15
-    if r>14:h+=((r-14)/45)**1.6*9*(0.75+0.5*(noise.noise(Vector((x*.03,y*.03,7)))*.5+.5))
+    if r>12:h+=((r-12)/40)**1.5*16*(0.75+0.5*(noise.noise(Vector((x*.03,y*.03,7)))*.5+.5))
     return h
 for v in bm.verts:v.co.z=hgt(v.co.x,v.co.y)
 bmesh.ops.triangulate(bm,faces=bm.faces[:])
@@ -115,8 +115,8 @@ def band(name,n,rmin,rmax,hmin,hmax,tiers,pts):
         n=noise.noise(Vector((v.x*.2,v.y*.2,9)))*.5+.5;r=(v.x*v.x+v.y*v.y)**.5
         return mix((0.01,0.035,0.02),(0.05,0.13,0.06),n*0.7*max(0.25,1-(r-10)/60))
     paint(o.data,col);return o
-band('Les_blizko',55,10,26,5,10,6,8)
-band('Les_daleko',380,26,85,6,11,3,6)
+band('Les_blizko',110,9.5,26,6,12,6,8)
+band('Les_daleko',420,24,80,7,15,3,6)
 
 # --- trsy trávy, kvítí, kapradí, kameny
 bm=bmesh.new()
