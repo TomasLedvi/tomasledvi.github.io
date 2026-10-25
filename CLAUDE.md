@@ -63,7 +63,9 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   přes model-viewer ar + QR (qrious); 3D maringotka otáčená scrollem přes model-viewer, katalog 9 modelů se skutečnými cenami + sestavení poptávky do e-mailu, výbava 01–06,
   galerie, FAQ). Fotky z jejich webu (jen 800 px, s vodoznakem; při zakázce vyžádat originály). 3D modely z TRELLIS.2
   (Hugging Face demo, Tomáš nahrává fotky sám, je přihlášený jako Tomikleda) → `maringotky/models/drevo.glb`
-  a `antracit.glb` (zatím chybí, do té doby fotka). K ověření s firmou: kroky postupu, odpovědi v FAQ, otevírací doba
+  a `antracit.glb` (25. 10. dodán Tomášem jeden model v metrech, 6,2 m, 11 tis. trojúhelníků, bez textur; dřevěné materiály
+  měly bílou barvu → v GLB nastavena barva obkladu ve dvou variantách; má terénní pneumatiky místo litinových kol).
+  model-viewer a qrious hostujeme ve `vendor/` (unpkg/cdnjs z kontejneru nejdou). K ověření s firmou: kroky postupu, odpovědi v FAQ, otevírací doba
   Po–Pá 7–16 (z ČESKÉSTAVBY). Lead v Obvolávání (`zahradni-maringotky`); další 3D leady tam: Finka sauny, Jana Blacká.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
