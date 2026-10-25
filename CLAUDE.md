@@ -59,7 +59,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   IČO 15463265; +420 704 708 946, +420 774 416 465, info@zahradnimaringotky.cz; web zahradnimaringotky.cz = WordPress,
   v patičce chyba „Copyright © [year]“): ukázka `maringotky/` (25. 10.; tmavý les, fonty Anybody + Hanken Grotesk – Fraunces/Jost
   se Tomášovi pletly s webem Veselého; úvod = jeden den a rok scrollem: jaro ráno → léto → podzim s listím → zimní noc se sněhem,
-  hodiny 06:40→22:15, SVG maringotka s točícími se koly jako záloha za 3D; řez stěnou (CSS 3D vrstvy); AR „Zobrazit na zahradě“
+  hodiny 06:40→22:15, SVG maringotka s točícími se koly jako záloha za 3D; řez stěnou z Blenderu (`_gen/blender_stena_maringotky.py`, 72 snímků WebP s průhledností v `maringotky/stena/` + `labels.json`, render `NF=72 SPP=20 RX=960 RY=720 python3 … -- out 0:72` ~26 min; skladba stěny zatím obecná – ověřit s firmou); AR „Zobrazit na zahradě“
   přes model-viewer ar + QR (qrious); 3D maringotka otáčená scrollem přes model-viewer, katalog 9 modelů se skutečnými cenami + sestavení poptávky do e-mailu, výbava 01–06,
   galerie, FAQ). Fotky z jejich webu (jen 800 px, s vodoznakem; při zakázce vyžádat originály). 3D modely z TRELLIS.2
   (Hugging Face demo, Tomáš nahrává fotky sám, je přihlášený jako Tomikleda) → `maringotky/models/drevo.glb`
