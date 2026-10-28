@@ -67,6 +67,13 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   měly bílou barvu → v GLB nastavena barva obkladu ve dvou variantách; 25. 10. v Blenderu vyměněny terénní pneumatiky za litinová kola s loukotěmi, odstraněny blatníky, přidány schůdky ke dveřím – `_gen/blender_maringotka_kola.py`). Úvod ukazuje celou scénu `models/scena_*.glb` (maringotka v lesním údolí – terén ~90 m se svahy, pás bližšího a vzdáleného lesa, kvantizováno gltf-transform; okolí: Tomášův okoli.glb z ChatGPT vylepšený skriptem `_gen/blender_okoli_maringotky.py` – organické smrky, trsy trávy, kvítí, kameny, kapradí, hromada dřeva, lucerna; barvy přes vertex colors), AR jen samotnou maringotku; plameny a lucerna blikají přes materiály model-vieweru.
   model-viewer a qrious hostujeme ve `vendor/` (unpkg/cdnjs z kontejneru nejdou). K ověření s firmou: kroky postupu, odpovědi v FAQ, otevírací doba
   Po–Pá 7–16 (z ČESKÉSTAVBY). Hero = celá 3D scéna `models/scena_*.glb` (`_gen/blender_okoli_maringotky.py`, hustý les, za maringotkou otevřené údolí kvůli obloze); kamera v objektu `CAM` v index.html; oheň = canvas `.firecv` mimo model-viewer, poloha z `queryHotspot('hotspot-fire')` (filtr jasu na model-vieweru by ho jinak ztlumil). Lead v Obvolávání (`zahradni-maringotky`); další 3D leady tam: Finka sauny, Jana Blacká.
+- **Bustan Kebab** (Teplice, Benešovo nám. 776/13, IČO 17315263, +420 774 897 322, bustankebabteplice@gmail.com; Tomášův oblíbený kebab; BEZ webu, jen Foodora):
+  ukázka `bustan/` (28. 10.; tmavý, hero = 3D animace z Blenderu přehrávaná scrollem, 240 snímků v `bustan/frames/`: dvě jehly hovězí/kuřecí
+  na grilu → elektrický nůž odřízne maso → padá do kapsy pide (čtvrtka kulatého chleba) → zelenina, sýr (rigid body fyzika, zapečeno do klíčů)
+  → česneková a pálivá omáčka z lahviček (metaballs). Skripty `_gen/bustan/` (`build.py` + `parts2.py`, `KEBAB_FAST=1` pro rychlý test, simulace ~6 min v kontejneru).
+  Finální render na Tomášově MacBooku Air (Blender 5.4, Metal GPU, ~10 s/snímek, 64 spp): v Blenderu záložka Scripting → konzole → `mac_finalize.py`
+  (stáhne AI textury z Higgsfieldu – z kontejneru CloudFront 403 – a přepne na GPU) → render animace. Mac při renderu nesmí usnout.
+  Ceník je ORIENTAČNÍ (odvozený od Bustan Kebab Praha, Foodora Teplice nešla načíst) – při zakázce vyfotit jejich tabuli. Otevírací doba podle Google (zdroje se liší).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
