@@ -89,6 +89,9 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   29. 10. odpoledne UX audit podle Tomášova zadání: příběh zkrácen (620vh/560vh), odkaz „Přeskočit animaci“, sekce „Jak to probíhá“
   (4 kroky) + prázdné místo na skutečné recenze, pruh čísel jen s ověřenými údaji, štítek „Orientační výpočet · nejde o cenovou nabídku“,
   kontrola telefonu ve formuláři, fallback bez JS, reduced-motion, galerie z klávesnice. Texty ověřeny proti tesarstvistybr.cz.
+  29. 10. hero předělán podle Tomášova zadání „Authentic Craftsmanship“: nová statická úvodní sekce `.hero2` se skutečnou fotkou
+  krovu s vikýři (071436c8, z jejich webu, 2560 px), nadpis „Krovy, střechy a stavby ze dřeva“ (ne verzálkami), CTA Nezávazná poptávka → #kontakt,
+  Prohlédnout realizace → #reference; 3D příběh začíná až pod ní („Jak vzniká krov“). Živý web lze fotit Playwrightem v Higgsfield sandboxu (má internet).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
