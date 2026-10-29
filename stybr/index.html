@@ -5,278 +5,256 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Tesařství Štýbr – krovy a střechy Liberec</title>
-<meta name="description" content="Tesařství a pokrývačství Štýbr, Liberec. Krovy, střechy, pergoly, garážová stání, podkroví a sádrokartony. Od roku 1992. Spočítejte si střechu online.">
+<meta name="description" content="Tesařství a pokrývačství Štýbr, Liberec. Krovy, střechy, stavby ze dřeva a sádrokartony od roku 1992. Liberecký kraj, Mladá Boleslav, Praha.">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 @font-face{font-family:"Mona Sans";src:url(../vendor/fonts/mona-sans-latin-ext-wdth-normal.woff2) format("woff2-variations");font-weight:200 900;font-stretch:75% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Mona Sans";src:url(../vendor/fonts/mona-sans-latin-wdth-normal.woff2) format("woff2-variations");font-weight:200 900;font-stretch:75% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Martian Mono";src:url(../vendor/fonts/martian-mono-latin-ext-400-normal.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20C0,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Martian Mono";src:url(../vendor/fonts/martian-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212,U+FEFF}
-/* Koncept: moderní stavební studio. Teplá černá, světlo smrkového dřeva, křídová modrá pro míry.
-   Typo: Mona Sans (variabilní šířka) – široké tučné nadpisy, normální text; Martian Mono pro míry a štítky. */
+/* scroll-craft build: Continuous world s dokovaným pracovním stolem. Brief: _gen/scrollcraft/builds/stybr/BRIEF.md
+   Světlo smrkového dřeva na teplé černé. Mona Sans (nadpisy, text), Martian Mono jen na míry a štítky. */
 :root{
   --bg:#0b0a09; --s1:#141210; --s2:#1c1916; --s3:#25211d;
-  --line:rgba(243,236,226,.09); --line2:rgba(243,236,226,.16);
-  --txt:#f3ece2; --mute:#a39a8e; --mute2:#6f675d;
-  --wood:#e0ac6b; --wood2:#f2cf9f; --chalk:#7aa7ff; --ok:#8bd17c;
+  --line:rgba(243,236,226,.10); --line2:rgba(243,236,226,.18);
+  --txt:#f3ece2; --mute:#b0a698; --mute2:#7d7468;
+  --wood:#e0ac6b; --wood2:#f2cf9f; --groove:#3a2814; --chalk:#8fb4ff; --ok:#8bd17c;
   --sans:"Mona Sans","Helvetica Neue",Arial,sans-serif;
   --mono:"Martian Mono",ui-monospace,Menlo,monospace;
+  --e1:0 1px 2px rgba(6,5,4,.5),0 8px 24px -12px rgba(6,5,4,.7);
+  --edge:inset 0 1px 0 rgba(255,240,220,.06);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--chalk);outline-offset:3px;border-radius:6px}
+:focus-visible{outline:2px solid var(--wood);outline-offset:3px;border-radius:6px}
 .gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1280px;margin:0 auto}
-.lab{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--wood)}
-h1,h2,h3{margin:0;font-family:var(--sans);text-wrap:balance}
-.disp{font-stretch:125%;font-weight:800;letter-spacing:-.025em;line-height:.92;text-transform:uppercase}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font:600 15.5px var(--sans);font-stretch:105%;padding:15px 22px;border-radius:999px;border:1px solid var(--line2);background:rgba(28,25,22,.6);color:var(--txt);cursor:pointer;transition:transform .25s,background .25s,border-color .25s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.btn:hover{transform:translateY(-2px);border-color:var(--txt)}
-.btn.hot{background:var(--wood);border-color:var(--wood);color:#170f06}
+.lab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--wood)}
+h1,h2,h3{margin:0;font-family:var(--sans);text-wrap:balance;font-weight:760;font-stretch:112%;letter-spacing:-.028em;line-height:1}
+p{text-wrap:pretty}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font:620 15.5px var(--sans);font-stretch:105%;min-height:50px;padding:0 24px;border-radius:999px;border:1px solid var(--line2);background:rgba(20,18,16,.72);color:var(--txt);cursor:pointer;white-space:nowrap;transition:transform .16s cubic-bezier(.2,.7,.2,1),background .16s,border-color .16s}
+.btn:hover{transform:translateY(-1px);border-color:var(--txt)}
+.btn.hot{background:var(--wood);border-color:var(--wood);color:#170f06;box-shadow:0 10px 24px -14px rgba(224,172,107,.8)}
 .btn.hot:hover{background:var(--wood2)}
 .btn svg{width:17px;height:17px;flex:none}
-.btn .arr{transition:transform .25s}.btn:hover .arr{transform:translateX(3px)}
+.btn .arr{transition:transform .16s}.btn:hover .arr{transform:translateX(3px)}
+.tlink{color:var(--txt);font-weight:600;text-decoration:underline;text-decoration-color:rgba(224,172,107,.7);text-underline-offset:5px}
+.tlink:hover{text-decoration-color:var(--wood)}
 
-/* nav */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
-.nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
-.nav.solid{background:rgba(11,10,9,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:14px}
+/* ---------- nav: wordmark + one action */
+.nav{position:fixed;left:0;right:0;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(11,10,9,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand svg{width:40px;height:40px;flex:none}
-.brand b{font-stretch:125%;font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1}
+.brand b{font-stretch:125%;font-weight:820;font-size:18px;letter-spacing:-.01em;line-height:1}
 .brand small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--mute);margin-top:4px}
-.nav ul{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
-.nav ul a{display:block;text-decoration:none;padding:8px 13px;font-weight:550;font-size:14.5px;color:var(--mute);border-radius:999px;transition:color .2s,background .2s}
-.nav ul a:hover{color:var(--txt);background:var(--s2)}
-.nav .cta{background:var(--txt);color:#120e0a!important;font-weight:650;white-space:nowrap}
-.nav .cta:hover{background:var(--wood2)!important}
-@media (max-width:980px){.nav ul .hs{display:none}}
-@media (max-width:420px){.brand small{display:none}}
+.nav .acts{display:flex;align-items:center;gap:8px}
+.nav .tel{font-weight:620;font-size:15px;text-decoration:none;padding:10px 12px;border-radius:999px}
+.nav .tel:hover{background:rgba(28,25,22,.5)}
+.nav .btn{min-height:42px;padding:0 18px;font-size:14.5px}
+.nav.onphoto:not(.solid) .brand small{color:#1d242c}
+.nav.onphoto:not(.solid) .brand b,.nav.onphoto:not(.solid) .tel{color:#12161b}
+@media (max-width:620px){.nav .tel{display:none}.brand small{display:none}}
 
-/* hero: one real photo of the firm's work */
-.hero2{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#0d0c0b;isolation:isolate}
-.hero2 .h2img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:66% 42%}
-.hero2::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(90deg,rgba(11,10,9,.92) 0%,rgba(11,10,9,.78) 30%,rgba(11,10,9,.25) 58%,rgba(11,10,9,.05) 75%),
-  linear-gradient(0deg,rgba(11,10,9,.85) 0%,rgba(11,10,9,0) 38%),
-  linear-gradient(180deg,rgba(11,10,9,.55) 0%,rgba(11,10,9,0) 20%)}
-.hero2 .in{width:100%;padding-top:calc(120px + env(safe-area-inset-top,0px));padding-bottom:clamp(56px,9vh,104px)}
-.hero2 .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--wood);display:flex;align-items:center;gap:12px;margin:0 0 22px}
-.hero2 .eyebrow i{width:28px;height:1px;background:var(--wood)}
-.hero2 h1{font-stretch:115%;font-weight:750;font-size:clamp(44px,6.1vw,96px);line-height:.98;letter-spacing:-.03em;max-width:12ch;margin:0}
-.hero2 .lead{margin:24px 0 0;max-width:33rem;font-size:clamp(17px,1.35vw,19.5px);line-height:1.55;color:rgba(243,236,226,.86)}
-.hero2 .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.hero2 .acts .btn{min-height:52px;padding-inline:24px}
-.hero2 .acts .btn:not(.hot){background:rgba(11,10,9,.45)}
-.hero2 .more{display:flex;flex-wrap:wrap;gap:6px 22px;margin:22px 0 0;font-size:15px;color:var(--mute)}
-.hero2 .more a{color:var(--txt);text-decoration:underline;text-decoration-color:rgba(224,172,107,.7);text-underline-offset:5px;font-weight:550}
-.hero2 .more a:hover{text-decoration-color:var(--wood)}
-.hero2 figcaption{position:absolute;right:max(20px,env(safe-area-inset-right,0px),3vw);bottom:clamp(24px,4vh,40px);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(243,236,226,.72);display:flex;align-items:center;gap:10px}
-.hero2 figcaption::before{content:"";width:22px;height:1px;background:currentColor}
-.js .hero2 .ai{opacity:0;transform:translateY(12px);animation:h2in .7s cubic-bezier(.2,.7,.2,1) forwards}
-.hero2 .ai:nth-child(2){animation-delay:.08s}.hero2 .ai:nth-child(3){animation-delay:.16s}.hero2 .ai:nth-child(4){animation-delay:.24s}.hero2 .ai:nth-child(5){animation-delay:.28s}
-@keyframes h2in{to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.js .hero2 .ai{animation:none;opacity:1;transform:none}}
-@media (min-width:761px) and (max-width:1100px){
-  .hero2::before{background:linear-gradient(90deg,rgba(11,10,9,.9) 0%,rgba(11,10,9,.7) 50%,rgba(11,10,9,.2) 85%),linear-gradient(0deg,rgba(11,10,9,.9) 0%,rgba(11,10,9,0) 55%),linear-gradient(180deg,rgba(11,10,9,.55) 0%,rgba(11,10,9,0) 20%)}
-  .hero2 h1{max-width:14ch}
-}
-@media (max-width:760px){
-  .hero2{min-height:0;display:block;background:var(--bg)}
-  .hero2 .h2img{position:relative;z-index:0;height:min(58vh,440px);object-position:62% 50%}
-  .hero2::before{inset:0 0 auto;height:min(58vh,440px);z-index:1;background:linear-gradient(180deg,rgba(11,10,9,.55) 0%,rgba(11,10,9,0) 30%,rgba(11,10,9,0) 60%,var(--bg) 100%)}
-  .hero2 .in{position:relative;z-index:2;padding-top:0;margin-top:-64px;padding-bottom:48px}
-  .hero2 h1{font-size:clamp(38px,11.4vw,56px);max-width:none}
-  .hero2 .lead{font-size:16.5px;margin-top:18px}
-  .hero2 .eyebrow .nm{display:none}
-  .hero2 .acts{margin-top:26px}.hero2 .acts .btn{flex:1 1 100%}
-  .hero2 figcaption{top:calc(min(58vh,440px) - 104px);bottom:auto;z-index:2}
-}
-
-/* story */
-#pribeh{position:relative;height:620vh}
-html:not(.js) #pribeh{display:none}
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-#krov3d{position:absolute;inset:0;width:100%;height:100%;display:block}
-.stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,9,.86) 0%,rgba(11,10,9,.42) 32%,transparent 56%),linear-gradient(0deg,rgba(11,10,9,.8),transparent 24%),linear-gradient(180deg,rgba(11,10,9,.5),transparent 18%)}
-.cap{position:absolute;z-index:3;left:max(20px,env(safe-area-inset-left,0px),5vw);top:50%;transform:translateY(-50%);width:min(36rem,44vw);pointer-events:none;will-change:opacity,transform}
-.js .cap{opacity:0}
-.cap.on{pointer-events:auto}
-.cap .lab{display:flex;align-items:center;gap:10px;margin-bottom:18px}
-.cap .lab i{display:inline-block;width:28px;height:1px;background:var(--wood)}
-.cap h2{font-size:clamp(40px,4.8vw,78px);margin-bottom:22px}
-.cap p{margin:0;color:var(--mute);font-size:18px;max-width:30rem}
-.cap .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.hint{position:absolute;z-index:3;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
-.skip{position:absolute;z-index:5;right:max(20px,env(safe-area-inset-right,0px),3vw);bottom:calc(20px + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);text-decoration:none;padding:9px 12px;border:1px solid var(--line2);border-radius:999px;background:rgba(11,10,9,.6);backdrop-filter:blur(6px);transition:color .2s,border-color .2s}
-.skip:hover{color:var(--txt);border-color:var(--txt)}
-.hint i{display:block;width:1px;height:34px;background:linear-gradient(var(--chalk),transparent);animation:drop 1.8s ease-in-out infinite;transform-origin:top}
-@keyframes drop{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
-.lbl{position:absolute;z-index:4;left:0;top:0;pointer-events:none;opacity:0;transition:opacity .35s;white-space:nowrap}
-.lbl::before{content:"";position:absolute;left:0;top:0;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--chalk);box-shadow:0 0 0 5px rgba(122,167,255,.22)}
+/* ---------- the world: one fixed 3D canvas behind the whole page */
+#krov3d{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+.lbl{position:fixed;z-index:4;left:0;top:0;pointer-events:none;opacity:0;transition:opacity .35s;white-space:nowrap}
+.lbl::before{content:"";position:absolute;left:0;top:0;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--chalk);box-shadow:0 0 0 5px rgba(143,180,255,.2)}
 .lbl::after{content:"";position:absolute;left:0;top:0;width:44px;height:1px;background:var(--chalk);transform:rotate(-38deg);transform-origin:left}
-.lbl b{position:absolute;left:36px;top:-42px;font-family:var(--mono);font-weight:400;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--txt);background:rgba(11,10,9,.72);border:1px solid rgba(122,167,255,.45);padding:6px 9px;border-radius:6px;backdrop-filter:blur(6px)}
+.lbl b{position:absolute;left:36px;top:-42px;font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--txt);background:rgba(11,10,9,.8);border:1px solid rgba(143,180,255,.45);padding:6px 9px;border-radius:6px}
 .lbl.on{opacity:1}
-.prog{position:absolute;z-index:3;right:max(20px,env(safe-area-inset-right,0px),3vw);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;list-style:none;margin:0;padding:14px 14px 14px 16px;border-radius:14px;background:rgba(11,10,9,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.06);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute2)}
-.prog li{display:flex;align-items:center;gap:10px;justify-content:flex-end;transition:color .3s}
-.prog li::after{content:"";width:22px;height:2px;border-radius:2px;background:currentColor;transition:width .3s,background .3s}
-.prog li.done{color:var(--mute)}
-.prog li.now{color:var(--txt)}
-.prog li.now::after{width:44px;background:var(--wood)}
-.mval{position:absolute;z-index:3;left:50%;top:calc(80px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.06em;opacity:0;transition:opacity .4s}
-@media (max-width:900px){
-  #pribeh{height:560vh}
-  .stage::after{background:linear-gradient(180deg,rgba(11,10,9,.94) 0%,rgba(11,10,9,.62) 40%,transparent 64%),linear-gradient(0deg,rgba(11,10,9,.6),transparent 20%)}
-  .cap{top:calc(86px + env(safe-area-inset-top,0px));transform:none;width:auto;right:max(20px,env(safe-area-inset-right,0px))}
-  .cap h2{font-size:clamp(32px,9.4vw,52px);margin-bottom:14px}
-  .cap p{font-size:16px}
-  .prog,.mval{display:none}
-  .lbl b{font-size:10px}
-  .skip{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+
+/* ---------- hero: three planes from one real photo (plate, title, krov cut-out) */
+.hero{position:fixed;inset:0;z-index:2;overflow:hidden;background:linear-gradient(180deg,#5b93cf 0%,#9cc0e2 45%,#5d5a52 70%,#2a2722 100%)}
+.hero .pl{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 0%;will-change:transform;opacity:0;transition:opacity .45s ease-out}
+.hero.ready .pl{opacity:1}
+.hero h1{position:absolute;z-index:1;right:max(28px,4.5vw);top:calc(98px + env(safe-area-inset-top,0px));margin:0;text-align:right;color:#12161b;font-size:clamp(44px,5.2vw,90px);font-weight:780;font-stretch:118%;letter-spacing:-.035em;line-height:.98}
+.hero h1 span{display:block}
+.hero .l2{color:#3a2412}
+.hero .scrim{position:absolute;z-index:3;left:0;bottom:0;width:min(820px,72vw);height:64vh;pointer-events:none;background:radial-gradient(120% 100% at 0% 100%,rgba(11,10,9,.88) 0%,rgba(11,10,9,.64) 42%,rgba(11,10,9,0) 74%)}
+.hero .low{position:absolute;z-index:4;left:max(20px,env(safe-area-inset-left,0px),5vw);bottom:calc(clamp(32px,7vh,72px) + env(safe-area-inset-bottom,0px));max-width:30rem}
+.hero .lead{margin:0;font-size:clamp(17px,1.3vw,19px);line-height:1.5;color:rgba(243,236,226,.94)}
+.hero .row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:24px}
+.hero .fade{position:absolute;inset:0;z-index:5;background:var(--bg);opacity:0;pointer-events:none}
+.js .hero .ai{opacity:0;transform:translateY(12px);animation:ain .7s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .low.ai{animation-delay:.22s}
+@keyframes ain{to{opacity:1;transform:none}}
+.js .hero h1 .l2{opacity:0;transform:translateY(14px)}
+@media (max-width:760px){
+  .hero{background:linear-gradient(180deg,#6ea2d8 0%,#a9c6df 36%,#4b4740 62%,#0b0a09 80%)}
+  .hero .pl{height:64%;object-position:22% 0%}
+  .hero h1{right:auto;left:max(20px,env(safe-area-inset-left,0px));top:auto;bottom:calc(220px + env(safe-area-inset-bottom,0px));text-align:left;color:var(--txt);font-size:clamp(38px,11vw,54px);font-stretch:112%;z-index:4}
+  .hero .l2{color:var(--wood2)}
+  .hero .scrim{width:100%;height:58%;background:linear-gradient(0deg,var(--bg) 0%,var(--bg) 50%,rgba(11,10,9,.7) 72%,rgba(11,10,9,0) 100%)}
+  .hero .low{right:max(20px,env(safe-area-inset-right,0px));bottom:calc(28px + env(safe-area-inset-bottom,0px))}
+  .hero .lead{font-size:16px}
+  .hero .row .btn{flex:1 1 100%}
 }
-@media (prefers-reduced-motion:reduce){.hint i{animation:none}}
+@media (max-width:760px) and (max-height:700px){.hero h1{bottom:calc(200px + env(safe-area-inset-bottom,0px));font-size:36px}.hero .lead{font-size:15px}}
+#uvod{height:175vh}
 
-/* sections */
-section.sec{padding-block:clamp(90px,11vw,160px);position:relative}
-.sh{display:grid;grid-template-columns:1.2fr 1fr;gap:28px 60px;align-items:end;margin-bottom:52px}
-.sh h2{font-size:clamp(42px,6vw,96px)}
-.sh p{color:var(--mute);margin:0;max-width:34rem;font-size:18px}
-.sh .lab{margin-bottom:22px;display:block}
-@media (max-width:860px){.sh{grid-template-columns:1fr}}
+/* ---------- tracks: scroll room where only the world and its copy are on screen */
+main{position:relative;z-index:3}
+.track{position:relative;pointer-events:none}
+.cue{position:fixed;z-index:3;left:max(20px,env(safe-area-inset-left,0px),5vw);top:50%;width:min(34rem,42vw);transform:translateY(-50%);pointer-events:none;visibility:hidden}
+.cue.on{pointer-events:auto}
+.cue h2{font-size:clamp(40px,4.6vw,76px);margin:14px 0 18px}
+.cue p{margin:0;color:var(--mute);font-size:18px;max-width:30rem}
+.cuescrim{position:fixed;z-index:2;left:0;top:0;bottom:0;width:min(900px,62vw);pointer-events:none;opacity:0;background:linear-gradient(90deg,rgba(11,10,9,.86) 0%,rgba(11,10,9,.55) 45%,rgba(11,10,9,0) 100%)}
+@media (max-width:900px){
+  .cue{top:calc(84px + env(safe-area-inset-top,0px));transform:none;width:auto;right:max(20px,env(safe-area-inset-right,0px))}
+  .cue h2{font-size:clamp(32px,9.2vw,50px);margin:10px 0 12px}
+  .cue p{font-size:16px}
+  .cuescrim{width:100%;bottom:auto;height:62vh;background:linear-gradient(180deg,rgba(11,10,9,.94) 0%,rgba(11,10,9,.72) 55%,rgba(11,10,9,0) 100%)}
+}
+html:not(.js) .track{height:auto!important;padding:60px 0}
+html:not(.js) .cue{position:static;visibility:visible;transform:none;width:auto;padding-inline:20px}
+html:not(.js) #uvod{height:0;padding:0}html:not(.js) .hero{position:relative;height:100svh}html:not(.js) .hero .pl,html:not(.js) .hero h1 .l2{opacity:1;transform:none}
+html:not(.js) .beam{display:none}
 
-/* calculator (hook) */
-.calcwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px}
-.view{position:relative;border-radius:22px;overflow:hidden;background:radial-gradient(ellipse at 50% 85%,#2b241c,#15120f 55%,#0e0c0a);border:1px solid var(--line);min-height:600px}
+/* ---------- signature: the carpenter's beam. Scroll carves the marks, the marks are the map */
+.beam{position:fixed;z-index:40;right:max(16px,env(safe-area-inset-right,0px),2.2vw);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-end;opacity:0;transition:opacity .4s;pointer-events:none}
+.beam.on{opacity:1;pointer-events:auto}
+.beam .wood{position:absolute;right:0;top:-14px;bottom:-14px;width:46px;border-radius:3px;background:
+  repeating-linear-gradient(90deg,rgba(90,55,20,.16) 0 1px,transparent 1px 5px,rgba(120,75,30,.1) 5px 6px,transparent 6px 11px),
+  linear-gradient(90deg,#b98a51,#d6a96c 40%,#c79859 70%,#a77843);box-shadow:var(--e1),inset 0 1px 0 rgba(255,236,200,.4),inset -2px 0 0 rgba(80,50,20,.25)}
+.beam button{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:12px;height:62px;padding:0;border:0;background:none;cursor:pointer;color:var(--mute)}
+.beam .nm{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;padding:5px 8px;border-radius:5px;background:rgba(11,10,9,.78);opacity:0;transform:translateX(6px);transition:opacity .18s,transform .18s;white-space:nowrap}
+.beam button:hover .nm,.beam button:focus-visible .nm,.beam.cue-on button.now .nm{opacity:1;transform:none}
+.beam button.now .nm{color:var(--txt)}
+.beam svg{position:relative;width:46px;height:46px;flex:none}
+.zn path{fill:none;stroke-linecap:square}
+.zn .g{stroke:var(--groove);stroke-width:4.2}
+.zn .h{stroke:rgba(255,232,190,.6);stroke-width:1.2;transform:translate(1.6px,1.2px)}
+@media (max-width:900px){
+  .beam{top:auto;transform:none;bottom:calc(86px + env(safe-area-inset-bottom,0px));right:max(10px,env(safe-area-inset-right,0px))}
+  .beam .wood{width:36px}
+  .beam button{height:42px}.beam svg{width:36px;height:36px}
+  .beam .nm{display:none}
+  .beam.on:not(.cue-on){opacity:0;pointer-events:none}
+}
+.mk{display:inline-flex;align-items:center;gap:12px}
+.mk svg{width:30px;height:30px;padding:3px;border-radius:3px;background:linear-gradient(90deg,#c79859,#dcae70);box-shadow:inset 0 1px 0 rgba(255,236,200,.4);flex:none}
+.mk .zn .g{stroke-width:4.6}
+
+/* ---------- docked sheets: content that scrolls over the running world */
+.dock{position:relative;padding-block:clamp(84px,10vw,140px)}
+@media (min-width:901px){.dock>.wrap{padding-right:max(0px,calc(96px - (100vw - 1280px)/2))}}
+.sheet{position:relative;max-width:min(760px,56vw);background:linear-gradient(90deg,rgba(11,10,9,.95) 0%,rgba(11,10,9,.93) 80%,rgba(11,10,9,.88) 100%);border:1px solid var(--line);border-radius:3px;padding:clamp(28px,4vw,56px);box-shadow:var(--e1),var(--edge)}
+.sheet.full{max-width:none}
+.sheet h2{font-size:clamp(38px,4.4vw,68px);margin:18px 0 22px}
+.sheet .intro{margin:0 0 34px;color:var(--mute);font-size:18px;max-width:36rem}
+@media (max-width:900px){.sheet{max-width:none}}
+
+.craft{border-top:1px solid var(--line2);padding:26px 0 30px;display:grid;grid-template-columns:1fr 1.25fr;gap:10px 34px}
+.craft:last-of-type{border-bottom:1px solid var(--line2)}
+.craft h3{font-size:clamp(26px,2.4vw,34px);font-stretch:118%}
+.craft h3 small{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:var(--wood);margin-bottom:12px;font-stretch:100%}
+.craft p{margin:0;color:var(--mute);font-size:16px;line-height:1.65}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin:30px 0 0;font-size:15px;color:var(--mute)}
+.facts b{color:var(--txt);font-weight:650}
+@media (max-width:640px){.craft{grid-template-columns:1fr}}
+
+#reference .head{max-width:min(760px,56vw);margin-bottom:28px}
+#reference .head h2{margin-bottom:16px}
+#reference .head p{margin:0;color:var(--mute);font-size:18px}
+@media (max-width:900px){#reference .head{max-width:none}}
+.pan{position:relative}
+.pan .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
+.rail{display:flex;gap:18px;padding-inline:max(20px,5vw);will-change:transform}
+.rail figure{margin:0;flex:none;position:relative;height:min(58vh,520px);border-radius:3px;overflow:hidden;background:var(--s2);cursor:zoom-in;box-shadow:var(--e1)}
+.rail img{height:100%;width:auto;max-width:none;object-fit:cover}
+.rail figcaption{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;background:rgba(11,10,9,.8);border:1px solid var(--line2);padding:6px 9px;border-radius:4px}
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  .pan{height:auto!important}
+  .pan .stage{position:relative;height:auto;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px}
+  .rail{transform:none!important}
+  .rail figure{height:min(52vh,420px);scroll-snap-align:start}
+}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(6,5,4,.95);display:grid;place-items:center;padding:max(20px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(20px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+.lb img{max-width:min(1400px,100%);max-height:84vh;width:auto;height:auto;border-radius:4px}
+.lb p{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;text-align:center;margin:14px 0 0;color:var(--mute)}
+.lb button{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:34px 40px}
+.steps li{border-top:1px solid var(--line2);padding-top:18px}
+.steps h3{font-size:21px;font-stretch:108%;line-height:1.2;margin:12px 0 8px}
+.steps p{margin:0;color:var(--mute);font-size:15.5px}
+.steps .mk svg{width:26px;height:26px}
+.revs{margin-top:44px;padding:22px 24px;border:1px dashed var(--line2);border-radius:3px;color:var(--mute);font-size:15px}
+.revs b{color:var(--txt);display:block;font-size:17px;margin-bottom:4px}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
+
+.calcwrap{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:14px}
+.view{position:relative;border-radius:3px;overflow:hidden;background:radial-gradient(ellipse at 50% 85%,#2b241c,#15120f 55%,#0e0c0a);border:1px solid var(--line);min-height:600px}
 .view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
 .view canvas:active{cursor:grabbing}
 .view .dims{position:absolute;left:20px;top:18px;font-family:var(--mono);font-size:11.5px;line-height:1.8;color:var(--wood);pointer-events:none}
 .view .tip{position:absolute;left:20px;bottom:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);pointer-events:none}
-.panel{background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.panel{background:var(--s1);border:1px solid var(--line);border-radius:3px;padding:22px;display:flex;flex-direction:column;gap:18px;min-width:0}
 .fld .fl{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:9px}
 .fld output,.fld .fl span{color:var(--txt)}
-.seg{display:flex;flex-wrap:wrap;gap:6px;background:var(--s2);padding:4px;border-radius:14px}
-.seg button{flex:1 1 auto;font:550 14px var(--sans);color:var(--mute);background:transparent;border:0;border-radius:10px;padding:10px 10px;cursor:pointer;transition:background .2s,color .2s}
+.seg{display:flex;flex-wrap:wrap;gap:6px;background:var(--s2);padding:4px;border-radius:10px}
+.seg button{flex:1 1 auto;font:560 14px var(--sans);color:var(--mute);background:transparent;border:0;border-radius:7px;padding:10px;cursor:pointer;min-height:42px;transition:background .15s,color .15s}
 .seg button:hover{color:var(--txt)}
 .seg button[aria-pressed="true"]{background:var(--txt);color:#120e0a}
 .sw{display:flex;gap:10px;flex-wrap:wrap}
-.sw button{width:36px;height:36px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);outline-offset:2px}
+.sw button{width:38px;height:38px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);outline-offset:2px}
 .sw button[aria-pressed="true"]{border-color:var(--txt)}
-input[type=range]{width:100%;accent-color:var(--wood);height:24px}
+input[type=range]{width:100%;accent-color:var(--wood);height:28px}
 .step{display:flex;align-items:center;gap:10px}
-.step button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line2);background:var(--s2);color:var(--txt);font:600 20px var(--sans);cursor:pointer}
+.step button{width:44px;height:44px;border-radius:8px;border:1px solid var(--line2);background:var(--s2);color:var(--txt);font:600 20px var(--sans);cursor:pointer}
 .step output{min-width:28px;text-align:center;font-family:var(--mono);font-size:18px}
-.res{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
 .res div{background:var(--s2);padding:13px 15px;min-width:0}
-.res b{display:block;font-weight:700;font-stretch:112%;font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.res b{display:block;font-weight:720;font-stretch:112%;font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .res span{font-size:12.5px;color:var(--mute)}
 .res .big{grid-column:1/-1;background:linear-gradient(135deg,#2a2016,#1c1916)}
 .res .big b{font-size:34px;color:var(--wood2)}
 .orient{align-self:flex-start;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--wood2);border:1px solid rgba(224,172,107,.4);background:rgba(224,172,107,.08);border-radius:999px;padding:6px 11px;margin-bottom:-6px}
 .note{font-size:12.5px;color:var(--mute2);margin:-4px 0 0}
-.tabs{display:inline-flex;gap:4px;padding:4px;background:var(--s1);border:1px solid var(--line);border-radius:999px;margin-bottom:18px}
-.tabs button{font:600 14.5px var(--sans);color:var(--mute);background:transparent;border:0;padding:10px 18px;border-radius:999px;cursor:pointer}
+.tabs{display:inline-flex;gap:4px;padding:4px;background:var(--s1);border:1px solid var(--line);border-radius:999px;margin-bottom:18px;flex-wrap:wrap}
+.tabs button{font:620 14.5px var(--sans);color:var(--mute);background:transparent;border:0;padding:10px 18px;border-radius:999px;cursor:pointer;min-height:42px}
 .tabs button[aria-pressed="true"]{background:var(--wood);color:#170f06}
 .pane[hidden]{display:none}
 @media (max-width:1020px){.calcwrap{grid-template-columns:1fr}.view{min-height:420px}}
 
-/* benefits row under the calculator (for the owner + client) */
-.why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.why>div{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--s1);min-width:0}
-.why b{display:block;font-stretch:112%;font-weight:700;font-size:19px;margin-bottom:6px}
-.why p{margin:0;color:var(--mute);font-size:15px}
-@media (max-width:860px){.why{grid-template-columns:1fr}}
-
-/* services bento */
-.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-.tile{position:relative;border-radius:22px;overflow:hidden;background:var(--s1);border:1px solid var(--line);min-height:320px;display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
-.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);opacity:.85}
-.tile:hover img{transform:scale(1.05)}
-.tile::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,9,.05) 20%,rgba(11,10,9,.92) 78%);z-index:1}
-.tile .in{position:relative;z-index:2;padding:26px}
-.tile h3{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(26px,2.6vw,38px);letter-spacing:-.02em;line-height:1;margin-bottom:12px}
-.tile ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
-.tile li{font-size:13px;padding:5px 10px;border-radius:999px;background:rgba(243,236,226,.08);border:1px solid var(--line2);color:var(--txt);backdrop-filter:blur(4px)}
-.t1{grid-column:span 4;min-height:460px}.t2{grid-column:span 2;min-height:460px}.t3{grid-column:span 3}.t4{grid-column:span 3}
-.snow{background:linear-gradient(160deg,#16243a,#0e1420 70%);border-color:#263752}
-.snow::before{background:none}
-.snow canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.75}
-.snow .in{display:flex;flex-direction:column;gap:12px;height:100%;justify-content:flex-end}
-.snow p{margin:0;color:#b9c8dc;font-size:15.5px;max-width:28rem}
-@media (max-width:980px){.t1,.t2,.t3,.t4{grid-column:span 6}.t1,.t2{min-height:380px}}
-
-/* reference */
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
-.chips button{font:550 14px var(--sans);color:var(--mute);background:var(--s1);border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer}
-.chips button[aria-pressed="true"]{background:var(--txt);color:#120e0a;border-color:var(--txt)}
-.gal{columns:3 300px;column-gap:14px}
-.gal figure{margin:0 0 14px;break-inside:avoid;position:relative;border-radius:18px;overflow:hidden;cursor:zoom-in;background:var(--s2)}
-.gal img{width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-.gal figure:hover img{transform:scale(1.04)}
-.gal figcaption{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;background:rgba(11,10,9,.7);border:1px solid var(--line2);padding:6px 9px;border-radius:8px;backdrop-filter:blur(6px)}
-.gal figure[hidden]{display:none}
-.lb{position:fixed;inset:0;z-index:90;background:rgba(6,5,4,.95);display:grid;place-items:center;padding:max(20px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(20px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
-.lb img{max-width:min(1400px,100%);max-height:84vh;width:auto;height:auto;border-radius:14px}
-.lb p{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;text-align:center;margin:14px 0 0;color:var(--mute)}
-.lb button{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
-
-/* trust */
-.trust{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.trust>div{padding:34px 24px 30px 0;min-width:0}
-.trust strong{display:block;font-stretch:125%;font-weight:800;font-size:clamp(40px,4.6vw,70px);letter-spacing:-.03em;line-height:1;margin-bottom:10px}
-.trust span{color:var(--mute);font-size:15px}
-@media (max-width:860px){.trust{grid-template-columns:1fr 1fr}}
-
-/* process + reviews */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
-.steps li{position:relative;border-top:2px solid var(--line2);padding:22px 8px 0 0;min-width:0}
-.steps li:first-child{border-color:var(--wood)}
-.steps b{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--wood);letter-spacing:.06em}
-.steps h3{font-stretch:112%;font-weight:700;font-size:21px;line-height:1.15;margin:10px 0 8px}
-.steps p{margin:0;color:var(--mute);font-size:15.5px}
-.revs{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;margin-top:56px;padding:26px;border:1px dashed var(--line2);border-radius:22px}
-.revs h3{font-stretch:112%;font-weight:700;font-size:22px;margin:8px 0}
-.revs p{margin:0;color:var(--mute);font-size:15.5px;max-width:34rem}
-.revslot{display:grid;gap:8px}.revslot span{height:14px;border-radius:7px;background:var(--s2)}.revslot span:nth-child(2){width:80%}.revslot span:nth-child(3){width:55%}
-@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}.revs{grid-template-columns:1fr}.revslot{display:none}}
-@media (max-width:520px){.steps{grid-template-columns:1fr}}
-
-/* contact */
 .kontakt{display:grid;grid-template-columns:1fr 1.15fr;gap:14px}
-.kbox{background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:30px;min-width:0}
+.kbox{background:var(--s1);border:1px solid var(--line);border-radius:3px;padding:30px;min-width:0}
 .kbox .lab{display:block;margin:0 0 8px}
-.kbox .filled{margin-bottom:12px}
-.tel{font-stretch:125%;font-weight:800;font-size:clamp(34px,4vw,56px);letter-spacing:-.02em;line-height:1;text-decoration:none;user-select:all}
+.bigtel{font-stretch:125%;font-weight:800;font-size:clamp(34px,4vw,56px);letter-spacing:-.02em;line-height:1;text-decoration:none}
 .kbox p{margin:.2em 0 1.2em;color:var(--mute)}
 .area{display:flex;flex-wrap:wrap;gap:6px}
-.area span{border:1px dashed rgba(122,167,255,.55);color:#bcd2ff;border-radius:999px;padding:6px 12px;font-size:13.5px}
+.area span{border:1px solid var(--line2);color:var(--txt);border-radius:999px;padding:6px 12px;font-size:13.5px}
 form{display:grid;gap:12px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 form label{display:grid;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-input[type=text],input[type=tel],select,textarea{font:400 16px var(--sans);color:var(--txt);background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:13px 14px;width:100%;text-transform:none;letter-spacing:0}
+input[type=text],input[type=tel],select,textarea{font:400 16px var(--sans);color:var(--txt);background:var(--s2);border:1px solid var(--line2);border-radius:8px;padding:13px 14px;width:100%;text-transform:none;letter-spacing:0}
 textarea{min-height:140px;resize:vertical}
 .err{color:#ffb39e;font-size:14px}.err:empty{display:none}
 input[aria-invalid=true]{border-color:#e07a5f}
-.filled{display:none;border:1px solid rgba(224,172,107,.45);background:rgba(224,172,107,.08);color:var(--wood2);padding:10px 14px;border-radius:12px;font-size:14.5px}.filled.on{display:block}
-.ok{display:none;border:1px solid #3d6b3a;background:#132016;color:#c5e8bd;padding:12px 14px;border-radius:12px;font-size:15px}
+.filled{display:none;border:1px solid rgba(224,172,107,.45);background:rgba(224,172,107,.08);color:var(--wood2);padding:10px 14px;border-radius:8px;font-size:14.5px;margin-bottom:12px}.filled.on{display:block}
+.ok{display:none;border:1px solid #3d6b3a;background:#132016;color:#c5e8bd;padding:12px 14px;border-radius:8px;font-size:15px}
 .ok.on{display:block}
-@media (max-width:900px){.kontakt{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
-footer{border-top:1px solid var(--line);padding-block:30px calc(96px + env(safe-area-inset-bottom,0px));color:var(--mute2);font-size:13.5px}
+form label{min-width:0}select{min-width:0;max-width:100%}
+@media (max-width:900px){.kontakt{grid-template-columns:minmax(0,1fr)}.row{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.sheet{padding:26px 18px}.kbox{padding:20px 16px}}
+footer{position:relative;z-index:3;background:var(--bg);border-top:1px solid var(--line);padding-block:30px calc(96px + env(safe-area-inset-bottom,0px));color:var(--mute2);font-size:13.5px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
-/* mobile action bar */
-.mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;gap:8px;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:rgba(11,10,9,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .4s}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;gap:8px;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:rgba(11,10,9,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .mbar.on{transform:none}
-.mbar .btn{flex:1;padding:13px 10px;font-size:15px}
+.mbar .btn{flex:1;min-height:46px;padding:0 10px;font-size:15px}
 @media (max-width:760px){.mbar{display:flex}}
 
-.rv{transition:opacity .55s ease-out,transform .55s cubic-bezier(.2,.8,.2,1)}
+.rv{transition:opacity .5s ease-out,transform .5s cubic-bezier(.2,.8,.2,1)}
 .js .rv.pre{opacity:0;transform:translateY(14px)}
-@media (prefers-reduced-motion:reduce){.js .rv.pre{opacity:1;transform:none}.rv,.tile img,.gal img,.btn,.mbar{transition:none!important}.tile:hover img,.gal figure:hover img{transform:none}}
+@media (prefers-reduced-motion:reduce){.js .rv.pre{opacity:1;transform:none}.rv,.btn,.mbar{transition:none!important}.js .hero .ai{animation:none;opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -298,109 +276,146 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   </defs>
 </svg>
 
-<nav class="nav gut" id="nav">
+<nav class="nav gut onphoto" id="nav" aria-label="Hlavní">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Tesařství Štýbr, nahoru">
+    <a class="brand" href="#uvod" aria-label="Tesařství Štýbr, na začátek">
       <svg><use href="#logo"/></svg>
       <span><b>ŠTÝBR</b><small>Tesařství · Pokrývačství · Liberec</small></span>
     </a>
-    <ul>
-      <li class="hs"><a href="#kalkulacka">Kalkulačka střechy</a></li>
-      <li class="hs"><a href="#sluzby">Služby</a></li>
-      <li class="hs"><a href="#reference">Reference</a></li>
-      <li class="hs"><a href="#postup">Postup</a></li>
-      <li class="hs"><a href="#kontakt">Kontakt</a></li>
-      <li><a class="cta" href="tel:+420737708433">737 708 433</a></li>
-    </ul>
+    <div class="acts">
+      <a class="tel" href="tel:+420737708433">737&nbsp;708&nbsp;433</a>
+      <a class="btn hot" href="#kontakt">Nezávazná poptávka</a>
+    </div>
   </div>
 </nav>
 
-<main id="top">
-<header class="hero2" id="uvod">
-  <img class="h2img" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/071436c8-9327-413a-b5e4-b21bb8c896a1.png" alt="Nový dřevěný krov s vikýři na rozestavěném domě" fetchpriority="high" decoding="async" width="2560" height="1920">
-  <div class="in gut"><div class="wrap">
-    <p class="eyebrow ai"><i></i><span class="nm">Tesařství Štýbr ·</span>Liberec · od roku 1992</p>
-    <h1 class="ai">Krovy, střechy a&nbsp;stavby ze dřeva</h1>
-    <p class="lead ai">Tesařské, pokrývačské a sádrokartonářské práce v Libereckém kraji, na Mladoboleslavsku a v Praze. Kompletně včetně materiálu, práci provádíme osobně.</p>
-    <div class="acts ai">
+<canvas id="krov3d" aria-hidden="true"></canvas>
+<div class="cuescrim" id="cuescrim" aria-hidden="true"></div>
+<div aria-hidden="true" class="lbl" data-l="snura" data-a=".255" data-b=".33"><b>křídová šňůra</b></div>
+<div aria-hidden="true" class="lbl" data-l="dlab" data-a=".34" data-b=".45"><b>dlab</b></div>
+<div aria-hidden="true" class="lbl" data-l="cep" data-a=".34" data-b=".45"><b>čep</b></div>
+<div aria-hidden="true" class="lbl" data-l="kolik" data-a=".4" data-b=".455"><b>kolík</b></div>
+<div aria-hidden="true" class="lbl" data-l="pozednice" data-a=".54" data-b=".61"><b>pozednice</b></div>
+<div aria-hidden="true" class="lbl" data-l="sloupek" data-a=".56" data-b=".63"><b>sloupek</b></div>
+<div aria-hidden="true" class="lbl" data-l="vaznice" data-a=".58" data-b=".645"><b>vaznice</b></div>
+<div aria-hidden="true" class="lbl" data-l="krokev" data-a=".61" data-b=".685"><b>krokev</b></div>
+<div aria-hidden="true" class="lbl" data-l="klestina" data-a=".63" data-b=".69"><b>kleština</b></div>
+<div aria-hidden="true" class="lbl" data-l="lati" data-a=".72" data-b=".77"><b>laťování</b></div>
+
+<nav class="beam" id="beam" aria-label="Tesařské značky, mapa stránky">
+  <span class="wood" aria-hidden="true"></span>
+  <button type="button" data-go="uvod" data-n="I" aria-label="I · Krov"><span class="nm">I · Krov</span></button>
+  <button type="button" data-go="remeslo" data-n="II" aria-label="II · Řemeslo"><span class="nm">II · Řemeslo</span></button>
+  <button type="button" data-go="realizace" data-n="III" aria-label="III · Realizace"><span class="nm">III · Realizace</span></button>
+  <button type="button" data-go="strecha" data-n="IIII" aria-label="IIII · Střecha a postup"><span class="nm">IIII · Střecha a postup</span></button>
+  <button type="button" data-go="hotovo" data-n="V" aria-label="V · Poptávka"><span class="nm">V · Poptávka</span></button>
+</nav>
+
+<div class="hero" id="hero">
+  <picture>
+    <source media="(max-width:760px)" srcset="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/c2c5a41c-0756-4ad6-a495-bf13b2f239e2.jpg">
+    <img class="pl" id="plBack" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/ebc5e9e9-0f2d-4578-a12c-d944c0cdbe7c.jpg" alt="" width="2000" height="1500" decoding="async" fetchpriority="high">
+  </picture>
+  <h1 id="title"><span class="l1 ai">Poctivé konstrukce.</span> <span class="l2" id="l2">Na dlouhá léta.</span></h1>
+  <picture>
+    <source media="(max-width:760px)" srcset="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/c014b3f1-b031-45c7-b945-2667ea2b38c3.webp">
+    <img class="pl" id="plKrov" style="z-index:2" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/125c47ac-ed40-4cbc-8aff-1627d542fbc2.webp" alt="Dřevěný krov od Tesařství Štýbr na rozestavěné stavbě" width="2000" height="1500" decoding="async" fetchpriority="high">
+  </picture>
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="low ai">
+    <p class="lead">Tesařství Štýbr z&nbsp;Liberce. Krovy, střechy, stavby ze dřeva a sádrokartony od roku 1992.</p>
+    <div class="row">
       <a class="btn hot" href="#kontakt">Nezávazná poptávka <svg class="arr"><use href="#i-arr"/></svg></a>
-      <a class="btn" href="#reference">Prohlédnout realizace</a>
+      <a class="tlink" href="#reference">Realizace</a>
     </div>
-    <p class="more ai"><span>Volejte <a href="tel:+420737708433">737&nbsp;708&nbsp;433</a></span><span>nebo si <a href="#kalkulacka">spočítejte střechu online</a></span></p>
-  </div></div>
-  <figcaption>Realizace · krov s vikýři</figcaption>
-</header>
+  </div>
+  <div class="fade" id="heroFade"></div>
+</div>
 
-<section id="pribeh" aria-label="Od kmene ke střeše">
-  <div class="stage">
-    <canvas id="krov3d" aria-hidden="true"></canvas>
+<main id="top">
+<section class="track" id="uvod" aria-label="Úvod"></section>
 
-    <div class="cap" data-a="-1" data-b=".085">
-      <div class="lab"><i></i>Od kmene ke střeše</div>
-      <h2 class="disp">Jak vzniká krov</h2>
-      <p>Projeďte si stavbu krok za krokem: od kulatiny přes tesařské spoje až po hotovou střechu.</p>
-    </div>
-    <div class="hint" id="hint" aria-hidden="true">Scrollujte · postavíme krov<i></i></div>
-    <a class="skip" href="#kalkulacka">Přeskočit animaci ↓</a>
-
-    <div class="cap" data-a=".095" data-b=".2">
-      <div class="lab"><i></i>Dřevo</div>
-      <h2 class="disp">Všechno začíná u kmene</h2>
-      <p>Dobrá střecha stojí na poctivém dřevě. Kůra dolů, hrany ven, z kulatiny je trám.</p>
-    </div>
-    <div class="cap" data-a=".205" data-b=".3">
-      <div class="lab"><i></i>Míra</div>
-      <h2 class="disp">Dvakrát měř, jednou řež</h2>
-      <p>Křídová šňůra, tužka a úhelník. Přesnost se dělá na stavbě.</p>
-    </div>
-    <div class="cap" data-a=".305" data-b=".44">
-      <div class="lab"><i></i>Spoj</div>
-      <h2 class="disp">Čep, dlab, kolík</h2>
-      <p>Tesařské spoje drží krovy celá staletí. Řemeslo spojujeme s moderní technikou a CNC konstrukcemi.</p>
-    </div>
-    <div class="cap" data-a=".48" data-b=".685">
-      <div class="lab"><i></i>Krov</div>
-      <h2 class="disp">Krov na míru vašemu domu</h2>
-      <p>Pozednice, sloupky, vaznice, krokve a kleštiny. Každý pár krokví má svoji tesařskou značku a svoje místo.</p>
-    </div>
-    <div class="cap" data-a=".69" data-b=".885">
-      <div class="lab"><i></i>Střecha</div>
-      <h2 class="disp">Laťování a krytina</h2>
-      <p>Pálené i betonové tašky (Bramac, Tondach), vláknocement, šindele i plastové krytiny. Střešní okna Velux a Roto.</p>
-    </div>
-    <div class="cap" data-a=".9" data-b="2">
-      <div class="lab"><i></i>Hotovo</div>
-      <h2 class="disp">A teď ta vaše</h2>
-      <p>Zadejte rozměry domu a hned uvidíte plochu střechy, krytinu, latě i okapy. Výsledek nám pošlete jedním klikem.</p>
-      <div class="btns"><a class="btn hot" href="#kalkulacka">Spočítat moji střechu <svg class="arr"><use href="#i-arr"/></svg></a></div>
-    </div>
-
-    <div aria-hidden="true" class="lbl" data-l="snura" data-a=".255" data-b=".33"><b>křídová šňůra</b></div>
-    <div aria-hidden="true" class="lbl" data-l="dlab" data-a=".34" data-b=".43"><b>dlab</b></div>
-    <div aria-hidden="true" class="lbl" data-l="cep" data-a=".34" data-b=".43"><b>čep</b></div>
-    <div aria-hidden="true" class="lbl" data-l="kolik" data-a=".4" data-b=".44"><b>kolík</b></div>
-    <div aria-hidden="true" class="lbl" data-l="pozednice" data-a=".54" data-b=".61"><b>pozednice</b></div>
-    <div aria-hidden="true" class="lbl" data-l="sloupek" data-a=".56" data-b=".63"><b>sloupek</b></div>
-    <div aria-hidden="true" class="lbl" data-l="vaznice" data-a=".58" data-b=".645"><b>vaznice</b></div>
-    <div aria-hidden="true" class="lbl" data-l="krokev" data-a=".61" data-b=".685"><b>krokev</b></div>
-    <div aria-hidden="true" class="lbl" data-l="klestina" data-a=".63" data-b=".69"><b>kleština</b></div>
-    <div aria-hidden="true" class="lbl" data-l="lati" data-a=".705" data-b=".76"><b>laťování</b></div>
-
-    <ol class="prog" id="prog" aria-hidden="true"><li>Dřevo</li><li>Míra</li><li>Spoj</li><li>Krov</li><li>Střecha</li></ol>
+<section class="track" id="remeslo" data-p0="0" data-p1=".2" style="height:130vh" aria-label="Řemeslo">
+  <div class="cue" data-a=".14" data-b=".92">
+    <span class="mk lab" data-n="II">Řemeslo</span>
+    <h2>Každý krov začíná u&nbsp;kmene</h2>
+    <p>Dobrá střecha stojí na poctivém dřevě. Kůra dolů, hrany ven. Z&nbsp;kulatiny je trám.</p>
   </div>
 </section>
 
-<section class="sec gut" id="kalkulacka">
+<section class="dock gut" id="sluzby" data-p0=".2" data-p1=".3">
   <div class="wrap">
-    <div class="sh rv pre">
-      <div><span class="lab">Kalkulačka střechy</span><h2 class="disp">Spočítejte si střechu dřív, než zavoláte</h2></div>
-      <p>Vyberte tvar, zadejte rozměry domu a krytinu. Hned uvidíte plochu střechy, kolik tašek a latí bude potřeba a délku okapů. Zadání nám pošlete jedním klikem a my se ozveme s nabídkou.</p>
+    <div class="sheet rv pre">
+      <span class="mk lab" data-n="II">Služby</span>
+      <h2>Tři řemesla pod jednou střechou</h2>
+      <p class="intro">Tesařské, pokrývačské a sádrokartonářské práce. Kompletní zakázku dodáme včetně materiálu a práci děláme osobně.</p>
+      <div class="craft"><h3><small>Tesařství</small>Krovy a stavby ze dřeva</h3>
+        <p>Montáž krovů a CNC konstrukce, dřevostavby, pergoly a garážová stání, zahradní chatky, altány, kůlny a terasy, dětské domky a prolézačky, půdní vestavby, dřevěné podlahy a pláště budov, balkony a lávky. Impregnace krovů a dřeva proti houbám a plísním.</p></div>
+      <div class="craft"><h3><small>Pokrývačství</small>Střechy a okna</h3>
+        <p>Kompletní rekonstrukce střech. Betonové a pálené tašky Bramac a Tondach, vláknocement Eternit a Cembrit, bitumenové šindele, plastové krytiny. Střešní okna Velux a Roto, nadkrokevní izolace, čištění a opravy žlabů. V&nbsp;zimě odstraňujeme sníh a nebezpečné námrazy.</p></div>
+      <div class="craft"><h3><small>Sádrokartony</small>Podkroví a SDK</h3>
+        <p>Příčky, stropy a předstěny včetně tepelných a hlukových izolací, kazetové stropy.</p></div>
+      <p class="facts"><span><b>Od roku 1992</b> v&nbsp;řemesle</span><span>Liberecký kraj, Mladá Boleslav, Praha</span></p>
     </div>
+  </div>
+</section>
+
+<section class="track" id="spoj" data-p0=".3" data-p1=".46" style="height:115vh" aria-label="Spoj">
+  <div class="cue" data-a=".08" data-b=".9">
+    <span class="mk lab" data-n="II">Spoj</span>
+    <h2>Čep, dlab, kolík</h2>
+    <p>Tesařské spoje drží krovy celá staletí. Řemeslo spojujeme s&nbsp;moderní technikou a CNC konstrukcemi.</p>
+  </div>
+</section>
+
+<section class="track" id="realizace" data-p0=".46" data-p1=".69" style="height:150vh" aria-label="Krov">
+  <div class="cue" data-a=".1" data-b=".9">
+    <span class="mk lab" data-n="III">Krov</span>
+    <h2>Krov na míru vašemu domu</h2>
+    <p>Pozednice, sloupky, vaznice, krokve a kleštiny. Každý pár krokví má svoji tesařskou značku a svoje místo.</p>
+  </div>
+</section>
+
+<section class="dock" id="reference" data-p0=".69" data-p1=".73" style="padding-bottom:0">
+  <div class="wrap gut"><div class="head sheet rv pre">
+    <span class="mk lab" data-n="III">Realizace</span>
+    <h2>Fotky přímo ze stavby</h2>
+    <p>Krovy, střechy, dřevostavby i podkroví od Štýbra. Klepnutím fotku zvětšíte.</p>
+  </div></div>
+  <div class="pan" id="pan"><div class="stage"><div class="rail" id="gal"></div></div></div>
+</section>
+
+<section class="track" id="strecha" data-p0=".73" data-p1=".89" style="height:120vh" aria-label="Střecha">
+  <div class="cue" data-a=".08" data-b=".9">
+    <span class="mk lab" data-n="IIII">Střecha</span>
+    <h2>Laťování a krytina</h2>
+    <p>Pálené i betonové tašky, vláknocement, šindele i plastové krytiny. Střešní okna Velux a Roto.</p>
+  </div>
+</section>
+
+<section class="dock gut" id="postup" data-p0=".89" data-p1=".92">
+  <div class="wrap"><div class="sheet rv pre">
+    <span class="mk lab" data-n="IIII">Jak to probíhá</span>
+    <h2>Od telefonu po hotovou střechu</h2>
+    <ol class="steps">
+      <li><span class="mk" data-n="I"></span><h3>Zavoláte nebo pošlete zadání</h3><p>Telefonem, formulářem, nebo rovnou z&nbsp;kalkulačky s&nbsp;rozměry domu.</p></li>
+      <li><span class="mk" data-n="II"></span><h3>Obhlídka na místě</h3><p>Přijedeme, změříme a probereme krov, krytinu a okna.</p></li>
+      <li><span class="mk" data-n="III"></span><h3>Nabídka</h3><p>Připravíme cenovou nabídku včetně materiálu.</p></li>
+      <li><span class="mk" data-n="IIII"></span><h3>Realizace</h3><p>Práci děláme osobně, od krovu po poslední tašku.</p></li>
+    </ol>
+    <div class="revs" id="recenze"><b>Místo pro skutečné recenze</b>Sem doplníme hodnocení vašich zákazníků (například z&nbsp;Google nebo Firmy.cz) se souhlasem autorů.</div>
+  </div></div>
+</section>
+
+<section class="dock gut" id="kalkulacka" data-p0=".92" data-p1=".97" style="padding-top:0">
+  <div class="wrap"><div class="sheet full rv pre">
+    <span class="mk lab" data-n="IIII">Kalkulačka střechy</span>
+    <h2>Spočítejte si střechu dřív, než zavoláte</h2>
+    <p class="intro">Vyberte tvar, zadejte rozměry domu a krytinu. Hned uvidíte plochu střechy, kolik tašek a latí bude potřeba a délku okapů. Zadání pošlete jedním klikem.</p>
     <div class="tabs" role="group" aria-label="Typ výpočtu">
       <button type="button" id="tab-strecha" data-p="pStrecha" aria-pressed="true">Střecha domu</button>
       <button type="button" id="tab-pergola" data-p="pPergola" aria-pressed="false">Pergola, stání, altán</button>
     </div>
-
     <div class="pane" id="pStrecha">
       <div class="calcwrap">
         <div class="view">
@@ -443,11 +458,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
             <div><b id="rSvody">–</b><span>svody</span></div>
           </div>
           <p class="note">Počítáme z půdorysu domu a sklonu, přesah okapu 55 cm. Výsledek je odhad množství materiálu. Přesné množství a cenu připravíme po obhlídce.</p>
-          <a class="btn hot" href="#kontakt" id="rSend">Poslat zadání a chtít nabídku <svg class="arr"><use href="#i-arr"/></svg></a>
+          <a class="btn hot" href="#kontakt" id="rSend">Nezávazná poptávka s tímto zadáním <svg class="arr"><use href="#i-arr"/></svg></a>
         </div>
       </div>
     </div>
-
     <div class="pane" id="pPergola" hidden>
       <div class="calcwrap">
         <div class="view">
@@ -483,132 +497,56 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
             <div style="grid-column:1/-1"><b id="cRezivo">–</b><span>řezivo celkem (bm)</span></div>
           </div>
           <p class="note">Orientační výpočet z geometrie. Přesnou nabídku připravíme po obhlídce.</p>
-          <a class="btn hot" href="#kontakt" id="kSend">Poslat návrh v poptávce <svg class="arr"><use href="#i-arr"/></svg></a>
+          <a class="btn hot" href="#kontakt" id="kSend">Nezávazná poptávka s tímto návrhem <svg class="arr"><use href="#i-arr"/></svg></a>
         </div>
       </div>
     </div>
+  </div></div>
+</section>
 
-    <div class="why rv pre">
-      <div><b>Víte, o čem se bavíme</b><p>Ještě před telefonátem máte představu o ploše střechy a materiálu.</p></div>
-      <div><b>Zadání bez dohadování</b><p>Rozměry, krytina a okna dorazí v jedné zprávě. Nabídku připravíme rychleji.</p></div>
-      <div><b>Přesně po obhlídce</b><p>Kalkulačka počítá orientačně. Finální množství a cenu doladíme na místě.</p></div>
-    </div>
+<section class="track" id="hotovo" data-p0=".97" data-p1="1" style="height:90vh" aria-label="Hotovo">
+  <div class="cue" data-a=".1" data-b=".95">
+    <span class="mk lab" data-n="V">Hotovo</span>
+    <h2>A teď ta vaše</h2>
+    <p>Zavolejte, nebo napište, co chystáte. Přijedeme, změříme a připravíme nabídku.</p>
   </div>
 </section>
 
-<section class="sec gut" id="sluzby" style="padding-top:0">
+<section class="dock gut" id="kontakt" data-p0="1" data-p1="1">
   <div class="wrap">
-    <div class="sh rv pre">
-      <div><span class="lab">Služby</span><h2 class="disp">Tři řemesla pod jednou střechou</h2></div>
-      <p>Tesařství, pokrývačství a sádrokartony. Ať stavíte, rekonstruujete, nebo jen potřebujete spravit žlab.</p>
-    </div>
-    <div class="bento">
-      <article class="tile t1 rv pre">
-        <img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/d921c4b4-a3a5-446a-9322-4e72dffb9cef.png" alt="Rozestavěný krov">
-        <div class="in"><span class="lab">01 · Tesařství</span><h3>Krovy a stavby ze dřeva</h3>
-          <ul><li>montáž krovů</li><li>CNC konstrukce</li><li>dřevostavby</li><li>pergoly a garážová stání</li><li>chatky, altány, kůlny, terasy</li><li>dětské domky a prolézačky</li><li>půdní vestavby</li><li>dřevěné podlahy</li><li>balkony a lávky</li><li>impregnace krovů</li></ul></div>
-      </article>
-      <article class="tile t2 rv pre">
-        <img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/c549c1e1-5b56-48d8-8e18-f8ce5ea748c7.png" alt="Pokrývač při práci">
-        <div class="in"><span class="lab">02 · Pokrývačství</span><h3>Střechy a okna</h3>
-          <ul><li>rekonstrukce střech</li><li>Bramac, Tondach</li><li>Eternit, Cembrit</li><li>šindele</li><li>Velux, Roto</li><li>nadkrokevní izolace</li><li>žlaby</li></ul></div>
-      </article>
-      <article class="tile t3 rv pre">
-        <img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/35bba246-e019-44ad-a301-acbad49192dc.png" alt="Podkroví ze sádrokartonu">
-        <div class="in"><span class="lab">03 · Sádrokartony</span><h3>Podkroví a SDK</h3>
-          <ul><li>příčky</li><li>stropy</li><li>předstěny</li><li>tepelné a hlukové izolace</li><li>kazetové stropy</li></ul></div>
-      </article>
-      <article class="tile t4 snow rv pre" id="snih">
-        <canvas id="snow" aria-hidden="true"></canvas>
-        <div class="in"><span class="lab" style="color:#9cc0ef">Zima</span><h3>Sníh a námraza na střeše?</h3>
-          <p>Odstraňujeme sníh a nebezpečné ledové námrazy ze střech. Čistíme a opravujeme žlaby.</p>
-          <div><a class="btn hot" href="tel:+420737708433"><svg><use href="#i-tel"/></svg>Zavolat 737 708 433</a></div></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sec gut" id="reference" style="padding-top:0">
-  <div class="wrap">
-    <div class="sh rv pre">
-      <div><span class="lab">Reference</span><h2 class="disp">Fotky přímo ze stavby</h2></div>
-      <p>Krovy, střechy, dřevostavby i podkroví, které jsme postavili.</p>
-    </div>
-    <div class="chips" id="chips" role="group" aria-label="Filtr referencí">
-      <button type="button" id="ch-all" data-f="all" aria-pressed="true">Vše</button>
-      <button type="button" id="ch-krov" data-f="krov" aria-pressed="false">Krovy</button>
-      <button type="button" id="ch-strecha" data-f="strecha" aria-pressed="false">Střechy</button>
-      <button type="button" id="ch-drevo" data-f="drevo" aria-pressed="false">Stavby ze dřeva</button>
-      <button type="button" id="ch-podkrovi" data-f="podkrovi" aria-pressed="false">Podkroví</button>
-    </div>
-    <div class="gal" id="gal"></div>
-  </div>
-</section>
-
-<section class="gut" aria-label="Proč my">
-  <div class="wrap trust rv pre">
-    <div><strong id="let">34</strong><span>let řemesla, od roku 1992</span></div>
-    <div><strong>3</strong><span>řemesla: tesařství, pokrývačství, sádrokartony</span></div>
-    <div><strong>3</strong><span>regiony: Liberecký kraj, Mladá Boleslav, Praha</span></div>
-    <div><strong>Na klíč</strong><span>kompletně včetně materiálu, práci děláme osobně</span></div>
-  </div>
-</section>
-
-<section class="sec gut" id="postup" style="padding-bottom:0">
-  <div class="wrap">
-    <div class="sh">
-      <div><span class="lab">Jak to probíhá</span><h2 class="disp">Od telefonu po hotovou střechu</h2></div>
-      <p>Čtyři kroky, ve kterých víte, co se děje a co vás čeká.</p>
-    </div>
-    <ol class="steps">
-      <li><b>01</b><h3>Zavoláte nebo pošlete zadání</h3><p>Telefonem, formulářem, nebo rovnou z kalkulačky s rozměry domu.</p></li>
-      <li><b>02</b><h3>Obhlídka na místě</h3><p>Přijedeme, změříme a probereme krov, krytinu a okna.</p></li>
-      <li><b>03</b><h3>Nabídka</h3><p>Připravíme cenovou nabídku včetně materiálu.</p></li>
-      <li><b>04</b><h3>Realizace</h3><p>Práci děláme osobně, od krovu po poslední tašku.</p></li>
-    </ol>
-    <div class="revs" id="recenze">
-      <div><span class="lab">Hodnocení zákazníků</span><h3>Místo pro skutečné recenze</h3>
-        <p>Sem doplníme hodnocení vašich zákazníků, například z Google nebo Firmy.cz, se souhlasem autorů. Nic si nevymýšlíme.</p></div>
-      <div class="revslot" aria-hidden="true"><span></span><span></span><span></span></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec gut" id="kontakt">
-  <div class="wrap">
-    <div class="sh rv pre">
-      <div><span class="lab">Kontakt</span><h2 class="disp">Domluvme obhlídku</h2></div>
-      <p>Zavolejte, nebo napište, co chystáte. Přijedeme, změříme a připravíme nabídku.</p>
-    </div>
-    <div class="kontakt">
-      <div class="kbox">
-        <span class="lab">Telefon</span>
-        <a class="tel" href="tel:+420737708433">737 708 433</a>
-        <p style="margin-top:.6em">Volejte, nebo napište. Přijedeme na obhlídku.</p>
-        <span class="lab">E-mail</span>
-        <p style="font-size:19px"><a href="mailto:stybr13@gmail.com" style="text-underline-offset:4px;text-decoration-color:var(--wood)">stybr13@gmail.com</a></p>
-        <span class="lab">Adresa</span>
-        <p style="color:var(--txt)">Tesařství Štýbr<br>Na Bídě 566/4, 460 01 Liberec</p>
-        <span class="lab">Kde pracujeme</span>
-        <div class="area"><span>Liberecký kraj</span><span>Mladá Boleslav</span><span>Praha</span></div>
-      </div>
-      <div class="kbox">
-        <span class="lab">Poptávka</span>
-        <div class="filled" id="fFilled" role="status">Zadání z kalkulačky je vložené ve zprávě. Doplňte jméno a telefon.</div>
-        <form id="form" novalidate>
-          <div class="row">
-            <label for="fJmeno">Jméno<input type="text" id="fJmeno" name="jmeno" autocomplete="name"></label>
-            <label for="fTel">Telefon *<input type="tel" id="fTel" name="telefon" autocomplete="tel" inputmode="tel" required aria-describedby="fErr"></label>
-          </div>
-          <div class="row">
-            <label for="fMisto">Místo stavby<input type="text" id="fMisto" name="misto" placeholder="např. Liberec – Vratislavice"></label>
-            <label for="fCo">O co jde<select id="fCo" name="co"><option>Nová střecha / výměna krytiny</option><option>Krov</option><option>Pergola / garážové stání / altán</option><option>Podkroví / sádrokarton</option><option>Sníh, námraza, žlaby</option><option>Jiné</option></select></label>
-          </div>
-          <label for="fZprava">Zpráva<textarea id="fZprava" name="zprava" placeholder="Co chystáte, rozměry, termín…"></textarea></label>
-          <button class="btn hot" type="submit" style="justify-self:start">Odeslat poptávku <svg class="arr"><use href="#i-arr"/></svg></button>
-          <div class="err" id="fErr" role="alert"></div>
-          <div class="ok" id="fOk" role="status">Toto je ukázka webu. Po spuštění bude formulář chodit rovnou do e-mailu.</div>
-        </form>
+    <div class="sheet full">
+      <span class="mk lab" data-n="V">Poptávka</span>
+      <h2>Domluvme obhlídku</h2>
+      <div class="kontakt">
+        <div class="kbox">
+          <span class="lab">Telefon</span>
+          <a class="bigtel" href="tel:+420737708433">737 708 433</a>
+          <p style="margin-top:.6em">Volejte, nebo napište. Přijedeme na obhlídku.</p>
+          <span class="lab">E-mail</span>
+          <p style="font-size:19px"><a class="tlink" href="mailto:stybr13@gmail.com">stybr13@gmail.com</a></p>
+          <span class="lab">Adresa</span>
+          <p style="color:var(--txt)">Tesařství Štýbr<br>Na Bídě 566/4, 460 01 Liberec</p>
+          <span class="lab">Kde pracujeme</span>
+          <div class="area"><span>Liberecký kraj</span><span>Mladá Boleslav</span><span>Praha</span></div>
+        </div>
+        <div class="kbox">
+          <span class="lab">Nezávazná poptávka</span>
+          <div class="filled" id="fFilled" role="status">Zadání z kalkulačky je vložené ve zprávě. Doplňte jméno a telefon.</div>
+          <form id="form" novalidate>
+            <div class="row">
+              <label for="fJmeno">Jméno<input type="text" id="fJmeno" name="jmeno" autocomplete="name"></label>
+              <label for="fTel">Telefon *<input type="tel" id="fTel" name="telefon" autocomplete="tel" inputmode="tel" required aria-describedby="fErr"></label>
+            </div>
+            <div class="row">
+              <label for="fMisto">Místo stavby<input type="text" id="fMisto" name="misto" placeholder="např. Liberec, Vratislavice"></label>
+              <label for="fCo">O co jde<select id="fCo" name="co"><option>Nová střecha / výměna krytiny</option><option>Krov</option><option>Pergola / garážové stání / altán</option><option>Podkroví / sádrokarton</option><option>Sníh, námraza, žlaby</option><option>Jiné</option></select></label>
+            </div>
+            <label for="fZprava">Zpráva<textarea id="fZprava" name="zprava" placeholder="Co chystáte, rozměry, termín…"></textarea></label>
+            <div class="err" id="fErr" role="alert"></div>
+            <button class="btn hot" type="submit" style="justify-self:start">Odeslat nezávaznou poptávku <svg class="arr"><use href="#i-arr"/></svg></button>
+            <div class="ok" id="fOk" role="status">Toto je ukázka webu. Po spuštění bude formulář chodit rovnou do e-mailu.</div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -624,15 +562,15 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
 <div class="mbar" id="mbar">
   <a class="btn" href="tel:+420737708433"><svg><use href="#i-tel"/></svg>Zavolat</a>
-  <a class="btn hot" href="#kalkulacka">Spočítat střechu</a>
+  <a class="btn hot" href="#kontakt">Nezávazná poptávka</a>
 </div>
 
 <script src="../vendor/three-r128.min.js"></script>
 <script src="../vendor/lenis-1.1.13.min.js"></script>
-<script src="stavba.js?v=4"></script>
-<script src="krov.js?v=4"></script>
-<script src="strecha.js?v=4"></script>
-<script src="konfigurator.js?v=4"></script>
-<script src="page.js?v=4"></script>
+<script src="stavba.js?v=5"></script>
+<script src="krov.js?v=5"></script>
+<script src="strecha.js?v=5"></script>
+<script src="konfigurator.js?v=5"></script>
+<script src="page.js?v=5"></script>
 </body>
 </html>

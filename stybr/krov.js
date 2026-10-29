@@ -537,12 +537,12 @@
   }
   window.addEventListener('resize', resize); resize();
 
-  let visible = true;
+  let visible = true, paused = false;
   new IntersectionObserver(e => { visible = e[0].isIntersecting; }, { rootMargin: '200px' }).observe(canvas);
   let last = -1;
   function loop() {
     requestAnimationFrame(loop);
-    if (!visible) return;
+    if (!visible || paused) return;
     Psmooth += (P - Psmooth) * (reduce ? 1 : .12);
     if (Math.abs(P - Psmooth) < 1e-4) Psmooth = P;
     apply(Psmooth);
@@ -551,6 +551,7 @@
   }
   window.KROV = {
     setProgress(p) { P = clamp(p, 0, 1); },
+    pause(b) { paused = !!b; },
     get progress() { return Psmooth; },
     project(name) { return labelPts[name] ? project(labelPts[name]) : null; },
     snap() { Psmooth = P; apply(P); renderer.render(scene, camera); },
