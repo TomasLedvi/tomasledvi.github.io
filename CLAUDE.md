@@ -122,7 +122,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   jako samostatné průhledné vrstvy s různou rychlostí), video přehrávané scrollem (`encode.sh`: hustý GOP -g 8, mobil 720p -g 4),
   „device kit“ (scrub, pin, reveal, pan…, min. 4 různé typy, nikdy stejný dvakrát po sobě), jeden vrchol stránky, ověřovací skript shoot.mjs
   (mrtvý scroll, kontrast, kontaktní arch). Generuje přes kie.ai (my máme Higgsfield → nepotřebujeme). Plugin do Claude Code CLI;
-  tady stačí naklonovat a číst `plugins/nateherk-design/skills/scroll-craft/SKILL.md` + `references/`. Pozor: zakazuje šipky „scroll“,
+  kopie je v repu `_skills/scroll-craft/` (commit 75d81f7 z 30. 9. 2026) – číst `SKILL.md` + `references/`; zip k nahrání do účtu poslán 29. 10.. Pozor: zakazuje šipky „scroll“,
   počítadla 01/06 a vymyšlená čísla – sedí s Tomášovými pravidly. Rozhoduje Tomáš, kdy ho použít.
 - Taste skill (design-taste-frontend) nainstalován 23. 10. – NEPOUŽÍVAT pro Tomášovy ukázky, pokud si o něj výslovně neřekne
   (25. 10. znovu udělal web příliš střídmý; Tomáš chce tmavý filmový styl s efekty jako `vinarstvi/`).
