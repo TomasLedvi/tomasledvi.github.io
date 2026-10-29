@@ -86,6 +86,9 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   (window.STAVBA: textury, krytiny, dům, okapy, okna, smrky, tráva). Ukazatel postupu příběhu vpravo (Dřevo, Míra, Spoj, Krov, Střecha),
   mobilní lišta Zavolat/Spočítat. Fotky jsou z jejich webu (importované na Higgsfield CloudFront přes media_import_url,
   URL `<id>.png`, i když jde o JPEG) – při zakázce vyžádat originály.
+  29. 10. odpoledne UX audit podle Tomášova zadání: příběh zkrácen (620vh/560vh), odkaz „Přeskočit animaci“, sekce „Jak to probíhá“
+  (4 kroky) + prázdné místo na skutečné recenze, pruh čísel jen s ověřenými údaji, štítek „Orientační výpočet · nejde o cenovou nabídku“,
+  kontrola telefonu ve formuláři, fallback bez JS, reduced-motion, galerie z klávesnice. Texty ověřeny proti tesarstvistybr.cz.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).

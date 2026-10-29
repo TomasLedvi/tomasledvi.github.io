@@ -20,12 +20,12 @@
 
   // ---------------------------------------------------------------- renderer
   const renderer = new T.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.3 : 2));
   renderer.outputEncoding = T.sRGBEncoding;
   renderer.toneMapping = T.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = T.PCFSoftShadowMap;
+  renderer.shadowMap.type = isMobile ? T.PCFShadowMap : T.PCFSoftShadowMap;
   const scene = new T.Scene();
   scene.fog = new T.Fog(0x14110e, 16, 46);
   const camera = new T.PerspectiveCamera(36, 1, .05, 120);

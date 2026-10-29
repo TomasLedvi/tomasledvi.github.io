@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex">
 <title>Tesařství Štýbr – krovy a střechy Liberec</title>
 <meta name="description" content="Tesařství a pokrývačství Štýbr, Liberec. Krovy, střechy, pergoly, garážová stání, podkroví a sádrokartony. Od roku 1992. Spočítejte si střechu online.">
+<script>document.documentElement.classList.add('js')</script>
 <style>
 @font-face{font-family:"Mona Sans";src:url(../vendor/fonts/mona-sans-latin-ext-wdth-normal.woff2) format("woff2-variations");font-weight:200 900;font-stretch:75% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Mona Sans";src:url(../vendor/fonts/mona-sans-latin-wdth-normal.woff2) format("woff2-variations");font-weight:200 900;font-stretch:75% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -58,11 +59,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:420px){.brand small{display:none}}
 
 /* story */
-#pribeh{position:relative;height:880vh}
+#pribeh{position:relative;height:620vh}
+html:not(.js) #pribeh{height:auto}html:not(.js) .stage{position:relative;height:auto;min-height:100svh}html:not(.js) .cap:not(.hero),html:not(.js) .hint,html:not(.js) .prog,html:not(.js) .lbl,html:not(.js) .skip{display:none}html:not(.js) .cap.hero{opacity:1;position:relative;top:auto;left:auto;right:auto;transform:none;width:auto;max-width:46rem;padding:140px max(20px,5vw) 80px}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 #krov3d{position:absolute;inset:0;width:100%;height:100%;display:block}
 .stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,9,.86) 0%,rgba(11,10,9,.42) 32%,transparent 56%),linear-gradient(0deg,rgba(11,10,9,.8),transparent 24%),linear-gradient(180deg,rgba(11,10,9,.5),transparent 18%)}
-.cap{position:absolute;z-index:3;left:max(20px,env(safe-area-inset-left,0px),5vw);top:50%;transform:translateY(-50%);width:min(36rem,44vw);opacity:0;pointer-events:none;will-change:opacity,transform}
+.cap{position:absolute;z-index:3;left:max(20px,env(safe-area-inset-left,0px),5vw);top:50%;transform:translateY(-50%);width:min(36rem,44vw);pointer-events:none;will-change:opacity,transform}
+.js .cap{opacity:0}
 .cap.on{pointer-events:auto}
 .cap .lab{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .cap .lab i{display:inline-block;width:28px;height:1px;background:var(--wood)}
@@ -72,10 +75,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .cap.hero h1 span{display:block;color:var(--wood);font-stretch:100%;font-weight:300;letter-spacing:-.02em;text-transform:none;font-size:.46em;line-height:1.1;margin-top:.25em}
 .cap.hero p{color:var(--txt);opacity:.86;font-size:19px;margin-top:22px}
 .cap .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.cap.hero .herotel{margin-top:16px;font-size:15px;color:var(--mute);opacity:1}.herotel a{color:var(--txt);font-weight:600;text-decoration-color:var(--wood);text-underline-offset:4px}
 .hook{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:10px 16px 10px 12px;border:1px solid var(--line2);border-radius:999px;background:rgba(20,18,16,.6);font-size:14px;color:var(--mute);text-decoration:none;backdrop-filter:blur(6px)}
 .hook b{color:var(--txt);font-weight:600}
 .hook .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(139,209,124,.18)}
 .hint{position:absolute;z-index:3;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.skip{position:absolute;z-index:5;right:max(20px,env(safe-area-inset-right,0px),3vw);bottom:calc(20px + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);text-decoration:none;padding:9px 12px;border:1px solid var(--line2);border-radius:999px;background:rgba(11,10,9,.6);backdrop-filter:blur(6px);transition:color .2s,border-color .2s}
+.skip:hover{color:var(--txt);border-color:var(--txt)}
 .hint i{display:block;width:1px;height:34px;background:linear-gradient(var(--chalk),transparent);animation:drop 1.8s ease-in-out infinite;transform-origin:top}
 @keyframes drop{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 .lbl{position:absolute;z-index:4;left:0;top:0;pointer-events:none;opacity:0;transition:opacity .35s;white-space:nowrap}
@@ -91,7 +97,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .prog li.now::after{width:44px;background:var(--wood)}
 .mval{position:absolute;z-index:3;left:50%;top:calc(80px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.06em;opacity:0;transition:opacity .4s}
 @media (max-width:900px){
-  #pribeh{height:800vh}
+  #pribeh{height:560vh}
   .stage::after{background:linear-gradient(180deg,rgba(11,10,9,.94) 0%,rgba(11,10,9,.62) 40%,transparent 64%),linear-gradient(0deg,rgba(11,10,9,.6),transparent 20%)}
   .cap{top:calc(86px + env(safe-area-inset-top,0px));transform:none;width:auto;right:max(20px,env(safe-area-inset-right,0px))}
   .cap h2{font-size:clamp(32px,9.4vw,52px);margin-bottom:14px}
@@ -99,6 +105,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .cap p,.cap.hero p{font-size:16px}
   .prog,.mval{display:none}
   .lbl b{font-size:10px}
+  .skip{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  .hook{display:none}
 }
 @media (prefers-reduced-motion:reduce){.hint i{animation:none}}
 
@@ -137,6 +145,7 @@ input[type=range]{width:100%;accent-color:var(--wood);height:24px}
 .res span{font-size:12.5px;color:var(--mute)}
 .res .big{grid-column:1/-1;background:linear-gradient(135deg,#2a2016,#1c1916)}
 .res .big b{font-size:34px;color:var(--wood2)}
+.orient{align-self:flex-start;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--wood2);border:1px solid rgba(224,172,107,.4);background:rgba(224,172,107,.08);border-radius:999px;padding:6px 11px;margin-bottom:-6px}
 .note{font-size:12.5px;color:var(--mute2);margin:-4px 0 0}
 .tabs{display:inline-flex;gap:4px;padding:4px;background:var(--s1);border:1px solid var(--line);border-radius:999px;margin-bottom:18px}
 .tabs button{font:600 14.5px var(--sans);color:var(--mute);background:transparent;border:0;padding:10px 18px;border-radius:999px;cursor:pointer}
@@ -191,10 +200,25 @@ input[type=range]{width:100%;accent-color:var(--wood);height:24px}
 .trust span{color:var(--mute);font-size:15px}
 @media (max-width:860px){.trust{grid-template-columns:1fr 1fr}}
 
+/* process + reviews */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.steps li{position:relative;border-top:2px solid var(--line2);padding:22px 8px 0 0;min-width:0}
+.steps li:first-child{border-color:var(--wood)}
+.steps b{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--wood);letter-spacing:.06em}
+.steps h3{font-stretch:112%;font-weight:700;font-size:21px;line-height:1.15;margin:10px 0 8px}
+.steps p{margin:0;color:var(--mute);font-size:15.5px}
+.revs{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;margin-top:56px;padding:26px;border:1px dashed var(--line2);border-radius:22px}
+.revs h3{font-stretch:112%;font-weight:700;font-size:22px;margin:8px 0}
+.revs p{margin:0;color:var(--mute);font-size:15.5px;max-width:34rem}
+.revslot{display:grid;gap:8px}.revslot span{height:14px;border-radius:7px;background:var(--s2)}.revslot span:nth-child(2){width:80%}.revslot span:nth-child(3){width:55%}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}.revs{grid-template-columns:1fr}.revslot{display:none}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
 /* contact */
 .kontakt{display:grid;grid-template-columns:1fr 1.15fr;gap:14px}
 .kbox{background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:30px;min-width:0}
 .kbox .lab{display:block;margin:0 0 8px}
+.kbox .filled{margin-bottom:12px}
 .tel{font-stretch:125%;font-weight:800;font-size:clamp(34px,4vw,56px);letter-spacing:-.02em;line-height:1;text-decoration:none;user-select:all}
 .kbox p{margin:.2em 0 1.2em;color:var(--mute)}
 .area{display:flex;flex-wrap:wrap;gap:6px}
@@ -204,6 +228,9 @@ form{display:grid;gap:12px}
 form label{display:grid;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 input[type=text],input[type=tel],select,textarea{font:400 16px var(--sans);color:var(--txt);background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:13px 14px;width:100%;text-transform:none;letter-spacing:0}
 textarea{min-height:140px;resize:vertical}
+.err{color:#ffb39e;font-size:14px}.err:empty{display:none}
+input[aria-invalid=true]{border-color:#e07a5f}
+.filled{display:none;border:1px solid rgba(224,172,107,.45);background:rgba(224,172,107,.08);color:var(--wood2);padding:10px 14px;border-radius:12px;font-size:14.5px}.filled.on{display:block}
 .ok{display:none;border:1px solid #3d6b3a;background:#132016;color:#c5e8bd;padding:12px 14px;border-radius:12px;font-size:15px}
 .ok.on{display:block}
 @media (max-width:900px){.kontakt{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
@@ -216,8 +243,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 .mbar .btn{flex:1;padding:13px 10px;font-size:15px}
 @media (max-width:760px){.mbar{display:flex}}
 
-.rv{transition:opacity 1s,transform 1s cubic-bezier(.2,.8,.2,1)}
-.js .rv.pre{opacity:0;transform:translateY(30px)}
+.rv{transition:opacity .55s ease-out,transform .55s cubic-bezier(.2,.8,.2,1)}
+.js .rv.pre{opacity:0;transform:translateY(14px)}
+@media (prefers-reduced-motion:reduce){.js .rv.pre{opacity:1;transform:none}.rv,.tile img,.gal img,.btn,.mbar{transition:none!important}.tile:hover img,.gal figure:hover img{transform:none}}
 </style>
 </head>
 <body>
@@ -249,6 +277,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <li class="hs"><a href="#kalkulacka">Kalkulačka střechy</a></li>
       <li class="hs"><a href="#sluzby">Služby</a></li>
       <li class="hs"><a href="#reference">Reference</a></li>
+      <li class="hs"><a href="#postup">Postup</a></li>
       <li class="hs"><a href="#kontakt">Kontakt</a></li>
       <li><a class="cta" href="tel:+420737708433">737 708 433</a></li>
     </ul>
@@ -262,15 +291,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
     <div class="cap hero" data-a="-1" data-b=".085">
       <div class="lab"><i></i>Liberec · od roku 1992</div>
-      <h1 class="disp">Tesařství Štýbr<span>Krovy, střechy a stavby ze dřeva</span></h1>
-      <p>Od krovu po poslední tašku z jedné ruky. Kompletně včetně materiálu, práci děláme osobně.</p>
+      <h1 class="disp">Tesařství Štýbr<span>Krovy, střechy, stavby ze dřeva a sádrokartony</span></h1>
+      <p>Tesařské, pokrývačské a sádrokartonářské práce v Libereckém kraji, na Mladoboleslavsku a v Praze. Kompletně včetně materiálu, práci děláme osobně.</p>
       <div class="btns">
         <a class="btn hot" href="#kalkulacka">Spočítat střechu <svg class="arr"><use href="#i-arr"/></svg></a>
-        <a class="btn" href="tel:+420737708433"><svg><use href="#i-tel"/></svg>737 708 433</a>
+        <a class="btn" href="#reference">Prohlédnout realizace</a>
       </div>
+      <p class="herotel">Nebo rovnou volejte <a href="tel:+420737708433">737&nbsp;708&nbsp;433</a></p>
       <a class="hook" href="#kalkulacka"><span class="dot"></span><span><b>Nové:</b> plocha střechy, krytina a okapy za minutu</span></a>
     </div>
-    <div class="hint" id="hint">Scrollujte · postavíme krov<i></i></div>
+    <div class="hint" id="hint" aria-hidden="true">Scrollujte · postavíme krov<i></i></div>
+    <a class="skip" href="#kalkulacka">Přeskočit animaci ↓</a>
 
     <div class="cap" data-a=".095" data-b=".2">
       <div class="lab"><i></i>Dřevo</div>
@@ -304,16 +335,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <div class="btns"><a class="btn hot" href="#kalkulacka">Spočítat moji střechu <svg class="arr"><use href="#i-arr"/></svg></a></div>
     </div>
 
-    <div class="lbl" data-l="snura" data-a=".255" data-b=".33"><b>křídová šňůra</b></div>
-    <div class="lbl" data-l="dlab" data-a=".34" data-b=".43"><b>dlab</b></div>
-    <div class="lbl" data-l="cep" data-a=".34" data-b=".43"><b>čep</b></div>
-    <div class="lbl" data-l="kolik" data-a=".4" data-b=".44"><b>kolík</b></div>
-    <div class="lbl" data-l="pozednice" data-a=".54" data-b=".61"><b>pozednice</b></div>
-    <div class="lbl" data-l="sloupek" data-a=".56" data-b=".63"><b>sloupek</b></div>
-    <div class="lbl" data-l="vaznice" data-a=".58" data-b=".645"><b>vaznice</b></div>
-    <div class="lbl" data-l="krokev" data-a=".61" data-b=".685"><b>krokev</b></div>
-    <div class="lbl" data-l="klestina" data-a=".63" data-b=".69"><b>kleština</b></div>
-    <div class="lbl" data-l="lati" data-a=".705" data-b=".76"><b>laťování</b></div>
+    <div aria-hidden="true" class="lbl" data-l="snura" data-a=".255" data-b=".33"><b>křídová šňůra</b></div>
+    <div aria-hidden="true" class="lbl" data-l="dlab" data-a=".34" data-b=".43"><b>dlab</b></div>
+    <div aria-hidden="true" class="lbl" data-l="cep" data-a=".34" data-b=".43"><b>čep</b></div>
+    <div aria-hidden="true" class="lbl" data-l="kolik" data-a=".4" data-b=".44"><b>kolík</b></div>
+    <div aria-hidden="true" class="lbl" data-l="pozednice" data-a=".54" data-b=".61"><b>pozednice</b></div>
+    <div aria-hidden="true" class="lbl" data-l="sloupek" data-a=".56" data-b=".63"><b>sloupek</b></div>
+    <div aria-hidden="true" class="lbl" data-l="vaznice" data-a=".58" data-b=".645"><b>vaznice</b></div>
+    <div aria-hidden="true" class="lbl" data-l="krokev" data-a=".61" data-b=".685"><b>krokev</b></div>
+    <div aria-hidden="true" class="lbl" data-l="klestina" data-a=".63" data-b=".69"><b>kleština</b></div>
+    <div aria-hidden="true" class="lbl" data-l="lati" data-a=".705" data-b=".76"><b>laťování</b></div>
 
     <ol class="prog" id="prog" aria-hidden="true"><li>Dřevo</li><li>Míra</li><li>Spoj</li><li>Krov</li><li>Střecha</li></ol>
   </div>
@@ -362,6 +393,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
             <div style="flex:1;min-width:180px"><div class="fl" style="margin-bottom:6px">Stavba</div>
               <div class="seg" id="rStav" role="group" aria-label="Stavba"><button type="button" id="rs-n" data-v="novostavba" aria-pressed="true">Nová</button><button type="button" id="rs-v" data-v="vymena" aria-pressed="false">Výměna</button></div></div>
           </div>
+          <span class="orient">Orientační výpočet · nejde o cenovou nabídku</span>
           <div class="res" aria-live="polite">
             <div class="big"><b id="rPlocha">–</b><span>plocha střechy</span></div>
             <div><b id="rKrytina">–</b><span id="rKrytinaL">krytina</span></div>
@@ -370,7 +402,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
             <div><b id="rHreben">–</b><span id="rHrebenL">hřeben</span></div>
             <div><b id="rSvody">–</b><span>svody</span></div>
           </div>
-          <p class="note">Orientační výpočet z rozměrů domu (přesah okapu 55 cm). Přesné množství spočítáme po obhlídce.</p>
+          <p class="note">Počítáme z půdorysu domu a sklonu, přesah okapu 55 cm. Výsledek je odhad množství materiálu. Přesné množství a cenu připravíme po obhlídce.</p>
           <a class="btn hot" href="#kontakt" id="rSend">Poslat zadání a chtít nabídku <svg class="arr"><use href="#i-arr"/></svg></a>
         </div>
       </div>
@@ -403,6 +435,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
               <button type="button" id="kb-3" data-v="#8a5a36" data-n="ořech" aria-pressed="false" style="background:#7a4a28" aria-label="ořech"></button>
               <button type="button" id="kb-4" data-v="#6e6e6e" data-n="šedá" aria-pressed="false" style="background:#6f6c67" aria-label="šedá"></button>
             </div></div>
+          <span class="orient">Orientační výpočet · nejde o cenovou nabídku</span>
           <div class="res" aria-live="polite">
             <div class="big"><b id="cPlocha">–</b><span>plocha střechy</span></div>
             <div><b id="cSloupy">–</b><span>sloupky</span></div>
@@ -475,9 +508,29 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <section class="gut" aria-label="Proč my">
   <div class="wrap trust rv pre">
     <div><strong id="let">34</strong><span>let řemesla, od roku 1992</span></div>
-    <div><strong>3</strong><span>řemesla: tesař, pokrývač, sádrokartonář</span></div>
-    <div><strong>1</strong><span>firma od krovu po poslední tašku</span></div>
-    <div><strong>100&nbsp;%</strong><span>práce, kterou děláme osobně</span></div>
+    <div><strong>3</strong><span>řemesla: tesařství, pokrývačství, sádrokartony</span></div>
+    <div><strong>3</strong><span>regiony: Liberecký kraj, Mladá Boleslav, Praha</span></div>
+    <div><strong>Na klíč</strong><span>kompletně včetně materiálu, práci děláme osobně</span></div>
+  </div>
+</section>
+
+<section class="sec gut" id="postup" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sh">
+      <div><span class="lab">Jak to probíhá</span><h2 class="disp">Od telefonu po hotovou střechu</h2></div>
+      <p>Čtyři kroky, ve kterých víte, co se děje a co vás čeká.</p>
+    </div>
+    <ol class="steps">
+      <li><b>01</b><h3>Zavoláte nebo pošlete zadání</h3><p>Telefonem, formulářem, nebo rovnou z kalkulačky s rozměry domu.</p></li>
+      <li><b>02</b><h3>Obhlídka na místě</h3><p>Přijedeme, změříme a probereme krov, krytinu a okna.</p></li>
+      <li><b>03</b><h3>Nabídka</h3><p>Připravíme cenovou nabídku včetně materiálu.</p></li>
+      <li><b>04</b><h3>Realizace</h3><p>Práci děláme osobně, od krovu po poslední tašku.</p></li>
+    </ol>
+    <div class="revs" id="recenze">
+      <div><span class="lab">Hodnocení zákazníků</span><h3>Místo pro skutečné recenze</h3>
+        <p>Sem doplníme hodnocení vašich zákazníků, například z Google nebo Firmy.cz, se souhlasem autorů. Nic si nevymýšlíme.</p></div>
+      <div class="revslot" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
   </div>
 </section>
 
@@ -488,23 +541,24 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <p>Zavolejte, nebo napište, co chystáte. Přijedeme, změříme a připravíme nabídku.</p>
     </div>
     <div class="kontakt">
-      <div class="kbox rv pre">
+      <div class="kbox">
         <span class="lab">Telefon</span>
         <a class="tel" href="tel:+420737708433">737 708 433</a>
-        <p></p>
+        <p style="margin-top:.6em">Volejte, nebo napište. Přijedeme na obhlídku.</p>
         <span class="lab">E-mail</span>
-        <p style="font-size:19px;color:var(--txt);user-select:all">stybr13@gmail.com</p>
+        <p style="font-size:19px"><a href="mailto:stybr13@gmail.com" style="text-underline-offset:4px;text-decoration-color:var(--wood)">stybr13@gmail.com</a></p>
         <span class="lab">Adresa</span>
         <p style="color:var(--txt)">Tesařství Štýbr<br>Na Bídě 566/4, 460 01 Liberec</p>
         <span class="lab">Kde pracujeme</span>
         <div class="area"><span>Liberecký kraj</span><span>Mladá Boleslav</span><span>Praha</span></div>
       </div>
-      <div class="kbox rv pre">
+      <div class="kbox">
         <span class="lab">Poptávka</span>
+        <div class="filled" id="fFilled" role="status">Zadání z kalkulačky je vložené ve zprávě. Doplňte jméno a telefon.</div>
         <form id="form" novalidate>
           <div class="row">
             <label for="fJmeno">Jméno<input type="text" id="fJmeno" name="jmeno" autocomplete="name"></label>
-            <label for="fTel">Telefon<input type="tel" id="fTel" name="telefon" autocomplete="tel"></label>
+            <label for="fTel">Telefon *<input type="tel" id="fTel" name="telefon" autocomplete="tel" inputmode="tel" required aria-describedby="fErr"></label>
           </div>
           <div class="row">
             <label for="fMisto">Místo stavby<input type="text" id="fMisto" name="misto" placeholder="např. Liberec – Vratislavice"></label>
@@ -512,6 +566,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
           </div>
           <label for="fZprava">Zpráva<textarea id="fZprava" name="zprava" placeholder="Co chystáte, rozměry, termín…"></textarea></label>
           <button class="btn hot" type="submit" style="justify-self:start">Odeslat poptávku <svg class="arr"><use href="#i-arr"/></svg></button>
+          <div class="err" id="fErr" role="alert"></div>
           <div class="ok" id="fOk" role="status">Toto je ukázka webu. Po spuštění bude formulář chodit rovnou do e-mailu.</div>
         </form>
       </div>
@@ -534,10 +589,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
 <script src="../vendor/three-r128.min.js"></script>
 <script src="../vendor/lenis-1.1.13.min.js"></script>
-<script src="stavba.js?v=2"></script>
-<script src="krov.js?v=2"></script>
-<script src="strecha.js?v=2"></script>
-<script src="konfigurator.js?v=2"></script>
-<script src="page.js?v=2"></script>
+<script src="stavba.js?v=3"></script>
+<script src="krov.js?v=3"></script>
+<script src="strecha.js?v=3"></script>
+<script src="konfigurator.js?v=3"></script>
+<script src="page.js?v=3"></script>
 </body>
 </html>

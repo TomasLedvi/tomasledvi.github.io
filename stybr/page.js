@@ -1,6 +1,5 @@
 (function () {
   'use strict';
-  document.documentElement.classList.add('js');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const seg = (p, a, b) => clamp((p - a) / (b - a), 0, 1);
@@ -37,6 +36,7 @@
     for (const c of caps) {
       const fi = c.a < 0 ? 1 : seg(p, c.a, c.a + .02), fo = 1 - seg(p, c.b - .02, c.b), o = Math.min(fi, fo);
       c.el.style.opacity = o.toFixed(3);
+      c.el.style.visibility = o > .01 ? 'visible' : 'hidden';
       const dy = (1 - fi) * 28 - (1 - fo) * 28;
       c.el.style.transform = wide() ? `translateY(calc(-50% + ${dy}px))` : `translateY(${dy}px)`;
       c.el.classList.toggle('on', o > .5);
@@ -64,13 +64,23 @@
     [...b.parentNode.children].forEach(x => { x.setAttribute('aria-pressed', x === b); $(x.dataset.p).hidden = x !== b; });
     dispatchEvent(new Event('resize'));
   });
-  $('rSend').addEventListener('click', () => {
-    if (window.STRECHA) { $('fZprava').value = window.STRECHA.summary(); $('fCo').value = 'Nová střecha / výměna krytiny'; }
+  function handoff(text, co) {
+    $('fZprava').value = text; $('fCo').value = co;
+    const f = $('fFilled'); f.classList.remove('on'); void f.offsetWidth; f.classList.add('on');
+    setTimeout(() => $('fJmeno').focus({ preventScroll: true }), lenis ? 1700 : 300);
+  }
+  $('rSend').addEventListener('click', () => { if (window.STRECHA) handoff(window.STRECHA.summary(), 'Nová střecha / výměna krytiny'); });
+  $('kSend').addEventListener('click', () => { if (window.KONF) handoff(window.KONF.summary(), 'Pergola / garážové stání / altán'); });
+  $('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const tel = $('fTel'), digits = tel.value.replace(/\D/g, '');
+    const bad = digits.length < 9;
+    tel.setAttribute('aria-invalid', bad);
+    $('fErr').textContent = bad ? 'Vyplňte prosím telefon (aspoň 9 číslic), ať se vám můžeme ozvat.' : '';
+    if (bad) { tel.focus(); $('fOk').classList.remove('on'); return; }
+    $('fOk').classList.add('on');
   });
-  $('kSend').addEventListener('click', () => {
-    if (window.KONF) { $('fZprava').value = window.KONF.summary(); $('fCo').value = 'Pergola / garážové stání / altán'; }
-  });
-  $('form').addEventListener('submit', e => { e.preventDefault(); $('fOk').classList.add('on'); });
+  $('fTel').addEventListener('input', () => { if ($('fErr').textContent) { $('fErr').textContent = ''; $('fTel').removeAttribute('aria-invalid'); } });
 
   // ---------------------------------------------------------------- gallery (photos from the firm's current website)
   const PH = [
@@ -93,18 +103,19 @@
     ['1ae6b5b3-e4ad-4c3d-b87d-fbdfce941c77', 'strecha', 'hotová střecha s korouhví', '16/9'],
   ];
   const gal = $('gal');
-  gal.innerHTML = PH.map(([id, cat, t, ar], i) => `<figure data-c="${cat}" data-i="${i}"><img loading="lazy" decoding="async" src="${CF}${id}.png" alt="${t}" style="aspect-ratio:${ar};object-fit:cover"><figcaption>${t}</figcaption></figure>`).join('');
+  gal.innerHTML = PH.map(([id, cat, t, ar], i) => `<figure data-c="${cat}" data-i="${i}" tabindex="0" role="button" aria-label="Zvětšit: ${t}"><img loading="lazy" decoding="async" src="${CF}${id}.png" alt="${t}" style="aspect-ratio:${ar};object-fit:cover"><figcaption>${t}</figcaption></figure>`).join('');
   $('chips').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     [...b.parentNode.children].forEach(x => x.setAttribute('aria-pressed', x === b));
     gal.querySelectorAll('figure').forEach(fg => fg.hidden = !(b.dataset.f === 'all' || fg.dataset.c === b.dataset.f));
   });
+  gal.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('figure')) { e.preventDefault(); e.target.click(); } });
   gal.addEventListener('click', e => {
-    const fg = e.target.closest('figure'); if (!fg) return;
+    const fg = e.target.closest('figure'); if (!fg) return; const back = fg;
     const [id, , t] = PH[+fg.dataset.i];
     const lb = document.createElement('div'); lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-label', t);
     lb.innerHTML = `<div><img src="${CF}${id}.png" alt="${t}"><p>${t}</p></div><button type="button" class="btn">Zavřít</button>`;
-    const close = () => { lb.remove(); if (lenis) lenis.start(); removeEventListener('keydown', esc); };
+    const close = () => { lb.remove(); if (lenis) lenis.start(); removeEventListener('keydown', esc); back.focus({ preventScroll: true }); };
     const esc = ev => { if (ev.key === 'Escape') close(); };
     lb.addEventListener('click', ev => { if (ev.target === lb || ev.target.closest('button')) close(); });
     addEventListener('keydown', esc); document.body.appendChild(lb); if (lenis) lenis.stop(); lb.querySelector('button').focus();
