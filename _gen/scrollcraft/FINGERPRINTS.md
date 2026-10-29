@@ -63,3 +63,7 @@ If you want to see what a filled-in table looks like, and which shapes tend to
 collide, read `EXAMPLES.md` in the scroll-craft repository. Treat it as
 illustration only: those rows are somebody else's builds and they do **not**
 constrain yours.
+
+| Build | Grammar | Nav | Hero device | Act-sequence shape | Close | Signature move | World / port |
+|---|---|---|---|---|---|---|---|
+| stybr (Tesařství Štýbr, 29. 10. 2026) | Continuous world + dokovaný pracovní stůl (odvozeno z 2.4) | Minimal bar (logo, telefon, „Nezávazná poptávka“) + trám se značkami I–V jako klikací mapa | 3 vrstvy ze skutečné fotky krovu (pozadí, titulek, výřez), push-in z kotevního bodu | hero 175vh → 5 zastávek ve fixním 3D světě (Three.js) střídaných s dokovanými listy (služby, pan realizací, postup, kalkulačka), ~21vh desktop | Příjezd k hotovému domu za soumraku + formulář poptávky na listu | Tesařské značky vyřezávané scrollem do trámu, zároveň navigace | fotografický + procedurální 3D, tmavá teplá |

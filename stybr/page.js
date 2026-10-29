@@ -221,13 +221,13 @@
   function sizePan() {
     if (!panOn()) { pan.style.height = ''; gal.style.transform = ''; return; }
     const travel = Math.max(0, gal.scrollWidth - innerWidth);
-    pan.style.height = (innerHeight + travel * .55) + 'px';
+    pan.style.height = (innerHeight + travel * .4) + 'px';
   }
   sizePan(); addEventListener('load', sizePan);
   (function panTick() {
     if (panOn()) {
       const r = pan.getBoundingClientRect(), span = pan.offsetHeight - innerHeight;
-      const t = span > 0 ? clamp(-r.top / span, 0, 1) : 0; // rail travels faster than the wheel: lateral = 1/.55 × vertical
+      const t = span > 0 ? clamp(-r.top / span, 0, 1) : 0; // rail travels faster than the wheel: lateral = 2.5 × vertical
       gal.style.transform = `translate3d(${(-t * Math.max(0, gal.scrollWidth - innerWidth)).toFixed(1)}px,0,0)`;
     }
     requestAnimationFrame(panTick);

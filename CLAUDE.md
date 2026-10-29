@@ -92,6 +92,14 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   29. 10. hero předělán podle Tomášova zadání „Authentic Craftsmanship“: nová statická úvodní sekce `.hero2` se skutečnou fotkou
   krovu s vikýři (071436c8, z jejich webu, 2560 px), nadpis „Krovy, střechy a stavby ze dřeva“ (ne verzálkami), CTA Nezávazná poptávka → #kontakt,
   Prohlédnout realizace → #reference; 3D příběh začíná až pod ní („Jak vzniká krov“). Živý web lze fotit Playwrightem v Higgsfield sandboxu (má internet).
+  29. 10. večer v3 přes skill scroll-craft (brief + plán v `_gen/scrollcraft/builds/stybr/BRIEF.md`, registr `_gen/scrollcraft/FINGERPRINTS.md`):
+  gramatika „continuous world s dokovaným pracovním stolem“ – 3D svět krov.js je `position:fixed` za celou stránkou, kamera jede podle
+  `data-p0/p1` na sekcích (page.js `worldP()`), texty zastávek `.cue` uvnitř `.track` (fixed, okna podle polohy tracku), obsah v `.dock .sheet`.
+  Hero = 3 vrstvy ze skutečné fotky krovu d921c4b4: pozadí s dokresleným místem pod krokvemi (ebc5e9e9.jpg, mobil c2c5a41c.jpg),
+  titulek „Poctivé konstrukce. Na dlouhá léta.“, výřez krovu (125c47ac.webp, mobil c014b3f1.webp; rembg isnet v sandboxu zdarma,
+  spodek výřezu se ztrácí do pozadí u hlavního trámu = společný kotevní bod škálování). Podpis = trám s tesařskými značkami I–V
+  (vpravo, scroll je „vyřezává“, klik = skok; na mobilu jen u zastávek), stejné značky u nadpisů. Realizace = boční pás fotek (pan, 2,5× rychlejší).
+  Engine scroll-craftu ani shoot.mjs nepoužíváme (vlastní Three.js svět); ověřovací skript je v scratchpadu (cue opacity, arch snímků).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
