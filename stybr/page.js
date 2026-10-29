@@ -104,7 +104,7 @@
     const h = clamp(y / Math.max(1, uvod.offsetHeight), 0, 1.2);
     const k = reduce ? 0 : eio(seg(h, 0, .8));
     plBack.style.transform = `scale(${(1 + .035 * k).toFixed(4)})`;
-    plKrov.style.transform = `scale(${(1 + .11 * k).toFixed(4)}) translateY(${(-1.2 * k).toFixed(2)}%)`;
+    plKrov.style.transform = `scale(${(1 + .075 * k).toFixed(4)}) translateY(${(-1 * k).toFixed(2)}%)`;
     const t2 = reduce ? 1 : seg(h, .08, .22);
     l2.style.opacity = t2.toFixed(3); l2.style.transform = `translateY(${((1 - t2) * 14).toFixed(1)}px)`;
     const lowO = 1 - seg(h, .4, .56);
