@@ -271,23 +271,18 @@
   const N_PAIRS = 12;
   const zs = []; for (let i = 0; i < N_PAIRS; i++) zs.push(-HZ / 2 + .35 + i * (HZ - .7) / (N_PAIRS - 1));
 
-  // walls (rise from the ground)
-  const walls = new T.Group(); house.add(walls);
-  const wallParts = [
-    [HX, WALL, WT, 0, WALL / 2, HZ / 2 - WT / 2], [HX, WALL, WT, 0, WALL / 2, -HZ / 2 + WT / 2],
-    [WT, WALL, HZ - 2 * WT, HX / 2 - WT / 2, WALL / 2, 0], [WT, WALL, HZ - 2 * WT, -HX / 2 + WT / 2, WALL / 2, 0],
-  ];
-  wallParts.forEach(([w, h, d, x, y, z]) => { const m = new T.Mesh(new T.BoxGeometry(w, h, d), M.wall); m.position.set(x, y, z); m.castShadow = m.receiveShadow = true; walls.add(m); });
-  const plinth = new T.Mesh(new T.BoxGeometry(HX + .1, .45, HZ + .1), M.plinth); plinth.position.y = .225; plinth.receiveShadow = true; walls.add(plinth);
-  // windows on the long walls (dark openings with frames)
-  for (let i = 0; i < 3; i++) for (const s of [-1, 1]) {
-    const wx = s * (HX / 2 + .005), wz = -3 + i * 3;
-    const fr = new T.Mesh(new T.BoxGeometry(.06, 1.35, 1.15), M.frame); fr.position.set(wx, 1.6, wz); walls.add(fr);
-    const gl = new T.Mesh(new T.BoxGeometry(.065, 1.2, 1.0), M.glass); gl.position.set(wx, 1.6, wz); walls.add(gl);
-  }
-  // door on the front gable
-  const door = new T.Mesh(new T.BoxGeometry(1.0, 2.1, .06), new T.MeshStandardMaterial({ map: woodSide, color: 0x7a4a26, roughness: .7 }));
-  door.position.set(0, 1.05 + .2, -HZ / 2 - .01); walls.add(door);
+  // walls (rise from the ground) – shared house body with windows, sills, door
+  const S = window.STAVBA; S.setRenderer(renderer);
+  const SM = S.materials();
+  const walls = S.houseBody(HZ, HX, WALL); house.add(walls);
+  // surroundings: spruces and grass (outside the house and the workbench)
+  [[-13, 6, 9, 1], [13.5, 4, 7.5, 2], [11, -11, 10, 3], [-12, -12, 8, 4], [-6, 16, 7, 5], [7, 17, 8.5, 6], [16, 12, 6.5, 7]].forEach(([x, z, h, s]) => { const t = S.spruce(h, s); t.position.set(x, 0, z); scene.add(t); });
+  scene.add(S.grass(5, 22, isMobile ? 1800 : 3600, 3, (x, z) => (Math.abs(x) < 5.6 && Math.abs(z) < 6.6) || (Math.abs(x) < 3.2 && z > 7.6 && z < 11.2)));
+  // carpenter's tools on the sawhorse: steel square + pencil
+  { const sq = new T.Group(); const st = new T.MeshStandardMaterial({ color: 0x9aa0a6, roughness: .3, metalness: .9 });
+    const a1 = new T.Mesh(new T.BoxGeometry(.6, .004, .05), st), a2 = new T.Mesh(new T.BoxGeometry(.05, .004, .4), st);
+    a1.position.x = .3; a2.position.z = .2; sq.add(a1, a2); sq.position.set(1.4, .826, -.3); sq.rotation.y = .4; bench.add(sq);
+    const pen = new T.Mesh(new T.BoxGeometry(.18, .008, .014), new T.MeshStandardMaterial({ color: 0xc23a26, roughness: .6 })); pen.position.set(-1.2, .834, .3); pen.rotation.y = -.7; bench.add(pen); }
 
   const truss = new T.Group(); truss.position.y = 0; house.add(truss);
   const parts = { joists: [], plates: [], posts: [], purlins: [], rafters: [], collars: [], battens: [], ridge: [] };
@@ -339,36 +334,36 @@
     batRows.push(row);
   }
 
-  // roof covering: instanced tiles (concrete roof tile look), rows from eave to ridge
-  const TILE_W = .3, TILE_L = .42, COURSES = Math.floor((slopeLen - .05) / .34), PER_ROW = Math.ceil((HZ + .6) / TILE_W);
-  const tileGeo = new T.BoxGeometry(TILE_L, .04, TILE_W * .97);
-  const tiles = new T.InstancedMesh(tileGeo, M.tile, COURSES * PER_ROW * 2);
-  tiles.castShadow = true; tiles.receiveShadow = true; house.add(tiles);
-  const tileData = []; // {row, base matrix parts}
-  const win = [{ s: -1, z0: -2.6, z1: -1.4, k0: 5, k1: 8 }, { s: -1, z0: 1.6, z1: 2.8, k0: 5, k1: 8 }];
-  let ti = 0; const dummy = new T.Object3D(); const tcol = new T.Color();
-  const tr = rng(21);
-  for (let k = 0; k < COURSES; k++) for (const s of [-1, 1]) for (let j = 0; j < PER_ROW; j++) {
-    const z = -HZ / 2 - .3 + TILE_W / 2 + j * TILE_W + (k % 2 ? TILE_W / 2 : 0);
-    const inWin = win.some(w => w.s === s && k >= w.k0 && k <= w.k1 && z > w.z0 && z < w.z1);
-    const d = .2 + k * .34;
-    const x = s * (SPAN / 2 + OVER + .02 - d * Math.cos(PITCH));
-    const y = TOP - OVER * Math.tan(PITCH) + RAFT_H * .95 + .08 + d * Math.sin(PITCH);
-    tileData.push({ k, s, x, y, z, hide: inWin });
-    tcol.setHSL(.58, .06, .15 + tr() * .1);
-    tiles.setColorAt(ti, tcol); ti++;
-  }
-  tiles.count = ti;
-  // roof windows (Velux-type) on the front slope (s = -1)
+  // roof covering: textured faces (concrete tile, normal-mapped) revealed course by course with a clipping plane
+  renderer.localClippingEnabled = true;
+  const clipY = new T.Plane(new T.Vector3(0, -1, 0), -100);
+  const roofMat = S.coverMaterial('betonová', '#34373b', { clippingPlanes: [clipY], clipShadows: true });
+  const RX = SPAN / 2 + OVER + .02, RY0 = TOP - OVER * Math.tan(PITCH) + RAFT_H * .95 + .07, RYR = TOP + RISE + RAFT_H * .95 + .07, RZ = HZ / 2 + .32;
+  const v3 = (x, y, z) => new T.Vector3(x, y, z);
+  const roofFaces = [
+    S.faceMesh([v3(RX, RY0, -RZ), v3(RX, RY0, RZ), v3(0, RYR, RZ), v3(0, RYR, -RZ)].reverse(), v3(0, 0, -1), roofMat),
+    S.faceMesh([v3(-RX, RY0, RZ), v3(-RX, RY0, -RZ), v3(0, RYR, -RZ), v3(0, RYR, RZ)].reverse(), v3(0, 0, 1), roofMat),
+  ];
+  // fix orientation so normals face up/out and UV origin sits on the eave
+  roofFaces.forEach(m => { m.geometry.computeVertexNormals(); house.add(m); });
+  const roofRows = Math.ceil((RYR - RY0) / (.3333 * Math.sin(PITCH)));
+  // roof windows (Velux-type) on the slope facing the final camera (x < 0)
   const roofWins = [];
-  win.forEach(w => {
-    const g = new T.Group();
-    const dmid = .2 + (w.k0 + w.k1) / 2 * .34;
-    g.position.set(-(SPAN / 2 + OVER + .02 - dmid * Math.cos(PITCH)), TOP - OVER * Math.tan(PITCH) + RAFT_H * .95 + .1 + dmid * Math.sin(PITCH), (w.z0 + w.z1) / 2);
-    g.rotation.z = PITCH; // tilt with the slope (slope s=-1 rises towards +x)
-    const fr = new T.Mesh(new T.BoxGeometry(1.25, .1, 1.05), M.frame); fr.castShadow = true; g.add(fr);
-    const gl = new T.Mesh(new T.BoxGeometry(1.08, .11, .88), M.glass); g.add(gl);
-    g.scale.setScalar(.001); house.add(g); roofWins.push(g);
+  const nL = v3(-Math.sin(PITCH), Math.cos(PITCH), 0), upL = v3(Math.cos(PITCH), Math.sin(PITCH), 0);
+  [-2.0, 2.2].forEach(z => {
+    const w = S.roofWindow(.78, 1.18); S.orientOnSlope(w, nL, upL);
+    const d = 2.6; w.position.set(-RX + upL.x * d, RY0 + upL.y * d + .04, z);
+    w.userData.y = w.position.y; w.visible = false; house.add(w); roofWins.push(w);
+  });
+  // ridge cap, fascia and gutters with downpipes
+  const ridgeMat = new T.MeshStandardMaterial({ color: 0x2c2f33, roughness: .55 });
+  const ridgeCap = S.halfPipe(v3(0, RYR + .03, -RZ), v3(0, RYR + .03, RZ), .14, ridgeMat, v3(0, 1, 0), "down"); ridgeCap.visible = false; house.add(ridgeCap);
+  const finish = new T.Group(); finish.visible = false; house.add(finish);
+  [-1, 1].forEach(s => {
+    const a = v3(s * (RX + .04), RY0 - .1, -RZ), b = v3(s * (RX + .04), RY0 - .1, RZ);
+    S.beamBetween(a.clone().add(v3(0, .02, 0)), b.clone().add(v3(0, .02, 0)), .03, .2, [SM.fascia, SM.fascia, SM.fascia, SM.fascia, SM.fascia, SM.fascia], finish);
+    finish.add(S.halfPipe(a.clone().add(v3(s * .08, -.06, 0)), b.clone().add(v3(s * .08, -.06, 0)), .075, SM.copper, v3(0, 1, 0), 'up'));
+    [-1, 1].forEach(e => finish.add(S.pipe(v3(s * (RX + .12), RY0 - .2, e * (RZ - .3)), v3(s * (RX + .12), .1, e * (RZ - .3)), .045, SM.copper)));
   });
   // gable cladding (dřevěný štít) – vertical boards in the triangle, front and back
   const gables = [];
@@ -391,8 +386,8 @@
   const ROMAN = ['I', 'II', 'III', 'IIII', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   const marks = ROMAN.map((txt, i) => {
     const t = canvasTex(256, 128, (c, w, h) => {
-      c.font = '700 84px "Caveat", "Segoe Script", cursive'; c.textAlign = 'center'; c.textBaseline = 'middle';
-      c.fillStyle = '#d23b2a'; c.fillText(txt, w / 2, h / 2 + 4);
+      c.font = '800 80px "Mona Sans", "Arial Narrow", sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillStyle = '#e0ac6b'; c.fillText(txt, w / 2, h / 2 + 4);
     });
     const sp = new T.Sprite(new T.SpriteMaterial({ map: t, transparent: true, opacity: 0, depthTest: false }));
     sp.scale.set(.9, .45, 1); sp.position.set(0, TOP + RISE + .65, zs[i]); house.add(sp);
@@ -509,19 +504,14 @@
     });
     // battens
     batRows.forEach((r, k) => { const t = seg(p, .69 + k * .0025, .7 + k * .0025); r.visible = t > 0; r.position.y = (1 - eout(t)) * .8; });
-    // tiles course by course
-    let n = 0;
-    for (let i = 0; i < tileData.length; i++) {
-      const d = tileData[i]; const a = .745 + d.k * .0068, t = seg(p, a, a + .012);
-      if (d.hide || t <= 0) { dummy.position.set(0, -50, 0); dummy.scale.setScalar(.0001); }
-      else {
-        dummy.position.set(d.x, d.y + (1 - eout(t)) * .6, d.z);
-        dummy.rotation.set(0, 0, d.s * -PITCH); dummy.scale.set(1, 1, 1);
-      }
-      dummy.updateMatrix(); tiles.setMatrixAt(n++, dummy.matrix);
-    }
-    tiles.instanceMatrix.needsUpdate = true;
-    roofWins.forEach((g, i) => { const t = seg(p, .86 + i * .01, .885 + i * .01); g.scale.setScalar(Math.max(.001, back(t))); g.visible = t > 0; });
+    // roof course by course (clipping plane rises from the eave, row by row)
+    const q = seg(p, .745, .86);
+    roofFaces.forEach(m => m.visible = q > 0);
+    { const rowH = (RYR - RY0 + .25) / roofRows, f = q * roofRows, k = Math.floor(f);
+      clipY.constant = q >= 1 ? 100 : RY0 - .12 + rowH * (k + eout(f - k)); }
+    roofWins.forEach((g, i) => { const t = seg(p, .86 + i * .012, .885 + i * .012); g.visible = t > 0; g.position.y = g.userData.y + (1 - back(t)) * 1.4; });
+    ridgeCap.visible = p > .885; ridgeCap.scale.y = Math.max(.001, eout(seg(p, .885, .91)));
+    finish.visible = p > .9; finish.position.y = (1 - eout(seg(p, .9, .93))) * 1.2;
     gables.forEach((g, i) => { const t = seg(p, .88 + i * .02, .92 + i * .02); g.scale.y = Math.max(.001, eout(t)); g.visible = t > 0; });
     chimney.visible = p > .9; chimney.scale.y = Math.max(.001, eout(seg(p, .9, .93)));
 

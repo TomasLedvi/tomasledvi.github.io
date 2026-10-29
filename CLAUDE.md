@@ -79,10 +79,13 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   má `noindex,nofollow` → Google je nevidí (ověřeno 29. 10. 2026) = hlavní argument do telefonu. Ukázka `stybr/` (29. 10., cílová cena ~40 tis.):
   3D příběh „Od kmene ke střeše“ v reálném čase (`krov.js`, Three.js r128, procedurální textury: kůra, smrk, letokruhy): kmen → odletí kůra → trám →
   křídová šňůra → čep, dlab, kolík → zdi → stropní trámy, pozednice, sloupky, vaznice, krokve s tesařskými značkami I–XII, kleštiny → laťování →
-  tašky po řadách + 2 střešní okna → dřevěné štíty; skládací metr jako ukazatel postupu, popisky tužkou (Caveat). Přidaná hodnota: konfigurátor
-  pergoly / garážového stání / altánu (`konfigurator.js`, rozměry, pultová/sedlová, krytina, lazura, výpočet plochy střechy, sloupků, krokví, řeziva,
-  přenos do poptávky), zimní banner sníh a námrazy, galerie s filtrem. Fotky jsou z jejich webu (importované na Higgsfield CloudFront přes media_import_url,
-  URL `<id>.png`, i když jde o JPEG) – při zakázce vyžádat originály. Fonty Zilla Slab + Archivo + Caveat + JetBrains Mono.
+  krytina po řadách (clipping plane) + střešní okna, hřebenáče, měděné okapy a svody, štíty. 29. 10. v2 „web, který prodává“: moderní vzhled,
+  fonty Mona Sans (široký řez 125 %, nadpisy) + Martian Mono, self-hosted ve `vendor/fonts/` (OFL). HOOK = kalkulačka střechy (`strecha.js`):
+  sedlová/valbová/pultová, rozměry, sklon, 5 krytin s barvami, střešní okna, nová/výměna → 3D dům živě + plocha, tašky, latě, hřeben, okapy, svody
+  → jedním klikem do poptávky (koeficienty orientační). Druhá záložka = konfigurátor pergoly (`konfigurator.js`). Společné 3D díly v `stavba.js`
+  (window.STAVBA: textury, krytiny, dům, okapy, okna, smrky, tráva). Ukazatel postupu příběhu vpravo (Dřevo, Míra, Spoj, Krov, Střecha),
+  mobilní lišta Zavolat/Spočítat. Fotky jsou z jejich webu (importované na Higgsfield CloudFront přes media_import_url,
+  URL `<id>.png`, i když jde o JPEG) – při zakázce vyžádat originály.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).

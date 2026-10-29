@@ -5,223 +5,237 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Tesařství Štýbr – krovy a střechy Liberec</title>
-<meta name="description" content="Tesařství a pokrývačství Štýbr, Liberec. Krovy, střechy, pergoly, garážová stání, podkroví a sádrokartony. Od roku 1992 v Libereckém kraji, Mladé Boleslavi a Praze.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@500&family=Zilla+Slab:wght@500;600;700&display=swap">
+<meta name="description" content="Tesařství a pokrývačství Štýbr, Liberec. Krovy, střechy, pergoly, garážová stání, podkroví a sádrokartony. Od roku 1992. Spočítejte si střechu online.">
 <style>
-/* Koncept: noční dílna a zlatá hodina na stavbě. Tmavé „uhlí“, světlý smrk, červená tesařská tužka, modrá křídová šňůra.
-   Typo: Zilla Slab (dřevěné plakátové písmo), Archivo (text), Caveat (poznámky tužkou), JetBrains Mono (míry). */
+@font-face{font-family:"Mona Sans";src:url(../vendor/fonts/mona-sans-latin-ext-wdth-normal.woff2) format("woff2-variations");font-weight:200 900;font-stretch:75% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Mona Sans";src:url(../vendor/fonts/mona-sans-latin-wdth-normal.woff2) format("woff2-variations");font-weight:200 900;font-stretch:75% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Martian Mono";src:url(../vendor/fonts/martian-mono-latin-ext-400-normal.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20C0,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Martian Mono";src:url(../vendor/fonts/martian-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212,U+FEFF}
+/* Koncept: moderní stavební studio. Teplá černá, světlo smrkového dřeva, křídová modrá pro míry.
+   Typo: Mona Sans (variabilní šířka) – široké tučné nadpisy, normální text; Martian Mono pro míry a štítky. */
 :root{
-  --noc:#12100d; --uhel:#1b1814; --uhel2:#24201b; --cara:#3a332b;
-  --smrk:#e8c48e; --smrk2:#f4e3c4; --dub:#a8743d;
-  --tuzka:#d23b2a; --krida:#4f8fe0;
-  --papir:#f2eadc; --sedy:#b4a895; --sedy2:#7f7465;
-  --slab:"Zilla Slab",Rockwell,"Roboto Slab",Georgia,serif;
-  --text:"Archivo","Segoe UI",system-ui,sans-serif;
-  --ruka:"Caveat","Segoe Script","Comic Sans MS",cursive;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --bg:#0b0a09; --s1:#141210; --s2:#1c1916; --s3:#25211d;
+  --line:rgba(243,236,226,.09); --line2:rgba(243,236,226,.16);
+  --txt:#f3ece2; --mute:#a39a8e; --mute2:#6f675d;
+  --wood:#e0ac6b; --wood2:#f2cf9f; --chalk:#7aa7ff; --ok:#8bd17c;
+  --sans:"Mona Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"Martian Mono",ui-monospace,Menlo,monospace;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{background:var(--noc)}
-body{margin:0;background:var(--noc);color:var(--papir);font-family:var(--text);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--krida);outline-offset:3px;border-radius:4px}
-.gut{padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
-.wrap{max-width:1220px;margin:0 auto}
-.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--smrk)}
-.ruka{font-family:var(--ruka);font-weight:700;color:var(--tuzka)}
-h1,h2,h3{font-family:var(--slab);font-weight:700;line-height:.98;margin:0;text-wrap:balance}
-.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 16px var(--text);padding:14px 22px;border-radius:3px;border:1.5px solid var(--cara);background:rgba(27,24,20,.75);color:var(--papir);cursor:pointer;transition:transform .2s,border-color .2s,background .2s}
-.btn:hover{transform:translateY(-2px);border-color:var(--smrk)}
-.btn.hot{background:var(--smrk);border-color:var(--smrk);color:#1a120a}
-.btn.hot:hover{background:var(--smrk2)}
-.btn svg{width:18px;height:18px}
+:focus-visible{outline:2px solid var(--chalk);outline-offset:3px;border-radius:6px}
+.gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1280px;margin:0 auto}
+.lab{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--wood)}
+h1,h2,h3{margin:0;font-family:var(--sans);text-wrap:balance}
+.disp{font-stretch:125%;font-weight:800;letter-spacing:-.025em;line-height:.92;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font:600 15.5px var(--sans);font-stretch:105%;padding:15px 22px;border-radius:999px;border:1px solid var(--line2);background:rgba(28,25,22,.6);color:var(--txt);cursor:pointer;transition:transform .25s,background .25s,border-color .25s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.btn:hover{transform:translateY(-2px);border-color:var(--txt)}
+.btn.hot{background:var(--wood);border-color:var(--wood);color:#170f06}
+.btn.hot:hover{background:var(--wood2)}
+.btn svg{width:17px;height:17px;flex:none}
+.btn .arr{transition:transform .25s}.btn:hover .arr{transform:translateX(3px)}
 
-/* ---------- nav ---------- */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--noc)}
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 .nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
-.nav.solid{background:rgba(18,16,13,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--cara)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:12px}
+.nav.solid{background:rgba(11,10,9,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:14px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand svg{width:48px;height:48px;flex:none}
-.brand b{font-family:var(--slab);font-size:21px;letter-spacing:.02em;line-height:1}
-.brand small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--sedy);margin-top:3px;font-weight:500}
-.nav ul{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0}
-.nav ul a{display:block;text-decoration:none;padding:8px 12px;font-weight:600;font-size:15px;color:var(--sedy);transition:color .2s}
-.nav ul a:hover{color:var(--papir)}
-.nav .tel{background:var(--tuzka);color:#fff!important;border-radius:3px;font-family:var(--mono);font-size:14px;padding:9px 14px;white-space:nowrap}
-@media (max-width:420px){.brand small{display:none}.nav .tel{font-size:13px;padding:8px 10px}}
-@media (max-width:900px){.nav ul .hs{display:none}}
+.brand svg{width:40px;height:40px;flex:none}
+.brand b{font-stretch:125%;font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1}
+.brand small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--mute);margin-top:4px}
+.nav ul{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav ul a{display:block;text-decoration:none;padding:8px 13px;font-weight:550;font-size:14.5px;color:var(--mute);border-radius:999px;transition:color .2s,background .2s}
+.nav ul a:hover{color:var(--txt);background:var(--s2)}
+.nav .cta{background:var(--txt);color:#120e0a!important;font-weight:650;white-space:nowrap}
+.nav .cta:hover{background:var(--wood2)!important}
+@media (max-width:980px){.nav ul .hs{display:none}}
+@media (max-width:420px){.brand small{display:none}}
 
-/* ---------- story (pinned 3D) ---------- */
+/* story */
 #pribeh{position:relative;height:880vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 #krov3d{position:absolute;inset:0;width:100%;height:100%;display:block}
-.stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(18,16,13,.82) 0%,rgba(18,16,13,.35) 34%,transparent 58%),linear-gradient(0deg,rgba(18,16,13,.7),transparent 22%)}
-.cap{position:absolute;z-index:3;left:max(18px,env(safe-area-inset-left,0px),5.5vw);top:50%;transform:translateY(-50%);width:min(34rem,44vw);opacity:0;pointer-events:none;will-change:opacity,transform}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,9,.86) 0%,rgba(11,10,9,.42) 32%,transparent 56%),linear-gradient(0deg,rgba(11,10,9,.8),transparent 24%),linear-gradient(180deg,rgba(11,10,9,.5),transparent 18%)}
+.cap{position:absolute;z-index:3;left:max(20px,env(safe-area-inset-left,0px),5vw);top:50%;transform:translateY(-50%);width:min(36rem,44vw);opacity:0;pointer-events:none;will-change:opacity,transform}
 .cap.on{pointer-events:auto}
-.cap .num{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.cap .num .ruka{font-size:42px;line-height:.8}
-.cap h2{font-size:clamp(46px,5.6vw,86px);text-transform:uppercase;letter-spacing:-.005em;margin-bottom:.32em}
-.cap p{margin:0;color:var(--sedy);font-size:18px;max-width:31rem}
-.cap.hero h1{font-size:clamp(64px,8.6vw,140px);text-transform:uppercase;line-height:.88;letter-spacing:-.01em}
-.cap.hero h1 span{display:block;color:var(--smrk)}
-.cap.hero p{color:var(--papir);opacity:.88;font-size:19px;margin-top:20px}
-.cap .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.hint{position:absolute;z-index:3;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sedy);white-space:nowrap}
-.hint i{display:block;width:2px;height:30px;background:linear-gradient(var(--krida),transparent);animation:snap 1.8s ease-in-out infinite;transform-origin:top}
-@keyframes snap{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
-/* labels drawn by pencil */
+.cap .lab{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.cap .lab i{display:inline-block;width:28px;height:1px;background:var(--wood)}
+.cap h2{font-size:clamp(40px,4.8vw,78px);margin-bottom:22px}
+.cap p{margin:0;color:var(--mute);font-size:18px;max-width:30rem}
+.cap.hero h1{font-size:clamp(56px,7.4vw,124px);line-height:.88}
+.cap.hero h1 span{display:block;color:var(--wood);font-stretch:100%;font-weight:300;letter-spacing:-.02em;text-transform:none;font-size:.46em;line-height:1.1;margin-top:.25em}
+.cap.hero p{color:var(--txt);opacity:.86;font-size:19px;margin-top:22px}
+.cap .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hook{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:10px 16px 10px 12px;border:1px solid var(--line2);border-radius:999px;background:rgba(20,18,16,.6);font-size:14px;color:var(--mute);text-decoration:none;backdrop-filter:blur(6px)}
+.hook b{color:var(--txt);font-weight:600}
+.hook .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(139,209,124,.18)}
+.hint{position:absolute;z-index:3;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.hint i{display:block;width:1px;height:34px;background:linear-gradient(var(--chalk),transparent);animation:drop 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes drop{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 .lbl{position:absolute;z-index:4;left:0;top:0;pointer-events:none;opacity:0;transition:opacity .35s;white-space:nowrap}
-.lbl b{display:block;font-family:var(--ruka);font-weight:700;font-size:28px;color:var(--papir);line-height:1;transform:translate(14px,-34px) rotate(-3deg);text-shadow:0 2px 12px rgba(0,0,0,.8)}
-.lbl::before{content:"";position:absolute;left:0;top:0;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:var(--tuzka);box-shadow:0 0 0 4px rgba(210,59,42,.25)}
-.lbl::after{content:"";position:absolute;left:3px;top:-3px;width:16px;height:2px;background:var(--tuzka);transform:rotate(-55deg);transform-origin:left}
+.lbl::before{content:"";position:absolute;left:0;top:0;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--chalk);box-shadow:0 0 0 5px rgba(122,167,255,.22)}
+.lbl::after{content:"";position:absolute;left:0;top:0;width:44px;height:1px;background:var(--chalk);transform:rotate(-38deg);transform-origin:left}
+.lbl b{position:absolute;left:36px;top:-42px;font-family:var(--mono);font-weight:400;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--txt);background:rgba(11,10,9,.72);border:1px solid rgba(122,167,255,.45);padding:6px 9px;border-radius:6px;backdrop-filter:blur(6px)}
 .lbl.on{opacity:1}
-/* folding rule as progress */
-.metr{position:absolute;z-index:3;right:max(14px,env(safe-area-inset-right,0px),2.4vw);top:50%;transform:translateY(-50%);width:34px;height:min(64vh,560px);background:repeating-linear-gradient(180deg,#e9c34c 0 calc(20% - 2px),#2a2620 calc(20% - 2px) 20%);border-radius:3px;box-shadow:0 10px 30px rgba(0,0,0,.5);overflow:hidden}
-.metr::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(0,0,0,.55) 0 1px,transparent 1px 1%) left/9px 100% no-repeat,repeating-linear-gradient(180deg,rgba(0,0,0,.7) 0 1.5px,transparent 1.5px 5%) left/16px 100% no-repeat}
-.metr .fill{position:absolute;left:0;right:0;top:0;height:0;background:rgba(210,59,42,.38);mix-blend-mode:multiply}
-.metr .cm{position:absolute;right:3px;font-family:var(--mono);font-size:9.5px;color:#1a1408;font-weight:500}
-.metr-val{position:absolute;z-index:3;right:calc(max(14px,env(safe-area-inset-right,0px),2.4vw) + 44px);top:50%;font-family:var(--mono);font-size:12px;color:var(--smrk);transform:translateY(-50%);white-space:nowrap}
+.prog{position:absolute;z-index:3;right:max(20px,env(safe-area-inset-right,0px),3vw);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;list-style:none;margin:0;padding:14px 14px 14px 16px;border-radius:14px;background:rgba(11,10,9,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.06);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute2)}
+.prog li{display:flex;align-items:center;gap:10px;justify-content:flex-end;transition:color .3s}
+.prog li::after{content:"";width:22px;height:2px;border-radius:2px;background:currentColor;transition:width .3s,background .3s}
+.prog li.done{color:var(--mute)}
+.prog li.now{color:var(--txt)}
+.prog li.now::after{width:44px;background:var(--wood)}
+.mval{position:absolute;z-index:3;left:50%;top:calc(80px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.06em;opacity:0;transition:opacity .4s}
 @media (max-width:900px){
-  #pribeh{height:820vh}
-  .stage::after{background:linear-gradient(180deg,rgba(18,16,13,.92) 0%,rgba(18,16,13,.6) 38%,transparent 62%),linear-gradient(0deg,rgba(18,16,13,.6),transparent 20%)}
-  .cap{top:calc(84px + env(safe-area-inset-top,0px));transform:none;width:auto;right:max(18px,env(safe-area-inset-right,0px))}
-  .cap h2{font-size:clamp(38px,11vw,60px)}
-  .cap.hero h1{font-size:clamp(52px,16vw,96px)}
+  #pribeh{height:800vh}
+  .stage::after{background:linear-gradient(180deg,rgba(11,10,9,.94) 0%,rgba(11,10,9,.62) 40%,transparent 64%),linear-gradient(0deg,rgba(11,10,9,.6),transparent 20%)}
+  .cap{top:calc(86px + env(safe-area-inset-top,0px));transform:none;width:auto;right:max(20px,env(safe-area-inset-right,0px))}
+  .cap h2{font-size:clamp(32px,9.4vw,52px);margin-bottom:14px}
+  .cap.hero h1{font-size:clamp(46px,13.5vw,84px)}
   .cap p,.cap.hero p{font-size:16px}
-  .metr{height:44vh;top:auto;bottom:calc(70px + env(safe-area-inset-bottom,0px));transform:none;width:26px}
-  .metr-val{display:none}
-  .lbl b{font-size:22px}
+  .prog,.mval{display:none}
+  .lbl b{font-size:10px}
 }
 @media (prefers-reduced-motion:reduce){.hint i{animation:none}}
 
-/* ---------- sections ---------- */
-section.sec{padding-block:clamp(80px,11vw,150px);position:relative}
-.head{display:flex;flex-wrap:wrap;gap:22px 50px;align-items:end;justify-content:space-between;margin-bottom:46px}
-.head h2{font-size:clamp(48px,7vw,104px);text-transform:uppercase}
-.head p{max-width:33rem;color:var(--sedy);margin:0}
+/* sections */
+section.sec{padding-block:clamp(90px,11vw,160px);position:relative}
+.sh{display:grid;grid-template-columns:1.2fr 1fr;gap:28px 60px;align-items:end;margin-bottom:52px}
+.sh h2{font-size:clamp(42px,6vw,96px)}
+.sh p{color:var(--mute);margin:0;max-width:34rem;font-size:18px}
+.sh .lab{margin-bottom:22px;display:block}
+@media (max-width:860px){.sh{grid-template-columns:1fr}}
 
-.facts{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--cara)}
-.facts>div{padding:34px 26px;border-right:1px solid var(--cara);min-width:0}
-.facts>div:last-child{border-right:0}
-.facts strong{display:block;font-family:var(--slab);font-size:clamp(46px,5vw,76px);line-height:1;color:var(--smrk)}
-.facts span{color:var(--sedy);font-size:15.5px}
-@media (max-width:760px){.facts{grid-template-columns:1fr}.facts>div{border-right:0;border-bottom:1px solid var(--cara)}.facts>div:last-child{border-bottom:0}}
+/* calculator (hook) */
+.calcwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px}
+.view{position:relative;border-radius:22px;overflow:hidden;background:radial-gradient(ellipse at 50% 85%,#2b241c,#15120f 55%,#0e0c0a);border:1px solid var(--line);min-height:600px}
+.view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.view canvas:active{cursor:grabbing}
+.view .dims{position:absolute;left:20px;top:18px;font-family:var(--mono);font-size:11.5px;line-height:1.8;color:var(--wood);pointer-events:none}
+.view .tip{position:absolute;left:20px;bottom:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);pointer-events:none}
+.panel{background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.fld .fl{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:9px}
+.fld output,.fld .fl span{color:var(--txt)}
+.seg{display:flex;flex-wrap:wrap;gap:6px;background:var(--s2);padding:4px;border-radius:14px}
+.seg button{flex:1 1 auto;font:550 14px var(--sans);color:var(--mute);background:transparent;border:0;border-radius:10px;padding:10px 10px;cursor:pointer;transition:background .2s,color .2s}
+.seg button:hover{color:var(--txt)}
+.seg button[aria-pressed="true"]{background:var(--txt);color:#120e0a}
+.sw{display:flex;gap:10px;flex-wrap:wrap}
+.sw button{width:36px;height:36px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);outline-offset:2px}
+.sw button[aria-pressed="true"]{border-color:var(--txt)}
+input[type=range]{width:100%;accent-color:var(--wood);height:24px}
+.step{display:flex;align-items:center;gap:10px}
+.step button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line2);background:var(--s2);color:var(--txt);font:600 20px var(--sans);cursor:pointer}
+.step output{min-width:28px;text-align:center;font-family:var(--mono);font-size:18px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.res div{background:var(--s2);padding:13px 15px;min-width:0}
+.res b{display:block;font-weight:700;font-stretch:112%;font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.res span{font-size:12.5px;color:var(--mute)}
+.res .big{grid-column:1/-1;background:linear-gradient(135deg,#2a2016,#1c1916)}
+.res .big b{font-size:34px;color:var(--wood2)}
+.note{font-size:12.5px;color:var(--mute2);margin:-4px 0 0}
+.tabs{display:inline-flex;gap:4px;padding:4px;background:var(--s1);border:1px solid var(--line);border-radius:999px;margin-bottom:18px}
+.tabs button{font:600 14.5px var(--sans);color:var(--mute);background:transparent;border:0;padding:10px 18px;border-radius:999px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--wood);color:#170f06}
+.pane[hidden]{display:none}
+@media (max-width:1020px){.calcwrap{grid-template-columns:1fr}.view{min-height:420px}}
 
-/* services */
-.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:var(--uhel);border:1px solid var(--cara);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
-.card .ph{aspect-ratio:4/3;max-width:100%;position:relative;overflow:hidden;background:var(--uhel2)}
-.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-.card:hover .ph img{transform:scale(1.05)}
-.card .ph .ruka{position:absolute;left:16px;bottom:8px;font-size:34px;color:var(--papir);text-shadow:0 2px 14px rgba(0,0,0,.9)}
-.card .bd{padding:24px 24px 28px}
-.card h3{font-size:34px;text-transform:uppercase;margin-bottom:14px}
-.card ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
-.card li{position:relative;padding-left:22px;color:var(--sedy);font-size:15.5px;line-height:1.45}
-.card li::before{content:"";position:absolute;left:0;top:.62em;width:12px;height:2px;background:var(--tuzka)}
-@media (max-width:980px){.svc{grid-template-columns:1fr}}
+/* benefits row under the calculator (for the owner + client) */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.why>div{border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--s1);min-width:0}
+.why b{display:block;font-stretch:112%;font-weight:700;font-size:19px;margin-bottom:6px}
+.why p{margin:0;color:var(--mute);font-size:15px}
+@media (max-width:860px){.why{grid-template-columns:1fr}}
 
-/* snow banner */
-.snih{position:relative;overflow:hidden;border:1px solid #2c3a4f;background:linear-gradient(135deg,#142033,#0f1520 60%);border-radius:4px;padding:clamp(28px,4vw,48px);display:grid;grid-template-columns:1.3fr 1fr;gap:26px;align-items:center}
-.snih h2{font-size:clamp(40px,5vw,70px);text-transform:uppercase}
-.snih p{color:#b9c6d8;margin:.6em 0 0}
-.snih .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
-.snih canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.7}
-.snih>*{position:relative}
-@media (max-width:820px){.snih{grid-template-columns:1fr}.snih .btns{justify-content:flex-start}}
+/* services bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.tile{position:relative;border-radius:22px;overflow:hidden;background:var(--s1);border:1px solid var(--line);min-height:320px;display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1);opacity:.85}
+.tile:hover img{transform:scale(1.05)}
+.tile::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,9,.05) 20%,rgba(11,10,9,.92) 78%);z-index:1}
+.tile .in{position:relative;z-index:2;padding:26px}
+.tile h3{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(26px,2.6vw,38px);letter-spacing:-.02em;line-height:1;margin-bottom:12px}
+.tile ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.tile li{font-size:13px;padding:5px 10px;border-radius:999px;background:rgba(243,236,226,.08);border:1px solid var(--line2);color:var(--txt);backdrop-filter:blur(4px)}
+.t1{grid-column:span 4;min-height:460px}.t2{grid-column:span 2;min-height:460px}.t3{grid-column:span 3}.t4{grid-column:span 3}
+.snow{background:linear-gradient(160deg,#16243a,#0e1420 70%);border-color:#263752}
+.snow::before{background:none}
+.snow canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.75}
+.snow .in{display:flex;flex-direction:column;gap:12px;height:100%;justify-content:flex-end}
+.snow p{margin:0;color:#b9c8dc;font-size:15.5px;max-width:28rem}
+@media (max-width:980px){.t1,.t2,.t3,.t4{grid-column:span 6}.t1,.t2{min-height:380px}}
 
-/* configurator */
-.konf{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;align-items:stretch}
-.konf-view{position:relative;background:radial-gradient(ellipse at 50% 70%,#2a241d,#14110e 70%);border:1px solid var(--cara);border-radius:4px;min-height:520px;overflow:hidden;min-width:0}
-#konf3d{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
-#konf3d:active{cursor:grabbing}
-.konf-view .tip{position:absolute;left:16px;bottom:12px;font-family:var(--ruka);font-size:24px;color:var(--sedy);pointer-events:none}
-.konf-view .dims{position:absolute;right:14px;top:12px;font-family:var(--mono);font-size:12.5px;color:var(--smrk);text-align:right;line-height:1.7;pointer-events:none}
-.konf-ui{background:var(--uhel);border:1px solid var(--cara);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:20px;min-width:0}
-.fld>label,.fld>.lab{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sedy);margin-bottom:9px}
-.fld output{color:var(--smrk)}
-.seg{display:flex;flex-wrap:wrap;gap:6px}
-.seg button{flex:1 1 auto;font:600 14.5px var(--text);color:var(--sedy);background:var(--uhel2);border:1px solid var(--cara);border-radius:3px;padding:10px 12px;cursor:pointer;transition:all .2s}
-.seg button[aria-pressed="true"]{background:var(--smrk);border-color:var(--smrk);color:#1a120a}
-.sw{display:flex;gap:9px}
-.sw button{width:38px;height:38px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:inset 0 0 0 2px rgba(0,0,0,.35)}
-.sw button[aria-pressed="true"]{border-color:var(--papir)}
-input[type=range]{width:100%;accent-color:var(--tuzka);height:28px}
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cara);border:1px solid var(--cara);border-radius:3px;overflow:hidden}
-.calc div{background:var(--uhel2);padding:12px 14px}
-.calc b{display:block;font-family:var(--mono);font-size:21px;font-weight:500;color:var(--papir);font-variant-numeric:tabular-nums}
-.calc span{font-size:12.5px;color:var(--sedy)}
-.konf-ui .note{font-size:13px;color:var(--sedy2);margin:-6px 0 0}
-@media (max-width:980px){.konf{grid-template-columns:1fr}.konf-view{min-height:380px}}
-
-/* gallery */
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.chips button{font:600 14.5px var(--text);color:var(--sedy);background:transparent;border:1px solid var(--cara);border-radius:99px;padding:9px 16px;cursor:pointer}
-.chips button[aria-pressed="true"]{background:var(--papir);color:#16120d;border-color:var(--papir)}
-.gal{columns:3 280px;column-gap:14px}
-.gal figure{margin:0 0 14px;break-inside:avoid;position:relative;border-radius:3px;overflow:hidden;cursor:zoom-in;background:var(--uhel2)}
-.gal img{width:100%;height:auto;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .4s}
+/* reference */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.chips button{font:550 14px var(--sans);color:var(--mute);background:var(--s1);border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--txt);color:#120e0a;border-color:var(--txt)}
+.gal{columns:3 300px;column-gap:14px}
+.gal figure{margin:0 0 14px;break-inside:avoid;position:relative;border-radius:18px;overflow:hidden;cursor:zoom-in;background:var(--s2)}
+.gal img{width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
 .gal figure:hover img{transform:scale(1.04)}
-.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 10px;background:linear-gradient(transparent,rgba(10,8,6,.85));font-family:var(--ruka);font-size:24px;color:var(--papir)}
+.gal figcaption{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;background:rgba(11,10,9,.7);border:1px solid var(--line2);padding:6px 9px;border-radius:8px;backdrop-filter:blur(6px)}
 .gal figure[hidden]{display:none}
-.lb{position:fixed;inset:0;z-index:90;background:rgba(8,7,5,.94);display:grid;place-items:center;padding:max(18px,env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) max(18px,env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px))}
-.lb img{max-width:min(1400px,100%);max-height:84vh;width:auto;height:auto;border-radius:3px}
-.lb p{font-family:var(--ruka);font-size:28px;text-align:center;margin:10px 0 0}
-.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px));font:600 15px var(--text);background:var(--uhel2);color:var(--papir);border:1px solid var(--cara);border-radius:3px;padding:10px 14px;cursor:pointer}
-.src{font-size:13px;color:var(--sedy2);margin-top:6px}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(6,5,4,.95);display:grid;place-items:center;padding:max(20px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(20px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+.lb img{max-width:min(1400px,100%);max-height:84vh;width:auto;height:auto;border-radius:14px}
+.lb p{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;text-align:center;margin:14px 0 0;color:var(--mute)}
+.lb button{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
 
-/* why */
-.why{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--cara)}
-.why>div{padding:30px 26px 10px 0;min-width:0}
-.why .ruka{font-size:40px;line-height:1}
-.why h3{font-size:28px;margin:8px 0 10px}
-.why p{color:var(--sedy);margin:0;font-size:16px}
-@media (max-width:820px){.why{grid-template-columns:1fr}}
+/* trust */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust>div{padding:34px 24px 30px 0;min-width:0}
+.trust strong{display:block;font-stretch:125%;font-weight:800;font-size:clamp(40px,4.6vw,70px);letter-spacing:-.03em;line-height:1;margin-bottom:10px}
+.trust span{color:var(--mute);font-size:15px}
+@media (max-width:860px){.trust{grid-template-columns:1fr 1fr}}
 
 /* contact */
-.kontakt{display:grid;grid-template-columns:1fr 1.1fr;gap:18px}
-.kbox{background:var(--uhel);border:1px solid var(--cara);border-radius:4px;padding:28px;min-width:0}
-.kbox h3{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--smrk);font-weight:500;margin-bottom:12px}
-.big{font-family:var(--slab);font-size:clamp(34px,4vw,52px);line-height:1.05;user-select:all}
-.kbox p{margin:.3em 0;color:var(--sedy)}
-.area{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.area span{border:1px dashed var(--krida);color:#a9c6ee;border-radius:99px;padding:6px 13px;font-size:14px}
+.kontakt{display:grid;grid-template-columns:1fr 1.15fr;gap:14px}
+.kbox{background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:30px;min-width:0}
+.kbox .lab{display:block;margin:0 0 8px}
+.tel{font-stretch:125%;font-weight:800;font-size:clamp(34px,4vw,56px);letter-spacing:-.02em;line-height:1;text-decoration:none;user-select:all}
+.kbox p{margin:.2em 0 1.2em;color:var(--mute)}
+.area{display:flex;flex-wrap:wrap;gap:6px}
+.area span{border:1px dashed rgba(122,167,255,.55);color:#bcd2ff;border-radius:999px;padding:6px 12px;font-size:13.5px}
 form{display:grid;gap:12px}
-form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-form label{display:grid;gap:6px;font-size:13px;color:var(--sedy);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
-input[type=text],input[type=tel],input[type=email],select,textarea{font:400 16px var(--text);color:var(--papir);background:var(--uhel2);border:1px solid var(--cara);border-radius:3px;padding:12px 13px;width:100%;text-transform:none;letter-spacing:0}
-textarea{min-height:130px;resize:vertical}
-.ok{display:none;border:1px solid #3d6b3a;background:#16231a;color:#bfe0b8;padding:12px 14px;border-radius:3px;font-size:15px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form label{display:grid;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+input[type=text],input[type=tel],select,textarea{font:400 16px var(--sans);color:var(--txt);background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:13px 14px;width:100%;text-transform:none;letter-spacing:0}
+textarea{min-height:140px;resize:vertical}
+.ok{display:none;border:1px solid #3d6b3a;background:#132016;color:#c5e8bd;padding:12px 14px;border-radius:12px;font-size:15px}
 .ok.on{display:block}
-@media (max-width:860px){.kontakt{grid-template-columns:1fr}form .row{grid-template-columns:1fr}}
-footer{border-top:1px solid var(--cara);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px));color:var(--sedy2);font-size:14px}
+@media (max-width:900px){.kontakt{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding-block:30px calc(96px + env(safe-area-inset-bottom,0px));color:var(--mute2);font-size:13.5px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
-.reveal{opacity:1;transform:none;transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
-.js .reveal.pre{opacity:0;transform:translateY(28px)}
+
+/* mobile action bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;gap:8px;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:rgba(11,10,9,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .4s}
+.mbar.on{transform:none}
+.mbar .btn{flex:1;padding:13px 10px;font-size:15px}
+@media (max-width:760px){.mbar{display:flex}}
+
+.rv{transition:opacity 1s,transform 1s cubic-bezier(.2,.8,.2,1)}
+.js .rv.pre{opacity:0;transform:translateY(30px)}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="logo" viewBox="0 0 120 120">
-      <circle cx="60" cy="60" r="57" fill="#f2eadc"/>
-      <circle cx="60" cy="60" r="52" fill="none" stroke="#12100d" stroke-width="2.5"/>
-      <circle cx="60" cy="60" r="35" fill="none" stroke="#12100d" stroke-width="1.5"/>
+      <circle cx="60" cy="60" r="58" fill="#f3ece2"/>
+      <circle cx="60" cy="60" r="51" fill="none" stroke="#0b0a09" stroke-width="2"/>
       <path id="arcT" d="M18 60 A42 42 0 0 1 102 60" fill="none"/>
-      <path id="arcB" d="M16 60 A44 44 0 0 0 104 60" fill="none"/>
-      <text font-family="Archivo,Arial,sans-serif" font-weight="700" font-size="11.5" letter-spacing="2.4" fill="#12100d"><textPath href="#arcT" startOffset="50%" text-anchor="middle">TESAŘSTVÍ</textPath></text>
-      <text font-family="Archivo,Arial,sans-serif" font-weight="700" font-size="10" letter-spacing="1.6" fill="#12100d"><textPath href="#arcB" startOffset="50%" text-anchor="middle">POKRÝVAČSTVÍ</textPath></text>
-      <rect x="12" y="49" width="96" height="23" fill="#12100d"/>
-      <text x="60" y="67" text-anchor="middle" font-family="Zilla Slab,Georgia,serif" font-weight="700" font-size="20" fill="#f2eadc" letter-spacing="1.5">ŠTÝBR</text>
-      <text x="60" y="44" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#12100d" letter-spacing="1.5">ESTD</text>
-      <text x="60" y="86" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#d23b2a" letter-spacing="1.5">1992</text>
+      <path id="arcB" d="M15 60 A45 45 0 0 0 105 60" fill="none"/>
+      <text font-family="Mona Sans,Arial,sans-serif" font-weight="700" font-size="11" letter-spacing="2.2" fill="#0b0a09"><textPath href="#arcT" startOffset="50%" text-anchor="middle">TESAŘSTVÍ</textPath></text>
+      <text font-family="Mona Sans,Arial,sans-serif" font-weight="700" font-size="9.5" letter-spacing="1.4" fill="#0b0a09"><textPath href="#arcB" startOffset="50%" text-anchor="middle">POKRÝVAČSTVÍ</textPath></text>
+      <rect x="11" y="49" width="98" height="23" rx="2" fill="#0b0a09"/>
+      <text x="60" y="66.5" text-anchor="middle" font-family="Mona Sans,Arial,sans-serif" font-weight="800" font-size="17" fill="#f3ece2" style="font-stretch:125%">ŠTÝBR</text>
+      <text x="60" y="88" text-anchor="middle" font-family="Martian Mono,monospace" font-size="8" fill="#a8743d" letter-spacing="1.5">1992</text>
     </symbol>
-    <symbol id="ic-tel" viewBox="0 0 24 24"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" fill="currentColor"/></symbol>
+    <symbol id="i-arr" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
@@ -229,14 +243,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Tesařství Štýbr, nahoru">
       <svg><use href="#logo"/></svg>
-      <span><b>ŠTÝBR</b><small>TESAŘSTVÍ · POKRÝVAČSTVÍ</small></span>
+      <span><b>ŠTÝBR</b><small>Tesařství · Pokrývačství · Liberec</small></span>
     </a>
     <ul>
+      <li class="hs"><a href="#kalkulacka">Kalkulačka střechy</a></li>
       <li class="hs"><a href="#sluzby">Služby</a></li>
-      <li class="hs"><a href="#konfigurator">Pergola na míru</a></li>
       <li class="hs"><a href="#reference">Reference</a></li>
       <li class="hs"><a href="#kontakt">Kontakt</a></li>
-      <li><a class="tel" href="tel:+420737708433">737 708 433</a></li>
+      <li><a class="cta" href="tel:+420737708433">737 708 433</a></li>
     </ul>
   </div>
 </nav>
@@ -247,46 +261,47 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <canvas id="krov3d" aria-hidden="true"></canvas>
 
     <div class="cap hero" data-a="-1" data-b=".085">
-      <div class="eyebrow">Liberec · od roku 1992</div>
-      <h1>Tesařství <span>Štýbr</span></h1>
-      <p>Krovy, střechy a stavby ze dřeva. Kompletní zakázky včetně materiálu a práce, kterou děláme osobně.</p>
+      <div class="lab"><i></i>Liberec · od roku 1992</div>
+      <h1 class="disp">Tesařství Štýbr<span>Krovy, střechy a stavby ze dřeva</span></h1>
+      <p>Od krovu po poslední tašku z jedné ruky. Kompletně včetně materiálu, práci děláme osobně.</p>
       <div class="btns">
-        <a class="btn hot" href="tel:+420737708433"><svg><use href="#ic-tel"/></svg>737 708 433</a>
-        <a class="btn" href="#konfigurator">Navrhnout pergolu</a>
+        <a class="btn hot" href="#kalkulacka">Spočítat střechu <svg class="arr"><use href="#i-arr"/></svg></a>
+        <a class="btn" href="tel:+420737708433"><svg><use href="#i-tel"/></svg>737 708 433</a>
       </div>
+      <a class="hook" href="#kalkulacka"><span class="dot"></span><span><b>Nové:</b> plocha střechy, krytina a okapy za minutu</span></a>
     </div>
     <div class="hint" id="hint">Scrollujte · postavíme krov<i></i></div>
 
     <div class="cap" data-a=".095" data-b=".2">
-      <div class="num"><span class="ruka">I</span><span class="eyebrow">Dřevo</span></div>
-      <h2>Všechno začíná u kmene</h2>
-      <p>Dobrá střecha stojí na poctivém dřevě. Kůra dolů, hrany ven, a z kulatiny je trám.</p>
+      <div class="lab"><i></i>Dřevo</div>
+      <h2 class="disp">Všechno začíná u kmene</h2>
+      <p>Dobrá střecha stojí na poctivém dřevě. Kůra dolů, hrany ven, z kulatiny je trám.</p>
     </div>
     <div class="cap" data-a=".205" data-b=".3">
-      <div class="num"><span class="ruka">II</span><span class="eyebrow">Míra</span></div>
-      <h2>Dvakrát měř, jednou řež</h2>
-      <p>Křídová šňůra, tesařská tužka a úhelník. Přesnost se dělá na stavbě, ne v prospektu.</p>
+      <div class="lab"><i></i>Míra</div>
+      <h2 class="disp">Dvakrát měř, jednou řež</h2>
+      <p>Křídová šňůra, tužka a úhelník. Přesnost se dělá na stavbě.</p>
     </div>
     <div class="cap" data-a=".305" data-b=".44">
-      <div class="num"><span class="ruka">III</span><span class="eyebrow">Spoj</span></div>
-      <h2>Čep, dlab, kolík</h2>
-      <p>Tesařské spoje drží krovy celá staletí. Řemeslné postupy kombinujeme s moderní technikou a CNC konstrukcemi.</p>
+      <div class="lab"><i></i>Spoj</div>
+      <h2 class="disp">Čep, dlab, kolík</h2>
+      <p>Tesařské spoje drží krovy celá staletí. Řemeslo spojujeme s moderní technikou a CNC konstrukcemi.</p>
     </div>
     <div class="cap" data-a=".48" data-b=".685">
-      <div class="num"><span class="ruka">IIII</span><span class="eyebrow">Krov</span></div>
-      <h2>Krov na míru vašemu domu</h2>
+      <div class="lab"><i></i>Krov</div>
+      <h2 class="disp">Krov na míru vašemu domu</h2>
       <p>Pozednice, sloupky, vaznice, krokve a kleštiny. Každý pár krokví má svoji tesařskou značku a svoje místo.</p>
     </div>
     <div class="cap" data-a=".69" data-b=".885">
-      <div class="num"><span class="ruka">V</span><span class="eyebrow">Střecha</span></div>
-      <h2>Laťování a krytina</h2>
-      <p>Pálené i betonové tašky (Bramac, Tondach), vláknocement, šindele i plastové krytiny. A střešní okna Velux nebo Roto.</p>
+      <div class="lab"><i></i>Střecha</div>
+      <h2 class="disp">Laťování a krytina</h2>
+      <p>Pálené i betonové tašky (Bramac, Tondach), vláknocement, šindele i plastové krytiny. Střešní okna Velux a Roto.</p>
     </div>
     <div class="cap" data-a=".9" data-b="2">
-      <div class="num"><span class="ruka">VI</span><span class="eyebrow">Hotovo</span></div>
-      <h2>Střecha, pod kterou se dobře spí</h2>
-      <p>Od krovu po poslední tašku z jedné ruky. Liberecký kraj, Mladá Boleslav i Praha.</p>
-      <div class="btns"><a class="btn hot" href="#kontakt">Domluvit obhlídku</a><a class="btn" href="#reference">Naše stavby</a></div>
+      <div class="lab"><i></i>Hotovo</div>
+      <h2 class="disp">A teď ta vaše</h2>
+      <p>Zadejte rozměry domu a hned uvidíte plochu střechy, krytinu, latě i okapy. Výsledek nám pošlete jedním klikem.</p>
+      <div class="btns"><a class="btn hot" href="#kalkulacka">Spočítat moji střechu <svg class="arr"><use href="#i-arr"/></svg></a></div>
     </div>
 
     <div class="lbl" data-l="snura" data-a=".255" data-b=".33"><b>křídová šňůra</b></div>
@@ -300,119 +315,151 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="lbl" data-l="klestina" data-a=".63" data-b=".69"><b>kleština</b></div>
     <div class="lbl" data-l="lati" data-a=".705" data-b=".76"><b>laťování</b></div>
 
-    <div class="metr" aria-hidden="true"><div class="fill" id="metrFill"></div></div>
-    <div class="metr-val" id="metrVal" aria-hidden="true">0 cm</div>
+    <ol class="prog" id="prog" aria-hidden="true"><li>Dřevo</li><li>Míra</li><li>Spoj</li><li>Krov</li><li>Střecha</li></ol>
   </div>
 </section>
 
-<section class="gut" aria-label="Fakta">
-  <div class="wrap facts reveal pre">
-    <div><strong id="let">34</strong><span>let řemesla. Firma funguje od roku 1992.</span></div>
-    <div><strong>3</strong><span>řemesla pod jednou střechou: tesařství, pokrývačství, sádrokartony.</span></div>
-    <div><strong>1&nbsp;ruka</strong><span>Zakázku dodáme kompletně včetně materiálu a práci děláme osobně.</span></div>
-  </div>
-</section>
-
-<section class="sec gut" id="sluzby">
+<section class="sec gut" id="kalkulacka">
   <div class="wrap">
-    <div class="head reveal pre">
-      <div><div class="eyebrow">Co děláme</div><h2>Služby</h2></div>
-      <p>Od trámu přes střechu až po hotové podkroví. Ať stavíte, rekonstruujete, nebo jen potřebujete spravit žlab.</p>
+    <div class="sh rv pre">
+      <div><span class="lab">Kalkulačka střechy</span><h2 class="disp">Spočítejte si střechu dřív, než zavoláte</h2></div>
+      <p>Vyberte tvar, zadejte rozměry domu a krytinu. Hned uvidíte plochu střechy, kolik tašek a latí bude potřeba a délku okapů. Zadání nám pošlete jedním klikem a my se ozveme s nabídkou.</p>
     </div>
-    <div class="svc">
-      <article class="card reveal pre">
-        <div class="ph"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/d921c4b4-a3a5-446a-9322-4e72dffb9cef.png" alt="Rozestavěný krov na hrubé stavbě"><span class="ruka">krovy a dřevostavby</span></div>
-        <div class="bd"><h3>Tesařství</h3><ul>
-          <li>montáž krovů, CNC konstrukce</li><li>dřevostavby, dřevěné pláště budov</li><li>pergoly, garážová stání</li><li>zahradní chatky, altány, kůlny, terasy</li><li>dětské zahradní domky a prolézačky</li><li>půdní vestavby, dřevěné podlahy</li><li>balkony a dřevěné lávky</li><li>impregnace a ošetření krovů proti dřevokazným houbám a plísním</li>
-        </ul></div>
-      </article>
-      <article class="card reveal pre">
-        <div class="ph"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/c549c1e1-5b56-48d8-8e18-f8ce5ea748c7.png" alt="Pokrývač při pokládce krytiny"><span class="ruka">střechy a okna</span></div>
-        <div class="bd"><h3>Pokrývačství</h3><ul>
-          <li>kompletní rekonstrukce střech</li><li>montáž a výměna střešních oken Velux a Roto</li><li>betonové a pálené tašky (Bramac, Tondach)</li><li>vláknocementové krytiny (Eternit, Cembrit)</li><li>bitumenové šindele, plastové krytiny (Capacco, Eureko, Drlíkův šindel)</li><li>nadkrokevní izolace</li><li>čištění a opravy žlabů</li><li>odstraňování sněhu a ledových námraz</li>
-        </ul></div>
-      </article>
-      <article class="card reveal pre">
-        <div class="ph"><img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/35bba246-e019-44ad-a301-acbad49192dc.png" alt="Podkroví ze sádrokartonu se střešním oknem"><span class="ruka">podkroví</span></div>
-        <div class="bd"><h3>Sádrokartony</h3><ul>
-          <li>kompletní SDK práce</li><li>příčky, stropy, předstěny</li><li>tepelné a hlukové izolace</li><li>kazetové stropy</li><li>podkroví od krovu až po hotový pokoj</li>
-        </ul></div>
-      </article>
+    <div class="tabs" role="group" aria-label="Typ výpočtu">
+      <button type="button" id="tab-strecha" data-p="pStrecha" aria-pressed="true">Střecha domu</button>
+      <button type="button" id="tab-pergola" data-p="pPergola" aria-pressed="false">Pergola, stání, altán</button>
     </div>
-  </div>
-</section>
 
-<section class="gut" aria-label="Sníh na střeše">
-  <div class="wrap snih reveal pre" id="snih">
-    <canvas id="snow" aria-hidden="true"></canvas>
-    <div>
-      <div class="eyebrow" style="color:#9cc0ef">Zima v Liberci</div>
-      <h2>Sníh a námraza na střeše?</h2>
-      <p>Odstraňujeme sníh a nebezpečné ledové námrazy ze střech, čistíme a opravujeme žlaby. Než něco spadne na auto nebo na chodník.</p>
-    </div>
-    <div class="btns">
-      <a class="btn hot" href="tel:+420737708433"><svg><use href="#ic-tel"/></svg>Zavolat 737 708 433</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec gut" id="konfigurator">
-  <div class="wrap">
-    <div class="head reveal pre">
-      <div><div class="eyebrow">Navrhněte si sami</div><h2>Pergola na míru</h2></div>
-      <p>Pergola, garážové stání, nebo altán. Nastavte rozměry, střechu a barvu dřeva. Spočítáme plochu střechy a kolik kusů řeziva konstrukce potřebuje, a návrh nám rovnou pošlete.</p>
-    </div>
-    <div class="konf">
-      <div class="konf-view">
-        <canvas id="konf3d" aria-label="3D náhled konstrukce"></canvas>
-        <div class="dims" id="kDims"></div>
-        <div class="tip">tažením otočíte ↺</div>
-      </div>
-      <div class="konf-ui">
-        <div class="fld"><div class="lab">Typ stavby</div>
-          <div class="seg" id="kTyp" role="group" aria-label="Typ stavby">
-            <button type="button" id="kt-pergola" data-v="pergola" aria-pressed="true">Pergola</button>
-            <button type="button" id="kt-garaz" data-v="garaz" aria-pressed="false">Garážové stání</button>
-            <button type="button" id="kt-altan" data-v="altan" aria-pressed="false">Altán</button>
-          </div></div>
-        <div class="fld"><label for="kSirka">Šířka <output id="oSirka">4,0 m</output></label><input type="range" id="kSirka" min="2.5" max="7" step=".1" value="4"></div>
-        <div class="fld"><label for="kHloubka">Hloubka <output id="oHloubka">3,5 m</output></label><input type="range" id="kHloubka" min="2.5" max="8" step=".1" value="3.5"></div>
-        <div class="fld"><div class="lab">Střecha</div>
-          <div class="seg" id="kStr" role="group" aria-label="Tvar střechy">
-            <button type="button" id="ks-pult" data-v="pult" aria-pressed="true">Pultová</button>
-            <button type="button" id="ks-sedlo" data-v="sedlo" aria-pressed="false">Sedlová</button>
-          </div></div>
-        <div class="fld"><div class="lab">Krytina</div>
-          <div class="seg" id="kKry" role="group" aria-label="Krytina">
-            <button type="button" id="kk-poly" data-v="poly" aria-pressed="true">Polykarbonát</button>
-            <button type="button" id="kk-sindel" data-v="sindel" aria-pressed="false">Šindel</button>
-            <button type="button" id="kk-plech" data-v="plech" aria-pressed="false">Plech</button>
-          </div></div>
-        <div class="fld"><div class="lab">Barva dřeva <output id="oBarva">přírodní</output></div>
-          <div class="sw" id="kBarva" role="group" aria-label="Barva dřeva">
-            <button type="button" id="kb-1" data-v="#ffffff" data-n="přírodní" aria-pressed="true" style="background:#e3c08b" aria-label="přírodní"></button>
-            <button type="button" id="kb-2" data-v="#c9905a" data-n="teak" aria-pressed="false" style="background:#b8783c" aria-label="teak"></button>
-            <button type="button" id="kb-3" data-v="#8a5a36" data-n="ořech" aria-pressed="false" style="background:#7a4a28" aria-label="ořech"></button>
-            <button type="button" id="kb-4" data-v="#6e6e6e" data-n="šedá" aria-pressed="false" style="background:#6f6c67" aria-label="šedá"></button>
-          </div></div>
-        <div class="calc" aria-live="polite">
-          <div><b id="cPlocha">–</b><span>plocha střechy</span></div>
-          <div><b id="cSloupy">–</b><span>sloupky</span></div>
-          <div><b id="cKrokve">–</b><span>krokve</span></div>
-          <div><b id="cRezivo">–</b><span>řezivo celkem (bm)</span></div>
+    <div class="pane" id="pStrecha">
+      <div class="calcwrap">
+        <div class="view">
+          <canvas id="strecha3d" aria-label="3D náhled domu se střechou"></canvas>
+          <div class="dims" id="rDims"></div>
+          <div class="tip">Tažením otočíte dům</div>
         </div>
-        <p class="note">Orientační výpočet z geometrie. Přesnou nabídku připravíme po obhlídce.</p>
-        <a class="btn hot" href="#kontakt" id="kSend">Poslat návrh v poptávce</a>
+        <div class="panel">
+          <div class="fld"><div class="fl">Tvar střechy</div>
+            <div class="seg" id="rTvar" role="group" aria-label="Tvar střechy">
+              <button type="button" id="rt-sedlova" data-v="sedlova" aria-pressed="true">Sedlová</button>
+              <button type="button" id="rt-valbova" data-v="valbova" aria-pressed="false">Valbová</button>
+              <button type="button" id="rt-pultova" data-v="pultova" aria-pressed="false">Pultová</button>
+            </div></div>
+          <div class="fld"><label class="fl" for="rDelka">Délka domu <output id="oDelka">11,0 m</output></label><input type="range" id="rDelka" min="6" max="18" step=".5" value="11"></div>
+          <div class="fld"><label class="fl" for="rSirka">Šířka domu <output id="oSirkaD">8,0 m</output></label><input type="range" id="rSirka" min="5" max="12" step=".5" value="8"></div>
+          <div class="fld"><label class="fl" for="rSklon">Sklon střechy <output id="oSklon">38°</output></label><input type="range" id="rSklon" min="15" max="50" step="1" value="38"></div>
+          <div class="fld"><div class="fl">Krytina</div>
+            <div class="seg" id="rKryt" role="group" aria-label="Krytina">
+              <button type="button" id="rk-bet" data-v="betonová" aria-pressed="true">Betonová taška</button>
+              <button type="button" id="rk-pal" data-v="pálená" aria-pressed="false">Pálená taška</button>
+              <button type="button" id="rk-ple" data-v="plech" aria-pressed="false">Plech</button>
+              <button type="button" id="rk-vla" data-v="vlaknocement" aria-pressed="false">Vláknocement</button>
+              <button type="button" id="rk-sin" data-v="sindel" aria-pressed="false">Šindel</button>
+            </div></div>
+          <div class="fld"><div class="fl">Barva <span id="oRBarva">antracit</span></div><div class="sw" id="rBarva" role="group" aria-label="Barva krytiny"></div></div>
+          <div class="fld" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
+            <div><div class="fl" style="margin-bottom:6px">Střešní okna</div>
+              <div class="step" id="rOkna"><button type="button" id="ro-m" data-d="-1" aria-label="Méně oken">−</button><output id="oOkna">2</output><button type="button" id="ro-p" data-d="1" aria-label="Více oken">+</button></div></div>
+            <div style="flex:1;min-width:180px"><div class="fl" style="margin-bottom:6px">Stavba</div>
+              <div class="seg" id="rStav" role="group" aria-label="Stavba"><button type="button" id="rs-n" data-v="novostavba" aria-pressed="true">Nová</button><button type="button" id="rs-v" data-v="vymena" aria-pressed="false">Výměna</button></div></div>
+          </div>
+          <div class="res" aria-live="polite">
+            <div class="big"><b id="rPlocha">–</b><span>plocha střechy</span></div>
+            <div><b id="rKrytina">–</b><span id="rKrytinaL">krytina</span></div>
+            <div><b id="rLate">–</b><span id="rLateL">latě</span></div>
+            <div><b id="rOkap">–</b><span>okapy</span></div>
+            <div><b id="rHreben">–</b><span id="rHrebenL">hřeben</span></div>
+            <div><b id="rSvody">–</b><span>svody</span></div>
+          </div>
+          <p class="note">Orientační výpočet z rozměrů domu (přesah okapu 55 cm). Přesné množství spočítáme po obhlídce.</p>
+          <a class="btn hot" href="#kontakt" id="rSend">Poslat zadání a chtít nabídku <svg class="arr"><use href="#i-arr"/></svg></a>
+        </div>
       </div>
+    </div>
+
+    <div class="pane" id="pPergola" hidden>
+      <div class="calcwrap">
+        <div class="view">
+          <canvas id="konf3d" aria-label="3D náhled pergoly"></canvas>
+          <div class="dims" id="kDims"></div>
+          <div class="tip">Tažením otočíte stavbu</div>
+        </div>
+        <div class="panel">
+          <div class="fld"><div class="fl">Typ stavby</div>
+            <div class="seg" id="kTyp" role="group" aria-label="Typ stavby">
+              <button type="button" id="kt-pergola" data-v="pergola" aria-pressed="true">Pergola</button>
+              <button type="button" id="kt-garaz" data-v="garaz" aria-pressed="false">Garážové stání</button>
+              <button type="button" id="kt-altan" data-v="altan" aria-pressed="false">Altán</button>
+            </div></div>
+          <div class="fld"><label class="fl" for="kSirka">Šířka <output id="oSirka">4,0 m</output></label><input type="range" id="kSirka" min="2.5" max="7" step=".1" value="4"></div>
+          <div class="fld"><label class="fl" for="kHloubka">Hloubka <output id="oHloubka">3,5 m</output></label><input type="range" id="kHloubka" min="2.5" max="8" step=".1" value="3.5"></div>
+          <div class="fld"><div class="fl">Střecha</div>
+            <div class="seg" id="kStr" role="group" aria-label="Tvar střechy"><button type="button" id="ks-pult" data-v="pult" aria-pressed="true">Pultová</button><button type="button" id="ks-sedlo" data-v="sedlo" aria-pressed="false">Sedlová</button></div></div>
+          <div class="fld"><div class="fl">Krytina</div>
+            <div class="seg" id="kKry" role="group" aria-label="Krytina"><button type="button" id="kk-poly" data-v="poly" aria-pressed="true">Polykarbonát</button><button type="button" id="kk-sindel" data-v="sindel" aria-pressed="false">Šindel</button><button type="button" id="kk-plech" data-v="plech" aria-pressed="false">Plech</button></div></div>
+          <div class="fld"><div class="fl">Barva dřeva <output id="oBarva">přírodní</output></div>
+            <div class="sw" id="kBarva" role="group" aria-label="Barva dřeva">
+              <button type="button" id="kb-1" data-v="#ffffff" data-n="přírodní" aria-pressed="true" style="background:#e3c08b" aria-label="přírodní"></button>
+              <button type="button" id="kb-2" data-v="#c9905a" data-n="teak" aria-pressed="false" style="background:#b8783c" aria-label="teak"></button>
+              <button type="button" id="kb-3" data-v="#8a5a36" data-n="ořech" aria-pressed="false" style="background:#7a4a28" aria-label="ořech"></button>
+              <button type="button" id="kb-4" data-v="#6e6e6e" data-n="šedá" aria-pressed="false" style="background:#6f6c67" aria-label="šedá"></button>
+            </div></div>
+          <div class="res" aria-live="polite">
+            <div class="big"><b id="cPlocha">–</b><span>plocha střechy</span></div>
+            <div><b id="cSloupy">–</b><span>sloupky</span></div>
+            <div><b id="cKrokve">–</b><span>krokve</span></div>
+            <div style="grid-column:1/-1"><b id="cRezivo">–</b><span>řezivo celkem (bm)</span></div>
+          </div>
+          <p class="note">Orientační výpočet z geometrie. Přesnou nabídku připravíme po obhlídce.</p>
+          <a class="btn hot" href="#kontakt" id="kSend">Poslat návrh v poptávce <svg class="arr"><use href="#i-arr"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="why rv pre">
+      <div><b>Víte, o čem se bavíme</b><p>Ještě před telefonátem máte představu o ploše střechy a materiálu.</p></div>
+      <div><b>Zadání bez dohadování</b><p>Rozměry, krytina a okna dorazí v jedné zprávě. Nabídku připravíme rychleji.</p></div>
+      <div><b>Přesně po obhlídce</b><p>Kalkulačka počítá orientačně. Finální množství a cenu doladíme na místě.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec gut" id="sluzby" style="padding-top:0">
+  <div class="wrap">
+    <div class="sh rv pre">
+      <div><span class="lab">Služby</span><h2 class="disp">Tři řemesla pod jednou střechou</h2></div>
+      <p>Tesařství, pokrývačství a sádrokartony. Ať stavíte, rekonstruujete, nebo jen potřebujete spravit žlab.</p>
+    </div>
+    <div class="bento">
+      <article class="tile t1 rv pre">
+        <img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/d921c4b4-a3a5-446a-9322-4e72dffb9cef.png" alt="Rozestavěný krov">
+        <div class="in"><span class="lab">01 · Tesařství</span><h3>Krovy a stavby ze dřeva</h3>
+          <ul><li>montáž krovů</li><li>CNC konstrukce</li><li>dřevostavby</li><li>pergoly a garážová stání</li><li>chatky, altány, kůlny, terasy</li><li>dětské domky a prolézačky</li><li>půdní vestavby</li><li>dřevěné podlahy</li><li>balkony a lávky</li><li>impregnace krovů</li></ul></div>
+      </article>
+      <article class="tile t2 rv pre">
+        <img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/c549c1e1-5b56-48d8-8e18-f8ce5ea748c7.png" alt="Pokrývač při práci">
+        <div class="in"><span class="lab">02 · Pokrývačství</span><h3>Střechy a okna</h3>
+          <ul><li>rekonstrukce střech</li><li>Bramac, Tondach</li><li>Eternit, Cembrit</li><li>šindele</li><li>Velux, Roto</li><li>nadkrokevní izolace</li><li>žlaby</li></ul></div>
+      </article>
+      <article class="tile t3 rv pre">
+        <img loading="lazy" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/35bba246-e019-44ad-a301-acbad49192dc.png" alt="Podkroví ze sádrokartonu">
+        <div class="in"><span class="lab">03 · Sádrokartony</span><h3>Podkroví a SDK</h3>
+          <ul><li>příčky</li><li>stropy</li><li>předstěny</li><li>tepelné a hlukové izolace</li><li>kazetové stropy</li></ul></div>
+      </article>
+      <article class="tile t4 snow rv pre" id="snih">
+        <canvas id="snow" aria-hidden="true"></canvas>
+        <div class="in"><span class="lab" style="color:#9cc0ef">Zima</span><h3>Sníh a námraza na střeše?</h3>
+          <p>Odstraňujeme sníh a nebezpečné ledové námrazy ze střech. Čistíme a opravujeme žlaby.</p>
+          <div><a class="btn hot" href="tel:+420737708433"><svg><use href="#i-tel"/></svg>Zavolat 737 708 433</a></div></div>
+      </article>
     </div>
   </div>
 </section>
 
 <section class="sec gut" id="reference" style="padding-top:0">
   <div class="wrap">
-    <div class="head reveal pre">
-      <div><div class="eyebrow">Naše práce</div><h2>Reference</h2></div>
-      <p>Krovy, střechy, dřevostavby i podkroví. Fotky přímo ze stavby.</p>
+    <div class="sh rv pre">
+      <div><span class="lab">Reference</span><h2 class="disp">Fotky přímo ze stavby</h2></div>
+      <p>Krovy, střechy, dřevostavby i podkroví, které jsme postavili.</p>
     </div>
     <div class="chips" id="chips" role="group" aria-label="Filtr referencí">
       <button type="button" id="ch-all" data-f="all" aria-pressed="true">Vše</button>
@@ -425,46 +472,46 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   </div>
 </section>
 
-<section class="sec gut" style="padding-top:0" aria-label="Proč my">
-  <div class="wrap">
-    <div class="why reveal pre">
-      <div><span class="ruka">osobně</span><h3>Pracujeme sami</h3><p>Práci, kterou na zakázce odvádíme, děláme osobně. Víte, kdo vám na střeše stojí.</p></div>
-      <div><span class="ruka">kompletně</span><h3>Včetně materiálu</h3><p>Dodáme celou zakázku: materiál i práci. Krov, střechu i podkroví z jedné ruky.</p></div>
-      <div><span class="ruka">od 1992</span><h3>Řemeslo i technika</h3><p>Časem prověřené řemeslné postupy spojujeme s moderními technologiemi a CNC konstrukcemi.</p></div>
-    </div>
+<section class="gut" aria-label="Proč my">
+  <div class="wrap trust rv pre">
+    <div><strong id="let">34</strong><span>let řemesla, od roku 1992</span></div>
+    <div><strong>3</strong><span>řemesla: tesař, pokrývač, sádrokartonář</span></div>
+    <div><strong>1</strong><span>firma od krovu po poslední tašku</span></div>
+    <div><strong>100&nbsp;%</strong><span>práce, kterou děláme osobně</span></div>
   </div>
 </section>
 
-<section class="sec gut" id="kontakt" style="padding-top:0">
+<section class="sec gut" id="kontakt">
   <div class="wrap">
-    <div class="head reveal pre">
-      <div><div class="eyebrow">Kontakt</div><h2>Ozvěte se</h2></div>
-      <p>Zavolejte, nebo nám napište, co chystáte. Domluvíme obhlídku a připravíme nabídku.</p>
+    <div class="sh rv pre">
+      <div><span class="lab">Kontakt</span><h2 class="disp">Domluvme obhlídku</h2></div>
+      <p>Zavolejte, nebo napište, co chystáte. Přijedeme, změříme a připravíme nabídku.</p>
     </div>
     <div class="kontakt">
-      <div class="kbox reveal pre">
-        <h3>Telefon</h3>
-        <div class="big"><a href="tel:+420737708433" style="text-decoration:none">737 708 433</a></div>
-        <h3 style="margin-top:26px">E-mail</h3>
-        <p style="font-size:20px;color:var(--papir);user-select:all">stybr13@gmail.com</p>
-        <h3 style="margin-top:26px">Adresa</h3>
-        <p style="color:var(--papir)">Tesařství Štýbr<br>Na Bídě 566/4<br>460 01 Liberec</p>
-        <h3 style="margin-top:26px">Kde pracujeme</h3>
+      <div class="kbox rv pre">
+        <span class="lab">Telefon</span>
+        <a class="tel" href="tel:+420737708433">737 708 433</a>
+        <p></p>
+        <span class="lab">E-mail</span>
+        <p style="font-size:19px;color:var(--txt);user-select:all">stybr13@gmail.com</p>
+        <span class="lab">Adresa</span>
+        <p style="color:var(--txt)">Tesařství Štýbr<br>Na Bídě 566/4, 460 01 Liberec</p>
+        <span class="lab">Kde pracujeme</span>
         <div class="area"><span>Liberecký kraj</span><span>Mladá Boleslav</span><span>Praha</span></div>
       </div>
-      <div class="kbox reveal pre">
-        <h3>Poptávka</h3>
+      <div class="kbox rv pre">
+        <span class="lab">Poptávka</span>
         <form id="form" novalidate>
           <div class="row">
-            <label for="fJmeno">Jméno<input type="text" id="fJmeno" name="jmeno" autocomplete="name" required></label>
-            <label for="fTel">Telefon<input type="tel" id="fTel" name="telefon" autocomplete="tel" required></label>
+            <label for="fJmeno">Jméno<input type="text" id="fJmeno" name="jmeno" autocomplete="name"></label>
+            <label for="fTel">Telefon<input type="tel" id="fTel" name="telefon" autocomplete="tel"></label>
           </div>
           <div class="row">
             <label for="fMisto">Místo stavby<input type="text" id="fMisto" name="misto" placeholder="např. Liberec – Vratislavice"></label>
-            <label for="fCo">O co jde<select id="fCo" name="co"><option>Krov</option><option>Střecha / rekonstrukce</option><option>Pergola / garážové stání / altán</option><option>Podkroví / sádrokarton</option><option>Sníh, námraza, žlaby</option><option>Jiné</option></select></label>
+            <label for="fCo">O co jde<select id="fCo" name="co"><option>Nová střecha / výměna krytiny</option><option>Krov</option><option>Pergola / garážové stání / altán</option><option>Podkroví / sádrokarton</option><option>Sníh, námraza, žlaby</option><option>Jiné</option></select></label>
           </div>
           <label for="fZprava">Zpráva<textarea id="fZprava" name="zprava" placeholder="Co chystáte, rozměry, termín…"></textarea></label>
-          <button class="btn hot" type="submit" style="justify-self:start">Odeslat poptávku</button>
+          <button class="btn hot" type="submit" style="justify-self:start">Odeslat poptávku <svg class="arr"><use href="#i-arr"/></svg></button>
           <div class="ok" id="fOk" role="status">Toto je ukázka webu. Po spuštění bude formulář chodit rovnou do e-mailu.</div>
         </form>
       </div>
@@ -480,10 +527,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   </div>
 </footer>
 
+<div class="mbar" id="mbar">
+  <a class="btn" href="tel:+420737708433"><svg><use href="#i-tel"/></svg>Zavolat</a>
+  <a class="btn hot" href="#kalkulacka">Spočítat střechu</a>
+</div>
+
 <script src="../vendor/three-r128.min.js"></script>
 <script src="../vendor/lenis-1.1.13.min.js"></script>
-<script src="krov.js?v=1"></script>
-<script src="konfigurator.js?v=1"></script>
-<script src="page.js?v=1"></script>
+<script src="stavba.js?v=2"></script>
+<script src="krov.js?v=2"></script>
+<script src="strecha.js?v=2"></script>
+<script src="konfigurator.js?v=2"></script>
+<script src="page.js?v=2"></script>
 </body>
 </html>
