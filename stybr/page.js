@@ -103,8 +103,9 @@
     // hero
     const h = clamp(y / Math.max(1, uvod.offsetHeight), 0, 1.2);
     const k = reduce ? 0 : eio(seg(h, 0, .8));
-    plBack.style.transform = `scale(${(1 + .035 * k).toFixed(4)})`;
-    plKrov.style.transform = `scale(${(1 + .075 * k).toFixed(4)}) translateY(${(-1 * k).toFixed(2)}%)`;
+    const k2 = reduce ? 0 : eio(seg(h, .42, .82)); // second beat: the rafters pass in front of the fading title
+    plKrov.style.transform = `scale(${(1 + .06 * k + .11 * k2).toFixed(4)}) translateY(${(-1 * k - 2.5 * k2).toFixed(2)}%)`;
+    plBack.style.transform = `scale(${(1 + .035 * k + .02 * k2).toFixed(4)})`;
     const t2 = reduce ? 1 : seg(h, .08, .22);
     l2.style.opacity = t2.toFixed(3); l2.style.transform = `translateY(${((1 - t2) * 14).toFixed(1)}px)`;
     const lowO = 1 - seg(h, .4, .56);
