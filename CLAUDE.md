@@ -74,6 +74,15 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   Finální render na Tomášově MacBooku Air (Blender 5.4, Metal GPU, ~10 s/snímek, 64 spp): v Blenderu záložka Scripting → konzole → `mac_finalize.py`
   (stáhne AI textury z Higgsfieldu – z kontejneru CloudFront 403 – a přepne na GPU) → render animace. Mac při renderu nesmí usnout.
   Ceník je ORIENTAČNÍ (odvozený od Bustan Kebab Praha, Foodora Teplice nešla načíst) – při zakázce vyfotit jejich tabuli. Otevírací doba podle Google (zdroje se liší).
+- **Tesařství Štýbr** (Liberec, Na Bídě 566/4, 737 708 433, stybr13@gmail.com; od roku 1992; tesařství, pokrývačství, sádrokartony;
+  Liberecký kraj, Mladá Boleslav, Praha; IČO neověřeno – Živéfirmy uvádí 16260023, v ARES dohledat): jejich web tesarstvistybr.cz (WordPress 2020)
+  má `noindex,nofollow` → Google je nevidí (ověřeno 29. 10. 2026) = hlavní argument do telefonu. Ukázka `stybr/` (29. 10., cílová cena ~40 tis.):
+  3D příběh „Od kmene ke střeše“ v reálném čase (`krov.js`, Three.js r128, procedurální textury: kůra, smrk, letokruhy): kmen → odletí kůra → trám →
+  křídová šňůra → čep, dlab, kolík → zdi → stropní trámy, pozednice, sloupky, vaznice, krokve s tesařskými značkami I–XII, kleštiny → laťování →
+  tašky po řadách + 2 střešní okna → dřevěné štíty; skládací metr jako ukazatel postupu, popisky tužkou (Caveat). Přidaná hodnota: konfigurátor
+  pergoly / garážového stání / altánu (`konfigurator.js`, rozměry, pultová/sedlová, krytina, lazura, výpočet plochy střechy, sloupků, krokví, řeziva,
+  přenos do poptávky), zimní banner sníh a námrazy, galerie s filtrem. Fotky jsou z jejich webu (importované na Higgsfield CloudFront přes media_import_url,
+  URL `<id>.png`, i když jde o JPEG) – při zakázce vyžádat originály. Fonty Zilla Slab + Archivo + Caveat + JetBrains Mono.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
