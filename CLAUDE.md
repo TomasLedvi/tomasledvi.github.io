@@ -100,6 +100,12 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   spodek výřezu se ztrácí do pozadí u hlavního trámu = společný kotevní bod škálování). Podpis = trám s tesařskými značkami I–V
   (vpravo, scroll je „vyřezává“, klik = skok; na mobilu jen u zastávek), stejné značky u nadpisů. Realizace = boční pás fotek (pan, 2,5× rychlejší).
   Engine scroll-craftu ani shoot.mjs nepoužíváme (vlastní Three.js svět); ověřovací skript je v scratchpadu (cue opacity, arch snímků).
+- **Třetí chalupa U Smrčiny** (Janské Lázně, Krkonošská, 542 25; majitelé bratři Lukáš a Tomáš; +420 733 645 729, +420 603 416 095,
+  chalupa-usmrciny@janskelazne.cz; BEZ vlastního webu, jen Booking 9,0/102 recenzí): ukázka `smrcina/` (31. 10.; hero = zimní diorama
+  přehrávané scrollem, 284 snímků z 3 videí Google Flow (Veo 3.1 Lite) z diorama obrázků z ChatGPT, mraky přes přechody; pod tím celý web
+  z údajů z Bookingu: o chalupě, ubytování, okolí zima/léto, restaurace, galerie, hodnocení, ukázkový kalendář + formulář, info, kontakt).
+  Fotky a recenze hotlinkované z cf.bstatic.com (Booking) – jen pro ukázku majitelům, při zakázce originály. Formulář zatím demo (Web3Forms doplnit).
+  Zdroj: /home/claude/smrcina-web/source.html (mimo repo). Argument do telefonu: provize Bookingu vs. přímé rezervace.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
