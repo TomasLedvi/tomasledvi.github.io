@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Chalupa U Smrčiny – návrh webu</title>
+<meta name="description" content="Návrh webu pro Chalupu U Smrčiny v Janských Lázních." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  /* Layout: celoplošné plátno se snímky, UI v rozích jako ve filmu, závěrečná karta s formulářem */
+  :root { color-scheme:dark;
+    --bg:#090807; --ink:#f5efe6; --dim:rgba(245,239,230,.64); --faint:rgba(245,239,230,.18);
+    --glow:#ffd36a; --panel:rgba(14,11,8,.55); --card:#f3ede3; --card-ink:#1d1712;
+    --sans:'Manrope', system-ui, sans-serif; --serif:'Instrument Serif', Georgia, serif; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { background:var(--bg); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+  body { overflow-x:hidden; }
+  body.has-cursor, body.has-cursor a, body.has-cursor button { cursor:none; }
+  #stage { position:fixed; inset:0; width:100vw; height:100vh; height:100lvh; display:block; background:var(--bg); }
+  #fx { position:fixed; inset:0; width:100vw; height:100vh; pointer-events:none; }
+  #track { height:1500vh; }
+
+  #clouds { position:fixed; inset:0; pointer-events:none; overflow:hidden; }
+  #clouds .haze { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 55%, #fbf3e6 0%, #efdfc7 45%, rgba(230,206,170,0) 100%); opacity:0; }
+  #clouds img { position:absolute; width:70vmax; left:50%; top:50%; opacity:0; will-change:transform,opacity; }
+  .vignette { position:fixed; inset:0; pointer-events:none; background:radial-gradient(120% 95% at 50% 45%, transparent 50%, rgba(5,4,3,.66) 100%); }
+  .shade { position:fixed; left:0; right:0; bottom:0; height:50vh; pointer-events:none; background:linear-gradient(to top, rgba(7,5,3,.6), rgba(7,5,3,0)); }
+
+  .ui { position:fixed; z-index:3; }
+  .top { top:0; left:0; right:0; display:flex; justify-content:space-between; align-items:center; gap:16px;
+         padding:clamp(16px,2.6vw,30px) max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+         padding-left:max(clamp(16px,3.4vw,44px), env(safe-area-inset-left, 0px)); padding-right:max(clamp(16px,3.4vw,44px), env(safe-area-inset-right, 0px)); }
+  .logo { font-weight:800; letter-spacing:.24em; text-transform:uppercase; font-size:12px; }
+  .logo span { color:var(--dim); font-weight:500; letter-spacing:.08em; text-transform:none; margin-left:10px; }
+  .book { pointer-events:auto; font:600 12px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--ink); text-decoration:none;
+          padding:12px 18px; border:1px solid rgba(245,239,230,.35); border-radius:999px; background:rgba(10,8,6,.3); backdrop-filter:blur(8px); }
+  .book:hover, .book:focus-visible { background:var(--ink); color:var(--card-ink); outline:none; }
+
+  /* kulatý ukazatel cesty – jako v referenčním videu */
+  .nav { left:max(clamp(16px,3.4vw,44px), env(safe-area-inset-left, 0px)); bottom:max(clamp(16px,3.2vh,32px), env(safe-area-inset-bottom, 0px));
+         display:flex; align-items:center; gap:18px; padding:14px 22px 14px 14px; border-radius:18px; background:var(--panel); backdrop-filter:blur(10px);
+         border:1px solid var(--faint); }
+  .ring { position:relative; width:84px; height:84px; flex:none; }
+  .ring svg { width:100%; height:100%; transform:rotate(-90deg); }
+  .ring circle { fill:none; stroke-width:1.4; }
+  .ring .bg { stroke:var(--faint); }
+  .ring .fg { stroke:var(--ink); stroke-linecap:round; }
+  .ring .lbl { position:absolute; inset:0; display:grid; place-items:center; font-size:9px; font-weight:800; letter-spacing:.2em; text-align:center; line-height:1.4; }
+  .ring .dot { position:absolute; width:7px; height:7px; border-radius:50%; background:var(--glow); box-shadow:0 0 10px var(--glow); left:50%; top:50%; margin:-3.5px; }
+  .stops { list-style:none; display:grid; gap:9px; }
+  .stops button { all:unset; cursor:pointer; display:flex; align-items:center; gap:10px; font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--dim); transition:color .3s; }
+  .stops button::before { content:''; width:5px; height:5px; border-radius:50%; background:currentColor; opacity:0; transition:opacity .3s; }
+  .stops button.on { color:var(--ink); }
+  .stops button.on::before { opacity:1; background:var(--glow); box-shadow:0 0 8px var(--glow); }
+  .stops button:focus-visible { outline:1px solid var(--glow); outline-offset:4px; }
+
+  /* název místa vpravo dole */
+  .place { position:fixed; z-index:3; right:max(clamp(16px,3.4vw,44px), env(safe-area-inset-right, 0px)); bottom:clamp(96px,15vh,150px);
+           text-align:right; max-width:min(440px, calc(100vw - 32px)); opacity:0; pointer-events:none; text-shadow:0 2px 26px rgba(0,0,0,.6); }
+  .place h2 { font-weight:800; font-size:clamp(40px,5.2vw,76px); letter-spacing:-.02em; line-height:1; text-wrap:balance; }
+  .place p { margin-top:12px; font-size:clamp(13px,1vw,15px); line-height:1.55; color:var(--dim); font-weight:500; }
+  .place .meta { margin-top:10px; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--glow); }
+
+  .hero { position:fixed; z-index:3; left:max(clamp(16px,3.4vw,44px), env(safe-area-inset-left, 0px)); top:50%; transform:translateY(-50%);
+          max-width:min(640px, calc(100vw - 32px)); pointer-events:none; text-shadow:0 2px 30px rgba(0,0,0,.55); }
+  .hero::before { content:''; position:absolute; z-index:-1; inset:-30% -40% -30% -60%; background:radial-gradient(closest-side, rgba(8,6,4,.55), rgba(8,6,4,0)); }
+  .hero .eyebrow { font-size:11px; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--glow); }
+  .hero h1 { margin-top:14px; font-weight:800; font-size:clamp(42px,6.6vw,100px); line-height:.96; letter-spacing:-.03em; text-wrap:balance; }
+  .hero h1 em { font-family:var(--serif); font-weight:400; font-style:italic; letter-spacing:0; }
+  .hero p { margin-top:18px; color:var(--dim); font-size:clamp(14px,1.1vw,17px); line-height:1.6; max-width:36ch; font-weight:500; }
+
+  .line { position:fixed; z-index:3; left:max(clamp(16px,3.4vw,44px), env(safe-area-inset-left, 0px)); top:46%; font-weight:700; font-size:clamp(16px,1.5vw,22px); opacity:0; pointer-events:none; text-shadow:0 2px 20px rgba(0,0,0,.6); }
+
+  .final { position:fixed; z-index:4; left:max(clamp(16px,3.4vw,44px), env(safe-area-inset-left, 0px)); top:50%; transform:translateY(-50%);
+           width:min(460px, calc(100vw - 32px)); opacity:0; pointer-events:none; }
+  .final.live { pointer-events:auto; }
+  .final h2 { font-weight:800; font-size:clamp(38px,5vw,72px); line-height:.98; letter-spacing:-.03em; text-shadow:0 2px 30px rgba(0,0,0,.6); text-wrap:balance; }
+  .final > p { margin-top:14px; color:var(--dim); font-weight:500; line-height:1.55; text-shadow:0 2px 20px rgba(0,0,0,.6); }
+  .card { margin-top:22px; background:var(--card); color:var(--card-ink); border-radius:6px; padding:20px; display:grid; gap:12px; box-shadow:0 30px 80px rgba(0,0,0,.45); }
+  .card label { display:grid; gap:6px; font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(29,23,18,.55); }
+  .card input { font:500 16px var(--sans); color:var(--card-ink); background:transparent; border:0; border-bottom:1px solid rgba(29,23,18,.25); padding:6px 0; border-radius:0; }
+  .card input:focus { outline:none; border-bottom-color:var(--card-ink); }
+  .card .row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .card button { margin-top:6px; font:700 12px var(--sans); letter-spacing:.18em; text-transform:uppercase; color:var(--card); background:var(--card-ink); border:0; border-radius:999px; padding:15px 20px; cursor:pointer; }
+  .card button:focus-visible { outline:2px solid var(--glow); outline-offset:3px; }
+  .card small { font-size:11px; color:rgba(29,23,18,.55); }
+  .card .ok { font-weight:600; color:#3e5a2a; }
+
+  .cue { position:fixed; z-index:3; left:50%; bottom:clamp(40px,6vh,64px); transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:10px;
+         font-size:10px; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--dim); pointer-events:none; }
+  .cue i { width:1px; height:38px; background:linear-gradient(var(--ink),transparent); animation:cue 2.2s cubic-bezier(.6,0,.2,1) infinite; transform-origin:top; }
+  @keyframes cue { 0%{transform:scaleY(0);opacity:1} 60%{transform:scaleY(1);opacity:1} 100%{transform:scaleY(1);opacity:0} }
+
+  #cursor { position:fixed; z-index:9; left:0; top:0; width:14px; height:14px; margin:-7px; border-radius:50%; background:var(--glow);
+            box-shadow:0 0 18px 4px rgba(255,211,106,.55); pointer-events:none; opacity:0; transition:opacity .3s, width .25s, height .25s, margin .25s; }
+  #cursor.big { width:34px; height:34px; margin:-17px; background:rgba(255,211,106,.25); }
+
+  #loader { position:fixed; inset:0; z-index:10; display:grid; place-items:center; background:var(--bg) url('img/poster.jpg') center/cover; transition:opacity 1s ease; }
+  #loader::before { content:''; position:absolute; inset:0; background:rgba(9,8,7,.8); }
+  #loader.done { opacity:0; pointer-events:none; }
+  #loader .in { position:relative; text-align:center; font-size:11px; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--dim); }
+  #loader .bar { width:160px; height:1px; background:var(--faint); margin:14px auto 0; overflow:hidden; }
+  #loader .bar i { display:block; height:100%; background:var(--ink); transform-origin:left; transform:scaleX(0); transition:transform .2s; }
+
+  .demo { position:fixed; z-index:3; right:max(clamp(16px,3.4vw,44px), env(safe-area-inset-right, 0px)); bottom:max(clamp(16px,3.2vh,32px), env(safe-area-inset-bottom, 0px));
+          font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); pointer-events:none; }
+
+  @media (max-width:700px) {
+    .logo span { display:none; }
+    .nav { padding:10px 14px 10px 10px; gap:12px; }
+    .ring { width:58px; height:58px; } .ring .lbl { font-size:7px; }
+    .stops { gap:6px; } .stops button { font-size:9.5px; }
+    .place { bottom:auto; top:84px; }
+    .demo, .cue { display:none; }
+    .final { top:auto; bottom:150px; transform:none; }
+    .final h2 { font-size:34px; }
+    .card { padding:16px; gap:10px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .cue i { animation:none; } }
+
+  /* ===== obsah pod hero ===== */
+  :root { --night2:#0d0f14; --snow:#f3eee6; --snow-ink:#1c1813; --snow-dim:rgba(28,24,19,.62); --pine:#30402f; --wood:#8a5a36; --amber:#ffc56e; }
+  .top { z-index:30; transition:background .4s, backdrop-filter .4s, padding .3s; }
+  body.past-hero .top { background:rgba(10,11,15,.82); backdrop-filter:blur(10px); padding-bottom:14px; }
+  .logo { color:var(--ink); text-decoration:none; }
+  .menu { display:flex; gap:26px; margin-left:auto; margin-right:18px; }
+  .menu a { color:var(--dim); text-decoration:none; font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+  .menu a:hover, .menu a:focus-visible { color:var(--ink); }
+  body.past-hero .nav, body.past-hero .place, body.past-hero .final, body.past-hero .demo, body.past-hero .line, body.past-hero .cue, body.past-hero #clouds { opacity:0 !important; pointer-events:none !important; }
+  .nav, .final, .demo { transition:opacity .4s; }
+  .final::before { content:''; position:absolute; z-index:-1; inset:-40% -50% -40% -40%; background:radial-gradient(closest-side, rgba(8,6,4,.62), rgba(8,6,4,0)); pointer-events:none; }
+  .final-cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+  .btn-light, .btn-ghost { font:700 12px var(--sans); letter-spacing:.16em; text-transform:uppercase; text-decoration:none; padding:15px 22px; border-radius:999px; }
+  .btn-light { background:var(--snow); color:var(--snow-ink); }
+  .btn-ghost { color:var(--ink); border:1px solid rgba(245,239,230,.4); backdrop-filter:blur(8px); }
+  main { position:relative; z-index:10; }
+  .sec { padding-block:clamp(72px,11vw,150px); }
+  .wrap { width:min(1200px, 100%); margin:0 auto; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,6vw,90px); align-items:center; }
+  .two > * { min-width:0; }
+  .sec-night { background:var(--night2); color:var(--ink); }
+  .sec-snow { background:var(--snow); color:var(--snow-ink); }
+  .sec-warm { background:linear-gradient(180deg,#14100c,#1d1510); color:var(--ink); }
+  .kicker { font-size:11px; font-weight:800; letter-spacing:.28em; text-transform:uppercase; color:var(--wood); margin-bottom:14px; }
+  .sec-night .kicker, .sec-warm .kicker, .foot .kicker { color:var(--glow); }
+  .h2 { font-weight:800; font-size:clamp(34px,4.6vw,64px); line-height:1; letter-spacing:-.03em; text-wrap:balance; }
+  .h2 em { font-family:var(--serif); font-weight:400; font-style:italic; letter-spacing:0; }
+  .lead { margin-top:20px; font-size:clamp(15px,1.2vw,18px); line-height:1.65; max-width:56ch; opacity:.78; }
+  .head { margin-bottom:clamp(32px,5vw,60px); max-width:760px; }
+  .sign { margin-top:26px; font-family:var(--serif); font-size:clamp(20px,1.8vw,26px); line-height:1.3; max-width:30ch; }
+  .sign span { display:block; margin-top:8px; font-family:var(--sans); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--glow); }
+  .photo-stack { position:relative; aspect-ratio:4/5; max-width:100%; }
+  .photo-stack img { position:absolute; object-fit:cover; border-radius:6px; box-shadow:0 30px 70px rgba(0,0,0,.5); }
+  .photo-stack .p1 { inset:0 18% 22% 0; width:82%; height:78%; }
+  .photo-stack .p2 { right:0; bottom:0; width:58%; height:46%; border:6px solid var(--night2); }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:clamp(56px,8vw,100px); border-top:1px solid var(--faint); padding-top:36px; }
+  .stat b { display:block; font-weight:800; font-size:clamp(40px,5vw,72px); letter-spacing:-.04em; line-height:1; font-variant-numeric:tabular-nums; }
+  .stat span { display:block; margin-top:8px; color:var(--dim); font-size:13px; line-height:1.4; }
+  .rooms { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .room { background:#fff; border-radius:8px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 1px 0 rgba(28,24,19,.06); }
+  .room-img { aspect-ratio:4/3; overflow:hidden; background:#d9d1c4; }
+  .room-img img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
+  .room:hover .room-img img { transform:scale(1.05); }
+  .room-body { padding:22px 22px 26px; display:flex; flex-direction:column; gap:10px; }
+  .tag { font-size:10px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--wood); }
+  .room h3 { font-size:22px; font-weight:800; letter-spacing:-.01em; }
+  .room p { color:var(--snow-dim); line-height:1.6; font-size:15px; }
+  .ticks { list-style:none; display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+  .ticks li { font-size:12px; font-weight:600; padding:6px 10px; border-radius:999px; background:var(--snow); }
+  .perks { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:40px; }
+  .perks div { border-top:2px solid var(--snow-ink); padding-top:14px; display:grid; gap:6px; }
+  .perks b { font-size:15px; } .perks span { color:var(--snow-dim); font-size:14px; line-height:1.5; }
+  .season { display:inline-flex; padding:4px; border-radius:999px; border:1px solid var(--faint); margin-bottom:30px; }
+  .season button { font:700 12px var(--sans); letter-spacing:.18em; text-transform:uppercase; color:var(--dim); background:none; border:0; padding:12px 22px; border-radius:999px; cursor:pointer; }
+  .season button.on { background:var(--ink); color:var(--snow-ink); }
+  .season-panel { display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(28px,5vw,70px); align-items:center; }
+  .season-panel[hidden] { display:none; }
+  .season-img { aspect-ratio:4/3; overflow:hidden; border-radius:8px; }
+  .season-img img { width:100%; height:100%; object-fit:cover; }
+  .spots { list-style:none; display:grid; }
+  .spots li { display:grid; grid-template-columns:1fr auto; gap:4px 16px; padding:20px 0; border-bottom:1px solid var(--faint); }
+  .spots b { font-size:18px; } .spots span { grid-column:1; color:var(--dim); font-size:14px; line-height:1.5; }
+  .spots em { grid-row:1 / span 2; grid-column:2; align-self:center; font-style:normal; font-weight:800; color:var(--glow); font-size:13px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; }
+  .food-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:10px; aspect-ratio:1/1; }
+  .food-grid img { width:100%; height:100%; object-fit:cover; border-radius:6px; }
+  .food-grid img:first-child { grid-row:span 2; }
+  .quote-mini { margin-top:24px; font-family:var(--serif); font-size:22px; line-height:1.35; max-width:32ch; }
+  .quote-mini span { display:block; font-family:var(--sans); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--glow); margin-top:8px; }
+  .gallery { display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:clamp(150px,18vw,240px); gap:10px; }
+  .g-item { position:relative; overflow:hidden; border-radius:6px; border:0; padding:0; cursor:zoom-in; background:#1b1d22; }
+  .g-item.tall { grid-row:span 2; } .g-item.wide { grid-column:span 2; }
+  .g-item img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.7,.2,1), filter .4s; }
+  .g-item:hover img, .g-item:focus-visible img { transform:scale(1.06); }
+  .g-item span { position:absolute; left:12px; bottom:10px; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#fff; text-shadow:0 1px 12px rgba(0,0,0,.8); opacity:0; transition:opacity .3s; }
+  .g-item:hover span, .g-item:focus-visible span { opacity:1; }
+  .score-row { display:grid; grid-template-columns:auto 1fr; gap:clamp(30px,6vw,90px); align-items:center; margin-bottom:56px; }
+  .score b { display:block; font-weight:800; font-size:clamp(90px,12vw,170px); line-height:.85; letter-spacing:-.05em; }
+  .score span { display:block; font-family:var(--serif); font-style:italic; font-size:28px; margin-top:10px; }
+  .score small { display:block; color:var(--snow-dim); margin-top:6px; font-size:13px; }
+  .cats { display:grid; grid-template-columns:1fr 1fr; gap:14px 40px; }
+  .cat { display:grid; grid-template-columns:150px 1fr 40px; align-items:center; gap:14px; font-size:14px; }
+  .cat b { text-align:right; font-variant-numeric:tabular-nums; }
+  .bar { height:4px; background:rgba(28,24,19,.12); border-radius:4px; overflow:hidden; }
+  .bar i { display:block; height:100%; width:calc(var(--v) * 100%); background:var(--snow-ink); transform-origin:left; transform:scaleX(var(--fill,1)); transition:transform 1.4s cubic-bezier(.2,.7,.2,1); }
+  .reviews { columns:3 300px; column-gap:22px; }
+  .review { break-inside:avoid; margin-bottom:22px; background:#fff; border-radius:8px; padding:24px; }
+  .review blockquote { font-family:var(--serif); font-size:21px; line-height:1.35; }
+  .review figcaption { margin-top:14px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--wood); }
+  .book-wrap { align-items:start; }
+  .cal { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:30px; }
+  .cal-m h4 { font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; margin-bottom:10px; }
+  .cal-g { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+  .cal-g .dow { font-size:10px; color:var(--dim); text-align:center; padding-bottom:4px; }
+  .cal-g button { aspect-ratio:1; border:0; border-radius:4px; font:600 12px var(--sans); color:var(--ink); background:rgba(245,239,230,.07); cursor:pointer; font-variant-numeric:tabular-nums; }
+  .cal-g button:hover:not(:disabled) { background:rgba(245,239,230,.2); }
+  .cal-g button:disabled { background:transparent; color:rgba(245,239,230,.22); text-decoration:line-through; cursor:not-allowed; }
+  .cal-g button.busy { background:rgba(200,80,60,.18); color:rgba(245,239,230,.35); text-decoration:none; }
+  .cal-g button.sel, .cal-g button.edge { background:var(--glow); color:#1d1712; }
+  .cal-g button.in { background:rgba(255,211,106,.35); }
+  .cal-g button:focus-visible { outline:2px solid var(--glow); outline-offset:1px; }
+  .cal { position:relative; }
+  .cal-nav { position:absolute; right:0; top:-6px; display:flex; gap:6px; }
+  .cal-nav button { width:32px; height:32px; border-radius:50%; border:1px solid var(--faint); background:none; color:var(--ink); cursor:pointer; font-size:14px; }
+  .cal-nav button:disabled { opacity:.3; cursor:default; }
+  .cal-legend { display:flex; gap:18px; margin-top:16px; font-size:12px; color:var(--dim); flex-wrap:wrap; }
+  .cal-legend i { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px; vertical-align:-1px; }
+  .lg-free { background:rgba(245,239,230,.2); } .lg-busy { background:rgba(200,80,60,.5); } .lg-sel { background:var(--glow); }
+  .note { margin-top:14px; font-size:12px; color:var(--dim); line-height:1.5; max-width:52ch; }
+  .bform { background:var(--snow); color:var(--snow-ink); border-radius:10px; padding:clamp(20px,3vw,34px); display:grid; gap:14px; }
+  .bform .row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .bform label { display:grid; gap:6px; font-size:10px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--snow-dim); min-width:0; }
+  .bform input, .bform select, .bform textarea { font:500 16px var(--sans); color:var(--snow-ink); background:#fff; border:1px solid rgba(28,24,19,.14); border-radius:6px; padding:12px; width:100%; }
+  .bform input:focus, .bform select:focus, .bform textarea:focus { outline:2px solid var(--wood); outline-offset:0; }
+  .bform button { margin-top:6px; font:800 12px var(--sans); letter-spacing:.18em; text-transform:uppercase; color:var(--snow); background:var(--snow-ink); border:0; border-radius:999px; padding:17px; cursor:pointer; }
+  .bform button:focus-visible { outline:2px solid var(--wood); outline-offset:3px; }
+  .bform small { font-size:12px; color:var(--snow-dim); } .bform small.ok { color:#3d5a2a; font-weight:700; } .bform small.err { color:#9a3a22; font-weight:700; }
+  .facts { display:grid; grid-template-columns:1fr 1fr; gap:0 30px; margin-top:28px; }
+  .facts div { padding:16px 0; border-bottom:1px solid rgba(28,24,19,.14); }
+  .facts dt { font-size:10px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--wood); }
+  .facts dd { font-size:18px; font-weight:700; margin-top:4px; }
+  .faq details { border-bottom:1px solid rgba(28,24,19,.16); padding:18px 0; }
+  .faq summary { cursor:pointer; font-weight:800; font-size:17px; list-style:none; display:flex; justify-content:space-between; gap:12px; }
+  .faq summary::after { content:'+'; font-weight:400; font-size:22px; line-height:1; transition:transform .3s; }
+  .faq details[open] summary::after { transform:rotate(45deg); }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq p { margin-top:10px; color:var(--snow-dim); line-height:1.6; }
+  .foot { background:#08090c; color:var(--ink); padding-block:70px 40px; position:relative; z-index:10; }
+  .foot-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:30px; }
+  .foot p { color:var(--dim); line-height:1.8; margin-top:10px; }
+  .foot a { color:var(--ink); text-decoration:none; } .foot a:hover { color:var(--glow); }
+  .logo.big { font-size:15px; }
+  .map { display:inline-block; margin-top:14px; font-weight:700; font-size:13px; }
+  .small { margin-top:50px; padding-top:24px; border-top:1px solid var(--faint); font-size:11px; color:var(--dim); }
+  .lightbox { position:fixed; inset:0; z-index:60; background:rgba(5,5,7,.92); display:grid; place-items:center; padding:24px; }
+  .lightbox[hidden] { display:none; }
+  .lightbox img { max-width:100%; max-height:88vh; border-radius:6px; }
+  .lb-close { position:absolute; top:16px; right:20px; font-size:36px; color:#fff; background:none; border:0; cursor:pointer; }
+  .reveal { opacity:0; transform:translateY(28px); }
+  .reveal.in { opacity:1; transform:none; transition:opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+  @media (max-width:980px) {
+    .menu { display:none; }
+    .two, .season-panel, .score-row { grid-template-columns:1fr; }
+    .rooms { grid-template-columns:1fr; }
+    .stats, .perks { grid-template-columns:1fr 1fr; }
+    .cats { grid-template-columns:1fr; }
+    .gallery { grid-template-columns:1fr 1fr; }
+    .foot-grid { grid-template-columns:1fr; }
+    .photo-stack { aspect-ratio:1/1; }
+  }
+  @media (max-width:520px) {
+    .cal { grid-template-columns:1fr; }
+    .bform .row, .facts { grid-template-columns:1fr; }
+    .cat { grid-template-columns:110px 1fr 34px; }
+    .g-item.wide { grid-column:span 2; }
+  }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; } }
+</style>
+
+</head>
+<body>
+<span id="top"></span>
+<canvas id="stage" aria-label="Průlet zimním diorámatem Chalupy U Smrčiny"></canvas>
+<div id="clouds" aria-hidden="true">
+  <div class="haze"></div>
+  <img src="img/cloud1.webp" alt="" data-dx="-1" data-dy="0.15" data-r="-8" />
+  <img src="img/cloud2.webp" alt="" data-dx="1" data-dy="-0.1" data-r="6" />
+  <img src="img/cloud3.webp" alt="" data-dx="-0.3" data-dy="0.9" data-r="3" />
+  <img src="img/cloud1.webp" alt="" data-dx="0.6" data-dy="0.7" data-r="12" />
+  <img src="img/cloud2.webp" alt="" data-dx="-0.7" data-dy="-0.8" data-r="-4" />
+</div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="vignette"></div>
+<div class="shade"></div>
+
+<header class="ui top">
+  <a class="logo" href="#top">Chalupa U Smrčiny<span>Janské Lázně · Krkonoše</span></a>
+  <nav class="menu" aria-label="Hlavní navigace">
+    <a href="#ubytovani">Ubytování</a><a href="#okoli">Okolí</a><a href="#hodnoceni">Hodnocení</a><a href="#info">Info</a>
+  </nav>
+  <a class="book" href="#rezervace" id="bookTop">Rezervovat</a>
+</header>
+
+<section class="hero" id="hero">
+  <div class="eyebrow">Janské Lázně · pod Černou horou</div>
+  <h1>Zimní Krkonoše <em>hned za dveřmi.</em></h1>
+  <p>Rodinná chalupa v Krkonošském národním parku. Lanovka a Stezka korunami stromů jsou pár minut pěšky.</p>
+</section>
+
+<section class="place" data-in="0.045" data-out="0.14">
+  <h2>Na lyžích až ke dveřím</h2>
+  <p>Vyhřívaná lanovka Hoffmanky Expres je kousek od chalupy. Odtud se dostanete na celý skiareál Černá hora – Pec.</p>
+  <div class="meta">44 km sjezdovek</div>
+</section>
+<section class="place" data-in="0.195" data-out="0.29">
+  <h2>Chalupa U Smrčiny</h2>
+  <p>Útulné apartmány s vlastní koupelnou a kuchyní, společenská místnost, krytá terasa s grilem a tenisový kurt.</p>
+  <div class="meta">až 23 hostů</div>
+</section>
+<section class="place" data-in="0.485" data-out="0.58">
+  <h2>Pod Černou horou</h2>
+  <p>Klidné místo v Krkonošském národním parku, vedle Hoffmanovy boudy a restaurace Smrčina.</p>
+  <div class="meta">lokalitu hosté hodnotí 9,4 / 10</div>
+</section>
+<section class="place" data-in="0.775" data-out="0.865">
+  <h2>Stezka korunami stromů</h2>
+  <p>Otevřená v létě i v zimě. Za soumraku, když se rozsvítí, je nejhezčí.</p>
+  <div class="meta">asi 300 m od chalupy</div>
+</section>
+
+<div class="line" data-in="0.885" data-out="0.935">Tohle všechno máte za dveřmi.</div>
+
+<section class="final" id="final">
+  <h2>Zima je krátká.</h2>
+  <p>Podívejte se dovnitř, nebo si rovnou vyberte termín.</p>
+  <div class="final-cta">
+    <a class="btn-light" href="#rezervace">Vybrat termín</a>
+    <a class="btn-ghost" href="#o-chalupe">Prohlédnout chalupu</a>
+  </div>
+</section>
+
+<nav class="ui nav" aria-label="Místa na cestě">
+  <div class="ring">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="bg" cx="50" cy="50" r="46" /><circle class="fg" id="ringFg" cx="50" cy="50" r="46" /></svg>
+    <div class="dot" id="ringDot"></div>
+    <div class="lbl">U<br />SMRČINY</div>
+  </div>
+  <ul class="stops">
+    <li><button type="button" data-go="0.09" id="s1">Sjezdovka</button></li>
+    <li><button type="button" data-go="0.245" id="s2">Chalupa</button></li>
+    <li><button type="button" data-go="0.535" id="s3">Okolí</button></li>
+    <li><button type="button" data-go="0.82" id="s4">Stezka</button></li>
+  </ul>
+</nav>
+<div class="demo">Návrh webu · ukázka</div>
+<div class="cue" id="cue"><span>Scroll</span><i></i></div>
+<div id="cursor"></div>
+
+<div id="loader"><div class="in">Načítám krajinu<div class="bar"><i id="lbar"></i></div></div></div>
+<div id="track"></div>
+
+<main id="obsah">
+
+<section class="sec sec-night" id="o-chalupe">
+  <div class="wrap two">
+    <div class="reveal">
+      <div class="kicker">O chalupě</div>
+      <h2 class="h2">Rodinná chalupa <em>pod Černou horou</em></h2>
+      <p class="lead">Chalupa stojí v Krkonošském národním parku, na úpatí Černé hory, hned vedle Hoffmanovy boudy. Starají se o ni osobně bratři Lukáš a Tomáš. Rádi poradí s výlety, lyžováním i tím, kde se dobře najíst.</p>
+      <p class="sign">„Budeme rádi, když si pobyt v Janských Lázních užijete a budete se k nám vracet.“ <span>— Lukáš a Tomáš</span></p>
+    </div>
+    <figure class="photo-stack reveal">
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/510202152.jpg?k=8743d24238766bd3d5402fa0f85d0ccb3beddc44b1df7c3392d104ef21814752&o=" alt="Chalupa U Smrčiny v zimě" loading="lazy" decoding="async" class=p1 />
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/875368038.jpg?k=27f4fc8678c4da563ac510c1d9ce9261a4f6ceb01a767052af7586d549706ece&o=" alt="Chalupa U Smrčiny v létě" loading="lazy" decoding="async" class=p2 />
+    </figure>
+  </div>
+  <div class="wrap stats">
+    <div class="stat reveal"><b data-count="23">23</b><span>hostů najednou</span></div>
+    <div class="stat reveal"><b data-count="9" data-dec="9,0">9,0</b><span>hodnocení z 102 recenzí</span></div>
+    <div class="stat reveal"><b data-count="300">300</b><span>metrů ke Stezce korunami stromů</span></div>
+    <div class="stat reveal"><b data-count="44">44</b><span>km sjezdovek Černá hora – Pec</span></div>
+  </div>
+</section>
+
+<section class="sec sec-snow" id="ubytovani">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="kicker">Ubytování</div>
+      <h2 class="h2">Pro dva, pro rodinu <em>i pro celou partu</em></h2>
+      <p class="lead">Ve všech pokojích čekají povlečené postele a ručníky. Wi-Fi a parkování před chalupou jsou zdarma.</p>
+    </div>
+    <div class="rooms">
+      <article class="room reveal">
+        <div class="room-img"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909030341.jpg?k=67cfd769dacc0c0f336bdbab7c6b5110c731bcd30ddf436b04a4c14cc52a9153&o=" alt="Apartmán v prvním patře" loading="lazy" decoding="async" /></div>
+        <div class="room-body">
+          <div class="tag">1. patro · 4 apartmány</div>
+          <h3>Apartmány pro 2–5 osob</h3>
+          <p>Vlastní koupelna se sprchovým koutem a WC a plně vybavená kuchyňka: lednice, vařič, varná konvice, mikrovlnka a nádobí.</p>
+          <ul class="ticks"><li>vlastní koupelna</li><li>kuchyňka</li><li>TV a Wi-Fi</li></ul>
+        </div>
+      </article>
+      <article class="room reveal">
+        <div class="room-img"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/706414924.jpg?k=bb334e87bc4e36218be42459ac144d984c5e3b6257b740ea125dd1723d8ffdc7&o=" alt="Pokoj v přízemí" loading="lazy" decoding="async" /></div>
+        <div class="room-body">
+          <div class="tag">Přízemí · 2 pokoje</div>
+          <h3>Pokoje pro 2–4 osoby</h3>
+          <p>Společná koupelna se sprchovým koutem i vanou a dvě WC. Hned vedle je velká společenská místnost s kuchyní.</p>
+          <ul class="ticks"><li>vana i sprcha</li><li>2× WC</li><li>společenská místnost</li></ul>
+        </div>
+      </article>
+      <article class="room reveal">
+        <div class="room-img"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909060454.jpg?k=2b35be55c4ac5a14c8127d7711cb98d496b2fd956968f519402392b358c241eb&o=" alt="Společenská místnost s kuchyní" loading="lazy" decoding="async" /></div>
+        <div class="room-body">
+          <div class="tag">Pro skupiny</div>
+          <h3>Celá chalupa až pro 23 hostů</h3>
+          <p>Velká společenská místnost s kuchyní, krytá terasa s grilem a kulečník. Ideální pro rodiny a přátele, kteří chtějí být spolu.</p>
+          <ul class="ticks"><li>společná kuchyně</li><li>terasa s grilem</li><li>kulečník</li></ul>
+        </div>
+      </article>
+    </div>
+    <div class="perks reveal">
+      <div><b>Tenisový kurt zdarma</b><span>Antukový kurt je v ceně pobytu, rakety a míčky půjčíme.</span></div>
+      <div><b>Parkování zdarma</b><span>Přímo před chalupou.</span></div>
+      <div><b>Snídaně</b><span>Formou bufetu v restauraci naproti.</span></div>
+      <div><b>Dětská postýlka zdarma</b><span>Na vyžádání, podle dostupnosti.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-night" id="okoli">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="kicker">Okolí</div>
+      <h2 class="h2">Hory <em>v každé sezóně</em></h2>
+    </div>
+    <div class="season reveal" role="tablist" aria-label="Sezóna">
+      <button type="button" role="tab" class="on" aria-selected="true" data-season="zima">Zima</button>
+      <button type="button" role="tab" aria-selected="false" data-season="leto">Léto</button>
+    </div>
+    <div class="season-panel" data-panel="zima">
+      <figure class="season-img"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/910673482.jpg?k=9e314bc5cddc024953f165e4cd738c3dffe22b1d0e2551626362cb8bc9e5b3cb&o=" alt="Zimní výhled z Černé hory" loading="lazy" decoding="async" /></figure>
+      <ul class="spots">
+        <li><b>Lanovka Hoffmanky Expres</b><span>Vyhřívaná sedačka kousek od chalupy, napojená na celý skiareál.</span><em>pár minut pěšky</em></li>
+        <li><b>Skiareál Černá hora – Pec</b><span>44 km sjezdovek na jeden skipas.</span><em>44 km</em></li>
+        <li><b>Stezka korunami stromů</b><span>Otevřená i v zimě, večer krásně nasvícená.</span><em>300 m</em></li>
+        <li><b>Půjčovny lyží</b><span>Nedaleko chalupy.</span><em>v okolí</em></li>
+      </ul>
+    </div>
+    <div class="season-panel" data-panel="leto" hidden>
+      <figure class="season-img"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909843687.jpg?k=05507fed0580ae2951ea9999ed9aa2707a51173c3aa8ef4c43021011dbe22072&o=" alt="Stezka korunami stromů" loading="lazy" decoding="async" /></figure>
+      <ul class="spots">
+        <li><b>Stezka korunami stromů</b><span>Dřevěná stezka a vyhlídková věž nad lesem.</span><em>300 m</em></li>
+        <li><b>Rozhledna Na Zlaté vyhlídce</b><span>Výhled na Janské Lázně a hřebeny.</span><em>v okolí</em></li>
+        <li><b>Luční bouda</b><span>Nejvýše položená bouda v Krkonoších.</span><em>15 km</em></li>
+        <li><b>Kola a koloběžky</b><span>Půjčovny nedaleko chalupy, trasy přímo od dveří.</span><em>v okolí</em></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-warm" id="restaurace">
+  <div class="wrap two">
+    <div class="food-grid reveal">
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909059652.jpg?k=6b9c0973009e0784b28e604acf35b8b3d2d10e3005d7de432d5494f5d3e9aaf2&o=" alt="Jídlo z restaurace Smrčina" loading="lazy" decoding="async" />
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/910615174.jpg?k=f786fb5a392602c1c418d8ec418b5189cb57566e331c0cf87c7999bcba83cbda&o=" alt="Jídlo z restaurace Smrčina" loading="lazy" decoding="async" />
+      <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/910614386.jpg?k=66532e2bf1419bdb8fe56ad3aed7146ac7fba7d543b7fc397aa899f23be58542&o=" alt="Restaurace Smrčina" loading="lazy" decoding="async" />
+    </div>
+    <div class="reveal">
+      <div class="kicker">Restaurace Smrčina</div>
+      <h2 class="h2">Večeře <em>přes ulici</em></h2>
+      <p class="lead">Snídaně formou bufetu, poctivá česká kuchyně a místo, kde se dá po dni na horách posedět. Restaurace patří ke stejné rodině a hosté ji v recenzích chválí skoro nejvíc.</p>
+      <p class="quote-mini">„Restaurace naproti skvělá, vynikající jídlo a milý personál.“ <span>— Veronika, Booking.com</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-night" id="galerie">
+  <div class="wrap">
+    <div class="head reveal"><div class="kicker">Galerie</div><h2 class="h2">Podívejte se <em>dovnitř</em></h2></div>
+    <div class="gallery"><button class="g-item tall" type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/875368038.jpg?k=27f4fc8678c4da563ac510c1d9ce9261a4f6ceb01a767052af7586d549706ece&o=" aria-label="Zvětšit: Chalupa v létě"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/875368038.jpg?k=27f4fc8678c4da563ac510c1d9ce9261a4f6ceb01a767052af7586d549706ece&o=" alt="Chalupa v létě" loading="lazy" decoding="async" /><span>Chalupa v létě</span></button><button class="g-item " type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/510202152.jpg?k=8743d24238766bd3d5402fa0f85d0ccb3beddc44b1df7c3392d104ef21814752&o=" aria-label="Zvětšit: Chalupa v zimě"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/510202152.jpg?k=8743d24238766bd3d5402fa0f85d0ccb3beddc44b1df7c3392d104ef21814752&o=" alt="Chalupa v zimě" loading="lazy" decoding="async" /><span>Chalupa v zimě</span></button><button class="g-item " type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909060454.jpg?k=2b35be55c4ac5a14c8127d7711cb98d496b2fd956968f519402392b358c241eb&o=" aria-label="Zvětšit: Společenská místnost"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909060454.jpg?k=2b35be55c4ac5a14c8127d7711cb98d496b2fd956968f519402392b358c241eb&o=" alt="Společenská místnost" loading="lazy" decoding="async" /><span>Společenská místnost</span></button><button class="g-item " type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909030341.jpg?k=67cfd769dacc0c0f336bdbab7c6b5110c731bcd30ddf436b04a4c14cc52a9153&o=" aria-label="Zvětšit: Apartmán"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909030341.jpg?k=67cfd769dacc0c0f336bdbab7c6b5110c731bcd30ddf436b04a4c14cc52a9153&o=" alt="Apartmán" loading="lazy" decoding="async" /><span>Apartmán</span></button><button class="g-item wide" type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/706413881.jpg?k=0917503d373a28df88f3d76812cca4b1d02c97afcd3f9867ac77462b9da78a13&o=" aria-label="Zvětšit: Krytá terasa s grilem"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/706413881.jpg?k=0917503d373a28df88f3d76812cca4b1d02c97afcd3f9867ac77462b9da78a13&o=" alt="Krytá terasa s grilem" loading="lazy" decoding="async" /><span>Krytá terasa s grilem</span></button><button class="g-item " type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909030417.jpg?k=bd4a6268982d0f02ee8da43955de080083ec884f19f7113eeef7b1714b410224&o=" aria-label="Zvětšit: Kuchyňka v apartmánu"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909030417.jpg?k=bd4a6268982d0f02ee8da43955de080083ec884f19f7113eeef7b1714b410224&o=" alt="Kuchyňka v apartmánu" loading="lazy" decoding="async" /><span>Kuchyňka v apartmánu</span></button><button class="g-item " type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/580066882.jpg?k=6ee6c0ea315976024a48f54ab183079d790f20bcf8a0b5552f3d6800bb822827&o=" aria-label="Zvětšit: Chalupy u Černé hory z výšky"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/580066882.jpg?k=6ee6c0ea315976024a48f54ab183079d790f20bcf8a0b5552f3d6800bb822827&o=" alt="Chalupy u Černé hory z výšky" loading="lazy" decoding="async" /><span>Chalupy u Černé hory z výšky</span></button><button class="g-item " type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/480157592.jpg?k=b05d3bc10c2569816efc3382a063fadedfe000d51a73a500f21c16e23503e8cb&o=" aria-label="Zvětšit: Antukový tenisový kurt"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/480157592.jpg?k=b05d3bc10c2569816efc3382a063fadedfe000d51a73a500f21c16e23503e8cb&o=" alt="Antukový tenisový kurt" loading="lazy" decoding="async" /><span>Antukový tenisový kurt</span></button><button class="g-item tall" type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/510202154.jpg?k=4b08392916c54a0926dda22e7a273e2dd2d8de1791e451db8ba35bd37e913fe8&o=" aria-label="Zvětšit: Závěje před chalupou"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/510202154.jpg?k=4b08392916c54a0926dda22e7a273e2dd2d8de1791e451db8ba35bd37e913fe8&o=" alt="Závěje před chalupou" loading="lazy" decoding="async" /><span>Závěje před chalupou</span></button><button class="g-item " type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/706414924.jpg?k=bb334e87bc4e36218be42459ac144d984c5e3b6257b740ea125dd1723d8ffdc7&o=" aria-label="Zvětšit: Apartmán"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/706414924.jpg?k=bb334e87bc4e36218be42459ac144d984c5e3b6257b740ea125dd1723d8ffdc7&o=" alt="Apartmán" loading="lazy" decoding="async" /><span>Apartmán</span></button><button class="g-item " type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909059689.jpg?k=aff7c9bbe50b4b2253e9f781c9b6513755840ed994facde6702a59748e7bb960&o=" aria-label="Zvětšit: Posezení venku"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909059689.jpg?k=aff7c9bbe50b4b2253e9f781c9b6513755840ed994facde6702a59748e7bb960&o=" alt="Posezení venku" loading="lazy" decoding="async" /><span>Posezení venku</span></button><button class="g-item wide" type="button" data-full="https://cf.bstatic.com/xdata/images/hotel/max1280x900/910673482.jpg?k=9e314bc5cddc024953f165e4cd738c3dffe22b1d0e2551626362cb8bc9e5b3cb&o=" aria-label="Zvětšit: Výhled z Černé hory"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/910673482.jpg?k=9e314bc5cddc024953f165e4cd738c3dffe22b1d0e2551626362cb8bc9e5b3cb&o=" alt="Výhled z Černé hory" loading="lazy" decoding="async" /><span>Výhled z Černé hory</span></button></div>
+  </div>
+</section>
+
+<section class="sec sec-snow" id="hodnoceni">
+  <div class="wrap">
+    <div class="score-row">
+      <div class="score reveal"><b>9,0</b><span>Fantastické</span><small>102 hodnocení na Booking.com</small></div>
+      <div class="cats reveal"><div class="cat"><span>Personál</span><div class="bar"><i style="--v:0.94"></i></div><b>9,4</b></div><div class="cat"><span>Čistota</span><div class="bar"><i style="--v:0.94"></i></div><b>9,4</b></div><div class="cat"><span>Lokalita</span><div class="bar"><i style="--v:0.94"></i></div><b>9,4</b></div><div class="cat"><span>Poměr ceny a kvality</span><div class="bar"><i style="--v:0.89"></i></div><b>8,9</b></div><div class="cat"><span>Wi-Fi</span><div class="bar"><i style="--v:0.88"></i></div><b>8,8</b></div><div class="cat"><span>Pohodlí</span><div class="bar"><i style="--v:0.87"></i></div><b>8,7</b></div><div class="cat"><span>Zařízení</span><div class="bar"><i style="--v:0.84"></i></div><b>8,4</b></div></div>
+    </div>
+    <div class="reviews"><figure class="review reveal"><blockquote>„Skvělá lokalita, jen pár kroků od stezky korunami stromů. Čistota a celkový dojem za jedna.“</blockquote><figcaption>Standa77 · Booking.com</figcaption></figure><figure class="review reveal"><blockquote>„Ubytování předčilo naše očekávání. K dispozici jsme měli vše, co jsme potřebovali. Včetně dostatečně zařízené kuchyňky.“</blockquote><figcaption>Veronika · Booking.com</figcaption></figure><figure class="review reveal"><blockquote>„Byli jsme zde již po několikáté, vždy spokojeni. Navíc v protější restauraci Smrčina velice milá a ochotná obsluha.“</blockquote><figcaption>Renata · Booking.com</figcaption></figure><figure class="review reveal"><blockquote>„Ubytování nádherné. Personál super a hlavně strašně ochotní. Určitě se také vrátíme.“</blockquote><figcaption>Monika · Booking.com</figcaption></figure><figure class="review reveal"><blockquote>„Velmi milý a nápomocný personál v restauraci. Celkově skvělé prostředí a velmi vstřícný pan majitel.“</blockquote><figcaption>Jaroslav · Booking.com</figcaption></figure><figure class="review reveal"><blockquote>„Chalupa s výhledem na romantickém místě, ve venkovském stylu… příjemný majitel a personál.“</blockquote><figcaption>Bosnovič · Booking.com</figcaption></figure></div>
+  </div>
+</section>
+
+<section class="sec sec-night" id="rezervace">
+  <div class="wrap two book-wrap">
+    <div class="reveal">
+      <div class="kicker">Rezervace</div>
+      <h2 class="h2">Napište si <em>přímo nám</em></h2>
+      <p class="lead">Vyberte v kalendáři příjezd a odjezd a pošlete poptávku. Ozveme se vám s volnými apartmány a cenou.</p>
+      <div class="cal" id="cal" aria-label="Kalendář obsazenosti"></div>
+      <div class="cal-legend"><span><i class="lg-free"></i>volno</span><span><i class="lg-busy"></i>obsazeno</span><span><i class="lg-sel"></i>váš výběr</span></div>
+      <p class="note">Ukázka: obsazenost je zatím vymyšlená. V ostré verzi se bude načítat z Bookingu, aby se termíny nikdy nepotkaly.</p>
+    </div>
+    <form class="bform reveal" id="bform" novalidate>
+      <div class="row">
+        <label for="b-from">Příjezd<input id="b-from" name="prijezd" type="text" placeholder="vyberte v kalendáři" readonly /></label>
+        <label for="b-to">Odjezd<input id="b-to" name="odjezd" type="text" placeholder="vyberte v kalendáři" readonly /></label>
+      </div>
+      <div class="row">
+        <label for="b-guests">Počet osob<select id="b-guests" name="osoby"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option></select></label>
+        <label for="b-type">Ubytování<select id="b-type" name="typ"><option>Apartmán (1. patro)</option><option>Pokoj v přízemí</option><option>Celá chalupa</option><option>Poradíte mi</option></select></label>
+      </div>
+      <label for="b-name">Jméno<input id="b-name" name="jmeno" type="text" autocomplete="name" /></label>
+      <div class="row">
+        <label for="b-mail">E-mail<input id="b-mail" name="email" type="email" autocomplete="email" /></label>
+        <label for="b-tel">Telefon<input id="b-tel" name="telefon" type="tel" autocomplete="tel" /></label>
+      </div>
+      <label for="b-msg">Zpráva<textarea id="b-msg" name="zprava" rows="3" placeholder="Děti, pejsek, lyžařský kurz…"></textarea></label>
+      <button type="submit">Poslat poptávku</button>
+      <small id="b-note">Ukázka: formulář zatím nic neodesílá.</small>
+    </form>
+  </div>
+</section>
+
+<section class="sec sec-snow" id="info">
+  <div class="wrap two">
+    <div class="reveal">
+      <div class="kicker">Dobré vědět</div>
+      <h2 class="h2">Než <em>přijedete</em></h2>
+      <dl class="facts">
+        <div><dt>Příjezd</dt><dd>14:00 – 20:00</dd></div>
+        <div><dt>Odjezd</dt><dd>8:00 – 10:00</dd></div>
+        <div><dt>Noční klid</dt><dd>22:00 – 7:00</dd></div>
+        <div><dt>Zvířata</dt><dd>na vyžádání</dd></div>
+        <div><dt>Děti</dt><dd>vítány, postýlka zdarma</dd></div>
+        <div><dt>Jazyky</dt><dd>česky, slovensky, anglicky</dd></div>
+      </dl>
+    </div>
+    <div class="faq reveal">
+      <details><summary>Kde se dá najíst?</summary><p>V restauraci Smrčina přímo naproti chalupě. Snídaně je formou bufetu. V apartmánech si můžete vařit i sami.</p></details>
+      <details><summary>Jak daleko je to na lyže?</summary><p>Vyhřívaná lanovka Hoffmanky Expres je pár minut pěšky. Na lyžích se dá dojet skoro až k chalupě.</p></details>
+      <details><summary>Můžeme přijet s pejskem?</summary><p>Ano, po domluvě. Napište nám to do poptávky.</p></details>
+      <details><summary>Je chalupa vhodná pro skupiny?</summary><p>Ano, ubytuje až 23 hostů. Pro větší partu je tu společenská místnost s kuchyní a terasa s grilem. Večírky a rozlučky se svobodou se tu ale nekonají.</p></details>
+      <details><summary>Kde zaparkujeme?</summary><p>Zdarma přímo před chalupou.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer class="foot" id="kontakt">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="logo big">Chalupa U Smrčiny</div>
+      <p>Krkonošská, 542 25 Janské Lázně<br />Krkonošský národní park</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Chalupa+U+Smr%C4%8Diny+Jansk%C3%A9+L%C3%A1zn%C4%9B" target="_blank" rel="noopener">Otevřít v mapách →</a>
+    </div>
+    <div>
+      <div class="kicker">Kontakt</div>
+      <p><a href="tel:+420733645729">+420 733 645 729</a><br /><a href="tel:+420603416095">+420 603 416 095</a><br /><a href="mailto:chalupa-usmrciny@janskelazne.cz">chalupa-usmrciny@janskelazne.cz</a></p>
+    </div>
+    <div>
+      <div class="kicker">Starají se o vás</div>
+      <p>Lukáš a Tomáš<br />rodinný podnik</p>
+    </div>
+  </div>
+  <div class="wrap small">Návrh webu · ukázka. Fotografie a recenze pocházejí z veřejného profilu na Booking.com.</div>
+</footer>
+</main>
+
+<div class="lightbox" id="lb" hidden><button type="button" class="lb-close" aria-label="Zavřít">×</button><img alt="" /></div>
+
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const TOTAL = 284;
+  const path = (i) => `frames/${String(i + 1).padStart(4, '0')}.webp`;
+  // scroll -> snímek. -1 = závěrečný celkový pohled (statický obrázek s pomalým oddálením)
+  const SEG = [
+    [0.000, 0.040, 0, 0],
+    [0.040, 0.210, 0, 94.5],      // sjezdovka -> chalupa
+    [0.210, 0.280, 94.5, 94.5],    // zastávka: chalupa
+    [0.280, 0.500, 94.5, 189],    // mraky -> večerní svah -> celek
+    [0.500, 0.570, 189, 189],    // zastávka: celek
+    [0.570, 0.790, 189, 283],    // les -> stezka korunami
+    [0.790, 0.885, 283, 283],    // zastávka: stezka
+  ];
+  const FINAL_AT = 0.885;
+  const CLOUDS = [ { a: 0.683, b: 0.748 }, { a: 0.850, b: 0.920 } ];
+
+  const mobile = matchMedia('(max-width: 820px) and (pointer: coarse)').matches;
+  const STEP = 1;
+  const frames = new Array(TOTAL);
+  const canvas = document.getElementById('stage');
+  const ctx = canvas.getContext('2d');
+  const finalImg = new Image(); finalImg.src = 'img/final.webp';
+
+  const frameFor = (p) => { for (const [a, b, f0, f1] of SEG) if (p >= a && p < b) return f0 + (f1 - f0) * ((p - a) / (b - a)); return TOTAL - 1; };
+  function nearestLoaded(i) {
+    i = Math.round(i);
+    for (let d = 0; d < TOTAL; d++) {
+      if (frames[i - d]?.ok) return frames[i - d];
+      if (frames[i + d]?.ok) return frames[i + d];
+    }
+    return null;
+  }
+
+  // načítání po vrstvách: každý 16., 8., 4., 2., pak vše
+  const order = [], seen = new Set();
+  for (const s of [16, 8, 4, 2, 1]) { if (s < STEP) continue; for (let i = 0; i < TOTAL; i += s) if (!seen.has(i)) { seen.add(i); order.push(i); } }
+  if (!seen.has(TOTAL - 1)) order.push(TOTAL - 1);
+  let loaded = 0, revealed = false, needsDraw = true;
+  const need = Math.ceil(order.length * 0.15);
+  const queue = order.slice();
+  function loadNext() {
+    if (!queue.length) return;
+    const i = queue.shift(), img = new Image();
+    img.decoding = 'async';
+    img.onload = () => { img.ok = true; frames[i] = img; loaded++; onLoaded(); needsDraw = true; loadNext(); };
+    img.onerror = () => { loaded++; loadNext(); };
+    img.src = path(i);
+  }
+  function onLoaded() {
+    const r = Math.min(1, loaded / need);
+    document.getElementById('lbar').style.transform = `scaleX(${r})`;
+    if (!revealed && r >= 1) { revealed = true; document.getElementById('loader').classList.add('done'); }
+  }
+  for (let k = 0; k < 6; k++) loadNext();
+
+  let W = 0, H = 0;
+  const fx = document.getElementById('fx'), fctx = fx.getContext('2d');
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.width = Math.round(innerWidth * dpr); H = canvas.height = Math.round(innerHeight * dpr);
+    fx.width = W; fx.height = H; needsDraw = true;
+  }
+  function cover(img, zoom = 1) {
+    const s = Math.max(W / img.naturalWidth, H / img.naturalHeight) * zoom;
+    const w = img.naturalWidth * s, h = img.naturalHeight * s;
+    ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
+  }
+
+  // jiskry ve světle
+  const sparks = Array.from({ length: mobile ? 40 : 90 }, () => ({ x: Math.random(), y: Math.random(), r: Math.random() * 1.6 + 0.4, s: Math.random() * 0.012 + 0.004, ph: Math.random() * 6.28 }));
+  function drawSparks(t) {
+    fctx.clearRect(0, 0, W, H);
+    const dpr = W / innerWidth;
+    for (const p of sparks) {
+      p.y -= p.s * 0.016; if (p.y < -0.02) { p.y = 1.02; p.x = Math.random(); }
+      const a = 0.25 + 0.35 * Math.sin(t * 1.4 + p.ph);
+      fctx.beginPath(); fctx.arc((p.x + Math.sin(t * 0.3 + p.ph) * 0.01) * W, p.y * H, p.r * dpr, 0, 6.283);
+      fctx.fillStyle = `rgba(255,214,140,${Math.max(0, a).toFixed(3)})`; fctx.fill();
+    }
+  }
+
+  const $ = (s) => document.querySelector(s);
+  const sm = (e0, e1, x) => { const t = Math.min(1, Math.max(0, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); };
+  const fadeWin = (p, a, b, f = 0.022) => sm(a, a + f, p) * (1 - sm(b - f, b, p));
+  const places = [...document.querySelectorAll('.place, .line')].map((el) => ({ el, a: +el.dataset.in, b: +el.dataset.out }));
+  const hero = $('#hero'), fin = $('#final'), cue = $('#cue');
+  const cloudImgs = [...document.querySelectorAll('#clouds img')], haze = $('#clouds .haze');
+  const ringFg = $('#ringFg'), ringDot = $('#ringDot'), C = 2 * Math.PI * 46;
+  ringFg.style.strokeDasharray = C;
+  const stops = [$('#s1'), $('#s2'), $('#s3'), $('#s4')];
+
+  function ui(p) {
+    const h = 1 - sm(0.012, 0.04, p);
+    hero.style.opacity = h.toFixed(3);
+    hero.style.transform = `translateY(calc(-50% - ${((1 - h) * 24).toFixed(1)}px))`;
+    cue.style.opacity = (1 - sm(0, 0.02, p)).toFixed(3);
+    for (const c of places) {
+      const o = fadeWin(p, c.a, c.b);
+      c.el.style.opacity = o.toFixed(3);
+      c.el.style.transform = `translateY(${((1 - o) * 16).toFixed(1)}px)`;
+    }
+    const fo = sm(0.935, 0.965, p);
+    fin.style.opacity = fo.toFixed(3);
+    fin.classList.toggle('live', fo > 0.5);
+    // mraky
+    let bell = 0, tt = 0;
+    for (const c of CLOUDS) { const t = (p - c.a) / (c.b - c.a); if (t > 0 && t < 1) { bell = Math.sin(Math.PI * t); tt = t; } }
+    haze.style.opacity = (Math.pow(bell, 1.6) * 0.94).toFixed(3);
+    cloudImgs.forEach((im) => {
+      const dx = +im.dataset.dx, dy = +im.dataset.dy, r = +im.dataset.r;
+      const sc = 0.55 + tt * 1.9, x = dx * (8 + tt * 70), y = dy * (6 + tt * 50);
+      im.style.opacity = Math.min(1, bell * 1.5).toFixed(3);
+      im.style.transform = `translate(calc(-50% + ${x}vw), calc(-50% + ${y}vh)) rotate(${r}deg) scale(${sc.toFixed(3)})`;
+    });
+    // kruh a seznam míst
+    const prog = Math.min(1, p / 0.865);
+    ringFg.style.strokeDashoffset = (C * (1 - prog)).toFixed(2);
+    const ang = prog * Math.PI * 2 - Math.PI / 2, rr = 46 / 100;
+    ringDot.style.transform = `translate(${(Math.cos(ang) * rr * 100).toFixed(2)}%, ${(Math.sin(ang) * rr * 100).toFixed(2)}%)`;
+    ringDot.style.left = `${50 + Math.cos(ang) * 46}%`; ringDot.style.top = `${50 + Math.sin(ang) * 46}%`; ringDot.style.transform = 'none';
+    const active = p < 0.03 ? -1 : p < 0.17 ? 0 : p < 0.42 ? 1 : p < 0.70 ? 2 : 3;
+    stops.forEach((b, i) => b.classList.toggle('on', i === active));
+  }
+
+  // scroll
+  gsap.registerPlugin(ScrollTrigger);
+  let target = 0, current = 0, last = performance.now(), lastKey = '';
+  const st = ScrollTrigger.create({ trigger: '#track', start: 'top top', end: 'bottom bottom', onUpdate: (s) => { target = s.progress; } });
+  const goTo = (p) => { const y = st.start + (st.end - st.start) * p; window.scrollTo({ top: y, behavior: 'smooth' }); };
+  stops.forEach((b) => b.addEventListener('click', () => goTo(+b.dataset.go)));
+  
+
+  function tick(now) {
+    const dt = Math.min(0.1, (now - last) / 1000); last = now;
+    current += (target - current) * (1 - Math.exp(-dt * 7));
+    if (Math.abs(target - current) < 1e-5) current = target;
+    let key;
+    if (current >= FINAL_AT && finalImg.complete && finalImg.naturalWidth) {
+      const z = 1.3 - 0.3 * sm(FINAL_AT, 0.97, current);   // pomalé "odletění" na celé dioráma
+      key = 'F' + z.toFixed(4);
+      if (key !== lastKey || needsDraw) cover(finalImg, z);
+    } else {
+      const fi = Math.round(frameFor(Math.min(current, FINAL_AT - 1e-6)));
+      key = 'V' + fi;
+      if (key !== lastKey || needsDraw) { const img = nearestLoaded(fi); if (img) cover(img); }
+    }
+    lastKey = key; needsDraw = false;
+    drawSparks(now / 1000);
+    ui(current);
+    requestAnimationFrame(tick);
+  }
+
+  // svítící kurzor (jen myš)
+  const cur = $('#cursor');
+  if (matchMedia('(pointer: fine)').matches) {
+    document.body.classList.add('has-cursor');
+    let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy;
+    addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; cur.style.opacity = 1; });
+    addEventListener('pointerover', (e) => cur.classList.toggle('big', !!e.target.closest('a, button, input')));
+    document.addEventListener('pointerleave', () => { cur.style.opacity = 0; });
+    (function follow() { cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2; cur.style.transform = `translate(${cx}px, ${cy}px)`; requestAnimationFrame(follow); })();
+  }
+
+  // formulář (ukázka – nic neodesílá)
+  $('#rezervace').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const note = $('#f-note');
+    const mail = $('#f-mail').value.trim();
+    if (!mail || !mail.includes('@')) { note.textContent = 'Doplňte prosím e-mail, ať vám můžeme odpovědět.'; note.className = ''; return; }
+    note.textContent = 'Díky! V ostré verzi by teď poptávka odešla majiteli.'; note.className = 'ok';
+  });
+
+
+  // ===== obsah pod hero =====
+  const body = document.body;
+  const trackEl = document.getElementById('track');
+  function heroState() {
+    const end = trackEl.offsetTop + trackEl.offsetHeight - innerHeight;
+    body.classList.toggle('past-hero', scrollY > end + innerHeight * 0.15);
+  }
+  addEventListener('scroll', heroState, { passive: true }); heroState();
+  // plynulé odkazy na kotvy
+  document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href'); const el = id === '#top' ? document.body : document.querySelector(id);
+    if (!el) return; e.preventDefault();
+    window.scrollTo({ top: id === '#top' ? 0 : el.getBoundingClientRect().top + scrollY - 70, behavior: 'smooth' });
+  }));
+  // odhalování sekcí + čísla + hodnoticí lišty
+  const io = new IntersectionObserver((ents) => ents.forEach((en) => {
+    if (!en.isIntersecting) return;
+    en.target.classList.add('in'); io.unobserve(en.target);
+    en.target.querySelectorAll('[data-count]').forEach((b) => {
+      const to = +b.dataset.count, dec = b.dataset.dec; const o = { v: 0 };
+      gsap.to(o, { v: to, duration: 1.6, ease: 'power3.out', onUpdate: () => { b.textContent = dec ? (o.v >= to - 0.01 ? dec : o.v.toFixed(1).replace('.', ',')) : Math.round(o.v); } });
+    });
+    en.target.querySelectorAll('.bar i').forEach((i, k) => setTimeout(() => i.style.setProperty('--fill', 1), 80 * k));
+  }), { threshold: 0.18 });
+  document.querySelectorAll('.reveal').forEach((el) => { el.querySelectorAll('.bar i').forEach((i) => i.style.setProperty('--fill', 0)); io.observe(el); });
+  document.querySelectorAll('.stats').forEach((el) => io.observe(el));
+  // sezóna
+  document.querySelectorAll('.season button').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.season button').forEach((x) => { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
+    document.querySelectorAll('.season-panel').forEach((p) => { p.hidden = p.dataset.panel !== b.dataset.season; });
+  }));
+  // galerie
+  const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+  document.querySelectorAll('.g-item').forEach((g) => g.addEventListener('click', () => { lbImg.src = g.dataset.full; lbImg.alt = g.getAttribute('aria-label'); lb.hidden = false; }));
+  lb.addEventListener('click', (e) => { if (e.target !== lbImg) lb.hidden = true; });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.hidden = true; });
+  // kalendář (ukázková obsazenost)
+  const cal = document.getElementById('cal');
+  const MONTHS = ['leden','únor','březen','duben','květen','červen','červenec','srpen','září','říjen','listopad','prosinec'];
+  const today = new Date(); today.setHours(0,0,0,0);
+  const busy = (d) => { const n = d.getFullYear()*400 + d.getMonth()*32 + d.getDate(); return (Math.sin(n * 12.9898) * 43758.5453 % 1 + 1) % 1 < 0.28; };
+  let from = null, to = null, offset = (new Date(today.getFullYear(), today.getMonth()+1, 0).getDate() - today.getDate()) < 7 ? 1 : 0; const minOffset = offset;
+  const fmt = (d) => d.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric' });
+  function renderCal() {
+    cal.innerHTML = '';
+    const nav = document.createElement('div'); nav.className = 'cal-nav';
+    nav.innerHTML = '<button type="button" class="cal-prev" aria-label="Předchozí měsíc">←</button><button type="button" class="cal-next" aria-label="Další měsíc">→</button>';
+    nav.querySelector('.cal-prev').disabled = offset <= minOffset;
+    nav.querySelector('.cal-prev').addEventListener('click', () => { offset = Math.max(minOffset, offset - 1); renderCal(); });
+    nav.querySelector('.cal-next').addEventListener('click', () => { offset = Math.min(minOffset + 10, offset + 1); renderCal(); });
+    cal.appendChild(nav);
+    for (let m = 0; m < 2; m++) {
+      const first = new Date(today.getFullYear(), today.getMonth() + offset + m, 1);
+      const box = document.createElement('div'); box.className = 'cal-m';
+      box.innerHTML = `<h4>${MONTHS[first.getMonth()]} ${first.getFullYear()}</h4>`;
+      const g = document.createElement('div'); g.className = 'cal-g';
+      ['po','út','st','čt','pá','so','ne'].forEach((d) => { const s = document.createElement('div'); s.className = 'dow'; s.textContent = d; g.appendChild(s); });
+      const pad = (first.getDay() + 6) % 7; for (let i = 0; i < pad; i++) g.appendChild(document.createElement('div'));
+      const days = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
+      for (let d = 1; d <= days; d++) {
+        const date = new Date(first.getFullYear(), first.getMonth(), d);
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = d;
+        b.setAttribute('aria-label', fmt(date));
+        if (date < today) b.disabled = true;
+        else if (busy(date)) { b.disabled = true; b.classList.add('busy'); }
+        const t = date.getTime();
+        if (from && t === from.getTime() || to && t === to.getTime()) b.classList.add('edge');
+        else if (from && to && t > from && t < to) b.classList.add('in');
+        b.addEventListener('click', () => pick(date));
+        g.appendChild(b);
+      }
+      box.appendChild(g); cal.appendChild(box);
+    }
+  }
+  function pick(d) {
+    if (!from || to || d <= from) { from = d; to = null; }
+    else {
+      for (let x = new Date(from); x < d; x.setDate(x.getDate() + 1)) if (busy(x) && x > from) { from = d; to = null; renderCal(); sync(); return; }
+      to = d;
+    }
+    renderCal(); sync();
+  }
+  function sync() { $('#b-from').value = from ? fmt(from) : ''; $('#b-to').value = to ? fmt(to) : ''; }
+  renderCal();
+  // poptávka (ukázka; v ostré verzi Web3Forms)
+  $('#bform').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const note = $('#b-note'), mail = $('#b-mail').value.trim();
+    if (!from || !to) { note.textContent = 'Vyberte prosím v kalendáři příjezd i odjezd.'; note.className = 'err'; return; }
+    if (!mail.includes('@')) { note.textContent = 'Doplňte prosím e-mail, ať vám můžeme odpovědět.'; note.className = 'err'; return; }
+    note.textContent = 'Díky! V ostré verzi by poptávka teď odešla přímo majitelům.'; note.className = 'ok';
+  });
+
+  addEventListener('resize', resize);
+  resize();
+  requestAnimationFrame(tick);
+  window.__diorama = { setProgress(p) { target = current = p; needsDraw = true; } };
+})();
+</script>
+
+</body>
+</html>
