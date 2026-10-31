@@ -102,7 +102,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   Engine scroll-craftu ani shoot.mjs nepoužíváme (vlastní Three.js svět); ověřovací skript je v scratchpadu (cue opacity, arch snímků).
 - **Třetí chalupa U Smrčiny** (Janské Lázně, Krkonošská, 542 25; majitelé bratři Lukáš a Tomáš; +420 733 645 729, +420 603 416 095,
   chalupa-usmrciny@janskelazne.cz; BEZ vlastního webu, jen Booking 9,0/102 recenzí): ukázka `smrcina/` (31. 10.; hero = zimní diorama
-  přehrávané scrollem, 284 snímků z 3 videí Google Flow (Veo 3.1 Lite) z diorama obrázků z ChatGPT, mraky přes přechody; pod tím celý web
+  přehrávané scrollem, 190 snímků ze 2 videí Google Flow (Veo 3.1 Lite): sjezdovka → chalupa → pohled shora (rozhledna vyřazena 31. 10. na Tomášovo přání), mraky přes přechody; písma Cormorant + Onest ve `smrcina/fonts/`; pod tím celý web
   z údajů z Bookingu: o chalupě, ubytování, okolí zima/léto, restaurace, galerie, hodnocení, ukázkový kalendář + formulář, info, kontakt).
   Fotky a recenze hotlinkované z cf.bstatic.com (Booking) – jen pro ukázku majitelům, při zakázce originály. Formulář zatím demo (Web3Forms doplnit).
   Zdroj: /home/claude/smrcina-web/source.html (mimo repo). Argument do telefonu: provize Bookingu vs. přímé rezervace.
