@@ -676,7 +676,23 @@
   const ctx = canvas.getContext('2d');
   const finalImg = new Image(); finalImg.src = 'img/final.webp';
 
-  const frameFor = (p) => { for (const [a, b, f0, f1] of SEG) if (p >= a && p < b) return f0 + (f1 - f0) * ((p - a) / (b - a)); return TOTAL - 1; };
+  // plynulé rozjezdy a dojezdy: pohyb se na začátku a konci úseku zpomalí (mix lineárního a sinusového průběhu)
+  const easeIO = (t) => 0.3 * t + 0.7 * (0.5 - 0.5 * Math.cos(Math.PI * t));
+  const frameFor = (p) => { for (const [a, b, f0, f1] of SEG) if (p >= a && p < b) return f0 + (f1 - f0) * easeIO((p - a) / (b - a)); return TOTAL - 1; };
+  // jemné „dýchání“ kamery: během zastávky se obraz pomalu přibližuje, při dalším rozjezdu se plynule vrátí
+  const HOLD_ZOOM = 0.045;
+  function driftFor(p) {
+    let z = 0;
+    for (let i = 0; i < SEG.length; i++) {
+      const [a, b, f0, f1] = SEG[i];
+      if (f0 !== f1 || i === 0) continue;               // jen zastávky (ne úvodní)
+      const next = SEG[i + 1];
+      const back = next ? a + (b - a) + (next[1] - next[0]) * 0.35 : b;
+      if (p >= a && p < b) z = HOLD_ZOOM * (1 - Math.pow(1 - (p - a) / (b - a), 2));
+      else if (p >= b && p < back) z = HOLD_ZOOM * (1 - sm(b, back, p));
+    }
+    return 1 + z;
+  }
   function nearestLoaded(i) {
     i = Math.round(i);
     for (let d = 0; d < TOTAL; d++) {
@@ -787,7 +803,7 @@
 
   function tick(now) {
     const dt = Math.min(0.1, (now - last) / 1000); last = now;
-    current += (target - current) * (1 - Math.exp(-dt * 7));
+    current += (target - current) * (1 - Math.exp(-dt * 5));
     if (Math.abs(target - current) < 1e-5) current = target;
     let key;
     if (current >= FINAL_AT && finalImg.complete && finalImg.naturalWidth) {
@@ -795,9 +811,14 @@
       key = 'F' + z.toFixed(4);
       if (key !== lastKey || needsDraw) cover(finalImg, z);
     } else {
-      const fi = Math.round(frameFor(Math.min(current, FINAL_AT - 1e-6)));
-      key = 'V' + fi;
-      if (key !== lastKey || needsDraw) { const img = nearestLoaded(fi); if (img) cover(img); }
+      const ff = frameFor(Math.min(current, FINAL_AT - 1e-6));
+      const f0 = Math.floor(ff), fr = ff - f0, z = driftFor(current);
+      key = 'V' + ff.toFixed(2) + z.toFixed(4);
+      if (key !== lastKey || needsDraw) {
+        const a = nearestLoaded(f0), b = fr > 0.04 ? frames[Math.min(TOTAL - 1, f0 + 1)] : null;
+        if (a) { ctx.globalAlpha = 1; cover(a, z); }
+        if (b?.ok) { ctx.globalAlpha = fr; cover(b, z); ctx.globalAlpha = 1; }   // prolnutí sousedních snímků = plynulejší pohyb
+      }
     }
     lastKey = key; needsDraw = false;
     drawSparks(now / 1000);
