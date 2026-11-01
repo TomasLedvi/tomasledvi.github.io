@@ -579,6 +579,12 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
 </footer>
 
 <script>
+/* náhled barev: ?barvy=A|B|C|D (jen pro výběr s Tomášem) */
+(() => { const P = { A: ['#ece8df', '#efe79a'], B: ['#f1ece2', '#e9b872'], C: ['#eef0e8', '#b8d9a8'], D: ['#f3eee6', '#e0946a'] };
+  const k = (new URLSearchParams(location.search).get('barvy') || '').toUpperCase(); if (!P[k]) return;
+  const st = document.createElement('style'); st.textContent = `:root{--ink:${P[k][0]};--amber:${P[k][1]};--amber2:${P[k][1]}}`; document.head.appendChild(st); })();
+</script>
+<script>
 // ===== Přepínání jazyka CZ / DE =====
 (() => {
   const DE = {
