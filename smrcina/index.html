@@ -279,7 +279,8 @@
   .cat b { text-align:right; font-variant-numeric:tabular-nums; }
   .bar { height:4px; background:rgba(28,24,19,.12); border-radius:4px; overflow:hidden; }
   .bar i { display:block; height:100%; width:calc(var(--v) * 100%); background:var(--snow-ink); transform-origin:left; transform:scaleX(var(--fill,1)); transition:transform 1.4s cubic-bezier(.2,.7,.2,1); }
-  .reviews { columns:3 300px; column-gap:22px; }
+  .reviews { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(300px,100%), 1fr)); gap:22px; align-items:stretch; }
+  .reviews .review { margin-bottom:0; }
   .review { break-inside:avoid; margin-bottom:22px; background:#fff; border-radius:8px; padding:24px; }
   .review blockquote { font-family:var(--serif); font-size:21px; line-height:1.35; }
   .review figcaption { margin-top:14px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--wood); }
