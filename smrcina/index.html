@@ -377,6 +377,14 @@
   .hero .eyebrow, .place .meta { font-size:11px; color:#ffdc85; text-shadow:0 1px 2px rgba(0,0,0,.9), 0 0 14px rgba(0,0,0,.8); }
   .stops button { text-shadow:0 1px 3px rgba(0,0,0,.8); }
   .shade { height:60vh; background:linear-gradient(to top, rgba(7,5,3,.72), rgba(7,5,3,0)); }
+  /* Čitelnost horní lišty nad videem */
+  .top::before { content:''; position:absolute; z-index:-1; left:0; right:0; top:0; height:170%; pointer-events:none; transition:opacity .4s;
+    background:linear-gradient(to bottom, rgba(6,5,4,.72), rgba(6,5,4,.38) 55%, rgba(6,5,4,0)); }
+  body.past-hero .top::before { opacity:0; }
+  .top .logo, .top .menu a { text-shadow:0 1px 2px rgba(0,0,0,.85), 0 2px 16px rgba(0,0,0,.7); }
+  body:not(.past-hero) .top .menu a { color:rgba(252,248,242,.9); }
+  .top .logo span { color:rgba(252,248,242,.8); }
+  body:not(.past-hero) .top .book { background:rgba(10,8,6,.35); backdrop-filter:blur(8px); border-color:rgba(252,248,242,.6); }
   @media (max-width:640px){ .final h2 { font-size:40px; } .place h2 { font-size:38px; line-height:.95; } .hero h1 { font-size:46px; } }
 
   /* ===== Interakce: tlačítka a karty ===== */
