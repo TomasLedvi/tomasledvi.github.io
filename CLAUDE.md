@@ -106,6 +106,16 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   z údajů z Bookingu: o chalupě, ubytování, okolí zima/léto, restaurace, galerie, hodnocení, ukázkový kalendář + formulář, info, kontakt).
   Fotky a recenze hotlinkované z cf.bstatic.com (Booking) – jen pro ukázku majitelům, při zakázce originály. Formulář zatím demo (Web3Forms doplnit).
   Zdroj: /home/claude/smrcina-web/source.html (mimo repo). Argument do telefonu: provize Bookingu vs. přímé rezervace.
+- **Hotel a restaurace Lípa** (Cínovec 99, Dubí; IČO 64026167 dle Firmy.cz; 603 426 109, 605 310 922, lipa-hotel@seznam.cz, stehlicidl@seznam.cz;
+  8 pokojů / 20 lůžek + přistýlky, restaurace 24 míst, salonek 45, terasa, svatby/školy v přírodě/firmy; web jen hotellipa.webmium.com (bezplatný builder s reklamou);
+  Firmy.cz restaurace 3,7 z 21 hodnocení – číslo na webu neukazujeme): ukázka `lipa/` (1. 11.). Tomáš chtěl kratší úvody a místo videa „něco prémiovějšího“ →
+  HERO „Živé okno“: skutečná fotka hotelu (webmium u02) rozložená na vrstvy v Higgsfield sandboxu (rembg isnet + barevný flood fill oblohy, skripty v sandboxu ~/lipa: sky.py, lights.py, snow.py),
+  vlastní obloha na canvasu podle polohy slunce (výpočet v JS) a oblačnosti, sníh/déšť/mlha podle Open-Meteo (GPS 50.7338, 13.7623), večer svítí okna a nápis RESTAURACE (vrstva lights),
+  sníh na střeše při sněhové pokrývce (vrstva snow), parallax myší, přepínač „Vyzkoušejte: Živě/Den/Soumrak/Noc/Sněží“, karta „Na Cínovci právě teď“.
+  Vrstvy na CloudFrontu: fg f090cc0a…, wall 556ae2de…, lights 9682eec2…, snow 7c7f5204… (plná URL v lipa/index.html). Ostatní fotky hotlink z webmium.blob.core.windows.net.
+  Pozor: mix-blend multiply vrstva uvnitř transformovaného kontejneru nad průhlednem = bílá plocha → tónování maskované fotkou (mask-image). Zdroj: /home/claude/lipa-web/source.html (mimo repo, /*FONTS*/ se nahrazuje fonts.css).
+  Písma DM Serif Display + Plus Jakarta Sans + Geist Mono (lipa/fonts). Sekce: hotel, pokoje (pás), restaurace + otevírací doba z Firmy.cz, akce (předvyplní poptávku), Tehdy a dnes (posuvník pohlednice vs. dnes), okolí zima/léto, 2 recenze z Firmy.cz, poptávka (demo).
+  Živý web lze fotit Playwrightem v Higgsfield sandboxu: require('/usr/local/lib/node_modules/playwright'), python bez PYTHONPATH pro venv.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
