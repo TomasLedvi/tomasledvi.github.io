@@ -368,6 +368,46 @@
   .place h2, .place p, .place .meta { text-shadow:0 1px 3px rgba(0,0,0,.55), 0 2px 22px rgba(0,0,0,.75); }
   .place p { color:rgba(245,239,230,.86); }
   @media (max-width:640px){ .final h2 { font-size:40px; } .place h2 { font-size:38px; line-height:.95; } .hero h1 { font-size:46px; } }
+
+  /* ===== Interakce: tlačítka a karty ===== */
+  .fx { position:relative; overflow:hidden; isolation:isolate; transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background-color .3s, color .3s, border-color .3s; will-change:transform; }
+  .fx::after { content:''; position:absolute; inset:-2px; z-index:-1; pointer-events:none; border-radius:inherit;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.55) 48%, rgba(190,225,255,.35) 52%, transparent 70%);
+    transform:translateX(-120%); transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .fx:hover::after, .fx:focus-visible::after { transform:translateX(120%); }
+  .fx:hover, .fx:focus-visible { box-shadow:0 0 0 1px rgba(200,230,255,.45), 0 10px 34px -6px rgba(170,215,255,.55); }
+  .fx:active { transform:scale(.95) !important; transition-duration:.1s; }
+  .btn-light.fx:hover { background:#fff; }
+  .btn-ghost.fx:hover { border-color:rgba(220,240,255,.85); background:rgba(255,255,255,.08); }
+  .room-cta { margin:18px 0 0; align-self:flex-start; font:700 11px var(--sans); letter-spacing:.18em; text-transform:uppercase; color:var(--snow); background:var(--snow-ink); border:0; border-radius:999px; padding:13px 20px; cursor:pointer; }
+  .room-cta span { display:inline-block; transition:transform .35s cubic-bezier(.2,.8,.2,1); }
+  .room-cta:hover span { transform:translateX(5px); }
+  .room { margin-top:0; }
+  .tilt { transform-style:preserve-3d; position:relative; }
+  .tilt::before { content:''; position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:inherit; opacity:0; transition:opacity .4s;
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.38), rgba(200,230,255,.1) 35%, transparent 60%); mix-blend-mode:soft-light; }
+  .sec-night .tilt::before, .stat.tilt::before { mix-blend-mode:screen; background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%), rgba(200,230,255,.16), transparent 60%); }
+  .tilt:hover::before { opacity:1; }
+  .tilt.hov { box-shadow:0 30px 60px -28px rgba(20,30,45,.45); }
+  .perks div { transition:border-color .3s, transform .35s cubic-bezier(.2,.8,.2,1); }
+  .perks div:hover { transform:translateY(-4px); border-top-color:#7fb4e0; }
+  .spot { display:grid; grid-template-columns:1fr auto; gap:4px 16px; color:inherit; text-decoration:none; padding:20px 12px; margin:0 -12px; border-radius:8px; position:relative; transition:background .3s, padding .35s; }
+  .spots li { padding:0; }
+  .spot i { grid-row:1 / span 2; grid-column:3; align-self:center; font-style:normal; opacity:0; transform:translate(-6px,6px); transition:opacity .3s, transform .35s; color:var(--glow); }
+  .spot:hover, .spot:focus-visible { background:rgba(245,239,230,.06); padding-left:20px; outline:none; }
+  .spot:hover i, .spot:focus-visible i { opacity:1; transform:none; }
+  .spot:hover b { color:#fff; }
+  .menu a { position:relative; padding-block:6px; }
+  .menu a::after { content:''; position:absolute; left:0; right:0; bottom:0; height:1px; background:currentColor; transform:scaleX(0); transition:transform .4s cubic-bezier(.2,.8,.2,1); }
+  .menu a:hover::after, .menu a:focus-visible::after { transform:scaleX(1); }
+  .cal-g button { transition:transform .2s, background .2s, box-shadow .2s; }
+  .cal-g button:hover:not(:disabled) { transform:translateY(-2px) scale(1.08); box-shadow:0 6px 16px -6px rgba(170,215,255,.6); }
+  .faq summary { transition:color .3s, padding .35s; } .faq summary:hover { padding-left:8px; color:var(--wood); }
+  .stops button { transition:color .3s, transform .35s cubic-bezier(.2,.8,.2,1); } .stops button:hover { color:var(--ink); transform:translateX(4px); }
+  .flake { position:fixed; z-index:2147483001; pointer-events:none; left:0; top:0; color:#a8d6ff; text-shadow:0 0 2px rgba(30,70,120,.55), 0 0 10px rgba(150,205,255,.9); line-height:1; will-change:transform,opacity; }
+  .bform.flash { animation:flash 1.2s ease; }
+  @keyframes flash { 0%{box-shadow:0 0 0 0 rgba(170,215,255,.0)} 25%{box-shadow:0 0 0 6px rgba(170,215,255,.55)} 100%{box-shadow:0 0 0 0 rgba(170,215,255,0)} }
+  @media (prefers-reduced-motion: reduce) { .fx, .tilt { transition:none; } }
 </style>
 
 <span id="top"></span>
@@ -481,6 +521,7 @@
           <h3>Apartmány pro 2–5 osob</h3>
           <p>Vlastní koupelna se sprchovým koutem a WC a plně vybavená kuchyňka: lednice, vařič, varná konvice, mikrovlnka a nádobí.</p>
           <ul class="ticks"><li>vlastní koupelna</li><li>kuchyňka</li><li>TV a Wi-Fi</li></ul>
+          <button type="button" class="room-cta fx" data-type="Apartmán (1. patro)">Poptat termín <span aria-hidden="true">→</span></button>
         </div>
       </article>
       <article class="room reveal">
@@ -490,6 +531,7 @@
           <h3>Pokoje pro 2–4 osoby</h3>
           <p>Společná koupelna se sprchovým koutem i vanou a dvě WC. Hned vedle je velká společenská místnost s kuchyní.</p>
           <ul class="ticks"><li>vana i sprcha</li><li>2× WC</li><li>společenská místnost</li></ul>
+          <button type="button" class="room-cta fx" data-type="Pokoj v přízemí">Poptat termín <span aria-hidden="true">→</span></button>
         </div>
       </article>
       <article class="room reveal">
@@ -499,6 +541,7 @@
           <h3>Celá chalupa až pro 23 hostů</h3>
           <p>Velká společenská místnost s kuchyní, krytá terasa s grilem a kulečník. Ideální pro rodiny a přátele, kteří chtějí být spolu.</p>
           <ul class="ticks"><li>společná kuchyně</li><li>terasa s grilem</li><li>kulečník</li></ul>
+          <button type="button" class="room-cta fx" data-type="Celá chalupa">Poptat termín <span aria-hidden="true">→</span></button>
         </div>
       </article>
     </div>
@@ -524,19 +567,19 @@
     <div class="season-panel" data-panel="zima">
       <figure class="season-img"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/910673482.jpg?k=9e314bc5cddc024953f165e4cd738c3dffe22b1d0e2551626362cb8bc9e5b3cb&o=" alt="Zimní výhled z Černé hory" loading="lazy" decoding="async" /></figure>
       <ul class="spots">
-        <li><b>Lanovka Hoffmanky Expres</b><span>Vyhřívaná sedačka kousek od chalupy, napojená na celý skiareál.</span><em>pár minut pěšky</em></li>
-        <li><b>Skiareál Černá hora – Pec</b><span>44 km sjezdovek na jeden skipas.</span><em>44 km</em></li>
-        <li><b>Stezka korunami stromů</b><span>Otevřená i v zimě, večer krásně nasvícená.</span><em>300 m</em></li>
-        <li><b>Půjčovny lyží</b><span>Nedaleko chalupy.</span><em>v okolí</em></li>
+        <li><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Lanovka+Hoffmanky+Expres+Jansk%C3%A9+L%C3%A1zn%C4%9B" target="_blank" rel="noopener"><b>Lanovka Hoffmanky Expres</b><span>Vyhřívaná sedačka kousek od chalupy, napojená na celý skiareál.</span><em>pár minut pěšky</em><i aria-hidden="true">↗</i></a></li>
+        <li><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Skiare%C3%A1l+%C4%8Cern%C3%A1+hora+%E2%80%93+Pec+Jansk%C3%A9+L%C3%A1zn%C4%9B" target="_blank" rel="noopener"><b>Skiareál Černá hora – Pec</b><span>44 km sjezdovek na jeden skipas.</span><em>44 km</em><i aria-hidden="true">↗</i></a></li>
+        <li><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Stezka+korunami+strom%C5%AF+Jansk%C3%A9+L%C3%A1zn%C4%9B" target="_blank" rel="noopener"><b>Stezka korunami stromů</b><span>Otevřená i v zimě, večer krásně nasvícená.</span><em>300 m</em><i aria-hidden="true">↗</i></a></li>
+        <li><a class="spot" href="https://www.google.com/maps/search/?api=1&query=P%C5%AFj%C4%8Dovny+ly%C5%BE%C3%AD+Jansk%C3%A9+L%C3%A1zn%C4%9B" target="_blank" rel="noopener"><b>Půjčovny lyží</b><span>Nedaleko chalupy.</span><em>v okolí</em><i aria-hidden="true">↗</i></a></li>
       </ul>
     </div>
     <div class="season-panel" data-panel="leto" hidden>
       <figure class="season-img"><img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/909843687.jpg?k=05507fed0580ae2951ea9999ed9aa2707a51173c3aa8ef4c43021011dbe22072&o=" alt="Stezka korunami stromů" loading="lazy" decoding="async" /></figure>
       <ul class="spots">
-        <li><b>Stezka korunami stromů</b><span>Dřevěná stezka a vyhlídková věž nad lesem.</span><em>300 m</em></li>
-        <li><b>Rozhledna Na Zlaté vyhlídce</b><span>Výhled na Janské Lázně a hřebeny.</span><em>v okolí</em></li>
-        <li><b>Luční bouda</b><span>Nejvýše položená bouda v Krkonoších.</span><em>15 km</em></li>
-        <li><b>Kola a koloběžky</b><span>Půjčovny nedaleko chalupy, trasy přímo od dveří.</span><em>v okolí</em></li>
+        <li><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Stezka+korunami+strom%C5%AF+Jansk%C3%A9+L%C3%A1zn%C4%9B" target="_blank" rel="noopener"><b>Stezka korunami stromů</b><span>Dřevěná stezka a vyhlídková věž nad lesem.</span><em>300 m</em><i aria-hidden="true">↗</i></a></li>
+        <li><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Rozhledna+Na+Zlat%C3%A9+vyhl%C3%ADdce+Jansk%C3%A9+L%C3%A1zn%C4%9B" target="_blank" rel="noopener"><b>Rozhledna Na Zlaté vyhlídce</b><span>Výhled na Janské Lázně a hřebeny.</span><em>v okolí</em><i aria-hidden="true">↗</i></a></li>
+        <li><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Lu%C4%8Dn%C3%AD+bouda+Krkono%C5%A1e" target="_blank" rel="noopener"><b>Luční bouda</b><span>Nejvýše položená bouda v Krkonoších.</span><em>15 km</em><i aria-hidden="true">↗</i></a></li>
+        <li><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Kola+a+kolob%C4%9B%C5%BEky+Jansk%C3%A9+L%C3%A1zn%C4%9B" target="_blank" rel="noopener"><b>Kola a koloběžky</b><span>Půjčovny nedaleko chalupy, trasy přímo od dveří.</span><em>v okolí</em><i aria-hidden="true">↗</i></a></li>
       </ul>
     </div>
   </div>
@@ -945,4 +988,62 @@
   requestAnimationFrame(tick);
   window.__diorama = { setProgress(p) { target = current = p; needsDraw = true; } };
 })();
+
+  // ===== Interakce: magnetická tlačítka, odlesk, náklon karet, sněhové vločky po kliknutí =====
+  (() => {
+    const fine = matchMedia('(pointer: fine)').matches;
+    const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const btns = document.querySelectorAll('.btn-light, .btn-ghost, .book, .bform button[type="submit"], .bform button:not([type]), .season button, .card button, .room-cta, .map');
+    btns.forEach((b) => b.classList.add('fx'));
+    if (fine && !calm) {
+      btns.forEach((b) => {
+        b.addEventListener('pointermove', (e) => {
+          const r = b.getBoundingClientRect();
+          const x = (e.clientX - r.left - r.width / 2) / r.width, y = (e.clientY - r.top - r.height / 2) / r.height;
+          b.style.transform = `translate(${(x * 10).toFixed(1)}px, ${(y * 8).toFixed(1)}px)`;
+        });
+        b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+      });
+      document.querySelectorAll('.room, .review, .stat, .score').forEach((c) => {
+        c.classList.add('tilt');
+        c.addEventListener('pointermove', (e) => {
+          const r = c.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          c.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+          c.style.transition = 'transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .4s';
+          c.style.transform = `perspective(900px) rotateX(${((0.5 - y) * 7).toFixed(2)}deg) rotateY(${((x - 0.5) * 9).toFixed(2)}deg) translateY(-4px)`;
+          c.classList.add('hov');
+        });
+        c.addEventListener('pointerleave', () => { c.style.transition = 'transform .7s cubic-bezier(.2,.8,.2,1), box-shadow .5s'; c.style.transform = ''; c.classList.remove('hov'); });
+      });
+    }
+    // vločky po kliknutí
+    const CH = ['❄', '❅', '❆', '•'];
+    function burst(x, y, n = 12) {
+      if (calm) return;
+      for (let i = 0; i < n; i++) {
+        const f = document.createElement('span');
+        f.className = 'flake'; f.textContent = CH[i % CH.length];
+        const size = 8 + Math.random() * 12; f.style.fontSize = size + 'px';
+        document.body.appendChild(f);
+        const a = (i / n) * Math.PI * 2 + Math.random() * 0.5, d = 40 + Math.random() * 60;
+        const dx = Math.cos(a) * d, dy = Math.sin(a) * d - 10;
+        f.animate([
+          { transform: `translate(${x}px, ${y}px) translate(-50%,-50%) scale(.3) rotate(0deg)`, opacity: 1 },
+          { transform: `translate(${x + dx}px, ${y + dy + 30}px) translate(-50%,-50%) scale(1) rotate(${(Math.random() * 2 - 1) * 220}deg)`, opacity: 0 }
+        ], { duration: 900 + Math.random() * 500, easing: 'cubic-bezier(.15,.75,.3,1)' }).onfinish = () => f.remove();
+      }
+    }
+    document.addEventListener('pointerdown', (e) => {
+      const t = e.target.closest('a, button, summary, .g-item, label');
+      if (t) burst(e.clientX, e.clientY, t.matches('.btn-light, .btn-ghost, .book, .room-cta, .bform button') ? 16 : 8);
+    });
+    // „Poptat termín“ u pokoje → předvyplní formulář
+    document.querySelectorAll('.room-cta').forEach((b) => b.addEventListener('click', () => {
+      const sel = document.getElementById('b-type'); if (sel) sel.value = b.dataset.type;
+      const form = document.getElementById('bform');
+      document.getElementById('rezervace').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => { form?.classList.remove('flash'); void form?.offsetWidth; form?.classList.add('flash'); }, 700);
+    }));
+  })();
 </script>
