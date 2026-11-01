@@ -107,7 +107,7 @@ body.scrolled .top::before{opacity:0}
 #hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#0d1320}
 .scene{position:absolute;inset:-4%;will-change:transform}
 .scene canvas,.scene img,.scene .grade{position:absolute;inset:0;width:100%;height:100%}
-.scene img{object-fit:cover;object-position:62% 46%;user-select:none;-webkit-user-drag:none}
+.scene img{object-fit:cover;object-position:60% 18%;user-select:none;-webkit-user-drag:none}
 #sky{z-index:0}
 #Lfg{z-index:1;transition:filter 1.2s}
 #Lsnow{z-index:2;opacity:0;transition:opacity 2s,filter 1.2s}
@@ -295,11 +295,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .facts{grid-template-columns:1fr 1fr 1fr;gap:12px}
 }
 @media (max-width:640px){
-  .hero-copy{bottom:auto;top:96px}
-  .hero-copy h1{font-size:40px}
-  .hero-copy p{font-size:15px}
-  .wx{left:20px;right:20px;width:auto;bottom:86px;padding:14px 16px}
-  .wx-t{font-size:42px} .wx-days{display:none}
+  .scene img{object-position:72% 30%}
+  .hero-copy{bottom:84px}
+  .hero-copy h1{font-size:38px}
+  .hero-copy p{font-size:15px;margin-top:12px}
+  .cta{margin-top:18px} .btn{padding:14px 18px}
+  .hero-shade{background:linear-gradient(to top,rgba(6,8,13,.92),rgba(6,8,13,.55) 45%,rgba(6,8,13,0) 70%)}
+  .wx{top:74px;bottom:auto;left:auto;right:14px;width:auto;padding:10px 14px;border-radius:14px}
+  .wx-h span,.wx-row,.wx-days,.wx-src{display:none} .wx-h{justify-content:flex-end}
+  .wx-main{margin-top:4px;gap:10px} .wx-t{font-size:32px} .wx-t sup{font-size:13px} .wx-c b{font-size:13px} .wx-c span{font-size:11px}
   .modes{bottom:18px} .modes span{display:none}
   .row{grid-template-columns:1fr}
   .facts{grid-template-columns:1fr}
@@ -606,7 +610,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     if (mode === 'day') { alt = 35; snow = 0; rain = 0; fog = 0; cloud = .35; }
     if (mode === 'dusk') { alt = -3; snow = 0; rain = 0; fog = 0; cloud = .35; }
     if (mode === 'night') { alt = -20; snow = 0; rain = 0; fog = 0; cloud = .15; }
-    if (mode === 'snow') { alt = Math.max(-14, Math.min(alt, -6)); snow = 1; rain = 0; fog = .15; cloud = .9; roof = 1; }
+    if (mode === 'snow') { alt = 9; snow = 1; rain = 0; fog = .2; cloud = .95; roof = 1; }
     Object.assign(S, { alt, cloud, snow, rain, fog, roofSnow: roof, wind: W.wind });
   }
 
@@ -641,7 +645,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     if (nightK > .01) {
       for (const s of stars) { sctx.globalAlpha = nightK * (.55 + .45 * Math.sin(t * 1.3 + s.p)); sctx.fillStyle = '#fff'; sctx.beginPath(); sctx.arc(s.x * SW, s.y * SH, s.r * .6, 0, 6.283); sctx.fill(); }
       // měsíc
-      sctx.globalAlpha = nightK; const mx = SW * .2, my = SH * .16, mr = Math.max(6, SW * .018);
+      sctx.globalAlpha = nightK; const mx = SW * .44, my = SH * .1, mr = Math.max(6, SW * .018);
       const mg = sctx.createRadialGradient(mx, my, mr * .2, mx, my, mr * 5); mg.addColorStop(0, 'rgba(255,248,226,.5)'); mg.addColorStop(1, 'rgba(255,248,226,0)');
       sctx.fillStyle = mg; sctx.fillRect(mx - mr * 5, my - mr * 5, mr * 10, mr * 10);
       sctx.fillStyle = '#f6efd8'; sctx.beginPath(); sctx.arc(mx, my, mr, 0, 6.283); sctx.fill();
@@ -696,7 +700,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   const fg = $('#Lfg'), wall = $('#Lwall'), snowL = $('#Lsnow'), lights = $('#Llights'), g1 = $('#grade1'), fog = $('#fog');
   function applyGrade() {
     const a = C.alt;
-    const bright = a > 6 ? 1 : a > 0 ? lerp(.85, 1, a / 6) : a > -8 ? lerp(.42, .85, (a + 8) / 8) : lerp(.26, .42, clamp((a + 18) / 10, 0, 1));
+    const bright = a > 6 ? 1 : a > 0 ? lerp(.85, 1, a / 6) : a > -8 ? lerp(.42, .85, (a + 8) / 8) : lerp(.32, .45, clamp((a + 18) / 10, 0, 1));
     const wint = Math.max(C.roofSnow, C.snow);
     const sat = lerp(1, .55, wint) * (a < 0 ? .75 : 1) * lerp(1, .85, C.cloud);
     const f = `brightness(${(bright * lerp(1, .9, C.cloud * (a > 0 ? 1 : 0))).toFixed(3)}) saturate(${sat.toFixed(3)})`;
