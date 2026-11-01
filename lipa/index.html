@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Hotel Lípa Cínovec – návrh webu</title>
+<meta name="description" content="Návrh webu pro Hotel a restauraci Lípa na Cínovci v Krušných horách." />
+<meta name="theme-color" content="#0b0f17" />
+<link rel="preconnect" href="https://api.open-meteo.com" />
+<link rel="preconnect" href="https://d2ol7oe51mr4n9.cloudfront.net" crossorigin />
+<link rel="preload" as="image" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f090cc0a-f35a-46f3-a61c-e5c56a2f9814.webp" />
+<style>
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/dm-serif-display-latin-ext-400-normal.woff2) format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/dm-serif-display-latin-400-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/dm-serif-display-latin-ext-400-italic.woff2) format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'DM Serif Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/dm-serif-display-latin-400-italic.woff2) format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url(fonts/plus-jakarta-sans-latin-ext-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url(fonts/plus-jakarta-sans-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(fonts/geist-mono-latin-ext-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(fonts/geist-mono-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+:root{
+  --night:#0b0f17; --night2:#121826; --ink:#f3eee6; --dim:rgba(243,238,230,.66); --faint:rgba(243,238,230,.16);
+  --amber:#ffb45e; --amber2:#ffd49a; --ice:#bcd6ef; --paper:#f1ece3; --paper-ink:#1c1915; --paper-dim:rgba(28,25,21,.62);
+  --serif:'DM Serif Display', Georgia, serif; --sans:'Plus Jakarta Sans', system-ui, sans-serif; --mono:'Geist Mono', ui-monospace, monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1200px,calc(100% - 40px));margin-inline:auto}
+
+/* ===== horní lišta ===== */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px max(20px,env(safe-area-inset-left));transition:background .4s,backdrop-filter .4s,padding .3s}
+.top::before{content:'';position:absolute;inset:0 0 -60% 0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(5,7,12,.7),rgba(5,7,12,0));transition:opacity .4s}
+body.scrolled .top{background:rgba(11,15,23,.84);backdrop-filter:blur(12px);padding-block:10px}
+body.scrolled .top::before{opacity:0}
+.logo{display:flex;flex-direction:column;text-decoration:none;line-height:1.05;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.logo b{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.01em}
+.logo span{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);margin-top:3px}
+.menu{display:flex;gap:26px}
+.menu a{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:rgba(243,238,230,.88);position:relative;padding-block:6px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.menu a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--amber);transform:scaleX(0);transition:transform .4s var(--ease)}
+.menu a:hover::after{transform:scaleX(1)}
+.book{font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:12px 18px;border-radius:999px;background:var(--amber);color:#21160a}
+
+/* ===== HERO: živé okno ===== */
+#hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#0d1320}
+.scene{position:absolute;inset:-4%;will-change:transform}
+.scene canvas,.scene img,.scene .grade{position:absolute;inset:0;width:100%;height:100%}
+.scene img{object-fit:cover;object-position:62% 46%;user-select:none;-webkit-user-drag:none}
+#sky{z-index:0}
+#Lfg{z-index:1;transition:filter 1.2s}
+#Lsnow{z-index:2;opacity:0;transition:opacity 2s,filter 1.2s}
+.grade{z-index:3;mix-blend-mode:multiply;transition:background-color 1.2s;pointer-events:none}
+#Llights{z-index:4;opacity:0;mix-blend-mode:screen;transition:opacity 1.6s}
+#Lwall{z-index:5;transition:filter 1.2s}
+.wall-grade{z-index:6}
+#fx{z-index:7;pointer-events:none}
+.fog{position:absolute;inset:0;z-index:8;pointer-events:none;opacity:0;transition:opacity 2s;
+  background:linear-gradient(to top,rgba(210,218,228,.75),rgba(210,218,228,.25) 60%,rgba(210,218,228,.1))}
+.hero-shade{position:absolute;inset:0;z-index:9;pointer-events:none;
+  background:radial-gradient(90% 70% at 18% 62%,rgba(6,8,13,.72),rgba(6,8,13,0) 65%),linear-gradient(to top,rgba(6,8,13,.8),rgba(6,8,13,0) 38%)}
+.hero-copy{position:absolute;z-index:10;left:max(20px,4vw);bottom:clamp(120px,18vh,190px);max-width:min(620px,calc(100% - 40px))}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--amber2);display:flex;align-items:center;gap:10px}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:#7cf09a;box-shadow:0 0 0 0 rgba(124,240,154,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,240,154,.55)}70%{box-shadow:0 0 0 10px rgba(124,240,154,0)}100%{box-shadow:0 0 0 0 rgba(124,240,154,0)}}
+.hero-copy h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,6.4vw,96px);line-height:.95;margin-top:16px;letter-spacing:-.01em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.55)}
+.hero-copy h1 em{font-style:italic;color:var(--amber2)}
+.hero-copy p{margin-top:18px;font-size:clamp(15px,1.15vw,18px);line-height:1.6;color:rgba(250,246,240,.9);max-width:46ch;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:10px;font:700 12px var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+  padding:16px 22px;border-radius:999px;border:0;cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s,background .3s}
+.btn::after{content:'';position:absolute;inset:-2px;z-index:-1;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.5) 48%,rgba(255,230,190,.3) 52%,transparent 70%);transform:translateX(-120%);transition:transform .8s var(--ease)}
+.btn:hover::after{transform:translateX(120%)}
+.btn:hover{box-shadow:0 12px 34px -8px rgba(255,180,94,.55)}
+.btn:active{transform:scale(.95)!important}
+.btn-amber{background:var(--amber);color:#21160a}
+.btn-ghost{color:var(--ink);background:rgba(10,12,18,.35);border:1px solid rgba(243,238,230,.45);backdrop-filter:blur(8px)}
+.btn-dark{background:var(--paper-ink);color:var(--paper)}
+
+/* počasí */
+.wx{position:absolute;z-index:10;right:max(20px,4vw);bottom:clamp(110px,16vh,170px);width:min(330px,calc(100% - 40px));
+  background:rgba(10,13,20,.52);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(243,238,230,.16);border-radius:18px;padding:18px 20px}
+.wx-h{display:flex;justify-content:space-between;align-items:center;font:500 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.wx-h b{display:flex;align-items:center;gap:6px;color:#9ff0b4;font-weight:500}
+.wx-h b i{width:6px;height:6px;border-radius:50%;background:#7cf09a;animation:pulse 2s infinite}
+.wx-main{display:flex;align-items:center;gap:14px;margin-top:12px}
+.wx-t{font:400 54px/1 var(--mono);letter-spacing:-.04em}
+.wx-t sup{font-size:20px;vertical-align:top;margin-left:2px;color:var(--dim)}
+.wx-c b{display:block;font-weight:700;font-size:16px}
+.wx-c span{display:block;font-size:12px;color:var(--dim);margin-top:3px}
+.wx-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--faint)}
+.wx-row div{font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.wx-row div b{display:block;font:500 15px var(--mono);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:3px}
+.wx-days{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.wx-days div{text-align:center;background:rgba(243,238,230,.06);border-radius:10px;padding:8px 4px;font:500 10px var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.wx-days div b{display:block;font-size:18px;margin:3px 0 2px}
+.wx-days div span{color:var(--ink);letter-spacing:0}
+.wx-src{margin-top:10px;font:400 10px var(--mono);color:rgba(243,238,230,.4)}
+.modes{position:absolute;z-index:10;left:50%;transform:translateX(-50%);bottom:28px;display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;
+  background:rgba(10,13,20,.5);backdrop-filter:blur(12px);border:1px solid rgba(243,238,230,.14);max-width:calc(100% - 24px);overflow-x:auto;scrollbar-width:none}
+.modes::-webkit-scrollbar{display:none}
+.modes span{font:500 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:0 8px 0 10px;white-space:nowrap}
+.modes button{font:600 12px var(--sans);color:var(--ink);background:transparent;border:0;border-radius:999px;padding:9px 13px;cursor:pointer;white-space:nowrap;transition:background .3s,color .3s,transform .3s var(--ease)}
+.modes button:hover{background:rgba(243,238,230,.12);transform:translateY(-1px)}
+.modes button.on{background:var(--ink);color:#111}
+
+/* ===== obsah ===== */
+section.sec{padding-block:clamp(80px,11vw,150px);position:relative}
+.kicker{font:500 11px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5vw,72px);line-height:1;letter-spacing:-.01em;text-wrap:balance}
+.h2 em{font-style:italic;color:var(--amber2)}
+.lead{margin-top:20px;font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:var(--dim);max-width:58ch}
+.paper{background:var(--paper);color:var(--paper-ink)}
+.paper .lead{color:var(--paper-dim)} .paper .kicker{color:#a0611c} .paper .h2 em{color:#a0611c}
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.fact{border-top:1px solid var(--faint);padding-top:16px}
+.paper .fact{border-color:rgba(28,25,21,.18)}
+.fact b{display:block;font:400 clamp(38px,4vw,56px)/1 var(--serif)}
+.fact span{display:block;margin-top:8px;font-size:13px;line-height:1.45;color:var(--dim)}
+.paper .fact span{color:var(--paper-dim)}
+.photo{border-radius:14px;overflow:hidden;position:relative;background:#1a2030}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.photo:hover img{transform:scale(1.04)}
+.stack{position:relative;aspect-ratio:4/4.4}
+.stack .photo{position:absolute}
+.stack .p1{inset:0 18% 18% 0}
+.stack .p2{inset:46% 0 0 34%;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);border:6px solid var(--night)}
+
+/* pokoje – vodorovný pás */
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 24px max(20px,calc((100vw - 1200px)/2));margin-top:46px;scrollbar-width:thin;cursor:grab}
+.rail::-webkit-scrollbar{height:6px}.rail::-webkit-scrollbar-thumb{background:rgba(28,25,21,.25);border-radius:9px}
+.rail figure{flex:0 0 clamp(260px,32vw,420px);scroll-snap-align:start;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 1px 0 rgba(28,25,21,.06);transition:transform .45s var(--ease),box-shadow .45s}
+.rail figure:hover{transform:translateY(-6px);box-shadow:0 26px 50px -24px rgba(28,25,21,.4)}
+.rail figure .photo{border-radius:0;aspect-ratio:4/3}
+.rail figcaption{padding:16px 18px 18px;font-size:14px;color:var(--paper-dim)}
+.rail figcaption b{display:block;color:var(--paper-ink);font-size:16px;margin-bottom:4px}
+.ticks{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.ticks li{list-style:none;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;background:#fff}
+.sec-dark .ticks li{background:rgba(243,238,230,.08)}
+
+/* restaurace */
+.warm{background:radial-gradient(120% 80% at 80% 0%,#2a1c10 0%,#130f0b 55%,#0b0f17 100%)}
+.mosaic{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:14px;aspect-ratio:5/4}
+.mosaic .photo:first-child{grid-row:1/3}
+.hours{margin-top:30px;display:grid;gap:0;max-width:420px}
+.hours div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--faint);font-size:15px}
+.hours div b{font:500 15px var(--mono)}
+.hours div.today{color:var(--amber2)}
+.small{font-size:12px;color:rgba(243,238,230,.45);margin-top:10px}
+
+/* akce */
+.events{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+.ev{position:relative;border-radius:16px;overflow:hidden;min-height:440px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;isolation:isolate;cursor:pointer;
+  transition:transform .5s var(--ease)}
+.ev img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease),filter .6s}
+.ev::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(8,9,13,.92),rgba(8,9,13,.2) 60%,rgba(8,9,13,.05))}
+.ev:hover{transform:translateY(-6px)} .ev:hover img{transform:scale(1.06)}
+.ev small{font:500 10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--amber2)}
+.ev h3{font:400 32px/1.05 var(--serif);margin-top:8px}
+.ev p{color:var(--dim);font-size:14px;line-height:1.55;margin-top:10px;max-height:0;opacity:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .5s}
+.ev:hover p,.ev:focus-within p{max-height:160px;opacity:1}
+.ev .go{margin-top:16px;align-self:flex-start;font:700 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:none;border:1px solid rgba(243,238,230,.4);border-radius:999px;padding:11px 16px;cursor:pointer;transition:background .3s,color .3s}
+.ev .go:hover{background:var(--ink);color:#111}
+
+/* tehdy a dnes */
+.compare{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;user-select:none;touch-action:pan-y;background:#222;cursor:ew-resize}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.compare .old{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0);filter:sepia(.35) contrast(1.05)}
+.compare .bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:#fff;transform:translateX(-1px);box-shadow:0 0 20px rgba(0,0,0,.5)}
+.compare .bar i{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font-style:normal;font-size:16px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.compare .tag{position:absolute;top:14px;font:500 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;background:rgba(10,12,18,.6);backdrop-filter:blur(6px);padding:7px 10px;border-radius:999px}
+.compare .t1{left:14px}.compare .t2{right:14px}
+.thumbs{display:flex;gap:10px;margin-top:14px}
+.thumbs button{flex:1;aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;opacity:.6;transition:opacity .3s,border-color .3s,transform .3s var(--ease);background:none}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button.on,.thumbs button:hover{opacity:1;border-color:var(--amber);transform:translateY(-2px)}
+
+/* okolí */
+.season{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:rgba(243,238,230,.07);margin-top:30px}
+.season button{font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);background:none;border:0;padding:11px 20px;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+.season button.on{background:var(--ink);color:#111}
+.okoli{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);margin-top:40px;align-items:start}
+.okoli .photo{aspect-ratio:4/3.3;position:sticky;top:90px}
+.okoli .photo img{position:absolute;inset:0;transition:opacity .8s}
+.spots{list-style:none}
+.spots li{border-bottom:1px solid var(--faint)}
+.spots a{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:20px 12px;margin:0 -12px;border-radius:10px;text-decoration:none;transition:background .3s,padding .35s var(--ease)}
+.spots a:hover{background:rgba(243,238,230,.06);padding-left:20px}
+.spots b{font:400 22px var(--serif)} .spots span{grid-column:1;color:var(--dim);font-size:14px;line-height:1.5}
+.spots em{grid-row:1/3;grid-column:2;align-self:center;font:500 12px var(--mono);font-style:normal;color:var(--amber2);white-space:nowrap}
+[data-panel][hidden]{display:none}
+
+/* recenze */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:46px}
+.quote{background:#fff;border-radius:16px;padding:30px;transition:transform .45s var(--ease),box-shadow .45s}
+.quote:hover{transform:translateY(-5px);box-shadow:0 30px 50px -28px rgba(28,25,21,.45)}
+.quote blockquote{font:400 clamp(24px,2.4vw,32px)/1.25 var(--serif)}
+.quote figcaption{margin-top:16px;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#a0611c}
+
+/* poptávka */
+.form{background:var(--paper);color:var(--paper-ink);border-radius:20px;padding:clamp(22px,3vw,36px);display:grid;gap:14px;transition:box-shadow .6s}
+.form.flash{box-shadow:0 0 0 6px rgba(255,180,94,.6)}
+.types{display:flex;flex-wrap:wrap;gap:8px}
+.types label{cursor:pointer}
+.types input{position:absolute;opacity:0;pointer-events:none}
+.types span{display:inline-block;font-size:13px;font-weight:600;padding:10px 14px;border-radius:999px;border:1px solid rgba(28,25,21,.2);transition:background .25s,color .25s,border-color .25s,transform .25s var(--ease)}
+.types label:hover span{transform:translateY(-2px);border-color:rgba(28,25,21,.5)}
+.types input:checked+span{background:var(--paper-ink);color:var(--paper);border-color:var(--paper-ink)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form label.f{display:grid;gap:6px;font:500 10px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--paper-dim)}
+.form input:not([type=radio]),.form textarea,.form select{font:500 16px var(--sans);color:var(--paper-ink);background:#fff;border:1px solid rgba(28,25,21,.14);border-radius:10px;padding:12px 14px;transition:border-color .25s,box-shadow .25s}
+.form input:focus,.form textarea:focus,.form select:focus{outline:none;border-color:#a0611c;box-shadow:0 0 0 4px rgba(255,180,94,.25)}
+.form textarea{min-height:110px;resize:vertical}
+.form .note{font-size:13px;color:var(--paper-dim)} .form .note.ok{color:#3e6a2a;font-weight:600}
+.contact-list{margin-top:30px;display:grid;gap:14px}
+.contact-list a{text-decoration:none;font:400 clamp(22px,2.4vw,30px) var(--serif);transition:color .3s}
+.contact-list a:hover{color:var(--amber2)}
+.contact-list small{display:block;font:500 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+
+footer{padding:50px 0 40px;border-top:1px solid var(--faint);font-size:13px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(26px)}
+.reveal.in{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.flake{position:fixed;z-index:9999;pointer-events:none;left:0;top:0;color:#a8d6ff;text-shadow:0 0 2px rgba(30,70,120,.55),0 0 10px rgba(150,205,255,.9);line-height:1}
+
+@media (max-width:900px){
+  .menu{display:none}
+  .split,.okoli{grid-template-columns:1fr}
+  .events{grid-template-columns:1fr}
+  .ev{min-height:340px} .ev p{max-height:160px;opacity:1}
+  .quotes{grid-template-columns:1fr}
+  .okoli .photo{position:relative;top:0}
+  .facts{grid-template-columns:1fr 1fr 1fr;gap:12px}
+}
+@media (max-width:640px){
+  .hero-copy{bottom:auto;top:96px}
+  .hero-copy h1{font-size:40px}
+  .hero-copy p{font-size:15px}
+  .wx{left:20px;right:20px;width:auto;bottom:86px;padding:14px 16px}
+  .wx-t{font-size:42px} .wx-days{display:none}
+  .modes{bottom:18px} .modes span{display:none}
+  .row{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .stack{aspect-ratio:4/4.6}
+  .logo b{font-size:20px}
+  .book{padding:10px 14px;font-size:11px}
+}
+@media (max-width:640px) and (max-height:760px){ .hero-copy p{display:none} }
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.eyebrow i,.wx-h b i{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="#hero"><b>Hotel Lípa</b><span>Cínovec · Krušné hory</span></a>
+  <nav class="menu" aria-label="Hlavní navigace">
+    <a href="#hotel">Hotel</a><a href="#restaurace">Restaurace</a><a href="#akce">Akce</a><a href="#okoli">Okolí</a><a href="#kontakt">Kontakt</a>
+  </nav>
+  <a class="book" href="#poptavka">Poptat pobyt</a>
+</header>
+
+<!-- ===== HERO: živé okno na Cínovec ===== -->
+<section id="hero" aria-label="Hotel Lípa – pohled na hotel podle aktuálního počasí">
+  <div class="scene" id="scene">
+    <canvas id="sky"></canvas>
+    <img id="Lfg" alt="Hotel a restaurace Lípa na Cínovci" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f090cc0a-f35a-46f3-a61c-e5c56a2f9814.webp" fetchpriority="high" />
+    <img id="Lsnow" alt="" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/7c7f5204-2f4f-46b9-9c8e-6aebe7a9f048.webp" />
+    <div class="grade" id="grade1"></div>
+    <img id="Llights" alt="" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/9682eec2-54e1-4c42-b4d5-499eee34f4f3.webp" />
+  </div>
+  <div class="scene" id="scene2" aria-hidden="true">
+    <img id="Lwall" alt="" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/556ae2de-66c7-4ca5-bacc-2b2216e2630b.webp" />
+    <div class="grade wall-grade" id="grade2"></div>
+  </div>
+  <canvas id="fx" style="position:absolute;inset:0;width:100%;height:100%;z-index:7;pointer-events:none"></canvas>
+  <div class="fog" id="fog"></div>
+  <div class="hero-shade"></div>
+
+  <div class="hero-copy">
+    <div class="eyebrow"><i></i><span id="eyeText">Cínovec · Krušné hory · u hranic se Saskem</span></div>
+    <h1>Horský hotel a restaurace <em>na hřebeni Krušných hor.</em></h1>
+    <p>Osm pokojů, poctivá kuchyně a salonek pro svatby i oslavy. Na běžky, na kolo nebo do Saska vyrazíte přímo od dveří.</p>
+    <div class="cta">
+      <a class="btn btn-amber" href="#poptavka">Poptat pobyt</a>
+      <a class="btn btn-ghost" href="#hotel">Prohlédnout hotel</a>
+    </div>
+  </div>
+
+  <aside class="wx" id="wx" aria-live="polite">
+    <div class="wx-h"><span>Na Cínovci právě teď</span><b><i></i><span id="wxLive">živě</span></b></div>
+    <div class="wx-main"><div class="wx-t" id="wxT">–<sup>°C</sup></div><div class="wx-c"><b id="wxC">Načítám počasí…</b><span id="wxF">&nbsp;</span></div></div>
+    <div class="wx-row">
+      <div>Vítr<b id="wxW">–</b></div><div>Sníh<b id="wxS">–</b></div><div id="wxSunL">Západ<b id="wxSun">–</b></div>
+    </div>
+    <div class="wx-days" id="wxD"></div>
+    <div class="wx-src" id="wxSrc">Data: Open-Meteo</div>
+  </aside>
+
+  <div class="modes" role="group" aria-label="Vyzkoušejte, jak hotel vypadá">
+    <span>Vyzkoušejte</span>
+    <button type="button" data-mode="live" class="on">Živě</button>
+    <button type="button" data-mode="day">Den</button>
+    <button type="button" data-mode="dusk">Soumrak</button>
+    <button type="button" data-mode="night">Noc</button>
+    <button type="button" data-mode="snow">Sněží</button>
+  </div>
+</section>
+
+<main>
+<!-- ===== O hotelu ===== -->
+<section class="sec" id="hotel">
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="kicker">Hotel</div>
+      <h2 class="h2">Hory, klid a Sasko <em>za humny.</em></h2>
+      <p class="lead">Hotel stojí v horské obci Cínovec, kousek od hraničního přechodu do Německa. Jezdí k nám rodiny na dovolenou, školy v přírodě, firmy na školení i svatebčané. Uzavřené parkoviště má místo i pro autobusy.</p>
+      <div class="facts">
+        <div class="fact"><b data-count="8">8</b><span>pokojů se sprchou a WC</span></div>
+        <div class="fact"><b data-count="20">20</b><span>lůžek + přistýlky</span></div>
+        <div class="fact"><b data-count="45">45</b><span>míst v salonku na oslavy</span></div>
+      </div>
+      <ul class="ticks"><li>TV se satelitem</li><li>Wi-Fi</li><li>uzavřené parkoviště</li><li>parkování pro autobusy</li><li>letní terasa</li></ul>
+    </div>
+    <div class="stack reveal">
+      <div class="photo p1"><img loading="lazy" alt="Letní terasa hotelu Lípa" src="https://webmium.blob.core.windows.net/users/129015/assets/fd17b801c705aff4c0cb9358ed156ded/p1030168.jpg" /></div>
+      <div class="photo p2"><img loading="lazy" alt="Zimní Cínovec" src="https://webmium.blob.core.windows.net/users/129015/assets/f299ccd8049456a8a9930f2744795a78/155898982394953031475527712785402397843621n.jpg" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pokoje ===== -->
+<section class="sec paper" id="pokoje">
+  <div class="wrap reveal">
+    <div class="kicker">Ubytování</div>
+    <h2 class="h2">Osm pokojů. <em>Každý jiný.</em></h2>
+    <p class="lead">Pokoje pro dva i pro rodiny, s vlastní sprchou a WC, televizí se satelitem a Wi-Fi. Přistýlku i dětskou postýlku připravíme na přání.</p>
+  </div>
+  <div class="rail" id="rail">
+    <figure><div class="photo"><img loading="lazy" alt="Dvoulůžkový pokoj" src="https://webmium.blob.core.windows.net/users/129015/assets/1af30499b5300c3c9b960bc651caff68/1006312.jpg" /></div><figcaption><b>Pokoj s cihlovou stěnou</b>Manželská postel, noční lampičky, výhled do zahrady.</figcaption></figure>
+    <figure><div class="photo"><img loading="lazy" alt="Pokoj s posezením" src="https://webmium.blob.core.windows.net/users/129015/assets/533cc5f7faaf564be8a897c4b70c504b/1006317.jpg" /></div><figcaption><b>Světlý pokoj</b>Psací stůl, televize, šatní skříň.</figcaption></figure>
+    <figure><div class="photo"><img loading="lazy" alt="Rodinný pokoj" src="https://webmium.blob.core.windows.net/users/129015/assets/7b4a2377b6b04b6c4df9c2f3300cb9d5/1006325.jpg" /></div><figcaption><b>Rodinný pokoj</b>Sedačka a jídelní kout, místo pro celou rodinu.</figcaption></figure>
+    <figure><div class="photo"><img loading="lazy" alt="Pokoj s rozkládací sedačkou" src="https://webmium.blob.core.windows.net/users/129015/assets/c4e7e545b7203d319a0684cf7401f24c/1006327.jpg" /></div><figcaption><b>Pokoj s obývákem</b>Rozkládací sedačka a křeslo navíc.</figcaption></figure>
+    <figure><div class="photo"><img loading="lazy" alt="Prostorný pokoj" src="https://webmium.blob.core.windows.net/users/129015/assets/672e5c2d1575a1b76049817816f2413c/1006344.jpg" /></div><figcaption><b>Prostorný pokoj</b>Velký pokoj pro skupiny a rodiny s dětmi.</figcaption></figure>
+    <figure><div class="photo"><img loading="lazy" alt="Balkon" src="https://webmium.blob.core.windows.net/users/129015/assets/0b1b879f0e186429c09df2f10fa8f0be/1006342.jpg" /></div><figcaption><b>S balkonem</b>Ranní káva s výhledem do krajiny.</figcaption></figure>
+  </div>
+</section>
+
+<!-- ===== Restaurace ===== -->
+<section class="sec warm" id="restaurace">
+  <div class="wrap split">
+    <div class="mosaic reveal">
+      <div class="photo"><img loading="lazy" alt="Restaurace Lípa" src="https://webmium.blob.core.windows.net/users/129015/assets/94b88ea75dc2155bc5ac73d6cd7c34e6/1006268.jpg" /></div>
+      <div class="photo"><img loading="lazy" alt="Bar restaurace" src="https://webmium.blob.core.windows.net/users/129015/assets/09d2b9e313253fdc72f778a982c5c0a1/1006280.jpg" /></div>
+      <div class="photo"><img loading="lazy" alt="Prostřené stoly v salonku" src="https://webmium.blob.core.windows.net/users/129015/assets/1609f6f3a26514101d86805d6b16e27f/1006284.jpg" /></div>
+    </div>
+    <div class="reveal">
+      <div class="kicker">Restaurace</div>
+      <h2 class="h2">Česká i světová kuchyně. <em>A teplo u stolu.</em></h2>
+      <p class="lead">Po běžkách, po túře nebo jen cestou přes hory. V restauraci je 24 míst, v salonku dalších 45 a v létě sedíme venku na terase.</p>
+      <div class="hours" id="hours">
+        <div data-d="1,2,3,4"><span>Pondělí – čtvrtek</span><b>11:00 – 21:00</b></div>
+        <div data-d="5,6"><span>Pátek – sobota</span><b>11:00 – 22:00</b></div>
+        <div data-d="0"><span>Neděle</span><b>11:00 – 22:00</b></div>
+      </div>
+      <p class="small">Otevírací doba podle katalogu Firmy.cz – v ostré verzi doplní hotel.</p>
+      <div class="cta"><a class="btn btn-amber" href="#poptavka" data-type="Stůl v restauraci">Rezervovat stůl</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Akce ===== -->
+<section class="sec" id="akce">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Akce a skupiny</div>
+      <h2 class="h2">Svatba, oslava, <em>škola v přírodě.</em></h2>
+      <p class="lead">Salonek pro 45 hostů, letní terasa a celý hotel jen pro vás. Připravíme raut, prostřeme a ubytujeme.</p>
+    </div>
+    <div class="events">
+      <article class="ev reveal" tabindex="0" data-type="Svatba nebo oslava">
+        <img loading="lazy" alt="Svatební tabule" src="https://webmium.blob.core.windows.net/users/129015/assets/9daf6ac8e26e2fdfdd29b8b561317528/114.jpg" />
+        <small>Svatby · rauty · oslavy</small><h3>Den, na který se nezapomíná</h3>
+        <p>Obřad v horách, hostina v salonku a ubytování pro hosty o patro výš. Nikdo nemusí řídit domů.</p>
+        <button class="go" type="button">Poptat akci →</button>
+      </article>
+      <article class="ev reveal" tabindex="0" data-type="Škola v přírodě">
+        <img loading="lazy" alt="Zasněžený Cínovec" src="https://webmium.blob.core.windows.net/users/129015/assets/1d8524c5f1f76de82b0f1bc40bd9cdce/158258442460309458273212819079241286806320n.jpg" />
+        <small>Školy · zájezdy · tábory</small><h3>Škola v přírodě</h3>
+        <p>Les, rašeliniště a běžkařské trasy hned za hotelem. Plná penze, parkování pro autobus a klidné místo pro celou třídu.</p>
+        <button class="go" type="button">Poptat pobyt →</button>
+      </article>
+      <article class="ev reveal" tabindex="0" data-type="Firemní akce">
+        <img loading="lazy" alt="Salonek" src="https://webmium.blob.core.windows.net/users/129015/assets/83b36306b7944f56660d84db34307929/120.jpg" />
+        <small>Firmy · školení · teambuilding</small><h3>Firemní akce</h3>
+        <p>Školení přes den, večeře v salonku a ráno výlet na hřeben. Hodinu z Prahy, dvacet minut z Teplic.</p>
+        <button class="go" type="button">Poptat akci →</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Tehdy a dnes ===== -->
+<section class="sec paper" id="historie">
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="kicker">Tehdy a dnes</div>
+      <h2 class="h2">Dům, který pamatuje <em>starý Zinnwald.</em></h2>
+      <p class="lead">Pohlednice z historie hotelu. Posuňte jezdcem a porovnejte, jak se Cínovec za ta léta proměnil.</p>
+      <div class="thumbs" id="thumbs">
+        <button type="button" class="on" data-old="https://webmium.blob.core.windows.net/users/129015/assets/975f51c7bde7dd7774f156633eb4157c/29894725466113458304163000533n.jpg"><img loading="lazy" alt="Historická pohlednice 1" src="https://webmium.blob.core.windows.net/users/129015/assets/975f51c7bde7dd7774f156633eb4157c/29894725466113458304163000533n.jpg" /></button>
+        <button type="button" data-old="https://webmium.blob.core.windows.net/users/129015/assets/0232094ece42ac694748a40c475838bb/303919254661221249699943804878n.jpg"><img loading="lazy" alt="Historická pohlednice 2" src="https://webmium.blob.core.windows.net/users/129015/assets/0232094ece42ac694748a40c475838bb/303919254661221249699943804878n.jpg" /></button>
+        <button type="button" data-old="https://webmium.blob.core.windows.net/users/129015/assets/fdee8e95620b5757cc86e5ef10b98f5f/393626254661071249714926342433n.jpg"><img loading="lazy" alt="Historická pohlednice 3" src="https://webmium.blob.core.windows.net/users/129015/assets/fdee8e95620b5757cc86e5ef10b98f5f/393626254661071249714926342433n.jpg" /></button>
+      </div>
+    </div>
+    <div class="compare reveal" id="compare" style="--x:55%">
+      <img alt="Hotel Lípa dnes" src="https://webmium.blob.core.windows.net/users/129015/assets/4b892805da01d9a27ece015eb9069936/1006257.jpg" loading="lazy" />
+      <img class="old" id="oldImg" alt="Historická pohlednice" src="https://webmium.blob.core.windows.net/users/129015/assets/975f51c7bde7dd7774f156633eb4157c/29894725466113458304163000533n.jpg" loading="lazy" />
+      <div class="bar"><i>⇆</i></div>
+      <span class="tag t1">Pohlednice</span><span class="tag t2">Dnes</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Okolí ===== -->
+<section class="sec" id="okoli">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Okolí</div>
+      <h2 class="h2">Krušné hory <em>v každé sezóně.</em></h2>
+      <div class="season" role="tablist"><button type="button" class="on" data-s="zima">Zima</button><button type="button" data-s="leto">Léto</button></div>
+    </div>
+    <div class="okoli">
+      <div class="photo reveal">
+        <img id="okImg1" alt="Zimní Krušné hory" src="https://webmium.blob.core.windows.net/users/129015/assets/a4e5b51979884ef6371e9463b5e9424a/158715162460309424939886795592511274435736n.jpg" loading="lazy" />
+        <img id="okImg2" alt="Letní okolí Cínovce" src="https://webmium.blob.core.windows.net/users/129015/assets/6df09073da854b0576c81a5786c42b3c/cb46e6a7cbdb5aa0048c320a28720caf1301039551.jpg" loading="lazy" style="opacity:0" />
+      </div>
+      <div class="reveal">
+        <ul class="spots" data-panel="zima">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Kru%C5%A1nohorsk%C3%A1+magistr%C3%A1la+C%C3%ADnovec" target="_blank" rel="noopener"><b>Krušnohorská magistrála</b><span>Kolem Cínovce se upravuje zhruba 60 km běžeckých tras, stará se o ně Sport centrum Bouřňák.</span><em>od dveří</em></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Pramen%C3%A1%C4%8D+Krušné+hory" target="_blank" rel="noopener"><b>Pramenáč</b><span>Nejvyšší vrchol v okolí Dubí a Cínovce s výhledem do kraje.</span><em>909 m</em></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Kahleberg+Altenberg" target="_blank" rel="noopener"><b>Kahleberg – Kamenné moře</b><span>Třetí nejvyšší hora Východních Krušných hor, kousek za hranicí u Altenbergu.</span><em>905 m</em></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Altenberg+Sachsen" target="_blank" rel="noopener"><b>Altenberg</b><span>Na saské straně krytý bazén se saunou, sjezdovka i bobová dráha.</span><em>Sasko</em></a></li>
+        </ul>
+        <ul class="spots" data-panel="leto" hidden>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Ra%C5%A1elini%C5%A1t%C4%9B+C%C3%ADnovec" target="_blank" rel="noopener"><b>Rašeliniště Cínovec</b><span>Vrchovištní rašeliniště v nadmořské výšce 850 až 880 m, s chráněnou přírodou kolem.</span><em>okolí</em></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Golf+C%C3%ADnovec" target="_blank" rel="noopener"><b>Golf Cínovec</b><span>Horský golf na hřebeni Krušných hor.</span><em>Cínovec</em></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Vl%C4%8D%C3%AD+k%C3%A1men+Mikulov" target="_blank" rel="noopener"><b>Vlčí kámen</b><span>Rozměrný skalní útvar nad městem Hrob s výhledem do údolí.</span><em>613 m</em></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Pozorka+Krušné+hory" target="_blank" rel="noopener"><b>Pozorka</b><span>Kaple svatého Jana Nepomuckého z roku 1858 se zvonicí.</span><em>okolí</em></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Recenze ===== -->
+<section class="sec paper" id="recenze">
+  <div class="wrap">
+    <div class="reveal"><div class="kicker">Hosté o nás</div><h2 class="h2">Co říkají <em>naši hosté.</em></h2></div>
+    <div class="quotes">
+      <figure class="quote reveal"><blockquote>„Vstřícný personál, v restauraci vynikající jídlo.“</blockquote><figcaption>Petr Navrátil · Firmy.cz</figcaption></figure>
+      <figure class="quote reveal"><blockquote>„Velmi příjemná obsluha, super ubytování i jídlo.“</blockquote><figcaption>Mangalia · Firmy.cz</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Poptávka + kontakt ===== -->
+<section class="sec" id="poptavka">
+  <div class="wrap split" id="kontakt">
+    <div class="reveal">
+      <div class="kicker">Poptávka</div>
+      <h2 class="h2">Napište nám. <em>Ozveme se ještě dnes.</em></h2>
+      <p class="lead">Ubytování, stůl v restauraci nebo celá akce. Vyberte, co plánujete, a pošlete pár řádků.</p>
+      <div class="contact-list">
+        <div><small>Telefon</small><a href="tel:+420603426109">+420 603 426 109</a></div>
+        <div><small>Telefon</small><a href="tel:+420605310922">+420 605 310 922</a></div>
+        <div><small>E-mail</small><a href="mailto:lipa-hotel@seznam.cz">lipa-hotel@seznam.cz</a></div>
+        <div><small>Adresa</small><a href="https://www.google.com/maps/search/?api=1&query=50.73380,13.76230" target="_blank" rel="noopener">Cínovec 99, Dubí ↗</a></div>
+      </div>
+    </div>
+    <form class="form reveal" id="form" novalidate>
+      <div class="types" role="radiogroup" aria-label="Co plánujete">
+        <label><input type="radio" name="typ" value="Ubytování" checked /><span>Ubytování</span></label>
+        <label><input type="radio" name="typ" value="Stůl v restauraci" /><span>Stůl v restauraci</span></label>
+        <label><input type="radio" name="typ" value="Svatba nebo oslava" /><span>Svatba nebo oslava</span></label>
+        <label><input type="radio" name="typ" value="Škola v přírodě" /><span>Škola v přírodě</span></label>
+        <label><input type="radio" name="typ" value="Firemní akce" /><span>Firemní akce</span></label>
+      </div>
+      <div class="row">
+        <label class="f">Od<input type="date" name="od" id="fOd" /></label>
+        <label class="f">Do<input type="date" name="do" id="fDo" /></label>
+      </div>
+      <div class="row">
+        <label class="f">Počet osob<input type="number" name="osoby" min="1" max="200" value="2" /></label>
+        <label class="f">Telefon<input type="tel" name="telefon" autocomplete="tel" /></label>
+      </div>
+      <div class="row">
+        <label class="f">Jméno<input type="text" name="jmeno" autocomplete="name" /></label>
+        <label class="f">E-mail<input type="email" name="email" id="fMail" autocomplete="email" /></label>
+      </div>
+      <label class="f">Zpráva<textarea name="zprava" placeholder="Např. přijedeme na běžky, budeme dva a pes…"></textarea></label>
+      <button class="btn btn-dark" type="submit" style="justify-self:start">Odeslat poptávku →</button>
+      <p class="note" id="fNote">Ukázka – formulář zatím nic neodesílá.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Hotel a restaurace Lípa · Cínovec 99, Dubí · IČO 64026167</span>
+    <span>Návrh webu · ukázka. Fotografie z webu hotellipa.webmium.com, počasí Open-Meteo.</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v)), lerp = (a, b, t) => a + (b - a) * t;
+  const sm = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const LAT = 50.7338, LON = 13.7623;
+
+  // ===== výška slunce nad obzorem (stupně) =====
+  function sunAlt(date) {
+    const rad = Math.PI / 180, d = date / 864e5 - 10957.5;
+    const g = (357.529 + 0.98560028 * d) * rad, q = 280.459 + 0.98564736 * d;
+    const L = (q + 1.915 * Math.sin(g) + 0.020 * Math.sin(2 * g)) * rad, e = (23.439 - 0.00000036 * d) * rad;
+    const dec = Math.asin(Math.sin(e) * Math.sin(L)), ra = Math.atan2(Math.cos(e) * Math.sin(L), Math.cos(L));
+    const gmst = (18.697374558 + 24.06570982441908 * d) % 24, ha = ((gmst * 15 + LON) * rad) - ra;
+    return Math.asin(Math.sin(LAT * rad) * Math.sin(dec) + Math.cos(LAT * rad) * Math.cos(dec) * Math.cos(ha)) / rad;
+  }
+
+  // ===== stav scény =====
+  const W = { temp: null, code: null, cloud: 50, wind: 8, snowfall: 0, rain: 0, depth: 0, ok: false };
+  let mode = 'live';
+  const S = { alt: 30, cloud: .5, snow: 0, rain: 0, fog: 0, roofSnow: 0, wind: 8 };   // cílový stav
+  const C = { ...S };                                                                     // aktuální (plynule)
+  function target() {
+    const now = new Date();
+    let alt = sunAlt(now), cloud = W.cloud / 100, snow = 0, rain = 0, fog = 0, roof = 0;
+    const code = W.code ?? 3;
+    if ([71, 73, 75, 77, 85, 86].includes(code)) snow = { 71: .35, 73: .6, 75: 1, 77: .3, 85: .5, 86: .9 }[code];
+    if ([51, 53, 55, 61, 63, 65, 80, 81, 82, 66, 67].includes(code)) rain = code >= 63 ? .8 : .45;
+    if ([45, 48].includes(code)) fog = .7;
+    const m = now.getMonth();
+    roof = (W.depth > .02 || snow > 0 || ((m >= 11 || m <= 2) && W.depth > 0)) ? 1 : 0;
+    if (mode === 'day') { alt = 35; snow = 0; rain = 0; fog = 0; cloud = .35; }
+    if (mode === 'dusk') { alt = -3; snow = 0; rain = 0; fog = 0; cloud = .35; }
+    if (mode === 'night') { alt = -20; snow = 0; rain = 0; fog = 0; cloud = .15; }
+    if (mode === 'snow') { alt = Math.max(-14, Math.min(alt, -6)); snow = 1; rain = 0; fog = .15; cloud = .9; roof = 1; }
+    Object.assign(S, { alt, cloud, snow, rain, fog, roofSnow: roof, wind: W.wind });
+  }
+
+  // ===== obloha =====
+  const sky = $('#sky'), sctx = sky.getContext('2d');
+  const fx = $('#fx'), fctx = fx.getContext('2d');
+  let SW = 0, SH = 0, FW = 0, FH = 0, dpr = 1;
+  function size() {
+    dpr = Math.min(2, devicePixelRatio || 1);
+    const r = sky.getBoundingClientRect(); SW = sky.width = Math.round(r.width / 2); SH = sky.height = Math.round(r.height / 2);
+    FW = fx.width = Math.round(innerWidth * dpr); FH = fx.height = Math.round($('#hero').offsetHeight * dpr);
+  }
+  const stars = Array.from({ length: 160 }, () => ({ x: Math.random(), y: Math.random() * .6, r: Math.random() * 1.2 + .3, p: Math.random() * 6 }));
+  const clouds = Array.from({ length: 9 }, (_, i) => ({ x: Math.random(), y: .05 + Math.random() * .35, s: .25 + Math.random() * .35, v: .004 + Math.random() * .006 }));
+  const mix = (a, b, t) => a.map((v, i) => Math.round(lerp(v, b[i], t)));
+  const rgb = (c, a = 1) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  function skyColors(alt, cloud) {
+    const day = [[96, 140, 196], [196, 214, 230]], gold = [[88, 104, 156], [246, 178, 120]], dusk = [[34, 38, 78], [160, 92, 102]], night = [[6, 9, 20], [22, 30, 54]];
+    let top, bot;
+    if (alt > 8) { top = day[0]; bot = day[1]; }
+    else if (alt > 0) { const t = alt / 8; top = mix(gold[0], day[0], t); bot = mix(gold[1], day[1], t); }
+    else if (alt > -8) { const t = (alt + 8) / 8; top = mix(dusk[0], gold[0], t); bot = mix(dusk[1], gold[1], t); }
+    else { const t = clamp((alt + 18) / 10, 0, 1); top = mix(night[0], dusk[0], t); bot = mix(night[1], dusk[1], t); }
+    const grey = alt > 0 ? [150, 156, 166] : alt > -8 ? [70, 72, 86] : [16, 18, 26];
+    return [mix(top, grey, cloud * .75), mix(bot, grey, cloud * .6)];
+  }
+  function drawSky(t) {
+    const [top, bot] = skyColors(C.alt, C.cloud);
+    const g = sctx.createLinearGradient(0, 0, 0, SH * .75); g.addColorStop(0, rgb(top)); g.addColorStop(1, rgb(bot));
+    sctx.fillStyle = g; sctx.fillRect(0, 0, SW, SH);
+    const nightK = sm(-4, -12, C.alt) * (1 - C.cloud * .85);
+    if (nightK > .01) {
+      for (const s of stars) { sctx.globalAlpha = nightK * (.55 + .45 * Math.sin(t * 1.3 + s.p)); sctx.fillStyle = '#fff'; sctx.beginPath(); sctx.arc(s.x * SW, s.y * SH, s.r * .6, 0, 6.283); sctx.fill(); }
+      // měsíc
+      sctx.globalAlpha = nightK; const mx = SW * .2, my = SH * .16, mr = Math.max(6, SW * .018);
+      const mg = sctx.createRadialGradient(mx, my, mr * .2, mx, my, mr * 5); mg.addColorStop(0, 'rgba(255,248,226,.5)'); mg.addColorStop(1, 'rgba(255,248,226,0)');
+      sctx.fillStyle = mg; sctx.fillRect(mx - mr * 5, my - mr * 5, mr * 10, mr * 10);
+      sctx.fillStyle = '#f6efd8'; sctx.beginPath(); sctx.arc(mx, my, mr, 0, 6.283); sctx.fill();
+      sctx.globalAlpha = 1;
+    }
+    // mraky
+    const day = sm(-10, 10, C.alt);
+    const cc = C.alt > 0 ? [235, 238, 244] : C.alt > -8 ? [150, 120, 140] : [40, 44, 60];
+    const n = Math.round(3 + C.cloud * 9);
+    for (let i = 0; i < Math.min(n, clouds.length); i++) {
+      const c = clouds[i]; c.x += c.v * (0.4 + C.wind / 25) / 60; if (c.x > 1.3) c.x = -.3;
+      const cx = c.x * SW, cy = c.y * SH, r = c.s * SW * .5;
+      for (let k = 0; k < 4; k++) {
+        const ox = (k - 1.5) * r * .5, oy = Math.sin(k * 1.7) * r * .12, rr = r * (.55 + .2 * Math.cos(k));
+        const gg = sctx.createRadialGradient(cx + ox, cy + oy, 0, cx + ox, cy + oy, rr);
+        gg.addColorStop(0, rgb(cc, .28 + .3 * C.cloud)); gg.addColorStop(1, rgb(cc, 0));
+        sctx.fillStyle = gg; sctx.fillRect(cx + ox - rr, cy + oy - rr, rr * 2, rr * 2);
+      }
+    }
+  }
+
+  // ===== sníh a déšť =====
+  const flakes = Array.from({ length: 420 }, () => ({ x: Math.random(), y: Math.random(), z: Math.random(), ph: Math.random() * 6 }));
+  function drawFx(t, dt) {
+    fctx.clearRect(0, 0, FW, FH);
+    const sn = C.snow, rn = C.rain;
+    if (sn > .01) {
+      const cnt = Math.round(flakes.length * sn), wind = (C.wind / 40) * .25;
+      fctx.fillStyle = '#fff';
+      for (let i = 0; i < cnt; i++) {
+        const f = flakes[i], sp = .04 + f.z * .1;
+        f.y += sp * dt; f.x += (wind * (0.4 + f.z) + Math.sin(t * .8 + f.ph) * .01) * dt;
+        if (f.y > 1.02) { f.y = -.02; f.x = Math.random(); } if (f.x > 1.02) f.x = -.02;
+        fctx.globalAlpha = (.35 + f.z * .6) * Math.min(1, sn * 2);
+        fctx.beginPath(); fctx.arc(f.x * FW, f.y * FH, (0.6 + f.z * 2.4) * dpr, 0, 6.283); fctx.fill();
+      }
+    }
+    if (rn > .01) {
+      fctx.strokeStyle = 'rgba(200,215,235,.35)'; fctx.lineWidth = 1 * dpr;
+      const cnt = Math.round(300 * rn);
+      fctx.beginPath();
+      for (let i = 0; i < cnt; i++) {
+        const f = flakes[i]; f.y += (.9 + f.z * .6) * dt; if (f.y > 1.02) { f.y = -.02; f.x = Math.random(); }
+        const x = f.x * FW, y = f.y * FH; fctx.moveTo(x, y); fctx.lineTo(x - 3 * dpr, y + (10 + f.z * 14) * dpr);
+      }
+      fctx.globalAlpha = 1; fctx.stroke();
+    }
+    fctx.globalAlpha = 1;
+  }
+
+  // ===== barvy fotky podle světla =====
+  const fg = $('#Lfg'), wall = $('#Lwall'), snowL = $('#Lsnow'), lights = $('#Llights'), g1 = $('#grade1'), g2 = $('#grade2'), fog = $('#fog');
+  function applyGrade() {
+    const a = C.alt;
+    const bright = a > 6 ? 1 : a > 0 ? lerp(.85, 1, a / 6) : a > -8 ? lerp(.42, .85, (a + 8) / 8) : lerp(.26, .42, clamp((a + 18) / 10, 0, 1));
+    const wint = Math.max(C.roofSnow, C.snow);
+    const sat = lerp(1, .55, wint) * (a < 0 ? .75 : 1) * lerp(1, .85, C.cloud);
+    const f = `brightness(${(bright * lerp(1, .9, C.cloud * (a > 0 ? 1 : 0))).toFixed(3)}) saturate(${sat.toFixed(3)})`;
+    fg.style.filter = wall.style.filter = snowL.style.filter = f;
+    const tint = a > 6 ? [255, 255, 255] : a > 0 ? mix([255, 214, 176], [255, 255, 255], a / 6) : a > -8 ? mix([120, 130, 190], [255, 214, 176], (a + 8) / 8) : [92, 108, 170];
+    const t2 = mix(tint, [215, 225, 240], wint * .5);
+    g1.style.backgroundColor = g2.style.backgroundColor = rgb(t2);
+    lights.style.opacity = sm(4, -6, a).toFixed(3);
+    snowL.style.opacity = (C.roofSnow * .95).toFixed(3);
+    fog.style.opacity = C.fog.toFixed(3);
+  }
+
+  // ===== parallax =====
+  const scene = $('#scene'), scene2 = $('#scene2'), hero = $('#hero');
+  let px = 0, py = 0, tx = 0, ty = 0, scrollK = 0;
+  hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - .5; ty = (e.clientY - r.top) / r.height - .5; });
+  hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; });
+
+  // ===== smyčka =====
+  let last = performance.now(), heroVisible = true;
+  new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; }).observe(hero);
+  function tick(now) {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    const k = 1 - Math.exp(-dt * 1.6);
+    for (const key of Object.keys(S)) C[key] += (S[key] - C[key]) * k;
+    if (heroVisible) {
+      if (!calm && tx === 0 && ty === 0) { tx = 0; } // bez myši jen jemný „dech“
+      const auto = calm ? 0 : Math.sin(now / 4200) * .06;
+      px += ((tx || auto) - px) * (1 - Math.exp(-dt * 3)); py += ((ty || auto * .4) - py) * (1 - Math.exp(-dt * 3));
+      scrollK = clamp(scrollY / innerHeight, 0, 1);
+      scene.style.transform = `translate3d(${(-px * 18).toFixed(2)}px, ${(-py * 10 + scrollK * 60).toFixed(2)}px, 0) scale(${(1.02 + scrollK * .04).toFixed(4)})`;
+      scene2.style.transform = `translate3d(${(-px * 42).toFixed(2)}px, ${(-py * 22 + scrollK * 20).toFixed(2)}px, 0) scale(${(1.05 + scrollK * .06).toFixed(4)})`;
+      drawSky(now / 1000); drawFx(now / 1000, dt); applyGrade();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ===== počasí =====
+  const CODES = { 0: 'Jasno', 1: 'Skoro jasno', 2: 'Polojasno', 3: 'Zataženo', 45: 'Mlha', 48: 'Mrznoucí mlha', 51: 'Mrholení', 53: 'Mrholení', 55: 'Silné mrholení', 56: 'Mrznoucí mrholení', 57: 'Mrznoucí mrholení',
+    61: 'Slabý déšť', 63: 'Déšť', 65: 'Silný déšť', 66: 'Mrznoucí déšť', 67: 'Mrznoucí déšť', 71: 'Slabé sněžení', 73: 'Sněží', 75: 'Husté sněžení', 77: 'Sněhová zrna',
+    80: 'Přeháňky', 81: 'Přeháňky', 82: 'Silné přeháňky', 85: 'Sněhové přeháňky', 86: 'Silné sněhové přeháňky', 95: 'Bouřka', 96: 'Bouřka s kroupami', 99: 'Bouřka s kroupami' };
+  const ICON = (c) => c === 0 ? '☀' : c <= 2 ? '⛅' : c === 3 ? '☁' : c <= 48 ? '🌫' : (c >= 71 && c <= 77) || c >= 85 && c <= 86 ? '❄' : c >= 95 ? '⛈' : '🌧';
+  const DAYS = ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'];
+  const hm = (iso) => iso ? iso.slice(11, 16) : '–';
+  async function loadWeather() {
+    try {
+      const u = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,apparent_temperature,weather_code,cloud_cover,wind_speed_10m,snowfall,rain,snow_depth&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=Europe%2FPrague&forecast_days=4`;
+      const r = await fetch(u); if (!r.ok) throw 0; const j = await r.json(); const c = j.current;
+      Object.assign(W, { temp: c.temperature_2m, code: c.weather_code, cloud: c.cloud_cover, wind: c.wind_speed_10m, snowfall: c.snowfall, rain: c.rain, depth: c.snow_depth || 0, ok: true });
+      $('#wxT').innerHTML = `${Math.round(c.temperature_2m)}<sup>°C</sup>`;
+      $('#wxC').textContent = CODES[c.weather_code] || '—';
+      $('#wxF').textContent = `pocitově ${Math.round(c.apparent_temperature)} °C`;
+      $('#wxW').textContent = `${Math.round(c.wind_speed_10m)} km/h`;
+      $('#wxS').textContent = W.depth > 0.005 ? `${Math.round(W.depth * 100)} cm` : 'bez sněhu';
+      const nowStr = j.current.time, sunset = j.daily.sunset[0], sunrise = j.daily.sunrise[1] || j.daily.sunrise[0];
+      if (nowStr < sunset) { $('#wxSunL').firstChild.nodeValue = 'Západ'; $('#wxSun').textContent = hm(sunset); }
+      else { $('#wxSunL').firstChild.nodeValue = 'Východ'; $('#wxSun').textContent = hm(sunrise); }
+      $('#wxD').innerHTML = j.daily.time.slice(1, 4).map((d, i) => { const dt = new Date(d + 'T12:00'); return `<div>${DAYS[dt.getDay()]}<b>${ICON(j.daily.weather_code[i + 1])}</b><span>${Math.round(j.daily.temperature_2m_max[i + 1])}° / ${Math.round(j.daily.temperature_2m_min[i + 1])}°</span></div>`; }).join('');
+      $('#wxSrc').textContent = `Aktualizováno ${hm(nowStr)} · data Open-Meteo`;
+    } catch (e) {
+      $('#wxC').textContent = 'Počasí se teď nepodařilo načíst'; $('#wxLive').textContent = 'offline';
+    }
+    target();
+  }
+
+  // ===== přepínač režimů =====
+  $$('.modes button').forEach((b) => b.addEventListener('click', () => {
+    mode = b.dataset.mode; $$('.modes button').forEach((x) => x.classList.toggle('on', x === b)); target();
+    $('#wxLive').textContent = mode === 'live' ? 'živě' : 'ukázka';
+  }));
+
+  size(); addEventListener('resize', size);
+  target(); Object.assign(C, S); applyGrade();
+  loadWeather(); setInterval(loadWeather, 10 * 60 * 1000); setInterval(target, 60 * 1000);
+  requestAnimationFrame(tick);
+
+  // ===== obsah =====
+  addEventListener('scroll', () => document.body.classList.toggle('scrolled', scrollY > innerHeight * .7), { passive: true });
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return; e.target.classList.add('in'); io.unobserve(e.target);
+    e.target.querySelectorAll('[data-count]').forEach((b) => { const to = +b.dataset.count, t0 = performance.now(); (function f(t) { const k = Math.min(1, (t - t0) / 1400); b.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); })(t0); });
+  }), { threshold: .15 });
+  $$('.reveal').forEach((el) => io.observe(el));
+
+  // dnešní den v otevírací době
+  const dow = new Date().getDay(); $$('#hours [data-d]').forEach((r) => r.classList.toggle('today', r.dataset.d.split(',').includes(String(dow))));
+
+  // pás pokojů – tažení myší
+  const rail = $('#rail'); let down = false, sx = 0, sl = 0;
+  rail.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; down = true; sx = e.clientX; sl = rail.scrollLeft; rail.style.scrollSnapType = 'none'; });
+  addEventListener('pointerup', () => { if (down) { down = false; rail.style.scrollSnapType = ''; } });
+  rail.addEventListener('pointermove', (e) => { if (down) rail.scrollLeft = sl - (e.clientX - sx); });
+
+  // tehdy a dnes
+  const cmp = $('#compare'); let drag = false;
+  const setX = (e) => { const r = cmp.getBoundingClientRect(); cmp.style.setProperty('--x', `${clamp((e.clientX - r.left) / r.width * 100, 0, 100)}%`); };
+  cmp.addEventListener('pointerdown', (e) => { drag = true; setX(e); cmp.setPointerCapture(e.pointerId); });
+  cmp.addEventListener('pointermove', (e) => { if (drag || e.pointerType === 'mouse') setX(e); });
+  cmp.addEventListener('pointerup', () => { drag = false; });
+  $$('#thumbs button').forEach((b) => b.addEventListener('click', () => { $('#oldImg').src = b.dataset.old; $$('#thumbs button').forEach((x) => x.classList.toggle('on', x === b)); }));
+
+  // sezóna okolí
+  $$('.season button').forEach((b) => b.addEventListener('click', () => {
+    $$('.season button').forEach((x) => x.classList.toggle('on', x === b));
+    $$('[data-panel]').forEach((p) => p.hidden = p.dataset.panel !== b.dataset.s);
+    $('#okImg1').style.opacity = b.dataset.s === 'zima' ? 1 : 0; $('#okImg2').style.opacity = b.dataset.s === 'leto' ? 1 : 0;
+  }));
+
+  // akce a tlačítka → předvyplní typ poptávky
+  function preset(type) {
+    const r = $$('#form input[name=typ]').find((i) => i.value === type); if (r) r.checked = true;
+    $('#poptavka').scrollIntoView({ behavior: 'smooth' });
+    const f = $('#form'); setTimeout(() => { f.classList.add('flash'); setTimeout(() => f.classList.remove('flash'), 900); }, 700);
+  }
+  $$('.ev').forEach((ev) => ev.addEventListener('click', () => preset(ev.dataset.type)));
+  $$('a[data-type]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); preset(a.dataset.type); }));
+
+  // datumy: dnes a víc
+  const today = new Date().toISOString().slice(0, 10); $('#fOd').min = today; $('#fDo').min = today;
+  $('#fOd').addEventListener('change', () => { $('#fDo').min = $('#fOd').value; if ($('#fDo').value < $('#fOd').value) $('#fDo').value = ''; });
+  $('#form').addEventListener('submit', (e) => {
+    e.preventDefault(); const n = $('#fNote'), m = $('#fMail').value.trim();
+    if (!m.includes('@')) { n.textContent = 'Doplňte prosím e-mail, ať vám můžeme odpovědět.'; n.className = 'note'; return; }
+    n.textContent = 'Díky! V ostré verzi by teď poptávka odešla do hotelu.'; n.className = 'note ok';
+  });
+
+  // tlačítka: magnet + vločky po kliknutí
+  if (matchMedia('(pointer: fine)').matches && !calm) $$('.btn').forEach((b) => {
+    b.addEventListener('pointermove', (e) => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${((e.clientX - r.left) / r.width - .5) * 10}px, ${((e.clientY - r.top) / r.height - .5) * 8}px)`; });
+    b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+  });
+  const CH = ['❄', '❅', '❆', '•'];
+  document.addEventListener('pointerdown', (e) => {
+    if (calm || !e.target.closest('a, button, .ev, label')) return;
+    for (let i = 0; i < 10; i++) {
+      const f = document.createElement('span'); f.className = 'flake'; f.textContent = CH[i % 4]; f.style.fontSize = (8 + Math.random() * 12) + 'px'; document.body.appendChild(f);
+      const a = i / 10 * 6.283 + Math.random() * .5, d = 40 + Math.random() * 60;
+      f.animate([{ transform: `translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%) scale(.3)`, opacity: 1 }, { transform: `translate(${e.clientX + Math.cos(a) * d}px,${e.clientY + Math.sin(a) * d + 30}px) translate(-50%,-50%) scale(1) rotate(${Math.random() * 400 - 200}deg)`, opacity: 0 }], { duration: 900 + Math.random() * 500, easing: 'cubic-bezier(.15,.75,.3,1)' }).onfinish = () => f.remove();
+    }
+  });
+})();
+</script>
+</body>
+</html>
