@@ -367,6 +367,16 @@
   .logo span { font-family:var(--sans); font-size:12px; }
   .place h2, .place p, .place .meta { text-shadow:0 1px 3px rgba(0,0,0,.55), 0 2px 22px rgba(0,0,0,.75); }
   .place p { color:rgba(245,239,230,.86); }
+  /* Čitelnost textů nad videem: tmavé měkké pozadí za textem, světlejší a větší popisky */
+  .place::before { content:''; position:absolute; z-index:-1; inset:-55% -40% -60% -75%; pointer-events:none;
+    background:radial-gradient(closest-side, rgba(6,5,4,.74), rgba(6,5,4,.38) 55%, rgba(6,5,4,0)); }
+  .hero::before { inset:-40% -50% -40% -70%; background:radial-gradient(closest-side, rgba(6,5,4,.74), rgba(6,5,4,.38) 55%, rgba(6,5,4,0)); }
+  .final::before { background:radial-gradient(closest-side, rgba(6,5,4,.78), rgba(6,5,4,.4) 55%, rgba(6,5,4,0)); }
+  .hero h1, .place h2, .final h2 { text-shadow:0 1px 2px rgba(0,0,0,.5), 0 4px 30px rgba(0,0,0,.7); }
+  .hero p, .place p, .final > p { color:rgba(252,248,242,.93); font-size:clamp(15px,1.15vw,18px); text-shadow:0 1px 2px rgba(0,0,0,.8), 0 2px 18px rgba(0,0,0,.8); }
+  .hero .eyebrow, .place .meta { font-size:11px; color:#ffdc85; text-shadow:0 1px 2px rgba(0,0,0,.9), 0 0 14px rgba(0,0,0,.8); }
+  .stops button { text-shadow:0 1px 3px rgba(0,0,0,.8); }
+  .shade { height:60vh; background:linear-gradient(to top, rgba(7,5,3,.72), rgba(7,5,3,0)); }
   @media (max-width:640px){ .final h2 { font-size:40px; } .place h2 { font-size:38px; line-height:.95; } .hero h1 { font-size:46px; } }
 
   /* ===== Interakce: tlačítka a karty ===== */
