@@ -200,7 +200,7 @@ section.sec{padding-block:clamp(80px,11vw,150px);position:relative}
 .rail figcaption b{display:block;color:var(--paper-ink);font-size:16px;margin-bottom:4px}
 .ticks{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
 .ticks li{list-style:none;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;background:#fff}
-.sec-dark .ticks li{background:rgba(243,238,230,.08)}
+.sec:not(.paper) .ticks li{background:rgba(243,238,230,.08);color:var(--ink);border:1px solid var(--faint)}
 
 /* restaurace */
 .warm{background:radial-gradient(120% 80% at 80% 0%,#2a1c10 0%,#130f0b 55%,#0b0f17 100%)}
