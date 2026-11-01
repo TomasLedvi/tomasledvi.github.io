@@ -402,10 +402,10 @@
   .room-cta span { display:inline-block; transition:transform .35s cubic-bezier(.2,.8,.2,1); }
   .room-cta:hover span { transform:translateX(5px); }
   .room { margin-top:0; }
-  .tilt { transform-style:preserve-3d; position:relative; }
+  .tilt { position:relative; backface-visibility:hidden; }
   .tilt::before { content:''; position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:inherit; opacity:0; transition:opacity .4s;
-    background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.38), rgba(200,230,255,.1) 35%, transparent 60%); mix-blend-mode:soft-light; }
-  .sec-night .tilt::before, .stat.tilt::before { mix-blend-mode:screen; background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%), rgba(200,230,255,.16), transparent 60%); }
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(200,228,255,.22), rgba(200,230,255,.06) 35%, transparent 60%); }
+  .sec-night .tilt::before, .stat.tilt::before { background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%), rgba(200,230,255,.16), transparent 60%); }
   .tilt:hover::before { opacity:1; }
   .tilt.hov { box-shadow:0 30px 60px -28px rgba(20,30,45,.45); }
   .perks div { transition:border-color .3s, transform .35s cubic-bezier(.2,.8,.2,1); }
@@ -1030,7 +1030,7 @@
           const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
           c.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
           c.style.transition = 'transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .4s';
-          c.style.transform = `perspective(900px) rotateX(${((0.5 - y) * 7).toFixed(2)}deg) rotateY(${((x - 0.5) * 9).toFixed(2)}deg) translateY(-4px)`;
+          c.style.transform = c.classList.contains('review') ? 'translateY(-6px)' : `perspective(900px) rotateX(${((0.5 - y) * 7).toFixed(2)}deg) rotateY(${((x - 0.5) * 9).toFixed(2)}deg) translateY(-4px)`;   // recenze jen zvednout (3D je v Safari schovávalo)
           c.classList.add('hov');
         });
         c.addEventListener('pointerleave', () => { c.style.transition = 'transform .7s cubic-bezier(.2,.8,.2,1), box-shadow .5s'; c.style.transform = ''; c.classList.remove('hov'); });
