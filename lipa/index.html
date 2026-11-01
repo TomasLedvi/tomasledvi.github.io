@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#10134a" />
 <link rel="preconnect" href="https://api.open-meteo.com" />
 <link rel="preconnect" href="https://d2ol7oe51mr4n9.cloudfront.net" crossorigin />
-<link rel="preload" as="image" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f090cc0a-f35a-46f3-a61c-e5c56a2f9814.webp" />
+
 <style>
 @font-face {
   font-family: 'Urbanist';
@@ -90,18 +90,8 @@ body.scrolled .top::before{opacity:0}
 /* ===== HERO: živé okno ===== */
 #hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:var(--night)}
 .scene{position:absolute;inset:-4%;will-change:transform}
-.scene canvas{position:absolute;inset:0;width:100%;height:100%}
-.photo-box{position:absolute;right:2%;bottom:-2%;height:94%;aspect-ratio:4/3;
-  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 18%);mask-image:linear-gradient(to right,transparent 0,#000 18%)}
-.photo-box img,.photo-box .grade{position:absolute;inset:0;width:100%;height:100%;user-select:none;-webkit-user-drag:none}
-.photo-box .grade{-webkit-mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f090cc0a-f35a-46f3-a61c-e5c56a2f9814.webp) center/100% 100% no-repeat;mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f090cc0a-f35a-46f3-a61c-e5c56a2f9814.webp) center/100% 100% no-repeat}
-#sky{z-index:0}
-#Lfg{z-index:1;transition:filter 1.2s}
-#Lsnow{z-index:2;opacity:0;transition:opacity 2s,filter 1.2s}
-.grade{z-index:4;mix-blend-mode:multiply;transition:background-color 1.2s;pointer-events:none}
-#Llights{z-index:5;opacity:0;mix-blend-mode:screen;transition:opacity 1.6s}
-#Lwall{z-index:3;transition:filter 1.2s;will-change:transform}
-#fx{z-index:7;pointer-events:none}
+.scene img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 34%;opacity:0;transition:opacity 1.8s ease;user-select:none;-webkit-user-drag:none}
+#Pday{opacity:1}
 .fog{position:absolute;inset:0;z-index:8;pointer-events:none;opacity:0;transition:opacity 2s;
   background:linear-gradient(to top,rgba(210,218,228,.75),rgba(210,218,228,.25) 60%,rgba(210,218,228,.1))}
 .hero-shade{position:absolute;inset:0;z-index:9;pointer-events:none;
@@ -282,7 +272,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .facts{grid-template-columns:1fr 1fr 1fr;gap:12px}
 }
 @media (max-width:640px){
-  .photo-box{right:auto;left:50%;height:106%;bottom:-3%;transform:translateX(-63%);-webkit-mask-image:none;mask-image:none}
+  .scene img.ph{object-position:68% 40%}
   .hero-copy{bottom:84px}
   .hero-copy h1{font-size:38px}
   .hero-copy p{font-size:15px;margin-top:12px}
@@ -339,14 +329,10 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
 <!-- ===== HERO: živé okno na Cínovec ===== -->
 <section id="hero" aria-label="Hotel Lípa – pohled na hotel podle aktuálního počasí">
   <div class="scene" id="scene">
-    <canvas id="sky"></canvas>
-    <div class="photo-box" id="pbox">
-    <img id="Lfg" alt="Hotel a restaurace Lípa na Cínovci" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/f090cc0a-f35a-46f3-a61c-e5c56a2f9814.webp" fetchpriority="high" />
-    <img id="Lsnow" alt="" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/7c7f5204-2f4f-46b9-9c8e-6aebe7a9f048.webp" />
-    <img id="Lwall" alt="" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/556ae2de-66c7-4ca5-bacc-2b2216e2630b.webp" />
-    <div class="grade" id="grade1"></div>
-    <img id="Llights" alt="" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JxAqGLPvN22taooKUlAO1hTSfT/72ee2ec8-ca7a-4be2-b17b-08732f810681.webp" />
-    </div>
+    <img class="ph" id="Pday" alt="Hotel a restaurace Lípa na Cínovci" src="https://webmium.blob.core.windows.net/users/129015/assets/4b892805da01d9a27ece015eb9069936/1006257.jpg" fetchpriority="high" />
+    <img class="ph" id="Pdusk" alt="" src="img/dusk.webp" />
+    <img class="ph" id="Pnight" alt="" src="img/night.webp" />
+    <img class="ph" id="Pwinter" alt="" src="img/winter.webp" />
   </div>
   <canvas id="fx" style="position:absolute;inset:0;width:100%;height:100%;z-index:7;pointer-events:none"></canvas>
   <div class="fog" id="fog"></div>
@@ -378,7 +364,7 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
     <button type="button" data-mode="day">Den</button>
     <button type="button" data-mode="dusk">Soumrak</button>
     <button type="button" data-mode="night">Noc</button>
-    <button type="button" data-mode="snow">Sněží</button>
+    <button type="button" data-mode="snow">Zima</button>
   </div>
 </section>
 
@@ -721,62 +707,18 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
     if (mode === 'day') { alt = 35; snow = 0; rain = 0; fog = 0; cloud = .35; }
     if (mode === 'dusk') { alt = -3; snow = 0; rain = 0; fog = 0; cloud = .35; }
     if (mode === 'night') { alt = -20; snow = 0; rain = 0; fog = 0; cloud = .15; }
-    if (mode === 'snow') { alt = 9; snow = 1; rain = 0; fog = .2; cloud = .95; roof = 1; }
+    if (mode === 'snow') { snow = .7; rain = 0; fog = 0; cloud = .9; roof = 1; }
     Object.assign(S, { alt, cloud, snow, rain, fog, roofSnow: roof, wind: W.wind });
   }
 
   // ===== obloha =====
-  const sky = $('#sky'), sctx = sky.getContext('2d');
   const fx = $('#fx'), fctx = fx.getContext('2d');
   let SW = 0, SH = 0, FW = 0, FH = 0, dpr = 1;
   function size() {
     dpr = Math.min(2, devicePixelRatio || 1);
-    const r = sky.getBoundingClientRect(); SW = sky.width = Math.round(r.width / 2); SH = sky.height = Math.round(r.height / 2);
     FW = fx.width = Math.round(innerWidth * dpr); FH = fx.height = Math.round($('#hero').offsetHeight * dpr);
   }
-  const stars = Array.from({ length: 160 }, () => ({ x: Math.random(), y: Math.random() * .6, r: Math.random() * 1.2 + .3, p: Math.random() * 6 }));
-  const clouds = Array.from({ length: 9 }, (_, i) => ({ x: Math.random(), y: .05 + Math.random() * .35, s: .25 + Math.random() * .35, v: .004 + Math.random() * .006 }));
   const mix = (a, b, t) => a.map((v, i) => Math.round(lerp(v, b[i], t)));
-  const rgb = (c, a = 1) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
-  function skyColors(alt, cloud) {
-    const day = [[96, 140, 196], [196, 214, 230]], gold = [[88, 100, 170], [240, 196, 150]], dusk = [[40, 44, 120], [150, 110, 150]], night = [[12, 15, 58], [30, 36, 96]];
-    let top, bot;
-    if (alt > 8) { top = day[0]; bot = day[1]; }
-    else if (alt > 0) { const t = alt / 8; top = mix(gold[0], day[0], t); bot = mix(gold[1], day[1], t); }
-    else if (alt > -8) { const t = (alt + 8) / 8; top = mix(dusk[0], gold[0], t); bot = mix(dusk[1], gold[1], t); }
-    else { const t = clamp((alt + 18) / 10, 0, 1); top = mix(night[0], dusk[0], t); bot = mix(night[1], dusk[1], t); }
-    const grey = alt > 0 ? [150, 156, 166] : alt > -8 ? [80, 82, 118] : [24, 28, 70];
-    return [mix(top, grey, cloud * .75), mix(bot, grey, cloud * .6)];
-  }
-  function drawSky(t) {
-    const [top, bot] = skyColors(C.alt, C.cloud);
-    const g = sctx.createLinearGradient(0, 0, 0, SH * .75); g.addColorStop(0, rgb(top)); g.addColorStop(1, rgb(bot));
-    sctx.fillStyle = g; sctx.fillRect(0, 0, SW, SH);
-    const nightK = sm(-4, -12, C.alt) * (1 - C.cloud * .85);
-    if (nightK > .01) {
-      for (const s of stars) { sctx.globalAlpha = nightK * (.55 + .45 * Math.sin(t * 1.3 + s.p)); sctx.fillStyle = '#fff'; sctx.beginPath(); sctx.arc(s.x * SW, s.y * SH, s.r * .6, 0, 6.283); sctx.fill(); }
-      // měsíc
-      sctx.globalAlpha = nightK; const mx = SW * .44, my = SH * .1, mr = Math.max(6, SW * .018);
-      const mg = sctx.createRadialGradient(mx, my, mr * .2, mx, my, mr * 5); mg.addColorStop(0, 'rgba(255,248,226,.5)'); mg.addColorStop(1, 'rgba(255,248,226,0)');
-      sctx.fillStyle = mg; sctx.fillRect(mx - mr * 5, my - mr * 5, mr * 10, mr * 10);
-      sctx.fillStyle = '#f6efd8'; sctx.beginPath(); sctx.arc(mx, my, mr, 0, 6.283); sctx.fill();
-      sctx.globalAlpha = 1;
-    }
-    // mraky
-    const day = sm(-10, 10, C.alt);
-    const cc = C.alt > 0 ? [235, 238, 244] : C.alt > -8 ? [150, 120, 140] : [40, 44, 60];
-    const n = Math.round(3 + C.cloud * 9);
-    for (let i = 0; i < Math.min(n, clouds.length); i++) {
-      const c = clouds[i]; c.x += c.v * (0.4 + C.wind / 25) / 60; if (c.x > 1.3) c.x = -.3;
-      const cx = c.x * SW, cy = c.y * SH, r = c.s * SW * .5;
-      for (let k = 0; k < 4; k++) {
-        const ox = (k - 1.5) * r * .5, oy = Math.sin(k * 1.7) * r * .12, rr = r * (.55 + .2 * Math.cos(k));
-        const gg = sctx.createRadialGradient(cx + ox, cy + oy, 0, cx + ox, cy + oy, rr);
-        gg.addColorStop(0, rgb(cc, .28 + .3 * C.cloud)); gg.addColorStop(1, rgb(cc, 0));
-        sctx.fillStyle = gg; sctx.fillRect(cx + ox - rr, cy + oy - rr, rr * 2, rr * 2);
-      }
-    }
-  }
 
   // ===== sníh a déšť =====
   const flakes = Array.from({ length: 420 }, () => ({ x: Math.random(), y: Math.random(), z: Math.random(), ph: Math.random() * 6 }));
@@ -807,20 +749,13 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
     fctx.globalAlpha = 1;
   }
 
-  // ===== barvy fotky podle světla =====
-  const fg = $('#Lfg'), wall = $('#Lwall'), snowL = $('#Lsnow'), lights = $('#Llights'), g1 = $('#grade1'), fog = $('#fog');
+  // ===== prolínání fotek: den → soumrak → noc, zima při sněhu =====
+  const Pdusk = $('#Pdusk'), Pnight = $('#Pnight'), Pwinter = $('#Pwinter'), fog = $('#fog');
   function applyGrade() {
-    const a = C.alt;
-    const bright = a > 6 ? 1 : a > 0 ? lerp(.88, 1, a / 6) : a > -8 ? lerp(.62, .88, (a + 8) / 8) : lerp(.55, .62, clamp((a + 18) / 10, 0, 1));
-    const wint = Math.max(C.roofSnow, C.snow);
-    const sat = lerp(1, .6, wint) * (a < 0 ? .82 : 1) * lerp(1, .88, C.cloud);
-    const f = `brightness(${(bright * lerp(1, .9, C.cloud * (a > 0 ? 1 : 0))).toFixed(3)}) saturate(${sat.toFixed(3)})`;
-    fg.style.filter = wall.style.filter = snowL.style.filter = f;
-    const tint = a > 6 ? [255, 255, 255] : a > 0 ? mix([255, 226, 196], [255, 255, 255], a / 6) : a > -8 ? mix([150, 156, 214], [222, 196, 214], (a + 8) / 8) : [128, 140, 206];
-    const t2 = mix(tint, [215, 225, 240], wint * .5);
-    g1.style.backgroundColor = rgb(t2);
-    lights.style.opacity = (sm(3, -5, a) * (a < -8 ? 1 : .85)).toFixed(3);
-    snowL.style.opacity = (C.roofSnow * .95).toFixed(3);
+    const a = C.alt, day = sm(-1, 6, a), night = sm(-3, -10, a), wint = clamp(Math.max(C.roofSnow, C.snow), 0, 1);
+    Pdusk.style.opacity = (1 - day).toFixed(3);
+    Pnight.style.opacity = (1 - day > .001 ? night / (1 - day) : 0).toFixed(3);
+    Pwinter.style.opacity = wint.toFixed(3);
     fog.style.opacity = C.fog.toFixed(3);
   }
 
@@ -843,8 +778,7 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
       px += ((tx || auto) - px) * (1 - Math.exp(-dt * 3)); py += ((ty || auto * .4) - py) * (1 - Math.exp(-dt * 3));
       scrollK = clamp(scrollY / innerHeight, 0, 1);
       scene.style.transform = `translate3d(${(-px * 18).toFixed(2)}px, ${(-py * 10 + scrollK * 60).toFixed(2)}px, 0) scale(${(1.02 + scrollK * .04).toFixed(4)})`;
-      wall.style.transform = `translate3d(${(-px * 26).toFixed(2)}px, ${(-py * 12 - scrollK * 40).toFixed(2)}px, 0) scale(${(1.03 + scrollK * .02).toFixed(4)})`;
-      drawSky(now / 1000); drawFx(now / 1000, dt); applyGrade();
+      drawFx(now / 1000, dt); applyGrade();
     }
     requestAnimationFrame(tick);
   }
