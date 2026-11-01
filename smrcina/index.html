@@ -1004,7 +1004,7 @@
         });
         b.addEventListener('pointerleave', () => { b.style.transform = ''; });
       });
-      document.querySelectorAll('.room, .review, .stat, .score').forEach((c) => {
+      document.querySelectorAll('.room, .review, .stat').forEach((c) => {
         c.classList.add('tilt');
         c.addEventListener('pointermove', (e) => {
           const r = c.getBoundingClientRect();
