@@ -643,7 +643,7 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
     'Jasno':'Klar','Skoro jasno':'Überwiegend klar','Polojasno':'Teilweise bewölkt','Zataženo':'Bedeckt','Mlha':'Nebel','Mrznoucí mlha':'Gefrierender Nebel','Mrholení':'Nieselregen','Silné mrholení':'Starker Nieselregen','Mrznoucí mrholení':'Gefrierender Nieselregen',
     'Slabý déšť':'Leichter Regen','Déšť':'Regen','Silný déšť':'Starker Regen','Mrznoucí déšť':'Gefrierender Regen','Slabé sněžení':'Leichter Schneefall','Husté sněžení':'Starker Schneefall','Sněhová zrna':'Schneegriesel',
     'Přeháňky':'Schauer','Silné přeháňky':'Starke Schauer','Sněhové přeháňky':'Schneeschauer','Silné sněhové přeháňky':'Starke Schneeschauer','Bouřka':'Gewitter','Bouřka s kroupami':'Gewitter mit Hagel',
-    'pocitově':'gefühlt','bez sněhu':'kein Schnee','Aktualizováno':'Aktualisiert','data Open-Meteo':'Daten Open-Meteo','ukázka':'Demo','offline':'offline','Počasí se teď nepodařilo načíst':'Wetter konnte nicht geladen werden',
+    'pocitově':'gefühlt','bez sněhu':'kein Schnee','Aktualizováno':'Aktualisiert','data Open-Meteo':'Daten Open-Meteo','data':'Daten','ukázka':'Demo','offline':'offline','Počasí se teď nepodařilo načíst':'Wetter konnte nicht geladen werden',
     'Doplňte prosím e-mail, ať vám můžeme odpovědět.':'Bitte ergänzen Sie Ihre E-Mail, damit wir antworten können.','Díky! V ostré verzi by teď poptávka odešla do hotelu.':'Danke! In der finalen Version ginge die Anfrage jetzt an das Hotel.',
     'ne':'So','po':'Mo','út':'Di','st':'Mi','čt':'Do','pá':'Fr','so':'Sa'
   };
@@ -800,26 +800,73 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
   const ICON = (c) => c === 0 ? '☀' : c <= 2 ? '⛅' : c === 3 ? '☁' : c <= 48 ? '🌫' : (c >= 71 && c <= 77) || c >= 85 && c <= 86 ? '❄' : c >= 95 ? '⛈' : '🌧';
   const DAYS = ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'];
   const hm = (iso) => iso ? iso.slice(11, 16) : '–';
-  async function loadWeather() {
-    try {
-      const u = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,apparent_temperature,weather_code,cloud_cover,wind_speed_10m,snowfall,rain,snow_depth&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=Europe%2FPrague&forecast_days=4`;
-      const r = await fetch(u); if (!r.ok) throw 0; const j = await r.json(); const c = j.current;
-      Object.assign(W, { temp: c.temperature_2m, code: c.weather_code, cloud: c.cloud_cover, wind: c.wind_speed_10m, snowfall: c.snowfall, rain: c.rain, depth: c.snow_depth || 0, ok: true });
-      $('#wxT').innerHTML = `${Math.round(c.temperature_2m)}<sup>°C</sup>`;
-      $('#wxC').textContent = tr(CODES[c.weather_code] || '—');
-      $('#wxF').textContent = `${tr('pocitově')} ${Math.round(c.apparent_temperature)} °C`;
-      $('#wxW').textContent = `${Math.round(c.wind_speed_10m)} km/h`;
-      $('#wxS').textContent = W.depth > 0.005 ? `${Math.round(W.depth * 100)} cm` : tr('bez sněhu');
-      const nowStr = j.current.time, sunset = j.daily.sunset[0], sunrise = j.daily.sunrise[1] || j.daily.sunrise[0];
-      if (nowStr < sunset) { $('#wxSunL').firstChild.nodeValue = tr('Západ'); $('#wxSun').textContent = hm(sunset); }
-      else { $('#wxSunL').firstChild.nodeValue = tr('Východ'); $('#wxSun').textContent = hm(sunrise); }
-      $('#wxD').innerHTML = j.daily.time.slice(1, 4).map((d, i) => { const dt = new Date(d + 'T12:00'); return `<div>${tr(DAYS[dt.getDay()])}<b>${ICON(j.daily.weather_code[i + 1])}</b><span>${Math.round(j.daily.temperature_2m_max[i + 1])}° / ${Math.round(j.daily.temperature_2m_min[i + 1])}°</span></div>`; }).join('');
-      $('#wxSrc').textContent = `${tr('Aktualizováno')} ${hm(nowStr)} · ${tr('data Open-Meteo')}`;
-    } catch (e) {
-      $('#wxC').textContent = tr('Počasí se teď nepodařilo načíst'); $('#wxLive').textContent = 'offline';
+  // Počasí: Open-Meteo (2 pokusy) → záloha MET Norway → poslední uložená data. Web nikdy neukáže prázdnou kartu, když to jde.
+  const fmtHM = (d) => d.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Prague' });
+  const pragueDay = (d) => d.toLocaleDateString('sv-SE', { timeZone: 'Europe/Prague' });
+  function sunEvent(rising) {           // nejbližší východ/západ slunce podle výpočtu polohy slunce
+    const now = Date.now();
+    for (let t = now; t < now + 36 * 3600e3; t += 120e3) {
+      const a0 = sunAlt(new Date(t)), a1 = sunAlt(new Date(t + 120e3));
+      if (rising ? (a0 < -0.833 && a1 >= -0.833) : (a0 > -0.833 && a1 <= -0.833)) return new Date(t + 60e3);
     }
+    return null;
+  }
+  async function getJSON(u, ms = 7000) {
+    const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), ms);
+    try { const r = await fetch(u, { signal: ctl.signal }); if (!r.ok) throw new Error(r.status); return await r.json(); } finally { clearTimeout(tm); }
+  }
+  async function fromOpenMeteo() {
+    const u = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,apparent_temperature,weather_code,cloud_cover,wind_speed_10m,snowfall,rain,snow_depth&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe%2FPrague&forecast_days=4`;
+    let j;
+    try { j = await getJSON(u); } catch (e) { await new Promise((r) => setTimeout(r, 2500)); j = await getJSON(u); }
+    const c = j.current;
+    return { temp: c.temperature_2m, feels: c.apparent_temperature, code: c.weather_code, cloud: c.cloud_cover, wind: c.wind_speed_10m, snowfall: c.snowfall, rain: c.rain, depth: c.snow_depth ?? null,
+      days: j.daily.time.slice(1, 4).map((d, i) => ({ d, code: j.daily.weather_code[i + 1], max: j.daily.temperature_2m_max[i + 1], min: j.daily.temperature_2m_min[i + 1] })), src: 'Open-Meteo', at: Date.now() };
+  }
+  const SYM = (s = '') => s.includes('thunder') ? 95 : s.includes('heavysnow') ? 75 : s.includes('lightsnow') ? 71 : s.includes('snow') ? 73 : s.includes('sleet') ? 66 :
+    s.includes('heavyrain') ? 65 : s.includes('lightrain') ? 61 : s.includes('rain') ? 63 : s.includes('fog') ? 45 : s.startsWith('cloudy') ? 3 : s.startsWith('partlycloudy') ? 2 : s.startsWith('fair') ? 1 : 0;
+  async function fromMetNo() {
+    const j = await getJSON(`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${LAT.toFixed(3)}&lon=${LON.toFixed(3)}`);
+    const ts = j.properties.timeseries, now = ts[0].data, d0 = now.instant.details;
+    const sym = now.next_1_hours?.summary?.symbol_code || now.next_6_hours?.summary?.symbol_code || '';
+    const v = d0.wind_speed * 3.6, T = d0.air_temperature;
+    const feels = T < 10 && v > 4.8 ? 13.12 + .6215 * T - 11.37 * Math.pow(v, .16) + .3965 * T * Math.pow(v, .16) : T;
+    const code = SYM(sym), pr = now.next_1_hours?.details?.precipitation_amount || 0;
+    const byDay = {};
+    for (const t of ts) { const dt = new Date(t.time), k = pragueDay(dt); (byDay[k] ||= []).push(t); }
+    const days = Object.keys(byDay).sort().filter((k) => k > pragueDay(new Date())).slice(0, 3).map((k) => {
+      const arr = byDay[k], temps = arr.map((t) => t.data.instant.details.air_temperature);
+      const noon = arr.reduce((best, t) => Math.abs(new Date(t.time).getUTCHours() - 11) < Math.abs(new Date(best.time).getUTCHours() - 11) ? t : best, arr[0]);
+      const sc = noon.data.next_6_hours?.summary?.symbol_code || noon.data.next_1_hours?.summary?.symbol_code || '';
+      return { d: k, code: SYM(sc), max: Math.max(...temps), min: Math.min(...temps) };
+    });
+    return { temp: T, feels, code, cloud: d0.cloud_area_fraction, wind: v, snowfall: code >= 71 && code <= 77 ? pr : 0, rain: code >= 51 && code <= 67 ? pr : 0, depth: null, days, src: 'MET Norway', at: Date.now() };
+  }
+  const store = (() => { try { return localStorage; } catch (e) { return null; } })();
+  function render(D) {
+    Object.assign(W, { temp: D.temp, code: D.code, cloud: D.cloud, wind: D.wind, snowfall: D.snowfall, rain: D.rain, depth: D.depth || 0, ok: true });
+    $('#wxT').innerHTML = `${Math.round(D.temp)}<sup>°C</sup>`;
+    $('#wxC').textContent = tr(CODES[D.code] || '—');
+    $('#wxF').textContent = `${tr('pocitově')} ${Math.round(D.feels)} °C`;
+    $('#wxW').textContent = `${Math.round(D.wind)} km/h`;
+    $('#wxS').textContent = D.depth == null ? '–' : D.depth > 0.005 ? `${Math.round(D.depth * 100)} cm` : tr('bez sněhu');
+    const set = sunEvent(false), rise = sunEvent(true), nextSet = set && (!rise || set < rise);
+    $('#wxSunL').firstChild.nodeValue = tr(nextSet ? 'Západ' : 'Východ'); $('#wxSun').textContent = (nextSet ? set : rise) ? fmtHM(nextSet ? set : rise) : '–';
+    $('#wxD').innerHTML = D.days.map((x) => { const dt = new Date(x.d + 'T12:00'); return `<div>${tr(DAYS[dt.getDay()])}<b>${ICON(x.code)}</b><span>${Math.round(x.max)}° / ${Math.round(x.min)}°</span></div>`; }).join('');
+    $('#wxSrc').textContent = `${tr('Aktualizováno')} ${fmtHM(new Date(D.at))} · ${tr('data')} ${D.src}`;
+    $('#wxLive').textContent = tr(mode === 'live' ? 'živě' : 'ukázka');
+  }
+  let lastD = null;
+  try { const c = JSON.parse(store?.getItem('lipa-wx') || 'null'); if (c && Date.now() - c.at < 6 * 3600e3) { lastD = c; } } catch (e) {}
+  async function loadWeather() {
+    if (lastD) { render(lastD); target(); }
+    let D = null;
+    try { D = await fromOpenMeteo(); } catch (e) { try { D = await fromMetNo(); } catch (e2) { D = null; } }
+    if (D) { lastD = D; try { store?.setItem('lipa-wx', JSON.stringify(D)); } catch (e) {} render(D); }
+    else if (!lastD) { $('#wxC').textContent = tr('Počasí se teď nepodařilo načíst'); $('#wxLive').textContent = 'offline'; }
     target();
   }
+  addEventListener('langchange', () => { if (lastD) render(lastD); });
 
   // ===== přepínač režimů =====
   $$('.modes button').forEach((b) => b.addEventListener('click', () => {
@@ -829,7 +876,7 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
 
   size(); addEventListener('resize', size);
   target(); Object.assign(C, S); applyGrade();
-  loadWeather(); setInterval(loadWeather, 10 * 60 * 1000); addEventListener('langchange', loadWeather); setInterval(target, 60 * 1000);
+  loadWeather(); setInterval(loadWeather, 10 * 60 * 1000); setInterval(target, 60 * 1000);
   requestAnimationFrame(tick);
 
   // ===== obsah =====
