@@ -117,6 +117,7 @@ body.scrolled .top::before{opacity:0}
 /* počasí */
 .wx{position:absolute;z-index:10;right:max(20px,4vw);bottom:clamp(110px,16vh,170px);width:min(330px,calc(100% - 40px));
   background:rgba(13,23,20,.52);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(243,238,230,.16);border-radius:18px;padding:18px 20px}
+.wx{transition:opacity .6s,transform .6s}.wx.wx-off{opacity:0;transform:translateY(10px);pointer-events:none}
 .wx-h{display:flex;justify-content:space-between;align-items:center;font:500 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
 .wx-h b{display:flex;align-items:center;gap:6px;color:#9ff0b4;font-weight:500}
 .wx-h b i{width:6px;height:6px;border-radius:50%;background:#7cf09a;animation:pulse 2s infinite}
@@ -352,7 +353,7 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
     </div>
   </div>
 
-  <aside class="wx" id="wx" aria-live="polite">
+  <aside class="wx wx-off" id="wx" aria-live="polite">
     <div class="wx-h"><span>Na Cínovci právě teď</span><b><i></i><span id="wxLive">živě</span></b></div>
     <div class="wx-main"><div class="wx-t" id="wxT">–<sup>°C</sup></div><div class="wx-c"><b id="wxC">Načítám počasí…</b><span id="wxF">&nbsp;</span></div></div>
     <div class="wx-row">
@@ -863,7 +864,8 @@ html[lang=de] .hero-copy h1{font-size:clamp(40px,5.2vw,82px)}
     let D = null;
     try { D = await fromOpenMeteo(); } catch (e) { try { D = await fromMetNo(); } catch (e2) { D = null; } }
     if (D) { lastD = D; try { store?.setItem('lipa-wx', JSON.stringify(D)); } catch (e) {} render(D); }
-    else if (!lastD) { $('#wxC').textContent = tr('Počasí se teď nepodařilo načíst'); $('#wxLive').textContent = 'offline'; }
+    else if (!lastD) { $('#wx').classList.add('wx-off'); }   // žádná data: kartu schováme, úvod dál běží podle denní doby
+    if (D || lastD) $('#wx').classList.remove('wx-off');
     target();
   }
   addEventListener('langchange', () => { if (lastD) render(lastD); });
