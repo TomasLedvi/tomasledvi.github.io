@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pedikúra Prostějov Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Profesionální pedikúra v Prostějově pro ženy i muže. Péče o nohy, ošetření zarůstajících nehtů, otlaků a popraskaných pat. Pro klienty z Prostějova a okolí do 15 km.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Parisienne&display=swap">
+<!--
+  GOOGLE ANALYTICS 4: po spuštění webu nahraďte G-XXXXXXXXXX vlastním měřicím ID a odkomentujte.
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "name": "[Název studia] – pedikúra Prostějov",
+  "description": "Profesionální pedikúra a péče o nohy v Prostějově pro ženy i muže.",
+  "address": {"@type": "PostalAddress", "streetAddress": "[Ulice a číslo]", "addressLocality": "Prostějov", "postalCode": "796 01", "addressCountry": "CZ"},
+  "telephone": "[telefon]",
+  "email": "[e-mail]",
+  "areaServed": ["Prostějov","Vrahovice","Držovice","Čechovice","Mostkovice","Kostelec na Hané","Smržice","Určice","Bedihošť","Kralice na Hané","Plumlov","Čelechovice na Hané","Otaslavice","Vřesovice","Dobromilice","Ptení","Němčice nad Hanou"],
+  "knowsAbout": ["pedikúra", "přístrojová pedikúra", "zarůstající nehty", "péče o nohy"]
+}
+</script>
+<style>
+/* Layout: pinned full-screen 3D stage with left-aligned copy; after it a calm, airy single column with generous spacing and left-aligned text. */
+:root{
+  --cream:#fbf5ef;
+  --surface:#ffffff;
+  --beige:#efe3d6;
+  --apricot:#eeab86;
+  --powder:#e9c3c1;
+  --champagne:#d9bf95;
+  --brown:#3a2820;
+  --muted:#7b6459;
+  --line:#ead9cb;
+  --accent:#a8553a;      /* tmavší meruňková pro tlačítka a text */
+  --on-accent:#ffffff;
+  --sans:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --script:"Parisienne", "Segoe Script", cursive;
+  --measure:62ch;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --cream:#1f1713;--surface:#2a201b;--beige:#352820;--apricot:#f0b391;--powder:#e7b9b6;--champagne:#d8bf94;--brown:#f7ebe2;--muted:#c4aa9d;--line:#46352c;--accent:#f0a57f;--on-accent:#2a140b;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --cream:#1f1713;--surface:#2a201b;--beige:#352820;--apricot:#f0b391;--powder:#e7b9b6;--champagne:#d8bf94;--brown:#f7ebe2;--muted:#c4aa9d;--line:#46352c;--accent:#f0a57f;--on-accent:#2a140b;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--cream);color:var(--brown);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{margin:0;font-weight:500;line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
+h2{font-size:clamp(2.2rem,4.6vw,3.6rem)}
+h3{font-size:1.3rem;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+section.s{padding-block:clamp(80px,11vw,150px)}
+.kick{font-family:var(--script);font-size:clamp(1.7rem,3vw,2.3rem);color:var(--accent);display:block;line-height:1;margin-bottom:10px;letter-spacing:0}
+.lead{font-size:1.12rem;color:var(--muted);max-width:var(--measure)}
+.ph{display:inline-block;border:1px dashed var(--accent);color:var(--accent);border-radius:6px;padding:0 6px;font-size:.92em;line-height:1.5;background:color-mix(in srgb,var(--apricot) 10%,transparent)}
+
+/* tlačítka */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--brown);color:var(--cream);text-decoration:none;font:inherit;font-weight:500;padding:15px 28px;border-radius:999px;border:0;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--accent);transform:translateY(101%);transition:transform .45s cubic-bezier(.7,0,.2,1);z-index:-1;border-radius:inherit}
+.btn:hover::before{transform:none}
+.btn:hover{transform:translateY(-2px);color:var(--on-accent)}
+.btn.line{background:transparent;color:var(--brown);box-shadow:inset 0 0 0 1.5px currentColor}
+.btn.line::before{background:var(--brown)}
+.btn.line:hover{color:var(--cream)}
+
+/* hlavička */
+header.top{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .4s,box-shadow .4s}
+header.top.solid{background:color-mix(in srgb,var(--cream) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:18px}
+.brand{display:grid;text-decoration:none;line-height:1}
+.brand b{font-weight:600;font-size:1.15rem;letter-spacing:-.02em}
+.brand span{font-family:var(--script);font-size:1.15rem;color:var(--accent);margin-top:2px}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:500;font-size:.98rem;position:relative}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .4s cubic-bezier(.7,0,.2,1)}
+.nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .btn{padding:11px 22px;font-size:.95rem}
+.menu-btn{display:none;background:none;border:0;color:var(--brown);padding:6px;cursor:pointer}
+@media (max-width:900px){
+  .nav ul{display:none}
+  .nav ul.open{display:flex;flex-direction:column;gap:0;position:absolute;left:0;right:0;top:100%;background:var(--cream);padding:8px max(20px,env(safe-area-inset-right,0px)) 18px max(20px,env(safe-area-inset-left,0px));box-shadow:0 1px 0 var(--line)}
+  .nav ul.open a{display:block;padding:12px 0;font-size:1.15rem}
+  .menu-btn{display:block}
+  .nav .btn{display:none}
+}
+
+/* ===== HERO 3D ===== */
+.hero{position:relative;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:radial-gradient(70% 80% at 78% 30%,color-mix(in srgb,var(--apricot) 45%,var(--cream)) 0%,transparent 70%),radial-gradient(60% 60% at 10% 100%,color-mix(in srgb,var(--powder) 55%,var(--cream)) 0%,transparent 70%),var(--cream)}
+.hero-stage{position:absolute;inset:0}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.4s ease}
+#scene.ready{opacity:1}
+.hero-fallback{display:none;position:absolute;right:max(20px,6vw);top:50%;transform:translateY(-46%);width:min(40vw,520px);aspect-ratio:4/5;border-radius:999px 999px 32px 32px;overflow:hidden;box-shadow:0 50px 80px -40px rgba(90,40,20,.5)}
+.hero-fallback img{width:100%;height:100%;object-fit:cover}
+html.no-3d .hero-fallback{display:block}
+html.no-3d #scene{display:none}
+.hero-copy{position:absolute;inset:0;display:flex;align-items:center;pointer-events:none;padding-top:70px}
+.hero-copy .wrap{width:100%}
+.chap{max-width:560px;pointer-events:auto}
+.chap h1{font-size:clamp(2.6rem,5vw,4.6rem);margin-bottom:24px}
+.chap .lead{margin-bottom:34px;max-width:46ch;color:var(--brown);opacity:.78}
+.chap .cta{display:flex;flex-wrap:wrap;gap:12px}
+.chap2{position:absolute;inset:0;display:flex;align-items:flex-end;pointer-events:none;opacity:0;padding-bottom:clamp(60px,10vh,120px)}
+.chap2 .box{max-width:460px;background:color-mix(in srgb,var(--cream) 72%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid color-mix(in srgb,#fff 60%,transparent);border-radius:28px;padding:28px 30px}
+.chap2 h2{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:12px}
+.chap2 p{color:var(--muted)}
+.scroll-cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;font-size:.82rem;color:var(--muted);letter-spacing:.04em}
+.scroll-cue i{width:1.5px;height:44px;background:linear-gradient(var(--brown),transparent);opacity:.5;animation:cue 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.badge-open{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;font-weight:500;font-size:.95rem}
+.badge-open::before{content:"";width:28px;height:1.5px;background:var(--accent)}
+@media (max-width:760px){
+  .hero{height:auto;min-height:0;max-height:none}
+  .hero-stage{position:relative;height:100svh;min-height:640px}
+  .hero-copy{align-items:flex-end;padding-top:0;padding-bottom:36px}
+  .hero-copy::before{content:"";position:absolute;inset:auto 0 0 0;height:66%;background:linear-gradient(to top,var(--cream) 42%,color-mix(in srgb,var(--cream) 70%,transparent) 70%,transparent);pointer-events:none}
+  .hero-copy .wrap{position:relative}
+  .badge-open{margin-bottom:14px}
+  .chap h1{font-size:clamp(2.4rem,10.5vw,3.3rem);margin-bottom:16px}
+  .chap .lead{font-size:1rem;margin-bottom:22px}
+  .chap .cta .btn{padding:13px 22px}
+  .hero-fallback{left:20px;right:20px;width:auto;top:90px;transform:none;aspect-ratio:auto;height:40%;border-radius:999px 999px 28px 28px}
+  .chap2 .box{padding:22px}
+  .chap2{padding-bottom:28px}
+  .scroll-cue{display:none}
+}
+
+/* ===== úvodní pruh pod hero ===== */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,100px);align-items:end}
+.intro > *{min-width:0}
+.intro p{font-size:clamp(1.25rem,2.1vw,1.6rem);line-height:1.45;letter-spacing:-.01em}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid var(--line);padding-top:24px}
+.stats div{display:grid;gap:4px}
+.stats b{font-size:1.05rem;font-weight:600}
+.stats span{color:var(--muted);font-size:.95rem}
+@media (max-width:860px){.intro{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+
+/* ===== služby ===== */
+.sv-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:56px}
+.sv-head .lead{max-width:44ch}
+.services{list-style:none;margin:0;padding:0;border-top:1px solid var(--brown)}
+.services li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto;gap:16px 40px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--line);position:relative;transition:padding .45s cubic-bezier(.2,.8,.2,1)}
+.services li::before{content:"";position:absolute;inset:0 -20px;background:var(--beige);border-radius:20px;opacity:0;transform:scaleY(.85);transition:opacity .4s,transform .45s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.services li:hover::before{opacity:.6;transform:none}
+.services li:hover{padding-inline:12px}
+.services h3{font-size:clamp(1.3rem,2vw,1.6rem)}
+.services p{color:var(--muted)}
+.services .go{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:background .3s,border-color .3s,transform .4s;color:var(--brown);text-decoration:none}
+.services li:hover .go{background:var(--brown);border-color:var(--brown);color:var(--cream);transform:rotate(-45deg)}
+.services .opt{font-size:.8rem;font-weight:500;color:var(--accent);margin-left:8px;vertical-align:middle;letter-spacing:0}
+@media (max-width:760px){.services li{grid-template-columns:1fr auto}.services li p{grid-column:1/-1;grid-row:2}}
+
+/* mapa chodidla */
+.footmap{margin-top:clamp(80px,10vw,130px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.footmap > *{min-width:0}
+.footmap h2{font-size:clamp(1.9rem,3.4vw,2.8rem);margin-bottom:14px}
+.fm-card{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:28px;display:grid;gap:12px}
+.fm-card strong{font-size:1.45rem;font-weight:500;letter-spacing:-.02em}
+.fm-card p{color:var(--muted)}
+.fm-rec{padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+.fm-rec b{color:var(--brown);font-weight:600}
+.fm-card .btn{justify-self:start;margin-top:6px}
+.fm-card.swap > *{animation:fmIn .5s cubic-bezier(.2,.8,.2,1) both}
+.fm-card.swap > *:nth-child(2){animation-delay:.05s}.fm-card.swap > *:nth-child(3){animation-delay:.1s}.fm-card.swap > *:nth-child(4){animation-delay:.15s}
+@keyframes fmIn{from{opacity:0;transform:translateY(10px)}}
+.fm-art{display:grid;place-items:center;position:relative}
+.fm-art::before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--apricot) 35%,transparent),transparent 70%)}
+.sole{width:min(100%,360px);overflow:visible;position:relative}
+.sole-shape > *{fill:var(--beige);stroke:var(--champagne);stroke-width:.12}
+.spot{cursor:pointer;outline:none}
+.spot .halo{fill:var(--apricot);opacity:.3;transform-box:fill-box;transform-origin:center;animation:halo 2.6s ease-out infinite}
+.spot .core{fill:var(--surface);stroke:var(--accent);stroke-width:2.5;transition:fill .3s}
+.spot text{font-family:var(--sans);font-size:15px;font-weight:500;fill:var(--brown);paint-order:stroke;stroke:var(--cream);stroke-width:5px;stroke-linejoin:round}
+.spot:hover .core,.spot:focus-visible .core,.spot.on .core{fill:var(--accent)}
+.spot.on text{fill:var(--accent)}
+@keyframes halo{0%{transform:scale(.6);opacity:.5}100%{transform:scale(2.4);opacity:0}}
+@media (max-width:860px){.footmap{grid-template-columns:1fr}.fm-art{order:-1}.sole{width:min(78%,300px)}}
+
+/* studio foto */
+.studio{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(28px,5vw,64px);align-items:end}
+.studio > *{min-width:0}
+.studio figure{margin:0;overflow:hidden;border-radius:32px;aspect-ratio:3/2;max-width:100%}
+.studio img{width:100%;height:115%;object-fit:cover;display:block;will-change:transform}
+.studio h2{font-size:clamp(1.9rem,3.4vw,2.8rem);margin-bottom:16px}
+.steps{list-style:none;margin:28px 0 0;padding:0;counter-reset:s;display:grid;gap:18px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px}
+.steps li::before{content:counter(s);width:30px;height:30px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-size:.85rem;font-weight:600}
+.steps b{display:block;font-weight:600}
+.steps span{color:var(--muted);font-size:.96rem}
+@media (max-width:860px){.studio{grid-template-columns:1fr}}
+
+/* o mně */
+.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,100px);align-items:center}
+.about > *{min-width:0}
+.portrait{aspect-ratio:4/5;border-radius:999px 999px 32px 32px;background:linear-gradient(170deg,var(--beige),var(--surface));border:1.5px dashed var(--champagne);display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.95rem;padding:20px;max-width:100%}
+.portrait svg{width:56px;height:56px;color:var(--accent);margin:0 auto 10px;display:block}
+.about h2{margin-bottom:24px}
+.about p{max-width:var(--measure)}
+.about p + p{margin-top:16px}
+.sign{font-family:var(--script);font-size:2.4rem;color:var(--accent);margin-top:24px;display:block}
+.creds{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;padding:0;list-style:none}
+.creds li{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.92rem;color:var(--muted)}
+@media (max-width:860px){.about{grid-template-columns:1fr}.portrait{max-width:360px}}
+
+/* ceník */
+.pricing{background:var(--surface);border-block:1px solid var(--line)}
+.price-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,100px)}
+.price-grid > *{min-width:0}
+.price-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.price-table caption{text-align:left;font-weight:600;font-size:.95rem;padding:0 0 10px;color:var(--accent)}
+.price-table + .price-table{margin-top:40px}
+.price-table td{padding:18px 0;border-bottom:1px solid var(--line);vertical-align:baseline}
+.price-table td:first-child{padding-right:16px}
+.price-table td small{display:block;color:var(--muted);font-size:.9rem}
+.price-table td.p{text-align:right;white-space:nowrap;font-weight:600}
+.price-note{margin-top:22px;color:var(--muted);font-size:.95rem}
+@media (max-width:860px){.price-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,100px)}
+.faq > *{min-width:0}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--brown)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:22px 0;font-weight:500;font-size:1.08rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;border-right:1.5px solid var(--brown);border-bottom:1.5px solid var(--brown);transform:rotate(45deg) translate(-3px,-3px);transition:transform .35s}
+.faq details[open] summary::after{transform:rotate(225deg)}
+.faq .ans{color:var(--muted);padding:0 0 22px;max-width:var(--measure);animation:fmIn .4s ease}
+@media (max-width:860px){.faq{grid-template-columns:1fr}}
+
+/* kontakt */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start}
+.contact-grid > *{min-width:0}
+.info{display:grid;gap:22px;margin:34px 0 30px}
+.info > div{display:grid;grid-template-columns:28px 1fr;gap:14px}
+.info svg{width:22px;height:22px;color:var(--accent);margin-top:3px}
+.info b{display:block;font-weight:600}
+.info span{color:var(--muted)}
+.mapcard{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;max-width:100%;background:var(--beige);display:block;text-decoration:none}
+.mapcard svg{position:absolute;inset:0;width:100%;height:100%}
+.mapcard .pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-100%);display:grid;justify-items:center;gap:6px}
+.mapcard .pin i{width:20px;height:20px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--accent);box-shadow:0 8px 16px -6px rgba(0,0,0,.4)}
+.mapcard .pin b{background:var(--surface);padding:6px 12px;border-radius:999px;font-size:.88rem;font-weight:600;box-shadow:0 10px 24px -12px rgba(0,0,0,.35)}
+.mapcard .open{position:absolute;right:14px;bottom:14px;background:var(--brown);color:var(--cream);padding:9px 16px;border-radius:999px;font-size:.88rem;font-weight:500}
+form.book{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,3.5vw,40px);display:grid;gap:16px}
+form.book h3{font-size:1.6rem;font-weight:500;letter-spacing:-.02em}
+.field{display:grid;gap:6px}
+.field label{font-weight:500;font-size:.95rem}
+.field input,.field select,.field textarea{font:inherit;color:var(--brown);background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:13px 15px;width:100%;transition:border-color .25s,box-shadow .25s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--apricot) 25%,transparent)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.ok{background:var(--beige);border-radius:14px;padding:14px 16px;font-weight:500}
+.towns{margin-top:clamp(64px,8vw,100px);padding-top:40px;border-top:1px solid var(--line);display:grid;grid-template-columns:.8fr 1.2fr;gap:24px 60px}
+.towns > *{min-width:0}
+.towns h3{font-size:1.5rem;font-weight:500}
+.towns ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.towns li{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.92rem;color:var(--muted)}
+@media (max-width:860px){.contact-grid,.towns{grid-template-columns:1fr}}
+
+footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+
+/* scroll odhalení – jen prvky pod okrajem, třídu přidává skript */
+.rv{opacity:0;transform:translateY(34px)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header class="top" id="top">
+  <nav class="wrap nav" aria-label="Hlavní menu">
+    <a class="brand" href="#uvod"><b>Pedikúra Prostějov</b><span>[Název studia]</span></a>
+    <ul id="menu">
+      <li><a href="#pedikura">Pedikúra</a></li>
+      <li><a href="#o-mne">O mně</a></li>
+      <li><a href="#cenik">Ceník</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a class="btn" href="#kontakt">Objednat se</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 9h16M4 15h16"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="uvod" aria-label="Úvod">
+    <div class="hero-stage" id="stage">
+      <canvas id="scene" aria-hidden="true"></canvas>
+      <div class="hero-fallback" aria-hidden="true"><img src="img/hero.webp" alt=""></div>
+      <div class="hero-copy">
+        <div class="wrap">
+          <div class="chap" id="chap1">
+            <span class="badge-open">Otevíráme 1. prosince 2026</span>
+            <h1>Pedikúra v Prostějově, která vrací lehkost každému kroku</h1>
+            <p class="lead">Profesionální péče o nohy pro ženy i muže. Klidné prostředí, sterilní nástroje a čas jen pro vás.</p>
+            <div class="cta">
+              <a class="btn" href="#kontakt">Objednat se</a>
+              <a class="btn line" href="#pedikura">Prohlédnout služby</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chap2" id="chap2">
+        <div class="wrap" style="width:100%;display:flex;justify-content:flex-end">
+          <div class="box">
+            <span class="kick">s péčí o detail</span>
+            <h2>Profesionální nástroje a kvalitní kosmetika</h2>
+            <p>Nástroje po každém ošetření sterilizuji. Používám přípravky, které nohám skutečně pomáhají, ne jen hezky voní.</p>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><i></i>Posuňte dolů</div>
+    </div>
+  </section>
+
+  <!-- ===== ÚVOD ===== -->
+  <section class="s" style="padding-bottom:0">
+    <div class="wrap intro">
+      <p class="rvx">Nohy nás nosí celý život. Zaslouží si péči, při které se nikam nespěchá a po které odcházíte lehčím krokem, než jste přišli.</p>
+      <div class="stats rvx">
+        <div><b>Pro ženy i muže</b><span>Od 18 let, bez ostychu</span></div>
+        <div><b>Sterilní nástroje</b><span>Po každém klientovi</span></div>
+        <div><b>Prostějov a okolí</b><span>Do 15 km snadno autem</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PEDIKÚRA ===== -->
+  <section class="s" id="pedikura">
+    <div class="wrap">
+      <div class="sv-head">
+        <div>
+          <span class="kick">služby</span>
+          <h2>Pedikúra a péče o nohy</h2>
+        </div>
+        <p class="lead">Na začátku se podívám na stav chodidel a nehtů a společně vybereme ošetření. Nemusíte předem vědět, co chcete.</p>
+      </div>
+      <ul class="services">
+        <li class="rvx"><h3>Klasická (mokrá) pedikúra</h3><p>Změkčující lázeň, zkrácení a zapilování nehtů, odstranění ztvrdlé kůže a závěrečná péče krémem.</p><a class="go" href="#cenik" aria-label="Cena klasické pedikúry"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rvx"><h3>Přístrojová (suchá) pedikúra</h3><p>Šetrné ošetření frézkami bez namáčení. Vhodná na popraskané paty, otlaky a citlivou pokožku.</p><a class="go" href="#cenik" aria-label="Cena přístrojové pedikúry"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rvx"><h3>Kombinovaná pedikúra</h3><p>Lázeň, práce skalpelem i přístrojem. Ideální volba na první návštěvu.</p><a class="go" href="#cenik" aria-label="Cena kombinované pedikúry"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rvx"><h3>Zarůstající nehty</h3><p>Šetrné uvolnění zarůstajícího nehtu a podle potřeby korekční špona, která nehet naučí růst správně.</p><a class="go" href="#cenik" aria-label="Cena ošetření zarůstajícího nehtu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rvx"><h3>Masáž nohou a lakování</h3><p>Uvolňující masáž chodidel a lýtek, klasický lak nebo gel lak na nohy.</p><a class="go" href="#cenik" aria-label="Cena masáže a lakování"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        <li class="rvx"><h3>Manikúra <span class="opt">doplňte, pokud nabízíte</span></h3><p>Úprava nehtů a kůžičky na rukou, případně lakování.</p><a class="go" href="#cenik" aria-label="Cena manikúry"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      </ul>
+
+      <div class="footmap" id="footmap">
+        <div>
+          <span class="kick">poraďte se</span>
+          <h2>Co vás na nohou trápí?</h2>
+          <p class="lead">Klepněte na místo na chodidle a uvidíte, co vám pomůže.</p>
+          <div class="fm-card" id="fm-card" aria-live="polite">
+            <strong id="fm-title"></strong>
+            <p id="fm-text"></p>
+            <div class="fm-rec">Doporučuji: <b id="fm-rec"></b></div>
+            <a class="btn" href="#kontakt" id="fm-book">Objednat toto ošetření</a>
+          </div>
+        </div>
+        <div class="fm-art">
+          <svg viewBox="-20 -10 360 470" class="sole" role="group" aria-label="Chodidlo s místy, kde vás může něco trápit">
+            <g transform="scale(10)" class="sole-shape">
+              <path d="M16.5 14c6 0 9.5 5 9.2 12.2-.3 6.4-1.8 10.3-3.6 13.4-1.7 2.9-4.3 4.2-7 4-3.2-.2-5.4-2.6-5.3-6.2.1-3 1.6-5 1.4-7.9-.2-2.4-2.3-4-2.2-7.4.2-4.6 3.4-8.1 7.5-8.1z"/>
+              <ellipse cx="8.4" cy="9.8" rx="3.4" ry="4.2"/><ellipse cx="14.6" cy="6.2" rx="2.7" ry="3.3"/><ellipse cx="19.8" cy="5.6" rx="2.3" ry="2.8"/><ellipse cx="24.2" cy="7.4" rx="2" ry="2.4"/><ellipse cx="27.4" cy="10.6" rx="1.7" ry="2"/>
+            </g>
+            <g class="spots"></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STUDIO ===== -->
+  <section class="s" style="padding-top:0">
+    <div class="wrap studio">
+      <figure class="rvx"><img src="img/room.webp" alt="Světlá místnost pro pedikúru s pohodlným křeslem, lázní na nohy a vozíkem s nástroji" width="1500" height="1000" loading="lazy" id="roomImg"></figure>
+      <div class="rvx">
+        <span class="kick">první návštěva</span>
+        <h2>Jak to u mě probíhá</h2>
+        <ol class="steps">
+          <li><div><b>Krátký rozhovor</b><span>Zeptám se na potíže, alergie a na to, co od ošetření čekáte.</span></div></li>
+          <li><div><b>Teplá lázeň</b><span>Nohy si odpočinou a kůže změkne.</span></div></li>
+          <li><div><b>Ošetření</b><span>Vždy řeknu, co dělám a proč.</span></div></li>
+          <li><div><b>Krém a rada domů</b><span>Jak o nohy pečovat do další návštěvy.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== O MNĚ ===== -->
+  <section class="s" id="o-mne" style="padding-top:0">
+    <div class="wrap about">
+      <div class="portrait rvx">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+          Místo pro vaši fotografii
+        </div>
+      </div>
+      <div class="rvx">
+        <span class="kick">o mně</span>
+        <h2>Jmenuji se <span class="ph">[Jméno a příjmení]</span></h2>
+        <p>V Prostějově otevírám vlastní studio pedikúry. Chodí ke mně ženy i muži, sportovci i lidé, kteří celý den stojí v práci. Ke každému přistupuji s respektem a nikdo se u mě nemusí za své nohy stydět.</p>
+        <p><span class="ph">[Doplňte pár vět o sobě: jak jste se k pedikúře dostala, co vás na ní baví, v čem jste dobrá.]</span></p>
+        <span class="sign" aria-hidden="true">[podpis]</span>
+        <ul class="creds">
+          <li><span class="ph">[Kurz / certifikát]</span></li>
+          <li><span class="ph">[Další školení]</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CENÍK ===== -->
+  <section class="s pricing" id="cenik">
+    <div class="wrap price-grid">
+      <div>
+        <span class="kick">ceník</span>
+        <h2>Ceník služeb</h2>
+        <p class="lead" style="margin-top:18px">Ceny doplníte sami v redakčním systému. Platit lze <span class="ph">[hotově / kartou]</span>.</p>
+        <a class="btn" href="#kontakt" style="margin-top:30px">Objednat se</a>
+      </div>
+      <div>
+        <table class="price-table">
+          <caption>Pedikúra</caption>
+          <tbody>
+            <tr><td>Klasická pedikúra<small>lázeň, nehty, ztvrdlá kůže, krém</small></td><td class="p"><span class="ph">[cena] Kč</span></td></tr>
+            <tr><td>Přístrojová pedikúra<small>bez namáčení, frézky</small></td><td class="p"><span class="ph">[cena] Kč</span></td></tr>
+            <tr><td>Kombinovaná pedikúra<small>lázeň, skalpel i přístroj</small></td><td class="p"><span class="ph">[cena] Kč</span></td></tr>
+            <tr><td>Ošetření zarůstajícího nehtu<small>cena za jeden nehet</small></td><td class="p"><span class="ph">[cena] Kč</span></td></tr>
+          </tbody>
+        </table>
+        <table class="price-table">
+          <caption>Doplňkové služby</caption>
+          <tbody>
+            <tr><td>Masáž nohou</td><td class="p"><span class="ph">[cena] Kč</span></td></tr>
+            <tr><td>Lakování / gel lak</td><td class="p"><span class="ph">[cena] Kč</span></td></tr>
+            <tr><td>Dárkový poukaz<small>na libovolnou částku</small></td><td class="p"><span class="ph">[od … Kč]</span></td></tr>
+          </tbody>
+        </table>
+        <p class="price-note">Pokud se nemůžete dostavit, dejte prosím vědět alespoň <span class="ph">[24 hodin]</span> předem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="s">
+    <div class="wrap faq">
+      <div>
+        <span class="kick">dotazy</span>
+        <h2>Časté dotazy</h2>
+      </div>
+      <div>
+        <details><summary>Je pedikúra i pro muže?</summary><p class="ans">Určitě. Muži tvoří velkou část klientů, hlavně sportovci a lidé, kteří celý den chodí v pracovní obuvi. Ošetření je stejné, lakování jen pokud o něj stojíte.</p></details>
+        <details><summary>Jak se na první návštěvu připravit?</summary><p class="ans">Nic zvláštního není potřeba. Lak z nehtů raději odstraňte. Pokud máte cukrovku nebo užíváte léky na ředění krve, řekněte mi to předem.</p></details>
+        <details><summary>Jak dlouho ošetření trvá?</summary><p class="ans">Podle druhu pedikúry zhruba 45 až 75 minut. Na každého si vyhradím dostatek času, takže se nikam nespěchá.</p></details>
+        <details><summary>Můžu přijít, když mám na nehtech plíseň?</summary><p class="ans">Ozvěte se předem. Domluvíme se, co je možné, a při podezření na plíseň doporučím i návštěvu lékaře, aby léčba měla smysl.</p></details>
+        <details><summary>Kde parkovat?</summary><p class="ans"><span class="ph">[Doplňte informace o parkování u provozovny.]</span></p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT ===== -->
+  <section class="s" id="kontakt" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <span class="kick">kontakt</span>
+          <h2>Objednejte se</h2>
+          <p class="lead" style="margin-top:16px">Nejrychleji telefonicky nebo SMS. Když zrovna ošetřuji, ozvu se zpátky.</p>
+          <div class="info">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><div><b>Telefon</b><span class="ph">[+420 000 000 000]</span></div></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><div><b>E-mail</b><span class="ph">[e-mail]</span></div></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><b>Adresa</b><span><span class="ph">[Ulice a číslo]</span>, 796 01 Prostějov</span></div></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Otevírací doba</b><span class="ph">[Po–Pá 0:00–0:00, So po domluvě]</span></div></div>
+          </div>
+          <!-- Na ostrém webu sem patří vložená mapa (Mapy.cz nebo Google Maps) s přesnou adresou. -->
+          <a class="mapcard" href="https://mapy.cz/?q=Prost%C4%9Bjov" target="_blank" rel="noopener">
+            <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="400" height="250" fill="var(--beige)"/>
+              <g fill="none" stroke="var(--surface)" stroke-linecap="round">
+                <path d="M-10 160 C 80 140, 150 190, 230 150 S 360 90, 420 110" stroke-width="14"/>
+                <path d="M120 -10 C 140 60, 110 140, 160 260" stroke-width="10"/>
+                <path d="M260 -10 L 240 260" stroke-width="8"/>
+                <path d="M-10 60 L 420 80" stroke-width="6"/>
+                <path d="M30 260 C 90 210, 300 220, 410 200" stroke-width="6"/>
+              </g>
+              <circle cx="330" cy="50" r="34" fill="color-mix(in srgb,var(--apricot) 25%,transparent)"/>
+              <rect x="40" y="90" width="50" height="34" rx="6" fill="color-mix(in srgb,var(--champagne) 30%,transparent)"/>
+            </svg>
+            <span class="pin"><b>Prostějov</b><i></i></span>
+            <span class="open">Otevřít v Mapách</span>
+          </a>
+        </div>
+
+        <form class="book" id="book" novalidate>
+          <h3>Nezávazná rezervace</h3>
+          <div class="row2">
+            <div class="field"><label for="f-name">Jméno</label><input id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required></div>
+          </div>
+          <div class="field"><label for="f-service">O co máte zájem</label>
+            <select id="f-service" name="service">
+              <option>Zatím nevím, poradíte mi</option>
+              <option>Klasická pedikúra</option>
+              <option>Přístrojová pedikúra</option>
+              <option>Kombinovaná pedikúra</option>
+              <option>Zarůstající nehet</option>
+              <option>Masáž nohou a lakování</option>
+              <option>Dárkový poukaz</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-when">Kdy se vám to hodí</label><input id="f-when" name="when" placeholder="např. úterý odpoledne"></div>
+          <div class="field"><label for="f-msg">Poznámka</label><textarea id="f-msg" name="msg" rows="3" placeholder="Cokoli, co bych měla vědět předem"></textarea></div>
+          <button class="btn" type="submit">Odeslat rezervaci</button>
+          <p class="ok" id="ok" hidden>Děkuji, rezervace je odeslaná. Ozvu se vám a termín potvrdím.</p>
+        </form>
+      </div>
+
+      <div class="towns">
+        <h3>Pedikúra pro Prostějov a okolí</h3>
+        <ul>
+          <li>Prostějov</li><li>Vrahovice</li><li>Držovice</li><li>Čechovice</li><li>Mostkovice</li><li>Kostelec na Hané</li><li>Smržice</li><li>Určice</li><li>Bedihošť</li><li>Kralice na Hané</li><li>Plumlov</li><li>Čelechovice na Hané</li><li>Otaslavice</li><li>Vřesovice</li><li>Dobromilice</li><li>Ptení</li><li>Němčice nad Hanou</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 <span class="ph">[Název studia]</span>, pedikúra Prostějov</span>
+    <a href="#uvod">Zpět nahoru</a>
+  </div>
+</footer>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/RoomEnvironment.js"></script>
+<script src="vendor/RoundedBoxGeometry.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile=matchMedia('(max-width: 760px)').matches;
+
+  /* ---------- UI: hlavička, menu, formulář ---------- */
+  const header=document.getElementById('top');
+  const onScroll=()=>header.classList.toggle('solid',scrollY>40);
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  const mb=document.getElementById('menuBtn'),menu=document.getElementById('menu');
+  mb.addEventListener('click',()=>{const o=menu.classList.toggle('open');mb.setAttribute('aria-expanded',o);});
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');mb.setAttribute('aria-expanded','false');}));
+  const form=document.getElementById('book'),ok=document.getElementById('ok');
+  form.addEventListener('submit',e=>{e.preventDefault();const n=form.querySelector('#f-name'),ph=form.querySelector('#f-phone');
+    [n,ph].forEach(i=>i.style.borderColor=i.value.trim()?'':'var(--accent)');
+    if(!n.value.trim()||!ph.value.trim()){(n.value.trim()?ph:n).focus();return;}
+    ok.hidden=false;form.querySelector('button[type=submit]').hidden=true;});
+
+  /* ---------- mapa chodidla ---------- */
+  (function(){
+    const Z=[
+      {x:84,y:96,lx:-16,a:'end',t:'Nehty a zarůstání',d:'Zarůstající nebo zesílené nehty bolí při každém kroku. Nehet šetrně uvolním, zkrátím a podle potřeby nasadím korekční šponu.',r:'ošetření zarůstajícího nehtu',svc:'Zarůstající nehet'},
+      {x:200,y:185,lx:20,a:'start',t:'Otlaky a kuří oka',d:'Tlak z bot vytvoří bolestivé místo pod prsty. Otlak odstraním a poradím, jak tlaku předejít.',r:'přístrojová pedikúra',svc:'Přístrojová pedikúra'},
+      {x:118,y:290,lx:-16,a:'end',t:'Ztvrdlá kůže',d:'Zrohovatělá kůže na chodidle je nepříjemná a praská. Po teplé lázni ji šetrně odstraním a nohy promažu.',r:'klasická pedikúra',svc:'Klasická pedikúra'},
+      {x:190,y:395,lx:20,a:'start',t:'Popraskané paty',d:'Hluboké praskliny na patách bolí. Kombinace lázně a přístroje je zhojí a změkčí.',r:'kombinovaná pedikúra',svc:'Kombinovaná pedikúra'}];
+    const g=document.querySelector('.sole .spots'),T=document.getElementById('fm-title'),D=document.getElementById('fm-text'),R=document.getElementById('fm-rec'),card=document.getElementById('fm-card');
+    let cur=0;
+    g.innerHTML=Z.map((z,i)=>`<g class="spot" tabindex="0" role="button" aria-label="${z.t}"><circle class="halo" cx="${z.x}" cy="${z.y}" r="14" style="animation-delay:${i*.6}s"/><circle class="core" cx="${z.x}" cy="${z.y}" r="10"/><text x="${z.x+z.lx}" y="${z.y+5}" text-anchor="${z.a}">${z.t}</text></g>`).join('');
+    const spots=[...g.children];
+    function show(i,anim){cur=i;const z=Z[i];spots.forEach((s,j)=>s.classList.toggle('on',j===i));T.textContent=z.t;D.textContent=z.d;R.textContent=z.r;if(anim){card.classList.remove('swap');void card.offsetWidth;card.classList.add('swap');}}
+    spots.forEach((s,i)=>{s.addEventListener('click',()=>show(i,true));s.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(i,true);}});});
+    document.getElementById('fm-book').addEventListener('click',()=>{const sel=document.getElementById('f-service');[...sel.options].forEach(o=>{if(o.text===Z[cur].svc)sel.value=o.text;});document.getElementById('f-msg').value='Trápí mě: '+Z[cur].t.toLowerCase();});
+    show(0,false);
+  })();
+
+  /* ---------- GSAP: decentní odhalování obsahu ---------- */
+  const hasGSAP=!!(window.gsap&&window.ScrollTrigger);
+  if(hasGSAP)gsap.registerPlugin(ScrollTrigger);
+  if(hasGSAP&&!reduce){
+    document.querySelectorAll('.rvx').forEach(el=>{
+      if(el.getBoundingClientRect().top<innerHeight)return;
+      gsap.fromTo(el,{opacity:0,y:34},{opacity:1,y:0,duration:1.1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+    });
+    const ri=document.getElementById('roomImg');
+    gsap.fromTo(ri,{yPercent:-8},{yPercent:0,ease:'none',scrollTrigger:{trigger:ri.parentElement,start:'top bottom',end:'bottom top',scrub:true}});
+  }
+
+  /* ================= 3D SCÉNA ================= */
+  const canvas=document.getElementById('scene'),stage=document.getElementById('stage'),hero=document.getElementById('uvod');
+  function webglOK(){try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch(e){return false;}}
+  if(!window.THREE||!THREE.RoomEnvironment||!webglOK()){document.documentElement.classList.add('no-3d');return;}
+
+  if(THREE.ColorManagement)THREE.ColorManagement.legacyMode=false;
+  let renderer;
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:!mobile,powerPreference:'high-performance'});}
+  catch(e){document.documentElement.classList.add('no-3d');return;}
+  renderer.setPixelRatio(Math.min(devicePixelRatio,mobile?1.5:1.75));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=.92;
+
+  const scene=new THREE.Scene();
+  const dark=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.dataset.theme!=='light'||document.documentElement.dataset.theme==='dark';
+
+  // pozadí: měkký studiový přechod (meruňková, pudrová, krémová)
+  function gradientTexture(){
+    const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
+    x.fillStyle=dark?'#241a15':'#f8efe7';x.fillRect(0,0,512,512);
+    const g1=x.createRadialGradient(400,140,10,400,140,380);g1.addColorStop(0,dark?'rgba(150,90,60,.55)':'rgba(240,185,150,.75)');g1.addColorStop(1,dark?'rgba(150,90,60,0)':'rgba(240,185,150,0)');x.fillStyle=g1;x.fillRect(0,0,512,512);
+    const g2=x.createRadialGradient(60,500,10,60,500,360);g2.addColorStop(0,dark?'rgba(140,80,85,.45)':'rgba(236,196,196,.8)');g2.addColorStop(1,dark?'rgba(140,80,85,0)':'rgba(236,196,196,0)');x.fillStyle=g2;x.fillRect(0,0,512,512);
+    const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;return t;
+  }
+  const bgTex=gradientTexture();
+  scene.background=new THREE.Color(dark?0x241a15:0xf8efe7);
+  scene.fog=new THREE.Fog(dark?0x2a1e18:0xf3dfd3,12,30);
+
+  const pmrem=new THREE.PMREMGenerator(renderer);
+  scene.environment=pmrem.fromScene(new THREE.RoomEnvironment(),0.04).texture;
+
+  const camera=new THREE.PerspectiveCamera(mobile?40:30,1,.1,80);
+  camera.position.set(0,0,11);
+  scene.add(camera);
+  const backdrop=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:bgTex,toneMapped:false,fog:false,depthWrite:false}));
+  backdrop.position.z=-60;backdrop.renderOrder=-1;camera.add(backdrop);
+
+  // měkké studiové světlo
+  const key=new THREE.DirectionalLight(0xfff0e2,1.5);key.position.set(5,7,6);scene.add(key);
+  const rim=new THREE.DirectionalLight(0xffcfb8,1.0);rim.position.set(-6,3,-5);scene.add(rim);
+  scene.add(new THREE.HemisphereLight(0xfff7f0,0xe6c4b2,.45));
+
+  // drobná šumová textura pro matné a textilní povrchy
+  function noiseTex(scale){const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d'),d=x.createImageData(256,256);
+    for(let i=0;i<d.data.length;i+=4){const v=128+(Math.random()-.5)*255*scale;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255;}
+    x.putImageData(d,0,0);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t;}
+  const grain=noiseTex(.9);
+  // jemné podélné rýhy = broušený kov
+  function brushedTex(){const c=document.createElement('canvas');c.width=512;c.height=64;const x=c.getContext('2d');x.fillStyle='#808080';x.fillRect(0,0,512,64);
+    for(let i=0;i<900;i++){x.fillStyle=`rgba(${Math.random()<.5?255:0},${Math.random()<.5?255:0},${Math.random()<.5?255:0},${Math.random()*.12})`;x.fillRect(Math.random()*512,Math.random()*64,40+Math.random()*200,1);}
+    const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t;}
+  const brushed=brushedTex();
+
+  const lite=mobile; // mobil: méně náročné sklo
+  const M={
+    steel:new THREE.MeshPhysicalMaterial({color:0xdcd8d4,metalness:1,roughness:.26,roughnessMap:brushed,bumpMap:brushed,bumpScale:.002,clearcoat:.3,clearcoatRoughness:.2}),
+    gold:new THREE.MeshPhysicalMaterial({color:0xe2c497,metalness:1,roughness:.2,clearcoat:.5,clearcoatRoughness:.15}),
+    ceramic:new THREE.MeshPhysicalMaterial({color:0xf7efe6,roughness:.38,clearcoat:.8,clearcoatRoughness:.18,sheen:.3,sheenColor:new THREE.Color(0xffffff)}),
+    matteApricot:new THREE.MeshPhysicalMaterial({color:0xefb08e,roughness:.55,bumpMap:grain,bumpScale:.0015,clearcoat:.2,clearcoatRoughness:.5}),
+    mattePowder:new THREE.MeshPhysicalMaterial({color:0xe8bfbd,roughness:.6,bumpMap:grain,bumpScale:.0015}),
+    glass:lite?new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:.05,metalness:0,transparent:true,opacity:.28,clearcoat:1,envMapIntensity:1.6})
+              :new THREE.MeshPhysicalMaterial({color:0xffffff,transmission:1,thickness:.6,roughness:.04,ior:1.5,clearcoat:1,clearcoatRoughness:.05,specularIntensity:1,envMapIntensity:1.3}),
+    glassPink:lite?new THREE.MeshPhysicalMaterial({color:0xf6d0cf,roughness:.08,transparent:true,opacity:.45,clearcoat:1})
+              :new THREE.MeshPhysicalMaterial({color:0xffe6e4,transmission:1,thickness:.3,roughness:.12,ior:1.5,clearcoat:1}),
+    liquidApricot:new THREE.MeshPhysicalMaterial({color:0xe99a6c,roughness:.15,clearcoat:1,clearcoatRoughness:.05,sheen:.4}),
+    polishPink:new THREE.MeshPhysicalMaterial({color:0xe2908f,roughness:.1,clearcoat:1,clearcoatRoughness:.03}),
+    polishApricot:new THREE.MeshPhysicalMaterial({color:0xea9d72,roughness:.1,clearcoat:1,clearcoatRoughness:.03}),
+    rubber:new THREE.MeshPhysicalMaterial({color:0xe7b2a8,roughness:.75,sheen:.6,sheenColor:new THREE.Color(0xfff1ec)}),
+    wood:new THREE.MeshPhysicalMaterial({color:0xd8b48b,roughness:.7,bumpMap:grain,bumpScale:.003}),
+    emery:new THREE.MeshPhysicalMaterial({color:0xe9b9ae,roughness:.95,bumpMap:grain,bumpScale:.006}),
+    fabric:new THREE.MeshPhysicalMaterial({color:0xecbba3,roughness:1,sheen:1,sheenRoughness:.5,sheenColor:new THREE.Color(0xfff0e8),bumpMap:grain,bumpScale:.006}),
+    petal:new THREE.MeshPhysicalMaterial({color:0xf0b5b4,roughness:.55,sheen:.8,sheenColor:new THREE.Color(0xffe8e6),side:THREE.DoubleSide}),
+    drop:lite?new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:0,transparent:true,opacity:.35,clearcoat:1})
+             :new THREE.MeshPhysicalMaterial({color:0xffffff,transmission:1,thickness:.2,roughness:0,ior:1.33})
+  };
+  emeryRepeat:{M.emery.bumpMap=grain.clone();M.emery.bumpMap.repeat.set(3,1);M.emery.bumpMap.needsUpdate=true;}
+
+  /* ---- modelovací pomocníci ---- */
+  const V2=(a,b)=>new THREE.Vector2(a,b);
+  // hladký profil pro soustružené tvary (lahvičky, dózy)
+  function profile(pts,n){const c=new THREE.SplineCurve(pts.map(p=>V2(p[0],p[1])));return c.getPoints(n||64).map(p=>V2(Math.max(0,p.x),p.y));}
+  function lathe(pts,mat,seg,n){const m=new THREE.Mesh(new THREE.LatheGeometry(profile(pts,n),seg||(mobile?48:72)),mat);return m;}
+  function centered(group){const box=new THREE.Box3().setFromObject(group),c=box.getCenter(new THREE.Vector3());const w=new THREE.Group();group.position.sub(c);w.add(group);return w;}
+  function extrude(shape,depth,mat,bevel){const g=new THREE.ExtrudeGeometry(shape,{depth,bevelEnabled:true,bevelThickness:bevel||.015,bevelSize:bevel||.015,bevelSegments:4,curveSegments:mobile?24:48});g.center();return new THREE.Mesh(g,mat);}
+  function smoothShape(pts){const s=new THREE.Shape();const c=new THREE.SplineCurve(pts.map(p=>V2(p[0],p[1])).concat([V2(pts[0][0],pts[0][1])]));const P=c.getPoints(pts.length*12);s.moveTo(P[0].x,P[0].y);for(let i=1;i<P.length;i++)s.lineTo(P[i].x,P[i].y);return s;}
+
+  /* ---- 1) hlavní dóza s krémem: keramika + champagne víčko ---- */
+  function jar(bodyMat,lidMat){
+    const g=new THREE.Group();
+    g.add(lathe([[0,0],[.78,0],[.95,.03],[1.0,.14],[1.0,.72],[.97,.82],[.86,.88],[0,.88]],bodyMat));
+    const lid=lathe([[0,.9],[.99,.9],[1.02,.94],[1.03,1.08],[1.02,1.24],[.96,1.31],[.6,1.35],[0,1.355]],lidMat);g.add(lid);
+    // jemné rýhování víčka
+    const ribs=new THREE.Group();for(let i=0;i<64;i++){const r=new THREE.Mesh(new THREE.BoxGeometry(.012,.28,.02),lidMat);const a=i/64*Math.PI*2;r.position.set(Math.cos(a)*1.035,1.1,Math.sin(a)*1.035);r.rotation.y=-a;ribs.add(r);}
+    if(!mobile)g.add(ribs);
+    return centered(g);
+  }
+  /* ---- 2) sérum s kapátkem: sklo, tekutina, zlatý krček, gumový balonek ---- */
+  function dropper(){
+    const g=new THREE.Group();
+    g.add(lathe([[0,0],[.36,0],[.42,.05],[.43,.14],[.43,.92],[.4,1.04],[.24,1.14],[.18,1.18],[.18,1.26],[0,1.26]],M.glass));
+    g.add(lathe([[0,.06],[.37,.06],[.385,.1],[.385,.72],[0,.72]],M.liquidApricot));
+    g.add(lathe([[0,1.24],[.205,1.24],[.215,1.28],[.215,1.5],[.2,1.52],[0,1.52]],M.gold));
+    g.add(lathe([[0,1.5],[.15,1.5],[.165,1.6],[.165,1.78],[.13,1.92],[.07,1.98],[0,1.99]],M.rubber));
+    const pip=new THREE.Mesh(new THREE.CylinderGeometry(.035,.02,.9,24),M.glass);pip.position.y=.82;if(!lite)g.add(pip);
+    return centered(g);
+  }
+  /* ---- 3) lak na nehty: hranatá skleněná lahvička + vysoký matný uzávěr ---- */
+  function polish(liquid,capMat){
+    const g=new THREE.Group();
+    const RB=THREE.RoundedBoxGeometry;
+    const body=new THREE.Mesh(new RB(.72,.8,.48,5,.13),M.glass);body.position.y=.4;g.add(body);
+    const liq=new THREE.Mesh(new RB(.6,.62,.36,4,.09),liquid);liq.position.y=.36;g.add(liq);
+    g.add(lathe([[0,.79],[.13,.79],[.13,.9],[0,.9]],M.glass,32,16));
+    const cap=lathe([[0,.88],[.17,.88],[.18,.92],[.18,1.5],[.165,1.56],[0,1.565]],capMat);g.add(cap);
+    const ring=lathe([[0,.88],[.185,.88],[.19,.9],[.19,.94],[0,.94]],M.gold,48,12);g.add(ring);
+    return centered(g);
+  }
+  /* ---- 4) pedikérské kleště: dvě ramena z broušené oceli, šroub a pružina ---- */
+  function nippers(){
+    const g=new THREE.Group();
+    const half=[[0,1.1],[.1,1.02],[.17,.82],[.17,.55],[.14,.36],[.24,.1],[.42,-.35],[.62,-.9],[.68,-1.16],[.6,-1.24],[.52,-1.14],[.33,-.6],[.15,-.2],[.05,.2],[.05,.5],[.03,.82],[-.02,1.0]];
+    const a=extrude(smoothShape(half),.07,M.steel,.018);
+    const b=extrude(smoothShape(half.map(p=>[-p[0],p[1]]).reverse()),.07,M.steel,.018);
+    a.position.set(.06,0,.05);b.position.set(-.06,0,-.05);
+    // geometrie je vycentrovaná, posuneme ramena tak, aby se čelisti potkaly nahoře
+    a.position.x+=.3;b.position.x-=.3;
+    g.add(a,b);
+    const screw=new THREE.Mesh(new THREE.CylinderGeometry(.06,.06,.24,32),M.gold);screw.rotation.x=Math.PI/2;screw.position.set(0,.36,0);g.add(screw);
+    const spring=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(-.5,-.6,0),new THREE.Vector3(-.16,-.28,0),new THREE.Vector3(.16,-.28,0),new THREE.Vector3(.5,-.6,0)]),40,.018,12),M.steel);g.add(spring);
+    return centered(g);
+  }
+  /* ---- 5) nůžky na nehty ---- */
+  function scissors(){
+    const g=new THREE.Group();
+    const blade=[[0,1.2],[.05,.9],[.08,.45],[.09,.12],[.12,-.06],[.17,-.22],[.08,-.2],[.02,-.02],[-.01,.4],[-.01,.9]];
+    const b1=extrude(smoothShape(blade),.04,M.steel,.01),b2=extrude(smoothShape(blade.map(p=>[-p[0],p[1]]).reverse()),.04,M.steel,.01);
+    b1.position.set(.06,0,.03);b2.position.set(-.06,0,-.03);b1.rotation.z=-.05;b2.rotation.z=.05;g.add(b1,b2);
+    [[.27,-.72],[-.27,-.72]].forEach(([x,y],i)=>{const r=new THREE.Mesh(new THREE.TorusGeometry(.2,.04,20,64),M.steel);r.position.set(x,y,i?-.03:.03);r.scale.y=1.15;g.add(r);
+      const sh=new THREE.Mesh(new THREE.CylinderGeometry(.03,.035,.42,16),M.steel);sh.position.set(x*.55,-.36,i?-.03:.03);sh.rotation.z=i?-.55:.55;g.add(sh);});
+    const pin=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,.12,24),M.gold);pin.rotation.x=Math.PI/2;pin.position.y=-.02;g.add(pin);
+    return centered(g);
+  }
+  /* ---- 6) pilník (smirkový nebo skleněný) ---- */
+  function nailFile(mat,len){
+    len=len||2.2;const w=.26,s=new THREE.Shape();
+    s.moveTo(-len/2+w/2,-w/2);s.lineTo(len/2-w/2,-w/2);s.absarc(len/2-w/2,0,w/2,-Math.PI/2,Math.PI/2,false);s.lineTo(-len/2+w/2,w/2);s.absarc(-len/2+w/2,0,w/2,Math.PI/2,Math.PI*1.5,false);
+    const g=new THREE.Group();g.add(extrude(s,.035,mat,.012));
+    if(mat===M.emery){const core=extrude(s,.012,M.gold,.004);core.scale.set(1.004,1.004,1);g.add(core);}
+    return g;
+  }
+  /* ---- 7) dřevěná tyčinka na kůžičku ---- */
+  function stick(){return centered(lathe([[0,0],[.025,.06],[.05,.32],[.055,1.0],[.05,1.68],[.022,1.96],[0,2.0]],M.wood,24));}
+  /* ---- 8) srolovaný ručník ---- */
+  function towel(){
+    const g=new THREE.Group();
+    const roll=lathe([[0,-.7],[.38,-.7],[.46,-.66],[.5,-.55],[.5,.55],[.46,.66],[.38,.7],[0,.7]],M.fabric,mobile?32:56);roll.rotation.z=Math.PI/2;g.add(roll);
+    // spirála na čele role
+    if(!mobile){const pts=[];for(let i=0;i<=120;i++){const t=i/120,a=t*Math.PI*6,r=.06+t*.36;pts.push(new THREE.Vector3(.705,Math.sin(a)*r,Math.cos(a)*r));}
+      const sp=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),160,.012,6),new THREE.MeshStandardMaterial({color:0xd9a58b,roughness:1}));g.add(sp);}
+    return centered(g);
+  }
+  /* ---- 9) okvětní lístek ---- */
+  function petal(){
+    const s=new THREE.Shape();s.moveTo(0,0);s.bezierCurveTo(.22,.08,.28,.38,0,.52);s.bezierCurveTo(-.28,.38,-.22,.08,0,0);
+    const geo=new THREE.ShapeGeometry(s,24);const p=geo.attributes.position;
+    for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i);p.setZ(i,x*x*1.6+Math.sin(y*6)*.015-y*y*.3);}
+    geo.computeVertexNormals();geo.center();return new THREE.Mesh(geo,M.petal);
+  }
+  function droplet(){const m=new THREE.Mesh(new THREE.SphereGeometry(.07,24,16),M.drop);m.scale.set(1,1.15,1);return m;}
+
+  /* ---- kompozice ---- */
+  const root=new THREE.Group();scene.add(root);
+  const floaters=[];
+  function place(obj,pos,rot,scale,opt){
+    opt=opt||{};obj.position.set(...pos);obj.rotation.set(...rot);obj.scale.setScalar(scale||1);root.add(obj);
+    floaters.push({o:obj,base:obj.position.clone(),rot:obj.rotation.clone(),amp:opt.amp||.18,sp:opt.sp||(.25+Math.random()*.25),ph:Math.random()*Math.PI*2,spin:opt.spin||[ (Math.random()-.5)*.06,(Math.random()-.5)*.12,(Math.random()-.5)*.05],push:opt.push||1});
+  }
+  const R=Math.PI/180;
+  if(!mobile){
+    place(jar(M.ceramic,M.gold),[2.5,-.45,0],[18*R,-28*R,6*R],1.15,{amp:.12,sp:.22,spin:[0,.05,0]});
+    place(dropper(),[1.05,1.35,-1.4],[0,0,20*R],1.15,{amp:.16});
+    place(polish(M.polishPink,M.mattePowder),[4.4,1.35,-.6],[10*R,30*R,-18*R],1.0);
+    place(polish(M.polishApricot,M.ceramic),[1.2,-2.2,1.1],[22*R,-40*R,26*R],.8);
+    place(nippers(),[4.6,-1.7,.6],[10*R,-12*R,-28*R],.85,{amp:.14,spin:[.02,.05,.02]});
+    place(scissors(),[3.3,2.6,-3.2],[0,-10*R,-40*R],.9);
+    place(nailFile(M.emery),[6.2,-.1,-2.8],[30*R,-20*R,68*R],1,{spin:[.03,.02,.02]});
+    place(nailFile(M.glassPink,1.9),[.4,.3,1.9],[40*R,10*R,-62*R],.8);
+    place(stick(),[2.6,1.75,1.4],[0,0,70*R],.75);
+    place(jar(M.matteApricot,M.gold),[7.2,2.9,-6.5],[20*R,30*R,0],.8,{amp:.08});
+    place(towel(),[4.2,-.1,-3.8],[12*R,48*R,8*R],1.1,{amp:.1});
+    const petals=[[3.4,1.0,1.5],[.2,-1.1,.6],[5.6,-2.4,-.4],[1.6,.85,2.4],[6.6,-0.9,-3.5],[3.4,-2.5,1.8],[5.4,2.6,-1.4]];
+    petals.forEach(p=>place(petal(),p,[Math.random()*3,Math.random()*3,Math.random()*3],.9+Math.random()*.4,{amp:.25,spin:[.2,.3,.15]}));
+    const drops=[[1.7,.1,2.1],[3.6,.4,1.4],[2.9,-1.7,2.2],[.6,-.6,.9],[5.1,.8,.5],[2.2,1.6,1.4],[4.0,2.4,0.4]];
+    drops.forEach(p=>place(droplet(),p,[0,0,0],1+Math.random()*.6,{amp:.3}));
+  } else {
+    place(jar(M.ceramic,M.gold),[.3,1.5,0],[18*R,-28*R,6*R],.85,{amp:.1,sp:.22,spin:[0,.05,0]});
+    place(dropper(),[-1.15,2.55,-1.6],[0,0,20*R],.95);
+    place(polish(M.polishPink,M.mattePowder),[1.35,2.75,-1.2],[10*R,30*R,-18*R],.8);
+    place(nippers(),[1.45,-.3,.4],[14*R,10*R,-38*R],.6);
+    place(nailFile(M.glassPink,1.9),[-1.3,-.2,.6],[40*R,0,-55*R],.65);
+    [[-.4,2.0,1.2],[1.5,1.4,.8],[-1.4,1.0,.2]].forEach(p=>place(petal(),p,[Math.random()*3,Math.random()*3,Math.random()*3],.8,{amp:.2,spin:[.2,.3,.15]}));
+    [[.5,2.1,1.6],[-.7,.2,1.4]].forEach(p=>place(droplet(),p,[0,0,0],1.2,{amp:.25}));
+  }
+
+  /* ---- kamera, myš, scroll ---- */
+  const cam={x:0,y:0,z:11,tx:mobile?0:.9,ty:mobile?.2:0,tz:0,spread:0};
+  const lookAt=new THREE.Vector3();
+  let mx=0,my=0,sx=0,sy=0;
+  if(matchMedia('(pointer:fine)').matches)addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;},{passive:true});
+
+  const chap1=document.getElementById('chap1'),chap2=document.getElementById('chap2'),cue=document.querySelector('.scroll-cue');
+  if(hasGSAP&&!reduce){
+    const tl=gsap.timeline({defaults:{ease:'none'}});
+    tl.to(cam,{z:mobile?6.6:5.2,x:mobile?.2:1.7,y:mobile?.6:-.15,tx:mobile?.3:2.6,ty:mobile?.4:-.25,tz:-1,spread:1,duration:1},0)
+      .to(chap1,{opacity:0,y:-60,duration:.35},0)
+      .to(cue,{opacity:0,duration:.1},0)
+      .to(chap2,{opacity:1,duration:.25},.45)
+      .fromTo(chap2.querySelector('.box'),{y:40},{y:0,duration:.3},.45);
+    ScrollTrigger.create({trigger:mobile?stage:hero,start:'top top',end:mobile?'+=90%':'+=140%',pin:mobile?stage:true,pinSpacing:true,scrub:1.2,animation:tl,anticipatePin:1,refreshPriority:1});
+    ScrollTrigger.sort();ScrollTrigger.refresh();
+    addEventListener('load',()=>ScrollTrigger.refresh());
+  }
+
+  function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;
+    {const hh=2*60*Math.tan(camera.fov*Math.PI/360)*1.15;backdrop.scale.set(hh*camera.aspect,hh,1);}
+    // na užších obrazovkách scénu lehce oddálíme, aby se vešla
+    camera.zoom=mobile?1:Math.min(1,(w/h)/1.6+.08);camera.updateProjectionMatrix();}
+  resize();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{resize();if(reduce)render(0);},150);});
+
+  function render(t){
+    sx+=(mx-sx)*.04;sy+=(my-sy)*.04;
+    camera.position.set(cam.x+sx*.7,cam.y-sy*.45,cam.z);
+    lookAt.set(cam.tx+sx*.25,cam.ty-sy*.15,cam.tz);camera.lookAt(lookAt);
+    const s=t*.001;
+    for(const f of floaters){
+      const k=reduce?0:1;
+      const push=1+cam.spread*.28*f.push;
+      f.o.position.set(
+        f.base.x*push+Math.sin(s*f.sp+f.ph)*f.amp*.45*k,
+        f.base.y*push+Math.sin(s*f.sp*1.3+f.ph)*f.amp*k,
+        f.base.z+cam.spread*f.base.z*.15+Math.cos(s*f.sp*.8+f.ph)*f.amp*.4*k);
+      f.o.rotation.set(f.rot.x+Math.sin(s*.4+f.ph)*.08*k+s*f.spin[0]*k,f.rot.y+s*f.spin[1]*k,f.rot.z+Math.cos(s*.3+f.ph)*.06*k+s*f.spin[2]*k);
+    }
+    renderer.render(scene,camera);
+  }
+
+  // smyčka běží jen když je hero vidět; při pomalém zařízení se scéna odlehčí
+  let visible=true,raf=0,frames=0,acc=0,last=performance.now(),degraded=false;
+  function degrade(){degraded=true;renderer.setPixelRatio(1);resize();
+    ['glass','glassPink','drop'].forEach(k=>{const m=M[k];m.transmission=0;m.transparent=true;m.opacity=.3;m.needsUpdate=true;});}
+  function loop(now){
+    raf=requestAnimationFrame(loop);
+    const dt=now-last;last=now;
+    if(frames<120){frames++;if(frames>20)acc+=dt;if(frames===120&&!degraded&&acc/100>34)degrade();}
+    render(now);
+  }
+  if('IntersectionObserver' in window){new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf&&!reduce){last=performance.now();raf=requestAnimationFrame(loop);}else if(!visible&&raf){cancelAnimationFrame(raf);raf=0;}},{threshold:0}).observe(stage);}
+  if(reduce){render(0);}else{raf=requestAnimationFrame(loop);}
+  // první snímek je hotový, scénu jemně prolneme
+  requestAnimationFrame(()=>canvas.classList.add('ready'));
+})();
+</script>
+
+</body>
+</html>
