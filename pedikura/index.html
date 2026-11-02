@@ -176,11 +176,11 @@ html.no-3d #scene{display:none}
 .fm-card.swap > *:nth-child(2){animation-delay:.05s}.fm-card.swap > *:nth-child(3){animation-delay:.1s}.fm-card.swap > *:nth-child(4){animation-delay:.15s}.fm-card.swap > *:nth-child(5){animation-delay:.2s}
 @keyframes fmIn{from{opacity:0;transform:translateY(10px)}}
 .fm-art{display:grid;justify-items:center;gap:18px;position:relative}
-.fm-art::before{content:"";position:absolute;inset:8% 10%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--apricot) 28%,transparent),transparent 68%);pointer-events:none}
+.fm-art::before{content:"";position:absolute;inset:12% 18%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--apricot) 28%,transparent),transparent 68%);pointer-events:none}
 .fm-switch{display:inline-flex;background:var(--beige);border-radius:999px;padding:4px;gap:4px;position:relative;z-index:1}
 .fm-switch button{font:inherit;font-weight:500;font-size:.95rem;border:0;background:transparent;color:var(--muted);padding:8px 20px;border-radius:999px;cursor:pointer;transition:background .3s,color .3s,box-shadow .3s}
 .fm-switch button[aria-selected="true"]{background:var(--surface);color:var(--brown);box-shadow:0 4px 14px -6px rgba(90,40,20,.35)}
-.flipper{position:relative;width:100%;max-width:620px;aspect-ratio:640/560;perspective:1600px}
+.flipper{position:relative;width:100%;max-width:660px;aspect-ratio:1740/1448;perspective:2000px}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform 1s cubic-bezier(.7,0,.2,1),opacity .5s;transform-style:preserve-3d}
 .face.back{transform:rotateY(180deg)}
 .flipper.flip .face.front{transform:rotateY(-180deg)}
@@ -188,21 +188,21 @@ html.no-3d #scene{display:none}
 .foot-svg{width:100%;height:100%;display:block;overflow:visible}
 .spot{cursor:pointer;outline:none}
 .spot .halo{fill:var(--apricot);opacity:0;transform-box:fill-box;transform-origin:center}
-.spot .ring{fill:none;stroke:#fff;stroke-width:2;opacity:.9}
-.spot .core{fill:var(--accent);stroke:#fff;stroke-width:2.5;transition:r .3s}
+.spot .ring{fill:none;stroke:#fff;stroke-width:6;opacity:.95}
+.spot .core{fill:var(--accent);stroke:#fff;stroke-width:7;transition:r .3s;filter:drop-shadow(0 4px 8px rgba(80,30,15,.35))}
 .spot .hit{fill:transparent}
-.spot .area{fill:#e07a5f;opacity:0;transition:opacity .5s;filter:blur(6px)}
-.spot.on .area{opacity:.28}
+.spot .area{fill:#e0603f;opacity:0;transition:opacity .5s;filter:blur(22px)}
+.spot.on .area{opacity:.32}
 .fm-warn[hidden]{display:none}
-.spot:hover .core,.spot:focus-visible .core{r:9}
-.spot.on .core{r:9}
+.spot:hover .core,.spot:focus-visible .core{r:26}
+.spot.on .core{r:26}
 .spot.on .halo{animation:halo 2s ease-out infinite}
 .spot:not(.on) .halo{animation:halo 3.2s ease-out infinite;animation-delay:var(--dl)}
 @keyframes halo{0%{transform:scale(.5);opacity:.6}100%{transform:scale(2.6);opacity:0}}
 .lbl{cursor:pointer;outline:none}
-.lbl line{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 3;opacity:.6;transition:stroke .3s,opacity .3s}
+.lbl line{stroke:var(--muted);stroke-width:3;stroke-dasharray:6 9;opacity:.6;transition:stroke .3s,opacity .3s}
 .lbl circle{fill:var(--muted);opacity:.7}
-.lbl text{font-family:var(--sans);font-size:15px;font-weight:500;fill:var(--muted);transition:fill .3s}
+.lbl text{font-family:var(--sans);font-size:44px;font-weight:500;fill:var(--muted);transition:fill .3s}
 .lbl:hover text,.lbl:focus-visible text{fill:var(--brown)}
 .lbl.on line{stroke:var(--accent);stroke-dasharray:none;opacity:1}
 .lbl.on circle{fill:var(--accent);opacity:1}
@@ -217,7 +217,7 @@ html.no-3d #scene{display:none}
   .fm-card{order:2}
   .lbls{display:none}
   .fm-chips{display:flex}
-  .flipper.narrow{max-width:300px;aspect-ratio:340/560}
+  .flipper.narrow{max-width:330px;aspect-ratio:1086/1448}
 }
 @media (prefers-reduced-motion:reduce){.face{transition:none}}
 
@@ -418,91 +418,26 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
           </div>
           <div class="flipper" id="flipper">
             <div class="face front" id="face-sole">
-            <svg viewBox="0 0 640 560" class="foot-svg" role="group" aria-label="Chodidlo zespodu s místy, kde vás může něco trápit">
-              <defs>
-                <linearGradient id="sskin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dccb"/><stop offset=".55" stop-color="#efcab4"/><stop offset="1" stop-color="#e6b8a0"/></linearGradient>
-                <radialGradient id="spad" cx=".5" cy=".45" r=".6"><stop offset="0" stop-color="#f1b9a5" stop-opacity=".85"/><stop offset="1" stop-color="#f1b9a5" stop-opacity="0"/></radialGradient>
-                <radialGradient id="shi" cx=".4" cy=".35" r=".6"><stop offset="0" stop-color="#fff6ef" stop-opacity=".9"/><stop offset="1" stop-color="#fff6ef" stop-opacity="0"/></radialGradient>
-                <radialGradient id="sarch" cx=".3" cy=".5" r=".7"><stop offset="0" stop-color="#c98f78" stop-opacity=".35"/><stop offset="1" stop-color="#c98f78" stop-opacity="0"/></radialGradient>
-                <linearGradient id="snail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe7e2"/><stop offset="1" stop-color="#eab9b0"/></linearGradient>
-                <linearGradient id="sfade" x1="0" y1="0" x2="0" y2="1"><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-                <mask id="smask"><rect x="0" y="0" width="320" height="540" fill="url(#sfade)"/></mask>
-                <filter id="ssoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
-              </defs>
-              <g transform="translate(170 18)">
-                <ellipse cx="160" cy="300" rx="150" ry="240" fill="#c98f78" opacity=".12" filter="url(#ssoft)"/>
-                <g fill="url(#sskin)" stroke="#d8a58d" stroke-width="1.2">
-                  <ellipse cx="106" cy="96" rx="30" ry="44" transform="rotate(-8 106 96)"/>
-                  <ellipse cx="154" cy="72" rx="18" ry="27" transform="rotate(4 154 72)"/>
-                  <ellipse cx="188" cy="80" rx="15.5" ry="23" transform="rotate(10 188 80)"/>
-                  <ellipse cx="217" cy="98" rx="13.5" ry="19" transform="rotate(16 217 98)"/>
-                  <ellipse cx="240" cy="124" rx="11.5" ry="15" transform="rotate(24 240 124)"/>
-                  <path d="M150 512 C108 512 84 486 82 446 C80 410 92 384 100 352 C108 318 112 290 106 258 C100 228 82 206 80 178 C78 160 86 150 98 146 C130 140 170 146 200 156 C224 164 244 178 250 200 C256 228 248 262 240 296 C232 330 226 362 222 396 C218 436 212 472 196 494 C184 508 168 512 150 512 Z"/>
-                </g>
-                <g pointer-events="none">
-                  <ellipse cx="106" cy="92" rx="22" ry="30" fill="url(#spad)"/><ellipse cx="154" cy="68" rx="12" ry="17" fill="url(#spad)"/><ellipse cx="188" cy="77" rx="10" ry="15" fill="url(#spad)"/><ellipse cx="217" cy="95" rx="9" ry="12" fill="url(#spad)"/><ellipse cx="240" cy="121" rx="8" ry="10" fill="url(#spad)"/>
-                  <ellipse cx="166" cy="192" rx="80" ry="40" fill="url(#spad)"/>
-                  <ellipse cx="152" cy="458" rx="62" ry="50" fill="url(#spad)"/>
-                  <ellipse cx="230" cy="320" rx="22" ry="95" fill="url(#spad)" opacity=".7"/>
-                  <ellipse cx="124" cy="322" rx="30" ry="78" fill="url(#sarch)"/>
-                  <ellipse cx="150" cy="200" rx="40" ry="18" fill="url(#shi)"/><ellipse cx="146" cy="452" rx="30" ry="22" fill="url(#shi)"/>
-                  <g fill="none" stroke="#c99079" stroke-linecap="round" opacity=".45">
-                    <path d="M92 232 Q160 250 238 226" stroke-width="1.4"/>
-                    <path d="M84 150 Q104 160 128 150" stroke-width="1"/><path d="M140 104 Q154 110 168 104" stroke-width="1"/><path d="M176 110 Q188 115 200 110" stroke-width="1"/><path d="M207 122 Q217 126 227 121" stroke-width="1"/>
-                    <path d="M118 400 Q150 412 196 400" stroke-width="1" opacity=".6"/>
-                    <path d="M126 470 q10 6 22 2 M156 486 q8 4 18 0" stroke-width="1" opacity=".7"/>
-                  </g>
-                </g>
+              <svg viewBox="-300 0 1740 1448" class="foot-svg" role="group" aria-label="Chodidlo zespodu s místy, kde vás může něco trápit">
+                <defs>
+                  <linearGradient id="sfade" x1="0" y1="0" x2="0" y2="1"><stop offset=".84" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+                  <mask id="smask" maskUnits="userSpaceOnUse" x="0" y="0" width="1086" height="1448"><rect x="0" y="0" width="1086" height="1448" fill="url(#sfade)"/></mask>
+                </defs>
+                <image href="img/foot-sole.webp" x="0" y="0" width="1086" height="1448" preserveAspectRatio="xMidYMid meet"/>
                 <g class="spots"></g>
-              </g>
-              <g class="lbls"></g>
-            </svg>
+                <g class="lbls"></g>
+              </svg>
             </div>
             <div class="face back" id="face-top">
-            <svg viewBox="0 0 640 560" class="foot-svg" role="group" aria-label="Noha shora s místy, kde vás může něco trápit">
-              <defs>
-                <linearGradient id="tskin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dccb"/><stop offset=".55" stop-color="#efcab4"/><stop offset="1" stop-color="#e6b8a0"/></linearGradient>
-                <radialGradient id="tpad" cx=".5" cy=".45" r=".6"><stop offset="0" stop-color="#f1b9a5" stop-opacity=".85"/><stop offset="1" stop-color="#f1b9a5" stop-opacity="0"/></radialGradient>
-                <radialGradient id="thi" cx=".4" cy=".35" r=".6"><stop offset="0" stop-color="#fff6ef" stop-opacity=".9"/><stop offset="1" stop-color="#fff6ef" stop-opacity="0"/></radialGradient>
-                <radialGradient id="tarch" cx=".3" cy=".5" r=".7"><stop offset="0" stop-color="#c98f78" stop-opacity=".35"/><stop offset="1" stop-color="#c98f78" stop-opacity="0"/></radialGradient>
-                <linearGradient id="tnail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe7e2"/><stop offset="1" stop-color="#eab9b0"/></linearGradient>
-                <linearGradient id="tfade" x1="0" y1="0" x2="0" y2="1"><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-                <mask id="tmask"><rect x="0" y="0" width="320" height="540" fill="url(#tfade)"/></mask>
-                <filter id="tsoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
-              </defs>
-              <g transform="translate(170 18)">
-                <ellipse cx="160" cy="300" rx="150" ry="240" fill="#c98f78" opacity=".12" filter="url(#tsoft)"/>
-                <g fill="url(#tskin)" stroke="#d8a58d" stroke-width="1.2">
-                  <path d="M74 230 C68 160 72 104 86 76 C99 50 126 50 136 78 C145 104 144 170 140 236 Z"/>
-                  <path d="M136 236 C134 160 136 112 143 90 C149 72 168 72 172 92 C177 116 176 180 174 240 Z"/>
-                  <path d="M170 242 C170 180 172 134 177 113 C182 97 198 97 202 114 C206 136 204 190 202 248 Z"/>
-                  <path d="M198 250 C199 196 202 156 207 137 C211 123 225 123 229 138 C232 156 230 200 226 256 Z"/>
-                  <path d="M222 258 C225 214 229 184 233 167 C237 155 249 156 252 168 C255 184 252 220 246 262 Z"/>
-                </g>
-                <g mask="url(#tmask)">
-                  <path fill="url(#tskin)" stroke="#d8a58d" stroke-width="1.2" d="M100 540 C98 480 92 420 86 370 C80 320 72 272 72 236 C72 214 80 202 92 198 C120 190 150 196 176 206 C200 214 224 226 244 240 C256 250 260 262 256 280 C250 320 232 366 220 412 C212 452 206 490 204 540 Z"/>
-                  <g fill="none" stroke="#c99079" stroke-linecap="round" opacity=".18" stroke-width="2">
-                    <path d="M150 520 C140 400 120 300 108 200"/><path d="M160 520 C160 400 156 300 156 200"/><path d="M168 520 C178 400 188 300 190 214"/><path d="M174 520 C194 410 210 320 218 232"/>
-                  </g>
-                  <ellipse cx="150" cy="300" rx="50" ry="120" fill="url(#thi)" opacity=".7"/>
-                </g>
-                <g pointer-events="none">
-                  <g fill="url(#tnail)" stroke="#d9a79c" stroke-width=".8">
-                    <path d="M90 92 C92 70 126 70 128 92 C129 106 124 116 109 116 C94 116 89 106 90 92 Z"/>
-                    <path d="M147 98 C148 86 167 86 167 98 C167 106 164 112 157 112 C150 112 147 106 147 98 Z"/>
-                    <path d="M180 120 C181 109 197 109 197 120 C197 127 194 132 188.5 132 C183 132 180 127 180 120 Z"/>
-                    <path d="M210 142 C211 133 224 133 224 142 C224 148 222 152 217 152 C212 152 210 148 210 142 Z"/>
-                    <path d="M236 172 C237 165 247 165 247 172 C247 177 245 180 241.5 180 C238 180 236 177 236 172 Z"/>
-                  </g>
-                  <g fill="#fff" opacity=".7"><ellipse cx="102" cy="86" rx="5" ry="8" transform="rotate(-20 102 86)"/><ellipse cx="153" cy="95" rx="2.5" ry="4.5"/><ellipse cx="185" cy="117" rx="2.2" ry="4"/><ellipse cx="215" cy="140" rx="1.8" ry="3"/></g>
-                  <g fill="none" stroke="#c99079" stroke-linecap="round" opacity=".5" stroke-width="1">
-                    <path d="M90 160 q16 7 34 0 M92 168 q14 5 30 0"/><path d="M146 156 q11 4 22 0"/><path d="M180 168 q10 4 19 0"/><path d="M208 184 q8 3 16 0"/><path d="M232 206 q7 3 13 0"/>
-                  </g>
-                </g>
+              <svg viewBox="-300 0 1740 1448" class="foot-svg" role="group" aria-label="Noha shora s místy, kde vás může něco trápit">
+                <defs>
+                  <linearGradient id="tfade" x1="0" y1="0" x2="0" y2="1"><stop offset=".84" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+                  <mask id="tmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1086" height="1448"><rect x="0" y="0" width="1086" height="1448" fill="url(#tfade)"/></mask>
+                </defs>
+                <image href="img/foot-top.webp" x="0" y="0" width="1086" height="1448" mask="url(#tmask)" preserveAspectRatio="xMidYMid meet"/>
                 <g class="spots"></g>
-              </g>
-              <g class="lbls"></g>
-            </svg>
+                <g class="lbls"></g>
+              </svg>
             </div>
           </div>
           <div class="fm-chips" id="fm-chips"></div>
@@ -701,26 +636,26 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
   (function(){
     const V={
       sole:[
-        {x:92,y:196,ly:150,s:'L',t:'Ztvrdlá kůže',d:'Zrohovatělá kůže u palce a na okrajích chodidla je tvrdá a praská. Po teplé lázni ji šetrně odstraním a nohy promažu.',r:'klasická pedikúra',svc:'Klasická pedikúra'},
-        {x:176,y:192,ly:150,s:'R',t:'Otlaky pod prsty',d:'Pod prsty nese chodidlo největší váhu, proto tu vznikají bolestivé otlaky. Odstraním je a poradím, jak tlak v botách snížit.',r:'přístrojová pedikúra',svc:'Přístrojová pedikúra'},
-        {x:120,y:322,ly:330,s:'L',t:'Pálení a únava chodidel',d:'Pálení a únava v klenbě často souvisí s obuví a dlouhým stáním. Uleví masáž a péče o kůži.',r:'masáž nohou',w:'Pokud bolest trvá nebo chodidla brní, poraďte se s lékařem nebo ortopedem.',svc:'Masáž nohou a lakování'},
-        {x:152,y:466,ly:470,s:'R',t:'Popraskané paty',d:'Hluboké praskliny na patách bolí a mohou se zanítit. Lázeň, přístroj a výživná péče je zhojí a změkčí.',r:'kombinovaná pedikúra',w:'Máte-li cukrovku a praskliny krvácejí, objednejte se co nejdřív.',svc:'Kombinovaná pedikúra'}],
+        {x:330,y:430,ly:400,s:'L',t:'Ztvrdlá kůže',d:'Zrohovatělá kůže u palce a na okrajích chodidla je tvrdá a praská. Po teplé lázni ji šetrně odstraním a nohy promažu.',r:'klasická pedikúra',svc:'Klasická pedikúra'},
+        {x:600,y:350,ly:300,s:'R',t:'Otlaky pod prsty',d:'Pod prsty nese chodidlo největší váhu, proto tu vznikají bolestivé otlaky. Odstraním je a poradím, jak tlak v botách snížit.',r:'přístrojová pedikúra',svc:'Přístrojová pedikúra'},
+        {x:520,y:820,ly:820,s:'R',t:'Pálení a únava chodidel',d:'Pálení a únava v klenbě často souvisí s obuví a dlouhým stáním. Uleví masáž a péče o kůži.',r:'masáž nohou',w:'Pokud bolest trvá nebo chodidla brní, poraďte se s lékařem nebo ortopedem.',svc:'Masáž nohou a lakování'},
+        {x:520,y:1270,ly:1250,s:'L',t:'Popraskané paty',d:'Hluboké praskliny na patách bolí a mohou se zanítit. Lázeň, přístroj a výživná péče je zhojí a změkčí.',r:'kombinovaná pedikúra',w:'Máte-li cukrovku a praskliny krvácejí, objednejte se co nejdřív.',svc:'Kombinovaná pedikúra'}],
       top:[
-        {x:94,y:94,ly:70,s:'L',t:'Zarůstající nehet',d:'Nehet palce se zarývá do kůže, tlačí a bolí v botách. Šetrně ho uvolním, upravím tvar a podle potřeby nasadím korekční šponu.',r:'ošetření zarůstajícího nehtu',w:'Když je okolí nehtu zarudlé, oteklé nebo hnisá, navštivte nejdřív lékaře.',svc:'Zarůstající nehet'},
-        {x:189,y:121,ly:90,s:'R',t:'Zesílené nehty',d:'Silné a tvrdé nehty se špatně stříhají a tlačí do bot. Přístrojem je šetrně ztenčím a zkrátím.',r:'přístrojová pedikúra',w:'Změnu barvy nebo drolení nehtu je dobré ukázat lékaři, může jít o plíseň.',svc:'Přístrojová pedikúra'},
-        {x:212,y:182,ly:200,s:'R',t:'Kuří oka na prstech',d:'Tlak a tření v botách vytvoří na kloubu prstu malé bolestivé místo. Kuří oko odstraním a poradím s ochranou.',r:'přístrojová pedikúra',svc:'Přístrojová pedikúra'},
-        {x:160,y:360,ly:380,s:'L',t:'Oteklé a unavené nohy',d:'Po dlouhém stání nebo chůzi nohy těžknou. Masáž chodidel a lýtek je uvolní a zlepší prokrvení.',r:'masáž nohou',svc:'Masáž nohou a lakování'}]
+        {x:745,y:150,ly:130,s:'R',t:'Zarůstající nehet',d:'Nehet palce se zarývá do kůže, tlačí a bolí v botách. Šetrně ho uvolním, upravím tvar a podle potřeby nasadím korekční šponu.',r:'ošetření zarůstajícího nehtu',w:'Když je okolí nehtu zarudlé, oteklé nebo hnisá, navštivte nejdřív lékaře.',svc:'Zarůstající nehet'},
+        {x:455,y:172,ly:140,s:'L',t:'Zesílené nehty',d:'Silné a tvrdé nehty se špatně stříhají a tlačí do bot. Přístrojem je šetrně ztenčím a zkrátím.',r:'přístrojová pedikúra',w:'Změnu barvy nebo drolení nehtu je dobré ukázat lékaři, může jít o plíseň.',svc:'Přístrojová pedikúra'},
+        {x:383,y:300,ly:360,s:'L',t:'Kuří oka na prstech',d:'Tlak a tření v botách vytvoří na kloubu prstu malé bolestivé místo. Kuří oko odstraním a poradím s ochranou.',r:'přístrojová pedikúra',svc:'Přístrojová pedikúra'},
+        {x:560,y:820,ly:840,s:'R',t:'Oteklé a unavené nohy',d:'Po dlouhém stání nebo chůzi nohy těžknou. Masáž chodidel a lýtek je uvolní a zlepší prokrvení.',r:'masáž nohou',svc:'Masáž nohou a lakování'}]
     };
-    const OX=170,OY=18,LX=150,RX=490;
+    const OX=0,OY=0,LX=230,RX=850;
     const T=document.getElementById('fm-title'),D=document.getElementById('fm-text'),R=document.getElementById('fm-rec'),W=document.getElementById('fm-warn'),WT=document.getElementById('fm-warn-t'),card=document.getElementById('fm-card');
     const flipper=document.getElementById('flipper'),chips=document.getElementById('fm-chips'),sw=[...document.querySelectorAll('.fm-switch button')];
     const faces={sole:document.getElementById('face-sole'),top:document.getElementById('face-top')};
     let view='sole',cur=0;
     for(const k in V){
       const svg=faces[k].querySelector('svg'),gs=svg.querySelector('.spots'),gl=svg.querySelector('.lbls');
-      gs.innerHTML=V[k].map((z,i)=>`<g class="spot" tabindex="0" role="button" aria-label="${z.t}" data-i="${i}" style="--dl:${i*.7}s"><circle class="area" cx="${z.x}" cy="${z.y}" r="30"/><circle class="halo" cx="${z.x}" cy="${z.y}" r="10"/><circle class="hit" cx="${z.x}" cy="${z.y}" r="20"/><circle class="ring" cx="${z.x}" cy="${z.y}" r="12"/><circle class="core" cx="${z.x}" cy="${z.y}" r="7"/></g>`).join('');
+      gs.innerHTML=V[k].map((z,i)=>`<g class="spot" tabindex="0" role="button" aria-label="${z.t}" data-i="${i}" style="--dl:${i*.7}s"><circle class="area" cx="${z.x}" cy="${z.y}" r="95"/><circle class="halo" cx="${z.x}" cy="${z.y}" r="30"/><circle class="hit" cx="${z.x}" cy="${z.y}" r="60"/><circle class="ring" cx="${z.x}" cy="${z.y}" r="34"/><circle class="core" cx="${z.x}" cy="${z.y}" r="20"/></g>`).join('');
       gl.innerHTML=V[k].map((z,i)=>{const ax=z.x+OX,ay=z.y+OY,ex=z.s==='L'?LX:RX,ty=z.ly+OY;
-        return `<g class="lbl" data-i="${i}" tabindex="-1" pointer-events="bounding-box"><line x1="${ax}" y1="${ay}" x2="${ex}" y2="${ty}"/><circle cx="${ex}" cy="${ty}" r="3"/><text x="${z.s==='L'?ex-10:ex+10}" y="${ty+5}" text-anchor="${z.s==='L'?'end':'start'}">${z.t}</text></g>`;}).join('');
+        return `<g class="lbl" data-i="${i}" tabindex="-1" pointer-events="bounding-box"><line x1="${ax}" y1="${ay}" x2="${ex}" y2="${ty}"/><circle cx="${ex}" cy="${ty}" r="9"/><text x="${z.s==='L'?ex-24:ex+24}" y="${ty+16}" text-anchor="${z.s==='L'?'end':'start'}">${z.t}</text></g>`;}).join('');
       [...gs.children,...gl.children].forEach(el=>{
         el.addEventListener('click',()=>show(k,+el.dataset.i,true));
         el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(k,+el.dataset.i,true);}});
@@ -747,7 +682,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
     document.getElementById('fm-book').addEventListener('click',()=>{const z=V[view][cur],sel=document.getElementById('f-service');[...sel.options].forEach(o=>{if(o.text===z.svc)sel.value=o.text;});document.getElementById('f-msg').value='Trápí mě: '+z.t.toLowerCase();});
     // na mobilu jsou popisky jako tlačítka pod nohou, výřez se proto zúží jen na nohu
     const mq=matchMedia('(max-width: 860px)');
-    function crop(){document.querySelectorAll('.foot-svg').forEach(s=>s.setAttribute('viewBox',mq.matches?'150 0 340 560':'0 0 640 560'));flipper.classList.toggle('narrow',mq.matches);}
+    function crop(){document.querySelectorAll('.foot-svg').forEach(s=>s.setAttribute('viewBox',mq.matches?'0 0 1086 1448':'-300 0 1740 1448'));flipper.classList.toggle('narrow',mq.matches);}
     crop();mq.addEventListener?mq.addEventListener('change',crop):mq.addListener(crop);
     setView('sole',true);show('sole',0,false);
   })();
