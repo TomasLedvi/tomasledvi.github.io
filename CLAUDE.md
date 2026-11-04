@@ -124,6 +124,13 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   před/po, tipy, FAQ; jméno Petra a ceny jsou ukázkové). Fotky chodidel a místnosti vygeneroval Tomáš v ChatGPT (AI, při zakázce nahradit).
   Doporučeno: Pages CMS (spolupracovník přes e-mail, bez GitHubu), rezervace přes Reenio/Reservio místo vlastního systému,
   pro ostrou 3D verzi skutečné GLB modely (TRELLIS nebo Sketchfab/Fab). Cenové pásmo: jednodušší verze ~18–25 tis., 3D ~30–35 tis.
+- **DERATIZACE 3D** (3 D, spol. s r.o., Veslařská 169, Ústí n. L. – Neštěmice; tel. 472 731 510, nonstop 606 879 380, 3dsro@centrum.cz,
+  Po–Pá 7–15; jednatelé dle Živéfirmy: Jana Králová, Jan Šafr, Jana Netušilová; IČO neověřeno): tip od Tomášova kolegy z HZS (firma jeho mamky).
+  Jejich doména 3dsro.cz ukazuje jen parkovací stránku Vedosu (4. 11. 2026) = web nejede. Ukázka `deratizace/` (4. 11.; tmavá noc + ambra,
+  písma Bricolage Grotesque + Instrument Sans z Google Fonts; hero = baterka na canvasu najde švába, mravence a myš („Nalezeno: …“),
+  vlna zásahu je rozpráší, pak kužel sleduje kurzor; výběr škůdce se 3 sloupci rad, služby, HACCP pro firmy s odškrtávaným záznamem,
+  postup, bezpečnost, FAQ + JSON-LD, formulář Web3Forms s placeholderem `WEB3FORMS_KEY`). Bez fotek a recenzí – při zakázce vyžádat.
+  Při hovoru zjistit, kdo má přístup k doméně 3dsro.cz.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
