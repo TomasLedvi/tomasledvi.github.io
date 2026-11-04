@@ -542,16 +542,25 @@ let W = 0, H = 0, DPR = 1, mobile = false;
 
 const S = {bx:0, by:0, R:0, power:0, sweep:-0.2, introDone:false, tx:0, ty:0, pointer:false};
 
-// pests in relative coordinates (0..1)
+// photos (kitchen at night) + real pest sprites, positions in photo coordinates (0..1)
+const IMG = {};
+[['wide','img/kitchen-wide.webp'],['tall','img/kitchen-tall.webp'],['mouse','img/mouse.webp'],['roach','img/roach.webp'],['ant','img/ant.webp']]
+  .forEach(([k,src]) => { const i = new Image(); i.decoding = 'async'; i.src = src; IMG[k] = i; });
+const ok = i => i && i.complete && i.naturalWidth > 0;
+const PLACES = {
+  wide: {mouse:[.57,.80], r1:[.81,.47], r2:[.56,.28], ants:[[.50,.655],[.63,.60]], r3:[.66,.90]},
+  tall: {mouse:[.75,.29], r1:[.50,.16], r2:[.28,.30], ants:[[.34,.43],[.56,.42]], r3:[.60,.38]}
+};
 const pests = [
-  {type:'mouse', x:.70, y:.80, s:1.25, dir:-1, label:'Myš'},
-  {type:'roach', x:.86, y:.42, s:1.1, a:2.3, label:'Šváb'},
-  {type:'roach', x:.62, y:.30, s:.9, a:.6, label:'Šváb'},
-  {type:'ants',  x:.80, y:.55, s:1, label:'Mravenci'},
-  {type:'roach', x:.93, y:.74, s:.8, a:3.6, label:''},
+  {type:'mouse', key:'mouse', w:200, label:'Myš'},
+  {type:'roach', key:'r1', w:125, a:2.4, label:'Šváb'},
+  {type:'roach', key:'r2', w:105, a:.7, label:'Šváb'},
+  {type:'ants',  key:'ants', w:38, label:'Mravenci'},
+  {type:'roach', key:'r3', w:85, a:3.7, label:''},
 ];
-pests.forEach(p => {p.d = 0; p.found = 0; p.ox = p.x; p.oy = p.y; p.t = Math.random()*10;});
+pests.forEach(p => {p.d = 0; p.found = 0; p.t = Math.random()*10;});
 let particles = [];
+let cover = {x:0, y:0, w:1, h:1, tall:false};
 
 function layout(){
   DPR = Math.min(devicePixelRatio || 1, 2);
@@ -559,74 +568,48 @@ function layout(){
   W = r.width; H = r.height; mobile = W < 760;
   [sc, ov].forEach(c => {c.width = W*DPR; c.height = H*DPR;});
   sx.setTransform(DPR,0,0,DPR,0,0); ox.setTransform(DPR,0,0,DPR,0,0);
-  if (mobile) { // move pests to upper area on phones
-    const m = [[.70,.40],[.86,.16],[.30,.12],[.55,.26],[.18,.34]];
-    pests.forEach((p,i)=>{p.ox=m[i][0];p.oy=m[i][1];p.x=p.ox;p.y=p.oy;});
-  } else pests.forEach((p,i)=>{const d=[[.70,.80],[.86,.42],[.62,.30],[.80,.55],[.93,.74]][i];p.ox=d[0];p.oy=d[1];p.x=p.ox;p.y=p.oy;});
+  const tall = W/H < .85, iw = tall ? 941 : 1672, ih = tall ? 1672 : 941;
+  const k = Math.max(W/iw, H/ih);
+  cover = {w:iw*k, h:ih*k, x:(W-iw*k)/2, y:(H-ih*k)/2, tall};
+  const pl = PLACES[tall ? 'tall' : 'wide'];
+  const toS = ([u,v]) => [(cover.x + u*cover.w)/W, (cover.y + v*cover.h)/H];
+  const sz = tall ? .62 : Math.min(1.25, Math.max(.7, Math.min(W,H)/850));
+  pests.forEach(p => {
+    p.sz = p.w*sz;
+    if (p.type === 'ants'){ const a = toS(pl.ants[0]), b = toS(pl.ants[1]); p.ax=a[0]; p.ay=a[1]; p.bx=b[0]; p.by=b[1]; p.ox=(a[0]+b[0])/2; p.oy=(a[1]+b[1])/2; p.mr = Math.min(tall ? 56 : 80, Math.hypot((b[0]-a[0])*W,(b[1]-a[1])*H)/2 + 12); }
+    else { [p.ox, p.oy] = toS(pl[p.key]); p.mr = p.sz*(p.type==='mouse' ? .5 : .42); }
+    p.x = p.ox; p.y = p.oy;
+  });
   S.R = Math.max(150, Math.min(W,H) * (mobile ? .34 : .3));
 }
 
 /* ---- scene drawing ---- */
 function drawRoom(){
-  const g = sx.createLinearGradient(0,0,0,H);
-  g.addColorStop(0,'#24324F'); g.addColorStop(1,'#1A253D');
-  sx.fillStyle = g; sx.fillRect(0,0,W,H);
-  // wall tiles
-  sx.strokeStyle = 'rgba(190,205,235,.07)'; sx.lineWidth = 1;
-  const t = mobile ? 46 : 64, floorY = H*(mobile ? .48 : .86);
-  for (let y = floorY - t*Math.floor(floorY/t); y < floorY; y += t){sx.beginPath();sx.moveTo(0,y);sx.lineTo(W,y);sx.stroke();}
-  for (let x = 0; x < W; x += t){sx.beginPath();sx.moveTo(x,0);sx.lineTo(x,floorY);sx.stroke();}
-  // floor
-  sx.fillStyle = '#141D31'; sx.fillRect(0,floorY,W,H-floorY);
-  sx.fillStyle = '#2D3C5C'; sx.fillRect(0,floorY-10,W,10);
-  // pipe
-  sx.strokeStyle = 'rgba(160,175,205,.35)'; sx.lineWidth = 9; sx.lineCap='round';
-  const px = W*(mobile?.08:.52);
-  sx.beginPath(); sx.moveTo(px,0); sx.lineTo(px,floorY-60); sx.quadraticCurveTo(px,floorY-30,px+30,floorY-30); sx.lineTo(W*(mobile?.4:.64),floorY-30); sx.stroke();
-  // cabinet
-  const cx = W*(mobile?.58:.74), cw = W*(mobile?.36:.2), ch = H*(mobile?.16:.22);
-  sx.fillStyle = '#2A3858'; sx.fillRect(cx, floorY-ch-14, cw, ch);
-  sx.fillStyle = '#1C2741'; sx.fillRect(cx, floorY-14, cw, 4);
-  sx.strokeStyle = 'rgba(200,215,240,.14)'; sx.lineWidth = 2;
-  sx.strokeRect(cx+8, floorY-ch-6, cw/2-12, ch-16); sx.strokeRect(cx+cw/2+4, floorY-ch-6, cw/2-12, ch-16);
-  // socket
-  sx.fillStyle = '#33436A'; sx.fillRect(W*(mobile?.25:.6), floorY-90, 28, 40);
+  const bg = IMG[cover.tall ? 'tall' : 'wide'];
+  if (ok(bg)) sx.drawImage(bg, cover.x, cover.y, cover.w, cover.h);
+  else { sx.fillStyle = '#2a2420'; sx.fillRect(0,0,W,H); }
+}
+function sprite(img, x, y, w, rot){
+  if (!ok(img)) return;
+  const h = w * img.naturalHeight / img.naturalWidth;
+  sx.save(); sx.translate(x, y); sx.rotate(rot);
+  sx.shadowColor = 'rgba(0,0,0,.55)'; sx.shadowBlur = w*.08; sx.shadowOffsetY = w*.04;
+  sx.drawImage(img, -w/2, -h/2, w, h); sx.restore();
 }
 function mouse(p){
-  sx.save(); sx.translate(p.x*W, p.y*H); sx.scale(p.dir*p.s, p.s);
-  const tw = Math.sin(p.t*6)*1.5;
-  sx.strokeStyle = '#B49A86'; sx.lineWidth = 2.4; sx.lineCap='round';
-  sx.beginPath(); sx.moveTo(-22,4); sx.bezierCurveTo(-42,14,-56,-2,-70,6+tw); sx.stroke();
-  sx.fillStyle = '#9C8573';
-  sx.beginPath(); sx.ellipse(0,0,24,13,0,0,7); sx.fill();
-  sx.beginPath(); sx.ellipse(22,-3,12,9,-.2,0,7); sx.fill();
-  sx.fillStyle = '#C9A99A'; sx.beginPath(); sx.arc(17,-12,6,0,7); sx.fill();
-  sx.fillStyle = '#0D0D10'; sx.beginPath(); sx.arc(28,-5,1.8,0,7); sx.fill();
-  sx.fillStyle = '#E3B3B0'; sx.beginPath(); sx.arc(34,-1+tw*.3,2,0,7); sx.fill();
-  sx.restore();
+  const bob = Math.sin(p.t*7)*.6, sniff = Math.max(0, Math.sin(p.t*1.7))*.03;
+  sprite(IMG.mouse, p.x*W, p.y*H + bob - p.sz*.2, p.sz, -sniff);
 }
 function roach(p){
-  sx.save(); sx.translate(p.x*W, p.y*H); sx.rotate(p.a); sx.scale(p.s,p.s);
-  sx.strokeStyle = '#7E4C2C'; sx.lineWidth = 1.6; sx.lineCap='round';
-  const l = Math.sin(p.t*18)*3;
-  for (const sgn of [-1,1]) for (const k of [-6,0,6]){sx.beginPath();sx.moveTo(k,0);sx.lineTo(k+(k===-6?-4:k===6?5:0)+l*sgn*(k?1:-1), sgn*15);sx.stroke();}
-  sx.beginPath(); sx.moveTo(14,-2); sx.quadraticCurveTo(28,-10,34,-18); sx.moveTo(14,2); sx.quadraticCurveTo(28,10,34,18); sx.stroke();
-  sx.fillStyle = '#8A522E'; sx.beginPath(); sx.ellipse(0,0,14,8,0,0,7); sx.fill();
-  sx.fillStyle = '#5E3519'; sx.beginPath(); sx.ellipse(12,0,4,5,0,0,7); sx.fill();
-  sx.strokeStyle='rgba(255,220,180,.25)'; sx.beginPath(); sx.moveTo(-12,0); sx.lineTo(8,0); sx.stroke();
-  sx.restore();
+  sprite(IMG.roach, p.x*W, p.y*H, p.sz, p.a + Math.sin(p.t*22)*.035);
 }
 function ants(p){
-  const n = 9;
+  const n = 7;
+  const dx = (p.bx-p.ax)*W, dy = (p.by-p.ay)*H, ang = Math.atan2(dy, dx), nx = -dy, ny = dx, len = Math.hypot(dx,dy) || 1;
   for (let i=0;i<n;i++){
-    const u = ((p.t*0.06 + i/n) % 1);
-    const x = (p.x - .09 + u*.2)*W, y = (p.y + Math.sin(u*6.28)*.03)*H;
-    sx.save(); sx.translate(x,y); sx.rotate(Math.cos(u*6.28)*.25); sx.scale(p.s,p.s);
-    sx.fillStyle = '#6A4330';
-    sx.beginPath(); sx.arc(-5,0,3.4,0,7); sx.arc(0,0,2.3,0,7); sx.arc(4.4,0,2.6,0,7); sx.fill();
-    sx.strokeStyle='#6A4330'; sx.lineWidth=1;
-    for (const k of [-1.5,0,1.5]){sx.beginPath();sx.moveTo(k,0);sx.lineTo(k-2,5);sx.moveTo(k,0);sx.lineTo(k-2,-5);sx.stroke();}
-    sx.restore();
+    const u = ((p.t*0.05 + i/n) % 1), wob = Math.sin(u*25 + i)*4;
+    const x = p.ax*W + dx*u + nx/len*wob, y = p.ay*H + dy*u + ny/len*wob;
+    sprite(IMG.ant, x, y, p.sz, ang + Math.cos(u*25+i)*.18);
   }
 }
 function drawPests(dt){
@@ -636,7 +619,7 @@ function drawPests(dt){
     if (p.type==='roach' && p.d===0){ // scurry
       p.a += Math.sin(p.t*1.3 + p.ox*10)*0.02;
       p.x += Math.cos(p.a)*dt*0.012; p.y += Math.sin(p.a)*dt*0.012*(W/H);
-      const dx = p.x-p.ox, dy = p.y-p.oy; if (dx*dx+dy*dy > .004){ p.a = Math.atan2(-dy,-dx); }
+      const dx = p.x-p.ox, dy = p.y-p.oy; if (dx*dx+dy*dy > .0016){ p.a = Math.atan2(-dy,-dx); }
     }
     sx.globalAlpha = 1 - p.d;
     if (p.type==='mouse') mouse(p); else if (p.type==='roach') roach(p); else ants(p);
@@ -667,13 +650,14 @@ function drawOverlay(){
     if (!p.found || !p.label) return;
     const a = p.found * (1 - p.d);
     if (a <= 0.01) return;
-    const x = p.x*W, y = p.y*H, r = 44*p.s*(p.type==='ants'?1.6:1);
+    const x = p.x*W, y = p.y*H, r = p.mr;
     ox.strokeStyle = `rgba(255,181,71,${a})`; ox.lineWidth = 2;
     ox.setLineDash([6,6]); ox.lineDashOffset = -performance.now()/40;
     ox.beginPath(); ox.arc(x,y,r,0,7); ox.stroke(); ox.setLineDash([]);
     ox.fillStyle = `rgba(255,181,71,${a})`;
     ox.font = '600 13px "Public Sans", sans-serif';
-    ox.fillText('Nalezeno: ' + p.label, x + r*.75, y - r*.75);
+    const t = 'Nalezeno: ' + p.label, tw = ox.measureText(t).width;
+    ox.fillText(t, x + r*.75 + tw > W - 12 ? x - r*.75 - tw : x + r*.75, y - r*.75);
   });
   // treatment sweep
   if (S.sweep > -0.1 && S.sweep < 1.1){
@@ -701,7 +685,7 @@ function frame(now){
   // sweep kills pests
   pests.forEach(p => {
     if (S.sweep >= p.x - .05 && p.d < 1){
-      if (p.d === 0) for (let i=0;i<(p.type==='ants'?30:18);i++) particles.push({x:p.x*W+(Math.random()-.5)*60*(p.type==='ants'?3:1), y:p.y*H+(Math.random()-.5)*30, vx:(Math.random()-.5)*40, vy:-20-Math.random()*60, r:1+Math.random()*2.2, l:1});
+      if (p.d === 0) for (let i=0;i<(p.type==='ants'?30:22);i++) particles.push({x:p.x*W+(Math.random()-.5)*p.mr*1.4, y:p.y*H+(Math.random()-.5)*30, vx:(Math.random()-.5)*40, vy:-20-Math.random()*60, r:1+Math.random()*2.2, l:1});
       p.d = Math.min(1, p.d + dt*2.2);
     }
   });
@@ -735,11 +719,11 @@ function intro(){
     .to(S, {sweep:1.15, duration:1.0, ease:'power1.inOut'}, '<.1')
     .to(S, {R:()=>Math.max(150, Math.min(W,H)*(mobile?.34:.3)), duration:.8, ease:'power3.out',
             onComplete(){ S.introDone = true; S.tx = S.bx; S.ty = S.by; }})
-    .from(lines, {yPercent:110, duration:.8, stagger:.1, ease:'power4.out'}, '-=1.3')
+    .from(lines, {yPercent:140, duration:.8, stagger:.1, ease:'power4.out'}, '-=1.3')
     .to(rest, {opacity:1, duration:.6, stagger:.08, ease:'power2.out'}, '-=.5')
     .fromTo(rest, {y:14}, {y:0, duration:.6, stagger:.08, ease:'power2.out'}, '<')
     .to(hint, {opacity:1, duration:.5}, '-=.2');
-  gsap.set(lines, {yPercent:110});
+  gsap.set(lines, {yPercent:140});
 }
 
 hero.addEventListener('pointermove', e => {

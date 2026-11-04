@@ -134,7 +134,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   Při hovoru zjistit, kdo má přístup k doméně 3dsro.cz.
   4. 11. večer v2 redesign „jako od designéra“: celý web tmavý, písma Archivo (šířková osa) + Public Sans + Newsreader kurzíva pro latinské názvy,
   self-hosted v `deratizace/fonts/`; Atlas škůdců = karta na „kostěném“ papíře se siluetou (SVG v kódu), latinským názvem, velikostí a 3 sloupci rad;
-  služby jako tři obří D (Deratizace/Dezinsekce/Dezinfekce); jemná zrnitost + světlo kurzoru po celé stránce. Tomáš dodá z ChatGPT fotky škůdců a pozadí do hero.
+  služby jako tři obří D (Deratizace/Dezinsekce/Dezinfekce); jemná zrnitost + světlo kurzoru po celé stránce. Hero = Tomášova fotka kuchyně v noci (`deratizace/img/kitchen-wide|tall.webp`, zesvětleno 2,6×) + skutečné spritey myš/šváb/mravenec z ChatGPT (šváb vyříznut rembg isnet); polohy škůdců v souřadnicích fotky (PLACES v index.html), cover přepočet v layout().
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
