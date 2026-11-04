@@ -5,14 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Deratizace Ústí nad Labem – myši, švábi, štěnice | DERATIZACE 3D Neštěmice</title>
 <meta name="description" content="Deratizace, dezinsekce a dezinfekce v Ústí nad Labem a okolí. Myši, potkani, švábi, štěnice, vosy. Služby DDD v systému HACCP pro firmy. Pohotovost nonstop: 606 879 380.">
-<meta name="theme-color" content="#0A1222">
+<meta name="theme-color" content="#0A0F1A">
 <meta property="og:title" content="DERATIZACE 3D – deratizace a dezinsekce Ústí nad Labem">
 <meta property="og:description" content="Najdeme škůdce a zbavíme vás jich. Domácnosti i firmy, pohotovost nonstop.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -37,218 +35,284 @@
 }
 </script>
 <style>
+@font-face{font-family:'Archivo';src:url(fonts/archivo-latin-ext-standard-normal.woff2) format('woff2');font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Archivo';src:url(fonts/archivo-latin-standard-normal.woff2) format('woff2');font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Public Sans';src:url(fonts/public-sans-latin-ext-wght-normal.woff2) format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Public Sans';src:url(fonts/public-sans-latin-wght-normal.woff2) format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Newsreader';src:url(fonts/newsreader-latin-ext-400-italic.woff2) format('woff2');font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Newsreader';src:url(fonts/newsreader-latin-400-italic.woff2) format('woff2');font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
-  --night:#0A1222;
-  --night-2:#121C33;
-  --night-3:#1A2745;
-  --beam:#FFB547;
-  --beam-soft:#FFD58F;
-  --paper:#EDF0F5;
-  --paper-2:#E1E6EE;
-  --ink:#0E1626;
-  --muted:#58637A;
-  --line:#C9D0DC;
-  --alarm:#F0555A;
-  --ok:#3DBE8B;
-  --display:"Bricolage Grotesque", system-ui, sans-serif;
-  --body:"Instrument Sans", system-ui, sans-serif;
+  --ink:#0A0F1A;
+  --ink-2:#0F1726;
+  --steel:#18233A;
+  --line:rgba(236,230,216,.13);
+  --line-2:rgba(236,230,216,.28);
+  --text:#E8EBF1;
+  --muted:#939DB0;
+  --amber:#FFB13D;
+  --amber-2:#FFD08A;
+  --bone:#ECE6D8;
+  --bone-2:#DDD4C1;
+  --bone-ink:#1B1712;
+  --bone-muted:#6F675A;
+  --alarm:#F2545B;
+  --ok:#2FA877;
+  --display:"Archivo", "Arial Narrow", sans-serif;
+  --body:"Public Sans", system-ui, sans-serif;
+  --latin:"Newsreader", Georgia, serif;
   --ease:cubic-bezier(.2,0,0,1);
-  --gutter:clamp(16px,4vw,48px);
-  --max:1240px;
+  --gutter:clamp(16px,4vw,56px);
+  --max:1280px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.55;overflow-x:hidden}
+body{font-family:var(--body);background:var(--ink);color:var(--text);font-size:17px;line-height:1.6;overflow-x:hidden}
 img,svg,canvas{display:block}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--beam);outline-offset:3px;border-radius:6px}
+:focus-visible{outline:2px solid var(--amber);outline-offset:4px;border-radius:2px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
-h1,h2,h3{font-family:var(--display);font-variation-settings:"wdth" 82;line-height:1.02;letter-spacing:-.02em;font-weight:780}
-h2{font-size:clamp(34px,5vw,62px)}
-h3{font-size:22px;letter-spacing:-.01em;line-height:1.15}
-p{max-width:62ch}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 24px;border-radius:999px;font-weight:650;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s var(--ease),background .2s,box-shadow .2s;font-family:var(--body)}
-.btn:active{transform:scale(.97)}
-.btn-beam{background:var(--beam);color:#1B1203;box-shadow:0 0 0 0 rgba(255,181,71,.5)}
-.btn-beam:hover{background:var(--beam-soft);box-shadow:0 0 40px -6px rgba(255,181,71,.7)}
-.btn-ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
-.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,h3{font-family:var(--display);font-weight:850;letter-spacing:-.025em;line-height:.94}
+h2{font-size:clamp(42px,6.2vw,88px);font-variation-settings:"wdth" 82;word-spacing:.04em}
+p{max-width:60ch}
+.lead{font-size:clamp(17px,1.4vw,19px);color:var(--muted);margin-top:22px;max-width:46ch}
+
+/* site-wide texture + beam */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.beam{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:0;transition:opacity .4s;
+  background:radial-gradient(520px circle at var(--mx,50%) var(--my,50%),rgba(255,177,61,.075),transparent 62%)}
+@media (pointer:fine){.beam.on{opacity:1}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 26px;border-radius:6px;font:700 16px/1 var(--body);text-decoration:none;border:0;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s,transform .12s}
+.btn:active{transform:translateY(1px)}
 .btn svg{width:18px;height:18px}
+.btn-amber{background:var(--amber);color:#1A1104}
+.btn-amber:hover{background:var(--amber-2);box-shadow:0 0 0 6px rgba(255,177,61,.14)}
+.btn-line{color:var(--text);box-shadow:inset 0 0 0 1.5px var(--line-2)}
+.btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--text)}
+.btn-ink{background:var(--bone-ink);color:var(--bone)}
+.btn-ink:hover{background:#000}
 
-/* ---------- header ---------- */
-.top{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,backdrop-filter .3s}
-.top.solid{background:rgba(10,18,34,.82);backdrop-filter:blur(12px)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;color:#fff}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-mark{width:44px;height:44px;border-radius:12px;background:var(--beam);color:#1B1203;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:21px;font-variation-settings:"wdth" 75;letter-spacing:-.04em}
-.logo-txt{line-height:1.1}
-.logo-txt b{font-family:var(--display);font-size:18px;font-weight:760;display:block;font-variation-settings:"wdth" 85}
-.logo-txt small{font-size:12.5px;opacity:.7}
-.nav{display:flex;gap:28px;font-size:15px}
-.nav a{text-decoration:none;opacity:.8}
-.nav a:hover{opacity:1}
-.top-call{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:650}
-.dot{width:9px;height:9px;border-radius:50%;background:var(--alarm);box-shadow:0 0 0 0 rgba(240,85,90,.6);animation:ping 2s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(240,85,90,.6)}70%{box-shadow:0 0 0 10px rgba(240,85,90,0)}100%{box-shadow:0 0 0 0 rgba(240,85,90,0)}}
-@media (max-width:960px){.nav{display:none}}
-@media (max-width:560px){.top-call span.num{display:none}.logo-txt small{display:none}}
+/* header */
+.top{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(10,15,26,.86);backdrop-filter:blur(14px);border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none;line-height:1}
+.logo b{font-family:var(--display);font-weight:900;font-size:30px;font-variation-settings:"wdth" 62;color:var(--amber);letter-spacing:-.03em}
+.logo span{font-family:var(--display);font-weight:700;font-size:17px;font-variation-settings:"wdth" 100;letter-spacing:.01em}
+.nav{display:flex;gap:30px;font-size:15px}
+.nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover{color:var(--text)}
+.top-call{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:16px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--alarm);flex:none;animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(242,84,91,.6)}70%{box-shadow:0 0 0 9px rgba(242,84,91,0)}100%{box-shadow:0 0 0 0 rgba(242,84,91,0)}}
+@media (max-width:980px){.nav{display:none}}
+@media (max-width:520px){.top-call .num{display:none}}
 
-/* ---------- hero ---------- */
-.hero{position:relative;min-height:100svh;background:var(--night);color:#fff;overflow:hidden;display:flex;align-items:center}
+/* hero */
+.hero{position:relative;min-height:100svh;background:var(--ink);overflow:hidden;display:flex;align-items:flex-end}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%}
 #ov{pointer-events:none}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,34,.88) 0%,rgba(10,18,34,.55) 38%,rgba(10,18,34,0) 65%);pointer-events:none}
-.hero-in{position:relative;z-index:2;width:100%;padding-top:96px;padding-bottom:64px}
-.hero h1{font-size:clamp(46px,8.2vw,118px);max-width:11ch;text-shadow:0 4px 40px rgba(0,0,0,.5)}
-.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(10,15,26,.9) 0%,rgba(10,15,26,.55) 36%,rgba(10,15,26,0) 62%),linear-gradient(0deg,rgba(10,15,26,.8),rgba(10,15,26,0) 30%)}
+.hero-in{position:relative;z-index:3;width:100%;padding-top:120px;padding-bottom:clamp(48px,8vh,96px)}
+.hero h1{font-size:clamp(54px,9.2vw,146px);font-variation-settings:"wdth" 76;word-spacing:.05em;max-width:9ch;line-height:.88;letter-spacing:-.03em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
 .hero h1 .ln span{display:inline-block}
-.hero h1 .ln:last-child{color:var(--beam)}
-.hero-sub{margin-top:26px;font-size:clamp(17px,1.6vw,20px);max-width:46ch;color:#D3DAE6}
-.hero-cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
-.hero-chips{margin-top:44px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14.5px;color:#B8C2D4;list-style:none}
-.hero-chips li{display:flex;align-items:center;gap:8px}
-.hero-chips svg{width:16px;height:16px;color:var(--beam)}
-.hint{position:absolute;right:var(--gutter);bottom:28px;z-index:3;font-size:13.5px;color:#9AA6BC;display:flex;align-items:center;gap:8px;opacity:0}
-.hint svg{width:18px;height:18px}
+.hero h1 .ln:nth-child(3){color:var(--amber)}
+.hero-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 40px;margin-top:34px}
+.hero-sub{font-size:clamp(17px,1.5vw,20px);max-width:40ch;color:#C9D0DC}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hint{position:absolute;right:var(--gutter);top:110px;z-index:3;font-size:13px;color:var(--muted);opacity:0;display:flex;align-items:center;gap:8px}
+.hint svg{width:16px;height:16px}
 @media (max-width:760px){
-  .hero{align-items:flex-end}
-  .hero::after{background:linear-gradient(0deg,rgba(10,18,34,.95) 0%,rgba(10,18,34,.75) 45%,rgba(10,18,34,.1) 80%)}
+  .hero::after{background:linear-gradient(0deg,rgba(10,15,26,.97) 0%,rgba(10,15,26,.8) 48%,rgba(10,15,26,.05) 80%)}
   .hint{display:none}
-  .hero-cta .btn{flex:1 1 auto;justify-content:center}
+  .hero-cta{width:100%}.hero-cta .btn{flex:1 1 auto}
 }
 .js .reveal-h{opacity:0}
 
-/* ---------- strip ---------- */
-.strip{background:var(--beam);color:#1B1203;font-weight:600}
-.strip .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 30px;padding-top:18px;padding-bottom:18px;font-size:15.5px}
-.strip a{font-weight:750;text-decoration:none;border-bottom:2px solid currentColor}
+/* status line */
+.status{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2);position:relative;z-index:3}
+.status .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 32px;padding-top:16px;padding-bottom:16px;font-size:15px;color:var(--muted)}
+.status b{color:var(--text);font-weight:600}
+.status a{color:var(--amber);font-weight:700;text-decoration:none}
+.status span{display:flex;align-items:center;gap:10px}
 
-/* ---------- sections ---------- */
-section{padding:clamp(80px,11vw,140px) 0}
-.lead{font-size:clamp(18px,1.6vw,21px);color:var(--muted);margin-top:18px}
-.sec-head{display:grid;grid-template-columns:1.1fr 1fr;gap:24px 60px;align-items:end;margin-bottom:56px}
-@media (max-width:860px){.sec-head{grid-template-columns:1fr}}
+section{position:relative;z-index:3;padding:clamp(88px,12vw,160px) 0}
 
-/* pest picker */
-.picker{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:start}
-.pests{display:flex;flex-direction:column;gap:4px;list-style:none}
-.pests button{width:100%;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;border:0;background:transparent;font:inherit;font-weight:600;font-size:17px;color:var(--ink);cursor:pointer;text-align:left;transition:background .2s}
-.pests button:hover{background:var(--paper-2)}
-.pests button[aria-selected="true"]{background:var(--ink);color:#fff}
-.pests button svg{width:30px;height:30px;flex:none}
-.panel{background:#fff;border-radius:28px;padding:clamp(26px,4vw,48px);box-shadow:0 30px 60px -40px rgba(14,22,38,.35);min-height:420px;position:relative;overflow:hidden}
-.panel h3{font-size:clamp(28px,3.4vw,42px);font-variation-settings:"wdth" 80;margin-bottom:8px}
-.panel .intro{color:var(--muted);font-size:18px}
-.panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:34px}
-.panel-grid h4{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:10px}
-.panel-grid ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:16px}
-.panel-grid li{padding-left:22px;position:relative}
-.panel-grid li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;border-radius:3px;background:var(--line)}
-.col-do li::before{background:var(--beam)}
-.col-now li::before{background:var(--alarm);border-radius:50%}
-.panel-foot{margin-top:36px;padding-top:24px;border-top:1px solid var(--paper-2);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
-.panel-foot p{font-weight:600}
-.panel-art{position:absolute;right:-56px;top:-56px;width:200px;height:200px;color:var(--paper);pointer-events:none;z-index:0}
-.panel .pc{position:relative;z-index:1}
-@media (max-width:900px){
-  .picker{grid-template-columns:1fr}
-  .pests{flex-direction:row;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;margin:0 calc(var(--gutter)*-1);padding-left:var(--gutter);padding-right:var(--gutter)}
-  .pests button{white-space:nowrap;background:var(--paper-2)}
-  .panel-grid{grid-template-columns:1fr;gap:22px}
-  .panel-art{width:130px;height:130px}
+/* ---------- ATLAS ---------- */
+.atlas-head{display:grid;grid-template-columns:1.2fr 1fr;gap:20px 64px;align-items:end;margin-bottom:64px}
+.atlas{display:grid;grid-template-columns:minmax(240px,320px) 1fr;gap:clamp(28px,4vw,64px);align-items:start}
+.index{list-style:none;border-top:1px solid var(--line);position:sticky;top:100px}
+.index button{width:100%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 14px;padding:16px 0;border:0;border-bottom:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;text-align:left;font:inherit;transition:color .2s}
+.index button b{font-family:var(--display);font-size:24px;font-weight:750;font-variation-settings:"wdth" 80;letter-spacing:-.01em;line-height:1.1}
+.index button i{grid-column:1;font-family:var(--latin);font-size:15px;opacity:.8}
+.index button::after{content:"";grid-row:1/3;grid-column:2;width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line-2);transition:background .2s,box-shadow .2s}
+.index button:hover{color:var(--text)}
+.index button[aria-selected="true"]{color:var(--text)}
+.index button[aria-selected="true"]::after{background:var(--amber);box-shadow:0 0 0 5px rgba(255,177,61,.18)}
+
+.plate{background:var(--bone);color:var(--bone-ink);border-radius:4px;position:relative;overflow:hidden;box-shadow:0 50px 90px -50px rgba(0,0,0,.9)}
+.plate::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(27,23,18,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,23,18,.06) 1px,transparent 1px);background-size:24px 24px}
+.plate-top{position:relative;display:grid;grid-template-columns:1.1fr 1fr;border-bottom:1px solid rgba(27,23,18,.18)}
+.spec{position:relative;min-height:340px;display:grid;place-items:center;padding:28px;border-right:1px solid rgba(27,23,18,.18)}
+.spec svg{width:min(300px,90%);height:auto;color:var(--bone-ink)}
+.spec .tag{position:absolute;left:20px;bottom:18px;font-size:12.5px;color:var(--bone-muted)}
+.id{padding:clamp(24px,3vw,40px);display:flex;flex-direction:column}
+.id h3{font-size:clamp(34px,3.6vw,52px);font-variation-settings:"wdth" 80;word-spacing:.04em;line-height:.95}
+.id .latin{font-family:var(--latin);font-style:italic;font-size:20px;color:var(--bone-muted);margin-top:8px}
+.id p.desc{margin-top:18px;font-size:16.5px;line-height:1.6}
+.facts{margin-top:auto;padding-top:26px;display:grid;gap:12px}
+.fact{display:grid;grid-template-columns:96px 1fr;gap:12px;font-size:15px;align-items:baseline;border-top:1px solid rgba(27,23,18,.14);padding-top:10px}
+.fact dt{color:var(--bone-muted)}
+.ruler{height:12px;margin-top:6px;background:repeating-linear-gradient(90deg,var(--bone-ink) 0 1px,transparent 1px 8px);mask-image:linear-gradient(90deg,#000,#000 70%,transparent);-webkit-mask-image:linear-gradient(90deg,#000,#000 70%,transparent);opacity:.55}
+.advice{position:relative;display:grid;grid-template-columns:repeat(3,1fr)}
+.advice > div{padding:26px clamp(20px,2.4vw,32px) 30px;border-right:1px solid rgba(27,23,18,.18)}
+.advice > div:last-child{border-right:0;background:rgba(242,84,91,.08)}
+.advice h4{font-family:var(--display);font-size:19px;font-weight:800;font-variation-settings:"wdth" 85;margin-bottom:12px}
+.advice ul{list-style:none;display:grid;gap:9px;font-size:15.5px;line-height:1.5}
+.advice li{padding-left:18px;position:relative}
+.advice li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1.5px;background:currentColor;opacity:.5}
+.plate-foot{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:18px clamp(20px,2.4vw,32px);background:var(--bone-2)}
+.plate-foot p{font-weight:600}
+@media (max-width:1000px){
+  .atlas-head{grid-template-columns:1fr}
+  .atlas{grid-template-columns:1fr}
+  .index{position:static;display:flex;overflow-x:auto;gap:8px;border:0;scrollbar-width:none;margin:0 calc(var(--gutter)*-1);padding:0 var(--gutter)}
+  .index li{flex:none}
+  .index button{display:block;border:1px solid var(--line);border-radius:4px;padding:10px 14px;white-space:nowrap}
+  .index button b{font-size:17px}
+  .index button i,.index button::after{display:none}
+  .index button[aria-selected="true"]{background:var(--bone);color:var(--bone-ink);border-color:var(--bone)}
+}
+@media (max-width:720px){
+  .plate-top{grid-template-columns:1fr}
+  .spec{min-height:230px;border-right:0;border-bottom:1px solid rgba(27,23,18,.18)}
+  .spec svg{width:200px}
+  .advice{grid-template-columns:1fr}
+  .advice > div{border-right:0;border-bottom:1px solid rgba(27,23,18,.18)}
 }
 
-/* services */
-.services{background:#fff}
-.svc{list-style:none;border-top:1.5px solid var(--ink)}
-.svc li{display:grid;grid-template-columns:72px minmax(200px,1fr) 1.4fr;gap:20px 36px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
-.svc .ic{width:56px;height:56px;border-radius:16px;background:var(--paper);display:grid;place-items:center;transition:background .25s,color .25s}
-.svc .ic svg{width:30px;height:30px}
-.svc li:hover .ic{background:var(--ink);color:var(--beam)}
-.svc h3{font-size:clamp(24px,2.6vw,32px);font-variation-settings:"wdth" 82}
-.svc p{color:var(--muted)}
-@media (max-width:760px){.svc li{grid-template-columns:56px 1fr}.svc li p{grid-column:1/-1}}
+/* ---------- TŘI D ---------- */
+.services{background:var(--ink-2);border-top:1px solid var(--line)}
+.services h2{max-width:13ch}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);margin-top:72px;border-top:1px solid var(--line)}
+.d{padding:34px clamp(18px,2.4vw,36px) 40px;border-right:1px solid var(--line)}
+.d:first-child{padding-left:0}
+.d:last-child{border-right:0;padding-right:0}
+.word{display:flex;align-items:flex-end;line-height:.78;margin-bottom:30px}
+.word b{font-family:var(--display);font-weight:900;font-size:clamp(130px,15vw,230px);font-variation-settings:"wdth" 62;color:transparent;-webkit-text-stroke:2px var(--amber);transition:color .35s var(--ease);letter-spacing:-.04em}
+.word span{font-family:var(--display);font-weight:800;font-size:clamp(26px,2.5vw,38px);font-variation-settings:"wdth" 82;padding-bottom:.32em;margin-left:2px}
+.d:hover .word b,.d.lit .word b{color:var(--amber)}
+.d p{color:var(--muted)}
+.d .on{margin-top:18px;font-size:14.5px;color:var(--text)}
+.d .on em{font-style:normal;color:var(--muted)}
+.extra{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:200px repeat(4,1fr);gap:28px;border-top:1px solid var(--line);padding-top:30px}
+.extra > h3{font-size:24px;font-variation-settings:"wdth" 80;line-height:1.1}
+.extra h4{font-family:var(--display);font-weight:800;font-size:20px;font-variation-settings:"wdth" 85;line-height:1.15;margin-bottom:8px}
+.extra p{color:var(--muted);font-size:15.5px}
+@media (max-width:1000px){.extra{grid-template-columns:1fr 1fr}.extra > h3{grid-column:1/-1}}
+@media (max-width:820px){
+  .trio{grid-template-columns:1fr}
+  .d,.d:first-child,.d:last-child{padding:30px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .word b{font-size:120px}
+}
+@media (max-width:520px){.extra{grid-template-columns:1fr}}
 
-/* business */
-.biz{background:var(--night);color:#fff;position:relative;overflow:hidden}
-.biz .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
-.biz .lead{color:#B8C2D4}
-.biz-list{list-style:none;margin:34px 0 40px;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
-.biz-list li{display:flex;gap:12px;align-items:flex-start}
-.biz-list svg{width:22px;height:22px;flex:none;color:var(--beam);margin-top:2px}
-.sheet{background:#F7F8FA;color:var(--ink);border-radius:22px;padding:30px;transform:rotate(-2deg);box-shadow:0 40px 80px -30px rgba(0,0,0,.6);position:relative;max-width:470px;justify-self:center;width:100%}
-.sheet::before{content:"";position:absolute;top:-14px;left:50%;translate:-50% 0;width:120px;height:30px;border-radius:8px;background:#9AA4B5}
-.sheet-h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:8px}
-.sheet-h b{font-family:var(--display);font-size:22px;font-variation-settings:"wdth" 80}
-.sheet-h span{font-size:13px;color:var(--muted)}
+/* ---------- FIRMY ---------- */
+.biz .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.biz-points{margin:36px 0 40px;display:grid;gap:0;border-top:1px solid var(--line)}
+.biz-points div{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}
+.biz-points dt{font-weight:700}
+.biz-points dd{color:var(--muted)}
+.sheet{background:var(--bone);color:var(--bone-ink);border-radius:4px;padding:32px 30px 26px;transform:rotate(-2.2deg);box-shadow:0 50px 90px -40px rgba(0,0,0,.85);position:relative;max-width:470px;justify-self:center;width:100%}
+.sheet::before{content:"";position:absolute;top:-16px;left:50%;translate:-50% 0;width:130px;height:32px;border-radius:5px;background:linear-gradient(#A9A396,#8E887B);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.sheet-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:2px solid var(--bone-ink);padding-bottom:12px;margin-bottom:6px}
+.sheet-h b{font-family:var(--display);font-size:22px;font-weight:850;font-variation-settings:"wdth" 75}
+.sheet-h span{font-size:13px;color:var(--bone-muted)}
 .sheet ul{list-style:none}
-.sheet li{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px dashed var(--line);font-size:15.5px}
-.tick{width:26px;height:26px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center}
-.tick svg{width:16px;height:16px;color:var(--ok);stroke-dasharray:24;stroke-dashoffset:24}
-.sheet .stamp{margin-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted)}
-.stamp i{font-style:normal;font-family:var(--display);font-weight:800;color:var(--ok);border:2.5px solid var(--ok);border-radius:10px;padding:6px 12px;transform:rotate(-6deg);font-size:18px;opacity:0}
-@media (max-width:900px){.biz .wrap{grid-template-columns:1fr}.biz-list{grid-template-columns:1fr}}
+.sheet li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px dashed rgba(27,23,18,.25);font-size:15.5px}
+.tick{width:26px;height:26px;flex:none;border-radius:4px;border:1.5px solid rgba(27,23,18,.35);display:grid;place-items:center}
+.tick svg{width:17px;height:17px;color:var(--ok);stroke-dasharray:24;stroke-dashoffset:24}
+.stamp{margin-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--bone-muted)}
+.stamp i{font-style:normal;font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 75;color:var(--ok);border:2.5px solid var(--ok);border-radius:6px;padding:5px 12px;transform:rotate(-7deg);font-size:19px;opacity:0}
+@media (max-width:900px){.biz .wrap{grid-template-columns:1fr}.biz-points div{grid-template-columns:1fr;gap:2px}}
 
-/* process */
-.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;counter-reset:s}
-.steps::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:var(--line)}
-.steps .bar{position:absolute;left:0;top:27px;height:2px;background:var(--ink);width:100%;transform-origin:left;transform:scaleX(0)}
-.steps li{position:relative;counter-increment:s}
-.steps li::before{content:counter(s);display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:22px;position:relative}
-.steps li:first-child::before{background:var(--beam);border-color:var(--beam)}
-.steps p{color:var(--muted);margin-top:8px;font-size:16px}
-@media (max-width:860px){.steps{grid-template-columns:1fr 1fr;gap:40px 24px}.steps::before,.steps .bar{display:none}}
-@media (max-width:480px){.steps{grid-template-columns:1fr}}
+/* ---------- POSTUP ---------- */
+.how{background:var(--ink-2);border-top:1px solid var(--line)}
+.how-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 60px}
+.track{position:relative;height:2px;background:var(--line);margin:72px 0 0}
+.track i{position:absolute;inset:0;background:var(--amber);transform-origin:left;transform:scaleX(0)}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding-top:36px}
+.steps li::before{content:counter(s);position:absolute;top:-9px;left:0;width:16px;height:16px;border-radius:50%;background:var(--ink-2);box-shadow:inset 0 0 0 2px var(--amber);font-size:0}
+.steps li:first-child::before{background:var(--amber)}
+.steps h3{font-size:30px;font-variation-settings:"wdth" 82;line-height:1}
+.steps h3 small{display:block;font-family:var(--body);font-size:13px;font-weight:600;color:var(--amber);letter-spacing:0;margin-bottom:10px}
+.steps p{color:var(--muted);margin-top:10px;font-size:16px}
+.safe{margin-top:clamp(64px,8vw,110px);display:grid;grid-template-columns:1fr 2fr;gap:28px 64px;padding-top:36px;border-top:1px solid var(--line)}
+.safe h3{font-size:clamp(28px,3vw,40px);font-variation-settings:"wdth" 82;line-height:1}
+.safe dl{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.safe dt{font-weight:700;margin-bottom:6px}
+.safe dd{color:var(--muted);font-size:15.5px}
+@media (max-width:900px){
+  .track{display:none}
+  .steps{grid-template-columns:1fr 1fr;gap:36px 28px;margin-top:48px}
+  .steps li{padding-top:0;padding-left:30px}
+  .steps li::before{top:6px}
+  .safe{grid-template-columns:1fr}.safe dl{grid-template-columns:1fr}
+}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
 
-/* safety */
-.safe{background:var(--paper-2)}
-.safe .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.safe-list{list-style:none;display:flex;flex-direction:column;gap:22px}
-.safe-list li{display:grid;grid-template-columns:48px 1fr;gap:16px}
-.safe-list .ic{width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center}
-.safe-list .ic svg{width:24px;height:24px}
-.safe-list b{display:block;font-size:18px;margin-bottom:2px}
-.safe-list span{color:var(--muted)}
-@media (max-width:860px){.safe .wrap{grid-template-columns:1fr}}
-
-/* faq */
-.faq-list{max-width:860px}
+/* ---------- FAQ ---------- */
+.faq .wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:40px 80px;align-items:start}
+.faq h2{position:sticky;top:110px}
+.faq-list{border-top:1px solid var(--line)}
 .faq-list details{border-bottom:1px solid var(--line)}
-.faq-list summary{list-style:none;cursor:pointer;padding:26px 48px 26px 0;font-family:var(--display);font-size:clamp(20px,2.2vw,26px);font-weight:700;font-variation-settings:"wdth" 85;position:relative}
+.faq-list summary{list-style:none;cursor:pointer;padding:26px 52px 26px 0;font-family:var(--display);font-size:clamp(20px,2vw,25px);font-weight:750;font-variation-settings:"wdth" 85;line-height:1.2;position:relative;transition:color .2s}
+.faq-list summary:hover{color:var(--amber)}
 .faq-list summary::-webkit-details-marker{display:none}
-.faq-list summary::after{content:"";position:absolute;right:6px;top:50%;width:16px;height:16px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--ease)}
-.faq-list details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
-.faq-list details p{padding:0 0 26px;color:var(--muted)}
+.faq-list summary::before,.faq-list summary::after{content:"";position:absolute;right:8px;top:50%;width:18px;height:2px;background:currentColor;transition:transform .3s var(--ease)}
+.faq-list summary::after{transform:rotate(90deg)}
+.faq-list details[open] summary::after{transform:rotate(0)}
+.faq-list details p{padding:0 0 28px;color:var(--muted)}
+@media (max-width:900px){.faq .wrap{grid-template-columns:1fr}.faq h2{position:static}}
 
-/* contact */
-.contact{background:var(--night);color:#fff}
-.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.big-call{display:block;margin-top:30px;text-decoration:none}
-.big-call small{display:flex;align-items:center;gap:10px;color:#B8C2D4;font-size:15px}
-.big-call b{display:block;white-space:nowrap;font-family:var(--display);font-size:clamp(40px,5vw,72px);font-variation-settings:"wdth" 78;font-weight:800;color:var(--beam);letter-spacing:-.02em;line-height:1.05}
-.c-info{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:16px;color:#D3DAE6}
-.c-info h4{font-size:13.5px;color:#8C98AE;font-weight:600;margin-bottom:4px}
-.form{align-self:start;background:var(--night-2);border-radius:26px;padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:16px}
-.form h3{font-size:28px;font-variation-settings:"wdth" 82}
-.form label{display:flex;flex-direction:column;gap:6px;font-size:14.5px;color:#B8C2D4}
-.form input,.form select,.form textarea{font:inherit;font-size:16px;color:#fff;background:var(--night-3);border:1.5px solid transparent;border-radius:12px;padding:13px 15px;transition:border-color .2s}
-.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--beam)}
-.form textarea{min-height:110px;resize:vertical}
-.form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form .btn{justify-content:center;margin-top:6px}
-.form-ok{display:none;background:rgba(61,190,139,.14);color:#9FE3C6;border-radius:12px;padding:14px 16px;font-size:15px}
-.map{margin-top:30px;border-radius:20px;overflow:hidden;height:230px;filter:grayscale(.6) contrast(1.05)}
+/* ---------- KONTAKT ---------- */
+.contact{background:var(--ink-2);border-top:1px solid var(--line)}
+.contact .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,6vw,96px)}
+.big-call{display:inline-block;margin-top:40px;text-decoration:none}
+.big-call small{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;margin-bottom:6px}
+.big-call b{display:block;white-space:nowrap;font-family:var(--display);font-size:clamp(46px,6.4vw,100px);font-variation-settings:"wdth" 74;word-spacing:.04em;font-weight:900;color:var(--amber);letter-spacing:-.025em;line-height:1}
+.big-call:hover b{color:var(--amber-2)}
+.c-info{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.c-info > div{padding:18px 0;border-bottom:1px solid var(--line);font-size:16px}
+.c-info h4{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.map{margin-top:32px;border-radius:4px;overflow:hidden;height:240px;filter:grayscale(1) invert(.92) contrast(.9) brightness(.9);opacity:.85}
 .map iframe{width:100%;height:100%;border:0}
+.form{align-self:start;background:var(--bone);color:var(--bone-ink);border-radius:4px;padding:clamp(24px,3.4vw,44px);display:flex;flex-direction:column;gap:16px}
+.form h3{font-size:34px;font-variation-settings:"wdth" 72;margin-bottom:4px}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:var(--bone-muted)}
+.form input,.form select,.form textarea{font:inherit;font-size:16px;font-weight:400;color:var(--bone-ink);background:transparent;border:0;border-bottom:1.5px solid rgba(27,23,18,.3);border-radius:0;padding:10px 0;transition:border-color .2s}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--bone-ink)}
+.form textarea{min-height:90px;resize:vertical}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form .btn{margin-top:10px}
+.form-ok{display:none;background:rgba(47,168,119,.14);color:#1F6B4C;border-radius:4px;padding:14px 16px;font-size:15px}
 @media (max-width:900px){.contact .wrap{grid-template-columns:1fr}}
 @media (max-width:480px){.form .row,.c-info{grid-template-columns:1fr}}
 
-footer{background:#060C18;color:#7D889D;font-size:14px;padding:30px 0 100px}
+footer{position:relative;z-index:3;border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:28px 0 100px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
-/* mobile call bar */
-.callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:10px}
-.callbar a{flex:1;justify-content:center;padding:15px 12px;box-shadow:0 10px 30px -8px rgba(0,0,0,.5)}
-.callbar .btn-ghost{background:var(--night);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3),0 10px 30px -8px rgba(0,0,0,.5)}
+.callbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:10px;transform:translateY(150%);transition:transform .35s var(--ease)}
+.callbar.show{transform:none}
+.callbar .btn{flex:1;box-shadow:0 12px 30px -8px rgba(0,0,0,.6)}
+.callbar .btn-line{background:var(--ink)}
 @media (max-width:760px){.callbar{display:flex}footer{padding-bottom:110px}}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -256,21 +320,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 </head>
 <body>
 <script>document.documentElement.classList.add('js')</script>
+<div class="grain" aria-hidden="true"></div>
+<div class="beam" id="beam" aria-hidden="true"></div>
 
 <header class="top" id="top">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="DERATIZACE 3D – úvod">
-      <span class="logo-mark">3D</span>
-      <span class="logo-txt"><b>DERATIZACE 3D</b><small>Deratizace, dezinsekce, dezinfekce</small></span>
-    </a>
+    <a class="logo" href="#" aria-label="DERATIZACE 3D – úvod"><b>3D</b><span>deratizace</span></a>
     <nav class="nav" aria-label="Hlavní menu">
-      <a href="#skudci">Škůdci</a>
+      <a href="#atlas">Atlas škůdců</a>
       <a href="#sluzby">Služby</a>
       <a href="#firmy">Pro firmy</a>
-      <a href="#postup">Jak to probíhá</a>
+      <a href="#postup">Postup</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="top-call" href="tel:+420606879380"><span class="dot" aria-hidden="true"></span><span class="num">606 879 380</span><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Zavolat nonstop</span></a>
+    <a class="top-call" href="tel:+420606879380"><span class="dot" aria-hidden="true"></span><span class="num">606 879 380</span><span class="sr">Zavolat nonstop</span></a>
   </div>
 </header>
 
@@ -284,76 +347,85 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <span class="ln"><span>A zbavíme</span></span>
       <span class="ln"><span>vás jich.</span></span>
     </h1>
-    <p class="hero-sub reveal-h">Myši, potkani, švábi, štěnice nebo vosy. Deratizace, dezinsekce a dezinfekce pro domácnosti i firmy v Ústí nad Labem a okolí.</p>
-    <div class="hero-cta reveal-h">
-      <a class="btn btn-beam" href="tel:+420606879380">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-        Zavolat nonstop 606 879 380
-      </a>
-      <a class="btn btn-ghost" href="#skudci">Co mě trápí?</a>
+    <div class="hero-row">
+      <p class="hero-sub reveal-h">Deratizace, dezinsekce a dezinfekce pro domácnosti i firmy. Ústí nad Labem a okolí, pohotovost ve dne i v noci.</p>
+      <div class="hero-cta reveal-h">
+        <a class="btn btn-amber" href="tel:+420606879380">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          606 879 380
+        </a>
+        <a class="btn btn-line" href="#atlas">Co se u vás objevilo?</a>
+      </div>
     </div>
-    <ul class="hero-chips reveal-h">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pohotovost 24 hodin denně</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Služby DDD v systému HACCP</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sídlíme v Neštěmicích</li>
-    </ul>
   </div>
-  <div class="hint" id="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Posviťte si sami – pohybujte myší</div>
+  <div class="hint" id="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Posviťte si myší</div>
 </section>
 
-<div class="strip">
+<div class="status">
   <div class="wrap">
-    <span>Kancelář Po–Pá 7:00–15:00, telefon <a href="tel:+420472731510">472 731 510</a></span>
-    <span>Mimo pracovní dobu volejte pohotovost <a href="tel:+420606879380">606 879 380</a></span>
+    <span><span class="dot" aria-hidden="true"></span><b>Pohotovost nonstop</b> <a href="tel:+420606879380">606 879 380</a></span>
+    <span><b>Kancelář</b> Po–Pá 7:00–15:00, <a href="tel:+420472731510">472 731 510</a></span>
+    <span><b>Veslařská 169</b> Ústí nad Labem – Neštěmice</span>
   </div>
 </div>
 
-<!-- PEST PICKER -->
-<section id="skudci" aria-labelledby="h-skudci">
+<!-- ATLAS -->
+<section id="atlas" aria-labelledby="h-atlas">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 id="h-skudci">Co se u vás objevilo?</h2>
-      <p class="lead">Vyberte škůdce. Řekneme vám, podle čeho ho poznáte, co s ním uděláme a co máte udělat hned teď, než přijedeme.</p>
+    <div class="atlas-head">
+      <h2 id="h-atlas">Atlas škůdců</h2>
+      <p class="lead">Podle čeho poznáte, koho máte doma, co s tím uděláme my a co udělat hned teď, než přijedeme.</p>
     </div>
-    <div class="picker">
-      <ul class="pests" role="tablist" aria-label="Druh škůdce" id="pestTabs"></ul>
-      <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+    <div class="atlas">
+      <ul class="index" role="tablist" aria-label="Druh škůdce" id="pestTabs"></ul>
+      <article class="plate" id="panel" role="tabpanel" aria-live="polite"></article>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- TŘI D -->
 <section class="services" id="sluzby" aria-labelledby="h-sluzby">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 id="h-sluzby">Tři D a něco navíc</h2>
-      <p class="lead">Deratizace, dezinsekce, dezinfekce. Odtud název naší firmy. K tomu umíme plynování, ošetření dřeva a fasád.</p>
+    <h2 id="h-sluzby">Tři D v názvu. Tři obory v praxi.</h2>
+    <div class="trio">
+      <div class="d">
+        <h3 class="word" aria-label="Deratizace"><b aria-hidden="true">D</b><span aria-hidden="true">eratizace</span></h3>
+        <p>Hubení myší a potkanů v bytech, domech, sklepech i provozovnách. Zabezpečené nástrahy, ke kterým se nedostanou děti ani zvířata.</p>
+        <p class="on"><em>Na koho:</em> myši, potkani</p>
+      </div>
+      <div class="d">
+        <h3 class="word" aria-label="Dezinsekce"><b aria-hidden="true">D</b><span aria-hidden="true">ezinsekce</span></h3>
+        <p>Hubení hmyzu. Postup vybíráme podle druhu a prostoru, ne podle jednoho univerzálního spreje.</p>
+        <p class="on"><em>Na koho:</em> švábi, rusi, štěnice, blechy, mravenci, vosy, sršně</p>
+      </div>
+      <div class="d">
+        <h3 class="word" aria-label="Dezinfekce"><b aria-hidden="true">D</b><span aria-hidden="true">ezinfekce</span></h3>
+        <p>Ničení bakterií, virů a plísní v provozovnách, společných prostorách domů a po výskytu škůdců.</p>
+        <p class="on"><em>Kde:</em> kuchyně, sklady, sklepy, společné prostory</p>
+      </div>
     </div>
-    <ul class="svc">
-      <li><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="14" cy="19" rx="9" ry="6"/><circle cx="22" cy="12.5" r="3"/><path d="M5 19c-3 0-3 5 1 6M24 17l4 1M20 22v3M10 23v2"/></svg></div><h3>Deratizace</h3><p>Hubení myší a potkanů v bytech, domech, sklepech i provozovnách. Zabezpečené nástrahy, na které se nedostanou děti ani zvířata.</p></li>
-      <li><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="18" rx="6" ry="8"/><circle cx="16" cy="8" r="2.5"/><path d="M14 6 10 2M18 6l4-4M10 14l-5-2M10 19H4M10 23l-5 3M22 14l5-2M22 19h6M22 23l5 3"/></svg></div><h3>Dezinsekce</h3><p>Švábi, rusi, štěnice, blechy, mravenci, vosy a sršně. Postup vybíráme podle hmyzu a prostoru, ne podle jednoho univerzálního spreje.</p></li>
-      <li><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3s9 9.5 9 16a9 9 0 0 1-18 0c0-6.5 9-16 9-16z"/><path d="M12 20l3 3 6-6"/></svg></div><h3>Dezinfekce</h3><p>Ničení bakterií, virů a plísní v provozovnách, společných prostorách domů a po výskytu škůdců.</p></li>
-      <li><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 28V13l12-8 12 8v15z"/><path d="M11 28v-8h10v8"/><path d="M9 9c1-2 3-2 4 0M19 9c1-2 3-2 4 0"/></svg></div><h3>Plynování objektů a komodit</h3><p>Ošetření skladů, sil a uskladněných surovin vysoce účinnými plyny. Proniknou tam, kam se postřikem nedostanete.</p></li>
-      <li><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="26" height="12" rx="2"/><circle cx="9" cy="14" r="1"/><circle cx="14" cy="17" r="1"/><circle cx="21" cy="15" r="1"/><circle cx="25" cy="18" r="1"/></svg></div><h3>Ošetření dřeva</h3><p>Krovy, trámy a dřevěné konstrukce chráníme proti dřevokaznému hmyzu a dalším biotickým škůdcům.</p></li>
-      <li><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="24" height="24" rx="2"/><path d="M4 16h24M16 4v24"/><circle cx="22" cy="10" r="2.5"/><path d="M22 7.5V4M19.5 10H17M24.5 10H28"/></svg></div><h3>Fasády proti pavoukům</h3><p>Ošetření fasád, oken a podhledů, aby se na nich nedržely pavučiny a skvrny po pavoucích.</p></li>
-      <li><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 29V15M16 15c0-6-5-9-10-9 0 5 4 9 10 9zM16 19c0-5 4-8 10-8 0 5-4 8-10 8z"/><path d="M8 29h16"/></svg></div><h3>Likvidace plevele</h3><p>Hubení plevele na plochách, dvorech, chodnících a v areálech firem.</p></li>
-    </ul>
+    <div class="extra">
+      <h3>A k tomu</h3>
+      <div><h4>Plynování objektů a komodit</h4><p>Sklady, sila a uskladněné suroviny. Plyn pronikne i tam, kam se postřikem nedostanete.</p></div>
+      <div><h4>Ošetření dřeva</h4><p>Krovy, trámy a dřevěné konstrukce proti dřevokaznému hmyzu.</p></div>
+      <div><h4>Fasády proti pavoukům</h4><p>Fasády, okna a podhledy bez pavučin a tmavých skvrn.</p></div>
+      <div><h4>Likvidace plevele</h4><p>Dvory, chodníky, plochy a areály firem.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- BUSINESS -->
+<!-- FIRMY -->
 <section class="biz" id="firmy" aria-labelledby="h-firmy">
   <div class="wrap">
     <div>
-      <h2 id="h-firmy">Pro restaurace, školy, sklady a výrobu</h2>
-      <p class="lead">Kontrola z hygieny se nečeká. Pravidelnou ochranu proti škůdcům v systému HACCP postavíme na míru vašemu provozu a postaráme se o dokumentaci.</p>
-      <ul class="biz-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pravidelné kontroly podle smlouvy</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Plán nástrah a záznamy z každé návštěvy</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Podklady připravené pro hygienu</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Rychlý zásah, když se něco objeví</li>
-      </ul>
-      <a class="btn btn-beam" href="#kontakt">Domluvit smlouvu pro provoz</a>
+      <h2 id="h-firmy">Pro provozy, kam chodí hygiena</h2>
+      <p class="lead">Restaurace, jídelny, školy, sklady a výroba. Pravidelnou ochranu v systému HACCP postavíme na míru vašemu provozu a postaráme se o záznamy.</p>
+      <dl class="biz-points">
+        <div><dt>Smlouva</dt><dd>Pravidelné kontroly v dohodnutých termínech.</dd></div>
+        <div><dt>Dokumentace</dt><dd>Plán nástrah a záznam z každé návštěvy, připravené pro kontrolu.</dd></div>
+        <div><dt>Zásah</dt><dd>Když se mezi kontrolami něco objeví, přijedeme.</dd></div>
+      </dl>
+      <a class="btn btn-amber" href="#kontakt">Domluvit smlouvu pro provoz</a>
     </div>
     <div class="sheet" id="sheet" aria-hidden="true">
       <div class="sheet-h"><b>Kontrolní záznam DDD</b><span>Provozovna: restaurace</span></div>
@@ -368,42 +440,35 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
-<!-- PROCESS -->
-<section id="postup" aria-labelledby="h-postup">
+<!-- POSTUP -->
+<section class="how" id="postup" aria-labelledby="h-postup">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="how-head">
       <h2 id="h-postup">Jak to probíhá</h2>
-      <p class="lead">Žádné složité objednávání. Zavoláte, popíšete problém a domluvíme termín.</p>
+      <p class="lead">Zavoláte, popíšete, co jste viděli, a domluvíme termín. Nic dalšího vyplňovat nemusíte.</p>
     </div>
-    <ol class="steps" id="steps">
-      <span class="bar" id="stepsBar" aria-hidden="true"></span>
-      <li><h3>Zavoláte nám</h3><p>Popíšete, co jste viděli a kde. Hned řekneme, co dělat do příjezdu.</p></li>
-      <li><h3>Prohlídka</h3><p>Najdeme úkryty, cesty a příčinu, proč se škůdci u vás drží.</p></li>
-      <li><h3>Zásah</h3><p>Ošetříme prostor vhodnou metodou a vysvětlíme, na co si dát pozor.</p></li>
-      <li><h3>Kontrola</h3><p>Podle potřeby přijedeme znovu a ověříme, že je opravdu klid.</p></li>
+    <div class="track" id="track" aria-hidden="true"><i></i></div>
+    <ol class="steps">
+      <li><h3><small>Telefon</small>Zavoláte nám</h3><p>Popíšete, co jste viděli a kde. Hned řekneme, co dělat do našeho příjezdu.</p></li>
+      <li><h3><small>Na místě</small>Prohlídka</h3><p>Najdeme úkryty, cesty a příčinu, proč se škůdci u vás drží.</p></li>
+      <li><h3><small>Ošetření</small>Zásah</h3><p>Ošetříme prostor vhodnou metodou a vysvětlíme, na co si dát pozor.</p></li>
+      <li><h3><small>Ověření</small>Kontrola</h3><p>Podle potřeby přijedeme znovu a ověříme, že je opravdu klid.</p></li>
     </ol>
-  </div>
-</section>
-
-<!-- SAFETY -->
-<section class="safe" aria-labelledby="h-safe">
-  <div class="wrap">
-    <div>
-      <h2 id="h-safe">Bezpečně pro vás, děti i zvířata</h2>
-      <p class="lead">S přípravky pracujeme tak, aby zasáhly škůdce, a ne vás. Před zásahem vždy víte, co vás čeká.</p>
+    <div class="safe">
+      <h3>Bezpečně pro děti i zvířata</h3>
+      <dl>
+        <div><dt>Uzamykatelné nástrahy</dt><dd>Staničky, do kterých se dítě ani pes nedostane.</dd></div>
+        <div><dt>Jasné pokyny</dt><dd>Řekneme, jak dlouho se v prostoru nezdržovat a kdy větrat.</dd></div>
+        <div><dt>Potraviny v bezpečí</dt><dd>Postup volíme tak, aby šla kuchyně a sklad co nejdřív znovu používat.</dd></div>
+      </dl>
     </div>
-    <ul class="safe-list">
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div><b>Uzamykatelné nástrahy</b><span>Staničky, do kterých se dítě ani pes nedostane.</span></div></li>
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Jasné pokyny</b><span>Řekneme, jak dlouho se v prostoru nezdržovat a kdy větrat.</span></div></li>
-      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><b>Ochrana potravin a provozu</b><span>Postup volíme tak, aby šla kuchyně a sklad co nejdřív znovu používat.</span></div></li>
-    </ul>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" aria-labelledby="h-faq">
+<section class="faq" id="faq" aria-labelledby="h-faq">
   <div class="wrap">
-    <div class="sec-head"><h2 id="h-faq">Na co se lidé ptají</h2></div>
+    <h2 id="h-faq">Na co se lidé ptají</h2>
     <div class="faq-list">
       <details><summary>Kolik stojí deratizace nebo dezinsekce?</summary><p>Cena závisí na druhu škůdce, velikosti prostoru a počtu návštěv. Orientační cenu vám řekneme po telefonu, přesnou po prohlídce.</p></details>
       <details><summary>Je zásah bezpečný pro děti a zvířata?</summary><p>Předem vám řekneme, jak dlouho se v ošetřených prostorách nezdržovat a jak ochránit děti, domácí zvířata a potraviny.</p></details>
@@ -414,16 +479,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- KONTAKT -->
 <section class="contact" id="kontakt" aria-labelledby="h-kontakt">
   <div class="wrap">
     <div>
       <h2 id="h-kontakt">Zavolejte, než se rozmnoží</h2>
       <a class="big-call" href="tel:+420606879380"><small><span class="dot" aria-hidden="true"></span>Pohotovost nonstop</small><b>606 879 380</b></a>
       <div class="c-info">
-        <div><h4>Kancelář</h4><a href="tel:+420472731510">472 731 510</a><br>Po–Pá 7:00–15:00</div>
+        <div><h4>Kancelář</h4><a href="tel:+420472731510">472 731 510</a>, Po–Pá 7:00–15:00</div>
         <div><h4>E-mail</h4><a href="mailto:3dsro@centrum.cz">3dsro@centrum.cz</a></div>
-        <div><h4>Adresa</h4>Veslařská 169<br>403 31 Ústí nad Labem – Neštěmice</div>
+        <div><h4>Adresa</h4>Veslařská 169, 403 31 Ústí nad Labem – Neštěmice</div>
         <div><h4>Firma</h4>3 D, spol. s r.o.</div>
       </div>
       <div class="map"><iframe title="Mapa – Veslařská 169, Ústí nad Labem" loading="lazy" src="https://maps.google.com/maps?q=Vesla%C5%99sk%C3%A1%20169%2C%20%C3%9Ast%C3%AD%20nad%20Labem&z=15&output=embed"></iframe></div>
@@ -431,7 +496,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     <form class="form" id="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
       <input type="hidden" name="access_key" value="WEB3FORMS_KEY">
       <input type="hidden" name="subject" value="Nová poptávka z webu DERATIZACE 3D">
-      <h3>Popište problém</h3>
+      <h3>Napište nám</h3>
       <label>Co se objevilo
         <select name="pest">
           <option>Myši nebo potkani</option><option>Švábi nebo rusi</option><option>Štěnice</option><option>Vosy nebo sršně</option><option>Mravenci</option><option>Pavouci na fasádě</option><option>Dřevokazný hmyz</option><option>Pravidelná smlouva pro firmu</option><option>Něco jiného</option>
@@ -442,8 +507,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <label>Telefon<input name="tel" type="tel" autocomplete="tel" required></label>
       </div>
       <label>Kde a od kdy<textarea name="msg" placeholder="Např. byt ve 3. patře, trus v kuchyni od minulého týdne"></textarea></label>
-      <button class="btn btn-beam" type="submit">Odeslat poptávku</button>
-      <p class="form-ok" id="formOk">Ukázka: v hotovém webu poptávka dorazí rovnou na váš e-mail a ozvete se zákazníkovi.</p>
+      <button class="btn btn-ink" type="submit">Odeslat poptávku</button>
+      <p class="form-ok" id="formOk">Ukázka: v hotovém webu poptávka dorazí rovnou na váš e-mail.</p>
     </form>
   </div>
 </section>
@@ -457,8 +522,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 </footer>
 
 <div class="callbar">
-  <a class="btn btn-beam" href="tel:+420606879380">Zavolat nonstop</a>
-  <a class="btn btn-ghost" href="#kontakt">Poptávka</a>
+  <a class="btn btn-amber" href="tel:+420606879380">Zavolat nonstop</a>
+  <a class="btn btn-line" href="#kontakt">Poptávka</a>
 </div>
 
 <script src="../vendor/gsap-3.13.0.min.js"></script>
@@ -607,7 +672,7 @@ function drawOverlay(){
     ox.setLineDash([6,6]); ox.lineDashOffset = -performance.now()/40;
     ox.beginPath(); ox.arc(x,y,r,0,7); ox.stroke(); ox.setLineDash([]);
     ox.fillStyle = `rgba(255,181,71,${a})`;
-    ox.font = '600 13px "Instrument Sans", sans-serif';
+    ox.font = '600 13px "Public Sans", sans-serif';
     ox.fillText('Nalezeno: ' + p.label, x + r*.75, y - r*.75);
   });
   // treatment sweep
@@ -685,46 +750,111 @@ hero.addEventListener('pointerleave', () => S.pointer = false);
 addEventListener('resize', () => {layout(); if (S.introDone) S.R = Math.max(150, Math.min(W,H)*(mobile?.34:.3));});
 layout(); intro(); requestAnimationFrame(frame);
 
-/* header */
-const top = document.getElementById('top');
-addEventListener('scroll', () => top.classList.toggle('solid', scrollY > 40), {passive:true});
 
-/* ================= PEST PICKER ================= */
-const icons = {
-  mouse:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="14" cy="19" rx="9" ry="6"/><circle cx="22" cy="12.5" r="3"/><path d="M5 19c-3 0-3 5 1 6"/></svg>',
-  roach:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="18" rx="6" ry="8"/><path d="M14 9 10 3M18 9l4-6M10 15l-5-2M10 21l-5 3M22 15l5-2M22 21l5 3"/></svg>',
-  bed:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 24V10M3 18h26v6M29 18v-3a3 3 0 0 0-3-3H13v6"/><circle cx="8" cy="14" r="2.5"/></svg>',
-  wasp:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="18" cy="18" rx="8" ry="5"/><circle cx="8" cy="16" r="3"/><path d="M15 14v8M19 13.5v9M14 13c-2-5 3-8 6-5M19 13c2-5 7-4 6 0"/></svg>',
-  ant:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="3"/><circle cx="15" cy="16" r="2"/><ellipse cx="23" cy="16" rx="5" ry="4"/><path d="M14 14l-3-5M15 18l-3 5M16 14l3-5M16 18l3 5"/></svg>',
-  spider:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="18" r="5"/><circle cx="16" cy="11" r="3"/><path d="M11 16 4 12M11 19l-7 1M12 22l-5 6M21 16l7-4M21 19l7 1M20 22l5 6"/></svg>',
-  wood:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="26" height="12" rx="2"/><circle cx="9" cy="14" r="1"/><circle cx="14" cy="17" r="1"/><circle cx="21" cy="15" r="1"/><circle cx="25" cy="18" r="1"/></svg>'
+/* header + page beam */
+const top = document.getElementById('top');
+const callbar = document.querySelector('.callbar');
+addEventListener('scroll', () => { top.classList.toggle('solid', scrollY > 40); callbar.classList.toggle('show', scrollY > innerHeight*.75); }, {passive:true});
+const beam = document.getElementById('beam');
+let bq = false, bx = 0, by = 0;
+addEventListener('pointermove', e => {
+  if (e.pointerType !== 'mouse') return;
+  bx = e.clientX; by = e.clientY;
+  const overHero = scrollY < innerHeight*.8 && by < hero.getBoundingClientRect().bottom;
+  beam.classList.toggle('on', !overHero);
+  if (!bq){ bq = true; requestAnimationFrame(() => { beam.style.setProperty('--mx', bx+'px'); beam.style.setProperty('--my', by+'px'); bq = false; }); }
+}, {passive:true});
+
+/* ================= ATLAS ================= */
+// specimen silhouettes (viewBox 240×240, currentColor = ink, bone = paper colour for details)
+const B = '#ECE6D8';
+const mir = s => `<g>${s}</g><g transform="translate(240 0) scale(-1 1)">${s}</g>`;
+const leg = (d,w=4) => `<path d="${d}" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+const SPEC = {
+  mouse: `<svg viewBox="0 0 240 240" fill="currentColor">
+    <path d="M78 150 C52 170 30 150 22 168 C16 182 30 196 46 188" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="118" cy="138" rx="50" ry="31"/>
+    <path d="M140 112 C160 100 188 104 204 126 L214 134 C206 142 192 148 172 150 C156 152 146 146 140 140 Z"/>
+    <ellipse cx="160" cy="98" rx="14" ry="16" transform="rotate(-12 160 98)"/>
+    <ellipse cx="160" cy="99" rx="7" ry="9" fill="${B}" opacity=".35" transform="rotate(-12 160 99)"/>
+    <circle cx="186" cy="122" r="3.2" fill="${B}"/>
+    <path d="M206 132 l18 -8 M206 134 l20 2 M205 136 l16 10" stroke="currentColor" stroke-width="1.2" fill="none"/>
+    <ellipse cx="96" cy="168" rx="12" ry="5"/><ellipse cx="152" cy="160" rx="10" ry="4.5"/>
+  </svg>`,
+  roach: `<svg viewBox="0 0 240 240" fill="currentColor">
+    ${mir(leg('M112 62 C100 40 88 22 66 6',2) + leg('M100 92 L76 80 L62 60',3.5) + leg('M96 122 L64 116 L42 130',3.5) + leg('M98 152 L70 170 L54 204',3.5))}
+    <ellipse cx="120" cy="66" rx="11" ry="9"/>
+    <ellipse cx="120" cy="88" rx="28" ry="18"/>
+    <ellipse cx="120" cy="88" rx="16" ry="9" fill="${B}" opacity=".18"/>
+    <ellipse cx="120" cy="146" rx="31" ry="54"/>
+    <path d="M120 106 L120 198" stroke="${B}" stroke-width="1.6" opacity=".5"/>
+  </svg>`,
+  bed: `<svg viewBox="0 0 240 240" fill="currentColor">
+    ${mir(leg('M114 76 L104 58 L98 46',2.4) + leg('M100 100 L80 90 L70 72',3) + leg('M88 126 L64 124 L50 136',3) + leg('M90 156 L68 172 L58 194',3))}
+    <ellipse cx="120" cy="80" rx="10" ry="9"/>
+    <path d="M94 104 C96 90 144 90 146 104 C146 110 94 110 94 104 Z"/>
+    <ellipse cx="120" cy="146" rx="42" ry="44"/>
+    <g fill="none" stroke="${B}" stroke-width="1.4" opacity=".45"><path d="M84 126 Q120 136 156 126"/><path d="M80 144 Q120 154 160 144"/><path d="M84 162 Q120 172 156 162"/><path d="M94 178 Q120 186 146 178"/></g>
+  </svg>`,
+  wasp: `<svg viewBox="0 0 240 240" fill="currentColor">
+    ${mir('<ellipse cx="166" cy="104" rx="46" ry="13" transform="rotate(24 166 104)" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="2"/><ellipse cx="158" cy="122" rx="32" ry="9" transform="rotate(38 158 122)" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.6"/>' + leg('M112 54 C104 38 96 30 84 26',2.4) + leg('M108 92 L90 104 L84 124',2.6) + leg('M110 102 L92 128 L90 152',2.6) + leg('M112 110 L98 150 L100 178',2.6))}
+    <ellipse cx="120" cy="62" rx="17" ry="12"/>
+    <ellipse cx="120" cy="94" rx="15" ry="19"/>
+    <clipPath id="abd"><ellipse cx="120" cy="156" rx="22" ry="40"/></clipPath>
+    <ellipse cx="120" cy="156" rx="22" ry="40"/>
+    <g clip-path="url(#abd)" fill="${B}" opacity=".55"><rect x="90" y="128" width="60" height="7"/><rect x="90" y="146" width="60" height="7"/><rect x="90" y="164" width="60" height="7"/><rect x="90" y="182" width="60" height="5"/></g>
+    <path d="M116 194 L120 208 L124 194 Z"/>
+  </svg>`,
+  ant: `<svg viewBox="0 0 240 240" fill="currentColor">
+    ${mir(leg('M112 64 L100 44 L80 38',2.4) + leg('M114 92 L92 78 L74 58',2.8) + leg('M114 102 L86 104 L62 96',2.8) + leg('M114 112 L92 134 L76 164',2.8))}
+    <ellipse cx="120" cy="70" rx="15" ry="14"/>
+    <ellipse cx="120" cy="101" rx="9" ry="20"/>
+    <circle cx="120" cy="126" r="6"/>
+    <ellipse cx="120" cy="160" rx="22" ry="28"/>
+    <path d="M104 150 Q120 156 136 150 M102 166 Q120 172 138 166" fill="none" stroke="${B}" stroke-width="1.2" opacity=".4"/>
+  </svg>`,
+  spider: `<svg viewBox="0 0 240 240" fill="currentColor">
+    ${mir(leg('M108 84 L82 50 L66 24',3.2) + leg('M104 92 L68 76 L36 70',3.2) + leg('M104 102 L66 116 L40 142',3.2) + leg('M108 110 L80 150 L66 198',3.2))}
+    <ellipse cx="120" cy="96" rx="20" ry="19"/>
+    <ellipse cx="120" cy="150" rx="30" ry="36"/>
+    <path d="M120 126 L120 176 M106 144 L134 144" stroke="${B}" stroke-width="3" opacity=".45" stroke-linecap="round"/>
+    <circle cx="114" cy="84" r="2.4" fill="${B}" opacity=".6"/><circle cx="126" cy="84" r="2.4" fill="${B}" opacity=".6"/>
+  </svg>`,
+  wood: `<svg viewBox="0 0 240 240" fill="currentColor">
+    ${mir(leg('M114 66 L104 50 L106 36',2.2) + leg('M104 96 L88 92 L80 80',3) + leg('M102 120 L84 124 L76 138',3) + leg('M104 150 L88 164 L84 180',3))}
+    <ellipse cx="120" cy="70" rx="10" ry="8"/>
+    <path d="M98 100 C98 78 142 78 142 100 L142 104 L98 104 Z"/>
+    <rect x="99" y="104" width="42" height="96" rx="20"/>
+    <path d="M120 106 L120 196" stroke="${B}" stroke-width="1.4" opacity=".5"/>
+    <g fill="${B}" opacity=".35">${[0,1,2,3,4,5,6].map(r=>[108,114,126,132].map(x=>`<circle cx="${x}" cy="${116+r*12}" r="1.5"/>`).join('')).join('')}</g>
+  </svg>`
 };
 const data = [
-  {k:'mouse', n:'Myši a potkani', h:'Myši a potkani', i:'Rychle se množí a okusují kabely, izolace i obaly potravin. Čím dřív zasáhneme, tím kratší je celý boj.',
+  {k:'mouse', n:'Myši a potkani', h:'Myši a potkani', lat:'Mus musculus, Rattus norvegicus', size:'myš 7–10 cm, potkan 20–27 cm (bez ocasu)', act:'Hlavně v noci', i:'Rychle se množí a okusují kabely, izolace i obaly potravin. Čím dřív zasáhneme, tím kratší je celý boj.',
     signs:['Trus podél stěn a ve skříňkách','Okousané obaly a kabely','Šramot ve stropě nebo ve zdi v noci'],
     we:['Najdeme cesty a úkryty','Rozmístíme zabezpečené nástrahy','Poradíme, kudy se dostávají dovnitř'],
     now:['Jídlo uložte do uzavřených nádob','Na trus nesahejte holou rukou','Krmivo pro zvířata nenechávejte přes noc v misce']},
-  {k:'roach', n:'Švábi a rusi', h:'Švábi a rusi', i:'Přes den se schovávají v teple za spotřebiči. Když je vidíte ve dne, bývá jich už hodně.',
+  {k:'roach', n:'Švábi a rusi', h:'Švábi a rusi', lat:'Blatta orientalis, Blattella germanica', size:'rus 10–15 mm, šváb 20–27 mm', act:'V noci, přes den v úkrytech', i:'Přes den se schovávají v teple za spotřebiči. Když je vidíte ve dne, bývá jich už hodně.',
     signs:['Hmyz v noci u dřezu a za lednicí','Drobný tmavý trus v rozích skříněk','Zatuchlý, nepříjemný zápach'],
     we:['Ošetříme úkryty gelovými nástrahami nebo postřikem','Prověříme, jestli nelezou ze stoupaček nebo od sousedů','Přijedeme znovu, až se vylíhnou mladí z vajíček'],
     now:['Nestříkejte spreje z drogerie, švábi se jen rozlezou jinam','Uklízejte drobky, odpadky dávejte do zavřeného koše','Nestěhujte krabice a věci z kuchyně do jiných místností']},
-  {k:'bed', n:'Štěnice', h:'Štěnice', i:'Štěnice nesouvisí s nepořádkem. Domů si je lidé nejčastěji přivezou z cest nebo s použitým nábytkem.',
+  {k:'bed', n:'Štěnice', h:'Štěnice', lat:'Cimex lectularius', size:'4–7 mm', act:'V noci, sají krev', i:'Štěnice nesouvisí s nepořádkem. Domů si je lidé nejčastěji přivezou z cest nebo s použitým nábytkem.',
     signs:['Štípance v řadě po probuzení','Tmavé tečky na matraci a v rámu postele','Drobné krvavé skvrny na prostěradle'],
     we:['Prohlédneme postel, spáry a lišty','Ošetříme celý prostor','Při druhé návštěvě zničíme i nově vylíhnuté štěnice'],
     now:['Matraci ani věci z ložnice nestěhujte jinam','Ložní prádlo vyperte aspoň na 60 °C','Nepřecházejte spát do jiné místnosti, štěnice půjdou za vámi']},
-  {k:'wasp', n:'Vosy a sršně', h:'Vosy a sršně', i:'Hnízdo pod střechou, v rolovací skříňce nebo v kůlně. U alergiků je to otázka bezpečnosti, ne pohodlí.',
+  {k:'wasp', n:'Vosy a sršně', h:'Vosy a sršně', lat:'Vespula vulgaris, Vespa crabro', size:'vosa 12–17 mm, sršeň 18–35 mm', act:'Ve dne, od jara do podzimu', i:'Hnízdo pod střechou, v rolovací skříňce nebo v kůlně. U alergiků je to otázka bezpečnosti, ne pohodlí.',
     signs:['Vosy létají stále na stejné místo','Šedé papírové hnízdo pod střechou','Bzučení ve zdi nebo v roletě'],
     we:['Bezpečně zlikvidujeme hnízdo','Ošetříme místo, aby se nevrátily','Poradíme, jak hnízdům předejít'],
     now:['Hnízdo neucpávejte ani nestrhávejte','Držte děti a zvířata v bezpečné vzdálenosti','Alergici mějte po ruce léky']},
-  {k:'ant', n:'Mravenci', h:'Mravenci', i:'Cestičky v kuchyni jsou jen špička. Dokud žije královna v hnízdě, mravenci se pořád vrací.',
+  {k:'ant', n:'Mravenci', h:'Mravenci', lat:'Lasius niger', size:'dělnice 3–5 mm', act:'Ve dne, nejvíc v teple', i:'Cestičky v kuchyni jsou jen špička. Dokud žije královna v hnízdě, mravenci se pořád vracejí.',
     signs:['Cestičky podél linky a parapetů','Mravenci v cukru a sladkostech','Hromádky hlíny nebo písku u spár a dlažby'],
-    we:['Dohledáme hnízdo nebo jeho směr','Položíme nástrahy, které mravenci sami odnesou do hnízda','Ošetříme vstupní místa'],
+    we:['Dohledáme hnízdo nebo jeho směr','Položíme nástrahy, které mravenci sami odnesou do hnízda','Ošetříme místa, kudy lezou dovnitř'],
     now:['Na cestičky nestříkejte, mravenci pak nástrahu snáz přijmou','Sladké potraviny uzavřete','Utřete rozlité sladké tekutiny']},
-  {k:'spider', n:'Pavouci na fasádě', h:'Pavouci na fasádě', i:'Pavučiny a tmavé skvrny kolem oken a světel kazí vzhled nové fasády i zateplení.',
+  {k:'spider', n:'Pavouci na fasádě', h:'Pavouci na fasádě', lat:'Araneae', size:'podle druhu', act:'Léto a podzim, u světel', i:'Pavučiny a tmavé skvrny kolem oken a světel kazí vzhled nové fasády i zateplení.',
     signs:['Pavučiny u oken, světel a podhledů','Tmavé tečky a skvrny na fasádě','Problém se vrací každé léto'],
     we:['Ošetříme fasádu, okna a podhledy','Zaměříme se na místa u osvětlení','Doporučíme vhodný termín ošetření'],
     now:['Staré pavučiny můžete předem smést koštětem','Venkovní světla nenechávejte svítit celou noc, lákají hmyz a za ním pavouky','Zavolejte, domluvíme termín']},
-  {k:'wood', n:'Dřevokazný hmyz', h:'Dřevokazný hmyz', i:'Červotoč a další hmyz oslabují krovy a trámy roky, aniž byste si toho všimli.',
+  {k:'wood', n:'Dřevokazný hmyz', h:'Červotoč a spol.', lat:'Anobium punctatum', size:'brouk 2,5–5 mm', act:'Larvy žijí ve dřevě i několik let', i:'Červotoč a další hmyz oslabují krovy a trámy roky, aniž byste si toho všimli.',
     signs:['Drobné kulaté otvory ve dřevě','Jemná dřevěná moučka pod trámy','Změklé nebo drolící se dřevo'],
     we:['Posoudíme rozsah napadení','Ošetříme krovy a konstrukce','Ochráníme i dosud zdravé dřevo'],
     now:['Napadené dřevo neskladujte u zdravého','Vyfoťte otvory a moučku','Zavolejte, než začnete s rekonstrukcí']}
@@ -733,50 +863,73 @@ const tabs = document.getElementById('pestTabs'), panel = document.getElementByI
 const li = a => a.map(x=>`<li>${x}</li>`).join('');
 function render(i, anim){
   const d = data[i];
-  panel.innerHTML = `<div class="panel-art">${icons[d.k]}</div><div class="pc"><h3>${d.h}</h3><p class="intro">${d.i}</p>
-  <div class="panel-grid"><div><h4>Jak je poznáte</h4><ul>${li(d.signs)}</ul></div><div class="col-do"><h4>Co uděláme my</h4><ul>${li(d.we)}</ul></div><div class="col-now"><h4>Co udělat hned teď</h4><ul>${li(d.now)}</ul></div></div>
-  <div class="panel-foot"><p>Nevíte si rady? Poradíme vám po telefonu.</p><a class="btn btn-beam" href="tel:+420606879380">Zavolat 606 879 380</a></div></div>`;
+  panel.innerHTML = `
+  <div class="plate-top">
+    <div class="spec">${SPEC[d.k]}<span class="tag">Ilustrace, ne v měřítku</span></div>
+    <div class="id">
+      <h3>${d.h}</h3>
+      <p class="latin">${d.lat}</p>
+      <p class="desc">${d.i}</p>
+      <dl class="facts">
+        <div class="fact"><dt>Velikost</dt><dd>${d.size}<div class="ruler" aria-hidden="true"></div></dd></div>
+        <div class="fact"><dt>Aktivita</dt><dd>${d.act}</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="advice">
+    <div><h4>Jak je poznáte</h4><ul>${li(d.signs)}</ul></div>
+    <div><h4>Co uděláme my</h4><ul>${li(d.we)}</ul></div>
+    <div><h4>Co udělat hned teď</h4><ul>${li(d.now)}</ul></div>
+  </div>
+  <div class="plate-foot"><p>Nevíte si rady? Poradíme vám po telefonu.</p><a class="btn btn-ink" href="tel:+420606879380">Zavolat 606 879 380</a></div>`;
   tabs.querySelectorAll('button').forEach((b,j)=>{b.setAttribute('aria-selected', j===i); b.tabIndex = j===i?0:-1;});
   if (anim && hasGsap && !reduce){
-    gsap.fromTo(panel.querySelector('.pc'), {opacity:0, y:12}, {opacity:1, y:0, duration:.4, ease:'power2.out'});
-    gsap.fromTo(panel.querySelector('.panel-art'), {rotate:-20, scale:.8, opacity:0}, {rotate:0, scale:1, opacity:1, duration:.6, ease:'power3.out'});
+    const tl = gsap.timeline();
+    tl.fromTo(panel.querySelector('.spec svg'), {opacity:0, scale:.92, rotate:-6}, {opacity:1, scale:1, rotate:0, duration:.55, ease:'power3.out'})
+      .fromTo(panel.querySelectorAll('.id > *, .advice > div'), {opacity:0, y:10}, {opacity:1, y:0, duration:.4, stagger:.04, ease:'power2.out'}, '<.05');
   }
 }
 data.forEach((d,i)=>{
   const l = document.createElement('li');
-  l.innerHTML = `<button role="tab" id="tab-${d.k}">${icons[d.k]}<span>${d.n}</span></button>`;
+  l.innerHTML = `<button role="tab" id="tab-${d.k}"><b>${d.n}</b><i>${d.lat.split(',')[0]}</i></button>`;
   l.firstChild.addEventListener('click', ()=>render(i,true));
   tabs.appendChild(l);
 });
 tabs.addEventListener('keydown', e => {
   const bs = [...tabs.querySelectorAll('button')]; const cur = bs.indexOf(document.activeElement);
   if (cur < 0) return;
-  if (['ArrowDown','ArrowRight'].includes(e.key)){e.preventDefault(); const n=(cur+1)%bs.length; bs[n].focus(); render(n,true);}
-  if (['ArrowUp','ArrowLeft'].includes(e.key)){e.preventDefault(); const n=(cur-1+bs.length)%bs.length; bs[n].focus(); render(n,true);}
+  const nx = ['ArrowDown','ArrowRight'].includes(e.key) ? 1 : ['ArrowUp','ArrowLeft'].includes(e.key) ? -1 : 0;
+  if (!nx) return;
+  e.preventDefault(); const n = (cur+nx+bs.length)%bs.length; bs[n].focus(); render(n,true);
 });
 render(0,false);
 
 /* ================= SCROLL MOMENTS ================= */
 if (hasGsap && !reduce){
+  // three D's light up one after another as the row enters
+  gsap.timeline({scrollTrigger:{trigger:'.trio', start:'top 70%', once:true}})
+    .add(()=>document.querySelectorAll('.d')[0].classList.add('lit'))
+    .add(()=>document.querySelectorAll('.d')[1].classList.add('lit'), '+=.25')
+    .add(()=>document.querySelectorAll('.d')[2].classList.add('lit'), '+=.25')
+    .add(()=>document.querySelectorAll('.d').forEach(d=>d.classList.remove('lit')), '+=1.4');
   // HACCP sheet ticks
-  const ticks = document.querySelectorAll('#sheet .tick svg');
   gsap.timeline({scrollTrigger:{trigger:'#sheet', start:'top 70%', once:true}})
-    .from('#sheet', {rotate:4, y:40, opacity:0, duration:.8, ease:'power3.out'})
-    .to(ticks, {strokeDashoffset:0, duration:.35, stagger:.22, ease:'power2.out'}, '-=.2')
+    .from('#sheet', {rotate:4, y:50, opacity:0, duration:.8, ease:'power3.out'})
+    .to('#sheet .tick svg', {strokeDashoffset:0, duration:.35, stagger:.22, ease:'power2.out'}, '-=.2')
     .fromTo('#sheet .stamp i', {scale:1.8, opacity:0}, {scale:1, opacity:1, duration:.35, ease:'back.out(2)'}, '+=.1');
   // process line
-  gsap.to('#stepsBar', {scaleX:1, ease:'none', scrollTrigger:{trigger:'#steps', start:'top 75%', end:'bottom 55%', scrub:.6}});
+  gsap.to('#track i', {scaleX:1, ease:'none', scrollTrigger:{trigger:'.steps', start:'top 80%', end:'bottom 55%', scrub:.6}});
 } else {
   document.querySelectorAll('#sheet .tick svg').forEach(s=>s.style.strokeDashoffset=0);
   const st = document.querySelector('#sheet .stamp i'); if (st) st.style.opacity = 1;
-  const b = document.getElementById('stepsBar'); if (b) b.style.transform='scaleX(1)';
+  const t = document.querySelector('#track i'); if (t) t.style.transform='scaleX(1)';
 }
 
-/* form (demo) */
+/* form */
 document.getElementById('form').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target, ok = document.getElementById('formOk');
-  if (f.access_key.value !== 'WEB3FORMS_KEY'){ // live mode
+  if (f.access_key.value !== 'WEB3FORMS_KEY'){
     try{ const r = await fetch(f.action,{method:'POST',body:new FormData(f)}); ok.textContent = r.ok ? 'Děkujeme, poptávka odešla. Brzy se vám ozveme.' : 'Odeslání se nepovedlo. Zavolejte nám prosím na 606 879 380.'; if (r.ok) f.reset(); }
     catch{ ok.textContent = 'Odeslání se nepovedlo. Zavolejte nám prosím na 606 879 380.'; }
   }
