@@ -39,8 +39,6 @@
 @font-face{font-family:'Archivo';src:url(fonts/archivo-latin-standard-normal.woff2) format('woff2');font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Public Sans';src:url(fonts/public-sans-latin-ext-wght-normal.woff2) format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Public Sans';src:url(fonts/public-sans-latin-wght-normal.woff2) format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Newsreader';src:url(fonts/newsreader-latin-ext-400-italic.woff2) format('woff2');font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Newsreader';src:url(fonts/newsreader-latin-400-italic.woff2) format('woff2');font-weight:400;font-style:italic;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
   --ink:#0A0F1A;
   --ink-2:#0F1726;
@@ -59,7 +57,6 @@
   --ok:#2FA877;
   --display:"Archivo", "Arial Narrow", sans-serif;
   --body:"Public Sans", system-ui, sans-serif;
-  --latin:"Newsreader", Georgia, serif;
   --ease:cubic-bezier(.2,0,0,1);
   --gutter:clamp(16px,4vw,56px);
   --max:1280px;
@@ -149,7 +146,6 @@ section{position:relative;z-index:3;padding:clamp(88px,12vw,160px) 0}
 .index{list-style:none;border-top:1px solid var(--line);position:sticky;top:100px}
 .index button{width:100%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 14px;padding:16px 0;border:0;border-bottom:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;text-align:left;font:inherit;transition:color .2s}
 .index button b{font-family:var(--display);font-size:24px;font-weight:750;font-variation-settings:"wdth" 80;letter-spacing:-.01em;line-height:1.1}
-.index button i{grid-column:1;font-family:var(--latin);font-size:15px;opacity:.8}
 .index button::after{content:"";grid-row:1/3;grid-column:2;width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line-2);transition:background .2s,box-shadow .2s}
 .index button:hover{color:var(--text)}
 .index button[aria-selected="true"]{color:var(--text)}
@@ -164,7 +160,6 @@ section{position:relative;z-index:3;padding:clamp(88px,12vw,160px) 0}
 .spec .tag{position:absolute;left:20px;bottom:18px;font-size:12.5px;color:var(--bone-muted)}
 .id{padding:clamp(24px,3vw,40px);display:flex;flex-direction:column}
 .id h3{font-size:clamp(34px,3.6vw,52px);font-variation-settings:"wdth" 80;word-spacing:.04em;line-height:.95}
-.id .latin{font-family:var(--latin);font-style:italic;font-size:20px;color:var(--bone-muted);margin-top:8px}
 .id p.desc{margin-top:18px;font-size:16.5px;line-height:1.6}
 .facts{margin-top:auto;padding-top:26px;display:grid;gap:12px}
 .fact{display:grid;grid-template-columns:96px 1fr;gap:12px;font-size:15px;align-items:baseline;border-top:1px solid rgba(27,23,18,.14);padding-top:10px}
@@ -542,25 +537,20 @@ let W = 0, H = 0, DPR = 1, mobile = false;
 
 const S = {bx:0, by:0, R:0, power:0, sweep:-0.2, introDone:false, tx:0, ty:0, pointer:false};
 
-// photos (kitchen at night) + real pest sprites, positions in photo coordinates (0..1)
-const IMG = {};
-[['wide','img/kitchen-wide.webp'],['tall','img/kitchen-tall.webp'],['mouse','img/mouse.webp'],['roach','img/roach.webp'],['ant','img/ant.webp']]
-  .forEach(([k,src]) => { const i = new Image(); i.decoding = 'async'; i.src = src; IMG[k] = i; });
-const ok = i => i && i.complete && i.naturalWidth > 0;
-const PLACES = {
-  wide: {mouse:[.57,.80], r1:[.81,.47], r2:[.56,.28], ants:[[.50,.655],[.63,.60]], r3:[.66,.90]},
-  tall: {mouse:[.75,.29], r1:[.50,.16], r2:[.28,.30], ants:[[.34,.43],[.56,.42]], r3:[.60,.38]}
-};
+// ---- illustrated kitchen corner + hand-drawn, animated pests ----
+const G = {fy:0, k:1, cab:{x:0,top:0,bot:0}};
 const pests = [
-  {type:'mouse', key:'mouse', w:200, label:'Myš'},
-  {type:'roach', key:'r1', w:125, a:2.4, label:'Šváb'},
-  {type:'roach', key:'r2', w:105, a:.7, label:'Šváb'},
-  {type:'ants',  key:'ants', w:38, label:'Mravenci'},
-  {type:'roach', key:'r3', w:85, a:3.7, label:''},
+  {type:'mouse', s:1.55, label:'Myš'},
+  {type:'roach', s:1.35, a:2.5, label:'Šváb'},
+  {type:'roach', s:1.1,  a:.6,  label:'Šváb'},
+  {type:'ants',  s:1,    label:'Mravenci'},
+  {type:'roach', s:.9,   a:3.6, label:''},
 ];
-pests.forEach(p => {p.d = 0; p.found = 0; p.t = Math.random()*10;});
+pests.forEach(p => {p.d = 0; p.found = 0; p.t = Math.random()*10; p.run = 0; p.timer = 1 + Math.random(); p.dir = -1;});
 let particles = [];
-let cover = {x:0, y:0, w:1, h:1, tall:false};
+const motes = Array.from({length:46}, () => ({x:Math.random(), y:Math.random(), r:.4+Math.random()*1.3, v:.004+Math.random()*.01, ph:Math.random()*6.28}));
+const room = document.createElement('canvas'), rx = room.getContext('2d');
+const seeded = s => () => (s = (s*16807) % 2147483647, (s-1)/2147483646);
 
 function layout(){
   DPR = Math.min(devicePixelRatio || 1, 2);
@@ -568,48 +558,185 @@ function layout(){
   W = r.width; H = r.height; mobile = W < 760;
   [sc, ov].forEach(c => {c.width = W*DPR; c.height = H*DPR;});
   sx.setTransform(DPR,0,0,DPR,0,0); ox.setTransform(DPR,0,0,DPR,0,0);
-  const tall = W/H < .85, iw = tall ? 941 : 1672, ih = tall ? 1672 : 941;
-  const k = Math.max(W/iw, H/ih);
-  cover = {w:iw*k, h:ih*k, x:(W-iw*k)/2, y:(H-ih*k)/2, tall};
-  const pl = PLACES[tall ? 'tall' : 'wide'];
-  const toS = ([u,v]) => [(cover.x + u*cover.w)/W, (cover.y + v*cover.h)/H];
-  const sz = tall ? .62 : Math.min(1.25, Math.max(.7, Math.min(W,H)/850));
-  pests.forEach(p => {
-    p.sz = p.w*sz;
-    if (p.type === 'ants'){ const a = toS(pl.ants[0]), b = toS(pl.ants[1]); p.ax=a[0]; p.ay=a[1]; p.bx=b[0]; p.by=b[1]; p.ox=(a[0]+b[0])/2; p.oy=(a[1]+b[1])/2; p.mr = Math.min(tall ? 56 : 80, Math.hypot((b[0]-a[0])*W,(b[1]-a[1])*H)/2 + 12); }
-    else { [p.ox, p.oy] = toS(pl[p.key]); p.mr = p.sz*(p.type==='mouse' ? .5 : .42); }
+  G.k = mobile ? .6 : Math.min(1.25, Math.max(.8, H/900));
+  G.fy = H*(mobile ? .34 : .80);
+  G.cab = mobile ? {x:W*.64, top:H*.07, bot:G.fy + H*.03} : {x:W*.70, top:H*.29, bot:G.fy + H*.045};
+  buildRoom();
+  const fy = G.fy/H;
+  const P = mobile
+    ? {mouse:[.52, fy+.045], r1:[.82,.22], r2:[.34,.12], ants:[[.10,fy-.03],[.46,fy-.03]], r3:[.52,.24]}
+    : {mouse:[.60, fy+.075], r1:[.83,.56], r2:[.58,.34], ants:[[.47,fy-.034],[.68,fy-.034]], r3:[.90,.93]};
+  const keys = ['mouse','r1','r2','ants','r3'];
+  pests.forEach((p,i) => {
+    const key = keys[i];
+    if (p.type === 'ants'){ const [a,b] = P.ants; p.ax=a[0]; p.ay=a[1]; p.bx=b[0]; p.by=b[1]; p.ox=(a[0]+b[0])/2; p.oy=a[1]; p.mr = Math.min(mobile?60:90, (b[0]-a[0])*W/2 + 14); }
+    else { [p.ox, p.oy] = P[key]; p.mr = (p.type==='mouse' ? 58 : 40) * p.s * G.k; }
     p.x = p.ox; p.y = p.oy;
   });
   S.R = Math.max(150, Math.min(W,H) * (mobile ? .34 : .3));
 }
 
-/* ---- scene drawing ---- */
-function drawRoom(){
-  const bg = IMG[cover.tall ? 'tall' : 'wide'];
-  if (ok(bg)) sx.drawImage(bg, cover.x, cover.y, cover.w, cover.h);
-  else { sx.fillStyle = '#2a2420'; sx.fillRect(0,0,W,H); }
+function buildRoom(){
+  room.width = W*DPR; room.height = H*DPR; rx.setTransform(DPR,0,0,DPR,0,0);
+  const R = seeded(11), fy = G.fy, c = G.cab;
+  // wall + tiles
+  let g = rx.createLinearGradient(0,0,0,fy);
+  g.addColorStop(0,'#3b4252'); g.addColorStop(1,'#535a6a');
+  rx.fillStyle = g; rx.fillRect(0,0,W,fy);
+  const t = mobile ? 46 : 74;
+  for (let y = fy - 16; y > -t; y -= t) for (let x = -((fy/7)%t); x < W; x += t){
+    const v = R();
+    rx.fillStyle = `rgba(${v>.5?255:0},${v>.5?255:0},${v>.5?255:0},${.015 + R()*.03})`; rx.fillRect(x, y-t, t, t);
+    const sh = rx.createLinearGradient(x, y-t, x+t, y);
+    sh.addColorStop(0,'rgba(255,255,255,.05)'); sh.addColorStop(.5,'rgba(255,255,255,0)'); sh.addColorStop(1,'rgba(0,0,0,.05)');
+    rx.fillStyle = sh; rx.fillRect(x, y-t, t, t);
+    rx.fillStyle = 'rgba(18,22,30,.55)'; rx.fillRect(x, y-t, t, 1.5); rx.fillRect(x, y-t, 1.5, t);
+    rx.fillStyle = 'rgba(255,255,255,.05)'; rx.fillRect(x+1.5, y-t+1.5, t-1.5, 1); rx.fillRect(x+1.5, y-t+1.5, 1, t-1.5);
+  }
+  // floor (perspective planks)
+  g = rx.createLinearGradient(0,fy,0,H);
+  g.addColorStop(0,'#2a211b'); g.addColorStop(1,'#46352a');
+  rx.fillStyle = g; rx.fillRect(0,fy,W,H-fy);
+  const vx = W*.5, vy = fy - H*1.4, pw = mobile ? 70 : 120;
+  rx.strokeStyle = 'rgba(0,0,0,.38)'; rx.lineWidth = 1.2;
+  for (let i = -24; i <= 24; i++){
+    const xb = W*.5 + i*pw, xt = vx + (xb - vx)*((fy - vy)/(H - vy));
+    rx.beginPath(); rx.moveTo(xt, fy); rx.lineTo(xb, H); rx.stroke();
+  }
+  for (let j = 0; j < 7; j++){
+    const yy = fy + (H-fy)*Math.pow(j/7, 1.6);
+    for (let i = -24; i <= 24; i += 1){
+      if (R() < .55) continue;
+      const u = (yy - vy)/(H - vy), xa = vx + (W*.5 + i*pw - vx)*u, xb = vx + (W*.5 + (i+1)*pw - vx)*u;
+      rx.strokeStyle = 'rgba(0,0,0,.3)'; rx.beginPath(); rx.moveTo(xa, yy); rx.lineTo(xb, yy); rx.stroke();
+    }
+  }
+  for (let i = 0; i < 260; i++){ // grain
+    const y = fy + R()*(H-fy), x = R()*W, l = 20 + R()*60;
+    rx.strokeStyle = `rgba(${R()>.5?'255,220,180':'0,0,0'},${.03 + R()*.04})`; rx.lineWidth = .8;
+    rx.beginPath(); rx.moveTo(x, y); rx.lineTo(x + l, y + l*.02); rx.stroke();
+  }
+  // baseboard + contact shadows
+  g = rx.createLinearGradient(0,fy-16,0,fy); g.addColorStop(0,'#5a5f6c'); g.addColorStop(.15,'#3d4250'); g.addColorStop(1,'#2a2e39');
+  rx.fillStyle = g; rx.fillRect(0, fy-16, W, 16);
+  g = rx.createLinearGradient(0,fy,0,fy+40); g.addColorStop(0,'rgba(0,0,0,.55)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  rx.fillStyle = g; rx.fillRect(0, fy, W, 40);
+  // pipe (rises at px, runs along wall to cabinet)
+  const py = fy - H*(mobile ? .09 : .17), px = W*(mobile ? .22 : .46), pr = mobile ? 5 : 7;
+  const pipe = (draw) => { rx.beginPath(); rx.moveTo(px, -10); rx.lineTo(px, py - 24); rx.quadraticCurveTo(px, py, px + 24, py); rx.lineTo(c.x, py); draw(); };
+  pipe(() => { rx.strokeStyle = 'rgba(0,0,0,.35)'; rx.lineWidth = pr*2 + 6; rx.lineCap = 'round'; rx.save(); rx.translate(4,6); rx.stroke(); rx.restore(); });
+  pipe(() => { rx.strokeStyle = '#8f949c'; rx.lineWidth = pr*2; rx.stroke(); });
+  pipe(() => { rx.strokeStyle = '#c3c7cd'; rx.lineWidth = pr*.9; rx.stroke(); });
+  rx.save(); rx.translate(-pr*.35, -pr*.35); pipe(() => { rx.strokeStyle = 'rgba(255,255,255,.55)'; rx.lineWidth = 1.4; rx.stroke(); }); rx.restore();
+  for (let x = px + 90; x < c.x - 30; x += 170){ rx.fillStyle = '#6d727b'; rx.fillRect(x, py - pr - 3, 8, pr*2 + 6); rx.fillStyle = 'rgba(255,255,255,.25)'; rx.fillRect(x, py - pr - 3, 8, 2); }
+  // socket
+  const so = {x: W*(mobile ? .44 : .60), y: py - H*(mobile ? .12 : .17), w: mobile ? 30 : 42};
+  rx.fillStyle = 'rgba(0,0,0,.3)'; rx.beginPath(); rx.roundRect(so.x+3, so.y+4, so.w, so.w, 6); rx.fill();
+  g = rx.createLinearGradient(0, so.y, 0, so.y+so.w); g.addColorStop(0,'#e7e5df'); g.addColorStop(1,'#bdbab3');
+  rx.fillStyle = g; rx.beginPath(); rx.roundRect(so.x, so.y, so.w, so.w, 6); rx.fill();
+  rx.fillStyle = '#4b4b4b'; [-.18,.18].forEach(o => { rx.beginPath(); rx.arc(so.x + so.w*(.5+o), so.y + so.w*.5, so.w*.06, 0, 7); rx.fill(); });
+  // cabinet: shadow, carcass, countertop, fronts, handles, plinth
+  g = rx.createLinearGradient(c.x - 70, 0, c.x, 0); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,.45)');
+  rx.fillStyle = g; rx.fillRect(c.x - 70, c.top, 70, c.bot - c.top);
+  const ct = mobile ? 12 : 20, pl = mobile ? 10 : 16;
+  g = rx.createLinearGradient(0, c.top, 0, c.top + ct); g.addColorStop(0,'#3a3a3e'); g.addColorStop(.25,'#1e1e22'); g.addColorStop(1,'#141417');
+  rx.fillStyle = g; rx.fillRect(c.x - 14, c.top, W - c.x + 30, ct);
+  rx.fillStyle = 'rgba(255,255,255,.18)'; rx.fillRect(c.x - 14, c.top, W - c.x + 30, 1.5);
+  const fx = c.x, ftop = c.top + ct + 2, fbot = c.bot - pl, fh = fbot - ftop;
+  rx.fillStyle = '#0d0d10'; rx.fillRect(fx, ftop - 2, W - fx, fh + 4);
+  const fronts = [.28, .30, .42]; let yy = ftop;
+  fronts.forEach((f,i) => {
+    const h = fh*f - 3;
+    g = rx.createLinearGradient(fx, yy, W, yy + h); g.addColorStop(0,'#dcd8d0'); g.addColorStop(1,'#b7b2a9');
+    rx.fillStyle = g; rx.fillRect(fx + 2, yy, W - fx, h);
+    rx.fillStyle = 'rgba(255,255,255,.35)'; rx.fillRect(fx + 2, yy, W - fx, 1.2);
+    // handle bar
+    const hy = yy + (mobile ? 12 : 22), hx = fx + (W - fx)*.16, hw = (W - fx)*.62;
+    rx.fillStyle = 'rgba(0,0,0,.28)'; rx.fillRect(hx + 2, hy + 4, hw, mobile ? 4 : 6);
+    g = rx.createLinearGradient(0, hy, 0, hy + (mobile ? 4 : 6)); g.addColorStop(0,'#f2f3f5'); g.addColorStop(.5,'#8d9198'); g.addColorStop(1,'#55595f');
+    rx.fillStyle = g; rx.fillRect(hx, hy, hw, mobile ? 4 : 6);
+    yy += h + 3;
+  });
+  rx.fillStyle = '#17171b'; rx.fillRect(fx + 6, fbot, W - fx, pl);
+  g = rx.createLinearGradient(0, c.bot, 0, c.bot + 26); g.addColorStop(0,'rgba(0,0,0,.6)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  rx.fillStyle = g; rx.fillRect(fx - 10, c.bot, W - fx + 10, 26);
+  // vignette
+  g = rx.createRadialGradient(W*.62, H*.45, Math.min(W,H)*.2, W*.62, H*.45, Math.max(W,H)*.85);
+  g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,.55)');
+  rx.fillStyle = g; rx.fillRect(0,0,W,H);
 }
-function sprite(img, x, y, w, rot){
-  if (!ok(img)) return;
-  const h = w * img.naturalHeight / img.naturalWidth;
-  sx.save(); sx.translate(x, y); sx.rotate(rot);
-  sx.shadowColor = 'rgba(0,0,0,.55)'; sx.shadowBlur = w*.08; sx.shadowOffsetY = w*.04;
-  sx.drawImage(img, -w/2, -h/2, w, h); sx.restore();
+function drawRoom(){ sx.drawImage(room, 0, 0, W, H); }
+
+const ell = (x,y,rx_,ry,rot=0) => { sx.beginPath(); sx.ellipse(x,y,rx_,ry,rot,0,7); };
+function roach(p){
+  const s = p.s*G.k, ph = p.t*24;
+  sx.save(); sx.translate(p.x*W, p.y*H); sx.rotate(p.a); sx.scale(s,s);
+  sx.fillStyle = 'rgba(0,0,0,.35)'; ell(-2,4,27,12); sx.fill();
+  sx.lineCap = 'round'; sx.lineJoin = 'round';
+  const base = [[11,4],[2,6],[-7,6]], kn = [[9,9],[1,13],[-6,12]], ft = [[19,20],[-2,25],[-24,24]];
+  for (const side of [-1,1]) for (let i = 0; i < 3; i++){
+    const sw = Math.sin(ph + (i%2 ? Math.PI : 0) + (side > 0 ? Math.PI : 0))*4;
+    const k = [base[i][0] + kn[i][0]*.6 + sw*.4, side*(base[i][1] + kn[i][1])];
+    const f = [base[i][0] + ft[i][0]*.8 + sw, side*(base[i][1] + ft[i][1])];
+    sx.strokeStyle = '#7a4520'; sx.lineWidth = 2.3; sx.beginPath(); sx.moveTo(base[i][0], side*base[i][1]); sx.lineTo(k[0], k[1]); sx.stroke();
+    sx.strokeStyle = '#a2652f'; sx.lineWidth = 1.4; sx.beginPath(); sx.moveTo(k[0], k[1]); sx.lineTo(f[0], f[1]); sx.stroke();
+  }
+  const sway = Math.sin(p.t*3)*5;
+  sx.strokeStyle = '#8a5428'; sx.lineWidth = .9;
+  sx.beginPath(); sx.moveTo(24,-2); sx.bezierCurveTo(36,-6,48,-14+sway,64,-22+sway); sx.moveTo(24,2); sx.bezierCurveTo(36,6,48,14-sway,64,22-sway); sx.stroke();
+  sx.beginPath(); sx.moveTo(-26,-2); sx.lineTo(-33,-5); sx.moveTo(-26,2); sx.lineTo(-33,5); sx.stroke();
+  let g = sx.createRadialGradient(-6,-4,2,-6,0,24); g.addColorStop(0,'#c27a3c'); g.addColorStop(.6,'#7c4119'); g.addColorStop(1,'#3e1d09');
+  sx.fillStyle = g; ell(-5,0,22,10.5); sx.fill();
+  sx.strokeStyle = 'rgba(30,12,2,.55)'; sx.lineWidth = .8; sx.beginPath(); sx.moveTo(10,0); sx.lineTo(-25,0); sx.stroke();
+  g = sx.createRadialGradient(14,-3,1,14,0,10); g.addColorStop(0,'#e3a865'); g.addColorStop(1,'#a8682e');
+  sx.fillStyle = g; ell(14,0,8,10); sx.fill();
+  sx.fillStyle = '#3a1d0a'; ell(13,-3.2,4,1.6,.1); sx.fill(); ell(13,3.2,4,1.6,-.1); sx.fill();
+  sx.fillStyle = '#2b160a'; ell(22.5,0,4,5); sx.fill();
+  sx.fillStyle = 'rgba(255,235,200,.35)'; ell(-6,-5,11,2.2,-.05); sx.fill();
+  sx.restore();
 }
 function mouse(p){
-  const bob = Math.sin(p.t*7)*.6, sniff = Math.max(0, Math.sin(p.t*1.7))*.03;
-  sprite(IMG.mouse, p.x*W, p.y*H + bob - p.sz*.2, p.sz, -sniff);
+  const s = p.s*G.k, run = p.run !== 0, step = run ? Math.sin(p.t*30) : 0;
+  sx.save(); sx.translate(p.x*W, p.y*H); sx.scale(-p.dir*s, s);
+  sx.fillStyle = 'rgba(0,0,0,.42)'; ell(0,15,36,5); sx.fill();
+  const tw = Math.sin(p.t*(run ? 12 : 2.5))*(run ? 3 : 6);
+  sx.lineCap = 'round';
+  sx.strokeStyle = '#b48d88'; sx.lineWidth = 3; sx.beginPath(); sx.moveTo(-30,6); sx.bezierCurveTo(-52,16,-66,4+tw,-86,12+tw*1.4); sx.stroke();
+  sx.strokeStyle = 'rgba(255,255,255,.18)'; sx.lineWidth = 1; sx.stroke();
+  sx.fillStyle = '#d9a9a3'; ell(-14 + step*4,14,7.5,2.6); sx.fill(); ell(18 - step*4,14,6,2.3); sx.fill();
+  let g = sx.createLinearGradient(0,-17,0,15); g.addColorStop(0,'#6f675f'); g.addColorStop(.6,'#9b9187'); g.addColorStop(1,'#cfc5b9');
+  sx.fillStyle = g; ell(-5,0 - Math.abs(step)*1.5,33,16); sx.fill();
+  sx.beginPath(); sx.moveTo(14,-12); sx.quadraticCurveTo(36,-14,47,0); sx.quadraticCurveTo(36,9,16,10); sx.closePath(); sx.fill();
+  sx.strokeStyle = 'rgba(40,34,30,.18)'; sx.lineWidth = 1;
+  for (let i = 0; i < 9; i++){ const x = -28 + i*6; sx.beginPath(); sx.moveTo(x,-10 + (i%3)); sx.lineTo(x+4,-13 + (i%3)); sx.stroke(); }
+  sx.fillStyle = '#8b8178'; ell(19,-17,8.5,9.5,-.25); sx.fill();
+  sx.fillStyle = '#e2b1aa'; ell(19.5,-16,5.2,6.4,-.25); sx.fill();
+  sx.fillStyle = '#0b0b0e'; sx.beginPath(); sx.arc(32,-5,2.8,0,7); sx.fill();
+  sx.fillStyle = '#fff'; sx.beginPath(); sx.arc(32.9,-6,.9,0,7); sx.fill();
+  const tw2 = Math.sin(p.t*14)*1.2;
+  sx.fillStyle = '#e59a9a'; sx.beginPath(); sx.arc(47.5,-.5 + tw2*.3,2.4,0,7); sx.fill();
+  sx.strokeStyle = 'rgba(230,225,215,.5)'; sx.lineWidth = .6;
+  [[-6],[0],[6]].forEach(([o]) => { sx.beginPath(); sx.moveTo(42,0); sx.lineTo(58, o + tw2); sx.stroke(); });
+  sx.restore();
 }
-function roach(p){
-  sprite(IMG.roach, p.x*W, p.y*H, p.sz, p.a + Math.sin(p.t*22)*.035);
+function ant(x, y, ang, s, ph){
+  sx.save(); sx.translate(x, y); sx.rotate(ang); sx.scale(s, s);
+  sx.strokeStyle = '#3b2216'; sx.lineWidth = .9; sx.lineCap = 'round';
+  for (const side of [-1,1]) for (let i = 0; i < 3; i++){
+    const sw = Math.sin(ph + (i%2 ? Math.PI : 0) + (side > 0 ? Math.PI : 0))*1.6;
+    sx.beginPath(); sx.moveTo(-1 + i*1.6, 0); sx.lineTo(-2 + i*2.5 + sw, side*4); sx.lineTo(-4 + i*4.5 + sw, side*6.5); sx.stroke();
+  }
+  sx.beginPath(); sx.moveTo(6,-1); sx.lineTo(9,-3); sx.lineTo(11,-2); sx.moveTo(6,1); sx.lineTo(9,3); sx.lineTo(11,2); sx.stroke();
+  sx.fillStyle = '#2a170e'; ell(-6,0,4.2,3.2); sx.fill(); ell(0,0,2.6,1.6); sx.fill(); ell(5,0,2.7,2.4); sx.fill();
+  sx.fillStyle = 'rgba(255,220,190,.25)'; ell(-6.5,-1.2,2,.8); sx.fill();
+  sx.restore();
 }
 function ants(p){
-  const n = 7;
-  const dx = (p.bx-p.ax)*W, dy = (p.by-p.ay)*H, ang = Math.atan2(dy, dx), nx = -dy, ny = dx, len = Math.hypot(dx,dy) || 1;
-  for (let i=0;i<n;i++){
-    const u = ((p.t*0.05 + i/n) % 1), wob = Math.sin(u*25 + i)*4;
-    const x = p.ax*W + dx*u + nx/len*wob, y = p.ay*H + dy*u + ny/len*wob;
-    sprite(IMG.ant, x, y, p.sz, ang + Math.cos(u*25+i)*.18);
+  const n = 9, s = 1.55*G.k;
+  const dx = (p.bx-p.ax)*W, dy = (p.by-p.ay)*H, ang = Math.atan2(dy, dx), len = Math.hypot(dx,dy) || 1;
+  for (let i = 0; i < n; i++){
+    const u = ((p.t*0.045 + i/n) % 1), wob = Math.sin(u*30 + i*1.7)*2.5;
+    ant(p.ax*W + dx*u - dy/len*wob, p.ay*H + dy*u + dx/len*wob, ang + Math.cos(u*30 + i*1.7)*.2, s, p.t*26 + i);
   }
 }
 function drawPests(dt){
@@ -621,9 +748,28 @@ function drawPests(dt){
       p.x += Math.cos(p.a)*dt*0.012; p.y += Math.sin(p.a)*dt*0.012*(W/H);
       const dx = p.x-p.ox, dy = p.y-p.oy; if (dx*dx+dy*dy > .0016){ p.a = Math.atan2(-dy,-dx); }
     }
+    if (p.type==='mouse' && p.d===0){ // dart, stop, sniff
+      p.timer -= dt;
+      if (p.timer <= 0){
+        if (p.run){ p.run = 0; p.timer = 1.2 + Math.random()*1.6; }
+        else { p.run = p.x > p.ox + .03 ? -1 : p.x < p.ox - .03 ? 1 : (Math.random() < .5 ? -1 : 1); p.dir = p.run; p.timer = .35 + Math.random()*.4; }
+      }
+      if (p.run) p.x += p.run*dt*(mobile ? .16 : .1);
+    }
     sx.globalAlpha = 1 - p.d;
     if (p.type==='mouse') mouse(p); else if (p.type==='roach') roach(p); else ants(p);
     sx.globalAlpha = 1;
+  });
+}
+function drawMotes(dt){
+  if (S.power <= 0) return;
+  const R = S.R;
+  motes.forEach(m => {
+    m.y -= m.v*dt; m.x += Math.sin(m.ph += dt*.6)*.0004; if (m.y < -.02) m.y = 1.02;
+    const x = m.x*W, y = m.y*H, d = Math.hypot(x - S.bx, y - S.by)/R;
+    if (d > 1) return;
+    ox.fillStyle = `rgba(255,226,180,${(1-d)*.55*S.power})`;
+    ox.beginPath(); ox.arc(x, y, m.r, 0, 7); ox.fill();
   });
 }
 
@@ -667,6 +813,7 @@ function drawOverlay(){
     ox.fillStyle = g; ox.fillRect(x-120,0,126,H);
     ox.fillStyle = 'rgba(255,230,190,.9)'; ox.fillRect(x,0,2,H);
   }
+  drawMotes(1/60);
   // particles
   particles.forEach(q => {
     ox.fillStyle = `rgba(255,200,120,${q.l})`;
@@ -679,7 +826,7 @@ function frame(now){
   const dt = Math.min((now-last)/1000, .05); last = now;
   // beam follow after intro
   if (S.introDone && !reduce){
-    if (!S.pointer){ const k = now/1000; S.tx = W*(mobile?.5:.72) + Math.cos(k*.5)*W*(mobile?.28:.16); S.ty = H*(mobile?.28:.5) + Math.sin(k*.8)*H*(mobile?.12:.22); }
+    if (!S.pointer){ const k = now/1000; S.tx = W*(mobile?.5:.72) + Math.cos(k*.5)*W*(mobile?.28:.16); S.ty = H*(mobile?.2:.5) + Math.sin(k*.8)*H*(mobile?.1:.22); }
     S.bx += (S.tx - S.bx)*Math.min(1, dt*6); S.by += (S.ty - S.by)*Math.min(1, dt*6);
   }
   // sweep kills pests
@@ -700,7 +847,7 @@ function intro(){
   const rest = document.querySelectorAll('.reveal-h');
   const hint = document.getElementById('hint');
   if (reduce || !hasGsap){
-    S.power = 1; S.bx = W*(mobile?.5:.72); S.by = H*(mobile?.28:.5); S.sweep = 2;
+    S.power = 1; S.bx = W*(mobile?.5:.72); S.by = H*(mobile?.2:.5); S.sweep = 2;
     pests.forEach(p => p.d = 1); S.introDone = true;
     rest.forEach(e => e.style.opacity = 1); return;
   }
@@ -852,7 +999,6 @@ function render(i, anim){
     <div class="spec">${SPEC[d.k]}<span class="tag">Ilustrace, ne v měřítku</span></div>
     <div class="id">
       <h3>${d.h}</h3>
-      <p class="latin">${d.lat}</p>
       <p class="desc">${d.i}</p>
       <dl class="facts">
         <div class="fact"><dt>Velikost</dt><dd>${d.size}<div class="ruler" aria-hidden="true"></div></dd></div>
@@ -875,7 +1021,7 @@ function render(i, anim){
 }
 data.forEach((d,i)=>{
   const l = document.createElement('li');
-  l.innerHTML = `<button role="tab" id="tab-${d.k}"><b>${d.n}</b><i>${d.lat.split(',')[0]}</i></button>`;
+  l.innerHTML = `<button role="tab" id="tab-${d.k}"><b>${d.n}</b></button>`;
   l.firstChild.addEventListener('click', ()=>render(i,true));
   tabs.appendChild(l);
 });

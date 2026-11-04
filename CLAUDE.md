@@ -132,9 +132,9 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   vlna zásahu je rozpráší, pak kužel sleduje kurzor; výběr škůdce se 3 sloupci rad, služby, HACCP pro firmy s odškrtávaným záznamem,
   postup, bezpečnost, FAQ + JSON-LD, formulář Web3Forms s placeholderem `WEB3FORMS_KEY`). Bez fotek a recenzí – při zakázce vyžádat.
   Při hovoru zjistit, kdo má přístup k doméně 3dsro.cz.
-  4. 11. večer v2 redesign „jako od designéra“: celý web tmavý, písma Archivo (šířková osa) + Public Sans + Newsreader kurzíva pro latinské názvy,
-  self-hosted v `deratizace/fonts/`; Atlas škůdců = karta na „kostěném“ papíře se siluetou (SVG v kódu), latinským názvem, velikostí a 3 sloupci rad;
-  služby jako tři obří D (Deratizace/Dezinsekce/Dezinfekce); jemná zrnitost + světlo kurzoru po celé stránce. Hero = Tomášova fotka kuchyně v noci (`deratizace/img/kitchen-wide|tall.webp`, zesvětleno 2,6×) + skutečné spritey myš/šváb/mravenec z ChatGPT (šváb vyříznut rembg isnet); polohy škůdců v souřadnicích fotky (PLACES v index.html), cover přepočet v layout().
+  4. 11. večer v2 redesign „jako od designéra“: celý web tmavý, písma Archivo (šířková osa) + Public Sans,
+  self-hosted v `deratizace/fonts/`; Atlas škůdců = karta na „kostěném“ papíře se siluetou (SVG v kódu), velikostí a 3 sloupci rad;
+  služby jako tři obří D (Deratizace/Dezinsekce/Dezinfekce); jemná zrnitost + světlo kurzoru po celé stránce. Hero s fotkou kuchyně a spritey z ChatGPT Tomášovi nesedl (4. 11.) → zpět kreslená scéna, propracovaná: kachlíky se spárami, podlaha v perspektivě, trubka s odleskem, zásuvka, kuchyňská linka s úchytkami (vše předkreslené do offscreen canvasu `buildRoom()`), škůdci kreslení kódem s animací nohou (šváb s chůzí, myš běhá a zastavuje, mravenci v řadě), prach ve světle baterky. Latinské názvy v Atlasu na jeho přání odstraněny (font Newsreader smazán).
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
