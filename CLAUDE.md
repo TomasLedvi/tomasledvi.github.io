@@ -105,6 +105,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   přehrávané scrollem, 126 snímků ze 2 videí Google Flow (Veo 3.1 Lite): sjezdovka → chalupa → do mraků → statický pohled shora s „Zima je krátká“ + „Pod Černou horou“ (rozhledna a noční sjezdovka vyřazeny 31. 10. na Tomášovo přání), mraky přes přechody; písma Cormorant + Onest ve `smrcina/fonts/`; pod tím celý web
   z údajů z Bookingu: o chalupě, ubytování, okolí zima/léto, restaurace, galerie, hodnocení, ukázkový kalendář + formulář, info, kontakt).
   Fotky a recenze hotlinkované z cf.bstatic.com (Booking) – jen pro ukázku majitelům, při zakázce originály. Formulář zatím demo (Web3Forms doplnit).
+  4. 11. HERO předělán na „Živé okno“ jako u Lípy: den = Booking fotka 875368038 (hotlink), soumrak/noc/zima = Tomášovy AI úpravy `smrcina/img/h_{dusk,night,winter}.webp`; počasí Janské Lázně (50.633, 15.783) Open-Meteo → MET Norway, karta ukazuje výšku sněhu; režimy Živě/Léto/Soumrak/Noc/Zima; diorama (frames/) z úvodu vyřazeno, soubory zůstaly.
   Zdroj: /home/claude/smrcina-web/source.html (mimo repo). Argument do telefonu: provize Bookingu vs. přímé rezervace.
 - **Hotel a restaurace Lípa** (Cínovec 99, Dubí; IČO 64026167 dle Firmy.cz; 603 426 109, 605 310 922, lipa-hotel@seznam.cz, stehlicidl@seznam.cz;
   8 pokojů / 20 lůžek + přistýlky, restaurace 24 míst, salonek 45, terasa, svatby/školy v přírodě/firmy; web jen hotellipa.webmium.com (bezplatný builder s reklamou);
