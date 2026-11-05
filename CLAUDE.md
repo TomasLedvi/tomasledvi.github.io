@@ -136,6 +136,8 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   4. 11. večer v2 redesign „jako od designéra“: celý web tmavý, písma Archivo (šířková osa) + Public Sans,
   self-hosted v `deratizace/fonts/`; Atlas škůdců = karta na „kostěném“ papíře se siluetou (SVG v kódu), velikostí a 3 sloupci rad;
   služby jako tři obří D (Deratizace/Dezinsekce/Dezinfekce); jemná zrnitost + světlo kurzoru po celé stránce. Hero s fotkou kuchyně a spritey z ChatGPT Tomášovi nesedl (4. 11.) → zpět kreslená scéna, propracovaná: kachlíky se spárami, podlaha v perspektivě, trubka s odleskem, zásuvka, kuchyňská linka s úchytkami (vše předkreslené do offscreen canvasu `buildRoom()`), škůdci kreslení kódem s animací nohou (šváb s chůzí, myš běhá a zastavuje, mravenci v řadě), prach ve světle baterky. Latinské názvy v Atlasu na jeho přání odstraněny (font Newsreader smazán).
+  5. 11. Tomáš volal: mluvil přímo s kolegovou maminkou, odmítla (mají „ajťáky“, budou to řešit sami), dost nepříjemně. Dál netlačit, nevolat znovu.
+  Ukázku lze přepracovat jako šablonu pro jiné DDD firmy v ČR se slabým/žádným webem.
 - Ostatní složky jsou starší ukázky; stav jednání u nich ověřit s Tomášem.
 - Obvolávání (19. 10.): artifact „Obvolávání firem“ https://claude.ai/artifact/SBevjYz2MhNeh2o3Dk5d9h
   (db kolekce `leads`, 20 firem z celé ČR se starým/žádným webem, stav + poznámky z hovorů; číst přes ArtifactData).
