@@ -100,6 +100,11 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   spodek výřezu se ztrácí do pozadí u hlavního trámu = společný kotevní bod škálování). Podpis = trám s tesařskými značkami I–V
   (vpravo, scroll je „vyřezává“, klik = skok; na mobilu jen u zastávek), stejné značky u nadpisů. Realizace = boční pás fotek (pan, 2,5× rychlejší).
   Engine scroll-craftu ani shoot.mjs nepoužíváme (vlastní Three.js svět); ověřovací skript je v scratchpadu (cue opacity, arch snímků).
+  5. 11. 2026: Tomášovi se `stybr/` NELÍBÍ → nová jednodušší ukázka `tesarstvi-stybr/` ve stylu pedikúry: 3D dílna (Three.js 0.147 + GSAP ve `vendor/`,
+  procedurální trám s čepem a kolíkem + tesařskou značkou, trám s dlabem, sekera, kladivo, úhelník se stupnicí, skládací metr, tužka, hřebíky,
+  bobrovky, hobliny, piliny; připnutý hero, kamera najede k čepu), světlý vzhled (lišejníková #f1f0ea, smrková zeleň #2e4a3b, pálená taška #b5583a,
+  písmo Archivo s širokým řezem), služby, interaktivní „Řez domem“ (SVG, 7 bodů: krov, krytina, okna, okapy, podkroví/SDK, sníh, pergola → karta + předvyplnění
+  poptávky), realizace (9 fotek z CloudFrontu + lightbox), postup, kontakt. Zdroj mimo repo: /home/claude/stybr3d/index.html.
 - **Třetí chalupa U Smrčiny** (Janské Lázně, Krkonošská, 542 25; majitelé bratři Lukáš a Tomáš; +420 733 645 729, +420 603 416 095,
   chalupa-usmrciny@janskelazne.cz; BEZ vlastního webu, jen Booking 9,0/102 recenzí): ukázka `smrcina/` (31. 10.; hero = zimní diorama
   přehrávané scrollem, 126 snímků ze 2 videí Google Flow (Veo 3.1 Lite): sjezdovka → chalupa → do mraků → statický pohled shora s „Zima je krátká“ + „Pod Černou horou“ (rozhledna a noční sjezdovka vyřazeny 31. 10. na Tomášovo přání), mraky přes přechody; písma Zilla Slab + Work Sans ve `smrcina/fonts/` (od 4. 11., Tomáš vybral variantu C; dříve Cormorant + Onest); pod tím celý web
