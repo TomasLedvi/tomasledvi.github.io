@@ -23,25 +23,22 @@
 }
 </script>
 <style>
-/* Layout: pinned 3D workbench hero with left-aligned copy; below it a calm single column on lichen-white paper, left-aligned text, wide grotesk headings. */
+/* Layout: pinned 3D workbench hero with left-aligned copy; below it a calm single column on deep spruce, left-aligned text, wide grotesk headings. One deliberate dark look. */
 :root{
-  --paper:#f1f0ea;       /* lišejníkově bílá */
-  --surface:#ffffff;
-  --wood:#e3c393;        /* čerstvý smrk */
+  --paper:#15201b;       /* hluboký smrkový les */
+  --surface:#1c2a23;
+  --wood:#d9a866;        /* jantarové dřevo */
   --wood-d:#b98a55;
-  --spruce:#2e4a3b;      /* smrková zeleň, tlačítka */
-  --ink:#1e2722;
-  --muted:#5b6861;
-  --line:#dcdfd5;
-  --clay:#b5583a;        /* pálená taška */
-  --on-spruce:#ffffff;
+  --spruce:#e0a85e;      /* tlačítka: dřevo */
+  --ink:#f0eadf;
+  --muted:#a9b4ab;
+  --line:#2c3b33;
+  --clay:#e27b55;        /* pálená taška */
+  --on-spruce:#1b1208;
   --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
   --measure:62ch;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --paper:#171c19;--surface:#202723;--wood:#d9b884;--wood-d:#c49862;--spruce:#8fc2a3;--ink:#eef0ea;--muted:#a9b5ad;--line:#2f3832;--clay:#e08a68;--on-spruce:#10201a;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --paper:#171c19;--surface:#202723;--wood:#d9b884;--wood-d:#c49862;--spruce:#8fc2a3;--ink:#eef0ea;--muted:#a9b5ad;--line:#2f3832;--clay:#e08a68;--on-spruce:#10201a;color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -89,7 +86,7 @@ header.top.solid{background:color-mix(in srgb,var(--paper) 90%,transparent);back
 }
 
 /* ===== HERO 3D ===== */
-.hero{position:relative;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:radial-gradient(70% 80% at 78% 30%,color-mix(in srgb,var(--wood) 40%,var(--paper)) 0%,transparent 70%),var(--paper)}
+.hero{position:relative;height:100svh;min-height:600px;max-height:1100px;overflow:hidden;background:radial-gradient(70% 80% at 78% 30%,color-mix(in srgb,var(--wood) 22%,var(--paper)) 0%,transparent 70%),var(--paper)}
 .hero-stage{position:absolute;inset:0}
 #scene{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.4s ease}
 #scene.ready{opacity:1}
@@ -106,7 +103,7 @@ html.no-3d #scene{display:none}
 .badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;font-weight:600;font-size:.95rem}
 .badge::before{content:"";width:28px;height:2px;background:var(--clay)}
 .chap2{position:absolute;inset:0;display:flex;align-items:flex-end;pointer-events:none;opacity:0;padding-bottom:clamp(60px,10vh,120px)}
-.chap2 .box{max-width:470px;background:color-mix(in srgb,var(--paper) 74%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid color-mix(in srgb,#fff 55%,transparent);border-radius:18px;padding:28px 30px}
+.chap2 .box{max-width:470px;background:color-mix(in srgb,var(--paper) 72%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid color-mix(in srgb,var(--ink) 14%,transparent);border-radius:18px;padding:28px 30px}
 .chap2 h2{font-size:clamp(1.6rem,2.8vw,2.3rem);margin-bottom:12px}
 .chap2 p{color:var(--muted)}
 .scroll-cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;font-size:.82rem;color:var(--muted)}
@@ -157,28 +154,28 @@ html.no-3d #scene{display:none}
 .house > *{min-width:0}
 .house-head{margin-bottom:28px}
 .house-head h2{font-size:clamp(1.9rem,3.4vw,2.8rem);margin-bottom:12px}
-.drawing{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(10px,2vw,22px);position:relative}
+.drawing{background:#f3efe4;border:1px solid transparent;border-radius:18px;padding:clamp(10px,2vw,22px);position:relative}
 .drawing svg{width:100%;height:auto;display:block;overflow:visible}
-.drawing .note{position:absolute;left:18px;top:14px;font-size:.82rem;color:var(--muted)}
+.drawing .note{position:absolute;left:18px;top:14px;font-size:.82rem;color:#6b6458}
 .hs{cursor:pointer;outline:none}
-.hs .halo{fill:var(--clay);opacity:0;transform-box:fill-box;transform-origin:center}
-.hs .ring{fill:var(--surface);stroke:var(--clay);stroke-width:2.5}
-.hs .core{fill:var(--clay);transition:r .3s}
+.hs .halo{fill:#c4613f;opacity:0;transform-box:fill-box;transform-origin:center}
+.hs .ring{fill:#fff;stroke:#c4613f;stroke-width:2.5}
+.hs .core{fill:#c4613f;transition:r .3s}
 .hs .hit{fill:transparent}
 .hs:hover .core,.hs:focus-visible .core,.hs.on .core{r:7.5}
-.hs.on .ring{fill:var(--clay)}
+.hs.on .ring{fill:#c4613f}
 .hs.on .core{fill:#fff}
 .hs.on .halo{animation:halo 2s ease-out infinite}
 .hs:not(.on) .halo{animation:halo 3.4s ease-out infinite;animation-delay:var(--dl)}
 @keyframes halo{0%{transform:scale(.6);opacity:.55}100%{transform:scale(2.8);opacity:0}}
 .part{transition:filter .4s,opacity .4s}
 .drawing.focus .part{opacity:.55}
-.drawing.focus .part.lit{opacity:1;filter:drop-shadow(0 0 6px color-mix(in srgb,var(--clay) 70%,transparent))}
+.drawing.focus .part.lit{opacity:1;filter:drop-shadow(0 0 6px rgba(196,97,63,.7))}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .chips button{font:inherit;font-size:.92rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer;transition:border-color .25s,background .25s}
 .chips button:hover{border-color:var(--wood-d)}
 .chips button.on{border-color:var(--clay);color:var(--clay);background:color-mix(in srgb,var(--clay) 8%,var(--surface))}
-.hcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;gap:12px;box-shadow:0 30px 60px -45px rgba(30,40,30,.45)}
+.hcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;gap:12px;box-shadow:0 30px 60px -40px rgba(0,0,0,.6)}
 .hcard strong{font-size:1.5rem;font-weight:800;font-stretch:115%;letter-spacing:-.02em;line-height:1.1}
 .hcard p{color:var(--muted)}
 .hcard .tags{margin-top:2px}
@@ -309,11 +306,11 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
 
   <section class="s" style="padding-bottom:0">
     <div class="wrap intro">
-      <p class="rvx">Dobrá střecha stojí na poctivém dřevě a na lidech, kteří vědí, co dělají. Přijedeme, změříme, poradíme a postavíme. Od krovu po poslední tašku.</p>
+      <p class="rvx">Krovy, střechy, dřevostavby i podkroví. Přijedeme na obhlídku, změříme, připravíme nabídku a práci uděláme sami.</p>
       <div class="facts rvx">
-        <div><b>1992</b><span>v řemesle od roku 1992</span></div>
-        <div><b>3</b><span>řemesla pod jednou střechou: tesař, pokrývač, sádrokartonář</span></div>
-        <div><b>LB · MB · PHA</b><span>Liberecký kraj, Mladá Boleslav a Praha</span></div>
+        <div><b>1992</b><span>rok, kdy jsme začali</span></div>
+        <div><b>3</b><span>řemesla pod jednou střechou: tesařství, pokrývačství a sádrokartony</span></div>
+        <div><b>Liberec</b><span>a celý Liberecký kraj, Mladá Boleslav i Praha</span></div>
       </div>
     </div>
   </section>
@@ -322,7 +319,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
     <div class="wrap">
       <div class="sv-head">
         <h2>Co děláme</h2>
-        <p class="lead">Kompletní zakázku dodáme včetně materiálu. Práci děláme osobně.</p>
+        <p class="lead">Tesaře, pokrývače i sádrokartonáře máte v jedné firmě. Nemusíte je shánět zvlášť.</p>
       </div>
       <ul class="services">
         <li class="rvx">
@@ -351,8 +348,8 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
       <div class="house" id="dum">
         <div>
           <div class="house-head">
-            <h2>Kde vás tlačí bota?</h2>
-            <p class="lead">Klepněte na část domu a uvidíte, s čím vám pomůžeme.</p>
+            <h2>S čím vám pomůžeme?</h2>
+            <p class="lead">Klepněte na část domu a uvidíte, co pro vás uděláme.</p>
           </div>
           <div class="drawing" id="drawing">
             <span class="note">Řez domem</span>
@@ -458,10 +455,10 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
     <div class="wrap">
       <h2 style="margin-bottom:40px">Od telefonu po hotovou střechu</h2>
       <ol class="steps">
-        <li><b>Zavoláte nebo napíšete</b><span>Telefonem nebo formulářem. Stačí říct, co chystáte.</span></li>
+        <li><b>Zavoláte nebo napíšete</b><span>Telefonem nebo přes formulář. Stačí napsat, co chystáte.</span></li>
         <li><b>Obhlídka na místě</b><span>Přijedeme, změříme a probereme krov, krytinu a okna.</span></li>
         <li><b>Nabídka</b><span>Připravíme cenovou nabídku včetně materiálu.</span></li>
-        <li><b>Realizace</b><span>Práci děláme osobně, od krovu po poslední tašku.</span></li>
+        <li><b>Stavba</b><span>Práci děláme osobně, od krovu po poslední tašku.</span></li>
       </ol>
     </div>
   </section>
@@ -555,13 +552,13 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
   /* ---------- řez domem ---------- */
   (function(){
     const Z=[
-      {p:'krov',x:400,y:214,t:'Krov',d:'Nový krov na míru vašemu domu: pozednice, sloupky, vaznice, krokve a kleštiny. Montáž krovů i CNC konstrukce a impregnace proti houbám a plísním.',tags:['nový krov','CNC konstrukce','impregnace'],sel:'Krov'},
+      {p:'krov',x:400,y:214,t:'Krov',d:'Krov na míru vašemu domu: pozednice, sloupky, vaznice, krokve a kleštiny. Montáž krovů, CNC konstrukce a impregnace krovů a dřeva proti houbám a plísním.',tags:['montáž krovů','CNC konstrukce','impregnace'],sel:'Krov'},
       {p:'krytina',x:206,y:276,t:'Krytina a rekonstrukce střechy',d:'Kompletní rekonstrukce střech. Pálené a betonové tašky Bramac a Tondach, vláknocement Eternit a Cembrit, šindele i plastové krytiny.',tags:['Bramac','Tondach','Eternit','Cembrit'],sel:'Nová střecha / výměna krytiny'},
-      {p:'okno',x:298,y:186,t:'Střešní okna',d:'Montáž střešních oken Velux a Roto do nové i stávající střechy, včetně lemování a napojení na krytinu.',tags:['Velux','Roto'],sel:'Střešní okna'},
-      {p:'okapy',x:132,y:362,t:'Okapy a žlaby',d:'Čištění a opravy žlabů a svodů, aby voda z velké střechy netekla po fasádě.',tags:['čištění žlabů','opravy','svody'],sel:'Okapy a žlaby'},
-      {p:'sdk',x:536,y:296,t:'Podkroví a sádrokarton',d:'Půdní vestavby a podkroví: příčky, stropy a předstěny ze sádrokartonu včetně tepelných a hlukových izolací.',tags:['půdní vestavby','izolace','příčky a stropy'],sel:'Podkroví / sádrokarton'},
-      {p:'snih',x:486,y:150,t:'Sníh a námraza',d:'V zimě odstraňujeme ze střech sníh a nebezpečné námrazy, než poškodí krytinu nebo spadnou na chodník.',tags:['odstranění sněhu','námrazy'],sel:'Sníh, námraza'},
-      {p:'pergola',x:734,y:420,t:'Pergoly, stání a altány',d:'Pergoly a garážová stání, altány, zahradní chatky, kůlny a terasy. Dřevostavby a dětské domky s prolézačkou.',tags:['pergoly','garážová stání','altány','terasy'],sel:'Pergola / garážové stání / altán'}];
+      {p:'okno',x:298,y:186,t:'Střešní okna',d:'Dodávka a montáž střešních oken Velux a Roto.',tags:['Velux','Roto'],sel:'Střešní okna'},
+      {p:'okapy',x:132,y:362,t:'Okapy a žlaby',d:'Čištění a opravy žlabů, aby voda ze střechy odtékala tam, kam má.',tags:['čištění žlabů','opravy žlabů'],sel:'Okapy a žlaby'},
+      {p:'sdk',x:536,y:296,t:'Podkroví a sádrokarton',d:'Půdní vestavby a podkroví. Příčky, stropy a předstěny ze sádrokartonu včetně tepelných a hlukových izolací, kazetové stropy.',tags:['půdní vestavby','izolace','příčky a stropy'],sel:'Podkroví / sádrokarton'},
+      {p:'snih',x:486,y:150,t:'Sníh a námraza',d:'V zimě odstraňujeme ze střech sníh a nebezpečné námrazy.',tags:['odstranění sněhu','námrazy'],sel:'Sníh, námraza'},
+      {p:'pergola',x:734,y:420,t:'Pergoly, stání a altány',d:'Pergoly a garážová stání, altány, zahradní chatky, kůlny a terasy. Dřevostavby, dětské domky a prolézačky.',tags:['pergoly','garážová stání','altány','terasy'],sel:'Pergola / garážové stání / altán'}];
     const g=document.getElementById('hspots'),draw=document.getElementById('drawing'),chips=document.getElementById('hchips');
     const T=document.getElementById('h-title'),D=document.getElementById('h-text'),TG=document.getElementById('h-tags'),card=document.getElementById('hcard');
     g.innerHTML=Z.map((z,i)=>`<g class="hs" tabindex="0" role="button" aria-label="${z.t}" data-i="${i}" style="--dl:${i*.5}s"><circle class="halo" cx="${z.x}" cy="${z.y}" r="10"/><circle class="hit" cx="${z.x}" cy="${z.y}" r="24"/><circle class="ring" cx="${z.x}" cy="${z.y}" r="12"/><circle class="core" cx="${z.x}" cy="${z.y}" r="5"/></g>`).join('');
@@ -596,23 +593,23 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
   let renderer;
   try{renderer=new THREE.WebGLRenderer({canvas,antialias:!mobile,powerPreference:'high-performance'});}catch(e){document.documentElement.classList.add('no-3d');return;}
   renderer.setPixelRatio(Math.min(devicePixelRatio,mobile?1.5:1.75));
-  renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.95;
+  renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;
   const scene=new THREE.Scene();
-  const dark=(matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.dataset.theme!=='light')||document.documentElement.dataset.theme==='dark';
-  scene.background=new THREE.Color(dark?0x171c19:0xf1f0ea);
-  scene.fog=new THREE.Fog(dark?0x1c221e:0xebe7dc,13,32);
+  const dark=true;
+  scene.background=new THREE.Color(0x15201b);
+  scene.fog=new THREE.Fog(0x16221c,14,34);
   const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new THREE.RoomEnvironment(),0.04).texture;
   const camera=new THREE.PerspectiveCamera(mobile?40:30,1,.1,90);camera.position.set(0,0,11);scene.add(camera);
   // pozadí: měkký přechod jako světlo dílny
   function bgTex(){const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
-    x.fillStyle=dark?'#171c19':'#f1f0ea';x.fillRect(0,0,512,512);
-    const a=dark?'rgba(150,115,70,':'rgba(232,200,150,';const g1=x.createRadialGradient(390,150,10,390,150,380);g1.addColorStop(0,a+(dark?'.5)':'.8)'));g1.addColorStop(1,a+'0)');x.fillStyle=g1;x.fillRect(0,0,512,512);
-    const b=dark?'rgba(70,110,85,':'rgba(190,215,195,';const g2=x.createRadialGradient(40,520,10,40,520,340);g2.addColorStop(0,b+(dark?'.45)':'.75)'));g2.addColorStop(1,b+'0)');x.fillStyle=g2;x.fillRect(0,0,512,512);
+    x.fillStyle='#15201b';x.fillRect(0,0,512,512);
+    const a='rgba(196,140,72,';const g1=x.createRadialGradient(390,140,10,390,140,380);g1.addColorStop(0,a+'.55)');g1.addColorStop(1,a+'0)');x.fillStyle=g1;x.fillRect(0,0,512,512);
+    const b='rgba(46,90,66,';const g2=x.createRadialGradient(40,520,10,40,520,360);g2.addColorStop(0,b+'.7)');g2.addColorStop(1,b+'0)');x.fillStyle=g2;x.fillRect(0,0,512,512);
     const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;return t;}
   const backdrop=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:bgTex(),toneMapped:false,fog:false,depthWrite:false}));
   backdrop.position.z=-60;backdrop.renderOrder=-1;camera.add(backdrop);
-  const key=new THREE.DirectionalLight(0xfff0dc,1.6);key.position.set(5,7,6);scene.add(key);
-  const rim=new THREE.DirectionalLight(0xd8efe2,.9);rim.position.set(-6,3,-5);scene.add(rim);
+  const key=new THREE.DirectionalLight(0xffe7c4,2.0);key.position.set(5,7,6);scene.add(key);
+  const rim=new THREE.DirectionalLight(0xbfe3cf,1.3);rim.position.set(-6,3,-5);scene.add(rim);
   scene.add(new THREE.HemisphereLight(0xfffaf0,0xc9b48f,.4));
 
   /* ---- procedurální textury dřeva ---- */
@@ -756,18 +753,18 @@ footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);fo
     floaters.push({o,base:o.position.clone(),rot:o.rotation.clone(),amp:opt.amp||.16,sp:opt.sp||rnd(.22,.45),ph:rnd(0,6.3),spin:opt.spin||[rnd(-.03,.03),rnd(-.06,.06),rnd(-.025,.025)]});}
   let hero3d;
   if(!mobile){
-    hero3d=tenonBeam();place(hero3d,[2.6,-.35,0],[18*R,-32*R,14*R],1,{amp:.1,sp:.2,spin:[0,.03,0]});
+    hero3d=tenonBeam();place(hero3d,[3.1,-.4,0],[18*R,-32*R,14*R],1,{amp:.1,sp:.2,spin:[0,.03,0]});
     place(mortiseBeam(),[4.6,1.9,-3.4],[-10*R,30*R,-22*R],1,{amp:.1});
     place(axe(),[5.2,-1.25,.6],[8*R,-18*R,-58*R],.92,{amp:.14,spin:[.01,.04,.01]});
-    place(hammer(),[1.3,1.55,-.8],[0,25*R,34*R],.95);
+    place(hammer(),[2.3,1.7,-.9],[0,25*R,34*R],.95);
     place(square(),[6.3,.9,-1.6],[12*R,-28*R,-12*R],1,{spin:[.02,.03,.01]});
-    place(meter(),[1.5,-2.15,1.1],[30*R,-10*R,8*R],.9);
-    place(pencil(),[3.3,1.65,1.4],[10*R,20*R,-24*R],.9);
+    place(meter(),[2.1,-2.25,1.1],[30*R,-10*R,8*R],.85);
+    place(pencil(),[2.3,.45,2.2],[10*R,20*R,-24*R],.85);
     place(tile(),[7.6,-.4,-3.2],[22*R,-35*R,18*R],1.05);
     place(tile(),[3.6,2.7,-4.6],[-14*R,40*R,-30*R],.95);
-    [[2.0,.55,2.1],[4.2,.15,1.6],[3.9,-1.9,2.0],[5.8,2.4,-.6]].forEach(p=>place(nail(),p,[rnd(0,3),rnd(0,3),rnd(0,3)],1,{amp:.24,spin:[.2,.25,.15]}));
-    [[1.0,-.9,1.0],[5.3,.9,1.2],[3.0,-1.9,2.3],[7.0,2.6,-1.4]].forEach(p=>place(shaving(),p,[rnd(0,3),rnd(0,3),rnd(0,3)],1,{amp:.22,spin:[.15,.25,.1]}));
-    place(peg(),[1.0,.4,-2.2],[40*R,0,60*R],1,{amp:.2});
+    [[2.6,.75,2.0],[4.4,.25,1.6],[4.3,-1.9,2.0],[5.8,2.4,-.6]].forEach(p=>place(nail(),p,[rnd(0,3),rnd(0,3),rnd(0,3)],1,{amp:.24,spin:[.2,.25,.15]}));
+    [[2.0,-1.5,1.3],[5.3,.9,1.2],[3.6,-2.1,2.3],[7.0,2.6,-1.4]].forEach(p=>place(shaving(),p,[rnd(0,3),rnd(0,3),rnd(0,3)],1,{amp:.22,spin:[.15,.25,.1]}));
+    place(peg(),[1.6,.5,-2.4],[40*R,0,60*R],1,{amp:.2});
   } else {
     hero3d=tenonBeam();place(hero3d,[.15,1.45,0],[18*R,-32*R,14*R],.62,{amp:.08,sp:.2,spin:[0,.03,0]});
     place(axe(),[1.2,2.85,-1.2],[8*R,-18*R,-62*R],.6);
