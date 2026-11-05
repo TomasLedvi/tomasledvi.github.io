@@ -106,6 +106,7 @@ Tomáš jedná s klienty a sám posílá všechny e-maily. Mluvit česky, tykat.
   z údajů z Bookingu: o chalupě, ubytování, okolí zima/léto, restaurace, galerie, hodnocení, ukázkový kalendář + formulář, info, kontakt).
   Fotky a recenze hotlinkované z cf.bstatic.com (Booking) – jen pro ukázku majitelům, při zakázce originály. Formulář zatím demo (Web3Forms doplnit).
   4. 11. HERO předělán na „Živé okno“ jako u Lípy: den = Booking fotka 875368038 (hotlink), soumrak/noc/zima = Tomášovy AI úpravy `smrcina/img/h_{dusk,night,winter}.webp`; počasí Janské Lázně (50.633, 15.783) Open-Meteo → MET Norway, karta ukazuje výšku sněhu; režimy Živě/Léto/Soumrak/Noc/Zima; diorama (frames/) z úvodu vyřazeno, soubory zůstaly.
+  5. 11.: čísla 733 645 729 a 603 416 095 i e-mail @janskelazne.cz patří Informačnímu centru Janské Lázně (cestovka, zprostředkovává rezervace; subdoména chalupa-usmrciny.janskelazne.cz přesměruje na jejich web). Majitel = pan Lukáš, 737 491 488 (číslo dalo infocentrum 2. 11., zatím nezvedá).
   Zdroj: /home/claude/smrcina-web/source.html (mimo repo). Argument do telefonu: provize Bookingu vs. přímé rezervace.
 - **Hotel a restaurace Lípa** (Cínovec 99, Dubí; IČO 64026167 dle Firmy.cz; 603 426 109, 605 310 922, lipa-hotel@seznam.cz, stehlicidl@seznam.cz;
   8 pokojů / 20 lůžek + přistýlky, restaurace 24 míst, salonek 45, terasa, svatby/školy v přírodě/firmy; web jen hotellipa.webmium.com (bezplatný builder s reklamou);
